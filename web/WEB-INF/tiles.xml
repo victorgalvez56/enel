@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="baseLayout" template="/layout/baseLayout.jsp">
+        <put-attribute name="title"  value="Template"/>
+        <put-attribute name="banner" value="/layout/banner.jsp"/>
+        <put-attribute name="menu"   value="/layout/menu.jsp"/>
+        <put-attribute name="body"   value="/layout/body.jsp"/>
+        <put-attribute name="footer"   value="/layout/footer.jsp"/>
+    </definition>
+
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title"  value="Acceso - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="banner"   value=""/>
+        <put-attribute name="body"   value="/pages/general/login.jsp"/>
+        <put-attribute name="menu"   value=""/>
+        <put-attribute name="footer"   value=""/>
+    </definition>
+
+    <definition name="bienvenido" extends="baseLayout">
+        <put-attribute name="title"  value="Bienvenido - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/general/bienvenido.jsp"/>
+    </definition>
+
+    <definition name="frmREPCREMora" extends="baseLayout">
+        <put-attribute name="title"  value="Repore de Mora - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCREMora.jsp"/>
+    </definition>
+    <definition name="frmREPCRECartera" extends="baseLayout">
+        <put-attribute name="title"  value="Repore de Mora - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRECartera.jsp"/>
+    </definition>
+
+    <definition name="frmSISCargarUsuarios" extends="baseLayout">
+        <put-attribute name="title"  value="Cargar Usuarios - FINANSOFT"/>
+        <put-attribute name="body"   value="/usuarios/frmSISCargarUsuarios.jsp"/>
+    </definition>
+
+    <definition name="frmSISMntOficinas" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento Oficinas - FINANSOFT"/>
+        <put-attribute name="body"   value="/oficinas/frmSISMntOficinas.jsp"/>
+    </definition>
+
+    <definition name="frmCREMntCondiciones" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento Condiciones - FINANSOFT"/>
+        <put-attribute name="body"   value="/creditos/frmCREMntCondiciones.jsp"/>
+    </definition>
+    <definition name="frmCREMntProductos" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento Productos - FINANSOFT"/>
+        <put-attribute name="body"   value="/creditos/frmCREMntProductos.jsp"/>
+    </definition>
+    <definition name="frmCRECargarCreditos" extends="baseLayout">
+        <put-attribute name="title"  value="Cargar Creditos - FINANSOFT"/>
+        <put-attribute name="body"   value="/creditos/frmCRECargarCreditos.jsp"/>
+    </definition>
+
+    <definition name="frmCLICargarClientes" extends="baseLayout">
+        <put-attribute name="title"  value="Cargar Clientes - FINANSOFT"/>
+        <put-attribute name="body"   value="/clientes/frmCLICargarClientes.jsp"/>
+    </definition>
+
+    <definition name="frmCOBParametrizar" extends="baseLayout">
+        <put-attribute name="title"  value="Parametrizar Cobranza - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBParametrizar.jsp"/>
+    </definition>
+    <definition name="frmCOBAsignar" extends="baseLayout">
+        <put-attribute name="title"  value="Asignar Cartera - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBAsignar.jsp"/>
+    </definition>
+    <definition name="frmCOBProgramarVisitas" extends="baseLayout">
+        <put-attribute name="title"  value="Programar Visita - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBProgramarVisitas.jsp"/>
+    </definition>
+    <definition name="frmCOBVerCredito" extends="baseLayout">
+        <put-attribute name="title"  value="Ver Credito - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBVerCredito.jsp"/>
+    </definition>
+    <definition name="frmCOBImprimeCartas" extends="baseLayout">
+        <put-attribute name="title"  value="Imprime Cartas - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBImprimeCartas.jsp"/>
+    </definition>
+    <definition name="frmCOBRegistrarVisitas" extends="baseLayout">
+        <put-attribute name="title"  value="Registrar Visitas - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBRegistrarVisitas.jsp"/>
+    </definition>
+    <definition name="frmCOBRegistrarVisita" extends="baseLayout">
+        <put-attribute name="title"  value="Registrar Visita - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBRegistrarVisita.jsp"/>
+    </definition>
+    <definition name="frmCOBRegistrarLlamadas" extends="baseLayout">
+        <put-attribute name="title"  value="Registrar Llamadas - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBRegistrarLlamadas.jsp"/>
+    </definition>
+    <definition name="frmCOBRegistrarCompromiso" extends="baseLayout">
+        <put-attribute name="title"  value="Registrar Compromiso - FINANSOFT"/>
+        <put-attribute name="body"   value="/cobranza/frmCOBRegistrarCompromiso.jsp"/>
+    </definition>
+
+    <definition name="frmREPCOBCompromisosPago" extends="baseLayout">
+        <put-attribute name="title"  value="Compromisos de pago - FINANSOFT"/>
+        <put-attribute name="body"   value="/reportes/cobranza/frmREPCOBCompromisosPago.jsp"/>
+    </definition>
+    <definition name="frmREPCOBRecuperacion" extends="baseLayout">
+        <put-attribute name="title"  value="Recuperación - FINANSOFT"/>
+        <put-attribute name="body"   value="/reportes/cobranza/frmREPCOBRecuperacion.jsp"/>
+    </definition>
+    <definition name="frmREPCOBSeguimiento" extends="baseLayout">
+        <put-attribute name="title"  value="Seguimiento - FINANSOFT"/>
+        <put-attribute name="body"   value="/reportes/cobranza/frmREPCOBSeguimiento.jsp"/>
+    </definition>
+
+    <definition name="frmESTCOBEstados" extends="baseLayout">
+        <put-attribute name="title"  value="Estadistica Estados - FINANSOFT"/>
+        <put-attribute name="body"   value="/estadistica/cobranza/frmESTCOBEstados.jsp"/>
+    </definition>
+    <definition name="frmESTCOBResultados" extends="baseLayout">
+        <put-attribute name="title"  value="Estadistica Resultados - FINANSOFT"/>
+        <put-attribute name="body"   value="/estadistica/cobranza/frmESTCOBResultados.jsp"/>
+    </definition>
+    <definition name="frmESTCOBOficinas" extends="baseLayout">
+        <put-attribute name="title"  value="Estadistica Oficinas - FINANSOFT"/>
+        <put-attribute name="body"   value="/estadistica/cobranza/frmESTCOBOficinas.jsp"/>
+    </definition>
+    <definition name="frmESTCOBPagos" extends="baseLayout">
+        <put-attribute name="title"  value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body"   value="/estadistica/cobranza/frmESTCOBPagos.jsp"/>
+    </definition>
+
+    <definition name="error" extends="baseLayout">
+        <put-attribute name="title"  value="Error - FINANSOFT"/>
+        <put-attribute name="body"   value="/general/error.jsp"/>
+    </definition>
+
+</tiles-definitions>

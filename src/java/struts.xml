@@ -1,0 +1,56 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+    <constant name="struts.multipart.maxSize" value="50000000" />
+
+    <package name="default" extends="struts-default">
+        <result-types>
+            <result-type name="tiles"
+                         class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+
+        <action name="*" method="{1}" class="com.softia.web.actions.MenuAction">
+            <result name="login" type="tiles">login</result>
+            <result name="bienvenido" type="tiles">bienvenido</result>
+            
+            <result name="frmREPCRECartera" type="tiles">frmREPCRECartera</result>
+            <result name="frmREPCREMora" type="tiles">frmREPCREMora</result>
+
+            <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
+            <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
+            
+            <result name="frmCLICargarClientes" type="tiles">frmCLICargarClientes</result>
+
+            <result name="frmCREMntCondiciones" type="tiles">frmCREMntCondiciones</result>
+            <result name="frmCREMntProductos" type="tiles">frmCREMntProductos</result>
+            <result name="frmCRECargarCreditos" type="tiles">frmCRECargarCreditos</result>
+
+            <result name="frmCOBParametrizar" type="tiles">frmCOBParametrizar</result>
+            <result name="frmCOBAsignar" type="tiles">frmCOBAsignar</result>
+            <result name="frmCOBProgramarVisitas" type="tiles">frmCOBProgramarVisitas</result>
+            <result name="frmCOBVerCredito" type="tiles">frmCOBVerCredito</result>
+            <result name="frmCOBImprimeCartas" type="tiles">frmCOBImprimeCartas</result>
+            <result name="frmCOBRegistrarVisitas" type="tiles">frmCOBRegistrarVisitas</result>
+            <result name="frmCOBRegistrarVisita" type="tiles">frmCOBRegistrarVisita</result>
+            <result name="frmCOBRegistrarLlamadas" type="tiles">frmCOBRegistrarLlamadas</result>
+            <result name="frmCOBRegistrarCompromiso" type="tiles">frmCOBRegistrarCompromiso</result>
+            
+            <result name="frmREPCOBCompromisosPago" type="tiles">frmREPCOBCompromisosPago</result>
+            <result name="frmREPCOBRecuperacion" type="tiles">frmREPCOBRecuperacion</result>
+            <result name="frmREPCOBSeguimiento" type="tiles">frmREPCOBSeguimiento</result>
+
+            <result name="frmESTCOBEstados" type="tiles">frmESTCOBEstados</result>
+            <result name="frmESTCOBResultados" type="tiles">frmESTCOBResultados</result>
+            <result name="frmESTCOBOficinas" type="tiles">frmESTCOBOficinas</result>
+            <result name="frmESTCOBPagos" type="tiles">frmESTCOBPagos</result>
+
+            <result name="error" type="tiles">error</result>
+        </action>
+        
+    </package>        
+</struts>

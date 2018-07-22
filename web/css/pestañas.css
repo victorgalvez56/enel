@@ -1,0 +1,592 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 5, 2016, 12:49:24 AM
+    Author     : cgp
+*/
+
+#pestañas #container {
+    height: auto;
+}
+
+#pestañas #container input {
+    height: 2.5em;
+    visibility: hidden;
+}
+
+#pestañas #container label {
+    background: #00aca6;  /*Fondo de las pestañas */
+    border-radius: .25em .25em 0 0;
+    color: white;  /*Color del texto de las pestañas */
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-size: 0.8em;  /*Tamaño del texto de las pestañas */
+    height: 2.5em;
+    line-height: 2.5em;
+    margin-right: .25em;
+    text-align: left;
+    width: 11%;
+}
+
+#pestañas #container input:hover + label {
+    background: #ddd;  /*Fondo de las pestañas al pasar el cursor por encima */
+    color: #666;  /*Color del texto de las pestañas al pasar el cursor por encima */
+    width: 11%;
+}
+
+#pestañas #container input:checked + label {
+    background: white;  /*Fondo de las pestañas al presionar */
+    color: #00aca6;  /*Color de las pestañas al presionar */
+    position: relative;
+    z-index: 6;
+    width: 11%;
+}
+
+#pestañas #content {
+    background: #f1f1f1;  /*Fondo del contenido */
+    border-radius: 0 0 0 0;
+    min-height: 20em;  /*Alto del contenido */
+    position: relative;
+    width: 100%;
+    z-index: 5;
+    border: #00aca6;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    height: 28em;
+}
+
+#pestañas #content div {
+    opacity: 0;
+    padding: 1.5em;
+    position: absolute;
+    z-index: -100;
+}
+
+#pestañas #content-1 p {
+    float: left;
+    width: 48.5%;
+    font-size: 16px;
+}
+
+#pestañas #content-1 p.column-right {
+    margin-left: 3%;
+}
+
+#pestañas #content-1 p img {
+    display: block;
+    margin: 0 auto 1em auto;   
+    height: 80%;
+    width: 80%;
+}
+
+#pestañas #content-2 p {
+    float: left;
+    width: 48.5%;
+    font-size: 1.2em;
+}
+
+#pestañas #content-2 ul {
+    float: left;
+    width: 48.5%;
+    font-size: 16px;
+}
+
+#pestañas #content-2 p.column-right {
+    margin-left: 3%;
+}
+
+#pestañas #content-2 p img {
+    display: block;
+    margin: 0 auto 1em auto;
+    height: 80%;
+    width: 80%;    
+}
+
+#pestañas #content-3 p {
+    float: left;
+    width: 48.5%;
+    font-size: 16px;
+}
+
+#pestañas #content-3 p.column-right {
+    margin-left: 3%;
+}
+
+#pestañas #content-3 p img {
+    display: block;
+    margin: 0 auto 1em auto;
+    height: 80%;
+    width: 80%;    
+}
+
+#pestañas #content-4 p {
+    float: left;
+    width: 48.5%;
+    font-size: 1.2em;
+}
+
+#pestañas #content-4 ul {
+    float: left;
+    width: 48.5%;
+    font-size: 16px;
+}
+
+#pestañas #content-4 p.column-right {
+    margin-left: 3%;
+}
+
+#pestañas #content-4 p img {
+    display: block;
+    margin: 0 auto 1em auto;
+    height: 80%;
+    width: 80%;    
+}
+
+#pestañas #content-5 p {
+    float: left;
+    width: 48.5%;
+    text-align: justify;
+    font-size: small;    
+}
+
+#pestañas #content-5 p.column-right {
+    margin-left: 3%;
+}
+
+#pestañas #content-5 p img {
+    display: block;
+    margin: 0 auto 1em auto;
+    height: 80%;
+    width: 80%;    
+}
+
+#pestañas #content-5 ul {
+    float: left;
+    width: 48.5%;
+    text-align: justify;
+    font-size: small;
+}
+
+#pestañas #content-6 p {
+    float: left;
+    width: 48.5%;
+    font-size: 16px;
+}
+
+#pestañas #content-6 p.column-right {
+    margin-left: 3%;
+}
+
+#pestañas #content-6 p img {
+    display: block;
+    margin: 0 auto 1em auto;
+    height: 80%;
+    width: 80%;
+}
+
+#pestañas #content-7 p {
+    float: left;
+    width: 48.5%;
+    font-size: 16px;
+}
+
+#pestañas #content-7 p.column-right {
+    margin-left: 3%;
+}
+
+#pestañas #content-7 p img {
+    display: block;
+    margin: 0 auto 1em auto;
+    width: 80%;
+    height: 80%;
+}
+
+#pestañas #container input#tab-1:checked ~ #content #content-1,
+#pestañas #container input#tab-2:checked ~ #content #content-2,
+#pestañas #container input#tab-3:checked ~ #content #content-3,
+#pestañas #container input#tab-4:checked ~ #content #content-4,
+#pestañas #container input#tab-5:checked ~ #content #content-5,
+#pestañas #container input#tab-6:checked ~ #content #content-6,
+#pestañas #container input#tab-7:checked ~ #content #content-7{
+    opacity: 1;
+    z-index: 100;
+}
+
+@media (min-width:1400px){
+    #pestañas #content-1 p img {
+        height: 70%;
+        width: 70%;
+    }    
+}
+@media (min-device-width:1400px){
+    #pestañas #content-1 p img {
+        height: 70%;
+        width: 70%;
+    }    
+}
+
+@media (min-width:1500px){
+    #pestañas #content-1 p img {
+        height: 60%;
+        width: 60%;
+    }    
+}
+@media (min-device-width:1500px){
+    #pestañas #content-1 p img {
+        height: 60%;
+        width: 60%;
+    }    
+}
+
+@media (min-width:1600px){
+    #pestañas #content-1 p img {
+        height: 50%;
+        width: 50%;
+    }    
+}
+@media (min-device-width:1600px){
+    #pestañas #content-1 p img {
+        height: 50%;
+        width: 50%;
+    }    
+}
+
+@media (min-width:1700px){
+    #pestañas #content-1 p img {
+        height: 40%;
+        width: 40%;
+    }    
+}
+@media (min-device-width:1700px){
+    #pestañas #content-1 p img {
+        height: 40%;
+        width: 40%;
+    }    
+}
+
+@media (min-width:1800px){
+    #pestañas #content-1 p img {
+        height: 30%;
+        width: 30%;
+    }    
+}
+@media (min-device-width:1800px){
+    #pestañas #content-1 p img {
+        height: 30%;
+        width: 30%;
+    }    
+}
+
+@media (min-width:1900px){
+    #pestañas #content-1 p img {
+        height: 20%;
+        width: 20%;
+    }    
+}
+@media (min-device-width:1900px){
+    #pestañas #content-1 p img {
+        height: 20%;
+        width: 20%;
+    }    
+}
+
+
+@media (max-width:1300px){
+    #pestañas #content-1 p{
+        font-size: 1.1em;
+    }
+    #pestañas #content-2 ul{
+        font-size: 1.1em;
+    }
+    #pestañas #content-3 p{
+        font-size: 1.1em;
+    }
+    #pestañas #content-4 ul{
+        font-size: 1.1em;
+    }
+    #pestañas #content-5 p{
+        font-size: 1.1em;
+    }
+    #pestañas #content-6 p{
+        font-size: 1.1em;
+    }
+    #pestañas #content {
+        height: 27em;
+    }
+    #pestañas #container label {
+        border-radius: 0 0 0 0;
+        font-size: 0.7em;  /*Tamaño del texto de las pestañas */
+        height: 2em;
+        line-height: 2em;
+        margin-right: .20em;
+        padding: 0 0.4em;
+        text-align: left;
+        width: 10%;
+    }
+    #pestañas #container label:hover + label {
+        width: 10%;
+    }
+    #pestañas #container label:checked + label {
+        width: 10%;
+    }
+    #pestañas #container input {
+        height: 2em;
+    }
+    
+}
+
+@media (max-width:1200px){
+    #pestañas #content-1 p{
+        font-size: 1em;
+    }
+    #pestañas #content-2 ul{
+        font-size: 1em;
+    }
+    #pestañas #content-3 p{
+        font-size: 1em;
+    }
+    #pestañas #content-4 ul{
+        font-size: 1em;
+    }
+    #pestañas #content-6 p{
+        font-size: 1em;
+    }
+    #pestañas #content-7 p{
+        font-size: 1em;
+    }
+    #pestañas #content {
+        height: 26em;
+    }
+    #pestañas #container label {
+        font-size: 0.6em;  /*Tamaño del texto de las pestañas */
+        height: 1.5em;
+        line-height: 1.5em;
+        margin-right: .15em;
+        padding: 0 0.3em;
+        text-align: left;
+        width: 9%;
+    }
+    #pestañas #container label:hover + label {
+        width: 9%;
+    }
+    #pestañas #container label:checked + label {
+        width: 9%;
+    }
+    #pestañas #container input {
+        height: 1.5em;
+    }    
+}
+
+@media (max-width:1000px){
+    #pestañas #content-1 p{
+        font-size: .9em;
+    }
+    #pestañas #content-2 ul{
+        font-size: .9em;
+    }
+    #pestañas #content-3 p{
+        font-size: .9em;
+    }
+    #pestañas #content-4 ul{
+        font-size: .9em;
+    }
+
+    #pestañas #content-5 ul{
+        font-size: .7em;
+    }
+
+    #pestañas #content-6 p{
+        font-size: .9em;
+    }
+    #pestañas #content-7 p{
+        font-size: .9em;
+    }
+    #pestañas #content {
+        height: 25em;
+    }
+
+}
+
+@media (max-width:900px){
+    #pestañas #content-1 p{
+        font-size: .8em;
+    }
+    #pestañas #content-2 ul{
+        font-size: .8em;
+    }
+    #pestañas #content-3 p{
+        font-size: .8em;
+    }
+    #pestañas #content-4 ul{
+        font-size: .8em;
+    }
+    #pestañas #content-5 ul{
+        font-size: .6em;
+    }
+    #pestañas #content-6 p{
+        font-size: .8em;
+    }
+    #pestañas #content-7 p{
+        font-size: .8em;
+    }
+    #pestañas #content {
+        height: 24em;
+    }    
+    #pestañas #container label {
+        font-size: 0.5em;  /*Tamaño del texto de las pestañas */
+        height: 1.0em;
+        line-height: 1.0em;
+        margin-right: .10em;
+        padding: 0 0.2em;
+        text-align: left;
+    }
+    #pestañas #container input {
+        height: 1em;
+    }        
+}
+
+@media (max-width:700px){
+    #pestañas #content-1 p{
+        font-size: .7em;
+    }
+}
+
+@media (max-width:600px){
+    #pestañas #content-1 p{
+        font-size: .65em;
+    }
+    #pestañas #content-2 ul{
+        font-size: .7em;
+    }
+    #pestañas #content-3 p{
+        font-size: .7em;
+    }
+    #pestañas #content-4 ul{
+        font-size: .7em;
+    }
+    #pestañas #content-5 ul{
+        font-size: .5em;
+    }
+    #pestañas #content-6 p{
+        font-size: .7em;
+    }
+    #pestañas #content-7 p{
+        font-size: .7em;
+    }
+    #pestañas #content {
+        height: 23em;
+    }    
+    #pestañas #container label {
+        font-size: 0.4em;  /*Tamaño del texto de las pestañas */
+        height: 1em;
+        line-height: 1em;
+        margin-right: .10em;
+        padding: 0 0.2em;
+        text-align: left;
+    }
+}
+
+@media (max-width:500px){
+    #pestañas #content-1 p{
+        font-size: .6em;
+    }
+    #pestañas #content-2 ul{
+        font-size: .6em;
+    }
+    #pestañas #content-3 p{
+        font-size: .6em;
+    }
+    #pestañas #content-4 ul{
+        font-size: .6em;
+    }
+    #pestañas #content-5 ul{
+        font-size: .45em;
+    }   
+    #pestañas #content-6 p{
+        font-size: .6em;
+    }
+    #pestañas #content-7 p{
+        font-size: .6em;
+    }
+    #pestañas #content {
+        height: 22em;
+    }    
+}
+
+@media (max-width:450px){
+    #pestañas #content-1 p{
+        font-size: .55em;
+    }
+}
+
+@media (max-width:400px){
+    #pestañas #content-1 p{
+        font-size: .55em;
+    }
+    #pestañas #content-2 ul{
+        font-size: .6em;
+    }
+    #pestañas #content-3 p{
+        font-size: .6em;
+    }
+    #pestañas #content-4 ul{
+        font-size: .6em;
+    }
+    #pestañas #content-5 ul{
+        font-size: .4em;
+    }
+    #pestañas #content-6 p{
+        font-size: .6em;
+    }
+    #pestañas #content-7 p{
+        font-size: .6em;
+    }
+    #pestañas #content {
+        height: 21em;
+    }    
+    #pestañas #container label {
+        font-size: 0.3em;  /*Tamaño del texto de las pestañas */
+        height: .5em;
+        line-height: .5em;
+        margin-right: .05em;
+        padding: 0 0.1em;
+        text-align: left;
+    }
+    #pestañas #container input {
+        height: 0.5em;
+    }    
+}
+
+@media (max-width:380px){
+    #pestañas #content-1 p{
+        font-size: .5em;
+    }
+    #pestañas #container input {
+        height: 0.4em;
+    }    
+}
+
+@media (max-width:350px){
+    #pestañas #content-1 p{
+        font-size: .42em;
+    }
+    #pestañas #content-4 ul{
+        font-size: .5em;
+    }
+
+    #pestañas #content-5 ul{
+        font-size: .3em;
+    }
+
+    #pestañas #content {
+        height: 20em;
+    }    
+    #pestañas #container input {
+        height: 0.3em;
+    }    
+}

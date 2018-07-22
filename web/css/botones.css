@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 5, 2016, 12:49:43 AM
+    Author     : cgp
+*/
+#botones{
+    margin-top: 20px;
+    position: relative;
+}
+
+#botones a img{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 49%;
+    height: 100%;
+}
