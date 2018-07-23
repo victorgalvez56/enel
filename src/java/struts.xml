@@ -18,6 +18,13 @@
             <result name="login" type="tiles">login</result>
             <result name="bienvenido" type="tiles">bienvenido</result>
             
+            <result name="frmCRESolicitud" type="tiles">frmCRESolicitud</result>
+            <result name="frmCREAprobacion" type="tiles">frmCREAprobacion</result>
+            <result name="frmCREDocumentos" type="tiles">frmCREDocumentos</result>
+            
+            <result name="frmCAJDesembolso" type="tiles">frmCAJDesembolso</result>
+            <result name="frmCAJPago" type="tiles">frmCAJPago</result>
+            
             <result name="frmREPCRECartera" type="tiles">frmREPCRECartera</result>
             <result name="frmREPCREMora" type="tiles">frmREPCREMora</result>
 

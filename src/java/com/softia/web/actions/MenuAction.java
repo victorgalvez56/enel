@@ -76,6 +76,7 @@ public class MenuAction extends BaseAction {
     private String tipoOrden;
     private String busqueda;
     private String datos;
+    private List<String> lstOficina;
 
     public String login() {
         setResult("login");
@@ -125,7 +126,47 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    //MODULO CREDITO
+    //SUBMODULO CREDITO SOLICITUD
+    public String frmCRESolicitud() {
+       /* setlstOficina(new ArrayList<>());
+        getlstOficina().add("Oficina Principal");
+        getlstOficina().add("Oficina Secundaria");*/
+        setResult("frmCRESolicitud");
+        return getResult();
+    }
+    //SUBMODULO CREDITO APROBACION DEESEMBOLSO
+    public String frmCREAprobacion() {
+       /* setlstOficina(new ArrayList<>());
+        getlstOficina().add("Oficina Principal");
+        getlstOficina().add("Oficina Secundaria");*/
+        setResult("frmCREAprobacion");
+        return getResult();
+    }
+    //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
+    public String frmCREDocumentos() {
+       /* setlstOficina(new ArrayList<>());
+        getlstOficina().add("Oficina Principal");
+        getlstOficina().add("Oficina Secundaria");*/
+        setResult("frmCREDocumentos");
+        return getResult();
+    }
+    //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
+    public String frmCAJDesembolso() {
+       /* setlstOficina(new ArrayList<>());
+        getlstOficina().add("Oficina Principal");
+        getlstOficina().add("Oficina Secundaria");*/
+        setResult("frmCAJDesembolso");
+        return getResult();
+    }
+    //SUBMODULO CREDITO COBRANZA
+    public String frmCAJPago() {
+       /* setlstOficina(new ArrayList<>());
+        getlstOficina().add("Oficina Principal");
+        getlstOficina().add("Oficina Secundaria");*/
+        setResult("frmCAJPago");
+        return getResult();
+    }
     public String frmREPCREMora() {
         setResult("frmREPCREMora");
         return getResult();
