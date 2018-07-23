@@ -36,6 +36,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.struts2.ServletActionContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -423,6 +424,39 @@ public class MenuAction extends BaseAction {
 
     public String frmSisCargarUsuarios() {
         setResult("frmSISCargarUsuarios");
+        return getResult();
+    }
+    
+    public String frmCLIMantenimiento() {
+        /*CTabla tipocreditos = new CTabla();
+        setLstTipoCredito (tipocreditos.getLstTipoCredito());*/
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("aplicar") != null) {
+            //aplicarCLIMantenimiento();
+            
+        } else if (request.getParameter("grabar") != null) {
+            //grabarCLIMantenimiento();
+            
+        } else if (request.getParameter("buscarNombre") != null) {
+            //buscarNombre();
+            
+        } else if (request.getParameter("buscarDNI") != null) {
+            //buscarDNI();
+            
+        } else if (request.getParameter("cancelar") != null) {
+            //cliente = new Cliente();
+        
+        } else if (request.getParameter("nuevo") != null) {
+            //cliente = new Cliente();
+            setInformacion("Listo para solicitud nueva");
+        }
+        setResult("frmCLIMantenimiento");
+        return getResult();
+    }
+    
+    public String frmCLIPosicion() {
+        setResult("frmCLIPosicion");
         return getResult();
     }
 

@@ -31,6 +31,8 @@
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
             
+            <result name="frmCLIMantenimiento" type="tiles">frmCLIMantenimiento</result>
+            <result name="frmCLIPosicion" type="tiles">frmCLIPosicion</result>
             <result name="frmCLICargarClientes" type="tiles">frmCLICargarClientes</result>
 
             <result name="frmCREMntCondiciones" type="tiles">frmCREMntCondiciones</result>
