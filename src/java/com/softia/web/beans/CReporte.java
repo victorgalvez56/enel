@@ -16,6 +16,8 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.softia.models.Cliente;
 import com.softia.models.Credito;
 import com.softia.models.Departamento;
@@ -46,7 +48,62 @@ public class CReporte {
     private String pthFil;
     private String rutaReporte;
     private String error;
-
+    
+    public boolean evFinanciera() throws IOException {
+        List<Cliente> lstClientes = new ArrayList<>();
+        Cliente loCli = new Cliente();
+        loCli.setNombre("Roberto");
+        lstClientes.add(loCli);
+        boolean llOk = evFinancieraGE(lstClientes);
+        if (llOk) {
+            setRutaReporte("/ftia/files/cartas/PRUEBAcliente_" + LibFunc.getFechaActual() + ".pdf");
+            LibFunc.mxLog("PRUEBA OK.");
+        } else {
+            LibFunc.mxLog("PRUEBA error: " + getError());
+        }
+        return llOk;
+    }
+    
+    public boolean evFinancieraGE(List<Cliente> p_oCreditos) {
+        boolean llOk = true;
+        try {
+            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/PRUEBAcliente_" + LibFunc.getFechaActual() + ".pdf");
+            Document loDoc = new Document(PageSize.A4, -20, -20, 50, 50);
+            PdfWriter.getInstance(loDoc, loArchivo);
+            loDoc.open();
+            Font fontContenido = FontFactory.getFont(
+                    FontFactory.TIMES_ROMAN, 9, Font.NORMAL,
+                    BaseColor.BLACK);
+            Font fontTitulos = FontFactory.getFont(
+                    FontFactory.TIMES_ROMAN, 11, Font.BOLD,
+                    BaseColor.BLACK);
+            Font fontSubrayado = FontFactory.getFont(
+                    FontFactory.TIMES_ROMAN, 11, Font.UNDERLINE,
+                    BaseColor.BLACK);
+            
+            Paragraph loTitulo = new Paragraph();
+            PdfPTable loTable = new PdfPTable(2);
+            loTitulo.add(new Paragraph("SOLICITUD DE EVALUACIÓN FINANCIERA", fontTitulos));
+            loTitulo.setAlignment(Element.ALIGN_CENTER);
+            
+            PdfPCell celda1 = new PdfPCell(new Phrase("Código o Nombres y Apellidos del Afiliador", fontContenido));
+            celda1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            loTable.addCell(celda1);
+            PdfPCell celda2 = new PdfPCell(new Phrase("Fecha Solicitud", fontContenido));
+            celda2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            loTable.addCell(celda2);
+            
+            loDoc.add(loTitulo);
+            loDoc.add(loTable);
+            loDoc.close();
+            
+        } catch (FileNotFoundException | DocumentException loErr) {
+            setError(loErr.getMessage());
+            llOk = false;
+        }
+        return llOk;
+    }
+    
     public boolean mxGenerarReporte() throws IOException {
         List<Credito> lstCreditos = new ArrayList<>();
         Credito loCre = new Credito();

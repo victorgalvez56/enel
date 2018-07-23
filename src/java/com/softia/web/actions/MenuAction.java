@@ -144,7 +144,7 @@ public class MenuAction extends BaseAction {
         CReporte loRep = new CReporte();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
-            boolean llOk = loRep.mxGenerarReporte();
+            boolean llOk = loRep.evFinanciera(); //mxGenerarReporte
             if (!llOk) {
                 setError(loRep.getError());
             } else {
@@ -155,7 +155,7 @@ public class MenuAction extends BaseAction {
                 HttpServletResponse response = ServletActionContext.getResponse();
                 response.setContentLength(archivo.length);
                 response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename=\"PRUEBA_" + LibFunc.getFechaActual() + ".pdf\"");
+                response.setHeader("Content-Disposition", "attachment; filename=\"PRUEBAcliente_" + LibFunc.getFechaActual() + ".pdf\"");
                 ServletOutputStream out = response.getOutputStream();
                 out.write(archivo);
                 out.flush();
@@ -415,6 +415,26 @@ public class MenuAction extends BaseAction {
     }
     
     public String frmCLIPosicion() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("aplicar") != null) {
+            //aplicarCLIMantenimiento();
+            
+        } else if (request.getParameter("grabar") != null) {
+            //grabarCLIMantenimiento();
+            
+        } else if (request.getParameter("buscarNombre") != null) {
+            //buscarNombre();
+            
+        } else if (request.getParameter("buscarDNI") != null) {
+            //buscarDNI();
+            
+        } else if (request.getParameter("cancelar") != null) {
+            //cliente = new Cliente();
+        
+        } else if (request.getParameter("nuevo") != null) {
+            //cliente = new Cliente();
+            setInformacion("Listo para solicitud nueva");
+        }
         setResult("frmCLIPosicion");
         return getResult();
     }
