@@ -54,6 +54,7 @@
                     <ul class="treeview-menu">
                         <li><a href="<s:url action="frmREPCRECartera"/>"><i class="fa fa-circle-o"></i> Excel</a></li>
                         <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> PDF</a></li>
+                        <li><a href="<s:url action="frmREPEvaluacionFinanciera"/>"><i class="fa fa-circle-o"></i> Evaluacion Financiera</a></li>
                     </ul>
                 </li>
             </ul>

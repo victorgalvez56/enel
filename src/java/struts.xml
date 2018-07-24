@@ -27,6 +27,7 @@
             
             <result name="frmREPCRECartera" type="tiles">frmREPCRECartera</result>
             <result name="frmREPCREMora" type="tiles">frmREPCREMora</result>
+            <result name="frmREPEvaluacionFinanciera" type="tiles">frmREPEvaluacionFinanciera</result>
 
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>

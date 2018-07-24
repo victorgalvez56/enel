@@ -60,6 +60,10 @@
         <put-attribute name="title"  value="Repore de Mora - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRECartera.jsp"/>
     </definition>
+    <definition name="frmREPEvaluacionFinanciera" extends="baseLayout">
+        <put-attribute name="title"  value="Solicitud de Evaluación Financiera - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPEvaluacionFinanciera.jsp"/>
+    </definition>
 
     <definition name="frmSISCargarUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Cargar Usuarios - FINANSOFT"/>
