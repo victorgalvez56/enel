@@ -52,7 +52,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<s:url action="frmREPCRECartera"/>"><i class="fa fa-circle-o"></i> Excel</a></li>
+                        <li><a href="<s:url action="frmREPCRECartera"/>"><i class="fa fa-circle-o"></i> Reporte Cartera</a></li>
+                        <li><a href="<s:url action="frmREPCREMora_"/>"><i class="fa fa-circle-o"></i> Reporte Mora</a></li>
                         <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> PDF</a></li>
                     </ul>
                 </li>
