@@ -23,6 +23,7 @@ import com.softia.models.Tabla;
 import com.softia.models.Usuario;
 import com.softia.utils.LibFunc;
 import com.softia.web.beans.CReporte;
+import com.softia.web.beans.CReporteXls;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -77,6 +78,8 @@ public class MenuAction extends BaseAction {
     private String busqueda;
     private String datos;
     private List<String> lstOficina;
+    private java.sql.Date FecmoraIni;
+    private java.sql.Date FecmoraFin;
 
     public String login() {
         setResult("login");
@@ -129,54 +132,46 @@ public class MenuAction extends BaseAction {
     //MODULO CREDITO
     //SUBMODULO CREDITO SOLICITUD
     public String frmCRESolicitud() {
-       /* setlstOficina(new ArrayList<>());
-        getlstOficina().add("Oficina Principal");
-        getlstOficina().add("Oficina Secundaria");*/
         setResult("frmCRESolicitud");
         return getResult();
     }
     //SUBMODULO CREDITO APROBACION DEESEMBOLSO
     public String frmCREAprobacion() {
-       /* setlstOficina(new ArrayList<>());
-        getlstOficina().add("Oficina Principal");
-        getlstOficina().add("Oficina Secundaria");*/
         setResult("frmCREAprobacion");
         return getResult();
     }
     //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
     public String frmCREDocumentos() {
-       /* setlstOficina(new ArrayList<>());
-        getlstOficina().add("Oficina Principal");
-        getlstOficina().add("Oficina Secundaria");*/
         setResult("frmCREDocumentos");
         return getResult();
     }
     //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
     public String frmCAJDesembolso() {
-       /* setlstOficina(new ArrayList<>());
-        getlstOficina().add("Oficina Principal");
-        getlstOficina().add("Oficina Secundaria");*/
         setResult("frmCAJDesembolso");
         return getResult();
     }
     //SUBMODULO CREDITO COBRANZA
     public String frmCAJPago() {
-       /* setlstOficina(new ArrayList<>());
-        getlstOficina().add("Oficina Principal");
-        getlstOficina().add("Oficina Secundaria");*/
         setResult("frmCAJPago");
         return getResult();
     }
+    //SUBMODULO REPORTE MORA
     public String frmREPCREMora() {
         setResult("frmREPCREMora");
         return getResult();
     }
-
+    public String frmREPCREMora_() {
+        setResult("frmREPCREMora_");
+        return getResult();
+    }
+    
+    //SUBMODULO REPORTE CARTERA DE CREDITOS
     public String frmREPCRECartera() {
         setResult("frmREPCRECartera");
         return getResult();
     }
     
+<<<<<<< HEAD
     //IMPRESION PDF
     public String frmREPEvaluacionFinanciera() {
         setResult("frmREPEvaluacionFinanciera");
@@ -184,6 +179,67 @@ public class MenuAction extends BaseAction {
     }
     
     public String impEvaluacionFinanciera() {
+=======
+    public String generarCarteraXLS() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReporteXls loRep = new CReporteXls();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxGenerarReporteCarteraXls();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/vnd.ms-excel");
+                response.setHeader("Content-Disposition", "attachment; filename=\"CARTERA_" + LibFunc.getFechaActual() + ".xls\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (SQLException | IOException | ParseException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmREPCRECartera();
+    }
+    
+    public String generarMoraXLS() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReporteXls loRep = new CReporteXls();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxGenerarReporteMoraXls();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/vnd.ms-excel");
+                response.setHeader("Content-Disposition", "attachment; filename=\"MORA" + LibFunc.getFechaActual() + ".xls\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (SQLException | IOException | ParseException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmREPCREMora_();
+    }
+    
+    public String imprimirPDF() {
+>>>>>>> ec82fb306afd001dddd4b41f79cbfd695e16b8d0
         if (!validaSession()) {
             return "login";
         }
@@ -242,16 +298,16 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCREMora();
     }
-
+    
     public String generarXLS() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        CReporte loRep = new CReporte();
+        CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
-            boolean llOk = loRep.mxGenerarReporteXls();
+            boolean llOk = loRep.mxGenerarReporteCarteraXls();
             if (!llOk) {
                 setError(loRep.getError());
             } else {
@@ -261,7 +317,7 @@ public class MenuAction extends BaseAction {
                 HttpServletResponse response = ServletActionContext.getResponse();
                 response.setContentLength(archivo.length);
                 response.setContentType("application/vnd.ms-excel");
-                response.setHeader("Content-Disposition", "attachment; filename=\"PRUEBA_" + LibFunc.getFechaActual() + ".xls\"");
+                response.setHeader("Content-Disposition", "attachment; filename=\"CARTERA_" + LibFunc.getFechaActual() + ".xls\"");
                 ServletOutputStream out = response.getOutputStream();
                 out.write(archivo);
                 out.flush();
