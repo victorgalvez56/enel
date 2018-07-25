@@ -64,6 +64,20 @@
         <put-attribute name="title"  value="Repore de Cartera - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRECartera.jsp"/>
     </definition>
+
+    <definition name="frmREPCREDesembolso" extends="baseLayout">
+        <put-attribute name="title"  value="Repore de Operaciones - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCREDesembolso.jsp"/>
+    </definition>
+    <definition name="frmREPCREPago" extends="baseLayout">
+        <put-attribute name="title"  value="Repore de Operaciones - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCREPago.jsp"/>
+    </definition>
+    <definition name="frmREPCRESolicitud" extends="baseLayout">
+        <put-attribute name="title"  value="Repore de Solicitud - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRESolicitud.jsp"/>
+    </definition>
+    
     <definition name="frmREPEvaluacionFinanciera" extends="baseLayout">
         <put-attribute name="title"  value="Solicitud de Evaluación Financiera - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/clientes/frmREPEvaluacionFinanciera.jsp"/>

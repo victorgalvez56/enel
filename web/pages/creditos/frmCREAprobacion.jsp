@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<%@include file="../../clientes/modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -200,9 +201,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div style="float: right">
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Buscar</button>
                                         <button type="button" class="btn btn-default">Revertir Aprobc.</button>
                                         <button type="button" class="btn btn-default">Grabar</button>
-                                        <button type="button" class="btn btn-default">Buscar</button>
                                         <button type="button" class="btn btn-default">Rechazar</button>
                                         <button type="button" class="btn btn-default">Cancelar</button>
                                         <button type="button" class="btn btn-default">Plan de Pagos</button>
@@ -228,4 +229,11 @@
                     </div>
                 </section>
             </div>
+        </div>
+        <script>
+            function frmNombre() {
+                document.getElementById("fBuscar").setAttribute("action", "frmCREAprobacion");
+            }
+        </script>
+    </body>
 </html>
