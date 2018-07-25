@@ -171,15 +171,11 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
     
-<<<<<<< HEAD
-    //IMPRESION PDF
     public String frmREPEvaluacionFinanciera() {
         setResult("frmREPEvaluacionFinanciera");
         return getResult();
     }
-    
-    public String impEvaluacionFinanciera() {
-=======
+
     public String generarCarteraXLS() {
         if (!validaSession()) {
             return "login";
@@ -238,8 +234,7 @@ public class MenuAction extends BaseAction {
         return frmREPCREMora_();
     }
     
-    public String imprimirPDF() {
->>>>>>> ec82fb306afd001dddd4b41f79cbfd695e16b8d0
+    public String impEvaluacionFinanciera() {
         if (!validaSession()) {
             return "login";
         }
