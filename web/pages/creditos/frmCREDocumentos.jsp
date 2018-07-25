@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<%@include file="../../clientes/modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -199,11 +200,11 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div style="float: right">
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Buscar</button>
                                         <button type="button" class="btn btn-default">Aplicar</button>
                                         <button type="button" class="btn btn-default">Pagare</button>
                                         <button type="button" class="btn btn-default">Contrato</button>
                                         <button type="button" class="btn btn-default">Hoja Res.</button>
-                                        <button type="button" class="btn btn-default">Buscar</button>
                                         <button type="button" class="btn btn-sucess">Cancelar</button>
                                         <button type="button" class="btn btn-default">Salir</button>
                                     </div>
@@ -213,4 +214,11 @@
                     </div>
                 </section>
             </div>
+        </div>
+        <script>
+            function frmNombre() {
+                document.getElementById("fBuscar").setAttribute("action", "frmCREDocumentos");
+            }
+        </script>
+    </body>
 </html>

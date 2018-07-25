@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<%@include file="../../clientes/modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -187,7 +188,9 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Convenio</label>
+                                                        <select class="form-control">
                                                         <option>Ahorro y Credito</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -277,13 +280,13 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div style="float: right">
+                                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Buscar</button>
                                         <button type="button" class="btn btn-default">Aplicar</button>
                                         <button type="button" class="btn btn-default">Editar</button>
                                         <button type="button" class="btn btn-default">Desistir</button>
                                         <button type="button" class="btn btn-default">Nuevo</button>
                                         <button type="button" class="btn btn-default">Grabar</button>
                                         <button type="button" class="btn btn-default">Cancelar</button>
-                                        <button type="button" class="btn btn-default">Buscar</button>
                                         <button type="button" class="btn btn-default">Salir</button>
                                     </div>
                                 </div>
@@ -292,4 +295,11 @@
                     </div>
                 </section>
             </div>
+        </div>
+        <script>
+            function frmNombre() {
+                document.getElementById("fBuscar").setAttribute("action", "frmCRESolicitud");
+            }
+        </script>
+    </body>
 </html>
