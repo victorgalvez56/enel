@@ -441,5 +441,10 @@
                 </section>
             </div>
         </div>
+        <script>
+            function frmNombre() {
+                document.getElementById("fBuscar").setAttribute("action", "frmCLIMantenimiento");
+            }
+        </script>
     </body>
 </html>

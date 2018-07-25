@@ -23,6 +23,7 @@ import com.softia.models.Tabla;
 import com.softia.models.Usuario;
 import com.softia.utils.LibFunc;
 import com.softia.web.beans.CReporte;
+import com.softia.web.beans.CReportePDF;
 import com.softia.web.beans.CReporteXls;
 import java.io.File;
 import java.io.FileInputStream;
@@ -171,6 +172,16 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
     
+    public String frmREPEvaluacionFinanciera() {
+        setResult("frmREPEvaluacionFinanciera");
+        return getResult();
+    }
+    
+    public String frmREPContratoFinanciamiento() {
+        setResult("frmREPContratoFinanciamiento");
+        return getResult();
+    }
+
     public String generarCarteraXLS() {
         if (!validaSession()) {
             return "login";
@@ -332,15 +343,15 @@ public class MenuAction extends BaseAction {
         return frmREPCREMora_();
     }
     
-    public String imprimirPDF() {
+    public String IMPEvaluacionFinancieraPDF() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        CReporte loRep = new CReporte();
+        CReportePDF loRep = new CReportePDF();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
-            boolean llOk = loRep.evFinanciera(); //mxGenerarReporte
+            boolean llOk = loRep.evFinanciera();
             if (!llOk) {
                 setError(loRep.getError());
             } else {
@@ -352,6 +363,66 @@ public class MenuAction extends BaseAction {
                 response.setContentLength(archivo.length);
                 response.setContentType("application/pdf");
                 response.setHeader("Content-Disposition", "attachment; filename=\"PRUEBAcliente_" + LibFunc.getFechaActual() + ".pdf\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (IOException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmREPEvaluacionFinanciera();
+    }
+    
+    public String IMPContratoFinanciamientoPDF() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReportePDF loRep = new CReportePDF();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxConFinan();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                //las FileUtils de Apache son dependencia de Struts 2
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename=\"contratoFinanciamiento_" + LibFunc.getFechaActual() + ".pdf\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (IOException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmREPEvaluacionFinanciera();
+    }
+    
+    public String imprimirPDF() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReporte loRep = new CReporte();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxGenerarReporte();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                //las FileUtils de Apache son dependencia de Struts 2
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename=\"PRUEBA_" + LibFunc.getFechaActual() + ".pdf\"");
                 ServletOutputStream out = response.getOutputStream();
                 out.write(archivo);
                 out.flush();

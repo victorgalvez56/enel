@@ -40,6 +40,7 @@
         <script src="dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
+        <script src="js/buscar.js"></script>
         <script>
             $(function() {
                 var url = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);

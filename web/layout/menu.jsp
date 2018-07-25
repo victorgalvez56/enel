@@ -68,6 +68,8 @@
                         </li>
                         <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
                         <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> PDF</a></li>
+                        <li><a href="<s:url action="frmREPEvaluacionFinanciera"/>"><i class="fa fa-circle-o"></i> Evaluacion Financiera</a></li>
+                        <li><a href="<s:url action="frmREPContratoFinanciamiento"/>"><i class="fa fa-circle-o"></i> Contrato Financiamiento</a></li>
                     </ul>
                 </li>
             </ul>
