@@ -346,5 +346,10 @@
                 </section>
             </div>
         </div>
+        <script>
+            function frmNombre() {
+                document.getElementById("fBuscar").setAttribute("action", "frmCLIPosicion");
+            }
+        </script>
     </body>
 </html>

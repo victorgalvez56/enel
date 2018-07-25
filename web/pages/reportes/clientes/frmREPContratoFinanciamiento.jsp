@@ -6,10 +6,10 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
-                <s:form action="impEvaluacionFinanciera" role="form">
+                <s:form action="IMPContratoFinanciamientoPDF" role="form">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-                        <h1>Solicitud de Evaluación Financiera</h1>
+                        <h1>Contrato Financiamiento</h1>
                     </section>
                     <!-- Main content -->
                     <section class="content">
@@ -77,3 +77,4 @@
         </div>
     </body>
 </html>
+

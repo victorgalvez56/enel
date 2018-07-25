@@ -56,6 +56,7 @@
                         <li><a href="<s:url action="frmREPCREMora_"/>"><i class="fa fa-circle-o"></i> Reporte Mora</a></li>
                         <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> PDF</a></li>
                         <li><a href="<s:url action="frmREPEvaluacionFinanciera"/>"><i class="fa fa-circle-o"></i> Evaluacion Financiera</a></li>
+                        <li><a href="<s:url action="frmREPContratoFinanciamiento"/>"><i class="fa fa-circle-o"></i> Contrato Financiamiento</a></li>
                     </ul>
                 </li>
             </ul>
