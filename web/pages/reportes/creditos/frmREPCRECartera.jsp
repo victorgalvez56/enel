@@ -6,7 +6,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
-                <s:form action="generarXLS" role="form">
+                <s:form action="generarCarteraXLS" role="form">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>Reporte de Cartera</h1>
@@ -43,42 +43,12 @@
                                         </s:if>
                                     </div>
                                 </div>
-
-                                <div class="col-xs-12">
-                                    <div class="box box-primary box-solid">
-                                        <div class="box-body">
-                                            <div class="col-md-12">
-                                                <div class="col-md-1">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Fecha Inicial:</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <s:textfield name="cobranza.fecIni" cssClass="form-control" type="date" required="true" />
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Fecha Final:</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <s:textfield name="cobranza.fecFin" cssClass="form-control" type="date" required="true"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <center>
-                                    <s:submit key="Excel" cssClass="btn btn-lg btn-success"/>
+                                    <s:submit key="Generar" cssClass="btn btn-lg btn-success"/>
                                 </center>
                             </div>
                         </div>

@@ -64,7 +64,7 @@
                                             <th><s:property value="%{#rowStatus.count}" /></th>
                                             <td><s:property value="codCli" /></td>                                            
                                             <td><s:property value="nomCom" /></td>
-                                            <td><button class="btn btn-primary" type="button" onclick="pasarParamCli('<s:property value="codCli"/>')">Seleccionar</button></td>
+                                            <td><button class="btn btn-primary" type="button" onclick="pasarDatosCli('<s:property value="codCli"/>', '<s:property value="nomCom"/>')">Seleccionar</button></td>
                                         </tr>
                                     </s:iterator>
                                 </tbody>

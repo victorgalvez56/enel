@@ -74,15 +74,3 @@ $(document).ready(function() {
     $('div#form-olvidado').toggle('500');
   });
 });
-
-function onload() {
-    var lon = document.getElementById("tfParamBusqueda").value;
-    if (lon.length > 0) {
-        document.getElementById("bBuscar").click();
-    }
-}
-
-function pasarParam(codigo) {
-    document.getElementById("tfCodigo").value = codigo;
-    document.getElementById("bAplicar").click();
-}

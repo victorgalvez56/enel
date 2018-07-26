@@ -43,44 +43,46 @@
                         <div class="box-body">
                             <s:form action="frmCLIPosicion" role="form">
                                 <div class="row">
-                                    <div class="col-md-10">
+                                    <div class="col-md-12">
                                         <div class="box box-primary box-solid">
                                             <div class="box-body">
                                                 <div class="col-md-12">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Código de Cliente</label>
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="cliente.codCli"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-9">
                                                         <div class="form-group">
-                                                            <label>&nbsp;</label>
-                                                            <input type="text" name="regular" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label>&nbsp;</label>
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <label>Nombre</label>
+                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="1" name="cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <label>Suministro</label>
+                                                            <s:textfield cssClass="form-control" id="tfSuministro" tabindex="1" name="cliente.sumini" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <label>Estado</label>
+                                                            <s:select name="cliente.estado" tabindex="3" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <label>Provincia</label>
+                                                            <s:textfield cssClass="form-control" id="tfProvincia" tabindex="1" name="cliente.distrito.provincia.nombre" readonly="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Distrito</label>
+                                                            <s:textfield cssClass="form-control" id="tfDistrito" tabindex="1" name="cliente.distrito.nombre" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,12 +92,13 @@
                                                             <label class="control-label">Dirección:</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <s:textfield cssClass="form-control" id="tfDireccion" tabindex="1" name="cliente.direccion.direccion" readonly="true"/>
                                                         </div>
                                                     </div>
-
+                                                </div>
+                                                <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label class="control-label">Teléfono:</label>
@@ -103,19 +106,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Actividad:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <s:textfield cssClass="form-control" id="tfTelefono" tabindex="1" name="cliente.telefono" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -125,224 +116,91 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Dirección del Negocio:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <s:textfield cssClass="form-control" id="tfCelular" tabindex="1" name="cliente.celular" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Distrito:</label>
+                                                            <label class="control-label">Correo:</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <input type="text" name="regular" class="form-control">
+                                                            <s:textfield cssClass="form-control" id="tfCorreo" tabindex="1" name="cliente.correo" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="regular" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" name="regular" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-default form-control">Evaluación</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <button type="button" class="btn btn-default form-control">Datos del Cliente</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="box box-primary box-solid">
-                                            <div class="box-body">
-                                                <div class="nav-tabs-custom" style="box-shadow: 0 0px 0px rgba(0,0,0,0);">
-                                                    <ul class="nav nav-tabs">
-                                                        <li class="active"><a href="#cuentas_pasivas" data-toggle="tab">Ctas. Pasivas</a></li>
-                                                        <li><a href="#creditos" data-toggle="tab">Créditos</a></li>
-                                                        <li><a href="#garantias" data-toggle="tab">Garantías</a></li>
-                                                        <li><a href="#rcc_sbs" data-toggle="tab">RCC - SBS</a></li>
-                                                    </ul>
-                                                    <div class="tab-content">
-                                                        <div class="active tab-pane" id="cuentas_pasivas">
-                                                            <div class="col-md-12">
-                                                                <div class="box box-primary box-solid">
-                                                                    <div class="box-body">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>#</th>
-                                                                                    <th>Nro. de Cuenta</th>
-                                                                                    <th>Producto</th>
-                                                                                    <th>Tipo</th>
-                                                                                    <th>Moneda</th>
-                                                                                    <th>Saldo</th>
-                                                                                    <th>Interés</th>
-                                                                                    <th>Situación</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <s:iterator value="" status="rowStatus">
+                                            <div class="box box-primary box-solid">
+                                                <div class="box-body">
+                                                    <div class="nav-tabs-custom" style="box-shadow: 0 0px 0px rgba(0,0,0,0);">
+                                                        <ul class="nav nav-tabs">
+                                                            <li><a href="#creditos" data-toggle="tab">Créditos</a></li>
+                                                        </ul>
+                                                        <div class="tab-content">
+                                                            <!-- /.tab-pane -->
+                                                            <div class="active tab-pane" id="creditos">
+                                                                <div class="col-md-12">
+                                                                    <div class="box box-primary box-solid">
+                                                                        <div class="box-body">
+                                                                            <table class="table">
+                                                                                <thead>
                                                                                     <tr>
-                                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                                        <td><s:property value="numeroCredito" /></td>
-                                                                                        <td><s:property value="numSolicitud" /></td>
-                                                                                        <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Seleccionar</button></td>
+                                                                                        <th>#</th>
+                                                                                        <th>Cuenta</th>
+                                                                                        <th>Producto</th>
+                                                                                        <th>Moneda</th>
+                                                                                        <th>Saldo</th>
+                                                                                        <th>Cuota</th>
+                                                                                        <th>Plazo</th>
+                                                                                        <th>PDM</th>
+                                                                                        <th>Ver</th>
                                                                                     </tr>
-                                                                                </s:iterator>
-                                                                            </tbody>
-                                                                        </table>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <s:iterator value="lstCreditos" status="rowStatus">
+                                                                                        <tr>
+                                                                                            <th><s:property value="%{#rowStatus.count}" /></th>
+                                                                                            <td><s:property value="codCta" /></td>
+                                                                                            <td><s:property value="producto.nombre" /></td>
+                                                                                            <td><s:property value="moneda" /></td>
+                                                                                            <td><s:property value="saldo" /></td>
+                                                                                            <td><s:property value="cuota" /></td>
+                                                                                            <td><s:property value="plazo" /></td>
+                                                                                            <td><s:property value="atrPro" /></td>
+                                                                                            <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Seleccionar</button></td>
+                                                                                        </tr>
+                                                                                    </s:iterator>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <!-- /.tab-pane -->
                                                         </div>
-                                                        <!-- /.tab-pane -->
-                                                        <div class="tab-pane" id="creditos">
-                                                            <div class="col-md-12">
-                                                                <div class="box box-primary box-solid">
-                                                                    <div class="box-body">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>#</th>
-                                                                                    <th>Cuenta</th>
-                                                                                    <th>Producto</th>
-                                                                                    <th>Moneda</th>
-                                                                                    <th>Saldo</th>
-                                                                                    <th>Cuota</th>
-                                                                                    <th>Plazo</th>
-                                                                                    <th>PDM</th>
-                                                                                    <th>C. Venc. Situación</th>
-                                                                                    <th>Garantias</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <s:iterator value="" status="rowStatus">
-                                                                                    <tr>
-                                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                                        <td><s:property value="numeroCredito" /></td>
-                                                                                        <td><s:property value="numSolicitud" /></td>
-                                                                                        <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Seleccionar</button></td>
-                                                                                    </tr>
-                                                                                </s:iterator>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.tab-pane -->
-                                                        <div class="tab-pane" id="garantias">
-                                                            <div class="col-md-12">
-                                                                <div class="box box-primary box-solid">
-                                                                    <div class="box-body">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>#</th>
-                                                                                    <th>Tipo</th>
-                                                                                    <th>Cód. Garantía</th>
-                                                                                    <th>Moneda</th>
-                                                                                    <th>Valor Tas.</th>
-                                                                                    <th>Monto Grav.</th>
-                                                                                    <th>Estado</th>
-                                                                                    <th>Fecha Insc.</th>
-                                                                                    <th>Fecha Nue. Tas</th>
-                                                                                    <th>Cre. Garantía</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <s:iterator value="" status="rowStatus">
-                                                                                    <tr>
-                                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                                        <td><s:property value="numeroCredito" /></td>
-                                                                                        <td><s:property value="numSolicitud" /></td>
-                                                                                        <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Seleccionar</button></td>
-                                                                                    </tr>
-                                                                                </s:iterator>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="rcc_sbs">
-                                                            <div class="col-md-12">
-                                                                <div class="box box-primary box-solid">
-                                                                    <div class="box-body">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>#</th>
-                                                                                    <th>Fecha</th>
-                                                                                    <th>% Normal</th>
-                                                                                    <th>% CPP</th>
-                                                                                    <th>% Defic.</th>
-                                                                                    <th>% Dudoso</th>
-                                                                                    <th>% Pérdida</th>
-                                                                                    <th>Calif.</th>
-                                                                                    <th># Inst.</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <s:iterator value="" status="rowStatus">
-                                                                                    <tr>
-                                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                                        <td><s:property value="numeroCredito" /></td>
-                                                                                        <td><s:property value="numSolicitud" /></td>
-                                                                                        <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Seleccionar</button></td>
-                                                                                    </tr>
-                                                                                </s:iterator>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <!-- /.tab-content -->
                                                     </div>
-                                                    <!-- /.tab-content -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="float: right">
-                                            <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-default" />
-                                            <s:submit name="cancelar" value="Cancelar" cssClass="btn btn-default" />
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Buscar</button>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div style="float: right">
+                                                <s:submit name="aplicar" value="Aplicar" id="bAplicar" cssClass="btn btn-primary btn-flat" />
+                                                <s:submit name="cancelar" value="Cancelar" cssClass="btn btn-primary btn-flat" />
+                                                <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Buscar</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </s:form>
+                                </s:form>
+                            </div>
                         </div>
-                    </div>
                 </section>
             </div>
         </div>

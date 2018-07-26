@@ -60,21 +60,6 @@
                                                             <s:textfield name="cliente.nroCredito" cssClass="form-control"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
@@ -82,12 +67,12 @@
                                                             <label class="control-label">Cliente:</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <s:textfield name="cliente.nroCod" cssClass="form-control"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <s:textfield name="" cssClass="form-control"/>
                                                         </div>
@@ -231,32 +216,12 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <label class="control-label">Tipo de Pago:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="form-group">
-                                                                <s:textfield name="deudaTipoPago" cssClass="form-control"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
                                                                 <label class="control-label">Monto de Pago:</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
                                                                 <s:textfield name="deudaMontoPago" cssClass="form-control"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Número de Memo:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="form-group">
-                                                                <s:textfield name="deudaNroMemo" cssClass="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -268,15 +233,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit value="Aplicar" name="aplicar" cssClass="btn btn-default" />
-                                            <s:submit value="Grabar" name="grabar" cssClass="btn btn-default" />
-                                            <%--<s:submit value="Consultar" name="consultar" cssClass="btn btn-default" />--%>
-                                            <input type="button" id="retiroCaja_buscar" name="buscar" value="Consultar" class="btn btn-default" data-toggle="modal" data-target="#busquedaRegistros">
-                                            <s:submit value="Deposito" name="deposito" cssClass="btn btn-default" />
-                                            <s:submit value="Cancelar" name="cancelar" cssClass="btn btn-default" />
-                                            <input type="button" id="retiroCaja_buscar" name="buscar" value="Buscar" class="btn btn-default" data-toggle="modal" data-target="#busquedaRegistros">
-                                            <%--<s:submit value="Buscar" name="buscar" cssClass="btn btn-default" />--%>
-                                            <s:submit value="Salir" name="salir" cssClass="btn btn-default" />
+                                            <s:submit value="Aplicar" name="aplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit value="Grabar" name="grabar" cssClass="btn btn-primary btn-flat" />
+                                            <input type="button" id="retiroCaja_buscar" name="buscar" value="Consultar" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#busquedaRegistros">
+                                            <s:submit value="Deposito" name="deposito" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit value="Cancelar" name="cancelar" cssClass="btn btn-primary btn-flat" />
+                                            <input type="button" id="retiroCaja_buscar" name="buscar" value="Buscar" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#busquedaRegistros">
                                         </div>
 
                                     </div>

@@ -6,10 +6,10 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
-                <s:form action="imprimirPDF" role="form">
+                <s:form action="generarOPEDesembolsoXLS" role="form">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-                        <h1>Reporte de Mora</h1>
+                        <h1>Reporte de Operaciones - Desembolsos</h1>
                     </section>
                     <!-- Main content -->
                     <section class="content">
@@ -78,7 +78,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <center>
-                                    <s:submit key="Generar" cssClass="btn btn-lg btn-primary"/>
+                                    <s:submit key="Generar" cssClass="btn btn-lg btn-success"/>
                                 </center>
                             </div>
                         </div>

@@ -39,7 +39,8 @@
         <!-- AdminLTE App -->
         <script src="/enel/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="/enel/dist/js/demo.js"></script>
+        <script src="dist/js/demo.js"></script>
+        <script src="js/buscar.js"></script>
         <script>
             $(function() {
                 var url = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);

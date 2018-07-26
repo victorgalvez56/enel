@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<%@include file="../creditos/modCREBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -41,9 +42,6 @@
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-primary">
-                            <!--                        <div class="box-header with-border">
-                                                        <h3 class="box-title">Aprobación por Comité</h3>
-                                                    </div>-->
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -60,26 +58,6 @@
                                                             <s:textfield name="cliente.nroCredito" cssClass="form-control"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                    <s:checkbox name=""/>
-                                                                    En Cta.
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,12 +71,12 @@
                                             </div>
                                             <div class="box-body">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label class="control-label">Código Cliente:</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <s:textfield name="cliente.NroCod" cssClass="form-control"/>
                                                         </div>
@@ -109,24 +87,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-12">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>D.N.I.:</label>
+                                                            <label class="control-label">DNI:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
                                                             <s:textfield name="cliente.nroDoc" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <label>R.U.C.:</label>
-                                                            <s:textfield name="cliente.nroRuc" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <div class="form-group">
-                                                            <label>Apoderado:</label>
-                                                            <s:textfield name="cliente.apoderado" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -185,20 +154,17 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="float: right">
-                                            <s:submit value="Aplicar" name="aplicar" cssClass="btn btn-default" />
-                                            <s:submit value="Grabar" name="grabar" cssClass="btn btn-default" />
-                                            <s:submit value="Cheque" name="cheque" cssClass="btn btn-default" />
-                                            <s:submit value="Cancelar" name="cancelar" cssClass="btn btn-default" />
-                                            <s:submit value="Buscar" name="buscar" cssClass="btn btn-default" />
-                                            <s:submit value="Salir" name="salir" cssClass="btn btn-default" />
-                                        </div>
+                                    <div class="col-md-8"></div>
+                                    <div class="col-md-4">
+                                        <s:submit value="Aplicar" name="aplicar" cssClass="btn btn-lg btn-primary" />
+                                        <s:submit value="Grabar" name="grabar" cssClass="btn btn-lg btn-primary" />
+                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscar" onclick="frmNombre()">Buscar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </s:form>
-            </div>
+                </div>
+            </section>
+        </s:form>
+    </div>
 </html>

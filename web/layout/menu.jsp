@@ -41,7 +41,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<s:url action="frmCAJDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolso</a></li>
-                        <li><a href="<s:url action="frmCAJPago"/>"><i class="fa fa-circle-o"></i> Pago</a></li>
+                        <li><a href="<s:url action="frmCAJPago"/>"><i class="fa fa-circle-o"></i> Cobranza</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -52,8 +52,21 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<s:url action="frmREPCRECartera"/>"><i class="fa fa-circle-o"></i> Excel</a></li>
-                        <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> PDF</a></li>
+                        <li><a href="<s:url action="frmREPCRECartera"/>"><i class="fa fa-circle-o"></i> Cartera de Créditos</a></li>
+                        <li><a href="<s:url action="frmREPCREMora_"/>"><i class="fa fa-circle-o"></i> Mora</a></li>
+                        <li class="treeview">
+                            <a href="#">
+                            <i class="fa fa-circle-o"></i> <span>Operaciones</span>
+                            <span class="pull-right-container">
+                            <i class="fa fa-angle-down"></i>
+                            </span>
+                            </a>
+                            <ul class="treeview-menu">
+                            <li><a href="<s:url action="frmREPCREDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolsos</a></li>
+                            <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
                     </ul>
                 </li>
             </ul>

@@ -50,7 +50,7 @@
                                             <div class="form-group">
                                                 <label class="control-label">Código:</label>
                                                 <div class="form-group">
-                                                    <s:textfield cssClass="form-control" id="tfCodigo" tabindex="1" name="cliente.codCli" />
+                                                    <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="cliente.codCli" />
                                                 </div>
                                             </div>
                                         </div>
