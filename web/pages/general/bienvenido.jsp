@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript" src="js/canvasjs.min.js"></script>
+        <script type="text/javascript" src="../../js/canvasjs.min.js"></script>
         <script type="text/javascript">
             window.onload = function () {
                 var obj = JSON.parse(document.getElementById("datos").value);

@@ -19,8 +19,8 @@
                 <link rel="stylesheet" type="text/css" href="../css/main.css"/>
                 <script src="../js/main.js"></script>-->
         <!-- jQuery 3 -->
-        <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="../../js/script.js"></script>
+        <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/enel/js/script.js"></script>
     </head>
 
     <body>

@@ -85,12 +85,12 @@
     </definition>
     
     <definition name="frmCLIMantenimiento" extends="baseLayout">
-        <put-attribute name="title"  value="Mantenimiento de Clientes - FINANSOFT"/>
-        <put-attribute name="body"   value="/clientes/frmCLIMantenimiento.jsp"/>
+        <put-attribute name="title"  value="Mantenimiento de Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/clientes/frmCLIMantenimiento.jsp"/>
     </definition>
     <definition name="frmCLIPosicion" extends="baseLayout">
         <put-attribute name="title"  value="Posicion de Clientes - FINANSOFT"/>
-        <put-attribute name="body"   value="/clientes/frmCLIPosicion.jsp"/>
+        <put-attribute name="body"   value="/pages/clientes/frmCLIPosicion.jsp"/>
     </definition>
     <definition name="frmCLICargarClientes" extends="baseLayout">
         <put-attribute name="title"  value="Cargar Clientes - FINANSOFT"/>

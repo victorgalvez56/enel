@@ -34,7 +34,7 @@
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <s:textfield name="credito.paramBusqueda" id="tfParamBusqueda" cssClass="form-control"/>
+                                                <s:textfield name="paramBusqueda" id="tfParamBusqueda" cssClass="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -54,18 +54,17 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Código</th>
-                                        <th>Apelido paterno</th>
-                                        <th>Apellido materno</th>
-                                        <th>Nombres</th>
+                                        <th>Nombre</th>
+                                        <th>Seleccionar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <s:iterator value="lstCreditos" status="rowStatus">
+                                    <s:iterator value="lstClientes" status="rowStatus">
                                         <tr>
                                             <th><s:property value="%{#rowStatus.count}" /></th>
-                                            <td><s:property value="numeroCredito" /></td>
-                                            <td><s:property value="montoSo" /></td>
-                                            <td><button class="btn btn-primary" type="button" onclick="pasarParam('<s:property value="numeroCredito"/>')">Seleccionar</button></td>
+                                            <td><s:property value="codCli" /></td>                                            
+                                            <td><s:property value="nomCom" /></td>
+                                            <td><button class="btn btn-primary" type="button" onclick="pasarParam('<s:property value="codCli"/>')">Seleccionar</button></td>
                                         </tr>
                                     </s:iterator>
                                 </tbody>

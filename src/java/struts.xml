@@ -62,4 +62,11 @@
         </action>
         
     </package>        
+
+    <package name="json" extends="json-default" namespace="/">
+        <action name="json" class="com.softia.web.actions.JsonAction">
+            <result type="json" />
+        </action>
+    </package>
+        
 </struts>

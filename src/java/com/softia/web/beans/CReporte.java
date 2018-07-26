@@ -114,8 +114,7 @@ public class CReporte {
         loCre.getCliente().setApeMat("CCC");
         loCre.getCliente().setDireccion(new Direccion());
         loCre.getCliente().getDireccion().setDireccion("SU CASA");
-        loCre.getCliente().getDireccion().setDistrito(new Distrito());
-        loCre.getCliente().getDireccion().getDistrito().setNombre("AQP");
+        loCre.getCliente().getDireccion().setDistrito(new Distrito(0, "AQP", ""));
         loCre.getCliente().getDireccion().getDistrito().setProvincia(new Provincia());
         loCre.getCliente().getDireccion().getDistrito().getProvincia().setNombre("AQP");
         loCre.getCliente().getDireccion().getDistrito().getProvincia().setDepartamento(new Departamento());

@@ -6,16 +6,16 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/enel/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/enel/bower_components/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
-        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="/enel/bower_components/Ionicons/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="/enel/dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="/enel/dist/css/skins/_all-skins.min.css">
 
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -27,19 +27,19 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <script src='bower_components/menu/script.js'></script>
+        <script src='/enel/bower_components/menu/script.js'></script>
         <!-- jQuery 3 -->
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/enel/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- SlimScroll -->
-        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="/enel/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
-        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="/enel/bower_components/fastclick/lib/fastclick.js"></script>
         <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
+        <script src="/enel/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
+        <script src="/enel/dist/js/demo.js"></script>
         <script>
             $(function() {
                 var url = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
@@ -56,9 +56,9 @@
     <header class="main-header">
         <!-- Logo -->
         <a href="#" class="logo" style="background-color: #ffffff;">
-            <span class="logo-mini"><img style="    width: 95%;    " src="img/logo_horizontal_azul3.png"></span>
+            <span class="logo-mini"><img style="    width: 95%;    " src="/enel/img/logo_horizontal_azul3.png"></span>
 
-            <span class="logo-lg"><img style="    width: 160px;    " src="img/logo_horizontal_azul2.png"></span>
+            <span class="logo-lg"><img style="    width: 160px;    " src="/enel/img/logo_horizontal_azul2.png"></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -86,7 +86,7 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="img/user.png" class="img-circle" alt="User Image">
+                                                <img src="/enel/img/user.png" class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
                                                 Reunion
@@ -158,13 +158,13 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="img/user.png" class="user-image" alt="User Image">
+                            <img src="/enel/img/user.png" class="user-image" alt="User Image">
                             <span class="hidden-xs">Administrador</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="img/user.png" class="img-circle" alt="User Image">
+                                <img src="/enel/img/user.png" class="img-circle" alt="User Image">
 
                                 <p>
                                     Administrador
