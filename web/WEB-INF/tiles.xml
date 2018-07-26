@@ -86,7 +86,15 @@
         <put-attribute name="title"  value="Solicitud de Evaluación Financiera - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/clientes/frmREPContratoFinanciamiento.jsp"/>
     </definition>
-
+    <definition name="frmREPAutorizacionCobranza" extends="baseLayout">
+        <put-attribute name="title"  value="Autorización de Encargo de Cobranza - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/frmREPAutorizacionCobranza.jsp"/>
+    </definition>
+    <definition name="frmREPPagareIncompleto" extends="baseLayout">
+        <put-attribute name="title"  value="Pagaré Incompleto a la Vista - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/frmREPPagareIncompleto.jsp"/>
+    </definition>
+    
     <definition name="frmSISCargarUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Cargar Usuarios - FINANSOFT"/>
         <put-attribute name="body"   value="/usuarios/frmSISCargarUsuarios.jsp"/>
