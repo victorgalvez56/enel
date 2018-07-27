@@ -213,7 +213,7 @@ public class CReportePDF {
                 
                 Phrase contenidoC12 = new Phrase();
                 contenidoC12.add(new Chunk("Dirección\n\n", fontTabla));
-                contenidoC11.add(new Chunk(loCliente.getDireccion().getDireccion(), fontContenido));
+                contenidoC12.add(new Chunk(loCliente.getDireccion().getDireccion(), fontContenido));
                 PdfPCell celdaC12 = new PdfPCell(contenidoC12);
                 celdaC12.setHorizontalAlignment(Element.ALIGN_CENTER);
                 celdaC12.setColspan(2);
@@ -642,6 +642,45 @@ public class CReportePDF {
                 abcText3.addElement(new Paragraph("ABC-", fontTitulos));
                 abcText3.go();
                 
+                ColumnText huellaText = new ColumnText(contentByte);
+                huellaText.setSimpleColumn(480, 132, 560, 152);
+                huellaText.addElement(new Paragraph("HUELLA DIGITAL", fontContenido));
+                huellaText.go();
+                ColumnText indiceText = new ColumnText(contentByte);
+                indiceText.setSimpleColumn(478, 122, 555, 142);
+                indiceText.addElement(new Paragraph("INDICE DERECHO", fontContenido));
+                indiceText.go();
+                
+                ColumnText firmaText1 = new ColumnText(contentByte);
+                firmaText1.setSimpleColumn(85, 98, 250, 118);
+                firmaText1.addElement(new Paragraph("ENEL DISTRIBUCIÓN PERÚ", fontSub));
+                firmaText1.go();
+                ColumnText firmaText2 = new ColumnText(contentByte);
+                firmaText2.setSimpleColumn(89, 87, 250, 108);
+                firmaText2.addElement(new Paragraph("Carlos Alberto Solis Pino", fontSub));
+                firmaText2.go();
+                ColumnText firmaText3 = new ColumnText(contentByte);
+                firmaText3.setSimpleColumn(97, 79, 250, 98);
+                firmaText3.addElement(new Paragraph("Head of Market Perú", fontSub));
+                firmaText3.go();
+                
+                ColumnText clienteText1 = new ColumnText(contentByte);
+                clienteText1.setSimpleColumn(260, 106, 400, 126);
+                clienteText1.addElement(new Paragraph("EL CLIENTE", fontSub));
+                clienteText1.go();
+                ColumnText clienteText2 = new ColumnText(contentByte);
+                clienteText2.setSimpleColumn(260, 100, 400, 115);
+                clienteText2.addElement(new Paragraph("Nombre y Apellidos:", fontSub));
+                clienteText2.go();
+                ColumnText clienteText3 = new ColumnText(contentByte);
+                clienteText3.setSimpleColumn(260, 82, 400, 98);
+                clienteText3.addElement(new Paragraph("Documento de identidad:", fontSub));
+                clienteText3.go();
+                ColumnText clienteText4 = new ColumnText(contentByte);
+                clienteText4.setSimpleColumn(260, 64, 400, 80);
+                clienteText4.addElement(new Paragraph("Domicilio:", fontSub));
+                clienteText4.go();
+                
                 //Lineas
                 contentByte.moveTo(70, 120);
                 contentByte.lineTo(210, 120);
@@ -654,6 +693,413 @@ public class CReportePDF {
                 loDoc.add(logo);
                 loDoc.add(loTitulo);
                 loDoc.add(loTablap3);
+            }
+            loDoc.close();
+      
+        } catch (FileNotFoundException | DocumentException loErr) {
+            setError(loErr.getMessage());
+            llOk = false;
+        }
+        return llOk;
+    }
+    
+    public boolean mxAutorizaCob() throws IOException {
+        List<Cliente> lstClientes = new ArrayList<>();
+        Cliente loCli = new Cliente();
+        loCli.setNombre("ROBERTO");
+        
+        lstClientes.add(loCli);
+        boolean llOk = mxAutorizaCobArchivo(lstClientes);
+        if (llOk) {
+            setRutaReporte("/ftia/files/cartas/autorizaCobranza_" + LibFunc.getFechaActual() + ".pdf");
+            LibFunc.mxLog("PRUEBA OK.");
+        } else {
+            LibFunc.mxLog("PRUEBA error: " + getError());
+        }
+        return llOk;
+    }
+    
+    public boolean mxAutorizaCobArchivo(List<Cliente> p_oClientes) throws IOException {
+        boolean llOk = true;
+        try {
+            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/autorizaCobranza_" + LibFunc.getFechaActual() + ".pdf");
+            Document loDoc = new Document(PageSize.A4, 30, 30, 10, 50);
+            PdfWriter writer = PdfWriter.getInstance(loDoc, loArchivo);
+            loDoc.open();
+            Font fontContenido = FontFactory.getFont(
+                    FontFactory.HELVETICA, 10, Font.NORMAL,
+                    BaseColor.BLACK);
+            Font fontSub = FontFactory.getFont(
+                    FontFactory.HELVETICA, 10, Font.BOLD,
+                    BaseColor.BLACK);
+            Font fontTitulos = FontFactory.getFont(
+                    FontFactory.HELVETICA, 12, Font.BOLD,
+                    BaseColor.BLACK);
+            Font fontMensaje = FontFactory.getFont(
+                    FontFactory.HELVETICA, 8, Font.NORMAL,
+                    BaseColor.BLACK);
+            
+            for (Cliente loCliente : p_oClientes) {
+                Paragraph loTitulo = new Paragraph();
+                PdfPTable loTablaCuerpo = new PdfPTable(1);
+                PdfPTable loTablaMedia = new PdfPTable(3);
+                Paragraph loParrafo = new Paragraph();
+                
+                Image logo = Image.getInstance("/ftia/img/enelLOGO.png");
+                logo.scaleToFit(110, 35);
+                logo.setAlignment(Element.ALIGN_CENTER);
+
+                //Titulo
+                loTitulo.add(new Phrase(Chunk.NEWLINE));
+                loTitulo.add(new Paragraph("AUTORIZACIÓN DE ENCARGO DE COBRANZA", fontTitulos));
+                loTitulo.add(new Phrase(Chunk.NEWLINE));
+                loTitulo.setAlignment(Element.ALIGN_CENTER);
+                
+                //Cuerpo de Tabla principal
+                PdfPCell celda1 = new PdfPCell(new Phrase("Producto Adquirido\n\n", fontSub));
+                celda1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda1.setBorder(PdfPCell.NO_BORDER);
+            
+                PdfPCell celda2 = new PdfPCell(new Phrase("\n\n\n\n", fontContenido));
+                celda2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                Phrase contenido3 = new Phrase();
+                contenido3.add(new Phrase(Chunk.NEWLINE));
+                contenido3.add(new Chunk("Yo, _________________________________________________________________________\n\n", fontContenido));
+                contenido3.add(new Chunk("con Documento de Identidad Nº ______________ declaro ser titular del suministro eléctrico N°\n\n", fontContenido));
+                contenido3.add(new Chunk("__________________________________________ el cual corresponde al predio ubicado en\n\n", fontContenido));
+                contenido3.add(new Chunk("___________________________________________________________________________.\n\n", fontContenido));
+                PdfPCell celda3 = new PdfPCell(contenido3);
+                celda3.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido4 = new Phrase();
+                contenido4.add(new Phrase("Por el presente documento, solicito y autorizo a ENEL DISTRIBUCION PERU S.A.A. a que, " +
+                                          "bajo la modalidad de ENCARGO DE COBRANZA, se cargue en el recibo de energía eléctrica " +
+                                          "del suministro indicado, los montos que corresponden a las cuotas pactadas para la " +
+                                          "cancelación del producto.\n\n", fontContenido));
+                PdfPCell celda4 = new PdfPCell(contenido4);
+                celda4.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda4.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido5 = new Phrase("Yo, como RESPONSABLE DE PAGO, cancelaré las cuotas de manera puntual junto con el monto correspondiente al consumo eléctrico.\n\n", fontContenido);
+                PdfPCell celda5 = new PdfPCell(contenido5);
+                celda5.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda5.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido6 = new Phrase("Las condiciones de pago que conozco y autorizo son las siguientes:\n\n", fontContenido);
+                contenido6.add(new Phrase(Chunk.NEWLINE));
+                PdfPCell celda6 = new PdfPCell(contenido6);
+                celda6.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda6.setBorder(PdfPCell.NO_BORDER);
+
+                loTablaCuerpo.addCell(celda1);
+                loTablaCuerpo.addCell(celda2);
+                loTablaCuerpo.addCell(celda3);
+                loTablaCuerpo.addCell(celda4);
+                loTablaCuerpo.addCell(celda5);
+                loTablaCuerpo.addCell(celda6);
+                
+                //SEGUNDA TABLA
+                PdfPCell celda1T2 = new PdfPCell(new Phrase("MONTO TOTAL\n", fontSub));
+                celda1T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell celda2T2 = new PdfPCell(new Phrase("N° DE CUOTAS\n", fontSub));
+                celda2T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                PdfPCell celda3T2 = new PdfPCell(new Phrase("VALOR DE CUOTA\n", fontSub));
+                celda3T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                
+                PdfPCell celda4T2 = new PdfPCell(new Phrase("\n\n", fontContenido));
+                celda4T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                PdfPCell celda5T2 = new PdfPCell(new Phrase("\n\n", fontContenido));
+                celda5T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                PdfPCell celda6T2 = new PdfPCell(new Phrase("\n\n", fontContenido));
+                celda6T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                loTablaMedia.addCell(celda1T2);
+                loTablaMedia.addCell(celda2T2);
+                loTablaMedia.addCell(celda3T2);
+                loTablaMedia.addCell(celda4T2);
+                loTablaMedia.addCell(celda5T2);
+                loTablaMedia.addCell(celda6T2);
+                
+                //Texto
+                loParrafo.setIndentationLeft(53);
+                loParrafo.setIndentationRight(53);
+                
+                loParrafo.add(new Phrase("(*) La primera cuota será incluida en el recibo de energía eléctrica al mes siguiente de la venta del producto.\n", fontMensaje));
+                loParrafo.add(new Phrase(Chunk.NEWLINE));
+                loParrafo.add(new Phrase("Tasa de Interés Compensatoria:", fontSub));
+                loParrafo.add(new Phrase(Chunk.NEWLINE));
+                loParrafo.add(new Phrase("TEA: 0.00%", fontContenido));
+                loParrafo.add(new Phrase(Chunk.NEWLINE));
+                loParrafo.add(new Phrase("TCEA: 0.00%", fontContenido));
+                
+                for(int cont = 0; cont < 4; cont++) {
+                    loParrafo.add(new Phrase(Chunk.NEWLINE));
+                }
+                
+                loParrafo.add(new Phrase("______ de _______________ de 201__", fontContenido));
+                
+                for(int cont = 0; cont < 8; cont++) {
+                    loParrafo.add(new Phrase(Chunk.NEWLINE));
+                }
+                
+                loParrafo.add(new Phrase("Firma: ____________________________", fontContenido));
+                
+                PdfContentByte contentByte = writer.getDirectContent();
+                Rectangle rectABC = new Rectangle(43, 800, 165, 825);
+                rectABC.setBorder(Rectangle.BOX);
+                contentByte.setColorStroke(BaseColor.BLACK);
+                rectABC.setBorderWidth(1);
+                
+                Rectangle rectHuella = new Rectangle(436, 150, 501, 235);
+                rectHuella.setBorder(Rectangle.BOX);
+                contentByte.setColorStroke(BaseColor.BLACK);
+                rectHuella.setBorderWidth(1);
+                contentByte.rectangle(rectHuella);
+                contentByte.rectangle(rectABC);
+                
+                //Textos en los rectangulos
+                ColumnText abcText = new ColumnText(contentByte);
+                abcText.setSimpleColumn(48, 800, 165, 825);
+                abcText.addElement(new Paragraph("ABC-", fontTitulos));
+                abcText.go();
+                ColumnText huellaText = new ColumnText(contentByte);
+                huellaText.setSimpleColumn(430, 132, 550, 152);
+                huellaText.addElement(new Paragraph("HUELLA DIGITAL", fontContenido));
+                huellaText.go();
+                ColumnText indiceText = new ColumnText(contentByte);
+                indiceText.setSimpleColumn(428, 120, 550, 142);
+                indiceText.addElement(new Paragraph("INDICE DERECHO", fontContenido));
+                indiceText.go();
+                
+                loDoc.add(logo);
+                loDoc.add(loTitulo);
+                loDoc.add(loTablaCuerpo);
+                loDoc.add(loTablaMedia);
+                loDoc.add(loParrafo);
+            }
+            loDoc.close();
+      
+        } catch (FileNotFoundException | DocumentException loErr) {
+            setError(loErr.getMessage());
+            llOk = false;
+        }
+        return llOk;
+    }
+    
+    public boolean mxPagareInc() throws IOException {
+        List<Cliente> lstClientes = new ArrayList<>();
+        Cliente loCli = new Cliente();
+        loCli.setNombre("ROBERTO");
+        
+        lstClientes.add(loCli);
+        boolean llOk = mxPagareIncArchivo(lstClientes);
+        if (llOk) {
+            setRutaReporte("/ftia/files/cartas/pagareIncompleto_" + LibFunc.getFechaActual() + ".pdf");
+            LibFunc.mxLog("PRUEBA OK.");
+        } else {
+            LibFunc.mxLog("PRUEBA error: " + getError());
+        }
+        return llOk;
+    }
+    
+    public boolean mxPagareIncArchivo(List<Cliente> p_oClientes) throws IOException {
+        boolean llOk = true;
+        try {
+            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/pagareIncompleto_" + LibFunc.getFechaActual() + ".pdf");
+            Document loDoc = new Document(PageSize.A4, 30, 30, 10, 50);
+            PdfWriter writer = PdfWriter.getInstance(loDoc, loArchivo);
+            loDoc.open();
+            Font fontContenido = FontFactory.getFont(
+                    FontFactory.HELVETICA, 10, Font.NORMAL,
+                    BaseColor.BLACK);
+            Font fontTitulos = FontFactory.getFont(
+                    FontFactory.HELVETICA, 12, Font.BOLD,
+                    BaseColor.BLACK);
+            
+            for (Cliente loCliente : p_oClientes) {
+                Paragraph loTitulo = new Paragraph();
+                PdfPTable loTablaCuerpo = new PdfPTable(2);
+                PdfPTable loTablaMedia = new PdfPTable(1);
+                PdfPTable loTablaFin = new PdfPTable(4);
+                Paragraph loParrafo = new Paragraph();
+                
+                Image logo = Image.getInstance("/ftia/img/enelLOGO.png");
+                logo.scaleToFit(110, 35);
+                logo.setAlignment(Element.ALIGN_CENTER);
+
+                //Titulo
+                loTitulo.add(new Phrase(Chunk.NEWLINE));
+                loTitulo.add(new Paragraph("PAGARÉ INCOMPLETO A LA VISTA", fontTitulos));
+                loTitulo.add(new Phrase(Chunk.NEWLINE));
+                loTitulo.setAlignment(Element.ALIGN_CENTER);
+                
+                //Cuerpo de Tabla principal
+                PdfPCell celda1 = new PdfPCell(new Phrase("Pagaré Nro.\n", fontContenido));
+                celda1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                Phrase contenido2 = new Phrase("", fontContenido);
+                PdfPCell celda2 = new PdfPCell(contenido2);
+                celda2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                PdfPCell celda3 = new PdfPCell(new Phrase("Moneda e Importe\n", fontContenido));
+                celda3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                Phrase contenido4 = new Phrase("", fontContenido);
+                PdfPCell celda4 = new PdfPCell(contenido4);
+                celda4.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                PdfPCell celda5 = new PdfPCell(new Phrase("Lugar y Fecha de Emisión\n", fontContenido));
+                celda5.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                Phrase contenido6 = new Phrase("", fontContenido);
+                PdfPCell celda6 = new PdfPCell(contenido6);
+                celda6.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+
+                loTablaCuerpo.addCell(celda1);
+                loTablaCuerpo.addCell(celda2);
+                loTablaCuerpo.addCell(celda3);
+                loTablaCuerpo.addCell(celda4);
+                loTablaCuerpo.addCell(celda5);
+                loTablaCuerpo.addCell(celda6);
+                
+                //SEGUNDA TABLA
+                Phrase contenido1T2 = new Phrase();
+                contenido1T2.add(new Phrase(Chunk.NEWLINE));
+                contenido1T2.add(new Chunk("Por este Pagaré, yo ___________________________________________________________,\n\n", fontContenido));
+                contenido1T2.add(new Chunk("me comprometo, solidaria e  incondicionalmente, a pagar a la  orden de ENEL DISTRIBUCIÓN \n\n", fontContenido));
+                contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de ____________________________________________________\n\n", fontContenido));
+                contenido1T2.add(new Chunk("Soles (S/. ____________), importe correspondiente a la liquidación de las sumas adeudadas a\n\n", fontContenido));
+                contenido1T2.add(new Chunk("ENEL  DISTRIBUCIÓN  PERÚ  S.A.A. y  que  me  obligo a  pagar en la  misma  moneda, en\n\n", fontContenido));
+                contenido1T2.add(new Chunk("(domicilio) ___________________________________________________________________. \n\n", fontContenido));
+                PdfPCell celda1T2 = new PdfPCell(contenido1T2);
+                celda1T2.setBorder(PdfPCell.NO_BORDER);
+                
+ 
+                Phrase contenido2T2 = new Phrase("Queda establecido que si, a la fecha de presentación del presente documento, no cancelo el "
+                                            + "importe arriba indicado, éste generará un interés compensatorio a razón de una Tasa Efectiva Anual "
+                                            + "(TEA) de ______%. Asimismo, si no pagáramos el íntegro del importe adeudado, se aplicará, sin que "
+                                            + "sea necesario requerimiento ni intimación alguna, un monto por concepto de intereses moratorios a "
+                                            + "razón de una Tasa Efectiva Anual (TEA) de ____% sobre el importe no pagado, más las comisiones, "
+                                            + "penalidades, gastos notariales y gastos de cobranza judicial o extrajudicial que se devenguen por "
+                                            + "todo el plazo que pudiera transcurrir hasta la fecha efectiva de pago de la obligación de este Pagaré.\n\n", fontContenido);
+                PdfPCell celda2T2 = new PdfPCell(contenido2T2);
+                celda2T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda2T2.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido3T2 = new Phrase("El presente Pagaré ha sido emitido incompleto conforme lo permite el artículo 10 de la Ley de No. 27287 – "
+                                                + "Ley de Títulos Valores, por lo tanto, tiene pendiente de indicación su importe y fecha de integración, data "
+                                                + "que ENEL DISTRIBUCIÓN PERÚ S.A.A. queda facultado a completar conforme lo señalado en el Contrato de Financiamiento. "
+                                                + "Su vencimiento es a la vista y podrá ser presentado para su pago dentro del año siguiente a su fecha de integración, "
+                                                + "la cual será determinada por ENEL DISTRIBUCIÓN PERÚ S.A.A.\n\n", fontContenido);
+                PdfPCell celda3T2 = new PdfPCell(contenido3T2);
+                celda3T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda3T2.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido4T2 = new Phrase("De otro lado, acepto (amos) expresamente toda renovación o prórroga, total o parcial de este Pagaré que efectúe ENEL "
+                                            + "DISTRIBUCIÓN PERÚ S.A.A., la misma que será anotada en este documento. Dicha anotación no requerirá mi (nuestra) suscripción, "
+                                            + "bastando en todo caso para su validez, que las prórrogas sean suscritas por el tenedor, en este mismo instrumento o en hoja adherida. "
+                                            + "Asimismo, se deja constancia que este Pagaré no requerirá ser protestado para ejercer las acciones derivadas del mismo.\n\n", fontContenido);
+                PdfPCell celda4T2 = new PdfPCell(contenido4T2);
+                celda4T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda4T2.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido5T2 = new Phrase("Queda expresamente establecido que nuestro domicilio es el indicado en este Pagaré, lugar donde se dirigirán todas las comunicaciones y notificaciones derivadas del mismo, judiciales o extrajudiciales. \n\n", fontContenido);
+                PdfPCell celda5T2 = new PdfPCell(contenido5T2);
+                celda5T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda5T2.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido6T2 = new Phrase("El presente Pagaré está sujeto a la ley peruana y a la competencia de los jueces y tribunales del Distrito Judicial de Lima "
+                                            + "(Cercado), salvo que ENEL DISTRIBUCIÓN PERÚ S.A.A. decida unilateralmente someterse a la competencia de los jueces y tribunales "
+                                            + "del domicilio del obligado principal. \n\n", fontContenido);
+                PdfPCell celda6T2 = new PdfPCell(contenido6T2);
+                celda6T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda6T2.setBorder(PdfPCell.NO_BORDER);
+                
+                Phrase contenido7T2 = new Phrase("Fecha de integración del monto de este Pagaré: ________________________\n\n", fontContenido);
+                PdfPCell celda7T2 = new PdfPCell(contenido7T2);
+                celda7T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                celda7T2.setBorder(PdfPCell.NO_BORDER);
+                
+                loTablaMedia.addCell(celda1T2);
+                loTablaMedia.addCell(celda2T2);
+                loTablaMedia.addCell(celda3T2);
+                loTablaMedia.addCell(celda4T2);
+                loTablaMedia.addCell(celda5T2);
+                loTablaMedia.addCell(celda6T2);
+                loTablaMedia.addCell(celda7T2);
+                
+                //Tabla Final - primera fila
+                loTablaFin.setWidths(new float[] { 1, 4, 1, 1 });
+                
+                PdfPCell celda1T3 = new PdfPCell();
+                celda1T3.setBorder(PdfPCell.NO_BORDER);
+                celda1T3.setRowspan(4);
+                
+                Phrase contenido2T3 = new Phrase();
+                contenido2T3.add(new Phrase("\n\n\n\n\n\nDeudor Principal", fontContenido));
+                PdfPCell celda2T3 = new PdfPCell(contenido2T3);
+                celda2T3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda2T3.setVerticalAlignment(Element.ALIGN_BOTTOM);
+                
+                PdfPCell celda3T3 = new PdfPCell();
+                
+                PdfPCell celda4T3 = new PdfPCell();
+                celda4T3.setBorder(PdfPCell.NO_BORDER);
+                celda4T3.setRowspan(4);
+                
+                //segunda fila
+                Phrase contenido6T3 = new Phrase();
+                contenido6T3.add(new Phrase("Nombres y Apellidos:\n\n", fontContenido));
+                PdfPCell celda6T3 = new PdfPCell(contenido6T3);
+                celda6T3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                Phrase contenido7T3 = new Phrase();
+                contenido7T3.add(new Phrase("HUELLA DIGITAL\n INDICE DERECHO", fontContenido));
+                PdfPCell celda7T3 = new PdfPCell(contenido7T3);
+                celda7T3.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda7T3.setVerticalAlignment(Element.ALIGN_CENTER);
+                celda7T3.setRowspan(3);
+                
+                //Tercera Fila
+                Phrase contenido10T3 = new Phrase();
+                contenido10T3.add(new Phrase("Documento de Identidad:\n\n", fontContenido));
+                PdfPCell celda10T3 = new PdfPCell(contenido10T3);
+                celda10T3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                //Cuarta Fila
+                Phrase contenido14T3 = new Phrase();
+                contenido14T3.add(new Phrase("Dirección:\n\n", fontContenido));
+                PdfPCell celda14T3 = new PdfPCell(contenido14T3);
+                celda14T3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                
+                loTablaFin.addCell(celda1T3);
+                loTablaFin.addCell(celda2T3);
+                loTablaFin.addCell(celda3T3);
+                loTablaFin.addCell(celda4T3);
+                loTablaFin.addCell(celda6T3);
+                loTablaFin.addCell(celda7T3);
+                loTablaFin.addCell(celda10T3);
+                loTablaFin.addCell(celda14T3);
+                
+                PdfContentByte contentByte = writer.getDirectContent();
+                Rectangle rectABC = new Rectangle(43, 800, 165, 825);
+                rectABC.setBorder(Rectangle.BOX);
+                contentByte.setColorStroke(BaseColor.BLACK);
+                rectABC.setBorderWidth(1);
+                contentByte.rectangle(rectABC);
+                
+                //Textos en los rectangulos
+                ColumnText abcText = new ColumnText(contentByte);
+                abcText.setSimpleColumn(48, 800, 165, 825);
+                abcText.addElement(new Paragraph("ABC-", fontTitulos));
+                abcText.go();
+                
+                loDoc.add(logo);
+                loDoc.add(loTitulo);
+                loDoc.add(loTablaCuerpo);
+                loDoc.add(loTablaMedia);
+                loDoc.add(loTablaFin);
             }
             loDoc.close();
       

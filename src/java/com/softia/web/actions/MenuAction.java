@@ -321,6 +321,16 @@ public class MenuAction extends BaseAction {
         setResult("frmREPContratoFinanciamiento");
         return getResult();
     }
+    
+    public String frmREPAutorizacionCobranza() {
+        setResult("frmREPAutorizacionCobranza");
+        return getResult();
+    }
+    
+    public String frmREPPagareIncompleto() {
+        setResult("frmREPPagareIncompleto");
+        return getResult();
+    }
 
     public String generarCarteraXLS() {
         if (!validaSession()) {
@@ -543,6 +553,66 @@ public class MenuAction extends BaseAction {
             setError(loErr.getMessage());
         }
         return frmREPEvaluacionFinanciera();
+    }
+    
+    public String IMPAutorizacionCobranzaPDF() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReportePDF loRep = new CReportePDF();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxAutorizaCob();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                //las FileUtils de Apache son dependencia de Struts 2
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename=\"autorizaCobranza_" + LibFunc.getFechaActual() + ".pdf\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (IOException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmREPAutorizacionCobranza();
+    }
+    
+    public String IMPPagareIncompletoPDF() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReportePDF loRep = new CReportePDF();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxPagareInc();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                //las FileUtils de Apache son dependencia de Struts 2
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename=\"pagareIncompleto_" + LibFunc.getFechaActual() + ".pdf\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (IOException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmREPAutorizacionCobranza();
     }
 
     public String imprimirPDF() {
