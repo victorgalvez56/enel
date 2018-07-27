@@ -67,6 +67,8 @@
                             </ul>
                         </li>
                         <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
+                        <!--<li><a href="<s:url action="frmREPAutorizacionCobranza"/>"><i class="fa fa-circle-o"></i> Autorizacion Cobranza</a></li>-->
+                        <li><a href="<s:url action="frmREPPagareIncompleto"/>"><i class="fa fa-circle-o"></i> Pagaré Incompleto</a></li>
                     </ul>
                 </li>
             </ul>
