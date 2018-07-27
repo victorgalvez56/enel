@@ -94,6 +94,14 @@
         <put-attribute name="title"  value="Pagaré Incompleto a la Vista - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/clientes/frmREPPagareIncompleto.jsp"/>
     </definition>
+    <definition name="repCLIKardex" extends="baseLayout">
+        <put-attribute name="title"  value="Kardex - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIKardex.jsp"/>
+    </definition>
+    <definition name="repCLIEstadoCuenta" extends="baseLayout">
+        <put-attribute name="title"  value="Estado de Cuenta de Saldo - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIEstadoCuenta.jsp"/>
+    </definition>
     
     <definition name="frmSISCargarUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Cargar Usuarios - FINANSOFT"/>
