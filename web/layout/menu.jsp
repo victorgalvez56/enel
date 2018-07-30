@@ -69,6 +69,7 @@
                         <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
                         <li><a href="<s:url action="repCLIEstadoCuenta"/>"><i class="fa fa-circle-o"></i> Estado de Cuenta</a></li>
                         <li><a href="<s:url action="repCLIKardex"/>"><i class="fa fa-circle-o"></i> Kardex</a></li>
+                        <li><a href="<s:url action="repCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
                         <!--<li><a href="<s:url action="frmREPEvaluacionFinanciera"/>"><i class="fa fa-circle-o"></i> Evaluación Financiera</a></li>
                         <li><a href="<s:url action="frmREPContratoFinanciamiento"/>"><i class="fa fa-circle-o"></i> Contrato Financiamiento</a></li>
                         <li><a href="<s:url action="frmREPAutorizacionCobranza"/>"><i class="fa fa-circle-o"></i> Autorizacion Cobranza</a></li>
