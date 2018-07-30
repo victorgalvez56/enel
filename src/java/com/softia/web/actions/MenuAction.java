@@ -301,11 +301,6 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmREPCREMora_() {
-        setResult("frmREPCREMora_");
-        return getResult();
-    }
-
     //SUBMODULO REPORTE CARTERA DE CREDITOS
     public String frmREPCRECartera() {
         setResult("frmREPCRECartera");
@@ -507,7 +502,7 @@ public class MenuAction extends BaseAction {
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPCREMora_();
+        return frmREPCREMora();
     }
 
     public String IMPEvaluacionFinancieraPDF() {

@@ -6,7 +6,7 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
-                <s:form action="imprimirPDF" role="form">
+                <s:form action="generarMoraXLS" role="form">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>Reporte de Mora</h1>
@@ -50,36 +50,23 @@
                                             <div class="col-md-12">
                                                 <div class="col-md-1">
                                                     <div class="form-group">
-                                                        <label class="control-label">Fecha Inicial:</label>
+                                                        <label class="control-label">Días atraso:</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <s:textfield name="cobranza.fecIni" cssClass="form-control" type="date" required="true" />
-
+                                                        <s:textfield name="FecmoraIni" cssClass="form-control" type="text" required="true" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-1">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Fecha Final:</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <div class="form-group">
-                                                        <s:textfield name="cobranza.fecFin" cssClass="form-control" type="date" required="true"/>
-                                                    </div>
+                                                <div class="col-md-4">
+                                                    <center>
+                                                        <s:submit key="Generar" cssClass="btn btn-lg btn-primary"/>
+                                                    </center>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <center>
-                                    <s:submit key="Generar" cssClass="btn btn-lg btn-primary"/>
-                                </center>
                             </div>
                         </div>
                     </section>
