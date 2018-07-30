@@ -301,11 +301,6 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmREPCREMora_() {
-        setResult("frmREPCREMora_");
-        return getResult();
-    }
-
     //SUBMODULO REPORTE CARTERA DE CREDITOS
     public String frmREPCRECartera() {
         setResult("frmREPCRECartera");
