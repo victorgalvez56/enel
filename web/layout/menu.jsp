@@ -62,11 +62,11 @@
                             </span>
                             </a>
                             <ul class="treeview-menu">
+                            <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
                             <li><a href="<s:url action="frmREPCREDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolsos</a></li>
                             <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
                             </ul>
                         </li>
-                        <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
                         <!--<li><a href="<s:url action="frmREPAutorizacionCobranza"/>"><i class="fa fa-circle-o"></i> Autorizacion Cobranza</a></li>-->
                         <li><a href="<s:url action="frmREPPagareIncompleto"/>"><i class="fa fa-circle-o"></i> Pagaré Incompleto</a></li>
                     </ul>
