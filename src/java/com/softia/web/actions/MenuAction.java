@@ -306,24 +306,25 @@ public class MenuAction extends BaseAction {
         setResult("frmREPCRECartera");
         return getResult();
     }
-
-    public String frmREPEvaluacionFinanciera() {
-        setResult("frmREPEvaluacionFinanciera");
+    
+    //PDF
+    public String repCLIEvaluacionFinanciera() {
+        setResult("repCLIEvaluacionFinanciera");
         return getResult();
     }
 
-    public String frmREPContratoFinanciamiento() {
-        setResult("frmREPContratoFinanciamiento");
+    public String repCLIContratoFinanciamiento() {
+        setResult("repCLIContratoFinanciamiento");
         return getResult();
     }
     
-    public String frmREPAutorizacionCobranza() {
-        setResult("frmREPAutorizacionCobranza");
+    public String repCLIAutorizacionCobranza() {
+        setResult("repCLIAutorizacionCobranza");
         return getResult();
     }
     
-    public String frmREPPagareIncompleto() {
-        setResult("frmREPPagareIncompleto");
+    public String repCLIPagareIncompleto() {
+        setResult("repCLIPagareIncompleto");
         return getResult();
     }
     
@@ -532,7 +533,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPEvaluacionFinanciera();
+        return repCLIEvaluacionFinanciera();
     }
 
     public String IMPContratoFinanciamientoPDF() {
@@ -562,7 +563,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPEvaluacionFinanciera();
+        return repCLIEvaluacionFinanciera();
     }
     
     public String IMPAutorizacionCobranzaPDF() {
@@ -592,7 +593,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPAutorizacionCobranza();
+        return repCLIAutorizacionCobranza();
     }
     
     public String IMPPagareIncompletoPDF() {
@@ -622,7 +623,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPAutorizacionCobranza();
+        return repCLIAutorizacionCobranza();
     }
     
     public String IMPKardexPDF() {
