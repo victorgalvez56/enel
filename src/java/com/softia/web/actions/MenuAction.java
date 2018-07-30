@@ -454,24 +454,20 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmREPCREMora_() {
-        setResult("frmREPCREMora_");
-        return getResult();
-    }
-
     //SUBMODULO REPORTE CARTERA DE CREDITOS
     public String frmREPCRECartera() {
         setResult("frmREPCRECartera");
         return getResult();
     }
-
-    public String frmREPEvaluacionFinanciera() {
-        setResult("frmREPEvaluacionFinanciera");
+    
+    //PDF
+    public String repCLIEvaluacionFinanciera() {
+        setResult("repCLIEvaluacionFinanciera");
         return getResult();
     }
 
-    public String frmREPContratoFinanciamiento() {
-        setResult("frmREPContratoFinanciamiento");
+    public String repCLIContratoFinanciamiento() {
+        setResult("repCLIContratoFinanciamiento");
         return getResult();
     }
 
@@ -479,9 +475,9 @@ public class MenuAction extends BaseAction {
         setResult("frmREPAutorizacionCobranza");
         return getResult();
     }
-
-    public String frmREPPagareIncompleto() {
-        setResult("frmREPPagareIncompleto");
+    
+    public String repCLIPagareIncompleto() {
+        setResult("repCLIPagareIncompleto");
         return getResult();
     }
 
@@ -492,6 +488,11 @@ public class MenuAction extends BaseAction {
 
     public String repCLIEstadoCuenta() {
         setResult("repCLIEstadoCuenta");
+        return getResult();
+    }
+    
+    public String repCLIPosicion() {
+        setResult("repCLIPosicion");
         return getResult();
     }
 
@@ -655,7 +656,7 @@ public class MenuAction extends BaseAction {
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPCREMora_();
+        return frmREPCREMora();
     }
 
     public String IMPEvaluacionFinancieraPDF() {
@@ -685,7 +686,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPEvaluacionFinanciera();
+        return repCLIEvaluacionFinanciera();
     }
 
     public String IMPContratoFinanciamientoPDF() {
@@ -715,7 +716,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPEvaluacionFinanciera();
+        return repCLIEvaluacionFinanciera();
     }
 
     public String IMPAutorizacionCobranzaPDF() {
@@ -745,7 +746,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPAutorizacionCobranza();
+        return repCLIAutorizacionCobranza();
     }
 
     public String IMPPagareIncompletoPDF() {
@@ -775,7 +776,7 @@ public class MenuAction extends BaseAction {
         } catch (IOException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPAutorizacionCobranza();
+        return repCLIAutorizacionCobranza();
     }
 
     public String IMPKardexPDF() {
@@ -828,6 +829,36 @@ public class MenuAction extends BaseAction {
                 response.setContentLength(archivo.length);
                 response.setContentType("application/pdf");
                 response.setHeader("Content-Disposition", "attachment; filename=\"estadoCuenta_" + LibFunc.getFechaActual() + ".pdf\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (IOException loErr) {
+            setError(loErr.getMessage());
+        }
+        return repCLIEstadoCuenta();
+    }
+    
+    public String IMPPosicionClientePDF() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReportePDF loRep = new CReportePDF();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxPosicionCliente();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                //las FileUtils de Apache son dependencia de Struts 2
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename=\"posicionCliente_" + LibFunc.getFechaActual() + ".pdf\"");
                 ServletOutputStream out = response.getOutputStream();
                 out.write(archivo);
                 out.flush();

@@ -56,10 +56,6 @@
         <put-attribute name="title"  value="Repore de Mora - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCREMora.jsp"/>
     </definition>
-    <definition name="frmREPCREMora_" extends="baseLayout">
-        <put-attribute name="title"  value="Repore de Mora - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCREMora_.jsp"/>
-    </definition>
     <definition name="frmREPCRECartera" extends="baseLayout">
         <put-attribute name="title"  value="Repore de Cartera - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRECartera.jsp"/>
@@ -78,21 +74,21 @@
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRESolicitud.jsp"/>
     </definition>
     
-    <definition name="frmREPEvaluacionFinanciera" extends="baseLayout">
+    <definition name="repCLIEvaluacionFinanciera" extends="baseLayout">
         <put-attribute name="title"  value="Solicitud de Evaluación Financiera - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/frmREPEvaluacionFinanciera.jsp"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIEvaluacionFinanciera.jsp"/>
     </definition>
-    <definition name="frmREPContratoFinanciamiento" extends="baseLayout">
+    <definition name="repCLIContratoFinanciamiento" extends="baseLayout">
         <put-attribute name="title"  value="Solicitud de Evaluación Financiera - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/frmREPContratoFinanciamiento.jsp"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIContratoFinanciamiento.jsp"/>
     </definition>
-    <definition name="frmREPAutorizacionCobranza" extends="baseLayout">
+    <definition name="repCLIAutorizacionCobranza" extends="baseLayout">
         <put-attribute name="title"  value="Autorización de Encargo de Cobranza - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/frmREPAutorizacionCobranza.jsp"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIAutorizacionCobranza.jsp"/>
     </definition>
-    <definition name="frmREPPagareIncompleto" extends="baseLayout">
+    <definition name="repCLIPagareIncompleto" extends="baseLayout">
         <put-attribute name="title"  value="Pagaré Incompleto a la Vista - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/frmREPPagareIncompleto.jsp"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIPagareIncompleto.jsp"/>
     </definition>
     <definition name="repCLIKardex" extends="baseLayout">
         <put-attribute name="title"  value="Kardex - FINANSOFT v3.0 | SOFTIA.COM"/>
@@ -101,6 +97,10 @@
     <definition name="repCLIEstadoCuenta" extends="baseLayout">
         <put-attribute name="title"  value="Estado de Cuenta de Saldo - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/clientes/repCLIEstadoCuenta.jsp"/>
+    </definition>
+    <definition name="repCLIPosicion" extends="baseLayout">
+        <put-attribute name="title"  value="Posición de Cliente - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIPosicion.jsp"/>
     </definition>
     
     <definition name="frmSISCargarUsuarios" extends="baseLayout">

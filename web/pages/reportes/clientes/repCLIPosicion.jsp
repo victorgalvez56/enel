@@ -6,10 +6,10 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
-                <s:form action="generarMoraXLS" role="form">
+                <s:form action="IMPPosicionClientePDF" role="form">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-                        <h1>Reporte de Mora</h1>
+                        <h1>Posición de Cliente</h1>
                     </section>
                     <!-- Main content -->
                     <section class="content">
@@ -47,26 +47,28 @@
                                 <div class="col-xs-12">
                                     <div class="box box-primary box-solid">
                                         <div class="box-body">
-                                            <div class="col-md-12">
-                                                <div class="col-md-1">
+                                            <div class="col-md-6 col-lg-offset-3">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label class="control-label">Días atraso:</label>
+                                                        <label class="control-label">Nombre del Cliente:</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-9">
                                                     <div class="form-group">
-                                                        <s:textfield name="FecmoraIni" cssClass="form-control" type="text" required="true" />
+                                                        <s:textfield name="" cssClass="form-control" required="true" />
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <center>
-                                                        <s:submit key="Generar" cssClass="btn btn-lg btn-primary"/>
-                                                    </center>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <center>
+                                    <s:submit key="Procesar" cssClass="btn btn-lg btn-primary"/>
+                                </center>
                             </div>
                         </div>
                     </section>
@@ -75,3 +77,4 @@
         </div>
     </body>
 </html>
+

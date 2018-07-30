@@ -26,19 +26,18 @@
             <result name="frmCAJPago" type="tiles">frmCAJPago</result>
             
             <result name="frmREPCRECartera" type="tiles">frmREPCRECartera</result>
-            <result name="frmREPCREMora_" type="tiles">frmREPCREMora_</result>
+            <result name="frmREPCREMora" type="tiles">frmREPCREMora</result>
             <result name="frmREPCREDesembolso" type="tiles">frmREPCREDesembolso</result>
             <result name="frmREPCREPago" type="tiles">frmREPCREPago</result>
             <result name="frmREPCRESolicitud" type="tiles">frmREPCRESolicitud</result>
             
-            <result name="frmREPCREMora" type="tiles">frmREPCREMora</result>
-            
-            <result name="frmREPEvaluacionFinanciera" type="tiles">frmREPEvaluacionFinanciera</result>
-            <result name="frmREPContratoFinanciamiento" type="tiles">frmREPContratoFinanciamiento</result>
-            <result name="frmREPAutorizacionCobranza" type="tiles">frmREPAutorizacionCobranza</result>
-            <result name="frmREPPagareIncompleto" type="tiles">frmREPPagareIncompleto</result>
+            <result name="repCLIEvaluacionFinanciera" type="tiles">repCLIEvaluacionFinanciera</result>
+            <result name="repCLIContratoFinanciamiento" type="tiles">repCLIContratoFinanciamiento</result>
+            <result name="repCLIAutorizacionCobranza" type="tiles">repCLIAutorizacionCobranza</result>
+            <result name="repCLIPagareIncompleto" type="tiles">repCLIPagareIncompleto</result>
             <result name="repCLIKardex" type="tiles">repCLIKardex</result>
             <result name="repCLIEstadoCuenta" type="tiles">repCLIEstadoCuenta</result>
+            <result name="repCLIPosicion" type="tiles">repCLIPosicion</result>
 
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
