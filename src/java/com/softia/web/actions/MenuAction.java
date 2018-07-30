@@ -502,7 +502,7 @@ public class MenuAction extends BaseAction {
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
         }
-        return frmREPCREMora_();
+        return frmREPCREMora();
     }
 
     public String IMPEvaluacionFinancieraPDF() {
