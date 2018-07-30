@@ -4,7 +4,7 @@
 <%@include file="modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -255,7 +255,7 @@
                                         <s:submit name="nuevo" value="Nuevo" cssClass="btn btn-primary btn-flat" />
                                         <s:submit name="aplicar" id="bAplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" />
                                         <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Buscar</button>
+                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
                                     </div>
                                 </div>
                                 <s:hidden name="cliente.codigo"></s:hidden>

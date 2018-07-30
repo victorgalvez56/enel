@@ -1,21 +1,37 @@
 function onload() {
-    var lon = document.getElementById("tfParamBusqueda").value;
+    var lon = document.getElementById("tfParamBusquedaCre").value;
     if (lon.length > 0) {
-        document.getElementById("bBuscar").click();
+        document.getElementById("bBuscarCre").click();
+    } else {
+        var lon = document.getElementById("tfParamBusquedaCli").value;
+        if (lon.length > 0) {
+            document.getElementById("bBuscarCli").click();
+        }
+    }
+}
+
+function onloadCli() {
+    var lon = document.getElementById("tfParamBusquedaCli").value;
+    if (lon.length > 0) {
+        document.getElementById("bBuscarCli").click();
     }
 }
 
 function pasarParamCli(codigo) {
+    document.getElementById("tfParamBusquedaCli").value = '';
     document.getElementById("tfCodCli").value = codigo;
     document.getElementById("bAplicar").click();
 }
 
-function pasarDatosCli(codigo, nombre) {
+function pasarDatosCli(codigo) {
+    document.getElementById("tfParamBusquedaCre").value = '';
+    document.getElementById("tfParamBusquedaCli").value = '';
     document.getElementById("tfCodCli").value = codigo;
-    document.getElementById("tfNomCli").value = nombre;
+    document.getElementById("bNombre").click();
 }
 
 function pasarParamCre(codigo) {
+    document.getElementById("tfParamBusquedaCre").value = '';
     document.getElementById("tfCodCre").value = codigo;
     document.getElementById("bAplicar").click();
 }

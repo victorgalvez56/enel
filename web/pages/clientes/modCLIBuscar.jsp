@@ -4,7 +4,7 @@
 <html>
     <body>
         <!-- Modal Buscar -->
-        <div class="modal fade" id="modalBuscar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="modalBuscarCli" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -34,7 +34,7 @@
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <s:textfield name="paramBusqueda" id="tfParamBusqueda" cssClass="form-control"/>
+                                                <s:textfield name="paramBusquedaCli" id="tfParamBusquedaCli" cssClass="form-control"/>
                                             </div>
                                         </div>
                                     </div>

@@ -3,7 +3,7 @@
 <%@include file="modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -194,7 +194,7 @@
                                             <div style="float: right">
                                                 <s:submit name="aplicar" value="Aplicar" id="bAplicar" cssClass="btn btn-primary btn-flat" />
                                                 <s:submit name="cancelar" value="Cancelar" cssClass="btn btn-primary btn-flat" />
-                                                <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Buscar</button>
+                                                <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
                                             </div>
                                         </div>
                                     </div>

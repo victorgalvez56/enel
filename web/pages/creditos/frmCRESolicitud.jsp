@@ -114,11 +114,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscar" onclick="frmNombre()">Buscar</button>
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="desistir" value="Desistir" cssClass="btn btn-primary btn-flat" />
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscar" id="bBuscar" onclick="frmNombre()">Nuevo</button>
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Nuevo</button>
                                             <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="nombre" value="Nombre" id="bNombre" cssClass="btn btn-primary btn-flat" style="display: none;" />
                                         </div>
                                     </div>
                                 </div>
@@ -129,10 +130,5 @@
                 </section>
             </div>
         </div>
-        <script>
-            function frmNombre() {
-                document.getElementById("fBuscar").setAttribute("action", "frmCRESolicitud");
-            }
-        </script>
     </body>
 </html>

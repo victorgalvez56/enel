@@ -4,7 +4,7 @@
 <html>
     <body>
         <!-- Modal Buscar -->
-        <div class="modal fade" id="modalBuscar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="modalBuscarCli" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -34,7 +34,7 @@
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <s:textfield name="paramBusqueda" id="tfParamBusqueda" cssClass="form-control"/>
+                                                <s:textfield name="paramBusquedaCli" id="tfParamBusquedaCli" cssClass="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                             <th><s:property value="%{#rowStatus.count}" /></th>
                                             <td><s:property value="codCli" /></td>                                            
                                             <td><s:property value="nomCom" /></td>
-                                            <td><button class="btn btn-primary" type="button" onclick="pasarDatosCli('<s:property value="codCli"/>', '<s:property value="nomCom"/>')">Seleccionar</button></td>
+                                            <td><button class="btn btn-primary" type="button" onclick="pasarDatosCli('<s:property value="codCli"/>')">Seleccionar</button></td>
                                         </tr>
                                     </s:iterator>
                                 </tbody>
