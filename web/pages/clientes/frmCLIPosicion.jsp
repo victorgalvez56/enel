@@ -162,17 +162,17 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <s:iterator value="lstCreditos" status="rowStatus">
+                                                                                    <s:iterator value="cliente.lstCuentas" status="rowStatus">
                                                                                         <tr>
                                                                                             <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                                            <td><s:property value="codCta" /></td>
-                                                                                            <td><s:property value="producto.nombre" /></td>
+                                                                                            <td><s:property value="cuenta" /></td>
+                                                                                            <td><s:property value="producto" /></td>
                                                                                             <td><s:property value="moneda" /></td>
                                                                                             <td><s:property value="saldo" /></td>
                                                                                             <td><s:property value="cuota" /></td>
                                                                                             <td><s:property value="plazo" /></td>
-                                                                                            <td><s:property value="atrPro" /></td>
-                                                                                            <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Seleccionar</button></td>
+                                                                                            <td><s:property value="pdm" /></td>
+                                                                                            <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Ver</button></td>
                                                                                         </tr>
                                                                                     </s:iterator>
                                                                                 </tbody>
@@ -192,13 +192,15 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div style="float: right">
+                                                <s:hidden name="cliente.codigo"></s:hidden>
                                                 <s:submit name="aplicar" value="Aplicar" id="bAplicar" cssClass="btn btn-primary btn-flat" />
                                                 <s:submit name="cancelar" value="Cancelar" cssClass="btn btn-primary btn-flat" />
                                                 <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
+                                                <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
                                             </div>
                                         </div>
                                     </div>
-                                </s:form>
+                                </s:form>      
                             </div>
                         </div>
                 </section>
