@@ -4,7 +4,7 @@
 <%@include file="../clientes/modCLIBuscarDatos.jsp" %>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini"  onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -22,26 +22,22 @@
                                     <div class="col-lg-12">
                                         <s:if test="mensaje.length() != 0">
                                             <div class="alert alert-success">
-                                                <div class="glyphicon glyphicon-ok"></div>
-                                                <div><strong>Mensaje: </strong> <s:property value="mensaje"/> </div>
+                                                <div><span class="glyphicon glyphicon-ok"></span><strong> Mensaje: </strong> <s:property value="mensaje"/> </div>
                                             </div>
                                         </s:if>
                                         <s:if test="informacion.length() != 0">
                                             <div class="alert alert-info">
-                                                <div class="glyphicon glyphicon-info-sign"></div>
-                                                <div><strong>Información</strong> <s:property value="informacion"/> </div>
+                                                <div><span class="glyphicon glyphicon-info-sign"></span><strong> Información</strong> <s:property value="informacion"/> </div>
                                             </div>
                                         </s:if>
                                         <s:if test="advertencia.length() != 0">
                                             <div class="alert alert-warning">
-                                                <div class="glyphicon glyphicon-exclamation-sign"></div>
-                                                <div><strong>¡Advertencia!</strong> <s:property value="advertencia"/> </div>
+                                                <div><span class="glyphicon glyphicon-exclamation-sign"></span><strong> ¡Advertencia!</strong> <s:property value="advertencia"/> </div>
                                             </div>
                                         </s:if>
                                         <s:if test="error.length() != 0">
                                             <div class="alert alert-danger">
-                                                <div class="glyphicon glyphicon-exclamation-sign"></div>
-                                                <div><s:property value="error"/></div>
+                                                <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
                                             </div>
                                         </s:if>
                                     </div>

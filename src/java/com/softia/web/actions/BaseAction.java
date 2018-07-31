@@ -20,7 +20,7 @@ public class BaseAction extends ActionSupport{
     private String informacion;
     private String advertencia;
     protected Map session;
-    private String url = "jdbc:postgresql://localhost:5432/ENEL";    
+    private String url = "jdbc:postgresql://45.56.126.57/ENEL";
     
     protected boolean validaSession() {
         Map loMap = ActionContext.getContext().getSession();
