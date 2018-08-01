@@ -42,8 +42,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <center>
-                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default" />
-                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default" />
+                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default btn-flat" />
+                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default btn-flat" />
                                         </center>
 
                                     </div>
@@ -64,7 +64,7 @@
                                             <th><s:property value="%{#rowStatus.count}" /></th>
                                             <td><s:property value="codCli" /></td>                                            
                                             <td><s:property value="nomCom" /></td>
-                                            <td><s:submit type="button" onclick="return false;"  data-toggle="modal" data-target="#Creditos${codigo}" key="Ver" cssClass="btn btn-success"/></td>
+                                            <td><s:submit type="button" onclick="return false;"  data-toggle="modal" data-target="#Creditos${codigo}" key="Ver" cssClass="btn btn-success btn-flat btn-sm"/></td>
                                             <!-- Modal Créditos -->
                                     <div class="modal fade" id="Creditos${codigo}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">
@@ -126,7 +126,7 @@
                                                                 <div class="col-md-2"><s:property value="producto" /></div>
                                                                 <div class="col-md-2"><s:property value="saldo" /></div>
                                                                 <div class="col-md-2"><s:property value="moneda" /></div>
-                                                                <div class="col-md-3"><button class="btn btn-primary" type="button" onclick="pasarParamCre('<s:property value="cuenta"/>')">Seleccionar</button></div>
+                                                                <div class="col-md-3"><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarParamCre('<s:property value="cuenta"/>')">Seleccionar</button></div>
                                                             </div>                                                                
                                                         </s:iterator>
                                                     </div>                                

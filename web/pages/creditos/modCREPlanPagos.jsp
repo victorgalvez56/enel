@@ -49,8 +49,8 @@
                                             <td><s:property value="capital" /></td>
                                             <td><s:property value="interes" /></td>
                                             <td><s:property value="cuota" /></td>                                            
-                                    </tr>
-                                </s:iterator>
+                                        </tr>
+                                    </s:iterator>
                                 </tbody>
                             </table>
                         </div>

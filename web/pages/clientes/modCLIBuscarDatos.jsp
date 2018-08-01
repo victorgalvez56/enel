@@ -42,8 +42,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <center>
-                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default" />
-                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default" />
+                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default btn-flat" />
+                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default btn-flat" />
                                         </center>
 
                                     </div>
@@ -64,7 +64,7 @@
                                             <th><s:property value="%{#rowStatus.count}" /></th>
                                             <td><s:property value="codCli" /></td>                                            
                                             <td><s:property value="nomCom" /></td>
-                                            <td><button class="btn btn-primary" type="button" onclick="pasarDatosCli('<s:property value="codCli"/>')">Seleccionar</button></td>
+                                            <td><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarDatosCli('<s:property value="codCli"/>')">Seleccionar</button></td>
                                         </tr>
                                     </s:iterator>
                                 </tbody>

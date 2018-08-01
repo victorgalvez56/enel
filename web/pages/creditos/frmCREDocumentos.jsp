@@ -128,14 +128,8 @@
                                         </div>                                        
                                         <div class="col-md-2">
                                             <s:submit name="solicitud" value="Solicitud" cssClass="btn btn-primary btn-flat" />
-                                        </div>                                        
-                                        <div class="col-md-2">
                                             <s:submit name="contrato" value="Contrato" cssClass="btn btn-primary btn-flat" />
-                                        </div>
-                                        <div class="col-md-2">
                                             <s:submit name="autorizacion" value="Autorización" cssClass="btn btn-primary btn-flat" />
-                                        </div>                             
-                                        <div class="col-md-2">
                                             <s:submit name="pagare" value="Pagaré" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>

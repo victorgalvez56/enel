@@ -794,6 +794,84 @@ public class MenuAction extends BaseAction {
             } catch (IOException | SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
             }
+        } else if (request.getParameter("contrato") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+                loRep.setCredito(getCredito());
+                loRep.setUrl(getUrl());
+                loRep.setUser(user);
+                loRep.setPasswd(pass);
+                boolean llOk = loRep.mxContratoFinanciamiento();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"contratoFinanciamiento_" + getCredito().getCliente().getCodCli() + ".pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("autorizacion") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+                loRep.setCredito(getCredito());
+                loRep.setUrl(getUrl());
+                loRep.setUser(user);
+                loRep.setPasswd(pass);
+                boolean llOk = loRep.mxAutorizacionCobranza();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"autorizacionCobranza_" + getCredito().getCliente().getCodCli() + ".pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("pagare") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+                loRep.setCredito(getCredito());
+                loRep.setUrl(getUrl());
+                loRep.setUser(user);
+                loRep.setPasswd(pass);
+                boolean llOk = loRep.mxPagareIncompleto();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"pagareIncompleto_" + getCredito().getCliente().getCodCli() + ".pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+            }
         }
         return getResult();
     }
@@ -995,26 +1073,6 @@ public class MenuAction extends BaseAction {
     }
 
     //PDF
-    public String repCLIEvaluacionFinanciera() {
-        setResult("repCLIEvaluacionFinanciera");
-        return getResult();
-    }
-
-    public String repCLIContratoFinanciamiento() {
-        setResult("repCLIContratoFinanciamiento");
-        return getResult();
-    }
-
-    public String repCLIAutorizacionCobranza() {
-        setResult("repCLIAutorizacionCobranza");
-        return getResult();
-    }
-
-    public String repCLIPagareIncompleto() {
-        setResult("repCLIPagareIncompleto");
-        return getResult();
-    }
-
     public String repCLIKardex() {
         setResult("repCLIKardex");
         return getResult();
@@ -1187,127 +1245,7 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCREMora();
     }
-
-    /*public String IMPEvaluacionFinancieraPDF() {
-        if (!validaSession()) {
-            return "login";
-        }
-        setSession(ActionContext.getContext().getSession());
-        CReportePDF loRep = new CReportePDF();
-        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
-        try {
-            boolean llOk = loRep.mxEvaluacionFinanciera();
-            if (!llOk) {
-                setError(loRep.getError());
-            } else {
-                File file = new File(loRep.getRutaReporte());
-                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
-                //las FileUtils de Apache son dependencia de Struts 2
-                FileUtils.writeByteArrayToFile(file, archivo);
-                HttpServletResponse response = ServletActionContext.getResponse();
-                response.setContentLength(archivo.length);
-                response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename=\"solicitud_" + LibFunc.getFechaActual() + ".pdf\"");
-                ServletOutputStream out = response.getOutputStream();
-                out.write(archivo);
-                out.flush();
-            }
-        } catch (IOException loErr) {
-            setError(loErr.getMessage());
-        }
-        return repCLIEvaluacionFinanciera();
-    }*/
-
-    public String IMPContratoFinanciamientoPDF() {
-        if (!validaSession()) {
-            return "login";
-        }
-        setSession(ActionContext.getContext().getSession());
-        CReportePDF loRep = new CReportePDF();
-        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
-        try {
-            boolean llOk = loRep.mxConFinan();
-            if (!llOk) {
-                setError(loRep.getError());
-            } else {
-                File file = new File(loRep.getRutaReporte());
-                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
-                //las FileUtils de Apache son dependencia de Struts 2
-                FileUtils.writeByteArrayToFile(file, archivo);
-                HttpServletResponse response = ServletActionContext.getResponse();
-                response.setContentLength(archivo.length);
-                response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename=\"contratoFinanciamiento_" + LibFunc.getFechaActual() + ".pdf\"");
-                ServletOutputStream out = response.getOutputStream();
-                out.write(archivo);
-                out.flush();
-            }
-        } catch (IOException loErr) {
-            setError(loErr.getMessage());
-        }
-        return repCLIEvaluacionFinanciera();
-    }
-
-    public String IMPAutorizacionCobranzaPDF() {
-        if (!validaSession()) {
-            return "login";
-        }
-        setSession(ActionContext.getContext().getSession());
-        CReportePDF loRep = new CReportePDF();
-        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
-        try {
-            boolean llOk = loRep.mxAutorizaCob();
-            if (!llOk) {
-                setError(loRep.getError());
-            } else {
-                File file = new File(loRep.getRutaReporte());
-                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
-                //las FileUtils de Apache son dependencia de Struts 2
-                FileUtils.writeByteArrayToFile(file, archivo);
-                HttpServletResponse response = ServletActionContext.getResponse();
-                response.setContentLength(archivo.length);
-                response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename=\"autorizaCobranza_" + LibFunc.getFechaActual() + ".pdf\"");
-                ServletOutputStream out = response.getOutputStream();
-                out.write(archivo);
-                out.flush();
-            }
-        } catch (IOException loErr) {
-            setError(loErr.getMessage());
-        }
-        return repCLIAutorizacionCobranza();
-    }
-
-    public String IMPPagareIncompletoPDF() {
-        if (!validaSession()) {
-            return "login";
-        }
-        setSession(ActionContext.getContext().getSession());
-        CReportePDF loRep = new CReportePDF();
-        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
-        try {
-            boolean llOk = loRep.mxPagareInc();
-            if (!llOk) {
-                setError(loRep.getError());
-            } else {
-                File file = new File(loRep.getRutaReporte());
-                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
-                //las FileUtils de Apache son dependencia de Struts 2
-                FileUtils.writeByteArrayToFile(file, archivo);
-                HttpServletResponse response = ServletActionContext.getResponse();
-                response.setContentLength(archivo.length);
-                response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename=\"pagareIncompleto_" + LibFunc.getFechaActual() + ".pdf\"");
-                ServletOutputStream out = response.getOutputStream();
-                out.write(archivo);
-                out.flush();
-            }
-        } catch (IOException loErr) {
-            setError(loErr.getMessage());
-        }
-        return repCLIAutorizacionCobranza();
-    }
-
+    
     public String IMPKardexPDF() {
         if (!validaSession()) {
             return "login";

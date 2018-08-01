@@ -31,10 +31,6 @@
             <result name="frmREPCREPago" type="tiles">frmREPCREPago</result>
             <result name="frmREPCRESolicitud" type="tiles">frmREPCRESolicitud</result>
             
-            <result name="repCLIEvaluacionFinanciera" type="tiles">repCLIEvaluacionFinanciera</result>
-            <result name="repCLIContratoFinanciamiento" type="tiles">repCLIContratoFinanciamiento</result>
-            <result name="repCLIAutorizacionCobranza" type="tiles">repCLIAutorizacionCobranza</result>
-            <result name="repCLIPagareIncompleto" type="tiles">repCLIPagareIncompleto</result>
             <result name="repCLIKardex" type="tiles">repCLIKardex</result>
             <result name="repCLIEstadoCuenta" type="tiles">repCLIEstadoCuenta</result>
             <result name="repCLIPosicion" type="tiles">repCLIPosicion</result>

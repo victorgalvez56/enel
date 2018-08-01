@@ -250,12 +250,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8"></div>
-                                    <div class="col-md-4">
-                                        <s:submit name="nuevo" value="Nuevo" cssClass="btn btn-primary btn-flat" />
-                                        <s:submit name="aplicar" id="bAplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" />
-                                        <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div style="float: right">
+                                                <s:submit name="nuevo" value="Nuevo" cssClass="btn btn-primary btn-flat" />
+                                                <s:submit name="aplicar" id="bAplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" />
+                                                <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
+                                                <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <s:hidden name="cliente.codigo"></s:hidden>
