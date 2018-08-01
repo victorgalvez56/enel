@@ -798,21 +798,187 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
+    //SUBMODULO CREDITO CAJA DESEMBOLSO
     public String frmCAJDesembolso() {
-        /* setlstOficina(new ArrayList<>());
-        getlstOficina().add("Oficina Principal");
-        getlstOficina().add("Oficina Secundaria");*/
-        setResult("frmCAJDesembolso");
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CProductos loPro = new CProductos();
+        loPro.setUrl(getUrl());
+        loPro.setUser(user);
+        loPro.setPasswd(pass);
+        try {
+            setLstProductos(loPro.getLstProductos());
+            if (getLstProductos() == null) {
+                setError(loPro.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            setResult("frmCAJDesembolso");
+        }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("buscarNombre") != null) {
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            try {
+                String lcParam = "";
+                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
+                    lcParam = getParamBusquedaCre();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                }
+                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 2);
+                if (!llOk) {
+                    setError(loCliente.getError());
+                } else {
+                    setLstClientes(loCliente.getLstClientes());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("buscarDNI") != null) {
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            try {
+                String lcParam = "";
+                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
+                    lcParam = getParamBusquedaCre();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                }
+                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 1);
+                if (!llOk) {
+                    setError(loCliente.getError());
+                } else {
+                    setLstClientes(loCliente.getLstClientes());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("aplicar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxAplicar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setCredito(loCredito.getCredito());
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        }
         return getResult();
     }
 
     //SUBMODULO CREDITO COBRANZA
     public String frmCAJPago() {
-        /* setlstOficina(new ArrayList<>());
-        getlstOficina().add("Oficina Principal");
-        getlstOficina().add("Oficina Secundaria");*/
-        setResult("frmCAJPago");
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CProductos loPro = new CProductos();
+        loPro.setUrl(getUrl());
+        loPro.setUser(user);
+        loPro.setPasswd(pass);
+        try {
+            setLstProductos(loPro.getLstProductos());
+            if (getLstProductos() == null) {
+                setError(loPro.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            setResult("frmCAJPago");
+        }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("buscarNombre") != null) {
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            try {
+                String lcParam = "";
+                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
+                    lcParam = getParamBusquedaCre();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                }
+                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 2);
+                if (!llOk) {
+                    setError(loCliente.getError());
+                } else {
+                    setLstClientes(loCliente.getLstClientes());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("buscarDNI") != null) {
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            try {
+                String lcParam = "";
+                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
+                    lcParam = getParamBusquedaCre();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                }
+                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 1);
+                if (!llOk) {
+                    setError(loCliente.getError());
+                } else {
+                    setLstClientes(loCliente.getLstClientes());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("aplicar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxAplicar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setCredito(loCredito.getCredito());
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        }
         return getResult();
     }
 
