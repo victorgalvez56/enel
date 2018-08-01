@@ -101,7 +101,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="" tabindex="5"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv"  readonly="true" tabindex="5"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -111,7 +111,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonto" tabindex="6" name="credito.capSol" />
+                                                            <s:textfield cssClass="form-control" id="tfMonto" tabindex="6" name="credito.capSol"  readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>                                            

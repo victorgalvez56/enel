@@ -120,6 +120,9 @@
                                     </div>
                                 </div>
                                 <s:hidden name="credito.codigo"></s:hidden>
+                                <s:hidden name="credito.cliente.apePat"></s:hidden>
+                                <s:hidden name="credito.cliente.apeMat"></s:hidden>
+                                <s:hidden name="credito.cliente.nombre"></s:hidden>
                             </s:form>
                         </div>
                     </div>

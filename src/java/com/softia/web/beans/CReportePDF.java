@@ -103,9 +103,9 @@ public class CReportePDF {
             PdfPTable loTablaCliente = new PdfPTable(3);
             PdfPTable loTablaCreditos = new PdfPTable(9);
 
-            loTablaDatos.setWidths(new float[]{2, 5, 1});
+            loTablaDatos.setWidths(new float[]{5, 5, 5});
             loTablaCliente.setWidths(new float[]{1, 1, 9});
-            loTablaCreditos.setWidths(new float[]{1, 1, 1, 1, 1, 1, 1, 1, 1});
+            loTablaCreditos.setWidths(new float[]{2, 1, 1, 1, 1, 1, 1, 1, 1});
 
             //Primera Tabla
             //Primera fila
@@ -117,12 +117,15 @@ public class CReportePDF {
             celda2T1.setRowspan(3);
             PdfPCell celda3T1 = new PdfPCell(new Phrase("", fontContenido));
             celda3T1.setBorder(PdfPCell.NO_BORDER);
+            celda3T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
             //Segunda fila
             PdfPCell celda4T1 = new PdfPCell(new Phrase("CREDITOS", fontContenido));
             celda4T1.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda5T1 = new PdfPCell(new Phrase(LibFunc.getFechaActual(), fontContenido));
             celda5T1.setBorder(PdfPCell.NO_BORDER);
+            celda5T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+
 
             //Tercera fila
             PdfPCell celda6T1 = new PdfPCell(new Phrase("frmCLIPosicion - " + getUser(), fontContenido));
@@ -130,6 +133,7 @@ public class CReportePDF {
             PdfPCell celda7T1 = new PdfPCell(new Phrase("HR: " + LibFunc.getHoraActual(), fontContenido));
             celda7T1.setPaddingBottom(10);
             celda7T1.setBorder(PdfPCell.BOTTOM);
+            celda7T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
             loTablaDatos.addCell(celda1T1);
             loTablaDatos.addCell(celda2T1);
@@ -275,31 +279,31 @@ public class CReportePDF {
             for (Cuenta loCuenta : p_oCliente.getLstCuentas()) {
                 celda2T4 = new PdfPCell(new Phrase(loCuenta.getCuenta(), fontContenido));
                 celda2T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda2T4.setBorder(PdfPCell.BOTTOM);
+                celda2T4.setBorder(PdfPCell.NO_BORDER);
                 celda3T4 = new PdfPCell(new Phrase(loCuenta.getFecDes(), fontContenido));
                 celda3T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda3T4.setBorder(PdfPCell.BOTTOM);
+                celda3T4.setBorder(PdfPCell.NO_BORDER);
                 celda4T4 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getCapDes()), fontContenido));
                 celda4T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda4T4.setBorder(PdfPCell.BOTTOM);
+                celda4T4.setBorder(PdfPCell.NO_BORDER);
                 celda5T4 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getCuotas()), fontContenido));
                 celda5T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda5T4.setBorder(PdfPCell.BOTTOM);
+                celda5T4.setBorder(PdfPCell.NO_BORDER);
                 celda6T4 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getAtrMax()), fontContenido));
                 celda6T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda6T4.setBorder(PdfPCell.BOTTOM);
+                celda6T4.setBorder(PdfPCell.NO_BORDER);
                 celda7T4 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getAtraso()), fontContenido));
                 celda7T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda7T4.setBorder(PdfPCell.BOTTOM);
+                celda7T4.setBorder(PdfPCell.NO_BORDER);
                 celda8T4 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getAtrPro()), fontContenido));
                 celda8T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda8T4.setBorder(PdfPCell.BOTTOM);
+                celda8T4.setBorder(PdfPCell.NO_BORDER);
                 celda9T4 = new PdfPCell(new Phrase(loCuenta.getFecCan(), fontContenido));
                 celda9T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda9T4.setBorder(PdfPCell.BOTTOM);
+                celda9T4.setBorder(PdfPCell.NO_BORDER);
                 celda10T4 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getSaldo()), fontContenido));
                 celda10T4.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda10T4.setBorder(PdfPCell.BOTTOM);
+                celda10T4.setBorder(PdfPCell.NO_BORDER);
                 loTablaCreditos.addCell(celda2T4);
                 loTablaCreditos.addCell(celda3T4);
                 loTablaCreditos.addCell(celda4T4);
@@ -333,9 +337,9 @@ public class CReportePDF {
         if (llOk) {
             //llOk = loCre.mxAplicar();
             if (llOk) {
-                llOk = mxEvaluacionFinancieraArchivo(loCre.getCredito().getCliente());
+                llOk = mxEvaluacionFinancieraArchivo(loCre.getCredito());
                 if (llOk) {
-                    setRutaReporte("/ftia/files/cartas/solicitud_" + getCredito().getCliente().getCodCli() + ".pdf");
+                    setRutaReporte("/ftia/files/cartas/solicitud_" + loCre.getCredito().getCodCta() + ".pdf");
                     LibFunc.mxLog("Solicitud de Evaluación Financiera OK.");
                 } else {
                     LibFunc.mxLog("Solicitud de Evaluación Financiera error: " + getError());
@@ -349,10 +353,10 @@ public class CReportePDF {
         return llOk;
     }
 
-    public boolean mxEvaluacionFinancieraArchivo(Cliente p_oCliente) throws IOException {
+    public boolean mxEvaluacionFinancieraArchivo(Credito p_oCredito) throws IOException {
         boolean llOk = true;
         try {
-            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/solicitud_" + getCredito().getCliente().getCodCli() + ".pdf");
+            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/solicitud_" + p_oCredito.getCodCta() + ".pdf");
             Document loDoc = new Document(PageSize.A4, -20, -20, 15, 50);
             PdfWriter writer = PdfWriter.getInstance(loDoc, loArchivo);
             loDoc.open();
@@ -394,12 +398,14 @@ public class CReportePDF {
             //Encabezado
             Phrase contenido1 = new Phrase();
             contenido1.add(new Chunk("Código o Nombres y Apellidos del Afiliador\n\n\n", fontTabla));
+            contenido1.add(new Chunk(p_oCredito.getNomAna(), fontTabla));
             PdfPCell celda1 = new PdfPCell(contenido1);
             celda1.setHorizontalAlignment(Element.ALIGN_CENTER);
             loEncabTabla.addCell(celda1);
 
             Phrase contenido2 = new Phrase();
             contenido2.add(new Chunk("Fecha Solicitud\n\n\n", fontTabla));
+            contenido2.add(new Chunk(p_oCredito.getFecSol(), fontTabla));
             PdfPCell celda2 = new PdfPCell(contenido2);
             celda2.setHorizontalAlignment(Element.ALIGN_CENTER);
             loEncabTabla.addCell(celda2);
@@ -415,72 +421,74 @@ public class CReportePDF {
 
             Phrase contenidoC1 = new Phrase();
             contenidoC1.add(new Chunk("Número Suministro\n\n", fontTabla));
-            //contenidoC1.add(new Chunk(p_oCliente.getSumini(), fontContenido));
+            contenidoC1.add(new Chunk(p_oCredito.getCliente().getSumini(), fontContenido));
             PdfPCell celdaC1 = new PdfPCell(contenidoC1);
             celdaC1.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC2 = new Phrase();
             contenidoC2.add(new Chunk("Apellido Paterno\n\n", fontTabla));
-            contenidoC2.add(new Chunk(p_oCliente.getApePat(), fontContenido));
+            contenidoC2.add(new Chunk(p_oCredito.getCliente().getApePat(), fontContenido));
             PdfPCell celdaC2 = new PdfPCell(contenidoC2);
             celdaC2.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC3 = new Phrase();
             contenidoC3.add(new Chunk("Apellido Materno\n\n", fontTabla));
-            contenidoC3.add(new Chunk(p_oCliente.getApeMat(), fontContenido));
+            contenidoC3.add(new Chunk(p_oCredito.getCliente().getApeMat(), fontContenido));
             PdfPCell celdaC3 = new PdfPCell(contenidoC3);
             celdaC3.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC4 = new Phrase();
             contenidoC4.add(new Chunk("Nombres\n\n", fontTabla));
-            contenidoC4.add(new Chunk(p_oCliente.getNombre(), fontContenido));
+            contenidoC4.add(new Chunk(p_oCredito.getCliente().getNombre(), fontContenido));
             PdfPCell celdaC4 = new PdfPCell(contenidoC4);
             celdaC4.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC5 = new Phrase();
             contenidoC5.add(new Chunk("Sexo\n\n", fontTabla));
-            //contenidoC5.add(new Chunk(p_oCliente.getSexo(), fontContenido));
+            contenidoC5.add(new Chunk(p_oCredito.getCliente().getSexo(), fontContenido));
             PdfPCell celdaC5 = new PdfPCell(contenidoC5);
             celdaC5.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC6 = new Phrase();
             contenidoC6.add(new Chunk("Fecha de Nacimiento\n\n", fontTabla));
+            contenidoC6.add(new Chunk(p_oCredito.getCliente().getFecNac(), fontTabla));
             PdfPCell celdaC6 = new PdfPCell(contenidoC6);
             celdaC6.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC7 = new Phrase();
             contenidoC7.add(new Chunk("Tipo de Documento de Identidad\n\n", fontTabla));
+            contenidoC7.add(new Chunk(p_oCredito.getCliente().getTipDocCiv(), fontTabla));
             PdfPCell celdaC7 = new PdfPCell(new Phrase(contenidoC7));
             celdaC7.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC8 = new Phrase();
             contenidoC8.add(new Chunk("Número de Documento de Identidad\n\n", fontTabla));
-            //contenidoC8.add(new Chunk(p_oCliente.getNroDocCiv(), fontContenido));
+            contenidoC8.add(new Chunk(p_oCredito.getCliente().getNroDocCiv(), fontContenido));
             PdfPCell celdaC8 = new PdfPCell(contenidoC8);
             celdaC8.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC9 = new Phrase();
             contenidoC9.add(new Chunk("Teléfono\n\n", fontTabla));
-            //contenidoC9.add(new Chunk(p_oCliente.getTelefono(), fontContenido));
+            contenidoC9.add(new Chunk(p_oCredito.getCliente().getTelefono(), fontContenido));
             PdfPCell celdaC9 = new PdfPCell(contenidoC9);
             celdaC9.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC10 = new Phrase();
             contenidoC10.add(new Chunk("Teléfono Celular\n\n", fontTabla));
-            //contenidoC10.add(new Chunk(p_oCliente.getCelular(), fontContenido));
+            contenidoC10.add(new Chunk(p_oCredito.getCliente().getCelular(), fontContenido));
             PdfPCell celdaC10 = new PdfPCell(contenidoC10);
             celdaC10.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC11 = new Phrase();
             contenidoC11.add(new Chunk("Correo Electrónico\n\n", fontTabla));
-            //contenidoC11.add(new Chunk(p_oCliente.getCorreo(), fontContenido));
+            contenidoC11.add(new Chunk(p_oCredito.getCliente().getCorreo(), fontContenido));
             PdfPCell celdaC11 = new PdfPCell(contenidoC11);
             celdaC11.setHorizontalAlignment(Element.ALIGN_CENTER);
             celdaC11.setColspan(2);
 
             Phrase contenidoC12 = new Phrase();
             contenidoC12.add(new Chunk("Dirección\n\n", fontTabla));
-            //contenidoC12.add(new Chunk(p_oCliente.getDireccion().getDireccion(), fontContenido));
+            contenidoC12.add(new Chunk(p_oCredito.getCliente().getDireccion().getDireccion(), fontContenido));
             PdfPCell celdaC12 = new PdfPCell(contenidoC12);
             celdaC12.setHorizontalAlignment(Element.ALIGN_CENTER);
             celdaC12.setColspan(2);
@@ -498,14 +506,14 @@ public class CReportePDF {
 
             Phrase contenidoC15 = new Phrase();
             contenidoC15.add(new Chunk("Distrito\n\n", fontTabla));
-            //contenidoC15.add(new Chunk(p_oCliente.getDireccion().getDistrito().getNombre(), fontContenido));
+            contenidoC15.add(new Chunk(p_oCredito.getCliente().getDireccion().getDistrito().getNombre(), fontContenido));
             PdfPCell celdaC15 = new PdfPCell(contenidoC15);
             celdaC15.setHorizontalAlignment(Element.ALIGN_CENTER);
             celdaC15.setColspan(2);
 
             Phrase contenidoC16 = new Phrase();
             contenidoC16.add(new Chunk("Provincia\n\n", fontTabla));
-            //contenidoC16.add(new Chunk(p_oCliente.getDireccion().getDistrito().getProvincia().getNombre(), fontContenido));
+            contenidoC16.add(new Chunk(p_oCredito.getCliente().getDireccion().getDistrito().getProvincia().getNombre(), fontContenido));
             PdfPCell celdaC16 = new PdfPCell(contenidoC16);
             celdaC16.setHorizontalAlignment(Element.ALIGN_CENTER);
             celdaC16.setColspan(2);
@@ -570,22 +578,22 @@ public class CReportePDF {
             contentByte.setColorStroke(BaseColor.BLACK);
             rectHuella.setBorderWidth(1);
 
-            Rectangle rectSi1 = new Rectangle(385, 258, 400, 273);
+            Rectangle rectSi1 = new Rectangle(385, 245, 400, 260);
             rectSi1.setBorder(Rectangle.BOX);
             contentByte.setColorStroke(BaseColor.BLACK);
             rectSi1.setBorderWidth(1);
 
-            Rectangle rectSi2 = new Rectangle(385, 227, 400, 242);
+            Rectangle rectSi2 = new Rectangle(385, 215, 400, 230);
             rectSi2.setBorder(Rectangle.BOX);
             contentByte.setColorStroke(BaseColor.BLACK);
             rectSi2.setBorderWidth(1);
 
-            Rectangle rectNo1 = new Rectangle(435, 258, 450, 273);
+            Rectangle rectNo1 = new Rectangle(435, 245, 450, 260);
             rectNo1.setBorder(Rectangle.BOX);
             contentByte.setColorStroke(BaseColor.BLACK);
             rectNo1.setBorderWidth(1);
 
-            Rectangle rectNo2 = new Rectangle(435, 227, 450, 242);
+            Rectangle rectNo2 = new Rectangle(435, 215, 450, 230);
             rectNo2.setBorder(Rectangle.BOX);
             contentByte.setColorStroke(BaseColor.BLACK);
             rectNo2.setBorderWidth(1);

@@ -614,7 +614,12 @@ public class MenuAction extends BaseAction {
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
-                    setCredito(loCredito.getCredito());
+                    llOk = loCredito.mxPlanPagos();
+                    if (!llOk){
+                        setError(loCredito.getError());
+                    }else{
+                        setCredito(loCredito.getCredito());
+                    }
                 }
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());

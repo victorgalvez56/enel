@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@include file="modCREBuscar.jsp" %>
+<%@include file="modCREPlanPagos.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
@@ -146,11 +147,14 @@
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="revertir" value="Revertir Aprobac." id = "bRevertir" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" cssClass="btn btn-primary btn-flat" />
-                                            <button type="button" class="btn btn-primary btn-flat">Plan de Pagos</button>
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Plan Pagos</button>
                                         </div>
                                     </div>
                                 </div>
                                 <s:hidden name="credito.codigo"></s:hidden>
+                                <s:hidden name="credito.cliente.apePat"></s:hidden>
+                                <s:hidden name="credito.cliente.apeMat"></s:hidden>
+                                <s:hidden name="credito.cliente.nombre"></s:hidden>
                             </s:form>                                                    
                         </div>
                     </div>
