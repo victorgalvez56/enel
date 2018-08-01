@@ -64,7 +64,7 @@
                                             <th><s:property value="%{#rowStatus.count}" /></th>
                                             <td><s:property value="codCli" /></td>                                            
                                             <td><s:property value="nomCom" /></td>
-                                            <td><s:submit type="button" onclick="return false;"  data-toggle="modal" data-target="#Creditos${codigo}" key="Ver" cssClass="btn btn-success btn-flat btn-md"/></td>
+                                            <td><s:submit type="button" onclick="return false;"  data-toggle="modal" data-target="#Creditos${codigo}" key="Ver" cssClass="btn btn-success btn-flat btn-sm"/></td>
                                             <!-- Modal Créditos -->
                                     <div class="modal fade" id="Creditos${codigo}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">
@@ -126,7 +126,7 @@
                                                                 <div class="col-md-2"><s:property value="producto" /></div>
                                                                 <div class="col-md-2"><s:property value="saldo" /></div>
                                                                 <div class="col-md-2"><s:property value="moneda" /></div>
-                                                                <div class="col-md-3"><button class="btn btn-primary btn-flat btn-md" type="button" onclick="pasarParamCre('<s:property value="cuenta"/>')">Seleccionar</button></div>
+                                                                <div class="col-md-3"><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarParamCre('<s:property value="cuenta"/>')">Seleccionar</button></div>
                                                             </div>                                                                
                                                         </s:iterator>
                                                     </div>                                

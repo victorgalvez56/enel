@@ -398,14 +398,14 @@ public class CReportePDF {
             //Encabezado
             Phrase contenido1 = new Phrase();
             contenido1.add(new Chunk("Código o Nombres y Apellidos del Afiliador\n\n\n", fontTabla));
-            contenido1.add(new Chunk(p_oCredito.getNomAna(), fontTabla));
+            contenido1.add(new Chunk(p_oCredito.getNomAna(), fontContenido));
             PdfPCell celda1 = new PdfPCell(contenido1);
             celda1.setHorizontalAlignment(Element.ALIGN_CENTER);
             loEncabTabla.addCell(celda1);
 
             Phrase contenido2 = new Phrase();
             contenido2.add(new Chunk("Fecha Solicitud\n\n\n", fontTabla));
-            contenido2.add(new Chunk(p_oCredito.getFecSol(), fontTabla));
+            contenido2.add(new Chunk(p_oCredito.getFecSol(), fontContenido));
             PdfPCell celda2 = new PdfPCell(contenido2);
             celda2.setHorizontalAlignment(Element.ALIGN_CENTER);
             loEncabTabla.addCell(celda2);
@@ -451,13 +451,13 @@ public class CReportePDF {
 
             Phrase contenidoC6 = new Phrase();
             contenidoC6.add(new Chunk("Fecha de Nacimiento\n\n", fontTabla));
-            contenidoC6.add(new Chunk(p_oCredito.getCliente().getFecNac(), fontTabla));
+            contenidoC6.add(new Chunk(p_oCredito.getCliente().getFecNac(), fontContenido));
             PdfPCell celdaC6 = new PdfPCell(contenidoC6);
             celdaC6.setHorizontalAlignment(Element.ALIGN_CENTER);
 
             Phrase contenidoC7 = new Phrase();
             contenidoC7.add(new Chunk("Tipo de Documento de Identidad\n\n", fontTabla));
-            contenidoC7.add(new Chunk(p_oCredito.getCliente().getTipDocCiv(), fontTabla));
+            contenidoC7.add(new Chunk(p_oCredito.getCliente().getTipDocCiv(), fontContenido));
             PdfPCell celdaC7 = new PdfPCell(new Phrase(contenidoC7));
             celdaC7.setHorizontalAlignment(Element.ALIGN_CENTER);
 
@@ -904,7 +904,7 @@ public class CReportePDF {
                 col1p3.add(new Phrase(Chunk.NEWLINE));
             }
 
-            col1p3.add(new Phrase("Suscrito en la ciudad de Lima, a los _____ días del mes de __________________ del 201___, en dos ejemplares de igual tenor literal.", fontContenido));
+            col1p3.add(new Phrase("Suscrito en la ciudad de Lima, a los " + LibFunc.getFechaLargaActual() + ", en dos ejemplares de igual tenor literal.", fontContenido));
 
             Phrase col2p3 = new Phrase();
             Phrase col3p3 = new Phrase();
@@ -1069,7 +1069,7 @@ public class CReportePDF {
             celda1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             celda1.setBorder(PdfPCell.NO_BORDER);
 
-            PdfPCell celda2 = new PdfPCell(new Phrase("\n\n\n\n", fontContenido));
+            PdfPCell celda2 = new PdfPCell(new Phrase(p_oCredito.getProduc() + "\n\n\n", fontContenido));
             celda2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
             Phrase contenido3 = new Phrase();
@@ -1079,6 +1079,7 @@ public class CReportePDF {
             contenido3.add(new Chunk(p_oCredito.getCliente().getSumini() + " el cual corresponde al predio ubicado en ", fontContenido));
             contenido3.add(new Chunk(p_oCredito.getCliente().getDireccion().getDireccion() + ".\n\n", fontContenido));
             PdfPCell celda3 = new PdfPCell(contenido3);
+            celda3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             celda3.setBorder(PdfPCell.NO_BORDER);
 
             Phrase contenido4 = new Phrase();
@@ -1116,7 +1117,7 @@ public class CReportePDF {
             PdfPCell celda3T2 = new PdfPCell(new Phrase("VALOR DE CUOTA", fontSub));
             celda3T2.setHorizontalAlignment(Element.ALIGN_CENTER);
 
-            PdfPCell celda4T2 = new PdfPCell(new Phrase("", fontContenido));
+            PdfPCell celda4T2 = new PdfPCell(new Phrase(p_oCredito.getCapSol() + " " + p_oCredito.getMoneda(), fontContenido));
             celda4T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             PdfPCell celda5T2 = new PdfPCell(new Phrase("", fontContenido));
             celda5T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
@@ -1146,7 +1147,7 @@ public class CReportePDF {
                 loParrafo.add(new Phrase(Chunk.NEWLINE));
             }
 
-            loParrafo.add(new Phrase(LibFunc.getFechaActual(), fontContenido));
+            loParrafo.add(new Phrase(LibFunc.getFechaLargaActual(), fontContenido));
 
             for (int cont = 0; cont < 8; cont++) {
                 loParrafo.add(new Phrase(Chunk.NEWLINE));
@@ -1289,10 +1290,11 @@ public class CReportePDF {
             contenido1T2.add(new Chunk("Por este Pagaré, yo " + p_oCredito.getCliente().getNomCom() + ", ", fontContenido));
             contenido1T2.add(new Chunk("me comprometo, solidaria e  incondicionalmente, a pagar a la  orden de ENEL DISTRIBUCIÓN ", fontContenido));
             contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de ____________________________________________________ ", fontContenido));
-            contenido1T2.add(new Chunk("Soles (S/. ____________), importe correspondiente a la liquidación de las sumas adeudadas a ", fontContenido));
+            contenido1T2.add(new Chunk("Soles (S/." + p_oCredito.getCapSol() + "), importe correspondiente a la liquidación de las sumas adeudadas a ", fontContenido));
             contenido1T2.add(new Chunk("ENEL  DISTRIBUCIÓN  PERÚ  S.A.A. y  que  me  obligo a  pagar en la  misma  moneda, en ", fontContenido));
-            contenido1T2.add(new Chunk("(domicilio) " + p_oCredito.getCliente().getDireccion().getDireccion() + ".", fontContenido));
+            contenido1T2.add(new Chunk("(domicilio) " + p_oCredito.getCliente().getDireccion().getDireccion() + ".\n\n", fontContenido));
             PdfPCell celda1T2 = new PdfPCell(contenido1T2);
+            celda1T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             celda1T2.setBorder(PdfPCell.NO_BORDER);
 
             Phrase contenido2T2 = new Phrase("Queda establecido que si, a la fecha de presentación del presente documento, no cancelo el "
@@ -1335,7 +1337,7 @@ public class CReportePDF {
             celda6T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             celda6T2.setBorder(PdfPCell.NO_BORDER);
 
-            Phrase contenido7T2 = new Phrase("Fecha de integración del monto de este Pagaré: " + LibFunc.getFechaActual() + "\n\n", fontContenido);
+            Phrase contenido7T2 = new Phrase("Fecha de integración del monto de este Pagaré: " + LibFunc.getFechaLargaActual() + "\n\n", fontContenido);
             PdfPCell celda7T2 = new PdfPCell(contenido7T2);
             celda7T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             celda7T2.setBorder(PdfPCell.NO_BORDER);
@@ -1370,13 +1372,13 @@ public class CReportePDF {
 
             //segunda fila
             Phrase contenido6T3 = new Phrase();
-            contenido6T3.add(new Phrase("Nombres y Apellidos:\n\n", fontSub));
+            contenido6T3.add(new Phrase("Nombres y Apellidos:\n", fontSub));
             contenido6T3.add(new Phrase(p_oCredito.getCliente().getNombre() + " " + p_oCredito.getCliente().getApePat() + " " + p_oCredito.getCliente().getApeMat(), fontContenido));
             PdfPCell celda6T3 = new PdfPCell(contenido6T3);
             celda6T3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
             Phrase contenido7T3 = new Phrase();
-            contenido7T3.add(new Phrase("HUELLA DIGITAL\n INDICE DERECHO", fontContenido));
+            contenido7T3.add(new Phrase("\nHUELLA DIGITAL\n INDICE DERECHO", fontContenido));
             PdfPCell celda7T3 = new PdfPCell(contenido7T3);
             celda7T3.setHorizontalAlignment(Element.ALIGN_CENTER);
             celda7T3.setVerticalAlignment(Element.ALIGN_CENTER);
@@ -1384,14 +1386,14 @@ public class CReportePDF {
 
             //Tercera Fila
             Phrase contenido10T3 = new Phrase();
-            contenido10T3.add(new Phrase("Documento de Identidad:\n\n", fontSub));
+            contenido10T3.add(new Phrase("Documento de Identidad:\n", fontSub));
             contenido10T3.add(new Phrase(p_oCredito.getCliente().getNroDocCiv(), fontContenido));
             PdfPCell celda10T3 = new PdfPCell(contenido10T3);
             celda10T3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
             //Cuarta Fila
             Phrase contenido14T3 = new Phrase();
-            contenido14T3.add(new Phrase("Dirección:\n\n", fontSub));
+            contenido14T3.add(new Phrase("Dirección:\n", fontSub));
             contenido14T3.add(new Phrase(p_oCredito.getCliente().getDireccion().getDireccion(), fontContenido));
             PdfPCell celda14T3 = new PdfPCell(contenido14T3);
             celda14T3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);

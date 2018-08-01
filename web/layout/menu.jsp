@@ -69,7 +69,6 @@
                         </li>
                         <li><a href="<s:url action="repCLIEstadoCuenta"/>"><i class="fa fa-circle-o"></i> Estado de Cuenta</a></li>
                         <li><a href="<s:url action="repCLIKardex"/>"><i class="fa fa-circle-o"></i> Kardex</a></li>
-                        <li><a href="<s:url action="repCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
                     </ul>
                 </li>
             </ul>
