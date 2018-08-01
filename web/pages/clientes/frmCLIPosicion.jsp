@@ -76,13 +76,13 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Provincia</label>
-                                                            <s:textfield cssClass="form-control" id="tfProvincia" tabindex="1" name="cliente.distrito.provincia.nombre" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfProvincia" tabindex="1" name="cliente.direccion.distrito.provincia.nombre" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Distrito</label>
-                                                            <s:textfield cssClass="form-control" id="tfDistrito" tabindex="1" name="cliente.distrito.nombre" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfDistrito" tabindex="1" name="cliente.direccion.distrito.nombre" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -203,6 +203,7 @@
                                 </s:form>      
                             </div>
                         </div>
+                    </div>
                 </section>
             </div>
         </div>

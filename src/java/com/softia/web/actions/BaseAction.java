@@ -21,7 +21,6 @@ public class BaseAction extends ActionSupport{
     private String advertencia;
     protected Map session;
     private String url = "jdbc:postgresql://45.56.126.57:5432/ENEL";    
-    
     protected boolean validaSession() {
         Map loMap = ActionContext.getContext().getSession();
         return !loMap.isEmpty();
