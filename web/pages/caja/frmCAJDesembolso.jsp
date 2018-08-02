@@ -7,35 +7,33 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <s:if test="mensaje.length() != 0">
-                            <div class="alert alert-success">
-                                <div class="glyphicon glyphicon-ok"></div>
-                                <div><strong>¡Correcto!</strong> <s:property value="mensaje"/> </div>
-                            </div>
-                        </s:if>
-                        <s:if test="informacion.length() != 0">
-                            <div class="alert alert-info">
-                                <div class="glyphicon glyphicon-info-sign"></div>
-                                <div><strong>Información</strong> <s:property value="informacion"/> </div>
-                            </div>
-                        </s:if>
-                        <s:if test="advertencia.length() != 0">
-                            <div class="alert alert-warning">
-                                <div class="glyphicon glyphicon-exclamation-sign"></div>
-                                <div><strong>¡Advertencia!</strong> <s:property value="advertencia"/> </div>
-                            </div>
-                        </s:if>
-                        <s:if test="error.length() != 0">
-                            <div class="alert alert-danger">
-                                <div class="glyphicon glyphicon-exclamation-sign"></div>
-                                <div><s:property value="error"/></div>
-                            </div>
-                        </s:if>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <s:if test="mensaje.length() != 0">
+                                <div class="alert alert-success">
+                                    <div><span class="glyphicon glyphicon-ok"></span><strong> ¡Correcto!</strong> <s:property value="mensaje"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="informacion.length() != 0">
+                                <div class="alert alert-info">
+                                    <div><span class="glyphicon glyphicon-info-sign"></span><strong> Información</strong> <span id="info"><s:property value="informacion"/></span> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="advertencia.length() != 0">
+                                <div class="alert alert-warning">
+                                    <div><span class="glyphicon glyphicon-exclamation-sign"></span><strong> ¡Advertencia!</strong> <s:property value="advertencia"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="error.length() != 0">
+                                <div class="alert alert-danger">
+                                    <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
+                                </div>
+                            </s:if>
+                        </div>
                     </div>
                 </div>
-                <s:form action="cajaDesembolso" role="form">
+                <s:form action="frmCAJDesembolso" role="form">
                     <section class="content-header">
                         <h1>Desembolso</h1>
                     </section>
@@ -55,7 +53,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield name="cliente.nroCredito" cssClass="form-control"/>
+                                                            <s:textfield name="credito.codCta" id="tfCodCre" tabindex="1" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -78,12 +76,12 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield name="cliente.NroCod" cssClass="form-control"/>
+                                                            <s:textfield name="credito.cliente.codCli" id="tfCodCli" tabindex="2" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
+                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="3" name="credito.cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,7 +93,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield name="cliente.nroDoc" cssClass="form-control"/>
+                                                            <s:textfield name="credito.cliente.nroDocCiv" id="tfcodciv" tabindex="4" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -114,38 +112,31 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Desembolso:</label>
-                                                            <s:textfield name="desembolso" cssClass="form-control"/>
+                                                            <s:textfield id="tfMonSol" tabindex="5" name="credito.capSol" readonly="true" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Interés:</label>
-                                                            <s:textfield name="interes" cssClass="form-control"/>
+                                                            <s:textfield id="tfTasa" tabindex="6" name="credito.interes" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Otros:</label>
-                                                            <s:textfield name="otros" cssClass="form-control"/>
+                                                            <s:textfield id="tfOtros" tabindex="7" value="0.00" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Neto:</label>
-                                                            <s:textfield name="neto" cssClass="form-control"/>
+                                                            <s:textfield id="tfNeto" tabindex="8"  cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>I.T.F.:</label>
-                                                            <s:textfield name="itf" cssClass="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <label>Tipo Desembolso:</label>
-                                                            <s:textfield name="tipoDesembolso" cssClass="form-control"/>
-                                                            <%--<s:select name="" tabindex="1" listKey="" headerKey="1" headerValue="-- Seleccione --" cssClass="form-control" list="#@java.util.LinkedHashMap@{'01':'Opcion1','02':'Opcion2','03':'Opcion3'}"/>--%>
+                                                            <s:textfield id="tfItf" tabindex="9" name="credito.ITF" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -155,16 +146,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8"></div>
-                                    <div class="col-md-4">
-                                        <s:submit value="Aplicar" name="aplicar" cssClass="btn btn-lg btn-primary" />
-                                        <s:submit value="Grabar" name="grabar" cssClass="btn btn-lg btn-primary" />
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscar" onclick="frmNombre()">Buscar</button>
+                                    <div class="col-md-3">
+                                        <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                        <s:submit value="Grabar" name="grabar" cssClass="btn btn-primary btn-flat" />
+                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                </div>
-            </section>
-        </s:form>
-    </div>
+                        </div>  
+                                        <s:hidden name="credito.codigo"></s:hidden>
+                    </section>
+                </s:form>
+            </div>
+        </div>
+    </body>
 </html>
