@@ -45,14 +45,12 @@
                 <strong><p class="login-box-msg">INICIO DE SESIÓN</p></strong>
                 <s:if test="error.length() != 0">
                     <div class="alert alert-danger">
-                        <div class="glyphicon glyphicon-exclamation-sign"></div>
-                        <div><s:property value="error"/></div>
+                        <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
                     </div>
                 </s:if>
                 <s:if test="mensaje.length() != 0">
                     <div class="alert alert-success">
-                        <div class="glyphicon glyphicon-ok"></div>
-                        <div><strong>¡Éxito!</strong><s:property value="nomUsu"/> <s:property value="mensaje"/></div>
+                        <div><span class="glyphicon glyphicon-ok"></span><strong> ¡Éxito!</strong><s:property value="nomUsu"/> <s:property value="mensaje"/></div>
                     </div>
                 </s:if>
                 <div id="form-olvidado">
