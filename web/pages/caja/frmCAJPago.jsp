@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+<%@include file="../creditos/modCREBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -34,7 +35,7 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="cajaPago" role="form">
+                <s:form action="frmCAJPago" role="form">
                     <section class="content-header">
                         <h1>Pago</h1>
                     </section>
@@ -57,7 +58,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield name="cliente.nroCredito" cssClass="form-control"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -69,17 +70,17 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield name="cliente.nroCod" cssClass="form-control"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
+                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="3" name="credito.cliente.nomCom" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield name="" cssClass="form-control"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv"  tabindex="4"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -98,43 +99,43 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Capital:</label>
-                                                            <s:textfield name="saldoCapital" cssClass="form-control"/>
+                                                            <s:textfield cssClass="form-control" id="tfCapital" tabindex="5" name="credito.capSol" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Interés:</label>
-                                                            <s:textfield name="saldoInteres" cssClass="form-control"/>
+                                                            <s:textfield name="tfInteres" tabindex="6" name="credito.interes" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Comisiones:</label>
-                                                            <s:textfield name="saldoComisiones" cssClass="form-control"/>
+                                                            <s:textfield name="tfComisiones" tabindex="7" name="credito.comision" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Total:</label>
-                                                            <s:textfield name="saldoTotal" cssClass="form-control"/>
+                                                            <s:textfield name="tfTotal" tabindex="8" name="credito.monTot" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label>Cuota:</label>
-                                                            <s:textfield name="saldoCuota" cssClass="form-control"/>
+                                                            <s:textfield name="tfCuota" tabindex="9" name="credito.cuota" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label>Mora:</label>
-                                                            <s:textfield name="saldoMora" cssClass="form-control"/>
+                                                            <s:textfield name="tfMora" tabindex="10" name="credito.morPag" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Cuota Ref.:</label>
-                                                            <s:textfield name="saldoCuotaRef" cssClass="form-control"/>
+                                                            <s:textfield name="tfCuotaRef" tabindex="11" name="credito.cuotas" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,7 +159,7 @@
                                                         </div>
                                                         <div class="col-md-10">
                                                             <div class="form-group">
-                                                                <s:textfield name="deudaCapital" cssClass="form-control"/>
+                                                                <s:textfield name="tfCapitalPendiente" tabindex="12" name="credito.salCap" cssClass="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
@@ -168,7 +169,7 @@
                                                         </div>
                                                         <div class="col-md-10">
                                                             <div class="form-group">
-                                                                <s:textfield name="deudaInteres" cssClass="form-control"/>
+                                                                <s:textfield name="deudaInteres" tabindex="13" cssClass="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
@@ -178,7 +179,7 @@
                                                         </div>
                                                         <div class="col-md-10">
                                                             <div class="form-group">
-                                                                <s:textfield name="deudaMora" cssClass="form-control"/>
+                                                                <s:textfield name="deudaMora" tabindex="14" cssClass="form-control"/>
                                                             </div>
                                                         </div>
 
@@ -189,7 +190,7 @@
                                                         </div>
                                                         <div class="col-md-10">
                                                             <div class="form-group">
-                                                                <s:textfield name="deudaGastos" cssClass="form-control"/>
+                                                                <s:textfield name="deudaGastos" tabindex="15" cssClass="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -201,7 +202,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
-                                                                <s:textfield name="deudaItf" cssClass="form-control"/>
+                                                                <s:textfield name="tfdeudaItf" tabindex="16" name="credito.ITF" cssClass="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -211,7 +212,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
-                                                                <s:textfield name="deudaNeta" cssClass="form-control"/>
+                                                                <s:textfield name="deudaNeta" tabindex="17" cssClass="form-control"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -221,7 +222,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
-                                                                <s:textfield name="deudaMontoPago" cssClass="form-control"/>
+                                                                <s:textfield name="tfdeudaMontoPago" tabindex="18" name="credito.morPag" cssClass="form-control"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -233,12 +234,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit value="Aplicar" name="aplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit value="Grabar" name="grabar" cssClass="btn btn-primary btn-flat" />
                                             <input type="button" id="retiroCaja_buscar" name="buscar" value="Consultar" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#busquedaRegistros">
                                             <s:submit value="Deposito" name="deposito" cssClass="btn btn-primary btn-flat" />
                                             <s:submit value="Cancelar" name="cancelar" cssClass="btn btn-primary btn-flat" />
-                                            <input type="button" id="retiroCaja_buscar" name="buscar" value="Buscar" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#busquedaRegistros">
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                         </div>
 
                                     </div>

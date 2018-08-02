@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@include file="modCREBuscar.jsp" %>
-<%@include file="../clientes/modCLIBuscarDatos.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
@@ -121,10 +120,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" onclick="frmNombre()">Buscar</button>                              
-                                        <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
-                                        
-                                        <div style="float: right">
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
+                                        </div>                                        
+                                        <div class="col-md-2">
+                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                        </div>                                        
+                                        <div class="col-md-2">
                                             <s:submit name="solicitud" value="Solicitud" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="contrato" value="Contrato" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="autorizacion" value="Autorización" cssClass="btn btn-primary btn-flat" />
@@ -139,10 +141,5 @@
                 </section>
             </div>
         </div>
-        <script>
-            function frmNombre() {
-                document.getElementById("fBuscar").setAttribute("action", "frmCREDocumentos");
-            }
-        </script>
     </body>
 </html>
