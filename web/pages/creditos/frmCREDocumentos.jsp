@@ -120,21 +120,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
-                                        </div>                                        
-                                        <div class="col-md-2">
-                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
-                                        </div>                                        
-                                        <div class="col-md-2">
-                                            <s:submit name="solicitud" value="Solicitud" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="contrato" value="Contrato" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="autorizacion" value="Autorización" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="pagare" value="Pagaré" cssClass="btn btn-primary btn-flat" />
+                                        <s:hidden name="credito.codigo"></s:hidden>
+                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
+                                        <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                        
+                                        <div style="float: right">
+                                        <s:submit name="solicitud" value="Solicitud" cssClass="btn btn-primary btn-flat" />
+                                        <s:submit name="contrato" value="Contrato" cssClass="btn btn-primary btn-flat" />
+                                        <s:submit name="autorizacion" value="Autorización" cssClass="btn btn-primary btn-flat" />
+                                        <s:submit name="pagare" value="Pagaré" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>
-                                <s:hidden name="credito.codigo"></s:hidden>
                             </s:form>
                         </div>
                     </div>

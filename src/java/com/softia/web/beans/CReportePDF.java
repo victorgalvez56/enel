@@ -720,8 +720,7 @@ public class CReportePDF {
                     + "Urbanización Maranga, distrito de San Miguel, Provincia y Departamento de Lima, debidamente representada por el"
                     + "funcionario que figura al final de este documento, con poderes inscritos en la partida electrónica 11008737 del Registro Público"
                     + "de Personas Jurídicas de la Oficina Registral de Lima y Callao (en adelante “ENEL DISTRIBUCIÓN PERÚ”), y de la otra parte\n\n", fontContenido));
-            col1.add(new Chunk("___________________________________________________\n\n", fontContenido));
-            col1.add(new Chunk("___________________________________________________\n\n", fontContenido));
+            col1.add(new Chunk(p_oCredito.getCliente().getNombre() + p_oCredito.getCliente().getApePat() + p_oCredito.getCliente().getApeMat() + "\n\n", fontContenido));
             col1.add(new Chunk("cuya identificación y demás generales de ley, figuran al final de este documento (en adelante el “CLIENTE”).\n\n", fontContenido));
             col1.add(new Phrase(Chunk.NEWLINE));
             col1.add(new Chunk("Este Contrato se regirá de acuerdo a lo establecido en las cláusulas siguientes:\n\n", fontContenido));
@@ -1069,7 +1068,7 @@ public class CReportePDF {
             celda1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             celda1.setBorder(PdfPCell.NO_BORDER);
 
-            PdfPCell celda2 = new PdfPCell(new Phrase(p_oCredito.getProduc() + "\n\n\n", fontContenido));
+            PdfPCell celda2 = new PdfPCell(new Phrase(p_oCredito.getProducto().getNombre() + "\n\n\n", fontContenido));
             celda2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
             Phrase contenido3 = new Phrase();
@@ -1116,10 +1115,10 @@ public class CReportePDF {
             celda2T2.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celda3T2 = new PdfPCell(new Phrase("VALOR DE CUOTA", fontSub));
             celda3T2.setHorizontalAlignment(Element.ALIGN_CENTER);
-
-            PdfPCell celda4T2 = new PdfPCell(new Phrase(p_oCredito.getCapSol() + " " + p_oCredito.getMoneda(), fontContenido));
+            
+            PdfPCell celda4T2 = new PdfPCell(new Phrase(p_oCredito.getMonTot() + "", fontContenido));
             celda4T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
-            PdfPCell celda5T2 = new PdfPCell(new Phrase("", fontContenido));
+            PdfPCell celda5T2 = new PdfPCell(new Phrase(p_oCredito.getCuotas() + "", fontContenido));
             celda5T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
             PdfPCell celda6T2 = new PdfPCell(new Phrase("", fontContenido));
             celda6T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
@@ -1139,9 +1138,9 @@ public class CReportePDF {
             loParrafo.add(new Phrase(Chunk.NEWLINE));
             loParrafo.add(new Phrase("Tasa de Interés Compensatoria:", fontSub));
             loParrafo.add(new Phrase(Chunk.NEWLINE));
-            loParrafo.add(new Phrase("TEA: 0.00%", fontContenido));
+            loParrafo.add(new Phrase("TEA: " + p_oCredito.getTasa() + "%", fontContenido));
             loParrafo.add(new Phrase(Chunk.NEWLINE));
-            loParrafo.add(new Phrase("TCEA: 0.00%", fontContenido));
+            loParrafo.add(new Phrase("TCEA: 0.0%", fontContenido));
 
             for (int cont = 0; cont < 4; cont++) {
                 loParrafo.add(new Phrase(Chunk.NEWLINE));
@@ -1256,24 +1255,24 @@ public class CReportePDF {
             loTitulo.setAlignment(Element.ALIGN_CENTER);
 
             //Cuerpo de Tabla principal
-            PdfPCell celda1 = new PdfPCell(new Phrase("Pagaré Nro.\n", fontContenido));
+            PdfPCell celda1 = new PdfPCell(new Phrase("Pagaré Nro.", fontContenido));
             celda1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
-            Phrase contenido2 = new Phrase("", fontContenido);
+            Phrase contenido2 = new Phrase(p_oCredito.getPagare(), fontContenido);
             PdfPCell celda2 = new PdfPCell(contenido2);
             celda2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
-            PdfPCell celda3 = new PdfPCell(new Phrase("Moneda e Importe\n", fontContenido));
+            PdfPCell celda3 = new PdfPCell(new Phrase("Moneda e Importe", fontContenido));
             celda3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
-            Phrase contenido4 = new Phrase(p_oCredito.getCapSol() + " " + p_oCredito.getMoneda(), fontContenido);
+            Phrase contenido4 = new Phrase(p_oCredito.getMonTot() + " " + p_oCredito.getMoneda(), fontContenido);
             PdfPCell celda4 = new PdfPCell(contenido4);
             celda4.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
-            PdfPCell celda5 = new PdfPCell(new Phrase("Lugar y Fecha de Emisión\n", fontContenido));
+            PdfPCell celda5 = new PdfPCell(new Phrase("Lugar y Fecha de Emisión", fontContenido));
             celda5.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
-            Phrase contenido6 = new Phrase("", fontContenido);
+            Phrase contenido6 = new Phrase("Lima, " + LibFunc.getFechaLargaActual(), fontContenido);
             PdfPCell celda6 = new PdfPCell(contenido6);
             celda6.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
@@ -1287,10 +1286,10 @@ public class CReportePDF {
             //SEGUNDA TABLA
             Phrase contenido1T2 = new Phrase();
             contenido1T2.add(new Phrase(Chunk.NEWLINE));
-            contenido1T2.add(new Chunk("Por este Pagaré, yo " + p_oCredito.getCliente().getNomCom() + ", ", fontContenido));
+            contenido1T2.add(new Chunk("Por este Pagaré, yo " + p_oCredito.getCliente().getNombre() + p_oCredito.getCliente().getApePat() + p_oCredito.getCliente().getApeMat() + ", ", fontContenido));
             contenido1T2.add(new Chunk("me comprometo, solidaria e  incondicionalmente, a pagar a la  orden de ENEL DISTRIBUCIÓN ", fontContenido));
-            contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de ____________________________________________________ ", fontContenido));
-            contenido1T2.add(new Chunk("Soles (S/." + p_oCredito.getCapSol() + "), importe correspondiente a la liquidación de las sumas adeudadas a ", fontContenido));
+            contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de " , fontContenido));
+            contenido1T2.add(new Chunk("Soles (S/." + p_oCredito.getMonTot() + "), importe correspondiente a la liquidación de las sumas adeudadas a ", fontContenido));
             contenido1T2.add(new Chunk("ENEL  DISTRIBUCIÓN  PERÚ  S.A.A. y  que  me  obligo a  pagar en la  misma  moneda, en ", fontContenido));
             contenido1T2.add(new Chunk("(domicilio) " + p_oCredito.getCliente().getDireccion().getDireccion() + ".\n\n", fontContenido));
             PdfPCell celda1T2 = new PdfPCell(contenido1T2);
@@ -1299,9 +1298,9 @@ public class CReportePDF {
 
             Phrase contenido2T2 = new Phrase("Queda establecido que si, a la fecha de presentación del presente documento, no cancelo el "
                     + "importe arriba indicado, éste generará un interés compensatorio a razón de una Tasa Efectiva Anual "
-                    + "(TEA) de ______%. Asimismo, si no pagáramos el íntegro del importe adeudado, se aplicará, sin que "
+                    + "(TEA) de " + p_oCredito.getTasa() + "%. Asimismo, si no pagáramos el íntegro del importe adeudado, se aplicará, sin que "
                     + "sea necesario requerimiento ni intimación alguna, un monto por concepto de intereses moratorios a "
-                    + "razón de una Tasa Efectiva Anual (TEA) de ____% sobre el importe no pagado, más las comisiones, "
+                    + "razón de una Tasa Efectiva Anual (TEA) de " + p_oCredito.getTasa() + "% sobre el importe no pagado, más las comisiones, "
                     + "penalidades, gastos notariales y gastos de cobranza judicial o extrajudicial que se devenguen por "
                     + "todo el plazo que pudiera transcurrir hasta la fecha efectiva de pago de la obligación de este Pagaré.\n\n", fontContenido);
             PdfPCell celda2T2 = new PdfPCell(contenido2T2);
