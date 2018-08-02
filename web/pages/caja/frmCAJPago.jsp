@@ -159,7 +159,7 @@
                                                         </div>
                                                         <div class="col-md-10">
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" tabindex="12" id="tfCapitalPendiente" readonly="true"/>
+                                                                <s:textfield cssClass="form-control" tabindex="12" id="tfCapitalPendiente" name="credito.capAtr" readonly="true"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
@@ -212,7 +212,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
-                                                                <s:textfield tabindex="17" cssClass="form-control" readonly="true"/>
+                                                                <s:textfield tabindex="17" cssClass="form-control" id="tfPendienteNeto" name="credito.monAtr" readonly="true"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -222,7 +222,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
-                                                                <s:textfield tabindex="18" cssClass="form-control" readonly="true"/>
+                                                                <s:textfield tabindex="18" cssClass="form-control" name="credito.monPag" id="tfMontoPago" readonly="true"/>
                                                             </div>
                                                         </div>
                                                     </div>
