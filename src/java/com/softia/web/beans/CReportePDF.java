@@ -126,7 +126,6 @@ public class CReportePDF {
             celda5T1.setBorder(PdfPCell.NO_BORDER);
             celda5T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
-
             //Tercera fila
             PdfPCell celda6T1 = new PdfPCell(new Phrase("frmCLIPosicion - " + getUser(), fontContenido));
             celda6T1.setBorder(PdfPCell.BOTTOM);
@@ -376,7 +375,6 @@ public class CReportePDF {
                     FontFactory.HELVETICA, 10, Font.NORMAL,
                     BaseColor.BLACK);
 
-            
             Paragraph loTitulo = new Paragraph();
             Paragraph loEncabezado = new Paragraph();
             Paragraph loCuerpo = new Paragraph();
@@ -694,7 +692,7 @@ public class CReportePDF {
             Font fontTitulos = FontFactory.getFont(
                     FontFactory.HELVETICA, 12, Font.BOLD,
                     BaseColor.BLACK);
-            
+
             Paragraph loTitulo = new Paragraph();
             PdfPTable loTabla = new PdfPTable(3);
             Paragraph col1 = new Paragraph();
@@ -970,7 +968,7 @@ public class CReportePDF {
             clienteText1.go();
             ColumnText clienteText2 = new ColumnText(contentByte);
             clienteText2.setSimpleColumn(260, 100, 700, 115);
-            clienteText2.addElement(new Paragraph("Nombre y Apellidos: " + p_oCredito.getCliente().getNombre() + " " + p_oCredito.getCliente().getApePat() + " " + p_oCredito.getCliente().getApeMat() , fontSub));
+            clienteText2.addElement(new Paragraph("Nombre y Apellidos: " + p_oCredito.getCliente().getNombre() + " " + p_oCredito.getCliente().getApePat() + " " + p_oCredito.getCliente().getApeMat(), fontSub));
             clienteText2.go();
             ColumnText clienteText3 = new ColumnText(contentByte);
             clienteText3.setSimpleColumn(260, 82, 400, 98);
@@ -1010,17 +1008,12 @@ public class CReportePDF {
         loCre.setCredito(getCredito());
         boolean llOk = loCre.mxAplicar();
         if (llOk) {
-            //llOk = loCre.mxAplicar();
+            llOk = mxAutorizacionCobranzaArchivo(loCre.getCredito());
             if (llOk) {
-                llOk = mxAutorizacionCobranzaArchivo(loCre.getCredito());
-                if (llOk) {
-                    setRutaReporte("/ftia/files/cartas/autorizacionCobranza_" + loCre.getCredito().getCodCta() + ".pdf");
-                    LibFunc.mxLog("Autorización de Cobranza OK.");
-                } else {
-                    LibFunc.mxLog("Autorización de Cobranza error: " + getError());
-                }
+                setRutaReporte("/ftia/files/cartas/autorizacionCobranza_" + loCre.getCredito().getCodCta() + ".pdf");
+                LibFunc.mxLog("Autorización de Cobranza OK.");
             } else {
-                setError(loCre.getError());
+                LibFunc.mxLog("Autorización de Cobranza error: " + getError());
             }
         } else {
             setError(loCre.getError());
@@ -1047,7 +1040,7 @@ public class CReportePDF {
             Font fontMensaje = FontFactory.getFont(
                     FontFactory.HELVETICA, 8, Font.NORMAL,
                     BaseColor.BLACK);
-            
+
             Paragraph loTitulo = new Paragraph();
             PdfPTable loTablaCuerpo = new PdfPTable(1);
             PdfPTable loTablaMedia = new PdfPTable(3);
@@ -1115,12 +1108,12 @@ public class CReportePDF {
             celda2T2.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell celda3T2 = new PdfPCell(new Phrase("VALOR DE CUOTA", fontSub));
             celda3T2.setHorizontalAlignment(Element.ALIGN_CENTER);
-            
-            PdfPCell celda4T2 = new PdfPCell(new Phrase(p_oCredito.getMonTot() + "", fontContenido));
+
+            PdfPCell celda4T2 = new PdfPCell(new Phrase(String.valueOf(p_oCredito.getCapSol()), fontContenido));
             celda4T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
-            PdfPCell celda5T2 = new PdfPCell(new Phrase(p_oCredito.getCuotas() + "", fontContenido));
+            PdfPCell celda5T2 = new PdfPCell(new Phrase(String.valueOf(p_oCredito.getCuotas()), fontContenido));
             celda5T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
-            PdfPCell celda6T2 = new PdfPCell(new Phrase("", fontContenido));
+            PdfPCell celda6T2 = new PdfPCell(new Phrase(String.valueOf(p_oCredito.getCuota()), fontContenido));
             celda6T2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
             loTablaMedia.addCell(celda1T2);
@@ -1140,7 +1133,7 @@ public class CReportePDF {
             loParrafo.add(new Phrase(Chunk.NEWLINE));
             loParrafo.add(new Phrase("TEA: " + p_oCredito.getTasa() + "%", fontContenido));
             loParrafo.add(new Phrase(Chunk.NEWLINE));
-            loParrafo.add(new Phrase("TCEA: 0.0%", fontContenido));
+            loParrafo.add(new Phrase("TCEA: " + p_oCredito.getTCEA() + "%", fontContenido));
 
             for (int cont = 0; cont < 4; cont++) {
                 loParrafo.add(new Phrase(Chunk.NEWLINE));
@@ -1288,7 +1281,7 @@ public class CReportePDF {
             contenido1T2.add(new Phrase(Chunk.NEWLINE));
             contenido1T2.add(new Chunk("Por este Pagaré, yo " + p_oCredito.getCliente().getNombre() + p_oCredito.getCliente().getApePat() + p_oCredito.getCliente().getApeMat() + ", ", fontContenido));
             contenido1T2.add(new Chunk("me comprometo, solidaria e  incondicionalmente, a pagar a la  orden de ENEL DISTRIBUCIÓN ", fontContenido));
-            contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de " , fontContenido));
+            contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de ", fontContenido));
             contenido1T2.add(new Chunk("Soles (S/." + p_oCredito.getMonTot() + "), importe correspondiente a la liquidación de las sumas adeudadas a ", fontContenido));
             contenido1T2.add(new Chunk("ENEL  DISTRIBUCIÓN  PERÚ  S.A.A. y  que  me  obligo a  pagar en la  misma  moneda, en ", fontContenido));
             contenido1T2.add(new Chunk("(domicilio) " + p_oCredito.getCliente().getDireccion().getDireccion() + ".\n\n", fontContenido));
@@ -1964,7 +1957,7 @@ public class CReportePDF {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     /**
      * @return the cliente
      */

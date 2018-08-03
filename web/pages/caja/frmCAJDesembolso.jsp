@@ -3,7 +3,7 @@
 <%@include file="../creditos/modCREBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -124,13 +124,13 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Otros:</label>
-                                                            <s:textfield id="tfOtros" tabindex="7" value="0.00" cssClass="form-control" readonly="true"/>
+                                                            <s:textfield id="tfOtros" tabindex="7" name="credito.otros" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Neto:</label>
-                                                            <s:textfield id="tfNeto" tabindex="8"  cssClass="form-control" readonly="true"/>
+                                                            <s:textfield id="tfNeto" tabindex="8" name="credito.neto" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -154,7 +154,7 @@
                                 </div>
                             </div>
                         </div>  
-                                        <s:hidden name="credito.codigo"></s:hidden>
+                        <s:hidden name="credito.codigo"></s:hidden>
                     </section>
                 </s:form>
             </div>

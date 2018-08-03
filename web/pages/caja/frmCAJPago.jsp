@@ -3,7 +3,7 @@
 <%@include file="../creditos/modCREBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">

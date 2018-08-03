@@ -955,10 +955,11 @@ public class MenuAction extends BaseAction {
             loCredito.setPasswd(pass);
             loCredito.setCredito(getCredito());
             try {
-                boolean llOk = loCredito.mxAplicar();
+                boolean llOk = loCredito.mxAplicar();                
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
+                    loCredito.getCredito().setNeto(loCredito.getCredito().getCapSol()-loCredito.getCredito().getInteres()-loCredito.getCredito().getOtros());
                     setCredito(loCredito.getCredito());
                 }
             } catch (SQLException | ParseException loErr) {
