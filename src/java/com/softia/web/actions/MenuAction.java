@@ -955,11 +955,28 @@ public class MenuAction extends BaseAction {
             loCredito.setPasswd(pass);
             loCredito.setCredito(getCredito());
             try {
-                boolean llOk = loCredito.mxAplicar();
+                boolean llOk = loCredito.mxAplicar();                
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
+                    loCredito.getCredito().setNeto(loCredito.getCredito().getCapSol()-loCredito.getCredito().getInteres()-loCredito.getCredito().getOtros());
                     setCredito(loCredito.getCredito());
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        }else if (request.getParameter("grabar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxGrabar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setMensaje(loCredito.getMensaje());
                 }
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
@@ -1056,7 +1073,23 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        }
+        } else if (request.getParameter("grabar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxGrabar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setMensaje(loCredito.getMensaje());
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        } 
         return getResult();
     }
 
