@@ -1115,6 +1115,11 @@ public class MenuAction extends BaseAction {
         setResult("repCLIEstadoCuenta");
         return getResult();
     }
+    
+    public String repCLICalendarioPagos() {
+        setResult("repCLICalendarioPagos");
+        return getResult();
+    }
 
     public String generarCarteraXLS() {
         if (!validaSession()) {
@@ -1337,6 +1342,36 @@ public class MenuAction extends BaseAction {
             setError(loErr.getMessage());
         }
         return repCLIEstadoCuenta();
+    }
+    
+    public String IMPCalendarioPagosPDF() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CReportePDF loRep = new CReportePDF();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        try {
+            boolean llOk = loRep.mxCalendarioPagos();
+            if (!llOk) {
+                setError(loRep.getError());
+            } else {
+                File file = new File(loRep.getRutaReporte());
+                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                //las FileUtils de Apache son dependencia de Struts 2
+                FileUtils.writeByteArrayToFile(file, archivo);
+                HttpServletResponse response = ServletActionContext.getResponse();
+                response.setContentLength(archivo.length);
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename=\"calendarioPagos_" + LibFunc.getFechaActual() + ".pdf\"");
+                ServletOutputStream out = response.getOutputStream();
+                out.write(archivo);
+                out.flush();
+            }
+        } catch (IOException loErr) {
+            setError(loErr.getMessage());
+        }
+        return repCLICalendarioPagos();
     }
 
     public String imprimirPDF() {

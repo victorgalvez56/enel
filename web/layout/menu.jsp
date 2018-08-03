@@ -69,6 +69,7 @@
                         </li>
                         <li><a href="<s:url action="repCLIEstadoCuenta"/>"><i class="fa fa-circle-o"></i> Estado de Cuenta</a></li>
                         <li><a href="<s:url action="repCLIKardex"/>"><i class="fa fa-circle-o"></i> Kardex</a></li>
+                        <li><a href="<s:url action="repCLICalendarioPagos"/>"><i class="fa fa-circle-o"></i> Calendario</a></li>
                     </ul>
                 </li>
             </ul>
