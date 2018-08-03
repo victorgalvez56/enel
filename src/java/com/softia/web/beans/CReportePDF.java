@@ -718,7 +718,7 @@ public class CReportePDF {
                     + "Urbanización Maranga, distrito de San Miguel, Provincia y Departamento de Lima, debidamente representada por el"
                     + "funcionario que figura al final de este documento, con poderes inscritos en la partida electrónica 11008737 del Registro Público"
                     + "de Personas Jurídicas de la Oficina Registral de Lima y Callao (en adelante “ENEL DISTRIBUCIÓN PERÚ”), y de la otra parte\n\n", fontContenido));
-            col1.add(new Chunk(p_oCredito.getCliente().getNombre() + p_oCredito.getCliente().getApePat() + p_oCredito.getCliente().getApeMat() + "\n\n", fontContenido));
+            col1.add(new Chunk(p_oCredito.getCliente().getNomCom() + "\n\n", fontContenido));
             col1.add(new Chunk("cuya identificación y demás generales de ley, figuran al final de este documento (en adelante el “CLIENTE”).\n\n", fontContenido));
             col1.add(new Phrase(Chunk.NEWLINE));
             col1.add(new Chunk("Este Contrato se regirá de acuerdo a lo establecido en las cláusulas siguientes:\n\n", fontContenido));
@@ -1251,14 +1251,14 @@ public class CReportePDF {
             PdfPCell celda1 = new PdfPCell(new Phrase("Pagaré Nro.", fontContenido));
             celda1.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
-            Phrase contenido2 = new Phrase(p_oCredito.getPagare(), fontContenido);
+            Phrase contenido2 = new Phrase(p_oCredito.getCodCta(), fontContenido);
             PdfPCell celda2 = new PdfPCell(contenido2);
             celda2.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
             PdfPCell celda3 = new PdfPCell(new Phrase("Moneda e Importe", fontContenido));
             celda3.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
-            Phrase contenido4 = new Phrase(p_oCredito.getMonTot() + " " + p_oCredito.getMoneda(), fontContenido);
+            Phrase contenido4 = new Phrase();
             PdfPCell celda4 = new PdfPCell(contenido4);
             celda4.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
 
@@ -1279,10 +1279,10 @@ public class CReportePDF {
             //SEGUNDA TABLA
             Phrase contenido1T2 = new Phrase();
             contenido1T2.add(new Phrase(Chunk.NEWLINE));
-            contenido1T2.add(new Chunk("Por este Pagaré, yo " + p_oCredito.getCliente().getNombre() + p_oCredito.getCliente().getApePat() + p_oCredito.getCliente().getApeMat() + ", ", fontContenido));
+            contenido1T2.add(new Chunk("Por este Pagaré, yo " + p_oCredito.getCliente().getNombre() + " " + p_oCredito.getCliente().getApePat() + " " + p_oCredito.getCliente().getApeMat() + ", ", fontContenido));
             contenido1T2.add(new Chunk("me comprometo, solidaria e  incondicionalmente, a pagar a la  orden de ENEL DISTRIBUCIÓN ", fontContenido));
-            contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de ", fontContenido));
-            contenido1T2.add(new Chunk("Soles (S/." + p_oCredito.getMonTot() + "), importe correspondiente a la liquidación de las sumas adeudadas a ", fontContenido));
+            contenido1T2.add(new Chunk("PERÚ S.A.A., la cantidad de ______________________________________________ ", fontContenido));
+            contenido1T2.add(new Chunk("Soles (S/. _______________), importe correspondiente a la liquidación de las sumas adeudadas a ", fontContenido));
             contenido1T2.add(new Chunk("ENEL  DISTRIBUCIÓN  PERÚ  S.A.A. y  que  me  obligo a  pagar en la  misma  moneda, en ", fontContenido));
             contenido1T2.add(new Chunk("(domicilio) " + p_oCredito.getCliente().getDireccion().getDireccion() + ".\n\n", fontContenido));
             PdfPCell celda1T2 = new PdfPCell(contenido1T2);
