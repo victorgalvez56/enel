@@ -42,9 +42,6 @@
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-primary">
-                            <!--                        <div class="box-header with-border">
-                                                        <h3 class="box-title">Aprobación por Comité</h3>
-                                                    </div>-->
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -237,7 +234,6 @@
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit value="Grabar" name="grabar" cssClass="btn btn-primary btn-flat" />
                                             <input type="button" id="retiroCaja_buscar" name="buscar" value="Consultar" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#busquedaRegistros">
-                                            <s:submit value="Deposito" name="deposito" cssClass="btn btn-primary btn-flat" />
                                             <s:submit value="Cancelar" name="cancelar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                         </div>

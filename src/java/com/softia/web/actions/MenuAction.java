@@ -972,7 +972,7 @@ public class MenuAction extends BaseAction {
             loCredito.setPasswd(pass);
             loCredito.setCredito(getCredito());
             try {
-                boolean llOk = loCredito.mxGrabar();
+                boolean llOk = loCredito.mxDesembolsar();
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
