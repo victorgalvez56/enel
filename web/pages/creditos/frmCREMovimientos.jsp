@@ -17,7 +17,7 @@
                             </s:if>
                             <s:if test="informacion.length() != 0">
                                 <div class="alert alert-info">
-                                    <div><span class="glyphicon glyphicon-info-sign"></span><strong> Información</strong> <span id="info"><s:property value="informacion"/></span> </div>
+                                    <div><span class="glyphicon glyphicon-info-sign"></span><<strong> Información</strong> <s:property value="informacion"/> </div>
                                 </div>
                             </s:if>
                             <s:if test="advertencia.length() != 0">
@@ -33,87 +33,111 @@
                         </div>
                     </div>
                 </div>
-                <!-- Content Header (Page header) -->
+                <!-- Content header -->
                 <section class="content-header">
-                    <h1>Impresión de Documento</h1>
+                    <h1>Consulta de Movimientos</h1>
                 </section>
                 <!-- Main content -->
                 <section class="content">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <s:form action="frmCREDocumentos" role="form">
+                            <s:form action="frmCREMovimientos" role="form">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="box box-primary box-solid">
                                             <div class="box-body">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="control-label">Crédito:</label>
+                                                            <label>Crédito:</label>
+                                                            <s:textfield cssClass="form-control" name="credito.codCta" id="tfCodCre" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" />
+                                                            <label>Código de Cliente:</label>
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Cliente:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli"/>
+                                                            <label>Nombre:</label>
+                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="3" name="credito.cliente.nomCom" readonly="true"/><br>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nombre:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-11">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="3" name="credito.cliente.nomCom" readonly="true"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Dirección:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-11">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfDireccion" tabindex="4" name="credito.cliente.direccion.direccion" readonly="true"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label class="control-label">D.N.I.:</label>
+                                                            <label>Fecha:</label>
+                                                            <s:textfield type="date" cssClass="form-control" name="" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv"  readonly="true" tabindex="5"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Desembolso:</label>
+                                                            <label>Tipo de Crédito:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonto" tabindex="6" name="credito.capSol"  readonly="true" />
+                                                            <label>Moneda:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
                                                         </div>
                                                     </div>
-                                                </div>                                            
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Tasa:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Clasificación:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Modalidad:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Estado:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Situación:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Abogado:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Analista:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Convenio:</label>
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -121,14 +145,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <s:hidden name="credito.codigo"></s:hidden>
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                         <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                         
                                         <div style="float: right">
-                                            <s:submit name="solicitud" value="Solicitud" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="contrato" value="Contrato" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="autorizacion" value="Autorización" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="pagare" value="Pagaré" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="kardex" value="Kardex" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="estadoCuenta" value="Estado de Cuenta" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>
@@ -138,5 +160,10 @@
                 </section>
             </div>
         </div>
+        <script>
+            function frmNombre() {
+                document.getElementById("fBuscar").setAttribute("action", "frmCREMovimientos");
+            }
+        </script>
     </body>
 </html>
