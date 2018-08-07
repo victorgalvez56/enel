@@ -68,7 +68,6 @@
                             <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
                             </ul>
                         </li>
-                        <li><a href="<s:url action="repCLICalendarioPagos"/>"><i class="fa fa-circle-o"></i> Calendario</a></li>
                     </ul>
                 </li>
             </ul>

@@ -382,6 +382,22 @@ public class MenuAction extends BaseAction {
                 } catch (IOException | SQLException loErr) {
                     setError(loErr.getMessage());
                 }
+            } else if (request.getParameter("ver") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                loCredito.setCredito(getCredito());
+                try {
+                    boolean llOk = loCredito.mxAplicar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
             }
             setResult("frmCLIPosicion");
         }
@@ -865,6 +881,32 @@ public class MenuAction extends BaseAction {
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
                     response.setHeader("Content-Disposition", "attachment; filename=\"pagareIncompleto_" + getCredito().getCliente().getCodCli() + ".pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("calendarioPagos") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+                loRep.setCredito(getCredito());
+                loRep.setUrl(getUrl());
+                loRep.setUser(user);
+                loRep.setPasswd(pass);
+                boolean llOk = loRep.mxCalendarioPagos();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"calendarioPagos_" + getCredito().getCodCta() + ".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1431,36 +1473,6 @@ public class MenuAction extends BaseAction {
             setError(loErr.getMessage());
         }
         return frmREPCREMora();
-    }
-    
-    public String IMPCalendarioPagosPDF() {
-        if (!validaSession()) {
-            return "login";
-        }
-        setSession(ActionContext.getContext().getSession());
-        CReportePDF loRep = new CReportePDF();
-        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
-        try {
-            boolean llOk = loRep.mxCalendarioPagos();
-            if (!llOk) {
-                setError(loRep.getError());
-            } else {
-                File file = new File(loRep.getRutaReporte());
-                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
-                //las FileUtils de Apache son dependencia de Struts 2
-                FileUtils.writeByteArrayToFile(file, archivo);
-                HttpServletResponse response = ServletActionContext.getResponse();
-                response.setContentLength(archivo.length);
-                response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename=\"calendarioPagos_" + LibFunc.getFechaActual() + ".pdf\"");
-                ServletOutputStream out = response.getOutputStream();
-                out.write(archivo);
-                out.flush();
-            }
-        } catch (IOException loErr) {
-            setError(loErr.getMessage());
-        }
-        return repCLICalendarioPagos();
     }
 
     public String imprimirPDF() {

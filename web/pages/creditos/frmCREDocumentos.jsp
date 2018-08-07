@@ -129,6 +129,7 @@
                                             <s:submit name="contrato" value="Contrato" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="autorizacion" value="Autorización" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="pagare" value="Pagaré" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="calendarioPagos" value="Calendario de Pagos" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

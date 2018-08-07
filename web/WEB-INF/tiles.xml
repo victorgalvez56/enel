@@ -75,11 +75,6 @@
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRESolicitud.jsp"/>
     </definition>
     
-    <definition name="repCLICalendarioPagos" extends="baseLayout">
-        <put-attribute name="title"  value="Calendario de Pagos - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/repCLICalendarioPagos.jsp"/>
-    </definition>
-    
     <definition name="frmSISCargarUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Cargar Usuarios - FINANSOFT"/>
         <put-attribute name="body"   value="/usuarios/frmSISCargarUsuarios.jsp"/>

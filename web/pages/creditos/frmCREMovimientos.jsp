@@ -82,13 +82,13 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Moneda:</label>
-                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="credito.moneda" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Tasa:</label>
-                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="credito.tasa" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -128,7 +128,7 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Analista:</label>
-                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="credito.nomAna" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">

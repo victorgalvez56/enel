@@ -173,8 +173,8 @@
                                                                                         <td><s:property value="cuota" /></td>
                                                                                         <td><s:property value="plazo" /></td>
                                                                                         <td><s:property value="pdm" /></td>
-                                                                                        <s:hidden name="credito.codigo"></s:hidden>
-                                                                                        <td><button class="btn btn-success btn-flat btn-sm" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Ver</button></td>
+                                                                                        <s:hidden  value="%{cuenta}" name="credito.codigo"></s:hidden>
+                                                                                        <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
                                                                                     </tr>
                                                                                 </s:iterator>
                                                                             </tbody>
