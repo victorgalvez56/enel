@@ -21,6 +21,7 @@
             <result name="frmCRESolicitud" type="tiles">frmCRESolicitud</result>
             <result name="frmCREAprobacion" type="tiles">frmCREAprobacion</result>
             <result name="frmCREDocumentos" type="tiles">frmCREDocumentos</result>
+            <result name="frmCREMovimientos" type="tiles">frmCREMovimientos</result>
             
             <result name="frmCAJDesembolso" type="tiles">frmCAJDesembolso</result>
             <result name="frmCAJPago" type="tiles">frmCAJPago</result>
@@ -30,10 +31,6 @@
             <result name="frmREPCREDesembolso" type="tiles">frmREPCREDesembolso</result>
             <result name="frmREPCREPago" type="tiles">frmREPCREPago</result>
             <result name="frmREPCRESolicitud" type="tiles">frmREPCRESolicitud</result>
-            
-            <result name="repCLIKardex" type="tiles">repCLIKardex</result>
-            <result name="repCLIEstadoCuenta" type="tiles">repCLIEstadoCuenta</result>
-            <result name="repCLICalendarioPagos" type="tiles">repCLICalendarioPagos</result>
 
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
