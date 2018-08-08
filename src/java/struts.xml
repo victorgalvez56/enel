@@ -33,7 +33,7 @@
             
             <result name="repCLIKardex" type="tiles">repCLIKardex</result>
             <result name="repCLIEstadoCuenta" type="tiles">repCLIEstadoCuenta</result>
-            <result name="repCLIPosicion" type="tiles">repCLIPosicion</result>
+            <result name="repCLICalendarioPagos" type="tiles">repCLICalendarioPagos</result>
 
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>

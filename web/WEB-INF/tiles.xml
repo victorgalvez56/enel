@@ -82,9 +82,9 @@
         <put-attribute name="title"  value="Estado de Cuenta de Saldo - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/clientes/repCLIEstadoCuenta.jsp"/>
     </definition>
-    <definition name="repCLIPosicion" extends="baseLayout">
-        <put-attribute name="title"  value="Posición de Cliente - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIPosicion.jsp"/>
+    <definition name="repCLICalendarioPagos" extends="baseLayout">
+        <put-attribute name="title"  value="Calendario de Pagos - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/clientes/repCLICalendarioPagos.jsp"/>
     </definition>
     
     <definition name="frmSISCargarUsuarios" extends="baseLayout">
