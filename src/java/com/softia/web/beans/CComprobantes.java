@@ -468,6 +468,156 @@ public class CComprobantes {
         return llOk;
     }
     
+    public boolean mxCobranzaBoucher(Cliente p_oCliente) throws IOException {
+        boolean llOk = true;
+        try {
+            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/cobranzaBoucher_" + getCliente().getCodCli() + ".pdf");
+            Document loDoc = new Document(PageSize.A4, -10, -10, 70, 5);
+            PdfWriter writer = PdfWriter.getInstance(loDoc, loArchivo);
+            loDoc.open();
+            Font fontContenido = FontFactory.getFont(
+                    FontFactory.TIMES_ROMAN, 7, Font.NORMAL,
+                    BaseColor.BLACK);
+            Font fontTitulo = FontFactory.getFont(
+                    FontFactory.TIMES_ROMAN, 7, Font.BOLD,
+                    BaseColor.BLACK);
+            PdfPTable loTablaDatos = new PdfPTable(7);
+
+            loTablaDatos.setWidths(new float[]{3, 1, 3, 8, 3, 1, 3});
+
+            //Primera Tabla
+            //Primera fila
+            PdfPCell celda1T1 = new PdfPCell(new Phrase("ENEL", fontTitulo));
+            celda1T1.setBorder(PdfPCell.NO_BORDER);
+            celda1T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            celda1T1.setColspan(3);
+            PdfPCell celda2T1 = new PdfPCell();
+            celda2T1.setBorder(PdfPCell.NO_BORDER);
+            celda2T1.setRowspan(9);
+            PdfPCell celda3T1 = new PdfPCell(new Phrase("ENEL", fontTitulo));
+            celda3T1.setBorder(PdfPCell.NO_BORDER);
+            celda3T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            celda3T1.setColspan(3);
+
+            //Segunda fila
+            PdfPCell celda4T1 = new PdfPCell(new Phrase("PAGO", fontContenido));
+            celda4T1.setBorder(PdfPCell.NO_BORDER);
+            celda4T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda4T1.setColspan(3);
+            PdfPCell celda5T1 = new PdfPCell(new Phrase("PAGO", fontContenido));
+            celda5T1.setBorder(PdfPCell.NO_BORDER);
+            celda5T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda5T1.setColspan(3);
+
+            //Tercera fila
+            PdfPCell celda6T1 = new PdfPCell(new Phrase("Of.: ", fontContenido));
+            celda6T1.setBorder(PdfPCell.NO_BORDER);
+            celda6T1.setColspan(2);
+            celda6T1.setRowspan(2);
+            PdfPCell celda7T1 = new PdfPCell(new Phrase("Fecha: " + LibFunc.getFechaActual(), fontContenido));
+            celda7T1.setBorder(PdfPCell.NO_BORDER);
+            celda7T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            
+            PdfPCell celda8T1 = new PdfPCell(new Phrase("Of.: ", fontContenido));
+            celda8T1.setBorder(PdfPCell.NO_BORDER);
+            celda8T1.setColspan(2);
+            celda8T1.setRowspan(2);
+            PdfPCell celda9T1 = new PdfPCell(new Phrase("Fecha: " + LibFunc.getFechaActual(), fontContenido));
+            celda9T1.setBorder(PdfPCell.NO_BORDER);
+            celda9T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            
+            //Cuarta fila
+            PdfPCell celda10T1 = new PdfPCell(new Phrase("Hora: " + LibFunc.getHoraActual() , fontContenido));
+            celda10T1.setBorder(PdfPCell.NO_BORDER);
+            celda10T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            celda10T1.setFixedHeight(35);
+            
+            PdfPCell celda11T1 = new PdfPCell(new Phrase("Hora: " + LibFunc.getHoraActual() , fontContenido));
+            celda11T1.setBorder(PdfPCell.NO_BORDER);
+            celda11T1.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            celda11T1.setFixedHeight(35);
+            
+            //Cuarta fila
+            PdfPCell celda12T1 = new PdfPCell(new Phrase("Crédito: ", fontContenido));
+            celda12T1.setBorder(PdfPCell.NO_BORDER);
+            celda12T1.setColspan(3);
+            
+            PdfPCell celda13T1 = new PdfPCell(new Phrase("Crédito: ", fontContenido));
+            celda13T1.setBorder(PdfPCell.NO_BORDER);
+            celda13T1.setColspan(3);
+            
+            //Quinta fila
+            PdfPCell celda14T1 = new PdfPCell(new Phrase("Producto: ", fontContenido));
+            celda14T1.setBorder(PdfPCell.NO_BORDER);
+            celda14T1.setColspan(3);
+            
+            PdfPCell celda15T1 = new PdfPCell(new Phrase("Producto: ", fontContenido));
+            celda15T1.setBorder(PdfPCell.NO_BORDER);
+            celda15T1.setColspan(3);
+            
+            //Sexta fila
+            PdfPCell celda16T1 = new PdfPCell(new Phrase("Monto: ", fontContenido));
+            celda16T1.setBorder(PdfPCell.NO_BORDER);
+            celda16T1.setColspan(3);
+            
+            PdfPCell celda17T1 = new PdfPCell(new Phrase("Monto: ", fontContenido));
+            celda17T1.setBorder(PdfPCell.NO_BORDER);
+            celda17T1.setColspan(3);
+            
+            //Octava fila
+            PdfPCell celda18T1 = new PdfPCell(new Phrase("*letras", fontContenido));
+            celda18T1.setBorder(PdfPCell.NO_BORDER);
+            celda18T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda18T1.setColspan(3);
+            celda18T1.setFixedHeight(20);
+            
+            PdfPCell celda19T1 = new PdfPCell(new Phrase("*letras ", fontContenido));
+            celda19T1.setBorder(PdfPCell.NO_BORDER);
+            celda19T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda19T1.setColspan(3);
+            celda19T1.setFixedHeight(20);
+            
+            //Octava fila
+            PdfPCell celda20T1 = new PdfPCell(new Phrase("Caja/Bancos: ", fontContenido));
+            celda20T1.setBorder(PdfPCell.NO_BORDER);
+            celda20T1.setColspan(3);
+            
+            PdfPCell celda21T1 = new PdfPCell(new Phrase("Caja/Bancos: ", fontContenido));
+            celda21T1.setBorder(PdfPCell.NO_BORDER);
+            celda21T1.setColspan(3);
+
+            loTablaDatos.addCell(celda1T1);
+            loTablaDatos.addCell(celda2T1);
+            loTablaDatos.addCell(celda3T1);
+            loTablaDatos.addCell(celda4T1);
+            loTablaDatos.addCell(celda5T1);
+            loTablaDatos.addCell(celda6T1);
+            loTablaDatos.addCell(celda7T1);
+            loTablaDatos.addCell(celda8T1);
+            loTablaDatos.addCell(celda9T1);
+            loTablaDatos.addCell(celda10T1);
+            loTablaDatos.addCell(celda11T1);
+            loTablaDatos.addCell(celda12T1);
+            loTablaDatos.addCell(celda13T1);
+            loTablaDatos.addCell(celda14T1);
+            loTablaDatos.addCell(celda15T1);
+            loTablaDatos.addCell(celda16T1);
+            loTablaDatos.addCell(celda17T1);
+            loTablaDatos.addCell(celda18T1);
+            loTablaDatos.addCell(celda19T1);
+            loTablaDatos.addCell(celda20T1);
+            loTablaDatos.addCell(celda21T1);
+            
+            loDoc.add(loTablaDatos);
+            loDoc.close();
+
+        } catch (FileNotFoundException | DocumentException loErr) {
+            setError(loErr.getMessage());
+            llOk = false;
+        }
+        return llOk;
+    }
+    
     public Cliente getCliente() {
         return cliente;
     }

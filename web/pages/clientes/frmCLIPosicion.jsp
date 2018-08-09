@@ -173,7 +173,7 @@
                                                                                         <td><s:property value="cuota" /></td>
                                                                                         <td><s:property value="plazo" /></td>
                                                                                         <td><s:property value="pdm" /></td>
-                                                                                        <s:hidden  value="%{cuenta}" name="cuenta.cuenta" />
+                                                                                        <td><s:hidden  value="%{cuenta}" name="cuenta.cuenta" /></td>
                                                                                         <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
                                                                                     </tr>
                                                                                 </s:iterator>

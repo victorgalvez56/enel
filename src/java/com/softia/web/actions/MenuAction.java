@@ -386,6 +386,7 @@ public class MenuAction extends BaseAction {
                 }
             } else if (request.getParameter("ver") != null) {
                 cuenta.getCuenta();
+                System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" + cuenta.getCuenta());
                 Credito credito = new Credito();
                 credito.setCodCta(cuenta.getCuenta());
                 
@@ -1185,6 +1186,7 @@ public class MenuAction extends BaseAction {
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
+                    setCredito(loCredito.getCredito());
                     setMensaje(loCredito.getMensaje());
                 }
             } catch (SQLException | ParseException loErr) {
