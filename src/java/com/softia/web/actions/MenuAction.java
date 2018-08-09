@@ -13,6 +13,7 @@ import com.softia.beans.CProfesiones;
 import com.softia.beans.CTabla;
 import com.softia.beans.CUsuarios;
 import com.softia.models.Cliente;
+import com.softia.models.Cuenta;
 import com.softia.models.Cobranza;
 import com.softia.models.Condicion;
 import com.softia.models.ConfigCobranza;
@@ -54,6 +55,7 @@ public class MenuAction extends BaseAction {
     private Usuario usuario;
     private String result;
     private Cliente cliente;
+    private Cuenta cuenta;
     private List<Tabla> lstEstados;
     private List<Tabla> lstSexos;
     private List<Tabla> lstTipDocCiv;
@@ -383,11 +385,15 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("ver") != null) {
+                cuenta.getCuenta();
+                Credito credito = new Credito();
+                credito.setCodCta(cuenta.getCuenta());
+                
                 CCreditos loCredito = new CCreditos();
                 loCredito.setUrl(getUrl());
                 loCredito.setUser(user);
                 loCredito.setPasswd(pass);
-                loCredito.setCredito(getCredito());
+                loCredito.setCredito(credito);
                 try {
                     boolean llOk = loCredito.mxAplicar();
                     if (!llOk) {
@@ -398,6 +404,7 @@ public class MenuAction extends BaseAction {
                 } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
                 }
+                return frmCREMovimientos();
             }
             setResult("frmCLIPosicion");
         }
@@ -1171,6 +1178,7 @@ public class MenuAction extends BaseAction {
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
             loCredito.setPasswd(pass);
+            loCredito.setIp(getIp());
             loCredito.setCredito(getCredito());
             try {
                 boolean llOk = loCredito.mxDesembolsar();
@@ -3293,5 +3301,18 @@ public class MenuAction extends BaseAction {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+    
+    /**
+     * @return the cliente
+     */
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
 
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
 }
