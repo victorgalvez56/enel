@@ -29,30 +29,37 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Fecha</th>
-                                        <th>Tipo</th>
-                                        <th>Capital</th>
-                                        <th>Interes</th>
-                                        <th>Cuota</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="credito.planPagos" status="rowStatus">
+                            <div class="row">
+                                <table class="table">
+                                    <thead>
                                         <tr>
-                                            <th><s:property value="numero" /></th>
-                                            <td><s:property value="fecha" /></td>                                            
-                                            <td><s:property value="tipo" /></td>
-                                            <td><s:property value="capital" /></td>
-                                            <td><s:property value="interes" /></td>
-                                            <td><s:property value="cuota" /></td>                                            
+                                            <th>#</th>
+                                            <th>Fecha</th>
+                                            <th>Tipo</th>
+                                            <th>Capital</th>
+                                            <th>Interes</th>
+                                            <th>Cuota</th>
                                         </tr>
-                                    </s:iterator>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <s:iterator value="credito.planPagos" status="rowStatus">
+                                            <tr>
+                                                <th><s:property value="numero" /></th>
+                                                <td><s:property value="fecha" /></td>                                            
+                                                <td><s:property value="tipo" /></td>
+                                                <td><s:property value="capital" /></td>
+                                                <td><s:property value="interes" /></td>
+                                                <td><s:property value="cuota" /></td>                                            
+                                            </tr>
+                                        </s:iterator>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" align="right">
+                                    <button class="btn btn-primary btn-flat btn-sm" type="button" onclick="">Imprimir</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
