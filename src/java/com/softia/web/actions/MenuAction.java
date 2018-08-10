@@ -966,21 +966,7 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }else if (request.getParameter("grabar") != null) {
-            CCreditos loCredito = new CCreditos();
-            loCredito.setUrl(getUrl());
-            loCredito.setUser(user);
-            loCredito.setPasswd(pass);
-            loCredito.setCredito(getCredito());
-            try {
-                boolean llOk = loCredito.mxGrabar();
-                if (!llOk) {
-                    setError(loCredito.getError());
-                } else {
-                    setMensaje(loCredito.getMensaje());
-                }
-            } catch (SQLException | ParseException loErr) {
-                setError(loErr.getMessage());
-            }
+            //mxgrabar desembolso
         }
         return getResult();
     }
@@ -1074,21 +1060,7 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         } else if (request.getParameter("grabar") != null) {
-            CCreditos loCredito = new CCreditos();
-            loCredito.setUrl(getUrl());
-            loCredito.setUser(user);
-            loCredito.setPasswd(pass);
-            loCredito.setCredito(getCredito());
-            try {
-                boolean llOk = loCredito.mxGrabar();
-                if (!llOk) {
-                    setError(loCredito.getError());
-                } else {
-                    setMensaje(loCredito.getMensaje());
-                }
-            } catch (SQLException | ParseException loErr) {
-                setError(loErr.getMessage());
-            }
+            //mxPago
         } 
         return getResult();
     }

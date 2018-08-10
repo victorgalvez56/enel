@@ -222,7 +222,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
-                                                                <s:textfield tabindex="18" cssClass="form-control" name="credito.monPag" id="tfMontoPago" readonly="true"/>
+                                                                <s:textfield tabindex="18" cssClass="form-control" name="credito.monPag" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -237,7 +237,6 @@
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit value="Grabar" name="grabar" cssClass="btn btn-primary btn-flat" />
                                             <input type="button" id="retiroCaja_buscar" name="buscar" value="Consultar" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#busquedaRegistros">
-                                            <s:submit value="Deposito" name="deposito" cssClass="btn btn-primary btn-flat" />
                                             <s:submit value="Cancelar" name="cancelar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                         </div>
