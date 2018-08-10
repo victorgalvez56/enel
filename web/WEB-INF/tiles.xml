@@ -31,22 +31,23 @@
         <put-attribute name="title"  value="Solicitud de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCRESolicitud.jsp"/>
     </definition>
-    
     <definition name="frmCREAprobacion" extends="baseLayout">
-        <put-attribute name="title"  value="Aprobacion de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="title"  value="Aprobación de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREAprobacion.jsp"/>
     </definition>
-    
     <definition name="frmCREDocumentos" extends="baseLayout">
-        <put-attribute name="title"  value="IMpresion de documentos de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="title"  value="Impresión de documentos de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREDocumentos.jsp"/>
+    </definition>
+    <definition name="frmCREMovimientos" extends="baseLayout">
+        <put-attribute name="title"  value="Consulta de movimientos - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMovimientos.jsp"/>
     </definition>
     
     <definition name="frmCAJDesembolso" extends="baseLayout">
         <put-attribute name="title"  value="Desembolso de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/caja/frmCAJDesembolso.jsp"/>
     </definition>
-    
     <definition name="frmCAJPago" extends="baseLayout">
         <put-attribute name="title"  value="Cobranza de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/caja/frmCAJPago.jsp"/>
@@ -72,19 +73,6 @@
     <definition name="frmREPCRESolicitud" extends="baseLayout">
         <put-attribute name="title"  value="Repore de Solicitud - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRESolicitud.jsp"/>
-    </definition>
-    
-    <definition name="repCLIKardex" extends="baseLayout">
-        <put-attribute name="title"  value="Kardex - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIKardex.jsp"/>
-    </definition>
-    <definition name="repCLIEstadoCuenta" extends="baseLayout">
-        <put-attribute name="title"  value="Estado de Cuenta de Saldo - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIEstadoCuenta.jsp"/>
-    </definition>
-    <definition name="repCLIPosicion" extends="baseLayout">
-        <put-attribute name="title"  value="Posición de Cliente - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/reportes/clientes/repCLIPosicion.jsp"/>
     </definition>
     
     <definition name="frmSISCargarUsuarios" extends="baseLayout">

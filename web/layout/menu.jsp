@@ -30,6 +30,7 @@
                         <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitud</a></li>
                         <li><a href="<s:url action="frmCREAprobacion"/>"><i class="fa fa-circle-o"></i> Aprobación</a></li>
                         <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Documentos</a></li>
+                        <li><a href="<s:url action="frmCREMovimientos"/>"><i class="fa fa-circle-o"></i> Movimientos</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -67,8 +68,6 @@
                             <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
                             </ul>
                         </li>
-                        <li><a href="<s:url action="repCLIEstadoCuenta"/>"><i class="fa fa-circle-o"></i> Estado de Cuenta</a></li>
-                        <li><a href="<s:url action="repCLIKardex"/>"><i class="fa fa-circle-o"></i> Kardex</a></li>
                     </ul>
                 </li>
             </ul>

@@ -16,8 +16,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="alert alert-danger">
-                                        <div class="glyphicon glyphicon-exclamation-sign"></div>
-                                        <div><s:property value="error"/></div>
+                                        <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
                                     </div>
                                 </div>
                             </div>

@@ -145,11 +145,12 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8"></div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-12">
+                                        <div style="float: right">
                                         <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         <s:submit value="Grabar" name="grabar" cssClass="btn btn-primary btn-flat" />
                                         <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

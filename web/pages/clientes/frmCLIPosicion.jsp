@@ -133,75 +133,76 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="box box-primary box-solid">
-                                                <div class="box-body">
-                                                    <div class="nav-tabs-custom" style="box-shadow: 0 0px 0px rgba(0,0,0,0);">
-                                                        <ul class="nav nav-tabs">
-                                                            <li><a href="#creditos" data-toggle="tab">Créditos</a></li>
-                                                        </ul>
-                                                        <div class="tab-content">
-                                                            <!-- /.tab-pane -->
-                                                            <div class="active tab-pane" id="creditos">
-                                                                <div class="col-md-12">
-                                                                    <div class="box box-primary box-solid">
-                                                                        <div class="box-body">
-                                                                            <table class="table">
-                                                                                <thead>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box box-primary box-solid">
+                                            <div class="box-body">
+                                                <div class="nav-tabs-custom" style="box-shadow: 0 0px 0px rgba(0,0,0,0);">
+                                                    <ul class="nav nav-tabs">
+                                                        <li><a href="#creditos" data-toggle="tab">Créditos</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <!-- /.tab-pane -->
+                                                        <div class="active tab-pane" id="creditos">
+                                                            <div class="col-md-12">
+                                                                <div class="box box-primary box-solid">
+                                                                    <div class="box-body">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>#</th>
+                                                                                    <th>Cuenta</th>
+                                                                                    <th>Producto</th>
+                                                                                    <th>Moneda</th>
+                                                                                    <th>Saldo</th>
+                                                                                    <th>Cuota</th>
+                                                                                    <th>Plazo</th>
+                                                                                    <th>PDM</th>
+                                                                                    <th>Ver</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <s:iterator value="cliente.lstCuentas" status="rowStatus">
                                                                                     <tr>
-                                                                                        <th>#</th>
-                                                                                        <th>Cuenta</th>
-                                                                                        <th>Producto</th>
-                                                                                        <th>Moneda</th>
-                                                                                        <th>Saldo</th>
-                                                                                        <th>Cuota</th>
-                                                                                        <th>Plazo</th>
-                                                                                        <th>PDM</th>
-                                                                                        <th>Ver</th>
+                                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
+                                                                                        <td><s:property value="cuenta" /></td>
+                                                                                        <td><s:property value="producto" /></td>
+                                                                                        <td><s:property value="moneda" /></td>
+                                                                                        <td><s:property value="saldo" /></td>
+                                                                                        <td><s:property value="cuota" /></td>
+                                                                                        <td><s:property value="plazo" /></td>
+                                                                                        <td><s:property value="pdm" /></td>
+                                                                                        <td><s:hidden  value="%{cuenta}" name="cuenta.cuenta" /></td>
+                                                                                        <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
                                                                                     </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <s:iterator value="cliente.lstCuentas" status="rowStatus">
-                                                                                        <tr>
-                                                                                            <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                                            <td><s:property value="cuenta" /></td>
-                                                                                            <td><s:property value="producto" /></td>
-                                                                                            <td><s:property value="moneda" /></td>
-                                                                                            <td><s:property value="saldo" /></td>
-                                                                                            <td><s:property value="cuota" /></td>
-                                                                                            <td><s:property value="plazo" /></td>
-                                                                                            <td><s:property value="pdm" /></td>
-                                                                                            <td><button class="btn btn-primary" type="button" onclick="pasarParametro('<s:property value="numSolicitud"/>')">Ver</button></td>
-                                                                                        </tr>
-                                                                                    </s:iterator>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
+                                                                                </s:iterator>
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- /.tab-pane -->
                                                         </div>
-                                                        <!-- /.tab-content -->
+                                                        <!-- /.tab-pane -->
                                                     </div>
+                                                    <!-- /.tab-content -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div style="float: right">
-                                                <s:hidden name="cliente.codigo"></s:hidden>
-                                                <s:submit name="aplicar" value="Aplicar" id="bAplicar" cssClass="btn btn-primary btn-flat" />
-                                                <s:submit name="cancelar" value="Cancelar" cssClass="btn btn-primary btn-flat" />
-                                                <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
-                                                <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="float: right">
+                                            <s:hidden name="cliente.codigo"></s:hidden>
+                                            <s:submit name="aplicar" value="Aplicar" id="bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="cancelar" value="Cancelar" cssClass="btn btn-primary btn-flat" />
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
+                                            <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
-                                </s:form>      
-                            </div>
+                                </div>
+                            </s:form>
                         </div>
                     </div>
                 </section>
