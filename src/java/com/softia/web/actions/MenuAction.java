@@ -699,7 +699,30 @@ public class MenuAction extends BaseAction {
     }
     //SUBMODULO REPORTE MORA
     public String frmCREMntAprobacion() {
-        setResult("frmCREMntAprobacion");
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);            
+        try {
+            //productos de credito
+            setLstTipDocCiv(loTabla.getLstTabla(4));
+            if (getLstTipDocCiv() == null) {
+                setError(loTabla.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            setResult("frmCREMntAprobacion");
+        }
         return getResult();
     }
     //WORKFLOW 
