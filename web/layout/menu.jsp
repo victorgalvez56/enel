@@ -30,8 +30,10 @@
                         <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Nueva Solicitud</a></li>
                         <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Anular Solicitud</a></li>
                         <li><a href="<s:url action="frmCREAprobacion"/>"><i class="fa fa-circle-o"></i> Aprobación de Solicitud</a></li>
+                        <li><a href="<s:url action="frmCREMntAprobacion"/>"><i class="fa fa-circle-o"></i> Mantenedor de Aprobaciones</a></li>
                         <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Documentos</a></li>
                         <li><a href="<s:url action="frmCREMovimientos"/>"><i class="fa fa-circle-o"></i> Movimientos</a></li>
+                        <li><a href="<s:url action="frmREPCREWorkflow"/>"><i class="fa fa-circle-o"></i> WORKFLOW</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

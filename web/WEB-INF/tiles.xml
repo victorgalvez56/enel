@@ -47,6 +47,10 @@
         <put-attribute name="title"  value="Consulta de movimientos - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREMovimientos.jsp"/>
     </definition>
+    <definition name="frmREPCREWorkflow" extends="baseLayout">
+        <put-attribute name="title"  value="WorkFlow de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmREPCREWorkflow.jsp"/>
+    </definition>
     
     <definition name="frmCAJDesembolso" extends="baseLayout">
         <put-attribute name="title"  value="Desembolso de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>

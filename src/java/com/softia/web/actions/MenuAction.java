@@ -702,6 +702,11 @@ public class MenuAction extends BaseAction {
         setResult("frmCREMntAprobacion");
         return getResult();
     }
+    //WORKFLOW 
+    public String frmREPCREWorkflow() {
+        setResult("frmREPCREWorkflow");
+        return getResult();
+    }
     //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
     public String frmCREDocumentos() {
         if (!validaSession()) {
