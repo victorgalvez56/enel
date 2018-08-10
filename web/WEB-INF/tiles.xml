@@ -51,6 +51,10 @@
         <put-attribute name="title"  value="WorkFlow de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmREPCREWorkflow.jsp"/>
     </definition>
+    <definition name="frmADMUsuarios" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenedor de Usuarios - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmADMUsuarios.jsp"/>
+    </definition>
     
     <definition name="frmCAJDesembolso" extends="baseLayout">
         <put-attribute name="title"  value="Desembolso de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>

@@ -34,6 +34,7 @@
                         <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Documentos</a></li>
                         <li><a href="<s:url action="frmCREMovimientos"/>"><i class="fa fa-circle-o"></i> Movimientos</a></li>
                         <li><a href="<s:url action="frmREPCREWorkflow"/>"><i class="fa fa-circle-o"></i> WORKFLOW</a></li>
+                        <li><a href="<s:url action="frmADMUsuarios"/>"><i class="fa fa-circle-o"></i> Mantenedor de Usuarios</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
