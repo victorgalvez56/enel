@@ -38,6 +38,8 @@
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
             
+            <result name="frmCLIMantenedor" type="tiles">frmCLIMantenedor</result>
+            <result name="frmCLINuevoActualizar" type="tiles">frmCLINuevoActualizar</result>
             <result name="frmCLIMantenimiento" type="tiles">frmCLIMantenimiento</result>
             <result name="frmCLIPosicion" type="tiles">frmCLIPosicion</result>
             <result name="frmCLICargarClientes" type="tiles">frmCLICargarClientes</result>
