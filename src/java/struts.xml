@@ -24,6 +24,7 @@
             <result name="frmCREDocumentos" type="tiles">frmCREDocumentos</result>
             <result name="frmCREMovimientos" type="tiles">frmCREMovimientos</result>
             <result name="frmREPCREWorkflow" type="tiles">frmREPCREWorkflow</result>
+            <result name="frmADMUsuarios" type="tiles">frmADMUsuarios</result>
             
             <result name="frmCAJDesembolso" type="tiles">frmCAJDesembolso</result>
             <result name="frmCAJPago" type="tiles">frmCAJPago</result>
