@@ -35,6 +35,10 @@
         <put-attribute name="title"  value="Aprobación de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREAprobacion.jsp"/>
     </definition>
+    <definition name="frmCREMntAprobacion" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenedor de Aprobación de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMntAprobacion.jsp"/>
+    </definition>
     <definition name="frmCREDocumentos" extends="baseLayout">
         <put-attribute name="title"  value="Impresión de documentos de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREDocumentos.jsp"/>

@@ -424,9 +424,19 @@ public class MenuAction extends BaseAction {
         loPro.setUser(user);
         loPro.setPasswd(pass);
         try {
+            //productos de credito
             setLstProductos(loPro.getLstProductos());
             if (getLstProductos() == null) {
                 setError(loPro.getError());
+            }else {
+                    CTabla loTabla = new CTabla();
+                    loTabla.setUrl(getUrl());
+                    loTabla.setUser(user);
+                    loTabla.setPasswd(pass);
+                    setLstTipDocCiv(loTabla.getLstTabla(4));
+                    if (getLstTipDocCiv() == null) {
+                        setError(loTabla.getError());
+                    }
             }
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -687,7 +697,11 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    //SUBMODULO REPORTE MORA
+    public String frmCREMntAprobacion() {
+        setResult("frmCREMntAprobacion");
+        return getResult();
+    }
     //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
     public String frmCREDocumentos() {
         if (!validaSession()) {
