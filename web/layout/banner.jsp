@@ -27,7 +27,6 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <script src='/enel/bower_components/menu/script.js'></script>
         <!-- jQuery 3 -->
         <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
@@ -39,8 +38,7 @@
         <!-- AdminLTE App -->
         <script src="/enel/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
-        <script src="js/buscar.js"></script>
+        <script src="/enel/js/buscar.js"></script>
         <script>
             $(function() {
                 var url = window.location.href.substr(window.location.href.lastIndexOf("/") + 1);
@@ -172,21 +170,6 @@
                                     <small>Miembro desde Nov. 2017</small>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-                            <!--                        <li class="user-body">
-                                                        <div class="row">
-                                                            <div class="col-xs-4 text-center">
-                                                                <a href="#">Followers</a>
-                                                            </div>
-                                                            <div class="col-xs-4 text-center">
-                                                                <a href="#">Sales</a>
-                                                            </div>
-                                                            <div class="col-xs-4 text-center">
-                                                                <a href="#">Friends</a>
-                                                            </div>
-                                                        </div>
-
-                                                    </li>-->
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
@@ -198,10 +181,6 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <!-- <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                    </li>-->
                 </ul>
             </div>
         </nav>

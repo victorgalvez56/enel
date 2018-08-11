@@ -98,6 +98,10 @@
         <put-attribute name="body"   value="/creditos/frmCRECargarCreditos.jsp"/>
     </definition>
     
+    <definition name="frmCLIGeneral" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenedor de Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/clientes/frmCLIGeneral.jsp"/>
+    </definition>
     <definition name="frmCLIMantenimiento" extends="baseLayout">
         <put-attribute name="title"  value="Mantenimiento de Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/clientes/frmCLIMantenimiento.jsp"/>

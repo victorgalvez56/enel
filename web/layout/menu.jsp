@@ -15,6 +15,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="<s:url action="frmCLIGeneral"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
                         <li><a href="<s:url action="frmCLIMantenimiento"/>"><i class="fa fa-circle-o"></i> Mantenimiento</a></li>
                         <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
                     </ul>
@@ -57,15 +58,15 @@
                         <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> Mora</a></li>
                         <li class="treeview">
                             <a href="#">
-                            <i class="fa fa-circle-o"></i> <span>Operaciones</span>
-                            <span class="pull-right-container">
-                            <i class="fa fa-angle-down"></i>
-                            </span>
+                                <i class="fa fa-circle-o"></i> <span>Operaciones</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
                             </a>
                             <ul class="treeview-menu">
-                            <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
-                            <li><a href="<s:url action="frmREPCREDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolsos</a></li>
-                            <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
+                                <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
+                                <li><a href="<s:url action="frmREPCREDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolsos</a></li>
+                                <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
                             </ul>
                         </li>
                     </ul>

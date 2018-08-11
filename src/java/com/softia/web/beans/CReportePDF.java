@@ -1810,14 +1810,6 @@ public class CReportePDF {
             loTablaCuenta.addCell(celda17T2);
             loTablaCuenta.addCell(celda18T2);
             
-            List<Cuota> lstCuentas;
-            Cuota cuota1 = new Cuota();
-            cuota1.setSalCap(75.0);
-
-            lstCuentas = new ArrayList<>();
-            lstCuentas.add(cuota1);
-            p_oCredito.setPlanPagos(lstCuentas);
-            
             for (Cuota loCuota : p_oCredito.getPlanPagos()) {
                 celda7T2 = new PdfPCell(new Phrase(String.valueOf(loCuota.getNumero()), fontContenido));
                 celda7T2.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -2190,15 +2182,6 @@ public class CReportePDF {
             loTablaPagos.addCell(celda10T2);
             loTablaPagos.addCell(celda11T2);
             loTablaPagos.addCell(celda12T2);
-            
-            List<Cuota> lstCuentas;
-            Cuota cuota1 = new Cuota();
-            cuota1.setSalCap(75.0);
-
-            lstCuentas = new ArrayList<>();
-            lstCuentas.add(cuota1);
-            
-            p_oCredito.setPlanPagos(lstCuentas);
             
             for (Cuota loCuota : p_oCredito.getPlanPagos()) {
                 celda1T2 = new PdfPCell(new Phrase("", fontContenido));
