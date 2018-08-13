@@ -10,13 +10,13 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>Solicitud</h1>
+                    <h1>Anular Solicitud</h1>
                 </section>
                 <!-- Main content -->
                 <section class="content">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <s:form action="frmCRESolicitud" role="form">
+                            <s:form action="frmCREAnularSolicitud" role="form">
 
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -50,25 +50,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Solicitud:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Tipo Doc.:</label>
-                                                            <s:select name="cliente.tipDocCiv" tabindex="2" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="cliente.tipDocCiv" tabindex="2" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Nro.Doc:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="cliente.nroDocCiv" />
+                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="cliente.nroDocCiv" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
                                                             <label>Nombre completo:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="4" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="4" name="credito.cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,25 +87,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Monto Solicitado:</label>
-                                                            <s:textfield cssClass="form-control" id="tfMonto" tabindex="5" name="credito.capSol" />
+                                                            <s:textfield cssClass="form-control" id="tfMonto" tabindex="5" name="credito.capSol" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Producto:</label>
-                                                            <s:select name="credito.producto.codigo" tabindex="6" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="credito.producto.codigo" tabindex="6" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Nro Cuotas:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCuotas" tabindex="7" onblur="calcula_montoCuota()"/>
+                                                            <s:textfield cssClass="form-control" id="tfCuotas" tabindex="7" name="credito.cuotas" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Fecha vencimiento:</label>
-                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="8" name="credito.fecVen" type="date" />
+                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="9" name="credito.diaPag" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -115,7 +115,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Monto Cuota:</label>
-                                                            <s:textfield cssClass="form-control" id="tfMontoCuota" name="credito.cuota" onclick="calcula_montoCuota()" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfMontoCuota" tabindex="8" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,28 +126,22 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalRechazarSolici" id="" onclick="frmRechazarSolici()">Rechazar</button>
+                                            <s:submit name="desistir" value="Desistir" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>
                             </s:form>
                         </div>
                     </div>
-                    <script>
-                        function calcula_montoCuota(){
-                            var CapSol = document.getElementById('tfMonto').value;
-                            var Cuotas = document.getElementById('tfCuotas').value;
-                            if (Cuotas == ''){
-                                $("#tfCuotas").val(0);
-                            }else {
-                                var MonCuo = CapSol / Cuotas;
-                                $("#tfMontoCuota").val(MonCuo);
-                            }
-                        }
-                    </script>
                 </section>
             </div>
         </div>
-        
+        <script>
+            function frmRechazarSolici() {
+                document.getElementById("fRechazar").setAttribute("action", "frmCREAnularSolicitud");
+            }
+        </script>
     </body>
 </html>

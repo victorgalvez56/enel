@@ -20,12 +20,14 @@
             
             <result name="frmCREMantenedor" type="tiles">frmCREMantenedor</result>
             <result name="frmCRESolicitud" type="tiles">frmCRESolicitud</result>
+            <result name="frmCREAnularSolicitud" type="tiles">frmCREAnularSolicitud</result>
             <result name="frmCREAprobacion" type="tiles">frmCREAprobacion</result>
             <result name="frmCREMntAprobacion" type="tiles">frmCREMntAprobacion</result>
             <result name="frmCREDocumentos" type="tiles">frmCREDocumentos</result>
             <result name="frmCREMovimientos" type="tiles">frmCREMovimientos</result>
             <result name="frmREPCREWorkflow" type="tiles">frmREPCREWorkflow</result>
             <result name="frmADMUsuarios" type="tiles">frmADMUsuarios</result>
+            <result name="frmADMNuevoUsuario" type="tiles">frmADMNuevoUsuario</result>
             
             <result name="frmCAJDesembolso" type="tiles">frmCAJDesembolso</result>
             <result name="frmCAJPago" type="tiles">frmCAJPago</result>

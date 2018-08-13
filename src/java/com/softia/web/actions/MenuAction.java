@@ -660,69 +660,7 @@ public class MenuAction extends BaseAction {
             setResult("frmCRESolicitud");
         }
         HttpServletRequest request = ServletActionContext.getRequest();
-        if (request.getParameter("buscarNombre") != null) {
-            CClientes loCliente = new CClientes();
-            loCliente.setUrl(getUrl());
-            loCliente.setUser(user);
-            loCliente.setPasswd(pass);
-            try {
-                String lcParam = "";
-                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
-                    lcParam = getParamBusquedaCre();
-                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
-                    lcParam = getParamBusquedaCli();
-                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
-                    lcParam = getParamBusquedaCli();
-                }
-                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 2);
-                if (!llOk) {
-                    setError(loCliente.getError());
-                } else {
-                    setLstClientes(loCliente.getLstClientes());
-                }
-            } catch (SQLException loErr) {
-                setError(loErr.getMessage());
-            }
-        } else if (request.getParameter("buscarDNI") != null) {
-            CClientes loCliente = new CClientes();
-            loCliente.setUrl(getUrl());
-            loCliente.setUser(user);
-            loCliente.setPasswd(pass);
-            try {
-                String lcParam = "";
-                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
-                    lcParam = getParamBusquedaCre();
-                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
-                    lcParam = getParamBusquedaCli();
-                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
-                    lcParam = getParamBusquedaCli();
-                }
-                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 1);
-                if (!llOk) {
-                    setError(loCliente.getError());
-                } else {
-                    setLstClientes(loCliente.getLstClientes());
-                }
-            } catch (SQLException loErr) {
-                setError(loErr.getMessage());
-            }
-        } else if (request.getParameter("desistir") != null) {
-            CCreditos loCredito = new CCreditos();
-            loCredito.setUrl(getUrl());
-            loCredito.setUser(user);
-            loCredito.setPasswd(pass);
-            loCredito.setCredito(getCredito());
-            try {
-                boolean llOk = loCredito.mxDesistir();
-                if (!llOk) {
-                    setError(loCredito.getError());
-                } else {
-                    setMensaje(loCredito.getMensaje());
-                }
-            } catch (SQLException loErr) {
-                setError(loErr.getMessage());
-            }
-        } else if (request.getParameter("grabar") != null) {
+        if (request.getParameter("grabar") != null) {
             CCreditos loCredito = new CCreditos();
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
@@ -738,47 +676,84 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        } else if (request.getParameter("aplicar") != null) {
+        } 
+        return getResult();
+    }
+    //ANULAR SOLICITUD
+    public String frmCREAnularSolicitud() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CProductos loPro = new CProductos();
+        loPro.setUrl(getUrl());
+        loPro.setUser(user);
+        loPro.setPasswd(pass);
+        try {
+            //productos de credito
+            setLstProductos(loPro.getLstProductos());
+            if (getLstProductos() == null) {
+                setError(loPro.getError());
+            }else {
+                    CTabla loTabla = new CTabla();
+                    loTabla.setUrl(getUrl());
+                    loTabla.setUser(user);
+                    loTabla.setPasswd(pass);
+                    setLstTipDocCiv(loTabla.getLstTabla(4));
+                    if (getLstTipDocCiv() == null) {
+                        setError(loTabla.getError());
+                    }
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            setResult("frmCREAnularSolicitud");
+        }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("aceptar") != null) {
+           CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            loCredito.setComentario(getComentario());
+            try {
+                boolean llOk = loCredito.mxRevertir();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setCredito(loCredito.getCredito());
+                    setMensaje(loCredito.getMensaje());
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        }/*else if (request.getParameter("desistir") != null) {
             CCreditos loCredito = new CCreditos();
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
             loCredito.setPasswd(pass);
             loCredito.setCredito(getCredito());
             try {
-                boolean llOk = loCredito.mxAplicar();
+                boolean llOk = loCredito.mxDesistir();
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
                     setCredito(loCredito.getCredito());
+                    setMensaje(loCredito.getMensaje());
                 }
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        } else if (request.getParameter("nombre") != null) {
-            CClientes loCliente = new CClientes();
-            loCliente.setUrl(getUrl());
-            loCliente.setUser(user);
-            loCliente.setPasswd(pass);
-            loCliente.setCliente(getCredito().getCliente());
-            try {
-                boolean llOk = loCliente.mxAplicar();
-                if (!llOk) {
-                    setError(loCliente.getError());
-                } else {
-                    getCredito().setCliente(loCliente.getCliente());
-                }
-            } catch (SQLException loErr) {
-                setError(loErr.getMessage());
-            }
-        } else if (request.getParameter("nuevo") != null) {
-            setCredito(new Credito());
-            getCredito().setCodCta("");
-            setInformacion("Listo para solicitud nueva");
-        }
+        } */
         return getResult();
     }
     //SUBMODULO CREDITO APROBACION DEESEMBOLSO
-
     public String frmCREAprobacion() {
         if (!validaSession()) {
             return "login";
@@ -969,10 +944,44 @@ public class MenuAction extends BaseAction {
         } else {
             setResult("frmADMUsuarios");
         }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("nuevo") != null) {
+            setResult("frmADMNuevoUsuario");            
+        }else if (request.getParameter("editar") != null) {
+            setResult("frmADMNuevoUsuario");            
+        }
+        return getResult();
+    }
+    //MANTENEDOR DE USUARIOS NUEVO
+    public String frmADMNuevoUsuario() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);            
+        try {
+            //productos de credito
+            setLstTipDocCiv(loTabla.getLstTabla(4));
+            if (getLstTipDocCiv() == null) {
+                setError(loTabla.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            setResult("frmADMNuevoUsuario");
+        }
         return getResult();
     }
     //SUBMODULO CREDITO IMPRESION DE DOCUMENTOS
-    public String frmCREDocumentos() {
+    public String frmADMNevoUsuario() {
         if (!validaSession()) {
             return "login";
         }

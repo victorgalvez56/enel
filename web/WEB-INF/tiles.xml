@@ -35,6 +35,10 @@
         <put-attribute name="title"  value="Solicitud de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCRESolicitud.jsp"/>
     </definition>
+    <definition name="frmCREAnularSolicitud" extends="baseLayout">
+        <put-attribute name="title"  value="Solicitud de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREAnularSolicitud.jsp"/>
+    </definition>
     <definition name="frmCREAprobacion" extends="baseLayout">
         <put-attribute name="title"  value="Aprobación de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREAprobacion.jsp"/>
@@ -58,6 +62,10 @@
     <definition name="frmADMUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Mantenedor de Usuarios - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmADMUsuarios.jsp"/>
+    </definition>
+    <definition name="frmADMNuevoUsuario" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenedor de Usuarios - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmADMNuevoUsuario.jsp"/>
     </definition>
     
     <definition name="frmCAJDesembolso" extends="baseLayout">

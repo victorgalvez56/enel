@@ -29,6 +29,7 @@
                             </div>
                         </div>
                         <div class="box-body">
+                            <s:form role="form" id="fRechazar">
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9">
@@ -42,9 +43,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button class="btn btn-primary btn-flat btn-sm" type="button" onclick="">Grabar</button>
+                                    <s:submit value="Aceptar" name="aceptar" cssClass="btn btn-default btn-flat" />
                                 </div>
                             </div>
+                            </s:form>
                         </div>
                     </div>
                 </div>
