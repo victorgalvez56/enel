@@ -15,7 +15,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<s:url action="frmCLIMantenimiento"/>"><i class="fa fa-circle-o"></i> Mantenimiento</a></li>
+                        <li><a href="<s:url action="frmCLIMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
                         <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
                     </ul>
                 </li>
@@ -27,6 +27,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="<s:url action="frmCREMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Créditos</a></li>
                         <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Nueva Solicitud</a></li>
                         <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Anular Solicitud</a></li>
                         <li><a href="<s:url action="frmCREAprobacion"/>"><i class="fa fa-circle-o"></i> Aprobación de Solicitud</a></li>

@@ -27,6 +27,10 @@
         <put-attribute name="body"   value="/pages/general/bienvenido.jsp"/>
     </definition>
     
+    <definition name="frmCREMantenedor" extends="baseLayout">
+        <put-attribute name="title"  value="Mantendor de créditos - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMantenedor.jsp"/>
+    </definition>
     <definition name="frmCRESolicitud" extends="baseLayout">
         <put-attribute name="title"  value="Solicitud de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCRESolicitud.jsp"/>
@@ -110,6 +114,14 @@
         <put-attribute name="body"   value="/creditos/frmCRECargarCreditos.jsp"/>
     </definition>
     
+    <definition name="frmCLIMantenedor" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenedor de Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/clientes/frmCLIMantenedor.jsp"/>
+    </definition>
+    <definition name="frmCLINuevoActualizar" extends="baseLayout">
+        <put-attribute name="title"  value="Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/clientes/frmCLINuevoActualizar.jsp"/>
+    </definition>
     <definition name="frmCLIMantenimiento" extends="baseLayout">
         <put-attribute name="title"  value="Mantenimiento de Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/clientes/frmCLIMantenimiento.jsp"/>
