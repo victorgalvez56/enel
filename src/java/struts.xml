@@ -20,8 +20,11 @@
             
             <result name="frmCRESolicitud" type="tiles">frmCRESolicitud</result>
             <result name="frmCREAprobacion" type="tiles">frmCREAprobacion</result>
+            <result name="frmCREMntAprobacion" type="tiles">frmCREMntAprobacion</result>
             <result name="frmCREDocumentos" type="tiles">frmCREDocumentos</result>
             <result name="frmCREMovimientos" type="tiles">frmCREMovimientos</result>
+            <result name="frmREPCREWorkflow" type="tiles">frmREPCREWorkflow</result>
+            <result name="frmADMUsuarios" type="tiles">frmADMUsuarios</result>
             
             <result name="frmCAJDesembolso" type="tiles">frmCAJDesembolso</result>
             <result name="frmCAJPago" type="tiles">frmCAJPago</result>
@@ -35,7 +38,8 @@
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
             
-            <result name="frmCLIGeneral" type="tiles">frmCLIGeneral</result>
+            <result name="frmCLIMantenedor" type="tiles">frmCLIMantenedor</result>
+            <result name="frmCLINuevoActualizar" type="tiles">frmCLINuevoActualizar</result>
             <result name="frmCLIMantenimiento" type="tiles">frmCLIMantenimiento</result>
             <result name="frmCLIPosicion" type="tiles">frmCLIPosicion</result>
             <result name="frmCLICargarClientes" type="tiles">frmCLICargarClientes</result>
@@ -67,11 +71,18 @@
         </action>
         
     </package>        
-
-    <package name="json" extends="json-default" namespace="/">
-        <action name="json" class="com.softia.web.actions.JsonAction">
-            <result type="json" />
+    <package name="default" extends="json-default">
+        <action name="registeruser" class="org.websparrow.action.RegisterAction">
+            <result name="REGISTER" type="json"></result>
         </action>
-    </package>
-        
+        <action name="report" class="org.websparrow.action.ReportAction">
+            <result name="REPORT" type="json"></result>
+        </action>
+        <action name="updateuser" class="org.websparrow.action.UpdateAction">
+            <result name="UPDATE" type="json"></result>
+        </action>
+        <action name="deleteuser" class="org.websparrow.action.DeleteAction">
+            <result name="DELETE" type="json"></result>
+        </action>
+    </package>        
 </struts>

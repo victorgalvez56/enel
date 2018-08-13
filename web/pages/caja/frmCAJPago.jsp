@@ -169,7 +169,7 @@
                                                                 <s:textfield tabindex="13" cssClass="form-control" name="credito.intAtr" id="tfInteresPendiente" readonly="true"/>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-2">
+                                                        <!--<div class="col-md-2">
                                                             <div class="form-group">
                                                                 <label class="control-label">Mora:</label>
                                                             </div>
@@ -178,7 +178,7 @@
                                                             <div class="form-group">
                                                                 <s:textfield tabindex="14" id="tfMoraPendiente" cssClass="form-control" readonly="true"/>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
 
                                                         <div class="col-md-2">
                                                             <div class="form-group">
@@ -219,7 +219,7 @@
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="form-group">
-                                                                <s:textfield tabindex="18" cssClass="form-control" name="credito.monPag" id="tfMontoPago" readonly="true"/>
+                                                                <s:textfield tabindex="18" cssClass="form-control" name="credito.monPag" />
                                                             </div>
                                                         </div>
                                                     </div>

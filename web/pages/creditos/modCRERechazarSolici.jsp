@@ -4,12 +4,12 @@
 <html>
     <body>
         <!-- Modal Buscar -->
-        <div class="modal fade" id="modalPlanPagos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="modalRechazarSolici" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h2 class="modal-title">Plan de Pagos</h2>
+                        <h2 class="modal-title">Motivo:</h2>
                     </div>
                     <div class="modal-body">
                         <div class="box-body">
@@ -30,34 +30,19 @@
                         </div>
                         <div class="box-body">
                             <div class="row">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Fecha</th>
-                                            <th>Tipo</th>
-                                            <th>Capital</th>
-                                            <th>Interes</th>
-                                            <th>Cuota</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <s:iterator value="credito.planPagos" status="rowStatus">
-                                            <tr>
-                                                <th><s:property value="numero" /></th>
-                                                <td><s:property value="fecha" /></td>                                            
-                                                <td><s:property value="tipo" /></td>
-                                                <td><s:property value="capital" /></td>
-                                                <td><s:property value="interes" /></td>
-                                                <td><s:property value="cuota" /></td>                                            
-                                            </tr>
-                                        </s:iterator>
-                                    </tbody>
-                                </table>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-9">
+                                    <input type="radio" >Cliente no paso la evaluación<br>
+                                    <input type="radio" >Cliente se arrepintió<br>
+                                    <input type="radio" >Falta información<br>
+                                    <input type="radio" >Datos erróneos<br>
+                                    <input type="radio" >Otros
+                                    <input type="text" />
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12" align="right">
-                                    <button class="btn btn-primary btn-flat btn-sm" type="button" onclick="">Imprimir</button>
+                                    <button class="btn btn-primary btn-flat btn-sm" type="button" onclick="">Grabar</button>
                                 </div>
                             </div>
                         </div>

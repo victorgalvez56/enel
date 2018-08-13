@@ -35,6 +35,10 @@
         <put-attribute name="title"  value="Aprobación de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREAprobacion.jsp"/>
     </definition>
+    <definition name="frmCREMntAprobacion" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenedor de Aprobación de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMntAprobacion.jsp"/>
+    </definition>
     <definition name="frmCREDocumentos" extends="baseLayout">
         <put-attribute name="title"  value="Impresión de documentos de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREDocumentos.jsp"/>
@@ -42,6 +46,14 @@
     <definition name="frmCREMovimientos" extends="baseLayout">
         <put-attribute name="title"  value="Consulta de movimientos - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREMovimientos.jsp"/>
+    </definition>
+    <definition name="frmREPCREWorkflow" extends="baseLayout">
+        <put-attribute name="title"  value="WorkFlow de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmREPCREWorkflow.jsp"/>
+    </definition>
+    <definition name="frmADMUsuarios" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenedor de Usuarios - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmADMUsuarios.jsp"/>
     </definition>
     
     <definition name="frmCAJDesembolso" extends="baseLayout">
@@ -98,9 +110,13 @@
         <put-attribute name="body"   value="/creditos/frmCRECargarCreditos.jsp"/>
     </definition>
     
-    <definition name="frmCLIGeneral" extends="baseLayout">
+    <definition name="frmCLIMantenedor" extends="baseLayout">
         <put-attribute name="title"  value="Mantenedor de Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/clientes/frmCLIGeneral.jsp"/>
+        <put-attribute name="body"   value="/pages/clientes/frmCLIMantenedor.jsp"/>
+    </definition>
+    <definition name="frmCLINuevoActualizar" extends="baseLayout">
+        <put-attribute name="title"  value="Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/clientes/frmCLINuevoActualizar.jsp"/>
     </definition>
     <definition name="frmCLIMantenimiento" extends="baseLayout">
         <put-attribute name="title"  value="Mantenimiento de Clientes - FINANSOFT v3.0 | SOFTIA.COM"/>

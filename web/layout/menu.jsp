@@ -15,8 +15,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<s:url action="frmCLIGeneral"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
-                        <li><a href="<s:url action="frmCLIMantenimiento"/>"><i class="fa fa-circle-o"></i> Mantenimiento</a></li>
+                        <li><a href="../clientes/frmCLIGeneral.jsp"><i class="fa fa-circle-o"></i> Mantenedor de Clientes CGP</a></li>
+                        <li><a href="<s:url action="frmCLIMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
                         <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
                     </ul>
                 </li>
@@ -28,10 +28,14 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitud</a></li>
-                        <li><a href="<s:url action="frmCREAprobacion"/>"><i class="fa fa-circle-o"></i> Aprobación</a></li>
+                        <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Nueva Solicitud</a></li>
+                        <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Anular Solicitud</a></li>
+                        <li><a href="<s:url action="frmCREAprobacion"/>"><i class="fa fa-circle-o"></i> Aprobación de Solicitud</a></li>
+                        <li><a href="<s:url action="frmCREMntAprobacion"/>"><i class="fa fa-circle-o"></i> Mantenedor de Aprobaciones</a></li>
                         <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Documentos</a></li>
                         <li><a href="<s:url action="frmCREMovimientos"/>"><i class="fa fa-circle-o"></i> Movimientos</a></li>
+                        <li><a href="<s:url action="frmREPCREWorkflow"/>"><i class="fa fa-circle-o"></i> WORKFLOW</a></li>
+                        <li><a href="<s:url action="frmADMUsuarios"/>"><i class="fa fa-circle-o"></i> Mantenedor de Usuarios</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
