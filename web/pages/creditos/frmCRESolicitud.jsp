@@ -61,6 +61,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
+                                                            <label>Nombre</label>
                                                             <label>Nro.Doc:</label>
                                                             <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="cliente.nroDocCiv" />
                                                         </div>
@@ -68,7 +69,7 @@
                                                     <div class="col-md-5">
                                                         <div class="form-group">
                                                             <label>Nombre completo:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="4" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="4" name="credito.cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,12 +100,12 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Nro Cuotas:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCuotas" tabindex="7" onblur="calcula_montoCuota()"/>
+                                                            <s:textfield cssClass="form-control" id="tfCuotas" tabindex="7" name="credito.cuotas" onblur="calcula_montoCuota()"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Fecha vencimiento:</label>
+                                                            <label>Fecha vencimiento</label>
                                                             <s:textfield cssClass="form-control" id="tfDia" tabindex="8" name="credito.fecVen" type="date" />
                                                         </div>
                                                     </div>

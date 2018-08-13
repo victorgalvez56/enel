@@ -4,20 +4,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-                <meta content="width=device-width, initial-scale=1" name="viewport"/>
-                <title><tiles:insertAttribute name="title" ignore="true" /></title>
-                <link href="../css/bootstrap.min.css" rel="stylesheet"/>
-                <link href="../css/font-awesome.min.css" rel="stylesheet"/>
-                <link href="../css/estilo.css" rel="stylesheet"/>
-
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-                <script src="../js/bootstrap.min.js"></script>
-
-                <link rel="stylesheet" type="text/css" href="../css/main.css"/>
-                <script src="../js/main.js"></script>-->
         <!-- jQuery 3 -->
         <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="/enel/js/script.js"></script>

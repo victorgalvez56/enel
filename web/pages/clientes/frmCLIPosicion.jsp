@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            
+                                                            <s:textfield cssClass="form-control" name="cliente.tipDocCiv" tabindex="4" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -120,7 +120,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            
+                                                            <s:textfield cssClass="form-control" tabindex="7" name="cliente.estado" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -219,11 +219,14 @@
                                                         <td><s:property value="cuenta" /></td>
                                                         <td><s:property value="producto" /></td>
                                                         <td><s:property value="moneda" /></td>
+                                                        <td><s:property value="fecDes" /></td>
+                                                        <td><s:property value="" /></td>
                                                         <td><s:property value="saldo" /></td>
                                                         <td><s:property value="cuota" /></td>
                                                         <td><s:property value="plazo" /></td>
-                                                        <td><s:property value="pdm" /></td>
-                                                        <td><s:hidden  value="%{cuenta}" name="cuenta.cuenta" /></td>
+                                                        <td><s:property value="" /></td>
+                                                        <td><s:property value="cuotas" /></td>
+                                                        <s:hidden  value="%{cuenta}" name="cuenta.cuenta" />
                                                         <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
                                                     </tr>
                                                 </s:iterator>
@@ -233,10 +236,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
                                         <div style="float: right">
                                             <s:hidden name="cliente.codigo"></s:hidden>
+                                            <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
                                             <s:submit name="" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
                                         </div>
                                     </div>
                                 </div>

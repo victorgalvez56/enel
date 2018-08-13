@@ -15,6 +15,10 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
+<<<<<<< HEAD
+                        <li><a href="../clientes/frmCLIGeneral.jsp"><i class="fa fa-circle-o"></i> Mantenedor de Clientes CGP</a></li>
+=======
+>>>>>>> origin/master
                         <li><a href="<s:url action="frmCLIMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
                         <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
                     </ul>
@@ -27,7 +31,10 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
+<<<<<<< HEAD
+=======
                         <li><a href="<s:url action="frmCREMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Créditos</a></li>
+>>>>>>> origin/master
                         <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Nueva Solicitud</a></li>
                         <li><a href="<s:url action="frmCREAnularSolicitud"/>"><i class="fa fa-circle-o"></i> Anular Solicitud</a></li>
                         <li><a href="<s:url action="frmCREAprobacion"/>"><i class="fa fa-circle-o"></i> Aprobación de Solicitud</a></li>
@@ -62,15 +69,15 @@
                         <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> Mora</a></li>
                         <li class="treeview">
                             <a href="#">
-                            <i class="fa fa-circle-o"></i> <span>Operaciones</span>
-                            <span class="pull-right-container">
-                            <i class="fa fa-angle-down"></i>
-                            </span>
+                                <i class="fa fa-circle-o"></i> <span>Operaciones</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
                             </a>
                             <ul class="treeview-menu">
-                            <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
-                            <li><a href="<s:url action="frmREPCREDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolsos</a></li>
-                            <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
+                                <li><a href="<s:url action="frmREPCRESolicitud"/>"><i class="fa fa-circle-o"></i> Solicitudes</a></li>
+                                <li><a href="<s:url action="frmREPCREDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolsos</a></li>
+                                <li><a href="<s:url action="frmREPCREPago"/>"><i class="fa fa-circle-o"></i> Cobranzas</a></li>
                             </ul>
                         </li>
                     </ul>

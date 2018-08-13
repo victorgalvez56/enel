@@ -3,9 +3,11 @@ function onload() {
     if (lon.length > 0) {
         document.getElementById("bBuscarCre").click();
     } else {
-        var lon = document.getElementById("tfParamBusquedaCli").value;
-        if (lon.length > 0) {
-            document.getElementById("bBuscarCli").click();
+        if (document.getElementById("tfParamBusquedaCli")) {
+            var lon = document.getElementById("tfParamBusquedaCli").value;
+            if (lon.length > 0) {
+                document.getElementById("bBuscarCli").click();
+            }
         }
     }
 }
