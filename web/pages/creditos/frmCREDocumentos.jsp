@@ -134,13 +134,10 @@
                                     <div class="col-md-12">
                                         <s:hidden name="credito.codigo"></s:hidden>
                                         <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
-                                        <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                        <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
                                         
                                         <div style="float: right">
                                             <s:submit name="solicitud" value="Imprimir solicitud" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="contrato" value="Contrato" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="autorizacion" value="Autorización" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="pagare" value="Pagaré" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="calendarioPagos" value="Generar plan de pagos" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>

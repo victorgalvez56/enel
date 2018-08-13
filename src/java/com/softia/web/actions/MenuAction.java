@@ -200,6 +200,17 @@ public class MenuAction extends BaseAction {
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
         }
+        
+        Cliente prueba = new Cliente();
+        prueba.setCodCli("000101807000029");
+        Cliente prueba1 = new Cliente();
+        prueba1.setCodCli("000101807000030");
+        List<Cliente> clientes;
+        clientes = new ArrayList<>();
+        clientes.add(prueba);
+        clientes.add(prueba1);
+        setLstClientes(clientes);
+        
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -255,12 +266,43 @@ public class MenuAction extends BaseAction {
                 setMensaje("nuevo");
                 return ("frmCLINuevoActualizar");
             } else if (request.getParameter("actualizar") != null) {
-                setCliente(new Cliente());
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
                 setMensaje("actualizar");
                 return ("frmCLINuevoActualizar");
             } else if (request.getParameter("exportar") != null) {
                 setCliente(new Cliente());
                 return ("frmCLINuevoActualizar");
+            } else if (request.getParameter("posicion") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return ("frmCLIPosicion");
             }
             setResult("frmCLIMantenedor");
         }
@@ -319,23 +361,7 @@ public class MenuAction extends BaseAction {
             setResult("error");
         } else {
             HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("aplicar") != null) {
-                CClientes loCliente = new CClientes();
-                loCliente.setCliente(getCliente());
-                loCliente.setUrl(getUrl());
-                loCliente.setUser(user);
-                loCliente.setPasswd(pass);
-                try {
-                    boolean llOk = loCliente.mxAplicar();
-                    if (!llOk) {
-                        setError(loCliente.getError());
-                    } else {
-                        setCliente(loCliente.getCliente());
-                    }
-                } catch (SQLException loErr) {
-                    setError(loErr.getMessage());
-                }
-            } else if (request.getParameter("grabar") != null) {
+            if (request.getParameter("grabar") != null) {
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
                 loCliente.setUrl(getUrl());
@@ -621,6 +647,24 @@ public class MenuAction extends BaseAction {
     }
     
     public String frmCREMantenedor() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);
+        try {
+            setLstTipDocCiv(loTabla.getLstTabla(4));
+            if (getLstTipDocCiv() == null) {
+                setError(loTabla.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
         setResult("frmCREMantenedor");
         return getResult();
     }

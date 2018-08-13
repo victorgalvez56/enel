@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib prefix="sj" uri="/struts-jquery-tags"%>
-<%@include file="modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
@@ -199,7 +198,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="date" cssClass="form-control" id="codciv" name="" tabindex="12"/>
+                                                            <s:textfield type="date" cssClass="form-control" id="" name="" tabindex="12"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -209,7 +208,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="date" cssClass="form-control" id="tfCodCre" tabindex="13" name="" />
+                                                            <s:textfield type="date" cssClass="form-control" id="" tabindex="13" name="" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -227,7 +226,7 @@
                                                     <th>Nro. suministro</th>
                                                     <th>Ape. paterno</th>
                                                     <th>Ape. materno</th>
-                                                    <th>Nombres</th>
+                                                    <th>Nombre(s)</th>
                                                     <th>Tipo documento</th>
                                                     <th>Nro. documento</th>
                                                     <th>Fecha de registro</th>
@@ -235,17 +234,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <s:iterator value="cliente.lstCuentas" status="rowStatus">
+                                                <s:iterator value="lstClientes" status="rowStatus">
                                                     <tr>
                                                         <th><s:property value="%{#rowStatus.count}" /></th>
-                                                        <td><s:property value="cuenta" /></td>
-                                                        <td><s:property value="producto" /></td>
-                                                        <td><s:property value="moneda" /></td>
-                                                        <td><s:property value="saldo" /></td>
-                                                        <td><s:property value="cuota" /></td>
-                                                        <td><s:property value="plazo" /></td>
-                                                        <td><s:property value="pdm" /></td>
-                                                        <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
+                                                        <td><s:property value="codCli" /></td>
+                                                        <td><s:property value="sumini" /></td>
+                                                        <td><s:property value="apePat" /></td>
+                                                        <td><s:property value="apeMat" /></td>
+                                                        <td><s:property value="nombre" /></td>
+                                                        <td><s:property value="tipDocCiv" /></td>
+                                                        <td><s:property value="nroDocCiv" /></td>
+                                                        <td><s:property value="registro" /></td>
+                                                        <!--<td><s:checkbox name="cliente.codCli" fieldValue="true" value="codCli" /></td>-->
+                                                        <td><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
                                                     </tr>
                                                 </s:iterator>
                                             </tbody>
@@ -255,13 +256,13 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
+                                            <s:hidden name="cliente.codCli" id="codCli"></s:hidden>
                                             <s:hidden name="cliente.codigo"></s:hidden>
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="nuevo" value="Nuevo cliente" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="actualizar" value="Actualizar datos de cliente" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="" value="Posicion de cliente" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="posicion" value="Posicion de cliente" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="" value="Buscar" cssClass="btn btn-primary btn-flat" />
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -272,4 +273,10 @@
             </div>
         </div>
     </body>
+    <script>
+        function cliSeleccionado(codigo) {
+            document.getElementById("codCli").value = codigo;
+            document.getElementById("tfCodCli").removeAttribute("name"); 
+        }
+    </script>
 </html>

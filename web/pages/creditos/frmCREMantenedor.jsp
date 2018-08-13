@@ -55,12 +55,34 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
+                                                            <label>Nro. solicitud:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Nro. suministro:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="2" name="credito.cliente.sumini" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
                                                             <label>Cod. cliente:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="credito.cliente.codCli" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="3" name="credito.cliente.codCli" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -70,7 +92,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="2" name="" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="4" name="credito.codCta" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,7 +104,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            
+                                                            <s:select name="credito.cliente.tipDocCiv" tabindex="7" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
