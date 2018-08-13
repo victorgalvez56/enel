@@ -49,25 +49,25 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Solicitud</label>
+                                                            <label>Solicitud:</label>
                                                             <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Tipo Doc.</label>
+                                                            <label>Tipo Doc.:</label>
                                                             <s:select name="cliente.tipDocCiv" tabindex="2" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Nro.Doc</label>
+                                                            <label>Nro.Doc:</label>
                                                             <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="cliente.nroDocCiv" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <label>Nombre</label>
+                                                            <label>Nombre completo:</label>
                                                             <s:textfield cssClass="form-control" id="tfNomCli" tabindex="4" name="credito.cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
@@ -80,31 +80,31 @@
                                     <div class="col-md-12">
                                         <div class="box box-primary box-solid">
                                             <div class="box-header">
-                                                <h3 class="box-title">Datos Solicitud</h3>
+                                                <h3 class="box-title">Datos Solicitud:</h3>
                                             </div>
                                             <div class="box-body">
                                                 <div class="col-md-12">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Monto Solicitado</label>
+                                                            <label>Monto Solicitado:</label>
                                                             <s:textfield cssClass="form-control" id="tfMonto" tabindex="5" name="credito.capSol" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Producto</label>
+                                                            <label>Producto:</label>
                                                             <s:select name="credito.producto.codigo" tabindex="6" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Nro Cuotas</label>
+                                                            <label>Nro Cuotas:</label>
                                                             <s:textfield cssClass="form-control" id="tfCuotas" tabindex="7" name="credito.cuotas" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Fecha vencimiento</label>
+                                                            <label>Fecha vencimiento:</label>
                                                             <s:textfield cssClass="form-control" id="tfDia" tabindex="9" name="credito.diaPag" />
                                                         </div>
                                                     </div>
@@ -114,7 +114,7 @@
                                                     <div class="col-md-3"></div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Monto Cuota</label>
+                                                            <label>Monto Cuota:</label>
                                                             <s:textfield cssClass="form-control" id="tfMontoCuota" tabindex="8" />
                                                         </div>
                                                     </div>

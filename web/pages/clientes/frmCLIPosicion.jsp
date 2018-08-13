@@ -47,42 +47,100 @@
                                         <div class="box box-primary box-solid">
                                             <div class="box-body">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>Código de Cliente</label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="cliente.codCli"/>
+                                                            <label>Nro. solicitud:</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-9">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Nombre</label>
-                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="1" name="cliente.nomCom" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Nro. de suministro:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="2" name="cliente.sumini" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>Suministro</label>
-                                                            <s:textfield cssClass="form-control" id="tfSuministro" tabindex="1" name="cliente.sumini" readonly="true"/>
+                                                            <label>Nro. crédito:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Estado</label>
-                                                            <s:select name="cliente.estado" tabindex="3" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="3" name="" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Tipo de documento:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Provincia</label>
-                                                            <s:textfield cssClass="form-control" id="tfProvincia" tabindex="1" name="cliente.direccion.distrito.provincia.nombre" readonly="true"/>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Nro. documento:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Distrito</label>
-                                                            <s:textfield cssClass="form-control" id="tfDistrito" tabindex="1" name="cliente.direccion.distrito.nombre" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="5" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Nombre completo:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-11">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="6" name="cliente.nomCom" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Estado suministro:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Provincia:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfProvincia" tabindex="8" name="cliente.direccion.distrito.provincia.nombre" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Distrito:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfDistrito" tabindex="9" name="cliente.direccion.distrito.nombre" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -94,29 +152,29 @@
                                                     </div>
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfDireccion" tabindex="1" name="cliente.direccion.direccion" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfDireccion" tabindex="10" name="cliente.direccion.direccion" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Teléfono:</label>
+                                                            <label class="control-label">Teléfono fijo:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfTelefono" tabindex="1" name="cliente.telefono" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfTelefono" tabindex="11" name="cliente.telefono" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Celular:</label>
+                                                            <label class="control-label">Teléfono movil:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCelular" tabindex="1" name="cliente.celular" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCelular" tabindex="12" name="cliente.celular" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -126,7 +184,7 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCorreo" tabindex="1" name="cliente.correo" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCorreo" tabindex="13" name="cliente.correo" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,68 +194,48 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="box box-primary box-solid">
-                                            <div class="box-body">
-                                                <div class="nav-tabs-custom" style="box-shadow: 0 0px 0px rgba(0,0,0,0);">
-                                                    <ul class="nav nav-tabs">
-                                                        <li><a href="#creditos" data-toggle="tab">Créditos</a></li>
-                                                    </ul>
-                                                    <div class="tab-content">
-                                                        <!-- /.tab-pane -->
-                                                        <div class="active tab-pane" id="creditos">
-                                                            <div class="col-md-12">
-                                                                <div class="box box-primary box-solid">
-                                                                    <div class="box-body">
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                                <tr>
-                                                                                    <th>#</th>
-                                                                                    <th>Cuenta</th>
-                                                                                    <th>Producto</th>
-                                                                                    <th>Moneda</th>
-                                                                                    <th>Saldo</th>
-                                                                                    <th>Cuota</th>
-                                                                                    <th>Plazo</th>
-                                                                                    <th>PDM</th>
-                                                                                    <th>Ver</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                                <s:iterator value="cliente.lstCuentas" status="rowStatus">
-                                                                                    <tr>
-                                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                                        <td><s:property value="cuenta" /></td>
-                                                                                        <td><s:property value="producto" /></td>
-                                                                                        <td><s:property value="moneda" /></td>
-                                                                                        <td><s:property value="saldo" /></td>
-                                                                                        <td><s:property value="cuota" /></td>
-                                                                                        <td><s:property value="plazo" /></td>
-                                                                                        <td><s:property value="pdm" /></td>
-                                                                                        <td><s:hidden  value="%{cuenta}" name="cuenta.cuenta" /></td>
-                                                                                        <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
-                                                                                    </tr>
-                                                                                </s:iterator>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.tab-pane -->
-                                                    </div>
-                                                    <!-- /.tab-content -->
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <label>CRÉDITOS:</label>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Nro. cuenta</th>
+                                                    <th>Producto</th>
+                                                    <th>Moneda</th>
+                                                    <th>Desembolso</th>
+                                                    <th>Pagos</th>
+                                                    <th>Saldo</th>
+                                                    <th>Monto cuota</th>
+                                                    <th>Plazo</th>
+                                                    <th>Monto vencido</th>
+                                                    <th>Nro. cuotas pactadas</th>
+                                                    <th>Ver</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <s:iterator value="cliente.lstCuentas" status="rowStatus">
+                                                    <tr>
+                                                        <th><s:property value="%{#rowStatus.count}" /></th>
+                                                        <td><s:property value="cuenta" /></td>
+                                                        <td><s:property value="producto" /></td>
+                                                        <td><s:property value="moneda" /></td>
+                                                        <td><s:property value="saldo" /></td>
+                                                        <td><s:property value="cuota" /></td>
+                                                        <td><s:property value="plazo" /></td>
+                                                        <td><s:property value="pdm" /></td>
+                                                        <td><s:hidden  value="%{cuenta}" name="cuenta.cuenta" /></td>
+                                                        <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
+                                                    </tr>
+                                                </s:iterator>
+                                            </tbody>
+                                        </table>                
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden name="cliente.codigo"></s:hidden>
-                                            <s:submit name="aplicar" value="Aplicar" id="bAplicar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="cancelar" value="Cancelar" cssClass="btn btn-primary btn-flat" />
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
+                                            <s:submit name="" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>

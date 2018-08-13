@@ -619,7 +619,12 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
+    public String frmCREMantenedor() {
+        setResult("frmCREMantenedor");
+        return getResult();
+    }
+    
     public String frmCRESolicitud() {
         if (!validaSession()) {
             return "login";

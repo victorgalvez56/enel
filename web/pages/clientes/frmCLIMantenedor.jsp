@@ -261,6 +261,7 @@
                                             <s:submit name="actualizar" value="Actualizar datos de cliente" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="" value="Posicion de cliente" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="" value="Buscar" cssClass="btn btn-primary btn-flat" />
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
                                         </div>
                                     </div>
                                 </div>
