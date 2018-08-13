@@ -200,6 +200,7 @@ public class MenuAction extends BaseAction {
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
         }
+<<<<<<< HEAD
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -336,6 +337,170 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("grabar") != null) {
+=======
+        
+        Cliente prueba = new Cliente();
+        prueba.setCodCli("000101807000029");
+        Cliente prueba1 = new Cliente();
+        prueba1.setCodCli("000101807000030");
+        List<Cliente> clientes;
+        clientes = new ArrayList<>();
+        clientes.add(prueba);
+        clientes.add(prueba1);
+        setLstClientes(clientes);
+        
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("aplicar") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("buscarNombre") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxBuscar(getParamBusquedaCli(), 2);
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setLstClientes(loCliente.getLstClientes());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("buscarDNI") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxBuscar(getParamBusquedaCli(), 1);
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setLstClientes(loCliente.getLstClientes());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("nuevo") != null) {
+                setCliente(new Cliente());
+                setMensaje("nuevo");
+                return ("frmCLINuevoActualizar");
+            } else if (request.getParameter("actualizar") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+                setMensaje("actualizar");
+                return ("frmCLINuevoActualizar");
+            } else if (request.getParameter("exportar") != null) {
+                setCliente(new Cliente());
+                return ("frmCLINuevoActualizar");
+            } else if (request.getParameter("posicion") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return ("frmCLIPosicion");
+            }
+            setResult("frmCLIMantenedor");
+        }
+        return getResult();
+    }
+    
+    public String frmCLINuevoActualizar() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);
+        try {
+            setLstEstados(loTabla.getLstTabla(1));
+            if (getLstEstados() == null) {
+                setError(loTabla.getError());
+            } else {
+                setLstSexos(loTabla.getLstTabla(3));
+                if (getLstSexos() == null) {
+                    setError(loTabla.getError());
+                } else {
+                    setLstTipDocCiv(loTabla.getLstTabla(4));
+                    if (getLstTipDocCiv() == null) {
+                        setError(loTabla.getError());
+                    } else {
+                        CProfesiones loProfesion = new CProfesiones();
+                        loProfesion.setUrl(getUrl());
+                        loProfesion.setUser(user);
+                        loProfesion.setPasswd(pass);
+                        setLstProfesiones(loProfesion.getLstProfesiones());
+                        if (getLstProfesiones() == null) {
+                            setError(loProfesion.getError());
+                        } else {
+                            setLstNivIns(loTabla.getLstTabla(5));
+                            if (getLstNivIns() == null) {
+                                setError(loTabla.getError());
+                            } else {
+                                setLstTipZon(loTabla.getLstTabla(6));
+                                if (getLstTipZon() == null) {
+                                    setError(loTabla.getError());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("grabar") != null) {
+>>>>>>> origin/master
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
                 loCliente.setUrl(getUrl());
@@ -619,7 +784,30 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
+    public String frmCREMantenedor() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);
+        try {
+            setLstTipDocCiv(loTabla.getLstTabla(4));
+            if (getLstTipDocCiv() == null) {
+                setError(loTabla.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        setResult("frmCREMantenedor");
+        return getResult();
+    }
+    
     public String frmCRESolicitud() {
         if (!validaSession()) {
             return "login";

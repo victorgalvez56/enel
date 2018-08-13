@@ -112,7 +112,18 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
+<<<<<<< HEAD
                     <file>${file.reference.creditos.jar}</file>
+=======
+                    <file>${file.reference.clientes.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.creditos.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.funciones.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
@@ -120,7 +131,20 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
+                    <file>${file.reference.sql.jar}</file>
+>>>>>>> origin/master
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
+<<<<<<< HEAD
+                    <file>${file.reference.clientes.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="200">
                     <file>${file.reference.funciones.jar}</file>
+=======
+                    <file>${file.reference.usuarios.jar}</file>
+>>>>>>> origin/master
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
