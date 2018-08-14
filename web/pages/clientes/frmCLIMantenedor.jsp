@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
@@ -40,8 +39,7 @@
                 <!-- Main content -->
                 <section class="content">
                     <div class="box box-primary">
-                        <div class="box-body">
-                            
+                        <div class="box-body">                            
                             <s:form action="frmCLIMantenedor" role="form">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -75,16 +73,6 @@
                                                             <s:textfield cssClass="form-control" id="apellido" name="cliente.apePat" tabindex="2"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label>Dpto:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
@@ -105,16 +93,6 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <s:textfield cssClass="form-control" id="apellidomat" name="cliente.apeMat" tabindex="5"/>   
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label>Prov.:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -139,16 +117,6 @@
                                                             <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="8"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label>Dist.:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
@@ -168,14 +136,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label>FECHA DE REGISTRO:</label>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -187,7 +148,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="date" cssClass="form-control" id="" name="" tabindex="12"/>
+                                                            <s:textfield type="date" cssClass="form-control" id="" name="fecIni" tabindex="12"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -197,7 +158,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="date" cssClass="form-control" id="" tabindex="13" name="" />
+                                                            <s:textfield type="date" cssClass="form-control" id="fecFin" tabindex="13" name="" />
                                                         </div>
                                                     </div>
                                                 </div>

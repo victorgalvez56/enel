@@ -66,7 +66,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfsuministro" tabindex="2" name="cliente.sumini"/>
+                                                                <s:textfield cssClass="form-control" id="tfsuministro" tabindex="2" name="cliente.sumini" required="true"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,7 +74,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Estado sum:</label>
                                                             <div class="form-group">
-                                                                <s:select name="cliente.estado" tabindex="3" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                                <s:property value="cliente.estado"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -82,7 +82,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Sector:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="" tabindex="4" name=""/>
+                                                                <s:property value="cliente.sector"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -108,7 +108,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nombre(s):</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="7"/>
+                                                                <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="7" required="true"/>
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -118,7 +118,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nacimiento:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8"/>
+                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" required="true"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -138,7 +138,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nro. de documento:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="11"/>
+                                                                <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="11" required="true"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -148,10 +148,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Departamento:</label>
                                                             <div class=" form-group">
-                                                                <s:url id="remoteurl" action="json" namespace="/"/>
-                                                                <sj:select href="%{remoteurl}" id="depart" tabindex="12" onChangeTopics="reloadsecondlist" name="depart"
-                                                                           list="departMap" listKey="myKey" listValue="myValue" emptyOption="false"
-                                                                           headerKey="-1" headerValue="--Seleccione Departamento--" cssClass="form-control"/>
+                                                                <s:property value="cliente.direccion.distrito.provincia.departamento.nombre"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -159,11 +156,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Provincia:</label>
                                                             <div class=" form-group">
-                                                                <s:url id="remoteurl" action="json" namespace="/"/>
-                                                                <sj:select href="%{remoteurl}" id="provinID" tabindex="13" onChangeTopics="reloadThirdlist" formIds="formSelectReload"
-                                                                           reloadTopics="reloadsecondlist" name="provin" 
-                                                                           list="provinMap" listKey="myKey" listValue="myValue" emptyOption="false"
-                                                                           headerKey="-1" headerValue="--Seleccione Provincia--" cssClass="form-control"/>
+                                                                <s:property value="cliente.direccion.distrito.provincia.nombre"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -171,11 +164,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Distrito:</label>
                                                             <div class=" form-group">
-                                                                <s:url id="remoteurl" action="json" namespace="/"/>
-                                                                <sj:select href="%{remoteurl}" formIds="formSelectReload" tabindex="14" reloadTopics="reloadThirdlist"
-                                                                           name="cliente.direccion.distrito.codigo" list="distriList" emptyOption="false"
-                                                                           listKey="codigo" listValue="nombre"
-                                                                           headerKey="-1" headerValue="--Seleccione Distrito--" cssClass="form-control"/><br>
+                                                                <s:property value="cliente.direccion.distrito.nombre"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -185,7 +174,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Dirección:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield name="cliente.direccion.direccion" cssClass="form-control" id="direccion" tabindex="15"/>
+                                                                <s:property value="cliente.direccion.direccion"/>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -105,6 +105,10 @@ public class MenuAction extends BaseAction {
     private List<String> lstOficina;
     private java.sql.Date FecmoraIni;
     private java.sql.Date FecmoraFin;
+    
+    private String codCta;
+    private String fecIni;
+    private String fecFin;
 
     public String login() {
         setResult("login");
@@ -203,17 +207,6 @@ public class MenuAction extends BaseAction {
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
         }
-        /*
-        Cliente prueba = new Cliente();
-        prueba.setCodCli("000101807000029");
-        Cliente prueba1 = new Cliente();
-        prueba1.setCodCli("000101807000030");
-        List<Cliente> clientes;
-        clientes = new ArrayList<>();
-        clientes.add(prueba);
-        clientes.add(prueba1);
-        setLstClientes(clientes);
-        */
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -235,23 +228,7 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("buscar") != null) {
-                /*Cliente cliente = new Cliente();
-                cliente.setCodCli("Roberto");
-                cliente.setApePat("Delgado");
-                cliente.setApeMat("Febres");
-                cliente.setSumini("105");
-                cliente.setTipDocCiv("D");
-                cliente.setApePat("70907380");
-                cliente.setApePat("Delgado");
-                cliente.getDireccion().getDistrito().getProvincia().getDepartamento().setNombre("Arequipa");
-                cliente.getDireccion().getDistrito().getProvincia().setNombre("Arequipa");
-                cliente.getDireccion().getDistrito().setNombre("Arequipa");
-                cliente.setRegistro(java.sql.Date.valueOf("2018-07-01"));
-                cliente.setRegistro(java.sql.Date.valueOf("2018-09-01"));*/
-                
                 CClientes loCliente = new CClientes();
-                
-                //setDireccion(new Direccion());
                 getCliente().setDireccion(new Direccion());
                 getCliente().getDireccion().setDistrito(new Distrito());
                 getCliente().getDireccion().getDistrito().setProvincia(new Provincia());
@@ -261,9 +238,9 @@ public class MenuAction extends BaseAction {
                 loCliente.setUser(user);
                 loCliente.setPasswd(pass);
                 try {
-                    loCliente.setCodCta("000101807000029");
-                    loCliente.setFecIni("2018-07-01");
-                    loCliente.setFecFin("2018-10-01");
+                    loCliente.setCodCta(getCodCta());                    
+                    loCliente.setFecIni(getFecIni());
+                    loCliente.setFecFin(getFecFin());
                     boolean llOk = loCliente.mxFiltrar();
                     if (!llOk) {
                         setError(loCliente.getError());
@@ -271,7 +248,7 @@ public class MenuAction extends BaseAction {
                         setCliente(loCliente.getCliente());
                         setLstClientes(loCliente.getLstClientes());
                     }
-                } catch (SQLException | ParseException   loErr) {
+                } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("buscarNombre") != null) {
@@ -601,7 +578,6 @@ public class MenuAction extends BaseAction {
         setProvin(1);
         return getResult();
     }*/
-
     public String frmCLIPosicion() {
         if (!validaSession()) {
             return "login";
@@ -888,6 +864,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
+
     //ANULAR SOLICITUD
     public String frmCREAnularSolicitud() {
         if (!validaSession()) {
@@ -905,15 +882,15 @@ public class MenuAction extends BaseAction {
             setLstProductos(loPro.getLstProductos());
             if (getLstProductos() == null) {
                 setError(loPro.getError());
-            }else {
-                    CTabla loTabla = new CTabla();
-                    loTabla.setUrl(getUrl());
-                    loTabla.setUser(user);
-                    loTabla.setPasswd(pass);
-                    setLstTipDocCiv(loTabla.getLstTabla(4));
-                    if (getLstTipDocCiv() == null) {
-                        setError(loTabla.getError());
-                    }
+            } else {
+                CTabla loTabla = new CTabla();
+                loTabla.setUrl(getUrl());
+                loTabla.setUser(user);
+                loTabla.setPasswd(pass);
+                setLstTipDocCiv(loTabla.getLstTabla(4));
+                if (getLstTipDocCiv() == null) {
+                    setError(loTabla.getError());
+                }
             }
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -925,7 +902,7 @@ public class MenuAction extends BaseAction {
         }
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("aceptar") != null) {
-           CCreditos loCredito = new CCreditos();
+            CCreditos loCredito = new CCreditos();
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
             loCredito.setPasswd(pass);
@@ -942,7 +919,7 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        }else if (request.getParameter("desistir") != null) {
+        } else if (request.getParameter("desistir") != null) {
             CCreditos loCredito = new CCreditos();
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
@@ -958,9 +935,10 @@ public class MenuAction extends BaseAction {
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
-        } 
+        }
         return getResult();
     }
+
     //SUBMODULO CREDITO APROBACION DEESEMBOLSO
     public String frmCREAprobacion() {
         if (!validaSession()) {
@@ -1157,12 +1135,13 @@ public class MenuAction extends BaseAction {
         }
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("nuevo") != null) {
-            setResult("frmADMNuevoUsuario");            
-        }else if (request.getParameter("editar") != null) {
-            setResult("frmADMNuevoUsuario");            
+            setResult("frmADMNuevoUsuario");
+        } else if (request.getParameter("editar") != null) {
+            setResult("frmADMNuevoUsuario");
         }
         return getResult();
     }
+
     //MANTENEDOR DE USUARIOS NUEVO
     public String frmADMNuevoUsuario() {
         if (!validaSession()) {
@@ -1174,7 +1153,7 @@ public class MenuAction extends BaseAction {
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
-        loTabla.setPasswd(pass);            
+        loTabla.setPasswd(pass);
         try {
             //productos de credito
             setLstTipDocCiv(loTabla.getLstTabla(4));
@@ -3806,5 +3785,47 @@ public class MenuAction extends BaseAction {
      */
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
+    }
+
+    /**
+     * @return the codCta
+     */
+    public String getCodCta() {
+        return codCta;
+    }
+
+    /**
+     * @param codCta the codCta to set
+     */
+    public void setCodCta(String codCta) {
+        this.codCta = codCta;
+    }
+
+    /**
+     * @return the fecIni
+     */
+    public String getFecIni() {
+        return fecIni;
+    }
+
+    /**
+     * @param fecIni the fecIni to set
+     */
+    public void setFecIni(String fecIni) {
+        this.fecIni = fecIni;
+    }
+
+    /**
+     * @return the fecFin
+     */
+    public String getFecFin() {
+        return fecFin;
+    }
+
+    /**
+     * @param fecFin the fecFin to set
+     */
+    public void setFecFin(String fecFin) {
+        this.fecFin = fecFin;
     }
 }

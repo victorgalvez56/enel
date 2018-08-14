@@ -15,7 +15,6 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="../clientes/frmCLIGeneral.jsp"><i class="fa fa-circle-o"></i> Mantenedor de Clientes CGP</a></li>
                         <li><a href="<s:url action="frmCLIMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
                         <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
                     </ul>
