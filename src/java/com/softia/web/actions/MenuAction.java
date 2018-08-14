@@ -254,7 +254,7 @@ public class MenuAction extends BaseAction {
             } else if (request.getParameter("nuevo") != null) {
                 setCliente(new Cliente());
                 setMensaje("nuevo");
-                return ("frmCLINuevoActualizar");
+                return frmCLINuevoActualizar();
             } else if (request.getParameter("actualizar") != null) {
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
@@ -272,7 +272,7 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
                 setMensaje("actualizar");
-                return ("frmCLINuevoActualizar");
+                return frmCLINuevoActualizar();
             } else if (request.getParameter("exportar") != null) {
                 setCliente(new Cliente());
                 return ("frmCLINuevoActualizar");
@@ -368,6 +368,33 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("grabar") != null) {
+                /*CClientes loSumini = new CClientes();
+                loSumini.setCliente(getCliente());
+                loSumini.setUrl(getUrl());
+                loSumini.setUser(user);
+                loSumini.setPasswd(pass);
+                try {
+                    boolean llOk = loSumini.mxConsultaSuministro();
+                    if (!llOk) {
+                        setError(loSumini.getError());
+                    } else {
+                        try {
+                            boolean llOkk = loSumini.mxGrabar();
+                            if (!llOkk) {
+                                setError(loSumini.getError());
+                            } else {
+                                setCliente(loSumini.getCliente());
+                                setMensaje(loSumini.getMensaje());
+                            }
+                        } catch (SQLException | ParseException loErr) {
+                            setError(loErr.getMessage());
+                        }
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }*/
+                
+                //Grabar
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
                 loCliente.setUrl(getUrl());
@@ -564,7 +591,30 @@ public class MenuAction extends BaseAction {
         setResult("frmCREMantenedor");
         return getResult();
     }
-
+    
+    public String frmCREDocumentos() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);
+        try {
+            setLstTipDocCiv(loTabla.getLstTabla(4));
+            if (getLstTipDocCiv() == null) {
+                setError(loTabla.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        setResult("frmCREDocumentos");
+        return getResult();
+    }
+    
     public String frmCRESolicitud() {
         if (!validaSession()) {
             return "login";
