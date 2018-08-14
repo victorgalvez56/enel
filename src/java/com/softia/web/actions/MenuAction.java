@@ -292,7 +292,7 @@ public class MenuAction extends BaseAction {
                 } catch (SQLException loErr) {
                     setError(loErr.getMessage());
                 }
-                return ("frmCLIPosicion");
+                return frmCLIPosicion();
             }
             setResult("frmCLIMantenedor");
         }
