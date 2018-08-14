@@ -862,7 +862,7 @@ public class MenuAction extends BaseAction {
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
-        }
+        } 
         return getResult();
     }
 
@@ -891,7 +891,7 @@ public class MenuAction extends BaseAction {
                 setLstTipDocCiv(loTabla.getLstTabla(4));
                 if (getLstTipDocCiv() == null) {
                     setError(loTabla.getError());
-                }
+                } 
             }
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -908,14 +908,28 @@ public class MenuAction extends BaseAction {
             loCredito.setUser(user);
             loCredito.setPasswd(pass);
             loCredito.setCredito(getCredito());
-            loCredito.setComentario(getComentario());
             try {
-                boolean llOk = loCredito.mxRevertir();
+                boolean llOk = loCredito.mxRechazar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setMensaje(loCredito.getMensaje());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("aplicar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxAplicar();
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
                     setCredito(loCredito.getCredito());
-                    setMensaje(loCredito.getMensaje());
                 }
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());

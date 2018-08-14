@@ -33,12 +33,8 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9">
-                                    <input type="radio" >Cliente no paso la evaluación<br>
-                                    <input type="radio" >Cliente se arrepintió<br>
-                                    <input type="radio" >Falta información<br>
-                                    <input type="radio" >Datos erróneos<br>
-                                    <input type="radio" >Otros
-                                    <input type="text" />
+                                    <!--select credito.condic-->
+                                    <s:textfield cssClass="form-control" id="tfCondic" name="credito.condic" />
                                 </div>
                             </div>
                             <div class="row">
