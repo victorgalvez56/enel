@@ -791,7 +791,53 @@ public class MenuAction extends BaseAction {
             setResult("frmCRESolicitud");
         }
         HttpServletRequest request = ServletActionContext.getRequest();
-        if (request.getParameter("grabar") != null) {
+        if (request.getParameter("buscarNombre") != null) {
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            try {
+                String lcParam = "";
+                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
+                    lcParam = getParamBusquedaCre();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                }
+                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 2);
+                if (!llOk) {
+                    setError(loCliente.getError());
+                } else {
+                    setLstClientes(loCliente.getLstClientes());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("buscarDNI") != null) {
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            try {
+                String lcParam = "";
+                if (!LibFunc.fxEmpty(getParamBusquedaCre())) {
+                    lcParam = getParamBusquedaCre();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                } else if (!LibFunc.fxEmpty(getParamBusquedaCli())) {
+                    lcParam = getParamBusquedaCli();
+                }
+                boolean llOk = loCliente.mxBuscarCreditos(lcParam, 1);
+                if (!llOk) {
+                    setError(loCliente.getError());
+                } else {
+                    setLstClientes(loCliente.getLstClientes());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("grabar") != null) {
             CCreditos loCredito = new CCreditos();
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
@@ -807,7 +853,39 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        } 
+        } else if (request.getParameter("aplicar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxAplicar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setCredito(loCredito.getCredito());
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("nombre") != null) {
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            loCliente.setCliente(getCliente());
+            try {
+                boolean llOk = loCliente.mxAplicar();
+                if (!llOk) {
+                    setError(loCliente.getError());
+                } else {
+                    loCliente.setCliente(loCliente.getCliente());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        }
         return getResult();
     }
     //ANULAR SOLICITUD
@@ -864,7 +942,7 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        }/*else if (request.getParameter("desistir") != null) {
+        }else if (request.getParameter("desistir") != null) {
             CCreditos loCredito = new CCreditos();
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
@@ -875,13 +953,12 @@ public class MenuAction extends BaseAction {
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
-                    setCredito(loCredito.getCredito());
                     setMensaje(loCredito.getMensaje());
                 }
-            } catch (SQLException | ParseException loErr) {
+            } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
-        } */
+        } 
         return getResult();
     }
     //SUBMODULO CREDITO APROBACION DEESEMBOLSO
