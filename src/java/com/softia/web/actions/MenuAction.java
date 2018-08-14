@@ -651,6 +651,7 @@ public class MenuAction extends BaseAction {
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
             loCredito.setPasswd(pass);
+            getCredito().getCliente().setCodCli(getCliente().getCodCli());
             loCredito.setCredito(getCredito());
             try {
                 boolean llOk = loCredito.mxGrabar();
@@ -663,19 +664,19 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         } else if (request.getParameter("aplicar") != null) {
-            CCreditos loCredito = new CCreditos();
-            loCredito.setUrl(getUrl());
-            loCredito.setUser(user);
-            loCredito.setPasswd(pass);
-            loCredito.setCredito(getCredito());
+            CClientes loCliente = new CClientes();
+            loCliente.setUrl(getUrl());
+            loCliente.setUser(user);
+            loCliente.setPasswd(pass);
+            loCliente.setCliente(getCliente());
             try {
-                boolean llOk = loCredito.mxAplicar();
+                boolean llOk = loCliente.mxAplicar();
                 if (!llOk) {
-                    setError(loCredito.getError());
+                    setError(loCliente.getError());
                 } else {
-                    setCredito(loCredito.getCredito());
+                    setCliente(loCliente.getCliente());
                 }
-            } catch (SQLException | ParseException loErr) {
+            } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
         } else if (request.getParameter("nombre") != null) {
@@ -689,7 +690,7 @@ public class MenuAction extends BaseAction {
                 if (!llOk) {
                     setError(loCliente.getError());
                 } else {
-                    loCliente.setCliente(loCliente.getCliente());
+                    setCliente(loCliente.getCliente());
                 }
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
