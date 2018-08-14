@@ -18,12 +18,14 @@ import com.softia.models.Cobranza;
 import com.softia.models.Condicion;
 import com.softia.models.ConfigCobranza;
 import com.softia.models.Credito;
+import com.softia.models.Departamento;
 import com.softia.models.Destino;
 import com.softia.models.Direccion;
 import com.softia.models.Distrito;
 import com.softia.models.Oficina;
 import com.softia.models.Producto;
 import com.softia.models.Profesion;
+import com.softia.models.Provincia;
 import com.softia.models.Tabla;
 import com.softia.models.TipoCliente;
 import com.softia.models.Usuario;
@@ -36,6 +38,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -200,6 +203,17 @@ public class MenuAction extends BaseAction {
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
         }
+        /*
+        Cliente prueba = new Cliente();
+        prueba.setCodCli("000101807000029");
+        Cliente prueba1 = new Cliente();
+        prueba1.setCodCli("000101807000030");
+        List<Cliente> clientes;
+        clientes = new ArrayList<>();
+        clientes.add(prueba);
+        clientes.add(prueba1);
+        setLstClientes(clientes);
+        */
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -218,6 +232,46 @@ public class MenuAction extends BaseAction {
                         setCliente(loCliente.getCliente());
                     }
                 } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("buscar") != null) {
+                /*Cliente cliente = new Cliente();
+                cliente.setCodCli("Roberto");
+                cliente.setApePat("Delgado");
+                cliente.setApeMat("Febres");
+                cliente.setSumini("105");
+                cliente.setTipDocCiv("D");
+                cliente.setApePat("70907380");
+                cliente.setApePat("Delgado");
+                cliente.getDireccion().getDistrito().getProvincia().getDepartamento().setNombre("Arequipa");
+                cliente.getDireccion().getDistrito().getProvincia().setNombre("Arequipa");
+                cliente.getDireccion().getDistrito().setNombre("Arequipa");
+                cliente.setRegistro(java.sql.Date.valueOf("2018-07-01"));
+                cliente.setRegistro(java.sql.Date.valueOf("2018-09-01"));*/
+                
+                CClientes loCliente = new CClientes();
+                
+                //setDireccion(new Direccion());
+                getCliente().setDireccion(new Direccion());
+                getCliente().getDireccion().setDistrito(new Distrito());
+                getCliente().getDireccion().getDistrito().setProvincia(new Provincia());
+                getCliente().getDireccion().getDistrito().getProvincia().setDepartamento(new Departamento());
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    loCliente.setCodCta("000101807000029");
+                    loCliente.setFecIni("2018-07-01");
+                    loCliente.setFecFin("2018-10-01");
+                    boolean llOk = loCliente.mxFiltrar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                        setLstClientes(loCliente.getLstClientes());
+                    }
+                } catch (SQLException | ParseException   loErr) {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("buscarNombre") != null) {
@@ -255,12 +309,43 @@ public class MenuAction extends BaseAction {
                 setMensaje("nuevo");
                 return ("frmCLINuevoActualizar");
             } else if (request.getParameter("actualizar") != null) {
-                setCliente(new Cliente());
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
                 setMensaje("actualizar");
                 return ("frmCLINuevoActualizar");
             } else if (request.getParameter("exportar") != null) {
                 setCliente(new Cliente());
                 return ("frmCLINuevoActualizar");
+            } else if (request.getParameter("posicion") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return ("frmCLIPosicion");
             }
             setResult("frmCLIMantenedor");
         }
@@ -336,15 +421,22 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("grabar") != null) {
-                Cliente prueba = new Cliente();
-                prueba.setCodCli("000101807000029");
-                Cliente prueba1 = new Cliente();
-                prueba1.setCodCli("000101807000030");
-                List<Cliente> clientes;
-                clientes = new ArrayList<>();
-                clientes.add(prueba);
-                clientes.add(prueba1);
-                setLstClientes(clientes);
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxGrabar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                        setMensaje(loCliente.getMensaje());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
             } else if (request.getParameter("buscarNombre") != null) {
                 CClientes loCliente = new CClientes();
                 loCliente.setUrl(getUrl());
@@ -375,48 +467,6 @@ public class MenuAction extends BaseAction {
                 } catch (SQLException loErr) {
                     setError(loErr.getMessage());
                 }
-            } else if (request.getParameter("nuevo") != null) {
-                setCliente(new Cliente());
-                setMensaje("nuevo");
-                return ("frmCLINuevoActualizar");
-            } else if (request.getParameter("actualizar") != null) {
-                CClientes loCliente = new CClientes();
-                loCliente.setCliente(getCliente());
-                loCliente.setUrl(getUrl());
-                loCliente.setUser(user);
-                loCliente.setPasswd(pass);
-                try {
-                    boolean llOk = loCliente.mxAplicar();
-                    if (!llOk) {
-                        setError(loCliente.getError());
-                    } else {
-                        setCliente(loCliente.getCliente());
-                    }
-                } catch (SQLException loErr) {
-                    setError(loErr.getMessage());
-                }
-                setMensaje("actualizar");
-                return ("frmCLINuevoActualizar");
-            } else if (request.getParameter("exportar") != null) {
-                setCliente(new Cliente());
-                return ("frmCLINuevoActualizar");
-            } else if (request.getParameter("posicion") != null) {
-                CClientes loCliente = new CClientes();
-                loCliente.setCliente(getCliente());
-                loCliente.setUrl(getUrl());
-                loCliente.setUser(user);
-                loCliente.setPasswd(pass);
-                try {
-                    boolean llOk = loCliente.mxAplicar();
-                    if (!llOk) {
-                        setError(loCliente.getError());
-                    } else {
-                        setCliente(loCliente.getCliente());
-                    }
-                } catch (SQLException loErr) {
-                    setError(loErr.getMessage());
-                }
-                return ("frmCLIPosicion");
             }
             setResult("frmCLIMantenedor");
         }
