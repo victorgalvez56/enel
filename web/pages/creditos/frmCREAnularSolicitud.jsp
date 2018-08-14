@@ -56,7 +56,7 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Tipo Doc.:</label>
-                                                            <s:select name="credito.cliente.tipDocCiv" tabindex="2" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
+                                                            <s:textfield name="credito.cliente.tipDocCiv" id="tfTipDocCiv" tabindex="2" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">

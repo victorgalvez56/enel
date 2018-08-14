@@ -2,6 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@include file="modCREBuscar.jsp" %>
 <%@include file="modCREPlanPagos.jsp" %>
+<%@include file="modCRERechazarSolici.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
@@ -94,7 +95,8 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
-                                                        <s:submit name="evaluar" value="Evaluar Score" id = "bEvaluar" cssClass="btn btn-primary btn-flat" />
+                                                        <button type="button" class="btn btn-primary btn-flat" onclick="fecha_actual()">Evaluar Score</button>
+                                                        <s:submit name="evaluar" value="Evaluar Score" id = "bEvaluar"  cssClass="btn btn-primary btn-flat"  style="display: none;"/>
                                                     </div>
                                                     <div class="col-md-2" align="right">
                                                         <div class="form-group">
@@ -136,7 +138,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonSol" tabindex="7" name="credito.capSol"/>
+                                                            <s:textfield cssClass="form-control" id="tfMonSol" tabindex="7" name="credito.capSol" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -146,7 +148,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonSol" tabindex="8" name="credito.cuotas"/>
+                                                            <s:textfield cssClass="form-control" id="tfMonSol" tabindex="8" name="credito.cuotas" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,7 +160,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonSol" tabindex="9" name="credito.cuota" />
+                                                            <s:textfield cssClass="form-control" id="tfMonSol" tabindex="9" name="credito.cuota" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -180,7 +182,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:select name="credito.producto.codigo" tabindex="11" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="credito.producto.codigo" tabindex="11" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>                                                        
                                                 </div>
@@ -192,7 +194,7 @@
                                                     </div>
                                                     <div class="col-md-10">
                                                         <div class="form-group">
-                                                            <s:textarea cssClass="form-control" id="tfComent" tabindex="12" name="comentario"/>
+                                                            <s:textarea cssClass="form-control" id="tfComent" tabindex="12" name="comentario" required="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -204,9 +206,10 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>-->
+                                            <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
                                             <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="rechazar" value="Rechazar" id = "bRechazarr" cssClass="btn btn-primary btn-flat" />
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalRechazarSolici" id="" onclick="frmRechazarSolici()">Rechazar</button>
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
                                         </div>
                                     </div>
@@ -221,5 +224,16 @@
                 </section>
             </div>
         </div>
+        <script>
+            function frmRechazarSolici() {
+                document.getElementById("fRechazar").setAttribute("action", "frmCREAprobacion");
+            }
+            
+            function fecha_actual(){
+                var f = new Date();
+                $("#tfFechaEvaluacion").val(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+                $("#tfResultado").val("APROBADO");
+            }
+        </script>
     </body>
 </html>
