@@ -809,7 +809,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    //SUBMODULO CREDITO APROBACION DEESEMBOLSO
+    //SUBMODULO CREDITO APROBACION DESEMBOLSO
     public String frmCREAprobacion() {
         if (!validaSession()) {
             return "login";
@@ -938,7 +938,23 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        }
+        } else if (request.getParameter("aceptar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxRechazar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setMensaje(loCredito.getMensaje());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } 
         return getResult();
     }
 
