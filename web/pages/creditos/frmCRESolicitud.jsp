@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<%@include file="modCRERechazarSolici.jsp" %>
 <%@include file="../clientes/modCLIBuscarDatos.jsp" %>
 <%@include file="modCREBuscar.jsp" %>
 <!DOCTYPE html>
