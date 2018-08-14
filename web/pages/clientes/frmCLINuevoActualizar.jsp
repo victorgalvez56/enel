@@ -248,7 +248,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="nombre" value="Grabar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

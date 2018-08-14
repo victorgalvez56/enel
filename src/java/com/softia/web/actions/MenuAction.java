@@ -367,34 +367,7 @@ public class MenuAction extends BaseAction {
                 } catch (SQLException loErr) {
                     setError(loErr.getMessage());
                 }
-            } else if (request.getParameter("grabar") != null) {
-                /*CClientes loSumini = new CClientes();
-                loSumini.setCliente(getCliente());
-                loSumini.setUrl(getUrl());
-                loSumini.setUser(user);
-                loSumini.setPasswd(pass);
-                try {
-                    boolean llOk = loSumini.mxConsultaSuministro();
-                    if (!llOk) {
-                        setError(loSumini.getError());
-                    } else {
-                        try {
-                            boolean llOkk = loSumini.mxGrabar();
-                            if (!llOkk) {
-                                setError(loSumini.getError());
-                            } else {
-                                setCliente(loSumini.getCliente());
-                                setMensaje(loSumini.getMensaje());
-                            }
-                        } catch (SQLException | ParseException loErr) {
-                            setError(loErr.getMessage());
-                        }
-                    }
-                } catch (SQLException | ParseException loErr) {
-                    setError(loErr.getMessage());
-                }*/
-                
-                //Grabar
+            } else if (request.getParameter("nombre") != null) {
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
                 loCliente.setUrl(getUrl());
@@ -405,8 +378,7 @@ public class MenuAction extends BaseAction {
                     if (!llOk) {
                         setError(loCliente.getError());
                     } else {
-                        setCliente(loCliente.getCliente());
-                        setMensaje(loCliente.getMensaje());
+                        return frmCRESolicitud();
                     }
                 } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
@@ -745,7 +717,7 @@ public class MenuAction extends BaseAction {
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
-        } 
+        }
         return getResult();
     }
 

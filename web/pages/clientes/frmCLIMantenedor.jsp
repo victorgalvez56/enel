@@ -206,7 +206,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            
                                             <s:hidden name="cliente.codigo"></s:hidden>
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="nuevo" value="Nuevo cliente" cssClass="btn btn-primary btn-flat" />
@@ -226,7 +225,7 @@
     <script>
         function cliSeleccionado(codigo) {
             document.getElementById("tfCodCli").value = codigo;
-            //document.getElementById("tfCodCli").removeAttribute("name"); 
+            //document.getElementById("tfCodCli").removeAttribute("name");
         }
     </script>
 </html>
