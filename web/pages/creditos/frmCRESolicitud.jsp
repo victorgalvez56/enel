@@ -2,6 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@include file="modCRERechazarSolici.jsp" %>
 <%@include file="../clientes/modCLIBuscarDatos.jsp" %>
+<%@include file="modCREBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
@@ -85,7 +86,7 @@
                                             </div>
                                             <div class="box-body">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Monto Solicitado:</label>
                                                             <s:textfield cssClass="form-control" id="tfMonto" tabindex="1" name="credito.capSol" />
@@ -97,7 +98,7 @@
                                                             <s:select name="credito.producto.codigo" tabindex="2" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Nro Cuotas:</label>
                                                             <s:textfield cssClass="form-control" id="tfCuotas" tabindex="3" name="credito.cuotas" onblur="calcula_montoCuota()"/>
@@ -105,18 +106,14 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Fecha vencimiento</label>
-                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-3"></div>
-                                                    <div class="col-md-3"></div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
                                                             <label>Monto Cuota:</label>
                                                             <s:textfield cssClass="form-control" id="tfMontoCuota" name="credito.cuota" onclick="calcula_montoCuota()" readonly="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label>Fecha vencimiento</label>
+                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,12 +124,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="cliente.codigo"></s:hidden>
-                                            <s:hidden name="cliente.codCli" id="tfCodCli" value="000101807000030"></s:hidden>
+                                            <s:hidden name="credito.codigo"></s:hidden>
+                                            <s:hidden name="credito.cliente.apePat"></s:hidden>
+                                            <s:hidden name="credito.cliente.apeMat"></s:hidden>
+                                            <s:hidden name="credito.cliente.nombre"></s:hidden>
+                                            <s:hidden name="credito.cliente.codigo"></s:hidden>
+                                            <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" hidden="true">Nuevo</button>-->
-                                            <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="nombre" value="Nombre" id="bNombre" cssClass="btn btn-primary btn-flat"  />
+                                            <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" display="none"/>
+                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
+                                            <s:submit name="nombre" value="Nombre" id="bNombre" cssClass="btn btn-primary btn-flat" style="display: none;" />
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +142,9 @@
                     </div>
                     <script>
                         $(document).ready(function () {
-                            $("#modalBuscarCli").modal("show");
+                            if(document.getElementById('tfNroDoc').value == ''){
+                                $("#modalBuscarCli").modal("show");
+                            }
                         });
                         
                         function calcula_montoCuota(){
