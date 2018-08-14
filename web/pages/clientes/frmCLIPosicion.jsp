@@ -49,16 +49,6 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>Nro. solicitud:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="" readonly="true" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
                                                             <label>Nro. de suministro:</label>
                                                         </div>
                                                     </div>
@@ -69,16 +59,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label>Nro. crédito:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="3" name="" readonly="true" />
-                                                        </div>
-                                                    </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label>Tipo de documento:</label>
@@ -108,7 +88,7 @@
                                                     </div>
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="6" name="cliente.nomCom" />
+                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="6" name="cliente.nomCom" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +100,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="7" name="cliente.estado" />
+                                                            <s:textfield cssClass="form-control" tabindex="7" name="cliente.estado" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -130,7 +110,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfProvincia" tabindex="8" name="cliente.direccion.distrito.provincia.nombre" />
+                                                            <s:textfield cssClass="form-control" id="tfProvincia" tabindex="8" name="cliente.direccion.distrito.provincia.nombre" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -140,7 +120,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfDistrito" tabindex="9" name="cliente.direccion.distrito.nombre" />
+                                                            <s:textfield cssClass="form-control" id="tfDistrito" tabindex="9" name="cliente.direccion.distrito.nombre" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,7 +132,7 @@
                                                     </div>
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfDireccion" tabindex="10" name="cliente.direccion.direccion" />
+                                                            <s:textfield cssClass="form-control" id="tfDireccion" tabindex="10" name="cliente.direccion.direccion" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -164,7 +144,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfTelefono" tabindex="11" name="cliente.telefono" />
+                                                            <s:textfield cssClass="form-control" id="tfTelefono" tabindex="11" name="cliente.telefono" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -174,7 +154,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCelular" tabindex="12" name="cliente.celular" />
+                                                            <s:textfield cssClass="form-control" id="tfCelular" tabindex="12" name="cliente.celular" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -184,7 +164,7 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCorreo" tabindex="13" name="cliente.correo" />
+                                                            <s:textfield cssClass="form-control" id="tfCorreo" tabindex="13" name="cliente.correo" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -236,10 +216,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli">Buscar</button>
+                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" onclick="frmNombre()">Buscar</button>
                                         <div style="float: right">
                                             <s:hidden name="cliente.codigo"></s:hidden>
-                                            <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
+                                            <s:textfield name="cliente.codCli" id="tfCodCli" ></s:textfield>
                                             <s:submit name="" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
@@ -253,4 +233,9 @@
             </div>
         </div>
     </body>
+    <script>
+        function frmNombre() {
+            document.getElementById("fBuscar").setAttribute("action", "frmCLIPosicion");
+        }
+    </script>
 </html>
