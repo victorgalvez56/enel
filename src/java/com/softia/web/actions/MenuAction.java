@@ -515,7 +515,6 @@ public class MenuAction extends BaseAction {
                 }
             } else if (request.getParameter("ver") != null) {
                 cuenta.getCuenta();
-                System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" + cuenta.getCuenta());
                 Credito credito = new Credito();
                 credito.setCodCta(cuenta.getCuenta());
 

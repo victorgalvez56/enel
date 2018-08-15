@@ -195,7 +195,6 @@
                                                         <td><s:property value="tipDocCiv" /></td>
                                                         <td><s:property value="nroDocCiv" /></td>
                                                         <td><s:property value="registro" /></td>
-                                                        <!--<td><s:checkbox name="cliente.codCli" fieldValue="true" value="codCli" /></td>-->
                                                         <td><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
                                                     </tr>
                                                 </s:iterator>
