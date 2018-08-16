@@ -22,6 +22,7 @@ import com.softia.models.Departamento;
 import com.softia.models.Destino;
 import com.softia.models.Direccion;
 import com.softia.models.Distrito;
+import com.softia.models.Log;
 import com.softia.models.Oficina;
 import com.softia.models.Producto;
 import com.softia.models.Profesion;
@@ -84,6 +85,7 @@ public class MenuAction extends BaseAction {
     private List<Cobranza> lstCobranza;
     private List<Cobranza> lstDetalleCobranza;
     private List<Cliente> lstClientes;
+    private List<Credito> lstCreditos;
     private Oficina oficina;
     private Condicion condicion;
     private Producto producto;
@@ -109,6 +111,8 @@ public class MenuAction extends BaseAction {
     private String codCta;
     private String fecIni;
     private String fecFin;
+    private List<Log> lstLog;
+    private String codigoVenta;
 
     public String login() {
         setResult("login");
@@ -295,6 +299,175 @@ public class MenuAction extends BaseAction {
                 return frmCLIPosicion();
             }
             setResult("frmCLIMantenedor");
+        }
+        return getResult();
+    }
+
+    public String frmSOLMantenedor() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);
+        try {
+            setLstEstados(loTabla.getLstTabla(1));
+            if (getLstEstados() == null) {
+                setError(loTabla.getError());
+            } else {
+                setLstSexos(loTabla.getLstTabla(3));
+                if (getLstSexos() == null) {
+                    setError(loTabla.getError());
+                } else {
+                    setLstTipDocCiv(loTabla.getLstTabla(4));
+                    if (getLstTipDocCiv() == null) {
+                        setError(loTabla.getError());
+                    } else {
+                        CProfesiones loProfesion = new CProfesiones();
+                        loProfesion.setUrl(getUrl());
+                        loProfesion.setUser(user);
+                        loProfesion.setPasswd(pass);
+                        setLstProfesiones(loProfesion.getLstProfesiones());
+                        if (getLstProfesiones() == null) {
+                            setError(loProfesion.getError());
+                        } else {
+                            setLstNivIns(loTabla.getLstTabla(5));
+                            if (getLstNivIns() == null) {
+                                setError(loTabla.getError());
+                            } else {
+                                setLstTipZon(loTabla.getLstTabla(6));
+                                if (getLstTipZon() == null) {
+                                    setError(loTabla.getError());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("aplicar") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("buscar") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    loCreditos.setFecIni(getFecIni());
+                    loCreditos.setFecFin(getFecFin());
+                    boolean llOk = loCreditos.mxFiltrar();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        setLstCreditos(loCreditos.getLstCreditos());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("nuevo") != null) {
+                setCredito(new Credito());
+                setMensaje("nuevo");
+                return frmCRESolicitud();
+            } else if (request.getParameter("aprobacion") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    boolean llOk = loCredito.mxAplicar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmCREAprobacion();
+            } else if (request.getParameter("imprimir") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    boolean llOk = loCredito.mxAplicar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmCREDocumentos();
+            } else if (request.getParameter("actualizar") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxAplicar();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmCREAnularSolicitud();
+            } else if (request.getParameter("exportar") != null) {
+                setCliente(new Cliente());
+                return ("frmCLINuevoActualizar");
+            } else if (request.getParameter("workflow") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxWorkFlow();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        setLstLog(loCreditos.getLstLog());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmREPCREWorkflow();
+            }
+            setResult("frmSOLMantenedor");
         }
         return getResult();
     }
@@ -559,7 +732,143 @@ public class MenuAction extends BaseAction {
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
         }
-        setResult("frmCREMantenedor");
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("aplicar") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("buscar") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxFiltrarAprobados();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        setLstCreditos(loCreditos.getLstCreditos());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("asignar") != null) {
+                    CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    loCreditos.setIp(getIp());
+                    loCreditos.setCodigoVenta(getCodigoVenta());
+                    boolean llOk = loCreditos.mxAsignarVenta();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setMensaje(loCreditos.getMensaje());
+                        setCredito(loCreditos.getCredito());
+                        setLstCreditos(loCreditos.getLstCreditos());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("nuevo") != null) {
+                setCredito(new Credito());
+                setMensaje("nuevo");
+                return frmCRESolicitud();
+            } else if (request.getParameter("aprobar") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    loCredito.setComentario(getComentario());
+                    boolean llOk = loCredito.mxAprobar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setMensaje(loCredito.getMensaje());
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("rechazar") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    loCredito.setComentario(getComentario());
+                    boolean llOk = loCredito.mxRechazar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setMensaje(loCredito.getMensaje());
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("imprimir") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    boolean llOk = loCredito.mxAplicar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmCREDocumentos();
+            } else if (request.getParameter("actualizar") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxAplicar();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmCREAnularSolicitud();
+            } else if (request.getParameter("exportar") != null) {
+                setCliente(new Cliente());
+                return ("frmCLINuevoActualizar");
+            }
+            setResult("frmCREMantenedor");
+        }
         return getResult();
     }
     
@@ -711,6 +1020,8 @@ public class MenuAction extends BaseAction {
                 if (!llOk) {
                     setError(loCliente.getError());
                 } else {
+                    setCredito(new Credito());
+                    getCredito().setDiaPag(loCliente.getDiaPag());
                     setCliente(loCliente.getCliente());
                 }
             } catch (SQLException loErr) {
@@ -796,6 +1107,22 @@ public class MenuAction extends BaseAction {
             loCredito.setCredito(getCredito());
             try {
                 boolean llOk = loCredito.mxDesistir();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setMensaje(loCredito.getMensaje());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("rechazar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxRechazar();
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
@@ -937,7 +1264,7 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        } else if (request.getParameter("aceptar") != null) {
+        } else if (request.getParameter("rechazar") != null) {
             CCreditos loCredito = new CCreditos();
             loCredito.setUrl(getUrl());
             loCredito.setUser(user);
@@ -945,6 +1272,22 @@ public class MenuAction extends BaseAction {
             loCredito.setCredito(getCredito());
             try {
                 boolean llOk = loCredito.mxRechazar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    setMensaje(loCredito.getMensaje());
+                }
+            } catch (SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("enviar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxEnviar();
                 if (!llOk) {
                     setError(loCredito.getError());
                 } else {
@@ -981,6 +1324,136 @@ public class MenuAction extends BaseAction {
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("aplicar") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxAplicar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("buscar") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxFiltrarEnviados();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        setLstCreditos(loCreditos.getLstCreditos());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("nuevo") != null) {
+                setCredito(new Credito());
+                setMensaje("nuevo");
+                return frmCRESolicitud();
+            } else if (request.getParameter("aprobar") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    loCredito.setComentario(getComentario());
+                    boolean llOk = loCredito.mxAprobar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setMensaje(loCredito.getMensaje());
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("rechazar") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    loCredito.setComentario(getComentario());
+                    boolean llOk = loCredito.mxRechazar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setMensaje(loCredito.getMensaje());
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } else if (request.getParameter("imprimir") != null) {
+                CCreditos loCredito = new CCreditos();
+                loCredito.setCredito(getCredito());
+                loCredito.setUrl(getUrl());
+                loCredito.setUser(user);
+                loCredito.setPasswd(pass);
+                try {
+                    boolean llOk = loCredito.mxAplicar();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setCredito(loCredito.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmCREDocumentos();
+            } else if (request.getParameter("actualizar") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxAplicar();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmCREAnularSolicitud();
+            } else if (request.getParameter("exportar") != null) {
+                setCliente(new Cliente());
+                return ("frmCLINuevoActualizar");
+            } else if (request.getParameter("workflow") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxWorkFlow();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        setLstLog(loCreditos.getLstLog());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmREPCREWorkflow();
+            }
             setResult("frmCREMntAprobacion");
         }
         return getResult();
@@ -3712,5 +4185,47 @@ public class MenuAction extends BaseAction {
      */
     public void setFecFin(String fecFin) {
         this.fecFin = fecFin;
+    }
+
+    /**
+     * @return the lstCreditos
+     */
+    public List<Credito> getLstCreditos() {
+        return lstCreditos;
+    }
+
+    /**
+     * @param lstCreditos the lstCreditos to set
+     */
+    public void setLstCreditos(List<Credito> lstCreditos) {
+        this.lstCreditos = lstCreditos;
+    }
+
+    /**
+     * @return the lstLog
+     */
+    public List<Log> getLstLog() {
+        return lstLog;
+    }
+
+    /**
+     * @param lstLog the lstLog to set
+     */
+    public void setLstLog(List<Log> lstLog) {
+        this.lstLog = lstLog;
+    }
+
+    /**
+     * @return the codigoVenta
+     */
+    public String getCodigoVenta() {
+        return codigoVenta;
+    }
+
+    /**
+     * @param codigoVenta the codigoVenta to set
+     */
+    public void setCodigoVenta(String codigoVenta) {
+        this.codigoVenta = codigoVenta;
     }
 }

@@ -112,7 +112,7 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Fecha vencimiento</label>
-                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" />
+                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,10 +129,10 @@
                                             <s:hidden name="credito.cliente.nombre"></s:hidden>
                                             <s:hidden name="credito.cliente.codigo"></s:hidden>
                                             <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
-                                            <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" hidden="true">Nuevo</button>-->
+                                                <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" hidden="true">Nuevo</button>-->
                                             <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" display="none"/>
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
-                                            <s:submit name="nombre" value="Nombre" id="bNombre" cssClass="btn btn-primary btn-flat" style="display: none;" />
+                                            <s:submit name="nombre" value="Nombre" id="bNombre" cssClass="btn btn-primary btn-flat" style="display: none;"/>
                                         </div>
                                     </div>
                                 </div>
@@ -141,25 +141,30 @@
                     </div>
                     <script>
                         $(document).ready(function () {
-                            if(document.getElementById('tfNroDoc').value == ''){
+                            if (document.getElementById('tfNroDoc').value == '') {
                                 $("#modalBuscarCli").modal("show");
                             }
+                            frmNombre();
                         });
-                        
-                        function calcula_montoCuota(){
+
+                        function calcula_montoCuota() {
                             var CapSol = document.getElementById('tfMonto').value;
                             var Cuotas = document.getElementById('tfCuotas').value;
-                            if (Cuotas == ''){
+                            if (Cuotas == '') {
                                 $("#tfCuotas").val(0);
-                            }else {
+                            } else {
                                 var MonCuo = CapSol / Cuotas;
                                 $("#tfMontoCuota").val(MonCuo);
                             }
+                        }
+
+                        function frmNombre() {
+                            document.getElementById("fBuscar").setAttribute("action", "frmCRESolicitud");
                         }
                     </script>
                 </section>
             </div>
         </div>
-        
+
     </body>
 </html>

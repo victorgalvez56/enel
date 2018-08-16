@@ -94,21 +94,31 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-2">
                                                         <button type="button" class="btn btn-primary btn-flat" onclick="fecha_actual()">Evaluar Score</button>
                                                         <s:submit name="evaluar" value="Evaluar Score" id = "bEvaluar"  cssClass="btn btn-primary btn-flat"  style="display: none;"/>
                                                     </div>
-                                                    <div class="col-md-2" align="right">
+                                                    <div class="col-md-1" align="right">
                                                         <div class="form-group">
-                                                            <label class="control-label">Resultado</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfResultado" tabindex="5" readonly="true"/>
+                                                            <label class="control-label">Resultado ENEL</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfResultadoENEL" tabindex="5" readonly="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1" align="right">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Resultado SENTINEL</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <s:textfield cssClass="form-control" id="tfResultadoSENTINEL" tabindex="5" readonly="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
                                                         <div class="form-group" align="right">
                                                             <label class="control-label">Fecha Evaluación</label>
                                                         </div>
@@ -170,7 +180,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonApr" tabindex="10" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfMonApr" tabindex="10" name="credito.cuotaAprobada" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -209,7 +219,7 @@
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
                                             <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" cssClass="btn btn-primary btn-flat" />
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalRechazarSolici" id="" onclick="frmRechazarSolici()">Rechazar</button>
+                                            <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
                                         </div>
                                     </div>
@@ -232,7 +242,8 @@
             function fecha_actual(){
                 var f = new Date();
                 $("#tfFechaEvaluacion").val(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-                $("#tfResultado").val("APROBADO");
+                $("#tfResultadoENEL").val("APROBADO");
+                $("#tfResultadoSENTINEL").val("APROBADO");
             }
         </script>
     </body>
