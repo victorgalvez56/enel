@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<%@include file="modCREAsignarVenta.jsp" %>
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
@@ -35,13 +34,13 @@
                 </div>
                 <!-- Content header -->
                 <section class="content-header">
-                    <h1>Mantenedor de Créditos</h1>
+                    <h1>Mantenedor de Solicitudes</h1>
                 </section>
                 <!-- Main content -->
                 <section class="content">
                     <div class="box box-primary">
-                        <div class="box-body">
-                            <s:form action="frmCREMantenedor" role="form">
+                        <div class="box-body">                            
+                            <s:form action="frmSOLMantenedor" role="form">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="box box-primary box-solid">
@@ -56,7 +55,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>Nro. solicitud:</label>
+                                                            <label>Nro. Solicitud:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -71,17 +70,17 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfSumini" tabindex="2" name="credito.cliente.sumini" />
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="credito.cliente.sumini"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>Cod. cliente:</label>
+                                                            <label>Cod. Cliente:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="3" name="credito.cliente.codCli" />
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="credito.cliente.codCli"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,7 +102,29 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv" tabindex="4"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="10"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Fecha inicio:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <s:textfield type="date" cssClass="form-control" id="" name="fecIni" tabindex="12"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Fecha fin:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <s:textfield type="date" cssClass="form-control" id="fecFin" tabindex="13" name="" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -143,8 +164,8 @@
                                                         <td><s:property value="cliente.nroDocCiv" /></td>
                                                         <td><s:property value="fecSol" /></td>
                                                         <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codCta"/>')"></center></td>
-                                                </tr>
-                                            </s:iterator>
+                                                    </tr>
+                                                </s:iterator>
                                             </tbody>
                                         </table><br>
                                     </div>          
@@ -153,10 +174,13 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden name="credito.codigo"></s:hidden>
-                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalAsignarVenta" id="bAsignar">Asignar # de venta</button>
-                                            <s:submit name="rechazar" value="Rechazar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="nuevo" value="Nueva solicitud" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="aprobacion" value="Aprobar desembolso" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="imprimir" value="Imprimir Documentos" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="actualizar" value="Actualizar solicitud" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="workflow" value="Workflow" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>
@@ -170,8 +194,7 @@
     <script>
         function creSeleccionado(codigo) {
             document.getElementById("tfCodCta").value = codigo;
-            document.getElementById("tfCodCre").value = codigo;
             //document.getElementById("tfCodCli").removeAttribute("name");
         }
-    </script>    
+    </script>
 </html>

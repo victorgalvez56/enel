@@ -27,6 +27,10 @@
         <put-attribute name="body"   value="/pages/general/bienvenido.jsp"/>
     </definition>
     
+    <definition name="frmSOLMantenedor" extends="baseLayout">
+        <put-attribute name="title"  value="Mantendor de solicitudes - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmSOLMantenedor.jsp"/>
+    </definition>
     <definition name="frmCREMantenedor" extends="baseLayout">
         <put-attribute name="title"  value="Mantendor de créditos - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREMantenedor.jsp"/>

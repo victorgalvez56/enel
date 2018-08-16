@@ -4,6 +4,51 @@
 <%@include file="modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
+    <head>
+        <SCRIPT>
+            function fxConsulta() {
+                document.getElementById("bGrabar").disabled = false;
+                if (document.getElementById("tfSuministro").value === "1558234") {
+                    document.getElementById("estado").innerHTML = 'HABILITADO';
+                    document.getElementById("direccion").innerHTML = 'PEREZ 496';
+                    document.getElementById("distrito").innerHTML = 'SANTA MARIA';
+                    document.getElementById("provincia").innerHTML = 'HUAURA';
+                    document.getElementById("departamento").innerHTML = 'LIMA';
+                } else if (document.getElementById("tfSuministro").value === "1558235") {
+                    document.getElementById("estado").innerHTML = 'HABILITADO';
+                    document.getElementById("direccion").innerHTML = 'BARTOLOME PEREZ S/N';
+                    document.getElementById("distrito").innerHTML = 'SANTA MARIA';
+                    document.getElementById("provincia").innerHTML = 'HUAURA';
+                    document.getElementById("departamento").innerHTML = 'LIMA';
+                } else if (document.getElementById("tfSuministro").value === "1558237") {
+                    document.getElementById("estado").innerHTML = 'HABILITADO';
+                    document.getElementById("direccion").innerHTML = 'PERU 1778';
+                    document.getElementById("distrito").innerHTML = 'SANTA MARIA';
+                    document.getElementById("provincia").innerHTML = 'HUAURA';
+                    document.getElementById("departamento").innerHTML = 'LIMA';
+                } else if (document.getElementById("tfSuministro").value === "1558238") {
+                    document.getElementById("estado").innerHTML = 'HABILITADO';
+                    document.getElementById("direccion").innerHTML = 'PSJ PERU 280';
+                    document.getElementById("distrito").innerHTML = 'SANTA MARIA';
+                    document.getElementById("provincia").innerHTML = 'HUAURA';
+                    document.getElementById("departamento").innerHTML = 'LIMA';
+                } else if (document.getElementById("tfSuministro").value === "1558239") {
+                    document.getElementById("estado").innerHTML = 'HABILITADO';
+                    document.getElementById("direccion").innerHTML = 'PSJ PERU 280';
+                    document.getElementById("distrito").innerHTML = 'SANTA MARIA';
+                    document.getElementById("provincia").innerHTML = 'HUAURA';
+                    document.getElementById("departamento").innerHTML = 'LIMA';
+                } else {
+                    document.getElementById("estado").innerHTML = '';
+                    document.getElementById("direccion").innerHTML = '';
+                    document.getElementById("distrito").innerHTML = '';
+                    document.getElementById("provincia").innerHTML = '';
+                    document.getElementById("departamento").innerHTML = '';
+                    document.getElementById("bGrabar").disabled = true;
+                }
+            }
+        </SCRIPT>
+    </head>
     <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
         <!-- Site wrapper -->
         <div class="wrapper">
@@ -66,7 +111,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfsuministro" tabindex="2" name="cliente.sumini" required="true"/>
+                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="fxConsulta();"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,7 +119,12 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Estado sum:</label>
                                                             <div class="form-group">
-                                                                <s:property value="cliente.estado"/>
+                                                                <s:if test="cliente.sumini.length() != 0">
+                                                                    <s:property value="cliente.estado"/>
+                                                                </s:if>
+                                                                <s:else>
+                                                                    <label id="estado"></label>
+                                                                </s:else>                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -82,7 +132,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Sector:</label>
                                                             <div class="form-group">
-                                                                <s:property value="cliente.sector"/>
+                                                                <label id="sector"></label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -148,7 +198,12 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Departamento:</label>
                                                             <div class=" form-group">
-                                                                <s:property value="cliente.direccion.distrito.provincia.departamento.nombre"/>
+                                                                <s:if test="cliente.sumini.length() != 0">
+                                                                    <s:property value="cliente.direccion.distrito.provincia.departamento.nombre"/>
+                                                                </s:if>
+                                                                <s:else>
+                                                                    <label id="departamento"></label>
+                                                                </s:else>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -156,7 +211,12 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Provincia:</label>
                                                             <div class=" form-group">
-                                                                <s:property value="cliente.direccion.distrito.provincia.nombre"/>
+                                                                <s:if test="cliente.sumini.length() != 0">
+                                                                    <s:property value="cliente.direccion.distrito.provincia.nombre"/>
+                                                                </s:if>
+                                                                <s:else>
+                                                                    <label id="provincia"></label>
+                                                                </s:else>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -164,7 +224,12 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Distrito:</label>
                                                             <div class=" form-group">
-                                                                <s:property value="cliente.direccion.distrito.nombre"/>
+                                                                <s:if test="cliente.sumini.length() != 0">
+                                                                    <s:property value="cliente.direccion.distrito.nombre"/>
+                                                                </s:if>
+                                                                <s:else>                                                                
+                                                                    <label id="distrito"></label>
+                                                                </s:else>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -174,7 +239,12 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Dirección:</label>
                                                             <div class=" form-group">
-                                                                <s:property value="cliente.direccion.direccion"/>
+                                                                <s:if test="cliente.sumini.length() != 0">
+                                                                    <s:property value="cliente.direccion.direccion"/>
+                                                                </s:if>
+                                                                <s:else>
+                                                                    <label id="direccion"></label>
+                                                                </s:else>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -248,7 +318,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit name="nombre" value="Grabar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="nombre" value="Grabar" id="bGrabar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

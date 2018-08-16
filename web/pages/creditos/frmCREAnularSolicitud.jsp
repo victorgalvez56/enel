@@ -123,7 +123,7 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalRechazarSolici" id="" onclick="frmRechazarSolici()">Rechazar</button>
+                                            <s:submit name="rechazar" value="Rechazar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="desistir" value="Desistir" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>

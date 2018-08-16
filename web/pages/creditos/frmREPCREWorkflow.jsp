@@ -45,37 +45,45 @@
                                         <div class="box box-primary box-solid">
                                             <div class="box-body">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Solicitud</label>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true"/>
+                                                            <label>Código de Cliente:</label>
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Nombre:</label>
+                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="3" name="credito.cliente.nomCom" readonly="true"/><br>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8">                                                        
                                                     <table class="table">
                                                         <thead>
-                                                        <tr>
-                                                            <th>Proceso</th>
-                                                            <th>Fecha de Proceso</th>
-                                                            <th>Usuario</th>
-                                                        </tr>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Proceso</th>
+                                                                <th>Fecha de Proceso</th>
+                                                                <th>Usuario</th>
+                                                            </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td>Registro</td>
-                                                            <td>2018-01-01</td>
-                                                            <td>9999</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>#</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                        </tr>
+                                                            <s:iterator value="lstLog" status="rowStatus">
+                                                                <tr>
+                                                                    <th><s:property value="%{#rowStatus.count}" /></th>
+                                                                    <td><s:property value="operacion" /></td>
+                                                                    <td><s:property value="fecha" /></td>
+                                                                    <td><s:property value="usuario" /></td>
+                                                            </tr>
+                                                        </s:iterator>
+
                                                         </tbody>
                                                     </table>
                                                 </div>

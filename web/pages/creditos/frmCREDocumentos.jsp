@@ -49,18 +49,6 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nro. solicitud:</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="" readonly="true"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
                                                             <label class="control-label">Nro. crédito:</label>
                                                         </div>
                                                     </div>
@@ -133,6 +121,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <s:hidden name="credito.codigo"></s:hidden>
+                                        <s:hidden name="credito.cliente.apePat"></s:hidden>
+                                        <s:hidden name="credito.cliente.apeMat"></s:hidden>
+                                        <s:hidden name="credito.cliente.nombre"></s:hidden>
                                         <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                         <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
                                         

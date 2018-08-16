@@ -27,27 +27,10 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<s:url action="frmCREMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Créditos</a></li>
-                        <li><a href="<s:url action="frmCRESolicitud"/>"><i class="fa fa-circle-o"></i> Nueva Solicitud</a></li>
-                        <li><a href="<s:url action="frmCREAnularSolicitud"/>"><i class="fa fa-circle-o"></i> Anular Solicitud</a></li>
-                        <li><a href="<s:url action="frmCREAprobacion"/>"><i class="fa fa-circle-o"></i> Aprobación de Solicitud</a></li>
+                        <li><a href="<s:url action="frmSOLMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Solicitudes</a></li>
                         <li><a href="<s:url action="frmCREMntAprobacion"/>"><i class="fa fa-circle-o"></i> Mantenedor de Aprobaciones</a></li>
-                        <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Documentos</a></li>
+                        <li><a href="<s:url action="frmCREMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Créditos</a></li>
                         <li><a href="<s:url action="frmCREMovimientos"/>"><i class="fa fa-circle-o"></i> Movimientos</a></li>
-                        <li><a href="<s:url action="frmREPCREWorkflow"/>"><i class="fa fa-circle-o"></i> WORKFLOW</a></li>
-                        <li><a href="<s:url action="frmADMUsuarios"/>"><i class="fa fa-circle-o"></i> Mantenedor de Usuarios</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-dollar"></i> <span>Caja</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<s:url action="frmCAJDesembolso"/>"><i class="fa fa-circle-o"></i> Desembolso</a></li>
-                        <li><a href="<s:url action="frmCAJPago"/>"><i class="fa fa-circle-o"></i> Cobranza</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
