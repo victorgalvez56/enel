@@ -2352,7 +2352,155 @@ public class CReportePDF {
         }
         return llOk;
     }
+    
+    public boolean mxPlanPagos() throws SQLException, IOException, ParseException {
+        CCreditos loCre = new CCreditos();
+        loCre.setUrl(getUrl());
+        loCre.setUser(getUser());
+        loCre.setPasswd(getPasswd());
+        loCre.setCredito(getCredito());
+        boolean llOk = loCre.mxAplicar();
+        if (llOk) {
+            llOk = loCre.mxPlanPagos();
+            if (llOk) {
+                llOk = mxPlanPagosArchivo(loCre.getCredito());
+                if (llOk) {
+                    setRutaReporte("/ftia/files/cartas/planPagos_" + loCre.getCredito().getCodCta() + ".pdf");
+                    LibFunc.mxLog("Plan de pagos OK.");
+                } else {
+                    LibFunc.mxLog("Plan de pagos error: " + getError());
+                }
+            } else {
+                setError(loCre.getError());
+            }
+        } else {
+            setError(loCre.getError());
+        }
+        return llOk;
+    }
+    
+    public boolean mxPlanPagosArchivo(Credito p_oCredito) throws IOException {
+        boolean llOk = true;
+        try {
+            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/planPagos_" + p_oCredito.getCodCta() + ".pdf");
+            Document loDoc = new Document(PageSize.A4, -50, -50, 5, 5);
+            PdfWriter writer = PdfWriter.getInstance(loDoc, loArchivo);
+            loDoc.open();
+            Font fontContenido = FontFactory.getFont(
+                    FontFactory.TIMES_ROMAN, 7, Font.NORMAL,
+                    BaseColor.BLACK);
+            Font fontTexto = FontFactory.getFont(
+                    FontFactory.HELVETICA, 8, Font.NORMAL,
+                    BaseColor.BLACK);
 
+            PdfPTable loTablaDatos = new PdfPTable(5);
+            PdfPTable loTablaPagos = new PdfPTable(3);
+            
+            loTablaDatos.setWidths(new float[]{1, 1, 9, 1, 1});
+
+            //Primera Tabla
+            PdfPCell celda0T1 = new PdfPCell(new Phrase("ENEL", fontContenido));
+            celda0T1.setBorder(PdfPCell.NO_BORDER);
+            celda0T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda0T1.setColspan(5);
+                
+            //Primera fila
+            PdfPCell celda1T1 = new PdfPCell(new Phrase("Nombre", fontContenido));
+            celda1T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda2T1 = new PdfPCell(new Phrase(":", fontContenido));
+            celda2T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T1 = new PdfPCell(new Phrase("", fontContenido));
+            celda3T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T1 = new PdfPCell(new Phrase("Fecha:" + getUser(), fontContenido));
+            celda4T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T1 = new PdfPCell(new Phrase(LibFunc.getFechaActual(), fontContenido));
+            celda5T1.setBorder(PdfPCell.NO_BORDER);
+
+            //Segunda fila
+            PdfPCell celda6T1 = new PdfPCell(new Phrase("Nro. de Crédito", fontContenido));
+            celda6T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T1 = new PdfPCell(new Phrase(":", fontContenido));
+            celda7T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T1 = new PdfPCell(new Phrase("", fontContenido));
+            celda8T1.setBorder(PdfPCell.NO_BORDER);
+
+            //Tercera fila
+            PdfPCell celda9T1 = new PdfPCell(new Phrase("Monto total", fontContenido));
+            celda9T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda10T1 = new PdfPCell(new Phrase(":", fontContenido));
+            celda10T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T1 = new PdfPCell(new Phrase("", fontContenido));
+            celda11T1.setBorder(PdfPCell.NO_BORDER);
+            
+            //Cuarta fila
+            PdfPCell celda12T1 = new PdfPCell(new Phrase("Plazo", fontContenido));
+            celda12T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T1 = new PdfPCell(new Phrase(":", fontContenido));
+            celda13T1.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T1 = new PdfPCell(new Phrase("", fontContenido));
+            celda14T1.setBorder(PdfPCell.NO_BORDER);
+
+            loTablaDatos.addCell(celda0T1);
+            loTablaDatos.addCell(celda1T1);
+            loTablaDatos.addCell(celda2T1);
+            loTablaDatos.addCell(celda3T1);
+            loTablaDatos.addCell(celda4T1);
+            loTablaDatos.addCell(celda5T1);
+            loTablaDatos.addCell(celda6T1);
+            loTablaDatos.addCell(celda7T1);
+            loTablaDatos.addCell(celda8T1);
+            loTablaDatos.addCell(celda9T1);
+            loTablaDatos.addCell(celda10T1);
+            loTablaDatos.addCell(celda11T1);
+            loTablaDatos.addCell(celda12T1);
+            loTablaDatos.addCell(celda13T1);
+            loTablaDatos.addCell(celda14T1);
+            loTablaDatos.setSpacingAfter(20);
+
+            //Segunda Tabla
+            //Primera Fila
+            PdfPCell celda1T2 = new PdfPCell(new Phrase("Nro. cuota", fontContenido));
+            celda1T2.setBorder(PdfPCell.TOP | PdfPCell.BOTTOM);
+            celda1T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell celda2T2 = new PdfPCell(new Phrase("Monto cuota S/", fontContenido));
+            celda2T2.setBorder(PdfPCell.TOP | PdfPCell.BOTTOM);
+            celda2T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell celda3T2 = new PdfPCell(new Phrase("Fecha de vencimiento", fontContenido));
+            celda3T2.setBorder(PdfPCell.TOP | PdfPCell.BOTTOM);
+            celda3T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+            loTablaPagos.addCell(celda1T2);
+            loTablaPagos.addCell(celda2T2);
+            loTablaPagos.addCell(celda3T2);
+            
+            for (Cuota loCuota : p_oCredito.getPlanPagos()) {
+                celda1T2 = new PdfPCell(new Phrase(String.valueOf(loCuota.getNumero()), fontContenido));
+                celda1T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda1T2.setBorder(PdfPCell.NO_BORDER);
+                celda2T2 = new PdfPCell(new Phrase(String.valueOf(loCuota.getCuota()), fontContenido));
+                celda2T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda2T2.setBorder(PdfPCell.NO_BORDER);
+                celda3T2 = new PdfPCell(new Phrase(loCuota.getFecha(), fontContenido));
+                celda3T2.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda3T2.setBorder(PdfPCell.NO_BORDER);
+                
+                loTablaPagos.addCell(celda1T2);
+                loTablaPagos.addCell(celda2T2);
+                loTablaPagos.addCell(celda3T2);
+            }
+            
+            loDoc.add(loTablaDatos);
+            loDoc.add(loTablaPagos);
+            
+            loDoc.close();
+
+        } catch (FileNotFoundException | DocumentException loErr) {
+            setError(loErr.getMessage());
+            llOk = false;
+        }
+        return llOk;
+    }
+    
     /**
      * @return the pthFil
      */
