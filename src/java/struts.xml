@@ -73,7 +73,6 @@
 
             <result name="error" type="tiles">error</result>
         </action>
-        
     </package>        
     <package name="default" extends="json-default">
         <action name="registeruser" class="org.websparrow.action.RegisterAction">
@@ -88,5 +87,10 @@
         <action name="deleteuser" class="org.websparrow.action.DeleteAction">
             <result name="DELETE" type="json"></result>
         </action>
-    </package>        
+    </package>      
+    <package name="default" extends="json-default">
+        <action name="desplegarDireccion" class="com.softia.web.actions.DireccionAction">
+            <result name="direccion" type="json"></result>
+        </action>
+    </package> 
 </struts>
