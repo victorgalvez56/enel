@@ -170,7 +170,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonSol" tabindex="9" name="credito.cuota" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfMonCuo" tabindex="9" name="credito.cuota" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -192,7 +192,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:select name="credito.producto.codigo" tabindex="11" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
+                                                            <s:select name="credito.producto.codigo" tabindex="11" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" disabled="true"/>
                                                         </div>
                                                     </div>                                                        
                                                 </div>
@@ -204,7 +204,7 @@
                                                     </div>
                                                     <div class="col-md-10">
                                                         <div class="form-group">
-                                                            <s:textarea cssClass="form-control" id="tfComent" tabindex="12" name="comentario" required="true"/>
+                                                            <s:textarea cssClass="form-control" id="tfComent" tabindex="12" name="comentario" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -218,7 +218,7 @@
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>-->
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
                                             <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="aprobar" value="Aprobar" id = "bAprobar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
                                         </div>
@@ -235,6 +235,22 @@
             </div>
         </div>
         <script>
+            $(document).ready(function () {
+                document.getElementById("tfComent").required = true;
+                var monto = document.getElementById("tfMonSol").value;
+                var MonApr = document.getElementById("tfMonApr").value;
+                var MonCuo = document.getElementById("tfMonCuo").value;
+                if (monto <= 2000){
+                    if(MonCuo <= MonApr){
+                        document.getElementById("bEnviar").disabled = true;
+                    } else{
+                       document.getElementById("bAprobar").disabled = true; 
+                    }
+                }else{
+                    document.getElementById("bEnviar").disabled = true;
+                }
+            });
+                        
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAprobacion");
             }
@@ -244,6 +260,10 @@
                 $("#tfFechaEvaluacion").val(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
                 $("#tfResultadoENEL").val("APROBADO");
                 $("#tfResultadoSENTINEL").val("APROBADO");
+            }
+            function campo_requerido(){
+                document.getElementById("tfComent").required = false;
+                $("#tfComent").val("*");
             }
         </script>
     </body>

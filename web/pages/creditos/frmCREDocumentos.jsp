@@ -35,7 +35,7 @@
                 </div>
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>Impresión de Documento</h1>
+                    <h1>Impresión de Documentos</h1>
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -129,7 +129,7 @@
                                         
                                         <div style="float: right">
                                             <s:submit name="solicitud" value="Imprimir solicitud" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="calendarioPagos" value="Generar plan de pagos" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="planPagos" value="Generar plan de pagos" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

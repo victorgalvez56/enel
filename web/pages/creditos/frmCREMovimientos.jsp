@@ -151,6 +151,7 @@
                                         <div style="float: right">
                                             <s:submit name="kardex" value="Kardex" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="estadoCuenta" value="Estado de Cuenta" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="workflow" value="Workflow" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>
