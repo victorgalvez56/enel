@@ -278,8 +278,42 @@ public class MenuAction extends BaseAction {
                 setMensaje("actualizar");
                 return frmCLINuevoActualizar();
             } else if (request.getParameter("exportar") != null) {
-                setCliente(new Cliente());
-                return ("frmCLINuevoActualizar");
+                /*setSession(ActionContext.getContext().getSession());
+                CReporteXls loRep = new CReporteXls();
+                loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+                try {
+                    CClientes loCliente = new CClientes();
+                    loCliente.setCliente(getCliente());
+                    loCliente.setUrl(getUrl());
+                    loCliente.setUser(user);
+                    loCliente.setPasswd(pass);
+                    //BUSQUEDA
+                    loCliente.setCodCta(getCodCta());
+                    loCliente.setFecIni(getFecIni());
+                    loCliente.setFecFin(getFecFin());
+                    boolean llOk = loCliente.mxFiltrar();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                        if (!(loRep.mxGenerarMntClientes(loCliente.getLstClientes()))) {
+                            setError(loRep.getError());
+                        } else {
+                            File file = new File(loRep.getRutaReporte());
+                            byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                            FileUtils.writeByteArrayToFile(file, archivo);
+                            HttpServletResponse response = ServletActionContext.getResponse();
+                            response.setContentLength(archivo.length);
+                            response.setContentType("application/vnd.ms-excel");
+                            response.setHeader("Content-Disposition", "attachment; filename=\"MantenedorCLI_" + LibFunc.getFechaActual() + ".xls\"");
+                            ServletOutputStream out = response.getOutputStream();
+                            out.write(archivo);
+                            out.flush();
+                        }
+                    }
+                } catch (SQLException | IOException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }*/
             } else if (request.getParameter("posicion") != null) {
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
@@ -446,8 +480,40 @@ public class MenuAction extends BaseAction {
                 }
                 return frmCREAnularSolicitud();
             } else if (request.getParameter("exportar") != null) {
-                setCliente(new Cliente());
-                return ("frmCLINuevoActualizar");
+                setSession(ActionContext.getContext().getSession());
+                CReporteXls loRep = new CReporteXls();
+                loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+                try {
+                    CCreditos loCreditos = new CCreditos();
+                    loCreditos.setCredito(getCredito());
+                    loCreditos.setUrl(getUrl());
+                    loCreditos.setUser(user);
+                    loCreditos.setPasswd(pass);
+                    loCreditos.setFecIni(getFecIni());
+                    loCreditos.setFecFin(getFecFin());
+                    boolean llOk = loCreditos.mxFiltrar();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        if (!(loRep.mxGenerarMntSoliciXls(loCreditos.getLstCreditos()))) {
+                            setError(loRep.getError());
+                        } else {
+                            File file = new File(loRep.getRutaReporte());
+                            byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                            FileUtils.writeByteArrayToFile(file, archivo);
+                            HttpServletResponse response = ServletActionContext.getResponse();
+                            response.setContentLength(archivo.length);
+                            response.setContentType("application/vnd.ms-excel");
+                            response.setHeader("Content-Disposition", "attachment; filename=\"Mantenedor_" + LibFunc.getFechaActual() + ".xls\"");
+                            ServletOutputStream out = response.getOutputStream();
+                            out.write(archivo);
+                            out.flush();
+                        }
+                    }
+                } catch (SQLException | IOException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
             } else if (request.getParameter("workflow") != null) {
                 CCreditos loCreditos = new CCreditos();
                 loCreditos.setCredito(getCredito());
@@ -864,8 +930,39 @@ public class MenuAction extends BaseAction {
                 }
                 return frmCREAnularSolicitud();
             } else if (request.getParameter("exportar") != null) {
-                setCliente(new Cliente());
-                return ("frmCLINuevoActualizar");
+                setSession(ActionContext.getContext().getSession());
+                CReporteXls loRep = new CReporteXls();
+                loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+                try {
+                    CCreditos loCreditos = new CCreditos();
+                    loCreditos.setCredito(getCredito());
+                    loCreditos.setUrl(getUrl());
+                    loCreditos.setUser(user);
+                    loCreditos.setPasswd(pass);
+                    //setLstCreditos(loCreditos.getLstCreditos());
+                    boolean llOk = loCreditos.mxFiltrarAprobados();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        if (!(loRep.mxGenerarMntCreditosXls(loCreditos.getLstCreditos()))) {
+                            setError(loRep.getError());
+                        } else {
+                            File file = new File(loRep.getRutaReporte());
+                            byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                            FileUtils.writeByteArrayToFile(file, archivo);
+                            HttpServletResponse response = ServletActionContext.getResponse();
+                            response.setContentLength(archivo.length);
+                            response.setContentType("application/vnd.ms-excel");
+                            response.setHeader("Content-Disposition", "attachment; filename=\"MantenedorCRE_" + LibFunc.getFechaActual() + ".xls\"");
+                            ServletOutputStream out = response.getOutputStream();
+                            out.write(archivo);
+                            out.flush();
+                        }
+                    }
+                } catch (SQLException | IOException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
             }
             setResult("frmCREMantenedor");
         }

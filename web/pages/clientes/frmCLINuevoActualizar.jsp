@@ -47,6 +47,16 @@
                     document.getElementById("bGrabar").disabled = true;
                 }
             }
+            
+            function desplegarDireccion() {
+                    var suministro = $("#tfSuministro").val();
+                    alert(suministro);
+                    var dataURL = "suministro=" + suministro;
+                    $.getJSON("desplegarDireccion.action", dataURL, function(data) {
+                        var dir = data.msg;
+                        $("#departamento").html(dir);
+                    });
+            }
         </SCRIPT>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
@@ -111,7 +121,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="fxConsulta();"/>
+                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="desplegarDireccion();"/>
                                                             </div>
                                                         </div>
                                                     </div>
