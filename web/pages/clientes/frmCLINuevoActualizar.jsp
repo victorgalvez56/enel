@@ -128,14 +128,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Sector:</label>
-                                                            <div class="form-group">
-                                                                <label id="sector"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-xs-3">
