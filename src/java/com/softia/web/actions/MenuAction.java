@@ -1016,6 +1016,32 @@ public class MenuAction extends BaseAction {
             } catch (IOException | SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
+        } else if (request.getParameter("planPagos") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+                loRep.setCredito(getCredito());
+                loRep.setUrl(getUrl());
+                loRep.setUser(user);
+                loRep.setPasswd(pass);
+                boolean llOk = loRep.mxPlanPagos();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"planPagos_" + getCredito().getCodCta() + ".pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
         }
         return getResult();
     }
