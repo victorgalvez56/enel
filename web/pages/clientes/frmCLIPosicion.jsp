@@ -186,9 +186,9 @@
                                                     <th>Pagos</th>
                                                     <th>Saldo</th>
                                                     <th>Monto cuota</th>
-                                                    <th>Plazo</th>
                                                     <th>Monto vencido</th>
-                                                    <th>Nro. cuotas pactadas</th>
+                                                    <th>Cuotas</th>
+                                                    <th>Estado</th>
                                                     <th>Ver</th>
                                                 </tr>
                                             </thead>
@@ -199,14 +199,14 @@
                                                         <td><s:property value="cuenta" /></td>
                                                         <td><s:property value="producto" /></td>
                                                         <td><s:property value="moneda" /></td>
-                                                        <td><s:property value="fecDes" /></td>
-                                                        <td><s:property value="" /></td>
+                                                        <td><s:property value="capDes" /></td>
+                                                        <td><s:property value="capPag" /></td>
                                                         <td><s:property value="saldo" /></td>
                                                         <td><s:property value="cuota" /></td>
-                                                        <td><s:property value="plazo" /></td>
-                                                        <td><s:property value="" /></td>
+                                                        <td><s:property value="capVen" /></td>
                                                         <td><s:property value="cuotas" /></td>
-                                                        <s:hidden  value="%{cuenta}" name="cuenta.cuenta" />
+                                                        <td><s:property value="estado" /></td>
+                                                        <s:hidden  value="%{cuenta}" name="credito.codCta" />
                                                         <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
                                                     </tr>
                                                 </s:iterator>
