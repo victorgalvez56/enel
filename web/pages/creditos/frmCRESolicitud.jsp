@@ -50,13 +50,13 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Solicitud:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" name="credito.codCta" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Tipo Doc.:</label>
-                                                            <s:select name="cliente.tipDocCiv" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true"/>
+                                                            <s:select name="cliente.tipDocCiv" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" disabled="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -111,8 +111,8 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Fecha vencimiento</label>
-                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" readonly="true"/>
+                                                            <label>Dia Pago:</label>
+                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -154,7 +154,8 @@
                                 $("#tfCuotas").val(0);
                             } else {
                                 var MonCuo = CapSol / Cuotas;
-                                $("#tfMontoCuota").val(MonCuo);
+                                var num= Math.round(MonCuo * 100) / 100;
+                                $("#tfMontoCuota").val(num);
                             }
                         }
 

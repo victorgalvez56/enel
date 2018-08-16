@@ -989,6 +989,7 @@ public class MenuAction extends BaseAction {
                     setError(loCredito.getError());
                 } else {
                     setMensaje(loCredito.getMensaje());
+                    setCredito(loCredito.getCredito());
                 }
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
@@ -1922,6 +1923,24 @@ public class MenuAction extends BaseAction {
             } catch (IOException | SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
+        } else if (request.getParameter("workflow") != null) {
+                CCreditos loCreditos = new CCreditos();
+                loCreditos.setCredito(getCredito());
+                loCreditos.setUrl(getUrl());
+                loCreditos.setUser(user);
+                loCreditos.setPasswd(pass);
+                try {
+                    boolean llOk = loCreditos.mxWorkFlow();
+                    if (!llOk) {
+                        setError(loCreditos.getError());
+                    } else {
+                        setCredito(loCreditos.getCredito());
+                        setLstLog(loCreditos.getLstLog());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+                return frmREPCREWorkflow();
         }
         return getResult();
     }
