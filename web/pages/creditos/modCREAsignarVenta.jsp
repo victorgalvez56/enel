@@ -35,7 +35,13 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Crédito</label>
-                                                <s:textfield name="credito.codCta" id="tfCodCre" cssClass="form-control" required="true"/>
+                                                <s:textfield name="credito.codCta" id="tfCodCre" cssClass="form-control" required="true" readonly="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Canales</label>
+                                                <s:textfield id="tfCanales" cssClass="form-control" required="true"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -51,7 +57,6 @@
                                         <center>
                                             <s:submit value="Asignar" name="asignar" cssClass="btn btn-default btn-flat" />
                                         </center>
-
                                     </div>
                                 </div>
                             </s:form>

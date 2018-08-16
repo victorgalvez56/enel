@@ -619,6 +619,166 @@ public class CReporteXls {
         }
         return llOk;
     }
+    //exportar - mantenedor de creditos
+    public boolean mxGenerarMntCreditosXls(List<Credito> lstCreditos) throws SQLException, IOException, ParseException {
+        boolean llOk = mxMntCreditosXls(lstCreditos,"MANTENEDOR DE CREDITOS - EXPORTACION DE DATOS");
+        if (llOk) {
+            LibFunc.mxLog("REPORTE XLS OK.");
+        } else {
+            LibFunc.mxLog("REPORTE XLS error: " + getError());
+        }
+        return llOk;
+    }
+
+    public boolean mxMntCreditosXls(List<Credito> p_oCreditos, String po_Titulo) throws FileNotFoundException, IOException {
+        boolean llOk = true;
+        HSSFWorkbook loWB = new HSSFWorkbook();
+        HSSFSheet loSheet = loWB.createSheet("RECUPERACION");
+        HSSFRow loRowHeadTitle = loSheet.createRow((short) 0);
+        HSSFRow loRowHeadTitle1 = loSheet.createRow((short) 1);
+        HSSFRow loRowHead = loSheet.createRow((short) 2);
+        CellStyle style = loWB.createCellStyle();
+        CellStyle style1 = loWB.createCellStyle();
+        CellStyle stylehead = loWB.createCellStyle();
+        //cabecera
+        loRowHead.createCell((short) 0).setCellValue("Nro.Solicitud");
+        loRowHead.createCell((short) 1).setCellValue("Cod.Cliente");
+        loRowHead.createCell((short) 2).setCellValue("Suministro");
+        loRowHead.createCell((short) 3).setCellValue("Ape.Paterno");
+        loRowHead.createCell((short) 4).setCellValue("Ape.Materno");
+        loRowHead.createCell((short) 5).setCellValue("Nombre(s)");
+        loRowHead.createCell((short) 6).setCellValue("Tipo documento");
+        loRowHead.createCell((short) 7).setCellValue("Nro.documento");
+        loRowHead.createCell((short) 8).setCellValue("Fecha de Solicitud");
+        //ESTILO
+        HSSFFont font = loWB.createFont();
+        font.setColor(IndexedColors.WHITE.getIndex());
+        style1.setFillForegroundColor(IndexedColors.GREY_80_PERCENT.getIndex());
+        style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style1.setFont(font);
+        style.setFont(font);
+        style.setFillForegroundColor(IndexedColors.ROYAL_BLUE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        stylehead.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
+        stylehead.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setBorderBottom(BorderStyle.THIN);
+	style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        stylehead.setBorderBottom(BorderStyle.THIN);
+	stylehead.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        for (int j=0; j<= 8; j++){
+            loRowHeadTitle1.createCell((short) j).setCellStyle(style);
+            loRowHeadTitle.createCell((short) j).setCellStyle(style1);
+            loRowHead.getCell(j).setCellStyle(stylehead);
+        }
+        //FIN ESTILO
+        loRowHeadTitle.getCell(2).setCellValue(po_Titulo);
+        loRowHeadTitle1.getCell(0).setCellValue("FECHA:");
+        loRowHeadTitle1.getCell(1).setCellValue(LibFunc.getFechaActual());
+        //cuerpo
+        int index = 3;
+        for (Credito loCredito : p_oCreditos) {
+            HSSFRow loRow = loSheet.createRow((short) index);
+            loRow.createCell((short) 0).setCellValue(loCredito.getCodCta());
+            loRow.createCell((short) 1).setCellValue(loCredito.getCliente().getCodCli());
+            loRow.createCell((short) 2).setCellValue(loCredito.getCliente().getSumini());
+            loRow.createCell((short) 3).setCellValue(loCredito.getCliente().getApePat());
+            loRow.createCell((short) 4).setCellValue(loCredito.getCliente().getApeMat());
+            loRow.createCell((short) 5).setCellValue(loCredito.getCliente().getNombre());
+            loRow.createCell((short) 6).setCellValue(loCredito.getCliente().getTipDocCiv());
+            loRow.createCell((short) 7).setCellValue(loCredito.getCliente().getNroDocCiv());
+            loRow.createCell((short) 8).setCellValue(loCredito.getFecSol());
+            index++;
+        }
+        setRutaReporte("/ftia/files/cierres/Mantenedor_" + LibFunc.getFechaActual() + ".xls");
+        try (FileOutputStream fileOut = new FileOutputStream(getRutaReporte())) {
+            loWB.write(fileOut);
+        }
+        return llOk;
+    }
+    //exportar - mantenedor de SOLICITUDES
+    public boolean mxGenerarMntSoliciXls(List<Credito> lstCreditos) throws SQLException, IOException, ParseException {
+        boolean llOk = mxMntCreditosXls(lstCreditos, "MANTENEDOR DE SOLICITUD - EXPORTACION DE DATOS");
+        if (llOk) {
+            LibFunc.mxLog("REPORTE XLS OK.");
+        } else {
+            LibFunc.mxLog("REPORTE XLS error: " + getError());
+        }
+        return llOk;
+    }
+    public boolean mxMntClientesXls(List<Cliente> p_oCliente, String po_Titulo) throws FileNotFoundException, IOException {
+        boolean llOk = true;
+        HSSFWorkbook loWB = new HSSFWorkbook();
+        HSSFSheet loSheet = loWB.createSheet("RECUPERACION");
+        HSSFRow loRowHeadTitle = loSheet.createRow((short) 0);
+        HSSFRow loRowHeadTitle1 = loSheet.createRow((short) 1);
+        HSSFRow loRowHead = loSheet.createRow((short) 2);
+        CellStyle style = loWB.createCellStyle();
+        CellStyle style1 = loWB.createCellStyle();
+        CellStyle stylehead = loWB.createCellStyle();
+        //cabecera
+        loRowHead.createCell((short) 0).setCellValue("Cod.Cliente");
+        loRowHead.createCell((short) 1).setCellValue("Suministro");
+        loRowHead.createCell((short) 2).setCellValue("Ape.Paterno");
+        loRowHead.createCell((short) 3).setCellValue("Ape.Materno");
+        loRowHead.createCell((short) 4).setCellValue("Nombre(s)");
+        loRowHead.createCell((short) 5).setCellValue("Tipo documento");
+        loRowHead.createCell((short) 6).setCellValue("Nro.documento");
+        loRowHead.createCell((short) 7).setCellValue("Fecha de Registro");
+        //ESTILO
+        /*HSSFFont font = loWB.createFont();
+        font.setColor(IndexedColors.WHITE.getIndex());
+        style1.setFillForegroundColor(IndexedColors.GREY_80_PERCENT.getIndex());
+        style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style1.setFont(font);
+        style.setFont(font);
+        style.setFillForegroundColor(IndexedColors.ROYAL_BLUE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        stylehead.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
+        stylehead.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setBorderBottom(BorderStyle.THIN);
+	style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        stylehead.setBorderBottom(BorderStyle.THIN);
+	stylehead.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        for (int j=0; j<= 7; j++){
+            loRowHeadTitle1.createCell((short) j).setCellStyle(style);
+            loRowHeadTitle.createCell((short) j).setCellStyle(style1);
+            loRowHead.getCell(j).setCellStyle(stylehead);
+        }
+        //FIN ESTILO
+        loRowHeadTitle.getCell(2).setCellValue(po_Titulo);
+        loRowHeadTitle1.getCell(0).setCellValue("FECHA:");
+        loRowHeadTitle1.getCell(1).setCellValue(LibFunc.getFechaActual());
+        //cuerpo
+        int index = 3;
+        for (Cliente loCliente : p_oCliente) {
+            HSSFRow loRow = loSheet.createRow((short) index);
+            loRow.createCell((short) 0).setCellValue(loCliente.getCodCli());
+            loRow.createCell((short) 1).setCellValue(loCliente.getSumini());
+            loRow.createCell((short) 2).setCellValue(loCliente.getApePat());
+            loRow.createCell((short) 3).setCellValue(loCliente.getApeMat());
+            loRow.createCell((short) 4).setCellValue(loCliente.getNombre());
+            loRow.createCell((short) 5).setCellValue(loCliente.getTipDocCiv());
+            loRow.createCell((short) 6).setCellValue(loCliente.getNroDocCiv());
+            loRow.createCell((short) 7).setCellValue(loCliente.getRegistro());
+            index++;
+        }*/
+        setRutaReporte("/ftia/files/cierres/MantenedorCLI_" + LibFunc.getFechaActual() + ".xls");
+        try (FileOutputStream fileOut = new FileOutputStream(getRutaReporte())) {
+            loWB.write(fileOut);
+        }
+        return llOk;
+    }
+    //exportar - mantenedor de cliente
+    public boolean mxGenerarMntClientes(List<Cliente> lstCliente) throws SQLException, IOException, ParseException {
+        boolean llOk = mxMntClientesXls(lstCliente, "MANTENEDOR DE CLIENTES - EXPORTACION DE DATOS");
+        if (llOk) {
+            LibFunc.mxLog("REPORTE XLS OK.");
+        } else {
+            LibFunc.mxLog("REPORTE XLS error: " + getError());
+        }
+        return llOk;
+    }
+
     /**
      * @return the pthFil
      */
