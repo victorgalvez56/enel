@@ -689,7 +689,7 @@ public class CReporteXls {
             loRow.createCell((short) 0).setCellValue(loCredito.getCodCta());
             loRow.createCell((short) 1).setCellValue(loCredito.getCliente().getCodCli());
             loRow.createCell((short) 2).setCellValue(loCredito.getCliente().getSumini());
-            loRow.createCell((short) 3).setCellValue(toUppercase(loCredito.getCliente().getApePat()));
+            loRow.createCell((short) 3).setCellValue(loCredito.getCliente().getApePat());
             loRow.createCell((short) 4).setCellValue(loCredito.getCliente().getApeMat());
             loRow.createCell((short) 5).setCellValue(loCredito.getCliente().getNombre());
             loRow.createCell((short) 6).setCellValue(loCredito.getCliente().getTipDocCiv());
