@@ -112,7 +112,7 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Dia Pago:</label>
-                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag"/>
+                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -124,9 +124,9 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden name="credito.codigo"></s:hidden>
-                                            <s:hidden name="credito.cliente.apePat"></s:hidden>
-                                            <s:hidden name="credito.cliente.apeMat"></s:hidden>
-                                            <s:hidden name="credito.cliente.nombre"></s:hidden>
+                                            <s:hidden name="cliente.apePat"></s:hidden>
+                                            <s:hidden name="cliente.apeMat"></s:hidden>
+                                            <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="credito.cliente.codigo"></s:hidden>
                                             <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
                                                 <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" hidden="true">Nuevo</button>-->

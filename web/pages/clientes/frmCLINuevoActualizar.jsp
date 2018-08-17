@@ -47,6 +47,15 @@
                     document.getElementById("bGrabar").disabled = true;
                 }
             }
+            
+            function desplegarDireccion() {
+                    var suministro = $("#tfSuministro").val();
+                    var dataURL = "suministro=" + suministro;
+                    $.getJSON("desplegarDireccion.action", dataURL, function(data) {
+                        var dir = data.direccion;
+                        $("#departamento").html(dir);
+                    });
+            }
         </SCRIPT>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">

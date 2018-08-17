@@ -102,11 +102,11 @@ public class CReportePDF {
                     BaseColor.BLACK);
             PdfPTable loTablaDatos = new PdfPTable(3);
             PdfPTable loTablaCliente = new PdfPTable(3);
-            PdfPTable loTablaCreditos = new PdfPTable(9);
+            PdfPTable loTablaCreditos = new PdfPTable(10);
 
             loTablaDatos.setWidths(new float[]{5, 5, 5});
             loTablaCliente.setWidths(new float[]{1, 1, 9});
-            loTablaCreditos.setWidths(new float[]{2, 1, 1, 1, 1, 1, 1, 1, 1});
+            loTablaCreditos.setWidths(new float[]{2, 1, 1, 1, 1, 1, 1, 1, 1, 1});
 
             //Primera Tabla
             //Primera fila
@@ -240,7 +240,7 @@ public class CReportePDF {
             PdfPCell celda2T4 = new PdfPCell(new Phrase("CREDITO", fontContenido));
             celda2T4.setHorizontalAlignment(Element.ALIGN_CENTER);
             celda2T4.setBorder(PdfPCell.BOTTOM);
-            PdfPCell celda3T4 = new PdfPCell(new Phrase("FECHA DESEMBOLSO", fontContenido));
+            PdfPCell celda3T4 = new PdfPCell(new Phrase("FECHA DESEMB.", fontContenido));
             celda3T4.setHorizontalAlignment(Element.ALIGN_CENTER);
             celda3T4.setBorder(PdfPCell.BOTTOM);
             PdfPCell celda4T4 = new PdfPCell(new Phrase("MONTO", fontContenido));
@@ -258,12 +258,15 @@ public class CReportePDF {
             PdfPCell celda8T4 = new PdfPCell(new Phrase("ATR PROM", fontContenido));
             celda8T4.setHorizontalAlignment(Element.ALIGN_CENTER);
             celda8T4.setBorder(PdfPCell.BOTTOM);
-            PdfPCell celda9T4 = new PdfPCell(new Phrase("FECHA CANCELACIÓN", fontContenido));
+            PdfPCell celda9T4 = new PdfPCell(new Phrase("FECHA CANC.", fontContenido));
             celda9T4.setHorizontalAlignment(Element.ALIGN_CENTER);
             celda9T4.setBorder(PdfPCell.BOTTOM);
             PdfPCell celda10T4 = new PdfPCell(new Phrase("SALDO", fontContenido));
             celda10T4.setHorizontalAlignment(Element.ALIGN_CENTER);
             celda10T4.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda11T4 = new PdfPCell(new Phrase("ESTADO", fontContenido));
+            celda11T4.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda11T4.setBorder(PdfPCell.BOTTOM);
 
             loTablaCreditos.addCell(celda1T4);
             loTablaCreditos.addCell(celda2T4);
@@ -275,6 +278,7 @@ public class CReportePDF {
             loTablaCreditos.addCell(celda8T4);
             loTablaCreditos.addCell(celda9T4);
             loTablaCreditos.addCell(celda10T4);
+            loTablaCreditos.addCell(celda11T4);
 
             for (Cuenta loCuenta : p_oCliente.getLstCuentas()) {
                 celda2T4 = new PdfPCell(new Phrase(loCuenta.getCuenta(), fontContenido));
@@ -304,6 +308,9 @@ public class CReportePDF {
                 celda10T4 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getSaldo()), fontContenido));
                 celda10T4.setHorizontalAlignment(Element.ALIGN_CENTER);
                 celda10T4.setBorder(PdfPCell.NO_BORDER);
+                celda11T4 = new PdfPCell(new Phrase(loCuenta.getEstado(), fontContenido));
+                celda11T4.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda11T4.setBorder(PdfPCell.NO_BORDER);
                 loTablaCreditos.addCell(celda2T4);
                 loTablaCreditos.addCell(celda3T4);
                 loTablaCreditos.addCell(celda4T4);
@@ -313,6 +320,7 @@ public class CReportePDF {
                 loTablaCreditos.addCell(celda8T4);
                 loTablaCreditos.addCell(celda9T4);
                 loTablaCreditos.addCell(celda10T4);
+                loTablaCreditos.addCell(celda11T4);
             }
             loDoc.add(loTablaDatos);
             loDoc.add(loTablaCliente);
