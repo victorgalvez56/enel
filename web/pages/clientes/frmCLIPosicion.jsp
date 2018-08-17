@@ -219,8 +219,11 @@
                                         <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" onclick="frmNombre()">Buscar</button>
                                         <div style="float: right">
                                             <s:hidden name="cliente.codigo"></s:hidden>
+                                            <s:hidden name="cliente.nombre"></s:hidden>
+                                            <s:hidden name="cliente.apePat"></s:hidden>
+                                            <s:hidden name="cliente.apeMat"></s:hidden>
                                             <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
-                                            <s:submit name="" value="Exportar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
                                         </div>

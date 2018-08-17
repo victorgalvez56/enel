@@ -77,7 +77,7 @@
                                                     </div>
                                                     <div class="col-md-7">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="3" name="credito.cliente.nomCom" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" id="tfNomCli" tabindex="3" name="credito.cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,7 +180,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfMonApr" tabindex="10" name="credito.cuotaAprobada" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfMonApr" tabindex="10" name="credito.cuotaAprobada" onblur="boton_habilitado()" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,7 +192,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:select name="credito.producto.codigo" tabindex="11" list="lstProductos" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" disabled="true"/>
+                                                            <s:textfield name="credito.producto.nombre" tabindex="11"  cssClass="form-control" readonly="true" />
                                                         </div>
                                                     </div>                                                        
                                                 </div>
@@ -204,7 +204,7 @@
                                                     </div>
                                                     <div class="col-md-10">
                                                         <div class="form-group">
-                                                            <s:textarea cssClass="form-control" id="tfComent" tabindex="12" name="comentario" />
+                                                            <s:textarea cssClass="form-control" style="text-transform: uppercase;" id="tfComent" tabindex="12" name="comentario" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -237,20 +237,26 @@
         <script>
             $(document).ready(function () {
                 document.getElementById("tfComent").required = true;
-                var monto = document.getElementById("tfMonSol").value;
-                var MonApr = document.getElementById("tfMonApr").value;
-                var MonCuo = document.getElementById("tfMonCuo").value;
+                boton_habilitado();
+            });
+            function boton_habilitado(){
+                var monto = Number(document.getElementById("tfMonSol").value);
+                var MonApr = Number(document.getElementById("tfMonApr").value);
+                var MonCuo = Number(document.getElementById("tfMonCuo").value);
                 if (monto <= 2000){
                     if(MonCuo <= MonApr){
                         document.getElementById("bEnviar").disabled = true;
+                        document.getElementById("bAprobar").disabled = false; 
                     } else{
-                       document.getElementById("bAprobar").disabled = true; 
+                       document.getElementById("bAprobar").disabled = true;
+                       document.getElementById("bEnviar").disabled = false;
                     }
                 }else{
                     document.getElementById("bEnviar").disabled = true;
+                    document.getElementById("bAprobar").disabled = false;
                 }
-            });
-                        
+            }
+    
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAprobacion");
             }

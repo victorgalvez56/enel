@@ -76,7 +76,7 @@
                                                     </div>
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNombre" tabindex="4" name="credito.cliente.nomCom" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNombre" style="text-transform: uppercase;" tabindex="4" name="credito.cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,7 +88,7 @@
                                                     </div>
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfDireccion" tabindex="5" name="credito.cliente.direccion.direccion" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfDireccion" style="text-transform: uppercase;" tabindex="5" name="credito.cliente.direccion.direccion" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>

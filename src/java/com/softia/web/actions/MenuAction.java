@@ -287,11 +287,15 @@ public class MenuAction extends BaseAction {
                 setMensaje("actualizar");
                 return frmCLINuevoActualizar();
             } else if (request.getParameter("exportar") != null) {
-                /*setSession(ActionContext.getContext().getSession());
+                setSession(ActionContext.getContext().getSession());
                 CReporteXls loRep = new CReporteXls();
                 loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
                 try {
                     CClientes loCliente = new CClientes();
+                    getCliente().setDireccion(new Direccion());
+                    getCliente().getDireccion().setDistrito(new Distrito());
+                    getCliente().getDireccion().getDistrito().setProvincia(new Provincia());
+                    getCliente().getDireccion().getDistrito().getProvincia().setDepartamento(new Departamento());
                     loCliente.setCliente(getCliente());
                     loCliente.setUrl(getUrl());
                     loCliente.setUser(user);
@@ -322,7 +326,7 @@ public class MenuAction extends BaseAction {
                     }
                 } catch (SQLException | IOException | ParseException loErr) {
                     setError(loErr.getMessage());
-                }*/
+                }
             } else if (request.getParameter("posicion") != null) {
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
@@ -765,7 +769,6 @@ public class MenuAction extends BaseAction {
                 cuenta.getCuenta();
                 Credito credito = new Credito();
                 credito.setCodCta(cuenta.getCuenta());
-
                 CCreditos loCredito = new CCreditos();
                 loCredito.setUrl(getUrl());
                 loCredito.setUser(user);
@@ -782,6 +785,38 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
                 return frmCREMovimientos();
+            } else if (request.getParameter("exportar") != null) {
+                setSession(ActionContext.getContext().getSession());
+                CReporteXls loRep = new CReporteXls();
+                loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+                try {
+                    CClientes loCliente = new CClientes();
+                    loCliente.setUrl(getUrl());
+                    loCliente.setUser(user);
+                    loCliente.setPasswd(pass);
+                    loCliente.setCliente(getCliente());
+                    boolean llOk = loCliente.mxCreditos();
+                    if(!llOk){
+                        setError(loCliente.getError());
+                    }else{
+                        if (!(loRep.mxGenerarCliPosicion(loCliente.getCliente()))) {
+                            setError(loRep.getError());
+                        } else {
+                            File file = new File(loRep.getRutaReporte());
+                            byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                            FileUtils.writeByteArrayToFile(file, archivo);
+                            HttpServletResponse response = ServletActionContext.getResponse();
+                            response.setContentLength(archivo.length);
+                            response.setContentType("application/vnd.ms-excel");
+                            response.setHeader("Content-Disposition", "attachment; filename=\"PosicionCLI_" + LibFunc.getFechaActual() + ".xls\"");
+                            ServletOutputStream out = response.getOutputStream();
+                            out.write(archivo);
+                            out.flush();
+                        }
+                    }
+                } catch (SQLException | IOException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
             }
             setResult("frmCLIPosicion");
         }
@@ -1411,18 +1446,6 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        CProductos loPro = new CProductos();
-        loPro.setUrl(getUrl());
-        loPro.setUser(user);
-        loPro.setPasswd(pass);
-        try {
-            setLstProductos(loPro.getLstProductos());
-            if (getLstProductos() == null) {
-                setError(loPro.getError());
-            }
-        } catch (SQLException loErr) {
-            setError(loErr.getMessage());
-        }
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
