@@ -3811,6 +3811,10 @@ public class MenuAction extends BaseAction {
 
         Cliente sumi = new Cliente();
         sumi.setSumini(getSuministro());
+        sumi.setDireccion(new Direccion());
+        sumi.getDireccion().setDistrito(new Distrito());
+        sumi.getDireccion().getDistrito().setProvincia(new Provincia());
+        sumi.getDireccion().getDistrito().getProvincia().setDepartamento(new Departamento());
         CClientes loClientes = new CClientes();
         loClientes.setCliente(sumi);
         loClientes.setUrl(getUrl());
@@ -3821,15 +3825,16 @@ public class MenuAction extends BaseAction {
             if (!llOk) {
                 setError(loClientes.getError());
             } else {
-                setDireccion(loClientes.getCliente().getDireccion().getDireccion());
+                sumi.getDireccion().setDireccion(loClientes.getCliente().getDireccion().getDireccion());
+                /*setDireccion(loClientes.getCliente().getDireccion().getDireccion());
                 setDistrito(loClientes.getCliente().getDireccion().getDistrito().getNombre());
                 setProvincia(loClientes.getCliente().getDireccion().getDistrito().getProvincia().getNombre());
-                setEstado(loClientes.getCliente().getEstado());
+                setEstado(loClientes.getCliente().getEstado());*/
             }
         } catch (SQLException | ParseException loErr) {
             setError(loErr.getMessage());
         }
-        return "frmCLIMantenedor";
+        return "frmCLINuevoActualizar";
     }
 
     /**
