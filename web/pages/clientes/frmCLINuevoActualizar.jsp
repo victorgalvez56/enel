@@ -50,10 +50,9 @@
             
             function desplegarDireccion() {
                     var suministro = $("#tfSuministro").val();
-                    alert(suministro);
                     var dataURL = "suministro=" + suministro;
                     $.getJSON("desplegarDireccion.action", dataURL, function(data) {
-                        var dir = data.msg;
+                        var dir = data.direccion;
                         $("#departamento").html(dir);
                     });
             }
@@ -121,7 +120,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="desplegarDireccion();"/>
+                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="fxConsulta();"/>
                                                             </div>
                                                         </div>
                                                     </div>

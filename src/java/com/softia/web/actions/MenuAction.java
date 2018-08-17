@@ -1,6 +1,7 @@
 package com.softia.web.actions;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.softia.beans.CCanales;
 import com.softia.beans.CClientes;
 import com.softia.beans.CCobranza;
 import com.softia.beans.CCondiciones;
@@ -12,6 +13,7 @@ import com.softia.beans.CProductos;
 import com.softia.beans.CProfesiones;
 import com.softia.beans.CTabla;
 import com.softia.beans.CUsuarios;
+import com.softia.models.Canal;
 import com.softia.models.Cliente;
 import com.softia.models.Cuenta;
 import com.softia.models.Cobranza;
@@ -107,12 +109,19 @@ public class MenuAction extends BaseAction {
     private List<String> lstOficina;
     private java.sql.Date FecmoraIni;
     private java.sql.Date FecmoraFin;
-    
+
     private String codCta;
     private String fecIni;
     private String fecFin;
     private List<Log> lstLog;
     private String codigoVenta;
+    private String suministro;
+    private String direccion;
+    private String distrito;
+    private String provincia;
+    private String estado;
+    private List<Canal> lstCanales;
+    private int codigoCanal;
 
     public String login() {
         setResult("login");
@@ -657,7 +666,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCLIPosicion() {
         if (!validaSession()) {
             return "login";
@@ -665,7 +674,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        
+
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -794,6 +803,15 @@ public class MenuAction extends BaseAction {
             setLstTipDocCiv(loTabla.getLstTabla(4));
             if (getLstTipDocCiv() == null) {
                 setError(loTabla.getError());
+            }else{
+                CCanales loCanal = new CCanales();
+                loCanal.setUrl(getUrl());
+                loCanal.setUser(user);
+                loCanal.setPasswd(pass);
+                setLstCanales(loCanal.getLstCanales());
+                if(getLstCanales() == null){
+                    setError(loCanal.getError());                    
+                }
             }
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -836,7 +854,7 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("asignar") != null) {
-                    CCreditos loCreditos = new CCreditos();
+                CCreditos loCreditos = new CCreditos();
                 loCreditos.setCredito(getCredito());
                 loCreditos.setUrl(getUrl());
                 loCreditos.setUser(user);
@@ -844,6 +862,7 @@ public class MenuAction extends BaseAction {
                 try {
                     loCreditos.setIp(getIp());
                     loCreditos.setCodigoVenta(getCodigoVenta());
+                    loCreditos.setCodigoCanal(getCodigoCanal());
                     boolean llOk = loCreditos.mxAsignarVenta();
                     if (!llOk) {
                         setError(loCreditos.getError());
@@ -968,7 +987,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCREDocumentos() {
         if (!validaSession()) {
             return "login";
@@ -976,7 +995,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        
+
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1142,7 +1161,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCRESolicitud() {
         if (!validaSession()) {
             return "login";
@@ -1305,7 +1324,7 @@ public class MenuAction extends BaseAction {
                 setLstTipDocCiv(loTabla.getLstTabla(4));
                 if (getLstTipDocCiv() == null) {
                     setError(loTabla.getError());
-                } 
+                }
             }
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -1545,7 +1564,7 @@ public class MenuAction extends BaseAction {
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
-        } 
+        }
         return getResult();
     }
 
@@ -2172,23 +2191,23 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         } else if (request.getParameter("workflow") != null) {
-                CCreditos loCreditos = new CCreditos();
-                loCreditos.setCredito(getCredito());
-                loCreditos.setUrl(getUrl());
-                loCreditos.setUser(user);
-                loCreditos.setPasswd(pass);
-                try {
-                    boolean llOk = loCreditos.mxWorkFlow();
-                    if (!llOk) {
-                        setError(loCreditos.getError());
-                    } else {
-                        setCredito(loCreditos.getCredito());
-                        setLstLog(loCreditos.getLstLog());
-                    }
-                } catch (SQLException | ParseException loErr) {
-                    setError(loErr.getMessage());
+            CCreditos loCreditos = new CCreditos();
+            loCreditos.setCredito(getCredito());
+            loCreditos.setUrl(getUrl());
+            loCreditos.setUser(user);
+            loCreditos.setPasswd(pass);
+            try {
+                boolean llOk = loCreditos.mxWorkFlow();
+                if (!llOk) {
+                    setError(loCreditos.getError());
+                } else {
+                    setCredito(loCreditos.getCredito());
+                    setLstLog(loCreditos.getLstLog());
                 }
-                return frmREPCREWorkflow();
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+            return frmREPCREWorkflow();
         }
         return getResult();
     }
@@ -3782,6 +3801,37 @@ public class MenuAction extends BaseAction {
         return frmCobAsignar();
     }
 
+    public String desplegarDireccion() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+
+        Cliente sumi = new Cliente();
+        sumi.setSumini(getSuministro());
+        CClientes loClientes = new CClientes();
+        loClientes.setCliente(sumi);
+        loClientes.setUrl(getUrl());
+        loClientes.setUser(user);
+        loClientes.setPasswd(pass);
+        try {
+            boolean llOk = loClientes.mxConsultaSuministro();
+            if (!llOk) {
+                setError(loClientes.getError());
+            } else {
+                setDireccion(loClientes.getCliente().getDireccion().getDireccion());
+                setDistrito(loClientes.getCliente().getDireccion().getDistrito().getNombre());
+                setProvincia(loClientes.getCliente().getDireccion().getDistrito().getProvincia().getNombre());
+                setEstado(loClientes.getCliente().getEstado());
+            }
+        } catch (SQLException | ParseException loErr) {
+            setError(loErr.getMessage());
+        }
+        return "frmCLIMantenedor";
+    }
+
     /**
      * @return the usuario
      */
@@ -4494,5 +4544,103 @@ public class MenuAction extends BaseAction {
      */
     public void setCodigoVenta(String codigoVenta) {
         this.codigoVenta = codigoVenta;
+    }
+
+    /**
+     * @return the suministro
+     */
+    public String getSuministro() {
+        return suministro;
+    }
+
+    /**
+     * @param suministro the suministro to set
+     */
+    public void setSuministro(String suministro) {
+        this.suministro = suministro;
+    }
+
+    /**
+     * @return the direccion
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * @param direccion the direccion to set
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    /**
+     * @return the distrito
+     */
+    public String getDistrito() {
+        return distrito;
+    }
+
+    /**
+     * @param distrito the distrito to set
+     */
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
+
+    /**
+     * @return the provincia
+     */
+    public String getProvincia() {
+        return provincia;
+    }
+
+    /**
+     * @param provincia the provincia to set
+     */
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the lstCanales
+     */
+    public List<Canal> getLstCanales() {
+        return lstCanales;
+    }
+
+    /**
+     * @param lstCanales the lstCanales to set
+     */
+    public void setLstCanales(List<Canal> lstCanales) {
+        this.lstCanales = lstCanales;
+    }
+
+    /**
+     * @return the codigoCanal
+     */
+    public int getCodigoCanal() {
+        return codigoCanal;
+    }
+
+    /**
+     * @param codigoCanal the codigoCanal to set
+     */
+    public void setCodigoCanal(int codigoCanal) {
+        this.codigoCanal = codigoCanal;
     }
 }

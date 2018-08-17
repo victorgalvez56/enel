@@ -28,9 +28,9 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<s:url action="frmSOLMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Solicitudes</a></li>
-                        <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Impresión de documentos</a></li>
                         <li><a href="<s:url action="frmCREMntAprobacion"/>"><i class="fa fa-circle-o"></i> Mantenedor de Aprobaciones</a></li>
                         <li><a href="<s:url action="frmCREMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Créditos</a></li>
+                        <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Impresión de documentos</a></li>
                         <li><a href="<s:url action="frmCREMovimientos"/>"><i class="fa fa-circle-o"></i> Movimientos</a></li>
                     </ul>
                 </li>

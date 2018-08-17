@@ -36,7 +36,7 @@ public class DireccionAction extends BaseAction {
         } catch (SQLException | ParseException loErr) {
             setError(loErr.getMessage());
         }
-        return "direccion";
+        return "DIRECCION";
     }
     
     public String getJSON() {
