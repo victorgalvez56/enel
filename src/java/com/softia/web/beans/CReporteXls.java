@@ -22,6 +22,7 @@ import com.softia.models.Departamento;
 import com.softia.models.Direccion;
 import com.softia.models.Distrito;
 import com.softia.models.Provincia;
+import com.softia.models.Cuenta;
 import com.softia.utils.LibFunc;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -30,6 +31,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -37,6 +39,7 @@ import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -715,6 +718,8 @@ public class CReporteXls {
         CellStyle style = loWB.createCellStyle();
         CellStyle style1 = loWB.createCellStyle();
         CellStyle stylehead = loWB.createCellStyle();
+        CellStyle styleDate = loWB.createCellStyle();//tipo date
+        CreationHelper createHelper = loWB.getCreationHelper();
         //cabecera
         loRowHead.createCell((short) 0).setCellValue("Cod.Cliente");
         loRowHead.createCell((short) 1).setCellValue("Suministro");
@@ -725,7 +730,7 @@ public class CReporteXls {
         loRowHead.createCell((short) 6).setCellValue("Nro.documento");
         loRowHead.createCell((short) 7).setCellValue("Fecha de Registro");
         //ESTILO
-        /*HSSFFont font = loWB.createFont();
+        HSSFFont font = loWB.createFont();
         font.setColor(IndexedColors.WHITE.getIndex());
         style1.setFillForegroundColor(IndexedColors.GREY_80_PERCENT.getIndex());
         style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
@@ -744,8 +749,12 @@ public class CReporteXls {
             loRowHeadTitle.createCell((short) j).setCellStyle(style1);
             loRowHead.getCell(j).setCellStyle(stylehead);
         }
+        //estilo date format a celda
+        styleDate.setDataFormat(
+        createHelper.createDataFormat().getFormat("dd/mm/yy"));
+
         //FIN ESTILO
-        loRowHeadTitle.getCell(2).setCellValue(po_Titulo);
+        loRowHeadTitle.getCell(1).setCellValue(po_Titulo);
         loRowHeadTitle1.getCell(0).setCellValue("FECHA:");
         loRowHeadTitle1.getCell(1).setCellValue(LibFunc.getFechaActual());
         //cuerpo
@@ -759,9 +768,12 @@ public class CReporteXls {
             loRow.createCell((short) 4).setCellValue(loCliente.getNombre());
             loRow.createCell((short) 5).setCellValue(loCliente.getTipDocCiv());
             loRow.createCell((short) 6).setCellValue(loCliente.getNroDocCiv());
-            loRow.createCell((short) 7).setCellValue(loCliente.getRegistro());
+            //formate date
+            loRow.createCell((short) 7).setCellValue(new Date());
+            loRow.getCell(7).setCellStyle(styleDate);
+            loRow.getCell(7).setCellValue(loCliente.getRegistro());
             index++;
-        }*/
+        }
         setRutaReporte("/ftia/files/cierres/MantenedorCLI_" + LibFunc.getFechaActual() + ".xls");
         try (FileOutputStream fileOut = new FileOutputStream(getRutaReporte())) {
             loWB.write(fileOut);
@@ -771,6 +783,115 @@ public class CReporteXls {
     //exportar - mantenedor de cliente
     public boolean mxGenerarMntClientes(List<Cliente> lstCliente) throws SQLException, IOException, ParseException {
         boolean llOk = mxMntClientesXls(lstCliente, "MANTENEDOR DE CLIENTES - EXPORTACION DE DATOS");
+        if (llOk) {
+            LibFunc.mxLog("REPORTE XLS OK.");
+        } else {
+            LibFunc.mxLog("REPORTE XLS error: " + getError());
+        }
+        return llOk;
+    }
+    public boolean mxClientePosicionXls(Cliente p_oCliente,String po_Titulo) throws FileNotFoundException, IOException {
+        boolean llOk = true;
+        HSSFWorkbook loWB = new HSSFWorkbook();
+        HSSFSheet loSheet = loWB.createSheet("RECUPERACION");
+        HSSFRow loRowHeadTitle = loSheet.createRow((short) 0);
+        HSSFRow loRowHeadTitle1 = loSheet.createRow((short) 1);
+        HSSFRow loRowHead = loSheet.createRow((short) 8);
+        CellStyle style = loWB.createCellStyle();
+        CellStyle style1 = loWB.createCellStyle();
+        CellStyle stylehead = loWB.createCellStyle();
+        //crea cabecera
+        HSSFRow loRowHead2 = loSheet.createRow((short) 2);
+        loRowHead2.createCell((short) 0).setCellValue("Cód.Cliente:");
+        loRowHead2.createCell((short) 1).setCellValue(p_oCliente.getCodCli());
+        loRowHead2.createCell((short) 3).setCellValue("Nro.Suministro:");
+        loRowHead2.createCell((short) 4).setCellValue(p_oCliente.getSumini());
+        loRowHead2 = loSheet.createRow((short) 3);
+        loRowHead2.createCell((short) 0).setCellValue("Tipo Doc:");
+        loRowHead2.createCell((short) 1).setCellValue(p_oCliente.getTipDocCiv());
+        loRowHead2.createCell((short) 3).setCellValue("Nro.Doc:");
+        loRowHead2.createCell((short) 4).setCellValue(p_oCliente.getNroDocCiv());
+        loRowHead2 = loSheet.createRow((short) 4);
+        loRowHead2.createCell((short) 0).setCellValue("Nombre:");
+        loRowHead2.createCell((short) 1).setCellValue(p_oCliente.getNomCom());
+        loRowHead2 = loSheet.createRow((short) 5);
+        loRowHead2.createCell((short) 0).setCellValue("Estado Suministro:");
+        loRowHead2.createCell((short) 1).setCellValue(p_oCliente.getEstado());
+        loRowHead2.createCell((short) 3).setCellValue("Provincia:");
+        loRowHead2.createCell((short) 4).setCellValue(p_oCliente.getDireccion().getDistrito().getProvincia().getNombre());
+        loRowHead2.createCell((short) 6).setCellValue("Distrito:");
+        loRowHead2.createCell((short) 7).setCellValue(p_oCliente.getDireccion().getDistrito().getNombre());
+        loRowHead2 = loSheet.createRow((short) 6);
+        loRowHead2.createCell((short) 0).setCellValue("Dirección:");
+        loRowHead2.createCell((short) 1).setCellValue(p_oCliente.getDireccion().getDireccion());
+        loRowHead2 = loSheet.createRow((short) 7);
+        loRowHead2.createCell((short) 0).setCellValue("Teléfono:");
+        loRowHead2.createCell((short) 1).setCellValue(p_oCliente.getTelefono());
+        loRowHead2.createCell((short) 3).setCellValue("Celular:");
+        loRowHead2.createCell((short) 4).setCellValue(p_oCliente.getCelular());
+        loRowHead2.createCell((short) 6).setCellValue("Correo:");
+        loRowHead2.createCell((short) 7).setCellValue(p_oCliente.getCorreo());
+        //cabecera de la lista
+        loRowHead.createCell((short) 0).setCellValue("Nro.Cuenta");
+        loRowHead.createCell((short) 1).setCellValue("Producto");
+        loRowHead.createCell((short) 2).setCellValue("Moneda");
+        loRowHead.createCell((short) 3).setCellValue("Desembolso");
+        loRowHead.createCell((short) 4).setCellValue("Pagos");
+        loRowHead.createCell((short) 5).setCellValue("Saldo");
+        loRowHead.createCell((short) 6).setCellValue("Monto Cuota");
+        loRowHead.createCell((short) 7).setCellValue("Monto Vencido");
+        loRowHead.createCell((short) 8).setCellValue("Cuotas");
+        loRowHead.createCell((short) 9).setCellValue("Estado");
+        //ESTILO
+        HSSFFont font = loWB.createFont();
+        font.setColor(IndexedColors.WHITE.getIndex());
+        style1.setFillForegroundColor(IndexedColors.GREY_80_PERCENT.getIndex());
+        style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style1.setFont(font);
+        style.setFont(font);
+        style.setFillForegroundColor(IndexedColors.ROYAL_BLUE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        stylehead.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
+        stylehead.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setBorderBottom(BorderStyle.THIN);
+	style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        stylehead.setBorderBottom(BorderStyle.THIN);
+	stylehead.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        for (int j=0; j<= 9; j++){
+            loRowHeadTitle1.createCell((short) j).setCellStyle(style);
+            loRowHeadTitle.createCell((short) j).setCellStyle(style1);
+            loRowHead.getCell(j).setCellStyle(stylehead);
+        }
+        //FIN ESTILO
+        loRowHeadTitle.getCell(1).setCellValue(po_Titulo);
+        loRowHeadTitle1.getCell(0).setCellValue("FECHA:");
+        loRowHeadTitle1.getCell(1).setCellValue(LibFunc.getFechaActual());
+        //cuerpo
+        int index = 9;
+        List<Cuenta> poCuenta = p_oCliente.getLstCuentas();
+        for (Cuenta loCuenta : poCuenta) {
+            HSSFRow loRow = loSheet.createRow((short) index);
+            loRow.createCell((short) 0).setCellValue(loCuenta.getCuenta());
+            loRow.createCell((short) 1).setCellValue(loCuenta.getProducto());
+            loRow.createCell((short) 2).setCellValue(loCuenta.getMoneda());
+            loRow.createCell((short) 3).setCellValue(loCuenta.getCapDes());
+            loRow.createCell((short) 4).setCellValue(loCuenta.getCapPag());
+            loRow.createCell((short) 5).setCellValue(loCuenta.getSaldo());
+            loRow.createCell((short) 6).setCellValue(loCuenta.getCuota());
+            loRow.createCell((short) 7).setCellValue(loCuenta.getCapVen());
+            loRow.createCell((short) 8).setCellValue(loCuenta.getCuotas());
+            loRow.createCell((short) 9).setCellValue(loCuenta.getEstado());
+            index++;
+        }
+        setRutaReporte("/ftia/files/cierres/PosicionCLI_" + LibFunc.getFechaActual() + ".xls");
+        try (FileOutputStream fileOut = new FileOutputStream(getRutaReporte())) {
+            loWB.write(fileOut);
+        }
+        return llOk;
+    }
+    //exportar - posicion de cliente
+    public boolean mxGenerarCliPosicion(Cliente lstCliente) throws SQLException, IOException, ParseException {
+        boolean llOk = mxClientePosicionXls(lstCliente, "POSICION DE CLIENTE - EXPORTACION DE DATOS");
         if (llOk) {
             LibFunc.mxLog("REPORTE XLS OK.");
         } else {
