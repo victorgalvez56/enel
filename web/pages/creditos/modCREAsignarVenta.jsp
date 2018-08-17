@@ -40,8 +40,8 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Canales</label>
-                                                <s:textfield id="tfCanales" cssClass="form-control" required="true"/>
+                                                <label>Canal</label>
+                                                <s:select name="codigoCanal" tabindex="2" list="lstCanales" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
