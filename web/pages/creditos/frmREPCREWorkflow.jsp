@@ -60,7 +60,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Nombre:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="3" name="credito.cliente.nomCom" readonly="true"/><br>
+                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" id="tfNomCli" tabindex="3" name="credito.cliente.nomCom" readonly="true"/><br>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -72,6 +72,7 @@
                                                                 <th>Proceso</th>
                                                                 <th>Fecha de Proceso</th>
                                                                 <th>Usuario</th>
+                                                                <th>Hora</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -81,6 +82,7 @@
                                                                     <td><s:property value="operacion" /></td>
                                                                     <td><s:property value="fecha" /></td>
                                                                     <td><s:property value="usuario" /></td>
+                                                                    <td>hora</td>
                                                             </tr>
                                                         </s:iterator>
 

@@ -1446,18 +1446,6 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        CProductos loPro = new CProductos();
-        loPro.setUrl(getUrl());
-        loPro.setUser(user);
-        loPro.setPasswd(pass);
-        try {
-            setLstProductos(loPro.getLstProductos());
-            if (getLstProductos() == null) {
-                setError(loPro.getError());
-            }
-        } catch (SQLException loErr) {
-            setError(loErr.getMessage());
-        }
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {

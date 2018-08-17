@@ -141,9 +141,9 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>-->
+                                            <s:submit name="buscar" value="Buscar" id = "bBuscar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="buscar" value="Buscar" id = "bBuscar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

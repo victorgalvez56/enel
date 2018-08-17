@@ -68,7 +68,7 @@
                                                     <div class="col-md-5">
                                                         <div class="form-group">
                                                             <label>Nombre completo:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNomCli" tabindex="4" name="credito.cliente.nomCom" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" id="tfNomCli" tabindex="4" name="credito.cliente.nomCom" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>

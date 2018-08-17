@@ -174,13 +174,13 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden name="credito.codigo"></s:hidden>
-                                            <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="nuevo" value="Nueva solicitud" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aprobacion" value="Aprobar desembolso" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="imprimir" value="Imprimir Documentos" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="actualizar" value="Anular solicitud" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="workflow" value="Workflow" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

@@ -643,6 +643,8 @@ public class CReporteXls {
         CellStyle style = loWB.createCellStyle();
         CellStyle style1 = loWB.createCellStyle();
         CellStyle stylehead = loWB.createCellStyle();
+        CellStyle styleDate = loWB.createCellStyle();//tipo date
+        CreationHelper createHelper = loWB.getCreationHelper();
         //cabecera
         loRowHead.createCell((short) 0).setCellValue("Nro.Solicitud");
         loRowHead.createCell((short) 1).setCellValue("Cod.Cliente");
@@ -673,6 +675,9 @@ public class CReporteXls {
             loRowHeadTitle.createCell((short) j).setCellStyle(style1);
             loRowHead.getCell(j).setCellStyle(stylehead);
         }
+        //estilo date format a celda
+        styleDate.setDataFormat(
+        createHelper.createDataFormat().getFormat("dd/mm/yy"));
         //FIN ESTILO
         loRowHeadTitle.getCell(2).setCellValue(po_Titulo);
         loRowHeadTitle1.getCell(0).setCellValue("FECHA:");
@@ -684,12 +689,15 @@ public class CReporteXls {
             loRow.createCell((short) 0).setCellValue(loCredito.getCodCta());
             loRow.createCell((short) 1).setCellValue(loCredito.getCliente().getCodCli());
             loRow.createCell((short) 2).setCellValue(loCredito.getCliente().getSumini());
-            loRow.createCell((short) 3).setCellValue(loCredito.getCliente().getApePat());
+            loRow.createCell((short) 3).setCellValue(toUppercase(loCredito.getCliente().getApePat()));
             loRow.createCell((short) 4).setCellValue(loCredito.getCliente().getApeMat());
             loRow.createCell((short) 5).setCellValue(loCredito.getCliente().getNombre());
             loRow.createCell((short) 6).setCellValue(loCredito.getCliente().getTipDocCiv());
             loRow.createCell((short) 7).setCellValue(loCredito.getCliente().getNroDocCiv());
-            loRow.createCell((short) 8).setCellValue(loCredito.getFecSol());
+            //loRow.createCell((short) 8).setCellValue(loCredito.getFecSol());
+            loRow.createCell((short) 8).setCellValue(new Date());
+            loRow.getCell(8).setCellStyle(styleDate);
+            loRow.getCell(8).setCellValue(loCredito.getFecSol());
             index++;
         }
         setRutaReporte("/ftia/files/cierres/Mantenedor_" + LibFunc.getFechaActual() + ".xls");
