@@ -120,7 +120,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="desplegarDireccion();"/>
+                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="fxConsulta();"/>
                                                             </div>
                                                         </div>
                                                     </div>

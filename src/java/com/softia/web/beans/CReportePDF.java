@@ -1443,7 +1443,7 @@ public class CReportePDF {
         loCre.setCredito(getCredito());
         boolean llOk = loCre.mxAplicar();
         if (llOk) {
-            //llOk = loCre.mxAplicar();
+            //llOk = loCre.mxKardex();
             if (llOk) {
                 llOk = mxKardexArchivo(loCre.getCredito());
                 if (llOk) {

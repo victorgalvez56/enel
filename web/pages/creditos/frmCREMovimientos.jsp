@@ -149,8 +149,8 @@
                                         <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         
                                         <div style="float: right">
-                                            <s:submit name="kardex" value="Kardex" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="estadoCuenta" value="Estado de Cuenta" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="kardex" value="Movimientos por crédito" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="estadoCuenta" value="Cuotas por crédito" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="workflow" value="Workflow" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>

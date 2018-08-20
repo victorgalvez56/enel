@@ -35,7 +35,7 @@
                 </div>
                 <!-- Content header -->
                 <section class="content-header">
-                    <h1>Posición de Cliente</h1>
+                    <h1>Créditos por cliente</h1>
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -223,8 +223,8 @@
                                             <s:hidden name="cliente.apePat"></s:hidden>
                                             <s:hidden name="cliente.apeMat"></s:hidden>
                                             <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
-                                            <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
                                         </div>
                                     </div>

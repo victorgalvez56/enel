@@ -206,11 +206,11 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden name="cliente.codigo"></s:hidden>
-                                            <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="nuevo" value="Nuevo cliente" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="actualizar" value="Actualizar datos de cliente" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="posicion" value="Posicion de cliente" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

@@ -95,8 +95,7 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
-                                                        <button type="button" class="btn btn-primary btn-flat" onclick="fecha_actual()">Evaluar Score</button>
-                                                        <s:submit name="evaluar" value="Evaluar Score" id = "bEvaluar"  cssClass="btn btn-primary btn-flat"  style="display: none;"/>
+                                                        <s:submit name="evaluar" value="Evaluar Score" id = "bEvaluar"  cssClass="btn btn-primary btn-flat" onclick="campo_requerido()"/>
                                                     </div>
                                                     <div class="col-md-1" align="right">
                                                         <div class="form-group">
@@ -105,7 +104,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfResultadoENEL" tabindex="5" readonly="true"/>
+                                                            <s:textfield name="resultadoENEL" cssClass="form-control" id="tfResultadoENEL" tabindex="5" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1" align="right">
@@ -115,7 +114,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfResultadoSENTINEL" tabindex="5" readonly="true"/>
+                                                            <s:textfield name="resultadoSENTINEL" cssClass="form-control" id="tfResultadoSENTINEL" tabindex="5" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -125,7 +124,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfFechaEvaluacion" tabindex="6" readonly="true"/>
+                                                            <s:textfield name="fecha" cssClass="form-control" id="tfFechaEvaluacion" tabindex="6" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
