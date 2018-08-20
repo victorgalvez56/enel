@@ -668,7 +668,25 @@ public class MenuAction extends BaseAction {
                 } catch (SQLException loErr) {
                     setError(loErr.getMessage());
                 }
-            }
+            } else if (request.getParameter("consultaSumi") != null) {
+                CClientes loCliente = new CClientes();
+                loCliente.setCliente(getCliente());
+                loCliente.getCliente().setNombre("");
+                loCliente.getCliente().setNroDocCiv("");
+                loCliente.setUrl(getUrl());
+                loCliente.setUser(user);
+                loCliente.setPasswd(pass);
+                try {
+                    boolean llOk = loCliente.mxConsultaSuministro();
+                    if (!llOk) {
+                        setError(loCliente.getError());
+                    } else {
+                        setCliente(loCliente.getCliente());
+                    }
+                } catch (SQLException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
+            } 
             setResult("frmCLINuevoActualizar");
         }
         return getResult();
@@ -3881,7 +3899,10 @@ public class MenuAction extends BaseAction {
             if (!llOk) {
                 setError(loClientes.getError());
             } else {
-                sumi.getDireccion().setDireccion(loClientes.getCliente().getDireccion().getDireccion());
+                String direccion;
+                direccion = loClientes.getCliente().getDireccion().getDireccion();
+                
+                //getCliente().getDireccion().setDireccion(loClientes.getCliente().getDireccion().getDireccion());
                 /*setDireccion(loClientes.getCliente().getDireccion().getDireccion());
                 setDistrito(loClientes.getCliente().getDireccion().getDistrito().getNombre());
                 setProvincia(loClientes.getCliente().getDireccion().getDistrito().getProvincia().getNombre());
@@ -3890,7 +3911,7 @@ public class MenuAction extends BaseAction {
         } catch (SQLException | ParseException loErr) {
             setError(loErr.getMessage());
         }
-        return "frmCLINuevoActualizar";
+        return "DIRECCION";
     }
 
     /**

@@ -49,12 +49,16 @@
             }
             
             function desplegarDireccion() {
-                    var suministro = $("#tfSuministro").val();
-                    var dataURL = "suministro=" + suministro;
-                    $.getJSON("desplegarDireccion.action", dataURL, function(data) {
-                        var dir = data.direccion;
-                        $("#departamento").html(dir);
-                    });
+                /*var suministro = $("#tfSuministro").val();
+                var dataURL = "suministro=" + suministro;
+                $.getJSON("desplegarDireccion.action", dataURL, function(data) {
+                    var dir = data.direccion;
+                    $("#departamento").html(dir);
+                });*/
+                document.getElementById("nombre").value = " ";
+                document.getElementById("codciv").value = " ";
+                alert("Iniciará ua busqueda de suministros");
+                document.getElementById("bConsultaSumi").click();
             }
         </SCRIPT>
     </head>
@@ -120,7 +124,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="fxConsulta();"/>
+                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="desplegarDireccion();" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -169,7 +173,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nacimiento:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" required="true" style="text-transform: uppercase;" />
+                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -319,6 +323,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
+                                            <s:submit name="consultaSumi" id="bConsultaSumi" style="display: none;" />
                                             <s:submit name="nombre" value="Grabar" id="bGrabar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
