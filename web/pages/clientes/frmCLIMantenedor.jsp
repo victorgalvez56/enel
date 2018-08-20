@@ -60,7 +60,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="cliente.codCli" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="cliente.codCli" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -70,7 +70,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="apellido" name="cliente.apePat" tabindex="2"/>
+                                                            <s:textfield cssClass="form-control" id="apellido" name="cliente.apePat" tabindex="2" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,7 +82,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="cliente.sumini"/>
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="cliente.sumini" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -92,7 +92,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="apellidomat" name="cliente.apeMat" tabindex="5"/>   
+                                                            <s:textfield cssClass="form-control" id="apellidomat" name="clixente.apeMat" tabindex="5" style="text-transform: uppercase;" />   
                                                         </div>
                                                     </div>
                                                 </div>
@@ -104,7 +104,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:select name="cliente.tipDocCiv" tabindex="7" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="cliente.tipDocCiv" tabindex="7" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -114,7 +114,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="8"/>
+                                                            <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="8" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,7 +126,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="10"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="10" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -136,7 +136,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -148,7 +148,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="date" cssClass="form-control" id="" name="fecIni" tabindex="12"/>
+                                                            <s:textfield type="date" cssClass="form-control" id="" name="fecIni" tabindex="12" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">

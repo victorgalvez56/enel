@@ -39,10 +39,13 @@ import com.softia.utils.LibFunc;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -63,6 +66,15 @@ public class CReportePDF {
     private String url;
     private String user;
     private String passwd;
+    
+    public String formateador(String fecha) throws ParseException {
+        DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = formateador.parse(fecha);
+        
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String fec = formatter.format(date);
+        return fec;
+    }
     
     public boolean mxPosicionCliente() throws SQLException, IOException {
         CClientes loCli = new CClientes();
@@ -2443,7 +2455,7 @@ public class CReportePDF {
             celda10T1.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda11T1 = new PdfPCell(new Phrase("Fecha de solicitud", fontContenido));
             celda11T1.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda12T1 = new PdfPCell(new Phrase(": " + p_oCredito.getFecSol(), fontContenido));
+            PdfPCell celda12T1 = new PdfPCell(new Phrase(": " + formateador(p_oCredito.getFecSol()), fontContenido));
             celda12T1.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda13T1 = new PdfPCell();
             celda13T1.setBorder(PdfPCell.NO_BORDER);
@@ -2546,7 +2558,7 @@ public class CReportePDF {
                 celda2T2 = new PdfPCell(new Phrase(String.valueOf(loCuota.getCuota()), fontContenido));
                 celda2T2.setHorizontalAlignment(Element.ALIGN_CENTER);
                 celda2T2.setBorder(PdfPCell.NO_BORDER);
-                celda3T2 = new PdfPCell(new Phrase(loCuota.getFecha(), fontContenido));
+                celda3T2 = new PdfPCell(new Phrase(formateador(loCuota.getFecha()), fontContenido));
                 celda3T2.setHorizontalAlignment(Element.ALIGN_CENTER);
                 celda3T2.setBorder(PdfPCell.NO_BORDER);
                 celda00T2 = new PdfPCell();
