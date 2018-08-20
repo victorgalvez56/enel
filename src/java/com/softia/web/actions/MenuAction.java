@@ -57,7 +57,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author cgp
  */
 public class MenuAction extends BaseAction {
-
+    
     private Usuario usuario;
     private String result;
     private Cliente cliente;
@@ -73,9 +73,9 @@ public class MenuAction extends BaseAction {
     private String paramBusquedaCre;
     private String paramBusquedaCli;
     private String comentario;
-
+    
     private List<TipoCliente> lstTiposCliente;
-
+    
     private List<Tabla> lstTipoCobranza;
     private List<Tabla> lstTipoOrden;
     private List<Oficina> lstOficinas;
@@ -109,7 +109,7 @@ public class MenuAction extends BaseAction {
     private List<String> lstOficina;
     private java.sql.Date FecmoraIni;
     private java.sql.Date FecmoraFin;
-
+    
     private String codCta;
     private String fecIni;
     private String fecFin;
@@ -122,12 +122,15 @@ public class MenuAction extends BaseAction {
     private String estado;
     private List<Canal> lstCanales;
     private int codigoCanal;
-
+    private String resultadoENEL;
+    private String resultadoSENTINEL;
+    private String fecha;
+    
     public String login() {
         setResult("login");
         return getResult();
     }
-
+    
     public String pantallaPrincipal() {
         if (!validaSession()) {
             return "login";
@@ -148,7 +151,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String autenticar() {
         CUsuarios loUsuario = new CUsuarios();
         loUsuario.setUsuario(getUsuario());
@@ -171,7 +174,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCLIMantenedor() {
         if (!validaSession()) {
             return "login";
@@ -349,7 +352,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmSOLMantenedor() {
         if (!validaSession()) {
             return "login";
@@ -550,7 +553,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCLINuevoActualizar() {
         if (!validaSession()) {
             return "login";
@@ -670,7 +673,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCLIPosicion() {
         if (!validaSession()) {
             return "login";
@@ -678,7 +681,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-
+        
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -796,9 +799,9 @@ public class MenuAction extends BaseAction {
                     loCliente.setPasswd(pass);
                     loCliente.setCliente(getCliente());
                     boolean llOk = loCliente.mxCreditos();
-                    if(!llOk){
+                    if (!llOk) {
                         setError(loCliente.getError());
-                    }else{
+                    } else {
                         if (!(loRep.mxGenerarCliPosicion(loCliente.getCliente()))) {
                             setError(loRep.getError());
                         } else {
@@ -822,7 +825,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCREMantenedor() {
         if (!validaSession()) {
             return "login";
@@ -838,13 +841,13 @@ public class MenuAction extends BaseAction {
             setLstTipDocCiv(loTabla.getLstTabla(4));
             if (getLstTipDocCiv() == null) {
                 setError(loTabla.getError());
-            }else{
+            } else {
                 CCanales loCanal = new CCanales();
                 loCanal.setUrl(getUrl());
                 loCanal.setUser(user);
                 loCanal.setPasswd(pass);
                 setLstCanales(loCanal.getLstCanales());
-                if(getLstCanales() == null){
+                if (getLstCanales() == null) {
                     setError(loCanal.getError());                    
                 }
             }
@@ -1022,7 +1025,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCREDocumentos() {
         if (!validaSession()) {
             return "login";
@@ -1030,7 +1033,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-
+        
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1196,7 +1199,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCRESolicitud() {
         if (!validaSession()) {
             return "login";
@@ -1514,6 +1517,36 @@ public class MenuAction extends BaseAction {
                         setError(loCredito.getError());
                     } else {
                         setCredito(loCredito.getCredito());
+                    }
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        } else if (request.getParameter("evaluar") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxAplicar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    llOk = loCredito.mxPlanPagos();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setCredito(loCredito.getCredito());
+                        llOk = loCredito.mxEvaluar();
+                        if (llOk) {
+                            setResultadoENEL(loCredito.getResultadoENEL());
+                            setResultadoSENTINEL(loCredito.getResultadoSENTINEL());
+                            setFecha(LibFunc.getFechaActual());
+                            setComentario("");
+                        } else {
+                            setError(loCredito.getError());
+                        }
                     }
                 }
             } catch (SQLException | ParseException loErr) {
@@ -2057,7 +2090,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCREMovimientos() {
         if (!validaSession()) {
             return "login";
@@ -2457,7 +2490,7 @@ public class MenuAction extends BaseAction {
         setResult("repCLICalendarioPagos");
         return getResult();
     }
-
+    
     public String generarCarteraXLS() {
         if (!validaSession()) {
             return "login";
@@ -2492,7 +2525,7 @@ public class MenuAction extends BaseAction {
         setResult("frmREPCREDesembolso");
         return getResult();
     }
-
+    
     public String generarOPEDesembolsoXLS() {
         if (!validaSession()) {
             return "login";
@@ -2527,7 +2560,7 @@ public class MenuAction extends BaseAction {
         setResult("frmREPCREPago");
         return getResult();
     }
-
+    
     public String generarOPEPagoXLS() {
         if (!validaSession()) {
             return "login";
@@ -2562,7 +2595,7 @@ public class MenuAction extends BaseAction {
         setResult("frmREPCRESolicitud");
         return getResult();
     }
-
+    
     public String generarSolicitudXLS() {
         if (!validaSession()) {
             return "login";
@@ -2591,7 +2624,7 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCRECartera();
     }
-
+    
     public String generarMoraXLS() {
         if (!validaSession()) {
             return "login";
@@ -2620,7 +2653,7 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCREMora();
     }
-
+    
     public String imprimirPDF() {
         if (!validaSession()) {
             return "login";
@@ -2650,7 +2683,7 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCREMora();
     }
-
+    
     public String generarXLS() {
         if (!validaSession()) {
             return "login";
@@ -2679,7 +2712,7 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCRECartera();
     }
-
+    
     public String frmSisMntOficinas() {
         if (!validaSession()) {
             return "login";
@@ -2741,7 +2774,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCreMntCondiciones() {
         if (!validaSession()) {
             return "login";
@@ -2803,7 +2836,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCreMntProductos() {
         if (!validaSession()) {
             return "login";
@@ -2865,37 +2898,37 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmSisCargarUsuarios() {
         setResult("frmSISCargarUsuarios");
         return getResult();
     }
-
+    
     public String frmCliCargarClientes() {
         setResult("frmCLICargarClientes");
         return getResult();
     }
-
+    
     public String frmCreCargarCreditos() {
         setResult("frmCRECargarCreditos");
         return getResult();
     }
-
+    
     public String frmCobAsignar() {
         setResult("frmCOBAsignar");
         return getResult();
     }
-
+    
     public String frmCobVerCredito() {
         setResult("frmCOBVerCredito");
         return getResult();
     }
-
+    
     public String frmRepCobCompromisosPago() {
         setResult("frmREPCOBCompromisosPago");
         return getResult();
     }
-
+    
     public String frmRepCobSeguimientoCobranza() {
         if (!validaSession()) {
             return "login";
@@ -2919,7 +2952,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmEstCobEstados() {
         if (!validaSession()) {
             return "login";
@@ -2937,7 +2970,7 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-
+    
     public String frmEstCobResultados() {
         if (!validaSession()) {
             return "login";
@@ -2955,7 +2988,7 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-
+    
     public String frmEstCobOficinas() {
         if (!validaSession()) {
             return "login";
@@ -2973,7 +3006,7 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-
+    
     public String frmEstCobPagos() {
         if (!validaSession()) {
             return "login";
@@ -2991,12 +3024,12 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-
+    
     public String frmRepCobRecuperacion() {
         setResult("frmREPCOBRecuperacion");
         return getResult();
     }
-
+    
     public String frmCobProgramarVisitas() {
         try {
             if (!validaSession()) {
@@ -3077,7 +3110,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCobRegistrarLlamadas() {
         if (!validaSession()) {
             return "login";
@@ -3159,7 +3192,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCobRegistrarVisitas() {
         if (!validaSession()) {
             return "login";
@@ -3181,7 +3214,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCobImprimeCartas() {
         if (!validaSession()) {
             return "login";
@@ -3204,7 +3237,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCobParametrizar() {
         if (!validaSession()) {
             return "login";
@@ -3274,7 +3307,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmRegistrarVisitaCobranza() {
         if (!validaSession()) {
             return "login";
@@ -3309,7 +3342,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String frmCobRegistrarCompromiso() {
         if (!validaSession()) {
             return "login";
@@ -3344,7 +3377,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-
+    
     public String programarVisitaCobranza() {
         if (!validaSession()) {
             return "login";
@@ -3382,7 +3415,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobProgramarVisitas();
     }
-
+    
     public String registraVisita() {
         if (!validaSession()) {
             return "login";
@@ -3512,7 +3545,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobRegistrarLlamadas();
     }
-
+    
     public String imprimirCartaCobranza() {
         if (!validaSession()) {
             return "login";
@@ -3545,7 +3578,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobImprimeCartas();
     }
-
+    
     public String imprimirCartasCobranza() {
         if (!validaSession()) {
             return "login";
@@ -3577,7 +3610,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobImprimeCartas();
     }
-
+    
     public String reporteVisitas() {
         if (!validaSession()) {
             return "login";
@@ -3612,7 +3645,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobProgramarVisitas();
     }
-
+    
     public String reporteCompromisosPago() {
         if (!validaSession()) {
             return "login";
@@ -3655,7 +3688,7 @@ public class MenuAction extends BaseAction {
         }
         return frmRepCobCompromisosPago();
     }
-
+    
     public String reporteRecuperacion() {
         if (!validaSession()) {
             return "login";
@@ -3698,7 +3731,7 @@ public class MenuAction extends BaseAction {
         }
         return frmRepCobRecuperacion();
     }
-
+    
     public String cargarUsuarios() {
         if (!validaSession()) {
             return "login";
@@ -3726,7 +3759,7 @@ public class MenuAction extends BaseAction {
         }
         return frmSisCargarUsuarios();
     }
-
+    
     public String cargarClientes() {
         if (!validaSession()) {
             return "login";
@@ -3754,7 +3787,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCliCargarClientes();
     }
-
+    
     public String cargarCreditos() {
         if (!validaSession()) {
             return "login";
@@ -3782,7 +3815,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCreCargarCreditos();
     }
-
+    
     public String parametrizaCobranza() {
         if (!validaSession()) {
             return "login";
@@ -3802,7 +3835,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobParametrizar();
     }
-
+    
     public String asignaCobranza() {
         if (!validaSession()) {
             return "login";
@@ -3823,7 +3856,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobAsignar();
     }
-
+    
     public String desplegarDireccion() {
         if (!validaSession()) {
             return "login";
@@ -3831,7 +3864,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-
+        
         Cliente sumi = new Cliente();
         sumi.setSumini(getSuministro());
         sumi.setDireccion(new Direccion());
@@ -4670,5 +4703,47 @@ public class MenuAction extends BaseAction {
      */
     public void setCodigoCanal(int codigoCanal) {
         this.codigoCanal = codigoCanal;
+    }
+
+    /**
+     * @return the resultadoENEL
+     */
+    public String getResultadoENEL() {
+        return resultadoENEL;
+    }
+
+    /**
+     * @param resultadoENEL the resultadoENEL to set
+     */
+    public void setResultadoENEL(String resultadoENEL) {
+        this.resultadoENEL = resultadoENEL;
+    }
+
+    /**
+     * @return the resultadoSENTINEL
+     */
+    public String getResultadoSENTINEL() {
+        return resultadoSENTINEL;
+    }
+
+    /**
+     * @param resultadoSENTINEL the resultadoSENTINEL to set
+     */
+    public void setResultadoSENTINEL(String resultadoSENTINEL) {
+        this.resultadoSENTINEL = resultadoSENTINEL;
+    }
+
+    /**
+     * @return the fecha
+     */
+    public String getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

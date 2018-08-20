@@ -35,7 +35,7 @@
                 </div>
                 <!-- Content header -->
                 <section class="content-header">
-                    <h1>Posición de Cliente</h1>
+                    <h1>Créditos por cliente</h1>
                 </section>
                 <!-- Main content -->
                 <section class="content">

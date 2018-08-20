@@ -16,7 +16,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<s:url action="frmCLIMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
-                        <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
+                        <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Créditos por Cliente</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
