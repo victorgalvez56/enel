@@ -2212,7 +2212,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"kardex_" + getCredito().getCodCta() + ".pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"detallePagos_" + getCredito().getCodCta() + ".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -2238,7 +2238,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"estadoCuenta_" + getCredito().getCodCta() + ".pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"detalleCuotas_" + getCredito().getCodCta() + ".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();

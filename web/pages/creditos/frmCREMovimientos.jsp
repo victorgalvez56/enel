@@ -148,8 +148,8 @@
                                         <div style="float: right">
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="kardex" value="Detalle pagos" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="estadoCuenta" value="Detalle cuotas" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="kardex" value="Detalle de pagos" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="estadoCuenta" value="Detalle de cuotas" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="workflow" value="Workflow" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
