@@ -16,7 +16,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<s:url action="frmCLIMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Clientes</a></li>
-                        <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Posición de Cliente</a></li>
+                        <li><a href="<s:url action="frmCLIPosicion"/>"><i class="fa fa-circle-o"></i> Créditos por Cliente</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -30,7 +30,7 @@
                         <li><a href="<s:url action="frmSOLMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Solicitudes</a></li>
                         <li><a href="<s:url action="frmCREMntAprobacion"/>"><i class="fa fa-circle-o"></i> Mantenedor de Aprobaciones</a></li>
                         <li><a href="<s:url action="frmCREMantenedor"/>"><i class="fa fa-circle-o"></i> Mantenedor de Créditos</a></li>
-                        <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Impresión de documentos</a></li>
+                        <li><a href="<s:url action="frmCREDocumentos"/>"><i class="fa fa-circle-o"></i> Impresión de Documentos</a></li>
                         <li><a href="<s:url action="frmCREMovimientos"/>"><i class="fa fa-circle-o"></i> Movimientos</a></li>
                     </ul>
                 </li>

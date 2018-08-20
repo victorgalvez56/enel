@@ -112,7 +112,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Código:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="cliente.codCli" readonly="true" />
+                                                                <s:textfield cssClass="form-control" id="tfCodCli" tabindex="1" name="cliente.codCli" readonly="true" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -143,7 +143,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Ape paterno:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" id="apellido" name="cliente.apePat" tabindex="5"/>
+                                                                <s:textfield cssClass="form-control" id="apellido" name="cliente.apePat" tabindex="5" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -151,7 +151,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Ape. materno:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" id="apellidomat" name="cliente.apeMat" tabindex="6"/>              
+                                                                <s:textfield cssClass="form-control" id="apellidomat" name="cliente.apeMat" tabindex="6" style="text-transform: uppercase;" />              
                                                             </div>
                                                         </div>
                                                     </div>
@@ -159,7 +159,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nombre(s):</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="7" required="true"/>
+                                                                <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="7" required="true" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -169,7 +169,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nacimiento:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" required="true"/>
+                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" required="true" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -189,7 +189,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nro. de documento:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="11" required="true"/>
+                                                                <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="11" required="true" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -255,7 +255,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Teléfono fijo:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield name="cliente.telefono" cssClass="form-control" id="direccion" tabindex="16"/>
+                                                                <s:textfield name="cliente.telefono" cssClass="form-control" id="direccion" tabindex="16" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -263,7 +263,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Teléfono movil:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield name="cliente.celular" cssClass="form-control" id="direccion" tabindex="17"/>
+                                                                <s:textfield name="cliente.celular" cssClass="form-control" id="direccion" tabindex="17" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -291,7 +291,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Correo:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.correo" id="nombre" tabindex="21"/>
+                                                                <s:textfield cssClass="form-control" name="cliente.correo" id="nombre" tabindex="21" style="text-transform: uppercase;"/>
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -299,7 +299,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nro. hijos:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.hijos" id="nombre" tabindex="22"/>
+                                                                <s:textfield cssClass="form-control" name="cliente.hijos" id="nombre" tabindex="22" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -307,7 +307,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Ingresos:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.ingreso" id="nombre" tabindex="23"/>
+                                                                <s:textfield cssClass="form-control" name="cliente.ingreso" id="nombre" tabindex="23" style="text-transform: uppercase;" />
                                                             </div>
                                                         </div>
                                                     </div> 

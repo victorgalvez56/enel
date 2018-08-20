@@ -71,8 +71,8 @@
                                                                 <th>#</th>
                                                                 <th>Proceso</th>
                                                                 <th>Fecha de Proceso</th>
-                                                                <th>Usuario</th>
                                                                 <th>Hora</th>
+                                                                <th>Usuario</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -81,8 +81,8 @@
                                                                     <th><s:property value="%{#rowStatus.count}" /></th>
                                                                     <td><s:property value="operacion" /></td>
                                                                     <td><s:property value="fecha" /></td>
+                                                                    <td><s:property value="hora" /></td>
                                                                     <td><s:property value="usuario" /></td>
-                                                                    <td>hora</td>
                                                             </tr>
                                                         </s:iterator>
 

@@ -8,7 +8,7 @@
     <constant name="struts.custom.i18n.resources" value="ApplicationResources" />
     <constant name="struts.multipart.maxSize" value="50000000" />
 
-    <package name="default" extends="struts-default">
+    <package name="default" extends="struts-default, json-default">
         <result-types>
             <result-type name="tiles"
                          class="org.apache.struts2.views.tiles.TilesResult" />
@@ -72,6 +72,9 @@
             <result name="frmESTCOBPagos" type="tiles">frmESTCOBPagos</result>
 
             <result name="error" type="tiles">error</result>
+            
+            <result name="DIRECCION" type="json"></result>
         </action>
-    </package>        
+    </package>
+    
 </struts>
