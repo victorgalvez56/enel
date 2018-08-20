@@ -124,10 +124,10 @@
                                         <s:hidden name="credito.cliente.apePat"></s:hidden>
                                         <s:hidden name="credito.cliente.apeMat"></s:hidden>
                                         <s:hidden name="credito.cliente.nombre"></s:hidden>
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
-                                        <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
                                         
                                         <div style="float: right">
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
+                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />
                                             <s:submit name="solicitud" value="Imprimir solicitud" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="planPagos" value="Generar plan de pagos" cssClass="btn btn-primary btn-flat" />
                                         </div>

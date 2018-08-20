@@ -122,19 +122,19 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Abogado:</label>
-                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" name="" readonly="true" />
+                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" name="" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Analista:</label>
-                                                            <s:textfield cssClass="form-control" name="credito.nomAna" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="credito.nomAna" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Convenio:</label>
-                                                            <s:textfield cssClass="form-control" name="" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -145,12 +145,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <s:hidden name="credito.codigo"></s:hidden>
-                                        <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
-                                        <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
-                                        
                                         <div style="float: right">
-                                            <s:submit name="kardex" value="Kardex" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="estadoCuenta" value="Estado de Cuenta" cssClass="btn btn-primary btn-flat" />
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
+                                            <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="kardex" value="Detalle pagos" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="estadoCuenta" value="Detalle cuotas" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="workflow" value="Workflow" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
