@@ -2461,7 +2461,7 @@ public class MenuAction extends BaseAction {
     public String generarCarteraXLS() {
         if (!validaSession()) {
             return "login";
-        }
+        }/*
         setSession(ActionContext.getContext().getSession());
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
@@ -2483,7 +2483,7 @@ public class MenuAction extends BaseAction {
             }
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
-        }
+        }*/
         return frmREPCRECartera();
     }
 
