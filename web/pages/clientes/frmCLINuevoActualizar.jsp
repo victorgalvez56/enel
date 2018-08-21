@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <SCRIPT>
+        <script>
             function fxConsulta() {
                 document.getElementById("bGrabar").disabled = false;
                 if (document.getElementById("tfSuministro").value === "1558234") {
@@ -48,21 +48,19 @@
                 }
             }
             
-            function desplegarDireccion() {
+            function requeridos() {
                 /*var suministro = $("#tfSuministro").val();
                 var dataURL = "suministro=" + suministro;
                 $.getJSON("desplegarDireccion.action", dataURL, function(data) {
                     var dir = data.direccion;
                     $("#departamento").html(dir);
                 });*/
-                document.getElementById("nombre").value = " ";
-                document.getElementById("codciv").value = " ";
-                alert("Iniciará ua busqueda de suministros");
-                document.getElementById("bConsultaSumi").click();
+                document.getElementById("nombre").removeAttribute("required");
+                document.getElementById("codciv").removeAttribute("required");
             }
-        </SCRIPT>
+        </script>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onloadCli()">
+    <body class="hold-transition skin-blue sidebar-mini" onload="habilitarCLINuevoActualizar()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -123,8 +121,11 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
-                                                            <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" onblur="desplegarDireccion();" />
+                                                            <div class="input-group">
+                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" />
+                                                                <span class="input-group-btn">
+                                                                    <s:submit name="consultaSumi" id="bConsultaSumi" value="?" cssClass="btn btn-primary btn-flat" onclick="requeridos();"/>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -133,7 +134,7 @@
                                                             <label class="control-label">Estado sum:</label>
                                                             <div class="form-group">
                                                                 <s:if test="cliente.sumini.length() != 0">
-                                                                    <span style="text-transform: uppercase;"><s:property value="cliente.estado"/></span>
+                                                                    <span style="text-transform: uppercase;" id="spEstado"><s:property value="cliente.estado"/></span>
                                                                 </s:if>
                                                                 <s:else>
                                                                     <label id="estado"></label>
@@ -147,7 +148,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Ape paterno:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" id="apellido" name="cliente.apePat" tabindex="5" style="text-transform: uppercase;" />
+                                                                <s:textfield cssClass="form-control" id="apellido" name="cliente.apePat" tabindex="5" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -155,7 +156,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Ape. materno:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" id="apellidomat" name="cliente.apeMat" tabindex="6" style="text-transform: uppercase;" />              
+                                                                <s:textfield cssClass="form-control" id="apellidomat" name="cliente.apeMat" tabindex="6" style="text-transform: uppercase;" readonly="true" />              
                                                             </div>
                                                         </div>
                                                     </div>
@@ -163,7 +164,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nombre(s):</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="7" required="true" style="text-transform: uppercase;" />
+                                                                <s:textfield cssClass="form-control" name="cliente.nombre" id="nombre" tabindex="7" required="true" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -173,27 +174,27 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nacimiento:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" />
+                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Sexo:</label>
-                                                            <s:select name="cliente.sexo" tabindex="9" list="lstSexos" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="cliente.sexo" tabindex="9" id="sSexo" list="lstSexos" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Tipo de documento:</label>
-                                                            <s:select name="cliente.tipDocCiv" tabindex="10" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="cliente.tipDocCiv" tabindex="10" id="sTipoDoc" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Nro. de documento:</label>
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="11" required="true" style="text-transform: uppercase;" />
+                                                                <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="11" required="true" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -245,7 +246,7 @@
                                                             <label class="control-label">Dirección:</label>
                                                             <div>
                                                                 <s:if test="cliente.sumini.length() != 0">
-                                                                    <span style="text-transform: uppercase;"><s:property value="cliente.direccion.direccion"/></span>
+                                                                    <span style="text-transform: uppercase;" id="spDireccion"><s:property value="cliente.direccion.direccion"/></span>
                                                                 </s:if>
                                                                 <s:else>
                                                                     <label id="direccion"></label>
@@ -259,7 +260,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Teléfono fijo:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield name="cliente.telefono" cssClass="form-control" id="direccion" tabindex="16" style="text-transform: uppercase;" />
+                                                                <s:textfield name="cliente.telefono" cssClass="form-control" id="tfTelFijo" tabindex="16" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -267,20 +268,20 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Teléfono movil:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield name="cliente.celular" cssClass="form-control" id="direccion" tabindex="17" style="text-transform: uppercase;" />
+                                                                <s:textfield name="cliente.celular" cssClass="form-control" id="tfTelMovil" tabindex="17" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Profesión:</label>
-                                                            <s:select name="cliente.profesion.codigo" tabindex="18" list="lstProfesiones" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="cliente.profesion.codigo" tabindex="18" id="sProfesion" list="lstProfesiones" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
                                                         </div>                                                                    
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Grado de instrucción</label>
-                                                            <s:select name="cliente.nivIns" tabindex="19" list="lstNivIns" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="cliente.nivIns" tabindex="19" id="sInstruccion" list="lstNivIns" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -288,14 +289,14 @@
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Tipo de zona:</label>
-                                                            <s:select name="cliente.direccion.tipoZona" tabindex="20" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="cliente.direccion.tipoZona" tabindex="20" id="sTipoZona" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Correo:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.correo" id="nombre" tabindex="21" style="text-transform: uppercase;"/>
+                                                                <s:textfield cssClass="form-control" name="cliente.correo" id="tfCorreo" tabindex="21" style="text-transform: uppercase;" readonly="true"/>
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -303,7 +304,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nro. hijos:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.hijos" id="nombre" tabindex="22" style="text-transform: uppercase;" />
+                                                                <s:textfield cssClass="form-control" name="cliente.hijos" id="tfNroHijos" tabindex="22" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -311,7 +312,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Ingresos:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" name="cliente.ingreso" id="nombre" tabindex="23" style="text-transform: uppercase;" />
+                                                                <s:textfield cssClass="form-control" name="cliente.ingreso" id="tfIngresos" tabindex="23" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -323,7 +324,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit name="consultaSumi" id="bConsultaSumi" style="display: none;" />
                                             <s:submit name="nombre" value="Grabar" id="bGrabar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>

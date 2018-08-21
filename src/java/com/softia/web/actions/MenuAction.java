@@ -672,8 +672,6 @@ public class MenuAction extends BaseAction {
             } else if (request.getParameter("consultaSumi") != null) {
                 CClientes loCliente = new CClientes();
                 loCliente.setCliente(getCliente());
-                loCliente.getCliente().setNombre("");
-                loCliente.getCliente().setNroDocCiv("");
                 loCliente.setUrl(getUrl());
                 loCliente.setUser(user);
                 loCliente.setPasswd(pass);
