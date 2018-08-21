@@ -65,11 +65,11 @@
     </definition>
     <definition name="frmADMUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Mantenedor de Usuarios - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/creditos/frmADMUsuarios.jsp"/>
+        <put-attribute name="body"   value="/pages/usuarios/frmADMUsuarios.jsp"/>
     </definition>
     <definition name="frmADMNuevoUsuario" extends="baseLayout">
         <put-attribute name="title"  value="Mantenedor de Usuarios - FINANSOFT v3.0 | SOFTIA.COM"/>
-        <put-attribute name="body"   value="/pages/creditos/frmADMNuevoUsuario.jsp"/>
+        <put-attribute name="body"   value="/pages/usuarios/frmADMNuevoUsuario.jsp"/>
     </definition>
     
     <definition name="frmCAJDesembolso" extends="baseLayout">

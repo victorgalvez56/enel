@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true" name="usuario.codigo" id="tfCodigo"/>
+                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true" name="usuario.codUsu" id="tfCodUsu"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -64,7 +64,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="2" />
+                                                            <s:textfield cssClass="form-control" tabindex="2" name="usuario.correo" id="tfcorreo"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -132,7 +132,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="8" name="usuario.oficina" id="tfOficina"/>
+                                                            <s:select name="usuario.oficina.codigo" id="sOficina" tabindex="7" list="lstOficinas" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -144,7 +144,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="9" name="usuario.perfil" id="tfPerfil"/>
+                                                            <s:select name="usuario.perfil.codigo" id="sPerfil" tabindex="9" list="lstPerfiles" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,8 +179,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="actualizar" value="Actualizar" cssClass="btn btn-primary btn-flat" />
+                                            <s:hidden name="usuario.codigo"></s:hidden>
+                                            <s:submit name="grabar" id="bGrabar" value="Grabar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>

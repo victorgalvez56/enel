@@ -9,6 +9,7 @@ import com.softia.beans.CConfigCobranza;
 import com.softia.beans.CCreditos;
 import com.softia.beans.CDestinos;
 import com.softia.beans.COficinas;
+import com.softia.beans.CPerfiles;
 import com.softia.beans.CProductos;
 import com.softia.beans.CProfesiones;
 import com.softia.beans.CTabla;
@@ -26,6 +27,7 @@ import com.softia.models.Direccion;
 import com.softia.models.Distrito;
 import com.softia.models.Log;
 import com.softia.models.Oficina;
+import com.softia.models.Perfil;
 import com.softia.models.Producto;
 import com.softia.models.Profesion;
 import com.softia.models.Provincia;
@@ -79,6 +81,7 @@ public class MenuAction extends BaseAction {
     private List<Tabla> lstTipoCobranza;
     private List<Tabla> lstTipoOrden;
     private List<Oficina> lstOficinas;
+    private List<Perfil> lstPerfiles;
     private List<Destino> lstDestinos;
     private List<Condicion> lstCondiciones;
     private List<Producto> lstProductos;
@@ -90,6 +93,7 @@ public class MenuAction extends BaseAction {
     private List<Credito> lstCreditos;
     private List<Usuario> lstUsuarios;
     private Oficina oficina;
+    private Perfil perfil;
     private Condicion condicion;
     private Producto producto;
     private String accion;
@@ -1824,6 +1828,26 @@ public class MenuAction extends BaseAction {
             setLstTipDocCiv(loTabla.getLstTabla(4));
             if (getLstTipDocCiv() == null) {
                 setError(loTabla.getError());
+            }else{
+                COficinas loOficina = new COficinas();
+                loOficina.setUrl(getUrl());
+                loOficina.setUser(getSession().get("user").toString());
+                loOficina.setPasswd(getSession().get("pass").toString());
+                setLstOficinas(loOficina.getLstOficinas());
+                if (getLstOficinas() == null) {
+                    setResult("error");
+                    setError(loOficina.getError());
+                } else{
+                    CPerfiles loPerfil = new CPerfiles();
+                    loPerfil.setUrl(getUrl());
+                    loPerfil.setUser(getSession().get("user").toString());
+                    loPerfil.setPasswd(getSession().get("pass").toString());
+                    setLstPerfiles(loPerfil.getLstPerfiles());
+                    if (getLstPerfiles() == null) {
+                        setResult("error");
+                        setError(loPerfil.getError());
+                    }
+                }
             }
         }catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -1853,12 +1877,13 @@ public class MenuAction extends BaseAction {
                 }
             }
             else if (request.getParameter("nuevo") != null) {
-                setResult("frmADMNuevoUsuario");
+                return frmADMNuevoUsuario();
             } else if (request.getParameter("editar") != null) {
                 CUsuarios loUsuario = new CUsuarios();
                 loUsuario.setUrl(getUrl());
                 loUsuario.setUser(user);
                 loUsuario.setPasswd(pass);
+                loUsuario.setUsuario(getUsuario());
                 try {
                     boolean llOk = loUsuario.mxAplicar();
                     if (!llOk) {
@@ -1870,6 +1895,42 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
                 return frmADMNuevoUsuario();
+            } else if (request.getParameter("exportar") != null) {
+                setSession(ActionContext.getContext().getSession());
+                CReporteXls loRep = new CReporteXls();
+                loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+                try {
+                    CUsuarios loUsuario = new CUsuarios();
+                    loUsuario.setUrl(getUrl());
+                    loUsuario.setUser(user);
+                    loUsuario.setPasswd(pass);
+                    loUsuario.setUsuario(getUsuario());
+                    //setLstCreditos(loCreditos.getLstCreditos());
+                    loUsuario.setFecIni(getFecIni());
+                    loUsuario.setFecFin(getFecFin());
+                    boolean llOk = loUsuario.mxFiltrar();
+                    if (!llOk) {
+                        setError(loUsuario.getError());
+                    } else {
+                        setUsuario(loUsuario.getUsuario());
+                        if (!(loRep.mxGenerarADMUsuario(loUsuario.getLstUsuarios()))) {
+                            setError(loRep.getError());
+                        } else {
+                            File file = new File(loRep.getRutaReporte());
+                            byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                            FileUtils.writeByteArrayToFile(file, archivo);
+                            HttpServletResponse response = ServletActionContext.getResponse();
+                            response.setContentLength(archivo.length);
+                            response.setContentType("application/vnd.ms-excel");
+                            response.setHeader("Content-Disposition", "attachment; filename=\"MantenedorUSU_" + LibFunc.getFechaActual() + ".xls\"");
+                            ServletOutputStream out = response.getOutputStream();
+                            out.write(archivo);
+                            out.flush();
+                        }
+                    }
+                } catch (SQLException | IOException | ParseException loErr) {
+                    setError(loErr.getMessage());
+                }
             }
             setResult("frmADMUsuarios");
         }
@@ -2092,6 +2153,26 @@ public class MenuAction extends BaseAction {
             setLstTipDocCiv(loTabla.getLstTabla(4));
             if (getLstTipDocCiv() == null) {
                 setError(loTabla.getError());
+            }else{
+                COficinas loOficina = new COficinas();
+                loOficina.setUrl(getUrl());
+                loOficina.setUser(getSession().get("user").toString());
+                loOficina.setPasswd(getSession().get("pass").toString());
+                setLstOficinas(loOficina.getLstOficinas());
+                if (getLstOficinas() == null) {
+                    setResult("error");
+                    setError(loOficina.getError());
+                } else{
+                    CPerfiles loPerfil = new CPerfiles();
+                    loPerfil.setUrl(getUrl());
+                    loPerfil.setUser(getSession().get("user").toString());
+                    loPerfil.setPasswd(getSession().get("pass").toString());
+                    setLstPerfiles(loPerfil.getLstPerfiles());
+                    if (getLstPerfiles() == null) {
+                        setResult("error");
+                        setError(loPerfil.getError());
+                    }
+                }
             }
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -2101,6 +2182,25 @@ public class MenuAction extends BaseAction {
         } else {
             setResult("frmADMNuevoUsuario");
         }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("grabar") != null) {
+            CUsuarios loUsuario = new CUsuarios();
+            loUsuario.setUrl(getUrl());
+            loUsuario.setUser(user);
+            loUsuario.setPasswd(pass);
+            loUsuario.setUsuario(getUsuario());
+            try {
+                boolean llOk = loUsuario.mxGrabar();
+                if (!llOk) {
+                    setError(loUsuario.getError());
+                } else {
+                    setUsuario(loUsuario.getUsuario());
+                }
+            } catch (SQLException | ParseException loErr) {
+                        setError(loErr.getMessage());
+            }
+            setResult("frmADMNuevoUsuario");
+        } 
         return getResult();
     }
 
@@ -4216,6 +4316,34 @@ public class MenuAction extends BaseAction {
      */
     public void setLstOficinas(List<Oficina> lstOficinas) {
         this.lstOficinas = lstOficinas;
+    }
+
+    /**
+     * @return the Perfil
+     */
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    /**
+     * @param Perfil the Perfil to set
+     */
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
+    /**
+     * @return the lstPerfil
+     */
+    public List<Perfil> getLstPerfiles() {
+        return lstPerfiles;
+    }
+
+    /**
+     * @param lstPerfil the lstPerfil to set
+     */
+    public void setLstPerfiles(List<Perfil> lstPerfiles) {
+        this.lstPerfiles = lstPerfiles;
     }
 
     /**

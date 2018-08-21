@@ -17,6 +17,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.softia.models.Cliente;
+import com.softia.models.Usuario;
 import com.softia.models.Credito;
 import com.softia.models.Departamento;
 import com.softia.models.Direccion;
@@ -907,7 +908,95 @@ public class CReporteXls {
         }
         return llOk;
     }
-
+    public boolean mxADMUsuarioXls(List<Usuario> p_oUsuario,String po_Titulo) throws FileNotFoundException, IOException {
+        boolean llOk = true;
+        HSSFWorkbook loWB = new HSSFWorkbook();
+        HSSFSheet loSheet = loWB.createSheet("RECUPERACION");
+        HSSFRow loRowHeadTitle = loSheet.createRow((short) 0);
+        HSSFRow loRowHeadTitle1 = loSheet.createRow((short) 1);
+        HSSFRow loRowHead = loSheet.createRow((short) 2);
+        CellStyle style = loWB.createCellStyle();
+        CellStyle style1 = loWB.createCellStyle();
+        CellStyle stylehead = loWB.createCellStyle();
+        CellStyle styleDate = loWB.createCellStyle();//tipo date
+        CreationHelper createHelper = loWB.getCreationHelper();
+        //cabecera
+        loRowHead.createCell((short) 0).setCellValue("Cod.Usuario");
+        loRowHead.createCell((short) 1).setCellValue("Login");
+        loRowHead.createCell((short) 2).setCellValue("Ape.Paterno");
+        loRowHead.createCell((short) 3).setCellValue("Ape.Materno");
+        loRowHead.createCell((short) 4).setCellValue("Nombre(s)");
+        loRowHead.createCell((short) 5).setCellValue("Tipo documento");
+        loRowHead.createCell((short) 6).setCellValue("Nro.documento");
+        loRowHead.createCell((short) 7).setCellValue("Agencia");
+        loRowHead.createCell((short) 8).setCellValue("Perfil");
+        loRowHead.createCell((short) 9).setCellValue("Estado");
+        loRowHead.createCell((short) 10).setCellValue("Fec.Creacion");
+        loRowHead.createCell((short) 11).setCellValue("Usu.Creacion");
+        //ESTILO
+        HSSFFont font = loWB.createFont();
+        font.setColor(IndexedColors.WHITE.getIndex());
+        style1.setFillForegroundColor(IndexedColors.GREY_80_PERCENT.getIndex());
+        style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style1.setFont(font);
+        style.setFont(font);
+        style.setFillForegroundColor(IndexedColors.ROYAL_BLUE.getIndex());
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        stylehead.setFillForegroundColor(IndexedColors.PALE_BLUE.getIndex());
+        stylehead.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        style.setBorderBottom(BorderStyle.THIN);
+	style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        stylehead.setBorderBottom(BorderStyle.THIN);
+	stylehead.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+        for (int j=0; j<= 11; j++){
+            loRowHeadTitle1.createCell((short) j).setCellStyle(style);
+            loRowHeadTitle.createCell((short) j).setCellStyle(style1);
+            loRowHead.getCell(j).setCellStyle(stylehead);
+        }
+        //estilo date format a celda
+        styleDate.setDataFormat(
+        createHelper.createDataFormat().getFormat("dd/mm/yy"));
+        //FIN ESTILO
+        loRowHeadTitle.getCell(1).setCellValue(po_Titulo);
+        loRowHeadTitle1.getCell(0).setCellValue("FECHA:");
+        loRowHeadTitle1.getCell(1).setCellValue(LibFunc.getFechaActual());
+        //cuerpo
+        int index = 3;
+        for (Usuario loUsuario : p_oUsuario) {
+            HSSFRow loRow = loSheet.createRow((short) index);
+            loRow.createCell((short) 0).setCellValue(loUsuario.getCodUsu());
+            loRow.createCell((short) 1).setCellValue(loUsuario.getCorreo());
+            loRow.createCell((short) 2).setCellValue(loUsuario.getApePat());
+            loRow.createCell((short) 3).setCellValue(loUsuario.getApeMat());
+            loRow.createCell((short) 4).setCellValue(loUsuario.getNombre());
+            loRow.createCell((short) 5).setCellValue(loUsuario.getTiDoCi());
+            loRow.createCell((short) 6).setCellValue(loUsuario.getNuDoCi());
+            loRow.createCell((short) 7).setCellValue(loUsuario.getOficina().getNombre());
+            loRow.createCell((short) 8).setCellValue(loUsuario.getPerfil().getNombre());
+            loRow.createCell((short) 9).setCellValue(loUsuario.getEstado());
+            //formate date
+            loRow.createCell((short) 10).setCellValue(new Date());
+            loRow.getCell(7).setCellStyle(styleDate);
+            loRow.getCell(7).setCellValue(loUsuario.getFecReg());
+            loRow.createCell((short) 11).setCellValue(loUsuario.getUsuReg());
+            index++;
+        }
+        setRutaReporte("/ftia/files/cierres/MantenedorUSU" + LibFunc.getFechaActual() + ".xls");
+        try (FileOutputStream fileOut = new FileOutputStream(getRutaReporte())) {
+            loWB.write(fileOut);
+        }
+        return llOk;
+    }
+    //exportar - mantenedor de usuarios
+    public boolean mxGenerarADMUsuario(List<Usuario> lstUsuario) throws SQLException, IOException, ParseException {
+        boolean llOk = mxADMUsuarioXls(lstUsuario, "MANTENEDOR DE USUARIOS - EXPORTACION DE DATOS");
+        if (llOk) {
+            LibFunc.mxLog("REPORTE XLS OK.");
+        } else {
+            LibFunc.mxLog("REPORTE XLS error: " + getError());
+        }
+        return llOk;
+    }
     /**
      * @return the pthFil
      */
