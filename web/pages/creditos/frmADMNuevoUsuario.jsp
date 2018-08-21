@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true" name="usuario.codigo" id="tfCodigo"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:select name="cliente.tipDocCiv" tabindex="3" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="usuario.tiDoCi" tabindex="3" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="4" />
+                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.apePat" id="tfApePat"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -96,7 +96,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="5" />
+                                                            <s:textfield cssClass="form-control" tabindex="5" name="usuario.nuDoCi" id="tfNuDoCi"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,7 +108,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="6" />
+                                                            <s:textfield cssClass="form-control" tabindex="6" name="usuario.apeMat" id="tfApeMat"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +120,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="7" />
+                                                            <s:textfield cssClass="form-control" tabindex="7" name="usuario.nombre" id="tfNombre"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -132,7 +132,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="8" />
+                                                            <s:textfield cssClass="form-control" tabindex="8" name="usuario.oficina" id="tfOficina"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -144,7 +144,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="9" />
+                                                            <s:textfield cssClass="form-control" tabindex="9" name="usuario.perfil" id="tfPerfil"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,7 +156,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="10" />
+                                                            <s:textfield cssClass="form-control" tabindex="10" name="usuario.estado" id="tfEstado"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,7 +168,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="11" />
+                                                            <s:textfield cssClass="form-control" tabindex="11" name="usuario.passwd" id="tfContraseña"/>
                                                         </div>
                                                     </div>
                                                 </div>

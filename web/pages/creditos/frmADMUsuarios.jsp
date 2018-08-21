@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="1" name="usuario.codigo" id="tfCodigo"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -62,7 +62,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="2" name="usuario.estado" id="tfEstado"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -72,7 +72,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="3" name="fecIni" type="date"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -84,7 +84,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.codUsu" id="tfCodUsu"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -94,7 +94,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:select name="cliente.tipDocCiv" tabindex="2" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="usuario.tiDoCi" tabindex="5" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -104,7 +104,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="6" name="fecFin" type="date"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -116,7 +116,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="7" name="usuario.oficina" id="tfOficina"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -126,7 +126,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="8" name="usuario.nuDoCi" id="tfNuDoCi"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -138,7 +138,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" />
+                                                            <s:textfield cssClass="form-control" tabindex="9" name="usuario.perfil" id="tfPerfil"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,24 +159,28 @@
                                                             <th>Nro.Doc.</th>
                                                             <th>Fec.Crea</th>
                                                             <th>Usua.Crea</th>
+                                                            <th>Seleccionar</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <s:iterator value="lstUsuarios" status="rowStatus">
                                                         <tr>
-                                                            <td><input type="radio" /></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            <th><s:property value="%{#rowStatus.count}" /></th>
+                                                            <td><s:property value="codigo" /></td>
+                                                            <td><s:property value="codUsu" /></td>
+                                                            <td><s:property value="apePat" /></td>
+                                                            <td><s:property value="apeMat" /></td>
+                                                            <td><s:property value="nombre" /></td>
+                                                            <td><s:property value="oficina" /></td>
+                                                            <td><s:property value="perfil" /></td>
+                                                            <td><s:property value="estado" /></td>
+                                                            <td><s:property value="tiDoCi" /></td>
+                                                            <td><s:property value="nuDoCi" /></td>
+                                                            <td><s:property value="fecReg" /></td>
+                                                            <td><s:property value="usuReg" /></td>
+                                                            <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codigo"/>')"></center></td>
                                                         </tr>
+                                                        </s:iterator>
                                                         </tbody>
                                                     </table>        
                                                 </div>
@@ -187,6 +191,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
+                                            <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="nuevo" value="Nuevo Usuario" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="editar" value="Editar Usuario" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
@@ -196,6 +201,11 @@
                             </s:form>
                         </div>
                     </div>
+                    <script>
+                        function creSeleccionado(codigo) {
+                            document.getElementById("tfCodigo").value = codigo;
+                        }
+                    </script>   
                 </section>
             </div>
         </div>
