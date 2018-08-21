@@ -957,7 +957,7 @@ public class CReporteXls {
         styleDate.setDataFormat(
         createHelper.createDataFormat().getFormat("dd/mm/yy"));
         //FIN ESTILO
-        loRowHeadTitle.getCell(1).setCellValue(po_Titulo);
+        loRowHeadTitle.getCell(2).setCellValue(po_Titulo);
         loRowHeadTitle1.getCell(0).setCellValue("FECHA:");
         loRowHeadTitle1.getCell(1).setCellValue(LibFunc.getFechaActual());
         //cuerpo
@@ -976,8 +976,8 @@ public class CReporteXls {
             loRow.createCell((short) 9).setCellValue(loUsuario.getEstado());
             //formate date
             loRow.createCell((short) 10).setCellValue(new Date());
-            loRow.getCell(7).setCellStyle(styleDate);
-            loRow.getCell(7).setCellValue(loUsuario.getFecReg());
+            loRow.getCell(10).setCellStyle(styleDate);
+            loRow.getCell(10).setCellValue(loUsuario.getFecReg());
             loRow.createCell((short) 11).setCellValue(loUsuario.getUsuReg());
             index++;
         }
