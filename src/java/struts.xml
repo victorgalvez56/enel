@@ -76,5 +76,4 @@
             <result name="DIRECCION" type="json"></result>
         </action>
     </package>
-    
 </struts>
