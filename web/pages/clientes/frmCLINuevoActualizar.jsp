@@ -133,7 +133,7 @@
                                                             <label class="control-label">Estado sum:</label>
                                                             <div class="form-group">
                                                                 <s:if test="cliente.sumini.length() != 0">
-                                                                    <s:property value="cliente.estado"/>
+                                                                    <span style="text-transform: uppercase;"><s:property value="cliente.estado"/></span>
                                                                 </s:if>
                                                                 <s:else>
                                                                     <label id="estado"></label>
@@ -204,7 +204,7 @@
                                                             <label class="control-label">Departamento:</label>
                                                             <div class=" form-group">
                                                                 <s:if test="cliente.sumini.length() != 0">
-                                                                    <s:property value="cliente.direccion.distrito.provincia.departamento.nombre"/>
+                                                                    <span style="text-transform: uppercase;"><s:property value="cliente.direccion.distrito.provincia.departamento.nombre"/></span>
                                                                 </s:if>
                                                                 <s:else>
                                                                     <label id="departamento"></label>
@@ -215,9 +215,9 @@
                                                     <div class="col-xs-4">
                                                         <div class="form-group">
                                                             <label class="control-label">Provincia:</label>
-                                                            <div class=" form-group">
+                                                            <div>
                                                                 <s:if test="cliente.sumini.length() != 0">
-                                                                    <s:property value="cliente.direccion.distrito.provincia.nombre"/>
+                                                                    <span style="text-transform: uppercase;"><s:property value="cliente.direccion.distrito.provincia.nombre"/></span>
                                                                 </s:if>
                                                                 <s:else>
                                                                     <label id="provincia"></label>
@@ -228,9 +228,9 @@
                                                     <div class="col-xs-4">
                                                         <div class="form-group">
                                                             <label class="control-label">Distrito:</label>
-                                                            <div class=" form-group">
+                                                            <div>
                                                                 <s:if test="cliente.sumini.length() != 0">
-                                                                    <s:property value="cliente.direccion.distrito.nombre"/>
+                                                                    <span style="text-transform: uppercase;"><s:property value="cliente.direccion.distrito.nombre"/></span>
                                                                 </s:if>
                                                                 <s:else>                                                                
                                                                     <label id="distrito"></label>
@@ -243,9 +243,9 @@
                                                     <div class="col-xs-12">
                                                         <div class="form-group">
                                                             <label class="control-label">Dirección:</label>
-                                                            <div class=" form-group">
+                                                            <div>
                                                                 <s:if test="cliente.sumini.length() != 0">
-                                                                    <s:property value="cliente.direccion.direccion"/>
+                                                                    <span style="text-transform: uppercase;"><s:property value="cliente.direccion.direccion"/></span>
                                                                 </s:if>
                                                                 <s:else>
                                                                     <label id="direccion"></label>

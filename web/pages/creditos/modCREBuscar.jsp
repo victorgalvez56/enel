@@ -34,7 +34,7 @@
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <s:textfield name="paramBusquedaCre" id="tfParamBusquedaCre" cssClass="form-control"/>
+                                                <s:textfield name="paramBusquedaCre" id="tfParamBusquedaCre" cssClass="form-control" style="text-transform: uppercase;"/>
                                             </div>
                                         </div>
                                     </div>
