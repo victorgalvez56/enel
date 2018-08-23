@@ -7,7 +7,9 @@
         <section class="sidebar">
             <ul class="sidebar-menu" data-widget="tree">
                 <li><a href="<s:url action="pantallaPrincipal"/>"><i class="fa fa-dashboard"></i>  <span>Pantalla Principal</span></a></li>
-                <li class="treeview">
+                <s:property value="menuCompleto" escapeHtml="false" />
+                
+                <!--<li class="treeview">
                     <a href="#">
                         <i class="fa fa-copyright"></i> <span>Clientes</span>
                         <span class="pull-right-container">
@@ -69,7 +71,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
         </section>
     </aside>
