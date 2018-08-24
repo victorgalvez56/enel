@@ -134,69 +134,6 @@ public class MenuAction extends BaseAction {
     
     private Menu menu;
     private String menuCompleto;
-    private String menuClientes = "<li class=\"treeview\">\n" +
-"                    <a href=\"#\">\n" +
-"                        <i class=\"fa fa-copyright\"></i> <span>Clientes</span>\n" +
-"                        <span class=\"pull-right-container\">\n" +
-"                            <i class=\"fa fa-angle-left pull-right\"></i>\n" +
-"                        </span>\n" +
-"                    </a>\n" +
-"                    <ul class=\"treeview-menu\">\n" +
-"                        <li><a href=\"/enel/frmCLIMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Clientes</a></li>\n" +
-"                        <li><a href=\"/enel/frmCLIPosicion.action\"><i class=\"fa fa-circle-o\"></i> Créditos por Cliente</a></li>\n" +
-"                    </ul>\n" +
-"                </li>";
-    private String menuCreditos = "<li class=\"treeview\">\n" +
-"                    <a href=\"#\">\n" +
-"                        <i class=\"fa fa-credit-card\"></i> <span>Créditos</span>\n" +
-"                        <span class=\"pull-right-container\">\n" +
-"                            <i class=\"fa fa-angle-left pull-right\"></i>\n" +
-"                        </span>\n" +
-"                    </a>\n" +
-"                    <ul class=\"treeview-menu\">\n" +
-"                        <li><a href=\"/enel/frmSOLMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Solicitudes</a></li>\n" +
-"                        <li><a href=\"/enel/frmCREMntAprobacion.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Aprobaciones</a></li>\n" +
-"                        <li><a href=\"/enel/frmCREMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Créditos</a></li>\n" +
-"                        <li><a href=\"/enel/frmCREDocumentos.action\"><i class=\"fa fa-circle-o\"></i> Impresión de Documentos</a></li>\n" +
-"                        <li><a href=\"/enel/frmCREMovimientos.action\"><i class=\"fa fa-circle-o\"></i> Movimientos</a></li>\n" +
-"                    </ul>\n" +
-"                </li>";
-    private String menuUsuarios = "<li class=\"treeview\">\n" +
-"                    <a href=\"#\">\n" +
-"                        <i class=\"fa fa-user\"></i> <span>Usuarios</span>\n" +
-"                        <span class=\"pull-right-container\">\n" +
-"                            <i class=\"fa fa-angle-left pull-right\"></i>\n" +
-"                        </span>\n" +
-"                    </a>\n" +
-"                    <ul class=\"treeview-menu\">\n" +
-"                        <li><a href=\"/enel/frmADMUsuarios.action\"><i class=\"fa fa-circle-o\"></i> Administrador de Usuarios</a></li>\n" +
-"                    </ul>\n" +
-"                </li>";
-    private String menuReportes = "<li class=\"treeview\">\n" +
-"                    <a href=\"#\">\n" +
-"                        <i class=\"fa fa-archive\"></i> <span>Reportes</span>\n" +
-"                        <span class=\"pull-right-container\">\n" +
-"                            <i class=\"fa fa-angle-left pull-right\"></i>\n" +
-"                        </span>\n" +
-"                    </a>\n" +
-"                    <ul class=\"treeview-menu\">\n" +
-"                        <li><a href=\"/enel/frmREPCRECartera.action\"><i class=\"fa fa-circle-o\"></i> Cartera de Créditos</a></li>\n" +
-"                        <li><a href=\"/enel/frmREPCREMora.action\"><i class=\"fa fa-circle-o\"></i> Mora</a></li>\n" +
-"                        <li class=\"treeview\">\n" +
-"                            <a href=\"#\">\n" +
-"                                <i class=\"fa fa-circle-o\"></i> <span>Operaciones</span>\n" +
-"                                <span class=\"pull-right-container\">\n" +
-"                                    <i class=\"fa fa-angle-down\"></i>\n" +
-"                                </span>\n" +
-"                            </a>\n" +
-"                            <ul class=\"treeview-menu\">\n" +
-"                                <li><a href=\"/enel/frmREPCRESolicitud.action\"><i class=\"fa fa-circle-o\"></i> Solicitudes</a></li>\n" +
-"                                <li><a href=\"/enel/frmREPCREDesembolso.action\"><i class=\"fa fa-circle-o\"></i> Desembolsos</a></li>\n" +
-"                                <li><a href=\"/enel/frmREPCREPago.action\"><i class=\"fa fa-circle-o\"></i> Cobranzas</a></li>\n" +
-"                            </ul>\n" +
-"                        </li>\n" +
-"                    </ul>\n" +
-"                </li>";
     
     public String login() {
         setResult("login");
@@ -233,17 +170,28 @@ public class MenuAction extends BaseAction {
                 setSession(ActionContext.getContext().getSession());
                 getSession().put("user", loUsuario.getUsuario().getCorreo());
                 getSession().put("pass", loUsuario.getUsuario().getPasswd());
-                loUsuario.getUsuario().setEstado("1");
-                getSession().put("permission", loUsuario.getUsuario().getEstado());
+                getUsuario().setPerfil(new Perfil());
+                loUsuario.getUsuario().getPerfil().setNombre("SUPERVISOR    ");
+                //getSession().put("permission", loUsuario.getUsuario().getEstado());
                 setMensaje(loUsuario.getMensaje());
                 
-                if (loUsuario.getUsuario().getEstado().equals("1")) {
-                    menuCompleto = menuClientes + menuCreditos + menuUsuarios + menuReportes;
-                    getSession().put("menuCompleto", menuCompleto);
+                setMenu(new Menu());
+                switch (loUsuario.getUsuario().getPerfil().getNombre()) {
+                    case "BACK OFFICE":
+                        menuCompleto = getMenu().getMenuBackOffice() + getMenu().getMenuUsuarios() + getMenu().getMenuReportes();
+                        break;
+                    case "EVALUADOR":
+                        menuCompleto = getMenu().getMenuEvaluador() + getMenu().getMenuReportes();
+                        break;
+                    case "SUPERVISOR":
+                        menuCompleto = getMenu().getMenuSupervisor() + getMenu().getMenuReportes();
+                        break;
+                    default:
+                        menuCompleto = null;
+                        break;
                 }
-                else if (loUsuario.getUsuario().getEstado().equals("2")) {
-                    //setMenu("");
-                }
+                //
+                getSession().put("menuCompleto", menuCompleto);
                 
                 setResult("bienvenido");
             } else {
@@ -5276,38 +5224,6 @@ public class MenuAction extends BaseAction {
 
     public void setMenu(Menu menu) {
         this.menu = menu;
-    }
-    
-    public String getMenuClientes() {
-        return menuClientes;
-    }
-
-    public void setMenuClientes(String menuClientes) {
-        this.menuClientes = menuClientes;
-    }
-    
-    public String getMenuCreditos() {
-        return menuCreditos;
-    }
-
-    public void setMenuCreditos(String menuCreditos) {
-        this.menuCreditos = menuCreditos;
-    }
-
-    public String getMenuUsuarios() {
-        return menuUsuarios;
-    }
-
-    public void setMenuUsuarios(String menuUsuarios) {
-        this.menuUsuarios = menuUsuarios;
-    }
-
-    public String getMenuReportes() {
-        return menuReportes;
-    }
-
-    public void setMenuReportes(String menuReportes) {
-        this.menuReportes = menuReportes;
     }
     
     public String getMenuCompleto() {
