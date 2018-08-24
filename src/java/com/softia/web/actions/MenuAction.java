@@ -871,14 +871,14 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("ver") != null) {
-                cuenta.getCuenta();
-                Credito credito = new Credito();
-                credito.setCodCta(cuenta.getCuenta());
+                String verCod = request.getParameter("ver"); 
+                Credito cred = new Credito();
+                cred.setCodCta(verCod);
                 CCreditos loCredito = new CCreditos();
                 loCredito.setUrl(getUrl());
                 loCredito.setUser(user);
                 loCredito.setPasswd(pass);
-                loCredito.setCredito(credito);
+                loCredito.setCredito(cred);
                 try {
                     boolean llOk = loCredito.mxAplicar();
                     if (!llOk) {

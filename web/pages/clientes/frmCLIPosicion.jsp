@@ -206,8 +206,7 @@
                                                         <td><s:property value="capVen" /></td>
                                                         <td><s:property value="cuotas" /></td>
                                                         <td><s:property value="estado" /></td>
-                                                        <s:hidden  value="%{cuenta}" name="credito.codCta" />
-                                                        <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
+                                                        <td><a href="<s:url action="frmCLIPosicion.action"><s:param name="ver" value="%{cuenta}"/></s:url>" class="btn btn-success btn-flat btn-sm">Ver</a></td>
                                                     </tr>
                                                 </s:iterator>
                                             </tbody>
