@@ -5327,13 +5327,6 @@ public class MenuAction extends BaseAction {
         this.fecha = fecha;
     }
 
-//                if (loUsuario.getUsuario().getEstado().equals("1")) {
-//                    menuCompleto = menuClientes + menuCreditos + menuUsuarios + menuReportes;
-                    getSession().put("menuCompleto", menuCompleto);
-//                } else if (loUsuario.getUsuario().getEstado().equals("2")) {
-                    //setMenu("");
-//                }
-
     public String getMenuCompleto() {
         return menuCompleto;
     }
