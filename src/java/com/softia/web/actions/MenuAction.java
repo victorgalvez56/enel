@@ -138,6 +138,9 @@ public class MenuAction extends BaseAction {
     private String menuCreditos = "";
     private String menuUsuarios = "";
     private String menuReportes = "";
+    
+    private List<Menu> Menus;
+    private List<Menu> SubMenus;
 /*
     private String menuClientes = "<li class=\"treeview\">\n"
             + "                    <a href=\"#\">\n"
@@ -238,8 +241,10 @@ public class MenuAction extends BaseAction {
                 setSession(ActionContext.getContext().getSession());
                 getSession().put("user", loUsuario.getUsuario().getCorreo());
                 getSession().put("pass", loUsuario.getUsuario().getPasswd());
-//                loUsuario.getUsuario().setEstado("1");
-//                getSession().put("permission", loUsuario.getUsuario().getEstado());
+                
+                Menus = new ArrayList<Menu>();
+                SubMenus = new ArrayList<Menu>();
+                
                 setMensaje(loUsuario.getMensaje());
                 setResult("bienvenido");
             } else {
@@ -5333,5 +5338,21 @@ public class MenuAction extends BaseAction {
 
     public void setMenuCompleto(String menuCompleto) {
         this.menuCompleto = menuCompleto;
+    }
+    
+    public List<Menu> getMenus() {
+        return Menus;
+    }
+
+    public void setMenus(List<Menu> Menus) {
+        this.Menus = Menus;
+    }
+
+    public List<Menu> getSubMenus() {
+        return SubMenus;
+    }
+
+    public void setSubMenus(List<Menu> SubMenus) {
+        this.SubMenus = SubMenus;
     }
 }
