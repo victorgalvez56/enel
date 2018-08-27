@@ -55,11 +55,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12" align="right">
-                                    <button class="btn btn-primary btn-flat btn-sm" type="button" onclick="">Imprimir</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

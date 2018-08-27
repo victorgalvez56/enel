@@ -1455,7 +1455,7 @@ public class CReportePDF {
         loCre.setCredito(getCredito());
         boolean llOk = loCre.mxAplicar();
         if (llOk) {
-            //llOk = loCre.mxKardex();
+            llOk = loCre.mxKardex();
             if (llOk) {
                 llOk = mxKardexArchivo(loCre.getCredito());
                 if (llOk) {
@@ -1560,7 +1560,7 @@ public class CReportePDF {
             //Sexta fila
             PdfPCell celda14T1 = new PdfPCell(new Phrase("Monto desembolsado: ", fontContenido));
             celda14T1.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T1 = new PdfPCell(new Phrase(": ", fontContenido));
+            PdfPCell celda15T1 = new PdfPCell(new Phrase(": " + p_oCredito.getCapDes(), fontContenido));
             celda15T1.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda16T1 = new PdfPCell(new Phrase("Monto por cuota", fontContenido));
             celda16T1.setBorder(PdfPCell.NO_BORDER);
@@ -1583,7 +1583,7 @@ public class CReportePDF {
             celda23T1.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda24T1 = new PdfPCell(new Phrase("Tasa de mora" , fontContenido));
             celda24T1.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda25T1 = new PdfPCell(new Phrase(": 0.0%" , fontContenido));
+            PdfPCell celda25T1 = new PdfPCell(new Phrase(": " + p_oCredito.getTasMor() + "%" , fontContenido));
             celda25T1.setBorder(PdfPCell.NO_BORDER);
             
             //Octava fila
@@ -2610,7 +2610,7 @@ public class CReportePDF {
             //Sexta fila
             PdfPCell celda14T1 = new PdfPCell(new Phrase("Monto desembolsado: ", fontContenido));
             celda14T1.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T1 = new PdfPCell(new Phrase(": ", fontContenido));
+            PdfPCell celda15T1 = new PdfPCell(new Phrase(": " + p_oCredito.getCapDes(), fontContenido));
             celda15T1.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda16T1 = new PdfPCell(new Phrase("Monto por cuota", fontContenido));
             celda16T1.setBorder(PdfPCell.NO_BORDER);
@@ -2633,7 +2633,7 @@ public class CReportePDF {
             celda23T1.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda24T1 = new PdfPCell(new Phrase("Tasa de mora" , fontContenido));
             celda24T1.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda25T1 = new PdfPCell(new Phrase(": 0.0%" , fontContenido));
+            PdfPCell celda25T1 = new PdfPCell(new Phrase(": " + p_oCredito.getTasMor() + "%" , fontContenido));
             celda25T1.setBorder(PdfPCell.NO_BORDER);
             
             //Octava fila

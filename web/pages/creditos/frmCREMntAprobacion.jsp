@@ -127,7 +127,7 @@
                                                         </div>
                                                         <div class="col-md-11">
                                                             <div class="form-group">
-                                                                <s:textarea cssClass="form-control" id="tfComent" tabindex="4" name="comentario"/>
+                                                                <s:textarea cssClass="form-control" id="tfComent" tabindex="4" name="comentario" required="true"/>
                                                             </div>
                                                         </div>
                                                     </div>

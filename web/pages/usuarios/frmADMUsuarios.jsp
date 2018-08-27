@@ -62,7 +62,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" tabindex="2" name="usuario.estado" id="tfEstado"/>
+                                                            <s:select name="usuario.estado" id="sEstado" tabindex="10" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -157,8 +157,6 @@
                                                             <th>Estado</th>
                                                             <th>Tipo Doc.</th>
                                                             <th>Nro.Doc.</th>
-                                                            <th>Fec.Crea</th>
-                                                            <th>Usua.Crea</th>
                                                             <th>Seleccionar</th>
                                                         </tr>
                                                         </thead>
@@ -176,8 +174,6 @@
                                                             <td><s:property value="estado" /></td>
                                                             <td><s:property value="tiDoCi" /></td>
                                                             <td><s:property value="nuDoCi" /></td>
-                                                            <td><s:property value="fecReg" /></td>
-                                                            <td><s:property value="usuReg" /></td>
                                                             <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codUsu"/>')"></center></td>
                                                         </tr>
                                                         </s:iterator>

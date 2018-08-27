@@ -217,7 +217,7 @@
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>-->
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
                                             <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" disabled="true"/>
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
                                         </div>
@@ -238,35 +238,19 @@
                 document.getElementById("tfComent").required = true;
                 boton_habilitado();
             });
-            function boton_habilitado(){
-                var monto = Number(document.getElementById("tfMonSol").value);
+            function boton_habilitado() {
                 var MonApr = Number(document.getElementById("tfMonApr").value);
                 var MonCuo = Number(document.getElementById("tfMonCuo").value);
-                if (monto <= 2000){
-                    if(MonCuo <= MonApr){
-                        document.getElementById("bEnviar").disabled = true;
-                        document.getElementById("bAprobar").disabled = false; 
-                    } else{
-                       document.getElementById("bAprobar").disabled = true;
-                       document.getElementById("bEnviar").disabled = false;
-                    }
+                if (document.getElementById("tfResultadoENEL").value !== "APROBADO" || document.getElementById("tfResultadoSENTINEL").value !== "APROBADO") {
+                    document.getElementById("bAprobar").disabled = true;
                 }else{
-                    document.getElementById("bEnviar").disabled = true;
                     document.getElementById("bAprobar").disabled = false;
                 }
             }
-    
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAprobacion");
             }
-            
-            function fecha_actual(){
-                var f = new Date();
-                $("#tfFechaEvaluacion").val(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-                $("#tfResultadoENEL").val("APROBADO");
-                $("#tfResultadoSENTINEL").val("APROBADO");
-            }
-            function campo_requerido(){
+            function campo_requerido() {
                 document.getElementById("tfComent").required = false;
                 $("#tfComent").val("*");
             }
