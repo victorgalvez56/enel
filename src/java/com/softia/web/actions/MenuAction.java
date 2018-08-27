@@ -241,14 +241,6 @@ public class MenuAction extends BaseAction {
 //                loUsuario.getUsuario().setEstado("1");
 //                getSession().put("permission", loUsuario.getUsuario().getEstado());
                 setMensaje(loUsuario.getMensaje());
-
-//                if (loUsuario.getUsuario().getEstado().equals("1")) {
-//                    menuCompleto = menuClientes + menuCreditos + menuUsuarios + menuReportes;
-                    getSession().put("menuCompleto", menuCompleto);
-//                } else if (loUsuario.getUsuario().getEstado().equals("2")) {
-                    //setMenu("");
-//                }
-
                 setResult("bienvenido");
             } else {
                 setError(loUsuario.getError());
@@ -880,14 +872,14 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("ver") != null) {
-                cuenta.getCuenta();
-                Credito credito = new Credito();
-                credito.setCodCta(cuenta.getCuenta());
+                String verCod = request.getParameter("ver"); 
+                Credito cred = new Credito();
+                cred.setCodCta(verCod);
                 CCreditos loCredito = new CCreditos();
                 loCredito.setUrl(getUrl());
                 loCredito.setUser(user);
                 loCredito.setPasswd(pass);
-                loCredito.setCredito(credito);
+                loCredito.setCredito(cred);
                 try {
                     boolean llOk = loCredito.mxAplicar();
                     if (!llOk) {
@@ -5335,45 +5327,12 @@ public class MenuAction extends BaseAction {
         this.fecha = fecha;
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public String getMenuClientes() {
-        return menuClientes;
-    }
-
-    public void setMenuClientes(String menuClientes) {
-        this.menuClientes = menuClientes;
-    }
-
-    public String getMenuCreditos() {
-        return menuCreditos;
-    }
-
-    public void setMenuCreditos(String menuCreditos) {
-        this.menuCreditos = menuCreditos;
-    }
-
-    public String getMenuUsuarios() {
-        return menuUsuarios;
-    }
-
-    public void setMenuUsuarios(String menuUsuarios) {
-        this.menuUsuarios = menuUsuarios;
-    }
-
-    public String getMenuReportes() {
-        return menuReportes;
-    }
-
-    public void setMenuReportes(String menuReportes) {
-        this.menuReportes = menuReportes;
-    }
+//                if (loUsuario.getUsuario().getEstado().equals("1")) {
+//                    menuCompleto = menuClientes + menuCreditos + menuUsuarios + menuReportes;
+                    getSession().put("menuCompleto", menuCompleto);
+//                } else if (loUsuario.getUsuario().getEstado().equals("2")) {
+                    //setMenu("");
+//                }
 
     public String getMenuCompleto() {
         return menuCompleto;
