@@ -138,6 +138,9 @@ public class MenuAction extends BaseAction {
     private String menuCreditos = "";
     private String menuUsuarios = "";
     private String menuReportes = "";
+    
+    private List<Menu> Menus;
+    private List<Menu> SubMenus;
 /*
     private String menuClientes = "<li class=\"treeview\">\n"
             + "                    <a href=\"#\">\n"
@@ -238,8 +241,10 @@ public class MenuAction extends BaseAction {
                 setSession(ActionContext.getContext().getSession());
                 getSession().put("user", loUsuario.getUsuario().getCorreo());
                 getSession().put("pass", loUsuario.getUsuario().getPasswd());
-//                loUsuario.getUsuario().setEstado("1");
-//                getSession().put("permission", loUsuario.getUsuario().getEstado());
+                
+                Menus = new ArrayList<Menu>();
+                SubMenus = new ArrayList<Menu>();
+                
                 setMensaje(loUsuario.getMensaje());
                 setResult("bienvenido");
             } else {
@@ -261,7 +266,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -647,7 +652,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -784,7 +789,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -936,7 +941,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -1137,7 +1142,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1311,7 +1316,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -1450,7 +1455,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -1555,7 +1560,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1739,7 +1744,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -1905,7 +1910,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -2234,7 +2239,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -2309,7 +2314,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2547,7 +2552,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2725,7 +2730,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2771,7 +2776,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2883,7 +2888,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2973,7 +2978,7 @@ public class MenuAction extends BaseAction {
     //SUBMODULO REPORTE MORA
     public String frmREPCREMora() {
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setResult("frmREPCREMora");
         return getResult();
     }
@@ -2981,7 +2986,7 @@ public class MenuAction extends BaseAction {
     //SUBMODULO REPORTE CARTERA DE CREDITOS
     public String frmREPCRECartera() {
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setResult("frmREPCRECartera");
         return getResult();
     }
@@ -3024,7 +3029,7 @@ public class MenuAction extends BaseAction {
     //SUBMODULO REPORTE DESEMBOLSOS
     public String frmREPCREDesembolso() {
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setResult("frmREPCREDesembolso");
         return getResult();
     }
@@ -3034,7 +3039,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3062,7 +3067,7 @@ public class MenuAction extends BaseAction {
     //SUBMODULO REPORTE PAGOS-COBRANZAS
     public String frmREPCREPago() {
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setResult("frmREPCREPago");
         return getResult();
     }
@@ -3072,7 +3077,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3100,7 +3105,7 @@ public class MenuAction extends BaseAction {
     //SUBMODULO REPORTE SOLICITUDES
     public String frmREPCRESolicitud() {
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setResult("frmREPCRESolicitud");
         return getResult();
     }
@@ -3110,7 +3115,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3140,7 +3145,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3170,7 +3175,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CReporte loRep = new CReporte();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3236,7 +3241,7 @@ public class MenuAction extends BaseAction {
             CTabla loTabla = new CTabla();
             loTabla.setUser(getSession().get("user").toString());
             loTabla.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -3299,7 +3304,7 @@ public class MenuAction extends BaseAction {
             CTabla loTabla = new CTabla();
             loTabla.setUser(getSession().get("user").toString());
             loTabla.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -3362,7 +3367,7 @@ public class MenuAction extends BaseAction {
             CTabla loTabla = new CTabla();
             loTabla.setUser(getSession().get("user").toString());
             loTabla.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -3455,7 +3460,7 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             boolean llOk = loCobranza.mxSeguimiento();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -3480,7 +3485,7 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setDatos(loCobranza.mxDatosEstado());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3499,7 +3504,7 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setDatos(loCobranza.mxDatosHistoricos());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3518,7 +3523,7 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setDatos(loCobranza.mxDatosOficinas());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3537,7 +3542,7 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setDatos(loCobranza.mxDatosRecuperacion());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3568,7 +3573,7 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             loCobranza.setTipoOrden(getTipoOrden());
             boolean llOk = loCobranza.mxAsignados();
             if (!llOk) {
@@ -3643,7 +3648,7 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             loCobranza.setTipoOrden(getTipoOrden());
             boolean llOk = loCobranza.mxLlamadas();
             if (!llOk) {
@@ -3726,7 +3731,7 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             boolean llOk = loCobranza.mxProgramados();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -3749,7 +3754,7 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
-            menuCompleto = getSession().get("menuCompleto").toString();
+            //menuCompleto = getSession().get("menuCompleto").toString();
             boolean llOk = loCobranza.mxProgramados();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -3768,7 +3773,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         setResult("frmCOBParametrizar");
         CUsuarios loUsuario = new CUsuarios();
         try {
@@ -3840,7 +3845,7 @@ public class MenuAction extends BaseAction {
         }
         setResult("frmCOBRegistrarVisitas");
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3876,7 +3881,7 @@ public class MenuAction extends BaseAction {
         }
         setResult("frmCOBRegistrarCompromiso");
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3911,7 +3916,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3950,7 +3955,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4054,7 +4059,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4082,7 +4087,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4116,7 +4121,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4149,7 +4154,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4185,7 +4190,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4229,7 +4234,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4273,7 +4278,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         if (LibFunc.fxEmpty(getArchivoUsuariosFileName())) {
             setError("Debe seleccionar archivo de usuarios");
         }
@@ -4302,7 +4307,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         if (LibFunc.fxEmpty(getArchivoClientesFileName())) {
             setError("Debe seleccionar archivo de clientes");
         }
@@ -4331,7 +4336,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         if (LibFunc.fxEmpty(getArchivoCreditosFileName())) {
             setError("Debe seleccionar archivo de créditos");
         }
@@ -4360,7 +4365,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CConfigCobranza loConfiguracion = new CConfigCobranza();
         loConfiguracion.setUser(getSession().get("user").toString());
         loConfiguracion.setPasswd(getSession().get("pass").toString());
@@ -4381,7 +4386,7 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
-        menuCompleto = getSession().get("menuCompleto").toString();
+        //menuCompleto = getSession().get("menuCompleto").toString();
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -5333,5 +5338,21 @@ public class MenuAction extends BaseAction {
 
     public void setMenuCompleto(String menuCompleto) {
         this.menuCompleto = menuCompleto;
+    }
+    
+    public List<Menu> getMenus() {
+        return Menus;
+    }
+
+    public void setMenus(List<Menu> Menus) {
+        this.Menus = Menus;
+    }
+
+    public List<Menu> getSubMenus() {
+        return SubMenus;
+    }
+
+    public void setSubMenus(List<Menu> SubMenus) {
+        this.SubMenus = SubMenus;
     }
 }
