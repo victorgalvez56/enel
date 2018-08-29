@@ -6,6 +6,9 @@ public class Menu {
     private String menuUsuarios;
     private String menuReportes;
     
+    private String nombre;
+    private String codigo;
+    
     public String getMenuClientes() {
         menuClientes = "<li class=\"treeview\">\n" +
 "                    <a href=\"#\">\n" +
@@ -48,5 +51,21 @@ public class Menu {
 
     public void setMenuReportes(String menuReportes) {
         this.menuReportes = menuReportes;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 }
