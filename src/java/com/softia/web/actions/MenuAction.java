@@ -60,7 +60,6 @@ import javax.servlet.http.HttpServletRequest;
  * @author cgp
  */
 public class MenuAction extends BaseAction {
-
     private Usuario usuario;
     private String result;
     private Cliente cliente;
@@ -141,6 +140,7 @@ public class MenuAction extends BaseAction {
     
     private List<Menu> Menus;
     private List<Menu> SubMenus;
+    private List<Menu> SubSubMenus;
 /*
     private String menuClientes = "<li class=\"treeview\">\n"
             + "                    <a href=\"#\">\n"
@@ -220,6 +220,10 @@ public class MenuAction extends BaseAction {
         setUsuario(new Usuario(1, "", ""));
         getUsuario().setCorreo(getSession().get("user").toString());
         getUsuario().setPasswd(getSession().get("pass").toString());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CUsuarios loUsuario = new CUsuarios();
         loUsuario.setUsuario(getUsuario());
         loUsuario.setUser(getUsuario().getCorreo());
@@ -244,60 +248,156 @@ public class MenuAction extends BaseAction {
                 
                 Menus = new ArrayList<>();
                 SubMenus = new ArrayList<>();
+                SubSubMenus = new ArrayList<>();
                 
                 Menu menu1 = new Menu();
-                menu1.setNombre("<i class=\"fa fa-copyright\"></i> <span>Clientes</span>");
-                menu1.setCodigo("clientes");
+                menu1.setNombre("Clientes");
+                menu1.setIcono("fa-copyright");
+                menu1.setCodPadre("CLI");
                 Menu menu2 = new Menu();
-                menu2.setNombre("<i class=\"fa fa-credit-card\"></i> <span>Créditos</span>");
-                menu2.setCodigo("creditos");
+                menu2.setNombre("Créditos");
+                menu2.setIcono("fa-credit-card");
+                menu2.setCodPadre("CRE");
                 Menu menu3 = new Menu();
-                menu3.setNombre("<i class=\"fa fa-user\"></i> <span>Usuarios</span>");
-                menu3.setCodigo("usuarios");
+                menu3.setNombre("Usuarios");
+                menu3.setIcono("fa-user");
+                menu3.setCodPadre("USU");
                 Menu menu4 = new Menu();
-                menu4.setNombre("<i class=\"fa fa-user\"></i> <span>Reportes</span>");
-                menu4.setCodigo("reportes");
-                Menus.add(menu1);
-                Menus.add(menu2);
-                Menus.add(menu3);
-                Menus.add(menu4);
+                menu4.setNombre("Reportes");
+                menu4.setIcono("fa-archive");
+                menu4.setCodPadre("REP");
                 
                 Menu subMenu1 = new Menu();
-                subMenu1.setNombre("<li><a href=\"/enel/frmCLIMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Clientes</a></li>");
-                subMenu1.setCodigo("clientes");
+                subMenu1.setNombre("Mantenedor de Clientes");
+                subMenu1.setAction("frmCLIMantenedor.action");
+                subMenu1.setCodHijo("CLI");
                 Menu subMenu2 = new Menu();
-                subMenu2.setNombre("<li><a href=\"/enel/frmCLIPosicion.action\"><i class=\"fa fa-circle-o\"></i> Créditos por Cliente</a></li>");
-                subMenu2.setCodigo("clientes");
+                subMenu2.setNombre("Créditos por Cliente");
+                subMenu2.setAction("frmCLIPosicion.action");
+                subMenu2.setCodHijo("CLI");
                 Menu subMenu3 = new Menu();
-                subMenu3.setNombre("<li><a href=\"/enel/frmSOLMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Solicitudes</a></li>");
-                subMenu3.setCodigo("creditos");
+                subMenu3.setNombre("Mantenedor de Solicitudes");
+                subMenu3.setAction("frmSOLMantenedor.action");
+                subMenu3.setCodHijo("CRE");
                 Menu subMenu4 = new Menu();
-                subMenu4.setNombre("<li><a href=\"/enel/frmCREMntAprobacion.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Aprobaciones</a></li>");
-                subMenu4.setCodigo("creditos");
+                subMenu4.setNombre("Mantenedor de Aprobaciones");
+                subMenu4.setAction("frmCREMntAprobacion.action");
+                subMenu4.setCodHijo("CRE");
                 Menu subMenu5 = new Menu();
-                subMenu5.setNombre("<li><a href=\"/enel/frmCREMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Créditos</a></li>");
-                subMenu5.setCodigo("creditos");
+                subMenu5.setNombre("Mantenedor de Créditos");
+                subMenu5.setAction("frmCREMantenedor.action");
+                subMenu5.setCodHijo("CRE");
+                Menu subMenuImp = new Menu();
+                subMenuImp.setNombre("Documentos");
+                subMenuImp.setAction("frmCREDocumentos.action");
+                subMenuImp.setCodHijo("CRE");
                 Menu subMenu6 = new Menu();
-                subMenu6.setNombre("<li><a href=\"/enel/frmCREMovimientos.action\"><i class=\"fa fa-circle-o\"></i> Movimientos</a></li>");
-                subMenu6.setCodigo("creditos");
+                subMenu6.setNombre("Movimientos");
+                subMenu6.setAction("frmCREMovimientos.action");
+                subMenu6.setCodHijo("CRE");
                 Menu subMenu7 = new Menu();
-                subMenu7.setNombre("<li><a href=\"/enel/frmADMUsuarios.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Usuarios</a></li>");
-                subMenu7.setCodigo("usuarios");
+                subMenu7.setNombre("Mantenedor de Usuarios");
+                subMenu7.setAction("frmADMUsuarios.action");
+                subMenu7.setCodHijo("USU");
                 Menu subMenu8 = new Menu();
-                subMenu8.setNombre("<li><a href=\"/enel/frmREPCRECartera.action\"><i class=\"fa fa-circle-o\"></i> Cartera de Créditos</a></li>");
-                subMenu8.setCodigo("reportes");
+                subMenu8.setNombre("Cartera de Créditos");
+                subMenu8.setAction("frmREPCRECartera.action");
+                subMenu8.setCodHijo("REP");
                 Menu subMenu9 = new Menu();
-                subMenu9.setNombre("<li><a href=\"/enel/frmREPCREMora.action\"><i class=\"fa fa-circle-o\"></i> Mora</a></li>");
-                subMenu9.setCodigo("reportes");
-                SubMenus.add(subMenu1);
-                SubMenus.add(subMenu2);
-                SubMenus.add(subMenu3);
-                SubMenus.add(subMenu4);
-                SubMenus.add(subMenu5);
-                SubMenus.add(subMenu6);
-                SubMenus.add(subMenu7);
-                SubMenus.add(subMenu8);
-                SubMenus.add(subMenu9);
+                subMenu9.setNombre("Mora");
+                subMenu9.setAction("frmREPCREMora.action");
+                subMenu9.setCodHijo("REP");
+                Menu subMenu10 = new Menu();
+                subMenu10.setNombre("Solicitudes");
+                subMenu10.setAction("frmREPCRESolicitud.action");
+                subMenu10.setCodHijo("REP");
+                Menu subMenu11 = new Menu();
+                subMenu11.setNombre("Desembolsos");
+                subMenu11.setAction("frmREPCREDesembolso.action");
+                subMenu11.setCodHijo("REP");
+                Menu subMenu12 = new Menu();
+                subMenu12.setNombre("Cobranzas");
+                subMenu12.setAction("frmREPCREPago.action");
+                subMenu12.setCodHijo("REP");
+                
+                switch (loUsuario.getUsuario().getPerfil().getNombre()) {
+                    case "EVALUADOR":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenuImp);
+                        SubMenus.add(subMenu6);
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    case "SUPERVISOR":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu4);
+                        SubMenus.add(subMenu6);
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    case "BACK OFFICE":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenu6);
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    case "ADMINISTRADOR":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu4);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenuImp);
+                        SubMenus.add(subMenu6); 
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    default:
+                        break;
+                }
                 
                 getSession().put("menu", Menus);
                 getSession().put("subMenu", SubMenus);
@@ -5576,5 +5676,13 @@ public class MenuAction extends BaseAction {
 
     public void setSubMenus(List<Menu> SubMenus) {
         this.SubMenus = SubMenus;
+    }
+    
+    public List<Menu> getSubSubMenus() {
+        return SubSubMenus;
+    }
+
+    public void setSubSubMenus(List<Menu> SubSubMenus) {
+        this.SubSubMenus = SubSubMenus;
     }
 }

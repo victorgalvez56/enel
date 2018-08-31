@@ -1,12 +1,18 @@
 package com.softia.web.models;
 
 public class Menu {
+    
     private String menuClientes;
     private String menuCreditos;
     private String menuUsuarios;
     private String menuReportes;
     
     private String nombre;
+    private String codPadre;
+    private String codHijo;
+    private String icono;
+    private String action;
+    
     private String codigo;
     
     public String getMenuClientes() {
@@ -61,11 +67,35 @@ public class Menu {
         this.nombre = nombre;
     }
     
-    public String getCodigo() {
-        return codigo;
+    public String getCodPadre() {
+        return codPadre;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodPadre(String codPadre) {
+        this.codPadre = codPadre;
+    }
+
+    public String getCodHijo() {
+        return codHijo;
+    }
+
+    public void setCodHijo(String codHijo) {
+        this.codHijo = codHijo;
+    }
+    
+    public String getIcono() {
+        return icono;
+    }
+
+    public void setIcono(String icono) {
+        this.icono = icono;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 }
