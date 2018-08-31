@@ -5,7 +5,7 @@
 <%@include file="modCRERechazarSolici.jsp" %>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini" onload="resultadoEva()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -99,22 +99,15 @@
                                                     </div>
                                                     <div class="col-md-1" align="right">
                                                         <div class="form-group">
-                                                            <label class="control-label">Resultado ENEL</label>
+                                                            <label class="control-label">Resultado</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <s:textfield name="resultadoENEL" cssClass="form-control" id="tfResultadoENEL" tabindex="5" readonly="true"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1" align="right">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Resultado SENTINEL</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <s:textfield name="resultadoSENTINEL" cssClass="form-control" id="tfResultadoSENTINEL" tabindex="5" readonly="true"/>
+                                                    <div class="col-md-3">
+                                                        <div class="input-group">
+                                                            <s:textfield cssClass="form-control" id="tfResultadoEva" readonly="true" />
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modalDetalleEva" id="bDetalleEva"><b>!</b></button>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -223,10 +216,47 @@
                                         </div>
                                     </div>
                                 </div>
+                                            
+                                <!--MODAL DETALLES-->
+                                <div class="modal fade" id="modalDetalleEva" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h3 class="modal-title">Detalles de Evaluación</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="box-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-2 col-md-offset-2">
+                                                                <label class="control-label">Resultado ENEL</label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <s:textfield name="resultadoENEL" cssClass="form-control" id="tfResultadoENEL" tabindex="5" readonly="true"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 col-md-offset-2">
+                                                                <label class="control-label">Resultado SENTINEL</label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <s:textfield name="resultadoSENTINEL" cssClass="form-control" id="tfResultadoSENTINEL" tabindex="5" readonly="true"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <s:hidden name="credito.codigo"></s:hidden>
                                 <s:hidden name="credito.cliente.apePat"></s:hidden>
                                 <s:hidden name="credito.cliente.apeMat"></s:hidden>
                                 <s:hidden name="credito.cliente.nombre"></s:hidden>
+                                <s:hidden name="mensaje" id="mensaje"></s:hidden>
                             </s:form>                                                    
                         </div>
                     </div>
@@ -237,6 +267,7 @@
             $(document).ready(function () {
                 document.getElementById("tfComent").required = true;
                 boton_habilitado();
+                desabilitarBotones();
             });
             function boton_habilitado() {
                 var MonApr = Number(document.getElementById("tfMonApr").value);
@@ -253,6 +284,19 @@
             function campo_requerido() {
                 document.getElementById("tfComent").required = false;
                 $("#tfComent").val("*");
+            }
+            function desabilitarBotones() {
+                mensaje = document.getElementById("mensaje").value;
+                if (mensaje.includes("rech")) {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true; 
+                } else if (mensaje.includes("envi")) {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bRechazar").disabled = true;
+                } else if (mensaje.includes("aprob")) {
+                    document.getElementById("bRechazar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true;
+                }
             }
         </script>
     </body>
