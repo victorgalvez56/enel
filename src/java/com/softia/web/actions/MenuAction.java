@@ -1881,6 +1881,7 @@ public class MenuAction extends BaseAction {
                     setCredito(loCredito.getCredito());
                     setMensaje(loCredito.getMensaje());
                 }
+                loCredito.mxPlanPagos();
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
@@ -1897,6 +1898,7 @@ public class MenuAction extends BaseAction {
                 } else {
                     setMensaje(loCredito.getMensaje());
                 }
+                loCredito.mxPlanPagos();
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
@@ -1913,6 +1915,7 @@ public class MenuAction extends BaseAction {
                 } else {
                     setMensaje(loCredito.getMensaje());
                 }
+                loCredito.mxPlanPagos();
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
