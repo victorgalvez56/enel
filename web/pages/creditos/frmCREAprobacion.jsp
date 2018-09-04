@@ -256,7 +256,7 @@
                                 <s:hidden name="credito.cliente.apePat"></s:hidden>
                                 <s:hidden name="credito.cliente.apeMat"></s:hidden>
                                 <s:hidden name="credito.cliente.nombre"></s:hidden>
-                                <s:hidden name="mensaje" id="mensaje"></s:hidden>
+                                <s:hidden name="estado" id="estado"></s:hidden>
                             </s:form>                                                    
                         </div>
                     </div>
@@ -286,14 +286,14 @@
                 $("#tfComent").val("*");
             }
             function desabilitarBotones() {
-                mensaje = document.getElementById("mensaje").value;
-                if (mensaje.includes("rech")) {
+                estado = document.getElementById("estado").value;
+                if (estado.includes("rechazada")) {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bEnviar").disabled = true; 
-                } else if (mensaje.includes("envi")) {
+                } else if (estado.includes("enviada")) {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bRechazar").disabled = true;
-                } else if (mensaje.includes("aprob")) {
+                } else if (estado.includes("aprobada")) {
                     document.getElementById("bRechazar").disabled = true;
                     document.getElementById("bEnviar").disabled = true;
                 }
