@@ -319,6 +319,10 @@ public class MenuAction extends BaseAction {
                 subMenu12.setNombre("Cobranzas");
                 subMenu12.setAction("frmREPCREPago.action");
                 subMenu12.setCodHijo("REP");
+                Menu subMenu13 = new Menu();
+                subMenu13.setNombre("Créditos Otorgados");
+                subMenu13.setAction("frmREPCREOtorgados.action");
+                subMenu13.setCodHijo("REP");
                 
                 switch (loUsuario.getUsuario().getPerfil().getNombre()) {
                     case "EVALUADOR":
@@ -394,8 +398,28 @@ public class MenuAction extends BaseAction {
                         SubMenus.add(subMenu10);
                         SubMenus.add(subMenu11);
                         SubMenus.add(subMenu12);
+                        SubMenus.add(subMenu13);
                         break;
                     default:
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu4);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenuImp);
+                        SubMenus.add(subMenu6); 
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        SubMenus.add(subMenu13);
                         break;
                 }
                 
@@ -3210,7 +3234,60 @@ public class MenuAction extends BaseAction {
         setResult("frmREPCRECartera");
         return getResult();
     }
-
+    
+    //SUBMODULO REPORTE CREDITOS OTORGADOS
+    public String frmREPCREOtorgados() {
+        setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
+        setResult("frmREPCREOtorgados");
+        return getResult();
+    }
+    public String generarCreOtorgadoXLS() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
+        CReporteXls loRep = new CReporteXls();
+        loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        CCreditos loCreditos = new CCreditos();
+        loCreditos.setUrl(getUrl());
+        loCreditos.setUser(user);
+        loCreditos.setPasswd(pass);
+        try {
+            boolean llOk = loCreditos.mxGenerarReporteCreditosOtorgados();
+            if (!llOk) {
+                setError(loCreditos.getError());
+            } else {
+                llOk = loRep.mxGenerarCreOtorgadosXls(loCreditos.getLstCreditos());
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/vnd.ms-excel");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"CREDITOS_" + LibFunc.getFechaActual() + ".xls\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            }
+        } catch (SQLException | IOException | ParseException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmREPCREOtorgados();
+    }
     //PDF
     public String repCLICalendarioPagos() {
         setResult("repCLICalendarioPagos");

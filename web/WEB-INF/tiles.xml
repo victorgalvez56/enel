@@ -102,6 +102,10 @@
         <put-attribute name="title"  value="Repore de Solicitud - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCRESolicitud.jsp"/>
     </definition>
+    <definition name="frmREPCREOtorgados" extends="baseLayout">
+        <put-attribute name="title"  value="Repore de Creditos Otorgados - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/reportes/creditos/frmREPCREOtorgados.jsp"/>
+    </definition>
     
     <definition name="frmSISCargarUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Cargar Usuarios - FINANSOFT"/>

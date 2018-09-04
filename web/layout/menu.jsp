@@ -73,6 +73,7 @@
                     <ul class="treeview-menu">
                         <li><a href="<s:url action="frmREPCRECartera"/>"><i class="fa fa-circle-o"></i> Cartera de Créditos</a></li>
                         <li><a href="<s:url action="frmREPCREMora"/>"><i class="fa fa-circle-o"></i> Mora</a></li>
+                        <li><a href="<s:url action="frmREPCREOtorgados"/>"><i class="fa fa-circle-o"></i> Créditos Otorgados</a></li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-circle-o"></i> <span>Operaciones</span>
