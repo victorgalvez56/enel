@@ -267,6 +267,7 @@
             $(document).ready(function () {
                 document.getElementById("tfComent").required = true;
                 boton_habilitado();
+                desabilitarBotones();
             });
             function boton_habilitado() {
                 var MonApr = Number(document.getElementById("tfMonApr").value);
@@ -287,13 +288,13 @@
             }
             function desabilitarBotones() {
                 estado = document.getElementById("estado").value;
-                if (estado.includes("rechazada")) {
+                if (estado === "rechazada") {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bEnviar").disabled = true; 
-                } else if (estado.includes("enviada")) {
+                } else if (estado === "enviada") {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bRechazar").disabled = true;
-                } else if (estado.includes("aprobada")) {
+                } else if (estado === "aprobada") {
                     document.getElementById("bRechazar").disabled = true;
                     document.getElementById("bEnviar").disabled = true;
                 }
