@@ -17,7 +17,7 @@
                 <section class="content">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <s:form action="frmCREAprobacion" role="form">                            
+                            <s:form action="frmCREAprobacion" id="formulario" role="form">                            
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <s:if test="mensaje.length() != 0">
@@ -209,14 +209,14 @@
                                         <div style="float: right">
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>-->
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
-                                            <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat"/>
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" disabled="true"/>
-                                            <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat"/>
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
                                         </div>
                                     </div>
                                 </div>
-                                            
+
                                 <!--MODAL DETALLES-->
                                 <div class="modal fade" id="modalDetalleEva" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                                     <div class="modal-dialog" role="document">
@@ -267,14 +267,13 @@
             $(document).ready(function () {
                 document.getElementById("tfComent").required = true;
                 boton_habilitado();
-                desabilitarBotones();
             });
             function boton_habilitado() {
                 var MonApr = Number(document.getElementById("tfMonApr").value);
                 var MonCuo = Number(document.getElementById("tfMonCuo").value);
                 if (document.getElementById("tfResultadoENEL").value !== "APROBADO" || document.getElementById("tfResultadoSENTINEL").value !== "APROBADO") {
                     document.getElementById("bAprobar").disabled = true;
-                }else{
+                } else {
                     document.getElementById("bAprobar").disabled = false;
                 }
             }
@@ -284,6 +283,7 @@
             function campo_requerido() {
                 document.getElementById("tfComent").required = false;
                 $("#tfComent").val("*");
+                //deshabilitarBotones();
             }
             function desabilitarBotones() {
                 estado = document.getElementById("estado").value;

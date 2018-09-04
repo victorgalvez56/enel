@@ -13,6 +13,8 @@ public class Menu {
     private String icono;
     private String action;
     
+    private String codigo;
+    
     public String getMenuClientes() {
         menuClientes = "<li class=\"treeview\">\n" +
 "                    <a href=\"#\">\n" +
