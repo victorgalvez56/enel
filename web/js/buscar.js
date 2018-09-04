@@ -57,3 +57,18 @@ function habilitarCLINuevoActualizar() {
         document.getElementById("tfIngresos").removeAttribute("readonly");
     }
 }
+
+function resultadoEva() {
+    var rptaEnel = document.getElementById("tfResultadoENEL").value;
+    var rptaSentinel = document.getElementById("tfResultadoSENTINEL").value;
+    if (rptaEnel === "" || rptaSentinel === "") {
+        document.getElementById("tfResultadoEva").setAttribute("value", "");
+        document.getElementById("bDetalleEva").disabled = true;
+    } else {
+        if (rptaEnel !== "APROBADO" || rptaSentinel !== "APROBADO") {
+            document.getElementById("tfResultadoEva").setAttribute("value", "DESAPROBADO"); 
+        } else {
+            document.getElementById("tfResultadoEva").setAttribute("value", "APROBADO"); 
+        }
+    }
+}

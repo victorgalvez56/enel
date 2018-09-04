@@ -34,6 +34,7 @@ import com.softia.models.Provincia;
 import com.softia.models.Tabla;
 import com.softia.models.TipoCliente;
 import com.softia.models.Usuario;
+import com.softia.web.models.Menu;
 import com.softia.utils.LibFunc;
 import com.softia.web.beans.CReporte;
 import com.softia.web.beans.CReportePDF;
@@ -59,7 +60,6 @@ import javax.servlet.http.HttpServletRequest;
  * @author cgp
  */
 public class MenuAction extends BaseAction {
-    
     private Usuario usuario;
     private String result;
     private Cliente cliente;
@@ -75,9 +75,9 @@ public class MenuAction extends BaseAction {
     private String paramBusquedaCre;
     private String paramBusquedaCli;
     private String comentario;
-    
+
     private List<TipoCliente> lstTiposCliente;
-    
+
     private List<Tabla> lstTipoCobranza;
     private List<Tabla> lstTipoOrden;
     private List<Oficina> lstOficinas;
@@ -114,7 +114,7 @@ public class MenuAction extends BaseAction {
     private List<String> lstOficina;
     private java.sql.Date FecmoraIni;
     private java.sql.Date FecmoraFin;
-    
+
     private String codCta;
     private String fecIni;
     private String fecFin;
@@ -130,12 +130,87 @@ public class MenuAction extends BaseAction {
     private String resultadoENEL;
     private String resultadoSENTINEL;
     private String fecha;
+
+    private Menu menu;
+    private String menuCompleto = "";
+    private String menuClientes = "";
+    private String menuCreditos = "";
+    private String menuUsuarios = "";
+    private String menuReportes = "";
     
+    private List<Menu> Menus;
+    private List<Menu> SubMenus;
+    private List<Menu> SubSubMenus;
+/*
+    private String menuClientes = "<li class=\"treeview\">\n"
+            + "                    <a href=\"#\">\n"
+            + "                        <i class=\"fa fa-copyright\"></i> <span>Clientes</span>\n"
+            + "                        <span class=\"pull-right-container\">\n"
+            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
+            + "                        </span>\n"
+            + "                    </a>\n"
+            + "                    <ul class=\"treeview-menu\">\n"
+            + "                        <li><a href=\"/enel/frmCLIMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Clientes</a></li>\n"
+            + "                        <li><a href=\"/enel/frmCLIPosicion.action\"><i class=\"fa fa-circle-o\"></i> Créditos por Cliente</a></li>\n"
+            + "                    </ul>\n"
+            + "                </li>";
+    private String menuCreditos = "<li class=\"treeview\">\n"
+            + "                    <a href=\"#\">\n"
+            + "                        <i class=\"fa fa-credit-card\"></i> <span>Créditos</span>\n"
+            + "                        <span class=\"pull-right-container\">\n"
+            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
+            + "                        </span>\n"
+            + "                    </a>\n"
+            + "                    <ul class=\"treeview-menu\">\n"
+            + "                        <li><a href=\"/enel/frmSOLMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Solicitudes</a></li>\n"
+            + "                        <li><a href=\"/enel/frmCREMntAprobacion.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Aprobaciones</a></li>\n"
+            + "                        <li><a href=\"/enel/frmCREMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Créditos</a></li>\n"
+            + "                        <li><a href=\"/enel/frmCREDocumentos.action\"><i class=\"fa fa-circle-o\"></i> Impresión de Documentos</a></li>\n"
+            + "                        <li><a href=\"/enel/frmCREMovimientos.action\"><i class=\"fa fa-circle-o\"></i> Movimientos</a></li>\n"
+            + "                    </ul>\n"
+            + "                </li>";
+    private String menuUsuarios = "<li class=\"treeview\">\n"
+            + "                    <a href=\"#\">\n"
+            + "                        <i class=\"fa fa-user\"></i> <span>Usuarios</span>\n"
+            + "                        <span class=\"pull-right-container\">\n"
+            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
+            + "                        </span>\n"
+            + "                    </a>\n"
+            + "                    <ul class=\"treeview-menu\">\n"
+            + "                        <li><a href=\"/enel/frmADMUsuarios.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Usuarios</a></li>\n"
+            + "                    </ul>\n"
+            + "                </li>";
+    private String menuReportes = "<li class=\"treeview\">\n"
+            + "                    <a href=\"#\">\n"
+            + "                        <i class=\"fa fa-archive\"></i> <span>Reportes</span>\n"
+            + "                        <span class=\"pull-right-container\">\n"
+            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
+            + "                        </span>\n"
+            + "                    </a>\n"
+            + "                    <ul class=\"treeview-menu\">\n"
+            + "                        <li><a href=\"/enel/frmREPCRECartera.action\"><i class=\"fa fa-circle-o\"></i> Cartera de Créditos</a></li>\n"
+            + "                        <li><a href=\"/enel/frmREPCREMora.action\"><i class=\"fa fa-circle-o\"></i> Mora</a></li>\n"
+            + "                        <li class=\"treeview\">\n"
+            + "                            <a href=\"#\">\n"
+            + "                                <i class=\"fa fa-circle-o\"></i> <span>Operaciones</span>\n"
+            + "                                <span class=\"pull-right-container\">\n"
+            + "                                    <i class=\"fa fa-angle-down\"></i>\n"
+            + "                                </span>\n"
+            + "                            </a>\n"
+            + "                            <ul class=\"treeview-menu\">\n"
+            + "                                <li><a href=\"/enel/frmREPCRESolicitud.action\"><i class=\"fa fa-circle-o\"></i> Solicitudes</a></li>\n"
+            + "                                <li><a href=\"/enel/frmREPCREDesembolso.action\"><i class=\"fa fa-circle-o\"></i> Desembolsos</a></li>\n"
+            + "                                <li><a href=\"/enel/frmREPCREPago.action\"><i class=\"fa fa-circle-o\"></i> Cobranzas</a></li>\n"
+            + "                            </ul>\n"
+            + "                        </li>\n"
+            + "                    </ul>\n"
+            + "                </li>";
+*/
     public String login() {
         setResult("login");
         return getResult();
     }
-    
+
     public String pantallaPrincipal() {
         if (!validaSession()) {
             return "login";
@@ -145,6 +220,10 @@ public class MenuAction extends BaseAction {
         setUsuario(new Usuario(1, "", ""));
         getUsuario().setCorreo(getSession().get("user").toString());
         getUsuario().setPasswd(getSession().get("pass").toString());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CUsuarios loUsuario = new CUsuarios();
         loUsuario.setUsuario(getUsuario());
         loUsuario.setUser(getUsuario().getCorreo());
@@ -156,7 +235,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String autenticar() {
         CUsuarios loUsuario = new CUsuarios();
         loUsuario.setUsuario(getUsuario());
@@ -166,6 +245,163 @@ public class MenuAction extends BaseAction {
                 setSession(ActionContext.getContext().getSession());
                 getSession().put("user", loUsuario.getUsuario().getCorreo());
                 getSession().put("pass", loUsuario.getUsuario().getPasswd());
+                
+                Menus = new ArrayList<>();
+                SubMenus = new ArrayList<>();
+                SubSubMenus = new ArrayList<>();
+                
+                Menu menu1 = new Menu();
+                menu1.setNombre("Clientes");
+                menu1.setIcono("fa-copyright");
+                menu1.setCodPadre("CLI");
+                Menu menu2 = new Menu();
+                menu2.setNombre("Créditos");
+                menu2.setIcono("fa-credit-card");
+                menu2.setCodPadre("CRE");
+                Menu menu3 = new Menu();
+                menu3.setNombre("Usuarios");
+                menu3.setIcono("fa-user");
+                menu3.setCodPadre("USU");
+                Menu menu4 = new Menu();
+                menu4.setNombre("Reportes");
+                menu4.setIcono("fa-archive");
+                menu4.setCodPadre("REP");
+                
+                Menu subMenu1 = new Menu();
+                subMenu1.setNombre("Mantenedor de Clientes");
+                subMenu1.setAction("frmCLIMantenedor.action");
+                subMenu1.setCodHijo("CLI");
+                Menu subMenu2 = new Menu();
+                subMenu2.setNombre("Créditos por Cliente");
+                subMenu2.setAction("frmCLIPosicion.action");
+                subMenu2.setCodHijo("CLI");
+                Menu subMenu3 = new Menu();
+                subMenu3.setNombre("Mantenedor de Solicitudes");
+                subMenu3.setAction("frmSOLMantenedor.action");
+                subMenu3.setCodHijo("CRE");
+                Menu subMenu4 = new Menu();
+                subMenu4.setNombre("Mantenedor de Aprobaciones");
+                subMenu4.setAction("frmCREMntAprobacion.action");
+                subMenu4.setCodHijo("CRE");
+                Menu subMenu5 = new Menu();
+                subMenu5.setNombre("Mantenedor de Créditos");
+                subMenu5.setAction("frmCREMantenedor.action");
+                subMenu5.setCodHijo("CRE");
+                Menu subMenuImp = new Menu();
+                subMenuImp.setNombre("Documentos");
+                subMenuImp.setAction("frmCREDocumentos.action");
+                subMenuImp.setCodHijo("CRE");
+                Menu subMenu6 = new Menu();
+                subMenu6.setNombre("Movimientos");
+                subMenu6.setAction("frmCREMovimientos.action");
+                subMenu6.setCodHijo("CRE");
+                Menu subMenu7 = new Menu();
+                subMenu7.setNombre("Mantenedor de Usuarios");
+                subMenu7.setAction("frmADMUsuarios.action");
+                subMenu7.setCodHijo("USU");
+                Menu subMenu8 = new Menu();
+                subMenu8.setNombre("Cartera de Créditos");
+                subMenu8.setAction("frmREPCRECartera.action");
+                subMenu8.setCodHijo("REP");
+                Menu subMenu9 = new Menu();
+                subMenu9.setNombre("Mora");
+                subMenu9.setAction("frmREPCREMora.action");
+                subMenu9.setCodHijo("REP");
+                Menu subMenu10 = new Menu();
+                subMenu10.setNombre("Solicitudes");
+                subMenu10.setAction("frmREPCRESolicitud.action");
+                subMenu10.setCodHijo("REP");
+                Menu subMenu11 = new Menu();
+                subMenu11.setNombre("Desembolsos");
+                subMenu11.setAction("frmREPCREDesembolso.action");
+                subMenu11.setCodHijo("REP");
+                Menu subMenu12 = new Menu();
+                subMenu12.setNombre("Cobranzas");
+                subMenu12.setAction("frmREPCREPago.action");
+                subMenu12.setCodHijo("REP");
+                
+                switch (loUsuario.getUsuario().getPerfil().getNombre()) {
+                    case "EVALUADOR":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenuImp);
+                        SubMenus.add(subMenu6);
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    case "SUPERVISOR":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu4);
+                        SubMenus.add(subMenu6);
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    case "BACK OFFICE":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenu6);
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    case "ADMINISTRADOR":
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu4);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenuImp);
+                        SubMenus.add(subMenu6); 
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
+                        break;
+                    default:
+                        break;
+                }
+                
+                getSession().put("menu", Menus);
+                getSession().put("subMenu", SubMenus);
+                
                 setMensaje(loUsuario.getMensaje());
                 setResult("bienvenido");
             } else {
@@ -179,7 +415,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCLIMantenedor() {
         if (!validaSession()) {
             return "login";
@@ -187,6 +423,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -357,7 +597,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmSOLMantenedor() {
         if (!validaSession()) {
             return "login";
@@ -365,6 +605,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -460,7 +704,12 @@ public class MenuAction extends BaseAction {
                     if (!llOk) {
                         setError(loCredito.getError());
                     } else {
-                        setCredito(loCredito.getCredito());
+                        llOk = loCredito.mxPlanPagos();
+                        if (!llOk) {
+                            setError(loCredito.getError());
+                        } else {
+                            setCredito(loCredito.getCredito());
+                        }
                     }
                 } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
@@ -558,7 +807,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCLINuevoActualizar() {
         if (!validaSession()) {
             return "login";
@@ -566,6 +815,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -689,12 +942,12 @@ public class MenuAction extends BaseAction {
                 } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
                 }
-            } 
+            }
             setResult("frmCLINuevoActualizar");
         }
         return getResult();
     }
-    
+
     public String frmCLIPosicion() {
         if (!validaSession()) {
             return "login";
@@ -702,7 +955,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -790,14 +1046,14 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("ver") != null) {
-                cuenta.getCuenta();
-                Credito credito = new Credito();
-                credito.setCodCta(cuenta.getCuenta());
+                String verCod = request.getParameter("ver"); 
+                Credito cred = new Credito();
+                cred.setCodCta(verCod);
                 CCreditos loCredito = new CCreditos();
                 loCredito.setUrl(getUrl());
                 loCredito.setUser(user);
                 loCredito.setPasswd(pass);
-                loCredito.setCredito(credito);
+                loCredito.setCredito(cred);
                 try {
                     boolean llOk = loCredito.mxAplicar();
                     if (!llOk) {
@@ -846,7 +1102,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCREMantenedor() {
         if (!validaSession()) {
             return "login";
@@ -854,6 +1110,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -869,7 +1129,7 @@ public class MenuAction extends BaseAction {
                 loCanal.setPasswd(pass);
                 setLstCanales(loCanal.getLstCanales());
                 if (getLstCanales() == null) {
-                    setError(loCanal.getError());                    
+                    setError(loCanal.getError());
                 }
             }
         } catch (SQLException loErr) {
@@ -1046,7 +1306,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCREDocumentos() {
         if (!validaSession()) {
             return "login";
@@ -1054,7 +1314,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1220,7 +1483,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCRESolicitud() {
         if (!validaSession()) {
             return "login";
@@ -1228,6 +1491,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -1366,6 +1633,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -1470,6 +1741,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1605,7 +1880,9 @@ public class MenuAction extends BaseAction {
                 } else {
                     setCredito(loCredito.getCredito());
                     setMensaje(loCredito.getMensaje());
+                    setEstado("aprobada");
                 }
+                loCredito.mxPlanPagos();
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
@@ -1621,8 +1898,10 @@ public class MenuAction extends BaseAction {
                     setError(loCredito.getError());
                 } else {
                     setMensaje(loCredito.getMensaje());
+                    setEstado("rechazada");
                 }
-            } catch (SQLException loErr) {
+                loCredito.mxPlanPagos();
+            } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
         } else if (request.getParameter("enviar") != null) {
@@ -1637,8 +1916,10 @@ public class MenuAction extends BaseAction {
                     setError(loCredito.getError());
                 } else {
                     setMensaje(loCredito.getMensaje());
+                    setEstado("enviada");
                 }
-            } catch (SQLException loErr) {
+                loCredito.mxPlanPagos();
+            } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
         }
@@ -1653,6 +1934,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -1814,10 +2099,14 @@ public class MenuAction extends BaseAction {
     public String frmADMUsuarios() {
         if (!validaSession()) {
             return "login";
-        }   
+        }
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -1826,28 +2115,33 @@ public class MenuAction extends BaseAction {
             setLstTipDocCiv(loTabla.getLstTabla(4));
             if (getLstTipDocCiv() == null) {
                 setError(loTabla.getError());
-            }else{
-                COficinas loOficina = new COficinas();
-                loOficina.setUrl(getUrl());
-                loOficina.setUser(getSession().get("user").toString());
-                loOficina.setPasswd(getSession().get("pass").toString());
-                setLstOficinas(loOficina.getLstOficinas());
-                if (getLstOficinas() == null) {
-                    setResult("error");
-                    setError(loOficina.getError());
-                } else{
-                    CPerfiles loPerfil = new CPerfiles();
-                    loPerfil.setUrl(getUrl());
-                    loPerfil.setUser(getSession().get("user").toString());
-                    loPerfil.setPasswd(getSession().get("pass").toString());
-                    setLstPerfiles(loPerfil.getLstPerfiles());
-                    if (getLstPerfiles() == null) {
+            } else {
+                setLstEstados(loTabla.getLstTabla(1));
+                if (getLstEstados() == null) {
+                    setError(loTabla.getError());
+                } else {
+                    COficinas loOficina = new COficinas();
+                    loOficina.setUrl(getUrl());
+                    loOficina.setUser(getSession().get("user").toString());
+                    loOficina.setPasswd(getSession().get("pass").toString());
+                    setLstOficinas(loOficina.getLstOficinas());
+                    if (getLstOficinas() == null) {
                         setResult("error");
-                        setError(loPerfil.getError());
+                        setError(loOficina.getError());
+                    } else {
+                        CPerfiles loPerfil = new CPerfiles();
+                        loPerfil.setUrl(getUrl());
+                        loPerfil.setUser(getSession().get("user").toString());
+                        loPerfil.setPasswd(getSession().get("pass").toString());
+                        setLstPerfiles(loPerfil.getLstPerfiles());
+                        if (getLstPerfiles() == null) {
+                            setResult("error");
+                            setError(loPerfil.getError());
+                        }
                     }
                 }
             }
-        }catch (SQLException loErr) {
+        } catch (SQLException loErr) {
             setError(loErr.getMessage());
         }
         if (!LibFunc.fxEmpty(getError())) {
@@ -1871,10 +2165,10 @@ public class MenuAction extends BaseAction {
                         setLstUsuarios(loUsuario.getLstUsuarios());
                     }
                 } catch (SQLException | ParseException loErr) {
-                        setError(loErr.getMessage());
+                    setError(loErr.getMessage());
                 }
-            }
-            else if (request.getParameter("nuevo") != null) {
+            } else if (request.getParameter("nuevo") != null) {
+                getUsuario().setCodUsu("");
                 return frmADMNuevoUsuario();
             } else if (request.getParameter("editar") != null) {
                 CUsuarios loUsuario = new CUsuarios();
@@ -1934,7 +2228,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     /*
     if (!validaSession()) {
             return "login";
@@ -2132,8 +2426,7 @@ public class MenuAction extends BaseAction {
             }
             setResult("frmCREMantenedor");
         }
-    */
-
+     */
     //MANTENEDOR DE USUARIOS NUEVO
     public String frmADMNuevoUsuario() {
         if (!validaSession()) {
@@ -2142,6 +2435,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -2151,24 +2448,29 @@ public class MenuAction extends BaseAction {
             setLstTipDocCiv(loTabla.getLstTabla(4));
             if (getLstTipDocCiv() == null) {
                 setError(loTabla.getError());
-            }else{
-                COficinas loOficina = new COficinas();
-                loOficina.setUrl(getUrl());
-                loOficina.setUser(getSession().get("user").toString());
-                loOficina.setPasswd(getSession().get("pass").toString());
-                setLstOficinas(loOficina.getLstOficinas());
-                if (getLstOficinas() == null) {
-                    setResult("error");
-                    setError(loOficina.getError());
-                } else{
-                    CPerfiles loPerfil = new CPerfiles();
-                    loPerfil.setUrl(getUrl());
-                    loPerfil.setUser(getSession().get("user").toString());
-                    loPerfil.setPasswd(getSession().get("pass").toString());
-                    setLstPerfiles(loPerfil.getLstPerfiles());
-                    if (getLstPerfiles() == null) {
+            } else {
+                setLstEstados(loTabla.getLstTabla(1));
+                if (getLstEstados() == null) {
+                    setError(loTabla.getError());
+                } else {
+                    COficinas loOficina = new COficinas();
+                    loOficina.setUrl(getUrl());
+                    loOficina.setUser(getSession().get("user").toString());
+                    loOficina.setPasswd(getSession().get("pass").toString());
+                    setLstOficinas(loOficina.getLstOficinas());
+                    if (getLstOficinas() == null) {
                         setResult("error");
-                        setError(loPerfil.getError());
+                        setError(loOficina.getError());
+                    } else {
+                        CPerfiles loPerfil = new CPerfiles();
+                        loPerfil.setUrl(getUrl());
+                        loPerfil.setUser(getSession().get("user").toString());
+                        loPerfil.setPasswd(getSession().get("pass").toString());
+                        setLstPerfiles(loPerfil.getLstPerfiles());
+                        if (getLstPerfiles() == null) {
+                            setResult("error");
+                            setError(loPerfil.getError());
+                        }
                     }
                 }
             }
@@ -2193,12 +2495,13 @@ public class MenuAction extends BaseAction {
                     setError(loUsuario.getError());
                 } else {
                     setUsuario(loUsuario.getUsuario());
+                    setMensaje(loUsuario.getMensaje());
                 }
             } catch (SQLException | ParseException loErr) {
-                        setError(loErr.getMessage());
+                setError(loErr.getMessage());
             }
             setResult("frmADMNuevoUsuario");
-        } 
+        }
         return getResult();
     }
 
@@ -2210,6 +2513,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2439,7 +2746,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCREMovimientos() {
         if (!validaSession()) {
             return "login";
@@ -2447,6 +2754,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2617,6 +2928,54 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
+    public String verCredito() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
+        CProductos loPro = new CProductos();
+        loPro.setUrl(getUrl());
+        loPro.setUser(user);
+        loPro.setPasswd(pass);
+        try {
+            setLstProductos(loPro.getLstProductos());
+            if (getLstProductos() == null) {
+                setError(loPro.getError());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            setResult("frmCREMovimientos");
+        }
+        CCreditos loCredito = new CCreditos();
+        loCredito.setUrl(getUrl());
+        loCredito.setUser(user);
+        loCredito.setPasswd(pass);
+        setCredito(new Credito());
+        getCredito().setCodCta(getCodCta());
+        loCredito.setCredito(getCredito());
+        try {
+            boolean llOk = loCredito.mxAplicar();
+            if (!llOk) {
+                setError(loCredito.getError());
+            } else {
+                setCredito(loCredito.getCredito());
+            }
+        } catch (SQLException | ParseException loErr) {
+            setError(loErr.getMessage());
+        }
+        return getResult();
+    }
+
     //SUBMODULO CREDITO CAJA DESEMBOLSO
     public String frmCAJDesembolso() {
         if (!validaSession()) {
@@ -2625,6 +2984,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2736,6 +3099,10 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -2824,12 +3191,22 @@ public class MenuAction extends BaseAction {
 
     //SUBMODULO REPORTE MORA
     public String frmREPCREMora() {
+        setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setResult("frmREPCREMora");
         return getResult();
     }
 
     //SUBMODULO REPORTE CARTERA DE CREDITOS
     public String frmREPCRECartera() {
+        setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setResult("frmREPCRECartera");
         return getResult();
     }
@@ -2839,7 +3216,7 @@ public class MenuAction extends BaseAction {
         setResult("repCLICalendarioPagos");
         return getResult();
     }
-    
+
     public String generarCarteraXLS() {
         if (!validaSession()) {
             return "login";
@@ -2871,15 +3248,24 @@ public class MenuAction extends BaseAction {
 
     //SUBMODULO REPORTE DESEMBOLSOS
     public String frmREPCREDesembolso() {
+        setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setResult("frmREPCREDesembolso");
         return getResult();
     }
-    
+
     public String generarOPEDesembolsoXLS() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -2906,15 +3292,24 @@ public class MenuAction extends BaseAction {
 
     //SUBMODULO REPORTE PAGOS-COBRANZAS
     public String frmREPCREPago() {
+        setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setResult("frmREPCREPago");
         return getResult();
     }
-    
+
     public String generarOPEPagoXLS() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -2941,15 +3336,24 @@ public class MenuAction extends BaseAction {
 
     //SUBMODULO REPORTE SOLICITUDES
     public String frmREPCRESolicitud() {
+        setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setResult("frmREPCRESolicitud");
         return getResult();
     }
-    
+
     public String generarSolicitudXLS() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -2973,12 +3377,16 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCRECartera();
     }
-    
+
     public String generarMoraXLS() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3002,12 +3410,16 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCREMora();
     }
-    
+
     public String imprimirPDF() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CReporte loRep = new CReporte();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3032,7 +3444,7 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCREMora();
     }
-    
+
     public String generarXLS() {
         /*if (!validaSession()) {
             return "login";
@@ -3059,10 +3471,10 @@ public class MenuAction extends BaseAction {
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
         }*/
-        
+
         return frmREPCRECartera();
     }
-    
+
     public String frmSisMntOficinas() {
         if (!validaSession()) {
             return "login";
@@ -3073,6 +3485,10 @@ public class MenuAction extends BaseAction {
             CTabla loTabla = new CTabla();
             loTabla.setUser(getSession().get("user").toString());
             loTabla.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -3124,7 +3540,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCreMntCondiciones() {
         if (!validaSession()) {
             return "login";
@@ -3135,6 +3551,10 @@ public class MenuAction extends BaseAction {
             CTabla loTabla = new CTabla();
             loTabla.setUser(getSession().get("user").toString());
             loTabla.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -3186,7 +3606,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCreMntProductos() {
         if (!validaSession()) {
             return "login";
@@ -3197,6 +3617,10 @@ public class MenuAction extends BaseAction {
             CTabla loTabla = new CTabla();
             loTabla.setUser(getSession().get("user").toString());
             loTabla.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -3248,37 +3672,37 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmSisCargarUsuarios() {
         setResult("frmSISCargarUsuarios");
         return getResult();
     }
-    
+
     public String frmCliCargarClientes() {
         setResult("frmCLICargarClientes");
         return getResult();
     }
-    
+
     public String frmCreCargarCreditos() {
         setResult("frmCRECargarCreditos");
         return getResult();
     }
-    
+
     public String frmCobAsignar() {
         setResult("frmCOBAsignar");
         return getResult();
     }
-    
+
     public String frmCobVerCredito() {
         setResult("frmCOBVerCredito");
         return getResult();
     }
-    
+
     public String frmRepCobCompromisosPago() {
         setResult("frmREPCOBCompromisosPago");
         return getResult();
     }
-    
+
     public String frmRepCobSeguimientoCobranza() {
         if (!validaSession()) {
             return "login";
@@ -3289,6 +3713,10 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             boolean llOk = loCobranza.mxSeguimiento();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -3302,7 +3730,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmEstCobEstados() {
         if (!validaSession()) {
             return "login";
@@ -3313,6 +3741,10 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosEstado());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3320,7 +3752,7 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-    
+
     public String frmEstCobResultados() {
         if (!validaSession()) {
             return "login";
@@ -3331,6 +3763,10 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosHistoricos());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3338,7 +3774,7 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-    
+
     public String frmEstCobOficinas() {
         if (!validaSession()) {
             return "login";
@@ -3349,6 +3785,10 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosOficinas());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3356,7 +3796,7 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-    
+
     public String frmEstCobPagos() {
         if (!validaSession()) {
             return "login";
@@ -3367,6 +3807,10 @@ public class MenuAction extends BaseAction {
         //try {
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosRecuperacion());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -3374,12 +3818,12 @@ public class MenuAction extends BaseAction {
         }*/
         return getResult();
     }
-    
+
     public String frmRepCobRecuperacion() {
         setResult("frmREPCOBRecuperacion");
         return getResult();
     }
-    
+
     public String frmCobProgramarVisitas() {
         try {
             if (!validaSession()) {
@@ -3397,6 +3841,10 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             loCobranza.setTipoOrden(getTipoOrden());
             boolean llOk = loCobranza.mxAsignados();
             if (!llOk) {
@@ -3460,7 +3908,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCobRegistrarLlamadas() {
         if (!validaSession()) {
             return "login";
@@ -3471,6 +3919,10 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             loCobranza.setTipoOrden(getTipoOrden());
             boolean llOk = loCobranza.mxLlamadas();
             if (!llOk) {
@@ -3542,7 +3994,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCobRegistrarVisitas() {
         if (!validaSession()) {
             return "login";
@@ -3553,6 +4005,10 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             boolean llOk = loCobranza.mxProgramados();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -3564,7 +4020,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCobImprimeCartas() {
         if (!validaSession()) {
             return "login";
@@ -3575,6 +4031,10 @@ public class MenuAction extends BaseAction {
         try {
             loCobranza.setUser(getSession().get("user").toString());
             loCobranza.setPasswd(getSession().get("pass").toString());
+            Menus = new ArrayList<>();
+            SubMenus = new ArrayList<>();
+            Menus = (List<Menu>) getSession().get("menu");
+            SubMenus = (List<Menu>) getSession().get("subMenu");
             boolean llOk = loCobranza.mxProgramados();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -3587,12 +4047,16 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCobParametrizar() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setResult("frmCOBParametrizar");
         CUsuarios loUsuario = new CUsuarios();
         try {
@@ -3657,13 +4121,17 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmRegistrarVisitaCobranza() {
         if (!validaSession()) {
             return "login";
         }
         setResult("frmCOBRegistrarVisitas");
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3692,13 +4160,17 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCobRegistrarCompromiso() {
         if (!validaSession()) {
             return "login";
         }
         setResult("frmCOBRegistrarCompromiso");
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3727,12 +4199,16 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String programarVisitaCobranza() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3765,12 +4241,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCobProgramarVisitas();
     }
-    
+
     public String registraVisita() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3874,6 +4354,10 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3895,12 +4379,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCobRegistrarLlamadas();
     }
-    
+
     public String imprimirCartaCobranza() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3928,12 +4416,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCobImprimeCartas();
     }
-    
+
     public String imprimirCartasCobranza() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3960,12 +4452,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCobImprimeCartas();
     }
-    
+
     public String reporteVisitas() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -3995,12 +4491,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCobProgramarVisitas();
     }
-    
+
     public String reporteCompromisosPago() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4038,12 +4538,16 @@ public class MenuAction extends BaseAction {
         }
         return frmRepCobCompromisosPago();
     }
-    
+
     public String reporteRecuperacion() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4081,12 +4585,16 @@ public class MenuAction extends BaseAction {
         }
         return frmRepCobRecuperacion();
     }
-    
+
     public String cargarUsuarios() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         if (LibFunc.fxEmpty(getArchivoUsuariosFileName())) {
             setError("Debe seleccionar archivo de usuarios");
         }
@@ -4109,12 +4617,16 @@ public class MenuAction extends BaseAction {
         }
         return frmSisCargarUsuarios();
     }
-    
+
     public String cargarClientes() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         if (LibFunc.fxEmpty(getArchivoClientesFileName())) {
             setError("Debe seleccionar archivo de clientes");
         }
@@ -4137,12 +4649,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCliCargarClientes();
     }
-    
+
     public String cargarCreditos() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         if (LibFunc.fxEmpty(getArchivoCreditosFileName())) {
             setError("Debe seleccionar archivo de créditos");
         }
@@ -4165,12 +4681,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCreCargarCreditos();
     }
-    
+
     public String parametrizaCobranza() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CConfigCobranza loConfiguracion = new CConfigCobranza();
         loConfiguracion.setUser(getSession().get("user").toString());
         loConfiguracion.setPasswd(getSession().get("pass").toString());
@@ -4185,12 +4705,16 @@ public class MenuAction extends BaseAction {
         }
         return frmCobParametrizar();
     }
-    
+
     public String asignaCobranza() {
         if (!validaSession()) {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4206,7 +4730,7 @@ public class MenuAction extends BaseAction {
         }
         return frmCobAsignar();
     }
-    
+
     public String desplegarDireccion() {
         if (!validaSession()) {
             return "login";
@@ -4214,7 +4738,7 @@ public class MenuAction extends BaseAction {
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
         String pass = getSession().get("pass").toString();
-        
+
         Cliente sumi = new Cliente();
         sumi.setSumini(getSuministro());
         sumi.setDireccion(new Direccion());
@@ -4233,7 +4757,7 @@ public class MenuAction extends BaseAction {
             } else {
                 String direccion;
                 direccion = loClientes.getCliente().getDireccion().getDireccion();
-                
+
                 //getCliente().getDireccion().setDireccion(loClientes.getCliente().getDireccion().getDireccion());
                 /*setDireccion(loClientes.getCliente().getDireccion().getDireccion());
                 setDistrito(loClientes.getCliente().getDireccion().getDistrito().getNombre());
@@ -4959,10 +5483,11 @@ public class MenuAction extends BaseAction {
     public void setLstCreditos(List<Credito> lstCreditos) {
         this.lstCreditos = lstCreditos;
     }
-    
+
     public List<Usuario> getLstUsuarios() {
         return lstUsuarios;
     }
+
     public void setLstUsuarios(List<Usuario> lstUsuarios) {
         this.lstUsuarios = lstUsuarios;
     }
@@ -5133,5 +5658,37 @@ public class MenuAction extends BaseAction {
      */
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public String getMenuCompleto() {
+        return menuCompleto;
+    }
+
+    public void setMenuCompleto(String menuCompleto) {
+        this.menuCompleto = menuCompleto;
+    }
+    
+    public List<Menu> getMenus() {
+        return Menus;
+    }
+
+    public void setMenus(List<Menu> Menus) {
+        this.Menus = Menus;
+    }
+
+    public List<Menu> getSubMenus() {
+        return SubMenus;
+    }
+
+    public void setSubMenus(List<Menu> SubMenus) {
+        this.SubMenus = SubMenus;
+    }
+    
+    public List<Menu> getSubSubMenus() {
+        return SubSubMenus;
+    }
+
+    public void setSubSubMenus(List<Menu> SubSubMenus) {
+        this.SubSubMenus = SubSubMenus;
     }
 }

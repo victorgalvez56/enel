@@ -5,7 +5,7 @@
 <%@include file="modCRERechazarSolici.jsp" %>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini" onload="resultadoEva()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -17,7 +17,7 @@
                 <section class="content">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <s:form action="frmCREAprobacion" role="form">                            
+                            <s:form action="frmCREAprobacion" id="formulario" role="form">                            
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <s:if test="mensaje.length() != 0">
@@ -99,22 +99,15 @@
                                                     </div>
                                                     <div class="col-md-1" align="right">
                                                         <div class="form-group">
-                                                            <label class="control-label">Resultado ENEL</label>
+                                                            <label class="control-label">Resultado</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <s:textfield name="resultadoENEL" cssClass="form-control" id="tfResultadoENEL" tabindex="5" readonly="true"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1" align="right">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Resultado SENTINEL</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <s:textfield name="resultadoSENTINEL" cssClass="form-control" id="tfResultadoSENTINEL" tabindex="5" readonly="true"/>
+                                                    <div class="col-md-3">
+                                                        <div class="input-group">
+                                                            <s:textfield cssClass="form-control" id="tfResultadoEva" readonly="true" />
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modalDetalleEva" id="bDetalleEva"><b>!</b></button>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -216,10 +209,46 @@
                                         <div style="float: right">
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>-->
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
-                                            <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="enviar" value="Enviar para Aprobación" id = "bEnviar" cssClass="btn btn-primary btn-flat"/>
+                                            <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" disabled="true"/>
+                                            <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat"/>
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--MODAL DETALLES-->
+                                <div class="modal fade" id="modalDetalleEva" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h3 class="modal-title">Detalles de Evaluación</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="box-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-2 col-md-offset-2">
+                                                                <label class="control-label">Resultado ENEL</label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <s:textfield name="resultadoENEL" cssClass="form-control" id="tfResultadoENEL" tabindex="5" readonly="true"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 col-md-offset-2">
+                                                                <label class="control-label">Resultado SENTINEL</label>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <s:textfield name="resultadoSENTINEL" cssClass="form-control" id="tfResultadoSENTINEL" tabindex="5" readonly="true"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -227,6 +256,7 @@
                                 <s:hidden name="credito.cliente.apePat"></s:hidden>
                                 <s:hidden name="credito.cliente.apeMat"></s:hidden>
                                 <s:hidden name="credito.cliente.nombre"></s:hidden>
+                                <s:hidden name="estado" id="estado"></s:hidden>
                             </s:form>                                                    
                         </div>
                     </div>
@@ -237,38 +267,37 @@
             $(document).ready(function () {
                 document.getElementById("tfComent").required = true;
                 boton_habilitado();
+                deshabilitarBotones();
             });
-            function boton_habilitado(){
-                var monto = Number(document.getElementById("tfMonSol").value);
+            function boton_habilitado() {
                 var MonApr = Number(document.getElementById("tfMonApr").value);
                 var MonCuo = Number(document.getElementById("tfMonCuo").value);
-                if (monto <= 2000){
-                    if(MonCuo <= MonApr){
-                        document.getElementById("bEnviar").disabled = true;
-                        document.getElementById("bAprobar").disabled = false; 
-                    } else{
-                       document.getElementById("bAprobar").disabled = true;
-                       document.getElementById("bEnviar").disabled = false;
-                    }
-                }else{
-                    document.getElementById("bEnviar").disabled = true;
+                if (document.getElementById("tfResultadoENEL").value !== "APROBADO" || document.getElementById("tfResultadoSENTINEL").value !== "APROBADO") {
+                    document.getElementById("bAprobar").disabled = true;
+                } else {
                     document.getElementById("bAprobar").disabled = false;
                 }
             }
-    
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAprobacion");
             }
-            
-            function fecha_actual(){
-                var f = new Date();
-                $("#tfFechaEvaluacion").val(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-                $("#tfResultadoENEL").val("APROBADO");
-                $("#tfResultadoSENTINEL").val("APROBADO");
-            }
-            function campo_requerido(){
+            function campo_requerido() {
                 document.getElementById("tfComent").required = false;
                 $("#tfComent").val("*");
+                //deshabilitarBotones();
+            }
+            function deshabilitarBotones() {
+                estado = document.getElementById("estado").value;
+                if (estado === "rechazada") {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true; 
+                } else if (estado === "enviada") {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bRechazar").disabled = true;
+                } else if (estado === "aprobada") {
+                    document.getElementById("bRechazar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true;
+                }
             }
         </script>
     </body>

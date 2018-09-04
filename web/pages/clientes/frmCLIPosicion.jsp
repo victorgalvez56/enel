@@ -189,6 +189,8 @@
                                                     <th>Monto vencido</th>
                                                     <th>Cuotas</th>
                                                     <th>Estado</th>
+                                                    <th>Canal</th>
+                                                    <th>Venta</th>
                                                     <th>Ver</th>
                                                 </tr>
                                             </thead>
@@ -206,9 +208,15 @@
                                                         <td><s:property value="capVen" /></td>
                                                         <td><s:property value="cuotas" /></td>
                                                         <td><s:property value="estado" /></td>
-                                                        <s:hidden  value="%{cuenta}" name="credito.codCta" />
-                                                        <td><s:submit name="ver" value="Ver" cssClass="btn btn-success btn-flat btn-sm" /></td>
-                                                    </tr>
+                                                        <td><s:property value="canal" /></td>
+                                                        <td><s:property value="venta" /></td>
+                                                        <td>
+                                                            <s:url id="verURL" action="verCredito">
+                                                                <s:param name="codCta" value="%{cuenta}"></s:param>
+                                                            </s:url>
+                                                            <s:a href="%{verURL}">Ver</s:a>
+                                                            </td>
+                                                        </tr>
                                                 </s:iterator>
                                             </tbody>
                                         </table>                
@@ -222,7 +230,7 @@
                                             <s:hidden name="cliente.apePat"></s:hidden>
                                             <s:hidden name="cliente.apeMat"></s:hidden>
                                             <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
-                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" onclick="frmNombre()">Buscar</button>
+                                                <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" onclick="frmNombre()">Buscar</button>
                                             <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />

@@ -156,22 +156,24 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="10" name="usuario.estado" id="tfEstado"/>
+                                                            <s:select name="usuario.estado" id="sEstado" tabindex="10" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label>Clave</label>
+                                                <s:if test="usuario.codUsu.length() == 0">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label>Clave</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <s:password cssClass="form-control" tabindex="11" name="usuario.passwd" id="tfContraseña"/>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="11" name="usuario.passwd" id="tfContraseña"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </s:if>
                                             </div>
                                         </div>
                                     </div>
