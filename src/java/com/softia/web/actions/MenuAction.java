@@ -1899,7 +1899,7 @@ public class MenuAction extends BaseAction {
                     setMensaje(loCredito.getMensaje());
                 }
                 loCredito.mxPlanPagos();
-            } catch (SQLException loErr) {
+            } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
         } else if (request.getParameter("enviar") != null) {
@@ -1916,7 +1916,7 @@ public class MenuAction extends BaseAction {
                     setMensaje(loCredito.getMensaje());
                 }
                 loCredito.mxPlanPagos();
-            } catch (SQLException loErr) {
+            } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
         }
