@@ -267,7 +267,7 @@
             $(document).ready(function () {
                 document.getElementById("tfComent").required = true;
                 boton_habilitado();
-                desabilitarBotones();
+                deshabilitarBotones();
             });
             function boton_habilitado() {
                 var MonApr = Number(document.getElementById("tfMonApr").value);
@@ -286,7 +286,7 @@
                 $("#tfComent").val("*");
                 //deshabilitarBotones();
             }
-            function desabilitarBotones() {
+            function deshabilitarBotones() {
                 estado = document.getElementById("estado").value;
                 if (estado === "rechazada") {
                     document.getElementById("bAprobar").disabled = true;
