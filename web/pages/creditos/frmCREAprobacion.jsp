@@ -256,7 +256,7 @@
                                 <s:hidden name="credito.cliente.apePat"></s:hidden>
                                 <s:hidden name="credito.cliente.apeMat"></s:hidden>
                                 <s:hidden name="credito.cliente.nombre"></s:hidden>
-                                <s:hidden name="mensaje" id="mensaje"></s:hidden>
+                                <s:hidden name="estado" id="estado"></s:hidden>
                             </s:form>                                                    
                         </div>
                     </div>
@@ -285,10 +285,18 @@
                 $("#tfComent").val("*");
                 //deshabilitarBotones();
             }
-            function deshabilitarBotones() {
-                document.getElementById("bAprobar").disabled = true;
-                document.getElementById("bEnviar").disabled = true;
-                document.getElementById("bRechazar").disabled = true;
+            function desabilitarBotones() {
+                estado = document.getElementById("estado").value;
+                if (estado.includes("rechazada")) {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true; 
+                } else if (estado.includes("enviada")) {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bRechazar").disabled = true;
+                } else if (estado.includes("aprobada")) {
+                    document.getElementById("bRechazar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true;
+                }
             }
         </script>
     </body>

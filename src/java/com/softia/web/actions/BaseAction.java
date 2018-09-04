@@ -22,6 +22,7 @@ public class BaseAction extends ActionSupport{
     protected Map session;
     private String url = "jdbc:postgresql://45.56.126.57:5432/ENEL";    
     private String ip="0.0.0.0";
+    private String estado;
     
     protected boolean validaSession() {
         Map loMap = ActionContext.getContext().getSession();
@@ -139,5 +140,12 @@ public class BaseAction extends ActionSupport{
     public void setIp(String ip) {
         this.ip = ip;
     }
+    
+    public String getEstado() {
+        return estado;
+    }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

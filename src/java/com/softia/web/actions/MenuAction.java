@@ -396,6 +396,24 @@ public class MenuAction extends BaseAction {
                         SubMenus.add(subMenu12);
                         break;
                     default:
+                        Menus.add(menu1);
+                        Menus.add(menu2);
+                        Menus.add(menu3);
+                        Menus.add(menu4);
+                        
+                        SubMenus.add(subMenu1);
+                        SubMenus.add(subMenu2);
+                        SubMenus.add(subMenu3);
+                        SubMenus.add(subMenu4);
+                        SubMenus.add(subMenu5);
+                        SubMenus.add(subMenuImp);
+                        SubMenus.add(subMenu6); 
+                        SubMenus.add(subMenu7);
+                        SubMenus.add(subMenu8);
+                        SubMenus.add(subMenu9);
+                        SubMenus.add(subMenu10);
+                        SubMenus.add(subMenu11);
+                        SubMenus.add(subMenu12);
                         break;
                 }
                 
@@ -1880,6 +1898,7 @@ public class MenuAction extends BaseAction {
                 } else {
                     setCredito(loCredito.getCredito());
                     setMensaje(loCredito.getMensaje());
+                    setEstado("aprobada");
                 }
                 loCredito.mxPlanPagos();
             } catch (SQLException | ParseException loErr) {
@@ -1897,6 +1916,7 @@ public class MenuAction extends BaseAction {
                     setError(loCredito.getError());
                 } else {
                     setMensaje(loCredito.getMensaje());
+                    setEstado("rechazada");
                 }
                 loCredito.mxPlanPagos();
             } catch (SQLException | ParseException loErr) {
@@ -1914,6 +1934,7 @@ public class MenuAction extends BaseAction {
                     setError(loCredito.getError());
                 } else {
                     setMensaje(loCredito.getMensaje());
+                    setEstado("enviada");
                 }
                 loCredito.mxPlanPagos();
             } catch (SQLException | ParseException loErr) {
