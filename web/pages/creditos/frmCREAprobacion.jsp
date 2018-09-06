@@ -277,6 +277,12 @@
                 } else {
                     document.getElementById("bAprobar").disabled = false;
                 }
+                
+                if (document.getElementById("tfResultadoEva").value === "") {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bRechazar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true;
+                }
             }
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAprobacion");
