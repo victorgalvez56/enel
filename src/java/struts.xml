@@ -38,6 +38,7 @@
             <result name="frmREPCREDesembolso" type="tiles">frmREPCREDesembolso</result>
             <result name="frmREPCREPago" type="tiles">frmREPCREPago</result>
             <result name="frmREPCRESolicitud" type="tiles">frmREPCRESolicitud</result>
+            <result name="frmREPCREOtorgados" type="tiles">frmREPCREOtorgados</result>
 
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
             <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
