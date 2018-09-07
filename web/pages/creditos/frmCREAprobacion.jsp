@@ -50,7 +50,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nro.Solicitud</label>
+                                                            <label class="control-label">Nro.Solicitud:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -62,7 +62,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Código Cliente</label>
+                                                            <label class="control-label">Código Cliente:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -72,7 +72,7 @@
                                                     </div>
                                                     <div class="col-md-1" align="right">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nombre</label>
+                                                            <label class="control-label">Nombre:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-7">
@@ -84,7 +84,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Analista</label>
+                                                            <label class="control-label">Analista:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-11">
@@ -99,7 +99,7 @@
                                                     </div>
                                                     <div class="col-md-1" align="right">
                                                         <div class="form-group">
-                                                            <label class="control-label">Resultado</label>
+                                                            <label class="control-label">Resultado:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -112,7 +112,7 @@
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group" align="right">
-                                                            <label class="control-label">Fecha Evaluación</label>
+                                                            <label class="control-label">Fecha Evaluación:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -135,7 +135,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label class="control-label">Monto Solicitado</label>
+                                                            <label class="control-label">Monto Solicitado:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -145,7 +145,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nro. de Cuotas Solicitada</label>
+                                                            <label class="control-label">Nro. de Cuotas Solicitada:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -157,7 +157,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Monto Cuota Solicitada</label>
+                                                            <label>Monto Cuota Solicitada:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -167,7 +167,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Monto Cuota Aprobada</label>
+                                                            <label>Monto Cuota Aprobada:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -179,7 +179,7 @@
                                                 <div class="col-md-12">        
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Producto</label>
+                                                            <label>Producto:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -191,7 +191,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Comentarios</label>
+                                                            <label>Comentarios:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-10">
@@ -213,6 +213,7 @@
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" disabled="true"/>
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat"/>
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
+                                            <a href="<s:url action="frmCREMantenedor"/>" class="btn btn-primary btn-flat">Siguiente</a>
                                         </div>
                                     </div>
                                 </div>

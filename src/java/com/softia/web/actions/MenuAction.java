@@ -1608,6 +1608,7 @@ public class MenuAction extends BaseAction {
                 } else {
                     setMensaje(loCredito.getMensaje());
                     setCredito(loCredito.getCredito());
+                    setEstado("grabada");
                 }
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
@@ -1646,6 +1647,28 @@ public class MenuAction extends BaseAction {
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
             }
+        } else if (request.getParameter("aprobarSol") != null) {
+            CCreditos loCredito = new CCreditos();
+            loCredito.setUrl(getUrl());
+            loCredito.setUser(user);
+            loCredito.setPasswd(pass);
+            loCredito.setCredito(getCredito());
+            try {
+                boolean llOk = loCredito.mxAplicar();
+                if (!llOk) {
+                    setError(loCredito.getError());
+                } else {
+                    llOk = loCredito.mxPlanPagos();
+                    if (!llOk) {
+                        setError(loCredito.getError());
+                    } else {
+                        setCredito(loCredito.getCredito());
+                    }
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+            return frmCREAprobacion();
         }
         return getResult();
     }
@@ -1734,6 +1757,7 @@ public class MenuAction extends BaseAction {
                     setError(loCredito.getError());
                 } else {
                     setMensaje(loCredito.getMensaje());
+                    setEstado("desistida");
                 }
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
@@ -1750,6 +1774,7 @@ public class MenuAction extends BaseAction {
                     setError(loCredito.getError());
                 } else {
                     setMensaje(loCredito.getMensaje());
+                    setEstado("rechazada");
                 }
             } catch (SQLException loErr) {
                 setError(loErr.getMessage());
@@ -2031,6 +2056,7 @@ public class MenuAction extends BaseAction {
                     } else {
                         setMensaje(loCredito.getMensaje());
                         setCredito(loCredito.getCredito());
+                        setEstado("aprobada");
                     }
                 } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
@@ -2049,6 +2075,7 @@ public class MenuAction extends BaseAction {
                     } else {
                         setMensaje(loCredito.getMensaje());
                         setCredito(loCredito.getCredito());
+                        setEstado("rechazada");
                     }
                 } catch (SQLException loErr) {
                     setError(loErr.getMessage());

@@ -100,19 +100,19 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Nro Cuotas:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCuotas" tabindex="3" name="credito.cuotas" onblur="calcula_montoCuota()"/>
+                                                            <s:textfield cssClass="form-control" id="tfCuotas" tabindex="3" name="credito.cuotas" onblur="calcula_montoCuota()" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Monto Cuota:</label>
-                                                            <s:textfield cssClass="form-control" id="tfMontoCuota" name="credito.cuota" onclick="calcula_montoCuota()" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfMontoCuota" name="credito.cuota" onclick="calcula_montoCuota()" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Dia Pago:</label>
-                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfDia" tabindex="4" name="credito.diaPag" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,8 +129,10 @@
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="credito.cliente.codigo"></s:hidden>
                                             <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
+                                            <s:hidden name="estado" id ="estado"></s:hidden>
                                                 <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" hidden="true">Nuevo</button>-->
                                             <s:submit name="grabar" value="Grabar" cssClass="btn btn-primary btn-flat" display="none"/>
+                                            <s:submit name="aprobarSol" value="Siguiente" id="bSiguiente" cssClass="btn btn-primary btn-flat"/>
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
                                             <s:submit name="nombre" value="Nombre" id="bNombre" cssClass="btn btn-primary btn-flat" style="display: none;"/>
                                         </div>
@@ -145,6 +147,7 @@
                                 $("#modalBuscarCli").modal("show");
                             }
                             frmNombre();
+                            botonDeshabilitado();
                         });
 
                         function calcula_montoCuota() {
@@ -161,6 +164,14 @@
 
                         function frmNombre() {
                             document.getElementById("fBuscar").setAttribute("action", "frmCRESolicitud");
+                        }
+                        
+                        function botonDeshabilitado() {
+                            if (document.getElementById("estado").value === "grabada") {
+                                document.getElementById("bSiguiente").disabled = false;
+                            } else {
+                                document.getElementById("bSiguiente").disabled = true;
+                            }
                         }
                     </script>
                 </section>

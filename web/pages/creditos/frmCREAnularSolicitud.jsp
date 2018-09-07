@@ -121,9 +121,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
+                                            <s:hidden name="estado" id="estado" />
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
-                                            <s:submit name="rechazar" value="Rechazar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="desistir" value="Desistir" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="rechazar" value="Rechazar" id="bRechazar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="desistir" value="Desistir" id="bDesistir" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>
@@ -134,6 +135,15 @@
             </div>
         </div>
         <script>
+            $(document).ready(function () {
+                estado = document.getElementById("estado").value;
+                if (estado === "rechazada") {
+                    document.getElementById("bDesistir").disabled = true;
+                } else if (estado === "desistida"){ 
+                    document.getElementById("bRechazar").disabled = true;
+                }
+            });
+            
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAnularSolicitud");
             }
