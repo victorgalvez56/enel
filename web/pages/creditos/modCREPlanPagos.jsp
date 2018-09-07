@@ -43,7 +43,7 @@
                                     </thead>
                                     <tbody>
                                         <s:iterator value="credito.planPagos" status="rowStatus">
-                                            <tr>
+                                            <tr style="text-transform: uppercase;">
                                                 <th><s:property value="numero" /></th>
                                                 <td><s:property value="fecha" /></td>                                            
                                                 <td><s:property value="tipo" /></td>

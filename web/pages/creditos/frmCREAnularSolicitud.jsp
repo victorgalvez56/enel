@@ -17,7 +17,6 @@
                     <div class="box box-primary">
                         <div class="box-body">
                             <s:form action="frmCREAnularSolicitud" role="form">
-
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <s:if test="mensaje.length() != 0">
@@ -62,7 +61,7 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Nro.Doc:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" readonly="true" maxLength="15"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">

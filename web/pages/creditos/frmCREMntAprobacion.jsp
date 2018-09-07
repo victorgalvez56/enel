@@ -6,6 +6,32 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <s:if test="mensaje.length() != 0">
+                                <div class="alert alert-success">
+                                    <div><span class="glyphicon glyphicon-ok"></span><strong> Mensaje:</strong> <s:property value="mensaje"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="informacion.length() != 0">
+                                <div class="alert alert-info">
+                                    <div><span class="glyphicon glyphicon-info-sign"></span><strong> Información</strong> <s:property value="informacion"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="advertencia.length() != 0">
+                                <div class="alert alert-warning">
+                                    <div><span class="glyphicon glyphicon-exclamation-sign"></span><strong> ¡Advertencia!</strong> <s:property value="advertencia"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="error.length() != 0">
+                                <div class="alert alert-danger">
+                                    <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
+                                </div>
+                            </s:if>
+                        </div>
+                    </div>
+                </div>
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>Mantenedor de Aprobaciones de Desembolso Pendientes</h1>
@@ -14,32 +40,7 @@
                 <section class="content">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <s:form action="frmCREMntAprobacion" role="form">                            
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <s:if test="mensaje.length() != 0">
-                                            <div class="alert alert-success">
-                                                <div><span class="glyphicon glyphicon-ok"></span><strong> Mensaje:</strong> <s:property value="mensaje"/> </div>
-                                            </div>
-                                        </s:if>
-                                        <s:if test="informacion.length() != 0">
-                                            <div class="alert alert-info">
-                                                <div><span class="glyphicon glyphicon-info-sign"></span><strong> Información</strong> <s:property value="informacion"/> </div>
-                                            </div>
-                                        </s:if>
-                                        <s:if test="advertencia.length() != 0">
-                                            <div class="alert alert-warning">
-                                                <div><span class="glyphicon glyphicon-exclamation-sign"></span><strong> ¡Advertencia!</strong> <s:property value="advertencia"/> </div>
-                                            </div>
-                                        </s:if>
-                                        <s:if test="error.length() != 0">
-                                            <div class="alert alert-danger">
-                                                <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
-                                            </div>
-                                        </s:if>
-                                    </div>
-                                </div>
-
+                            <s:form action="frmCREMntAprobacion" role="form">
                                 <div class="row">                                
                                     <div class="col-md-12">
                                         <div class="box box-primary box-solid">
@@ -62,7 +63,7 @@
                                                             <label class="control-label">Tipo Doc.</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <s:select name="credito.cliente.tipDocCiv" tabindex="2" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
@@ -76,7 +77,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" />
+                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" maxLength="15" />
                                                         </div>
                                                     </div>
                                                 </div>

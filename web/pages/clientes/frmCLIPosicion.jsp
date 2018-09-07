@@ -54,7 +54,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="2" name="cliente.sumini" readonly="true" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="2" name="cliente.sumini" readonly="true" style="text-transform: uppercase;" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,7 +76,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="5" readonly="true" />
+                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="5" readonly="true" maxlength="15" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,7 +196,7 @@
                                             </thead>
                                             <tbody>
                                                 <s:iterator value="cliente.lstCuentas" status="rowStatus">
-                                                    <tr>
+                                                    <tr style="text-transform: uppercase;">
                                                         <th><s:property value="%{#rowStatus.count}" /></th>
                                                         <td><s:property value="cuenta" /></td>
                                                         <td><s:property value="producto" /></td>
@@ -230,7 +230,7 @@
                                             <s:hidden name="cliente.apePat"></s:hidden>
                                             <s:hidden name="cliente.apeMat"></s:hidden>
                                             <s:hidden name="cliente.codCli" id="tfCodCli" ></s:hidden>
-                                                <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" onclick="frmNombre()">Buscar</button>
+                                            <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCli" id="bBuscarCli" onclick="frmNombre()">Buscar</button>
                                             <s:submit name="reporte" value="Reporte" id="bReporte" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" style='display:none;' />

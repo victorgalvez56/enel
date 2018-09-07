@@ -35,7 +35,7 @@
                                 <div class="col-md-9">
                                     <!--select credito.condic-->
                                     <label>Comentario:</label>
-                                    <s:textfield cssClass="form-control" id="tfCondic" name="credito.condic" />
+                                    <s:textfield cssClass="form-control" id="tfCondic" name="credito.condic" style="text-transform: uppercase;" />
                                 </div>
                             </div>
                             <div class="row">

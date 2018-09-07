@@ -55,7 +55,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <s:textfield name="FecmoraIni" cssClass="form-control" type="text" required="true" />
+                                                        <s:textfield name="FecmoraIni" cssClass="form-control" type="text" required="true" style="text-transform: uppercase;" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">

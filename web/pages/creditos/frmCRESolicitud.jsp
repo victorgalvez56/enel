@@ -50,7 +50,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Solicitud:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" name="credito.codCta" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" name="credito.codCta" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -63,7 +63,7 @@
                                                         <div class="form-group">
                                                             <label>Nombre</label>
                                                             <label>Nro.Doc:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNroDoc" name="cliente.nroDocCiv" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNroDoc" name="cliente.nroDocCiv" readonly="true" style="text-transform: uppercase;" maxLength="15"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
@@ -88,7 +88,7 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Monto Solicitado:</label>
-                                                            <s:textfield cssClass="form-control" id="tfMonto" tabindex="1" name="credito.capSol" />
+                                                            <s:textfield cssClass="form-control" id="tfMonto" tabindex="1" name="credito.capSol" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">

@@ -55,7 +55,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -67,7 +67,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1" align="right">
@@ -89,7 +89,7 @@
                                                     </div>
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNomAna" tabindex="4" name="credito.nomAna" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNomAna" tabindex="4" name="credito.nomAna" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -104,7 +104,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="input-group">
-                                                            <s:textfield cssClass="form-control" id="tfResultadoEva" readonly="true" />
+                                                            <s:textfield cssClass="form-control" id="tfResultadoEva" readonly="true" style="text-transform: uppercase;" />
                                                             <span class="input-group-btn">
                                                                 <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modalDetalleEva" id="bDetalleEva"><b>!</b></button>
                                                             </span>
@@ -184,7 +184,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield name="credito.producto.nombre" tabindex="11"  cssClass="form-control" readonly="true" />
+                                                            <s:textfield name="credito.producto.nombre" tabindex="11"  cssClass="form-control" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>                                                        
                                                 </div>

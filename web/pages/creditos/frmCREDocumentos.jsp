@@ -54,7 +54,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="2" name="credito.codCta" readonly="true" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="2" name="credito.codCta" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -64,7 +64,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="3" name="credito.cliente.codCli" readonly="true" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="3" name="credito.cliente.codCli" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -110,7 +110,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv"  readonly="true" tabindex="7"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv"  readonly="true" tabindex="7" maxLength="15" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>                                            

@@ -82,7 +82,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="cliente.sumini" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="cliente.sumini" style="text-transform: uppercase;" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -126,7 +126,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="10" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="10" style="text-transform: uppercase;" maxlength="15" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -185,7 +185,7 @@
                                             </thead>
                                             <tbody>
                                                 <s:iterator value="lstClientes" status="rowStatus">
-                                                    <tr>
+                                                    <tr style="text-transform: uppercase;">
                                                         <th><s:property value="%{#rowStatus.count}" /></th>
                                                         <td><s:property value="codCli" /></td>
                                                         <td><s:property value="sumini" /></td>
