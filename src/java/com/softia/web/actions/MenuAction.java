@@ -360,6 +360,7 @@ public class MenuAction extends BaseAction {
                         SubMenus.add(subMenu10);
                         SubMenus.add(subMenu11);
                         SubMenus.add(subMenu12);
+                        SubMenus.add(subMenu13);                        
                         break;
                     case "BACK OFFICE":
                         Menus.add(menu1);
