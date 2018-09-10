@@ -55,7 +55,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <center>
-                                            <s:submit value="Asignar" name="asignar" cssClass="btn btn-default btn-flat" />
+                                            <s:submit value="Asignar" name="asignar" cssClass="btn btn-success btn-flat" />
                                         </center>
                                     </div>
                                 </div>

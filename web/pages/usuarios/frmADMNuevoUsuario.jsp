@@ -2,7 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -135,7 +135,7 @@
                                                             <s:select name="usuario.oficina.codigo" id="sOficina" tabindex="7" list="lstOficinas" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
-                                                    <!--<div class="col-md-1">
+<!--                                                    <div class="col-md-1">
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-flat form-control" data-toggle="modal" data-target="#modalMntAgencias" id="bMntAgencias">Ver</button>
                                                         </div>
@@ -190,7 +190,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h2 class="modal-title">Agencias</h2>
+                                                <h2 class="modal-title">Mantenimiento de Agencias</h2>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="box-body">
@@ -199,6 +199,7 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>#</th>
+                                                                    <th>Código</th>
                                                                     <th>Descripción</th>
                                                                     <th>Modificar</th>
                                                                     <th>Quitar</th>
@@ -207,33 +208,34 @@
                                                             <tbody>
                                                                 <s:iterator value="lstOficinas" status="rowStatus">
                                                                     <tr>
-                                                                        <th><s:property value="%{#rowStatus.count}" /></th>                                 
+                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
                                                                         <td><s:property value="nombre" /></td>
-                                                                        <td><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarParamCli('<s:property value="codCli"/>')">Modificar</button></td>
-                                                                        <td><button class="btn btn-danger btn-flat btn-sm" type="button" onclick="pasarParamCli('<s:property value="codCli"/>')">Quitar</button></td>
+                                                                        <td><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarParamCan('<s:property value="codigo"/>', '<s:property value="nombre"/>')">Modificar</button></td>
+                                                                        <td><button class="btn btn-danger btn-flat btn-sm" type="button" onclick="pasarParamCan('<s:property value=""/>')">Quitar</button></td>
                                                                     </tr>
                                                                 </s:iterator>
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <s:form role="form" id="fBuscar">
-                                                            <div class="row">
-                                                                <div class="col-md-8 col-md-offset-2">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <s:textfield name="paramBusquedaCli" id="tfParamBusquedaCli" cssClass="form-control" style="text-transform: uppercase;"/>
-                                                                        </div>
-                                                                    </div>
+                                                        <s:form  role="form">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label>AGENCIA</label><br>
+                                                                    <label>Código:</label>
+                                                                    <s:textfield name="canal.codigo" id="tfCodCanal" cssClass="form-control" style="text-transform: uppercase;" readonly="true"/>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <center>
-                                                                        <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default btn-flat" />
-                                                                        <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default btn-flat" />
-                                                                    </center>
-
+                                                             <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label>Descripción:</label>
+                                                                    <s:textfield name="canal.nombre" id="tfNomCanal" cssClass="form-control" style="text-transform: uppercase;"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div style="float: right">
+                                                                    <button class="btn btn-primary" onclick="limpiar()">Cancelar</button>
+                                                                    <s:submit value="Grabar" name="grabarAgencia" cssClass="btn btn-primary btn-flat" />
                                                                 </div>
                                                             </div>
                                                         </s:form>
@@ -258,5 +260,21 @@
                 </section>
             </div>
         </div>
+        <script>
+            /*$(document).ready(function () {
+                document.getElementById("tfComent").required = true;
+                boton_habilitado();
+                deshabilitarBotones();
+            });*/
+            function pasarParamCan(codigo, nombre) {
+                document.getElementById("tfCodCanal").value = codigo;
+                document.getElementById("tfNomCanal").value = nombre;
+            }
+            
+            function limpiar() {
+                document.getElementById("tfCodCanal").value = "";
+                document.getElementById("tfNomCanal").value = "";
+            }
+        </script>
     </body>
 </html>

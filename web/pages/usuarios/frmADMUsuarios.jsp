@@ -200,7 +200,7 @@
                     </div>
                     <script>
                         function creSeleccionado(codUsu) {
-                            document.getElementById("tfCodusu").value = codUsu;
+                            document.getElementById("tfCodUsu").value = codUsu;
                         }
                     </script>   
                 </section>
