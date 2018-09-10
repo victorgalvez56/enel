@@ -122,7 +122,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Suministro:</label>
                                                             <div class="input-group">
-                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" />
+                                                                <s:textfield cssClass="form-control" id="tfSuministro" tabindex="2" name="cliente.sumini" required="true" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                                                 <span class="input-group-btn">
                                                                     <s:submit name="consultaSumi" id="bConsultaSumi" value="?" cssClass="btn btn-primary btn-flat" onclick="requeridos();"/>
                                                                 </span>

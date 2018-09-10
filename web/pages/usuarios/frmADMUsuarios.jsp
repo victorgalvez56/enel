@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" name="usuario.codUsu" id="tfCodUsu"/>
+                                                            <s:textfield cssClass="form-control" tabindex="1" name="usuario.codUsu" id="tfCodUsu" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -84,7 +84,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.correo" id="tfCorreo"/>
+                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.correo" id="tfCorreo" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -126,7 +126,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="8" name="usuario.nuDoCi" id="tfNuDoCi"/>
+                                                            <s:textfield cssClass="form-control" tabindex="8" name="usuario.nuDoCi" id="tfNuDoCi" style="text-transform: uppercase;" maxLength="15"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -161,22 +161,22 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <s:iterator value="lstUsuarios" status="rowStatus">
-                                                        <tr>
-                                                            <th><s:property value="%{#rowStatus.count}" /></th>
-                                                            <td><s:property value="codUsu" /></td>
-                                                            <td><s:property value="correo" /></td>
-                                                            <td><s:property value="apePat" /></td>
-                                                            <td><s:property value="apeMat" /></td>
-                                                            <td><s:property value="nombre" /></td>
-                                                            <td><s:property value="oficina.nombre" /></td>
-                                                            <td><s:property value="perfil.nombre" /></td>
-                                                            <td><s:property value="estado" /></td>
-                                                            <td><s:property value="tiDoCi" /></td>
-                                                            <td><s:property value="nuDoCi" /></td>
-                                                            <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codUsu"/>')"></center></td>
-                                                        </tr>
-                                                        </s:iterator>
+                                                            <s:iterator value="lstUsuarios" status="rowStatus">
+                                                                <tr style="text-transform: uppercase;">
+                                                                    <th><s:property value="%{#rowStatus.count}" /></th>
+                                                                    <td><s:property value="codUsu" /></td>
+                                                                    <td><s:property value="correo" /></td>
+                                                                    <td><s:property value="apePat" /></td>
+                                                                    <td><s:property value="apeMat" /></td>
+                                                                    <td><s:property value="nombre" /></td>
+                                                                    <td><s:property value="oficina.nombre" /></td>
+                                                                    <td><s:property value="perfil.nombre" /></td>
+                                                                    <td><s:property value="estado" /></td>
+                                                                    <td><s:property value="tiDoCi" /></td>
+                                                                    <td><s:property value="nuDoCi" /></td>
+                                                                    <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codUsu"/>')"></center></td>
+                                                                </tr>
+                                                            </s:iterator>
                                                         </tbody>
                                                     </table>        
                                                 </div>

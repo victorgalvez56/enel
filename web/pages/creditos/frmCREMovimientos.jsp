@@ -50,13 +50,13 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Crédito:</label>
-                                                            <s:textfield cssClass="form-control" name="credito.codCta" id="tfCodCre" />
+                                                            <s:textfield cssClass="form-control" name="credito.codCta" id="tfCodCre" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Código de Cliente:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -76,7 +76,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Tipo de Crédito:</label>
-                                                            <s:textfield cssClass="form-control" name="credito.producto.nombre" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="credito.producto.nombre" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -88,7 +88,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Tasa:</label>
-                                                            <s:textfield cssClass="form-control" name="credito.tasa" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="credito.tasa" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,7 +102,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Modalidad:</label>
-                                                            <s:textfield cssClass="form-control" name="credito.modalidad" readonly="true" />
+                                                            <s:textfield cssClass="form-control" name="credito.modalidad" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -122,7 +122,7 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Supervisor</label>
-                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" name="credito.nomSup" readonly="true" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" style="text-transform: uppercase;" name="credito.nomSup" readonly="true" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">

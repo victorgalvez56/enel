@@ -35,19 +35,19 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Crédito</label>
-                                                <s:textfield name="credito.codCta" id="tfCodCre" cssClass="form-control" required="true" readonly="true"/>
+                                                <s:textfield name="credito.codCta" id="tfCodCre" cssClass="form-control" required="true" readonly="true" style="text-transform: uppercase;"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Canal</label>
-                                                <s:select name="codigoCanal" tabindex="2" list="lstCanales" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                <s:select name="codigoCanal" tabindex="2" list="lstCanales" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" style="text-transform: uppercase;"/>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Venta</label>
-                                                <s:textfield name="codigoVenta" id="tfCodigoVenta" cssClass="form-control" required="true"/>
+                                                <s:textfield name="codigoVenta" id="tfCodigoVenta" cssClass="form-control" required="true" style="text-transform: uppercase;"/>
                                             </div>
                                         </div>
                                     </div>

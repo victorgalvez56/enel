@@ -48,13 +48,13 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Solicitud</label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Código de Cliente:</label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -77,15 +77,14 @@
                                                         </thead>
                                                         <tbody>
                                                             <s:iterator value="lstLog" status="rowStatus">
-                                                                <tr>
+                                                                <tr style="text-transform: uppercase;">
                                                                     <th><s:property value="%{#rowStatus.count}" /></th>
                                                                     <td><s:property value="operacion" /></td>
                                                                     <td><s:property value="fecha" /></td>
                                                                     <td><s:property value="hora" /></td>
                                                                     <td><s:property value="usuario" /></td>
-                                                            </tr>
-                                                        </s:iterator>
-
+                                                                </tr>
+                                                            </s:iterator>
                                                         </tbody>
                                                     </table>
                                                 </div>

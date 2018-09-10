@@ -60,7 +60,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCta" tabindex="1" name="credito.codCta" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCta" tabindex="1" name="credito.codCta" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -70,7 +70,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="credito.cliente.sumini"/>
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="credito.cliente.sumini" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -80,7 +80,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="credito.cliente.codCli"/>
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="credito.cliente.codCli" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,7 +102,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv" tabindex="10"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv" tabindex="10" maxlength="15" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,7 +152,7 @@
                                             </thead>
                                             <tbody>
                                                 <s:iterator value="lstCreditos" status="rowStatus">
-                                                    <tr>
+                                                    <tr style="text-transform: uppercase;">
                                                         <th><s:property value="%{#rowStatus.count}" /></th>
                                                         <td><s:property value="codCta" /></td>
                                                         <td><s:property value="cliente.codCli" /></td>

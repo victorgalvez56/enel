@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true" name="usuario.codUsu" id="tfCodUsu"/>
+                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true" name="usuario.codUsu" id="tfCodUsu" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.apePat" id="tfApePat"/>
+                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.apePat" id="tfApePat" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -96,7 +96,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="5" name="usuario.nuDoCi" id="tfNuDoCi"/>
+                                                            <s:textfield cssClass="form-control" tabindex="5" name="usuario.nuDoCi" id="tfNuDoCi" style="text-transform: uppercase;" maxLength="15"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,7 +108,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="6" name="usuario.apeMat" id="tfApeMat"/>
+                                                            <s:textfield cssClass="form-control" tabindex="6" name="usuario.apeMat" id="tfApeMat" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +120,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="7" name="usuario.nombre" id="tfNombre"/>
+                                                            <s:textfield cssClass="form-control" tabindex="7" name="usuario.nombre" id="tfNombre" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -135,6 +135,11 @@
                                                             <s:select name="usuario.oficina.codigo" id="sOficina" tabindex="7" list="lstOficinas" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
+                                                    <!--<div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-success btn-flat form-control" data-toggle="modal" data-target="#modalMntAgencias" id="bMntAgencias">Ver</button>
+                                                        </div>
+                                                    </div>-->
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
@@ -178,6 +183,67 @@
                                         </div>
                                     </div>
                                 </div>
+                                                        
+                                <!-- Modal Buscar -->
+                                <div class="modal fade" id="modalMntAgencias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h2 class="modal-title">Agencias</h2>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="box-body">
+                                                    <div class="col-md-6">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Descripción</th>
+                                                                    <th>Modificar</th>
+                                                                    <th>Quitar</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <s:iterator value="lstOficinas" status="rowStatus">
+                                                                    <tr>
+                                                                        <th><s:property value="%{#rowStatus.count}" /></th>                                 
+                                                                        <td><s:property value="nombre" /></td>
+                                                                        <td><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarParamCli('<s:property value="codCli"/>')">Modificar</button></td>
+                                                                        <td><button class="btn btn-danger btn-flat btn-sm" type="button" onclick="pasarParamCli('<s:property value="codCli"/>')">Quitar</button></td>
+                                                                    </tr>
+                                                                </s:iterator>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <s:form role="form" id="fBuscar">
+                                                            <div class="row">
+                                                                <div class="col-md-8 col-md-offset-2">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <s:textfield name="paramBusquedaCli" id="tfParamBusquedaCli" cssClass="form-control" style="text-transform: uppercase;"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <center>
+                                                                        <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default btn-flat" />
+                                                                        <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default btn-flat" />
+                                                                    </center>
+
+                                                                </div>
+                                                            </div>
+                                                        </s:form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">

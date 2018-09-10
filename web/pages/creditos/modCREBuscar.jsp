@@ -60,7 +60,7 @@
                                 </thead>
                                 <tbody>
                                     <s:iterator value="lstClientes" status="rowStatus">
-                                        <tr>
+                                        <tr style="text-transform: uppercase;">
                                             <th><s:property value="%{#rowStatus.count}" /></th>
                                             <td><s:property value="codCli" /></td>                                            
                                             <td><s:property value="nomCom" /></td>
@@ -121,7 +121,7 @@
                                                             </div>
                                                         </div>                                                                
                                                         <s:iterator value="lstCuentas" status="rowStatus">
-                                                            <div class="row">
+                                                            <div class="row" style="text-transform: uppercase;">
                                                                 <div class="col-md-3"><s:property value="cuenta" /></div>
                                                                 <div class="col-md-2"><s:property value="producto" /></div>
                                                                 <div class="col-md-2"><s:property value="saldo" /></div>

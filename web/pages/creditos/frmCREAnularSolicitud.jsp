@@ -17,7 +17,6 @@
                     <div class="box box-primary">
                         <div class="box-body">
                             <s:form action="frmCREAnularSolicitud" role="form">
-
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <s:if test="mensaje.length() != 0">
@@ -62,7 +61,7 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Nro.Doc:</label>
-                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" readonly="true" maxLength="15"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
@@ -122,9 +121,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
+                                            <s:hidden name="estado" id="estado" />
                                             <s:submit name="aplicar" value="Aplicar" cssClass="btn btn-primary btn-flat" style="display: none;"/>
-                                            <s:submit name="rechazar" value="Rechazar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit name="desistir" value="Desistir" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="rechazar" value="Rechazar" id="bRechazar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="desistir" value="Desistir" id="bDesistir" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
                                 </div>
@@ -135,6 +135,15 @@
             </div>
         </div>
         <script>
+            $(document).ready(function () {
+                estado = document.getElementById("estado").value;
+                if (estado === "rechazada") {
+                    document.getElementById("bDesistir").disabled = true;
+                } else if (estado === "desistida"){ 
+                    document.getElementById("bRechazar").disabled = true;
+                }
+            });
+            
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAnularSolicitud");
             }
