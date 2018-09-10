@@ -1211,8 +1211,10 @@ public class MenuAction extends BaseAction {
                     if (!llOk) {
                         setError(loCreditos.getError());
                     } else {
-                        setMensaje(loCreditos.getMensaje());
-                        setCredito(loCreditos.getCredito());
+                        setMensaje("'"+loCreditos.getCredito().getCodCta()+"'" + " " + loCreditos.getMensaje());
+                        setCredito(new Credito());
+                        setCodigoVenta("");
+                        setCodigoCanal(0);
                         setLstCreditos(loCreditos.getLstCreditos());
                     }
                 } catch (SQLException | ParseException loErr) {
@@ -3266,10 +3268,33 @@ public class MenuAction extends BaseAction {
     //SUBMODULO REPORTE CREDITOS OTORGADOS
     public String frmREPCREOtorgados() {
         setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
         SubMenus = (List<Menu>) getSession().get("subMenu");
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);
+        try {
+            setLstTipDocCiv(loTabla.getLstTabla(4));
+            if (getLstTipDocCiv() == null) {
+                setError(loTabla.getError());
+            } else {
+                CCanales loCanal = new CCanales();
+                loCanal.setUrl(getUrl());
+                loCanal.setUser(user);
+                loCanal.setPasswd(pass);
+                setLstCanales(loCanal.getLstCanales());
+                if (getLstCanales() == null) {
+                    setError(loCanal.getError());
+                }
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
         setResult("frmREPCREOtorgados");
         return getResult();
     }
