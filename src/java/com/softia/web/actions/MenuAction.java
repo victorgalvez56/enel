@@ -1264,8 +1264,11 @@ public class MenuAction extends BaseAction {
                     if (!llOk) {
                         setError(loCredito.getError());
                     } else {
-                        setMensaje(loCredito.getMensaje());
-                        setCredito(loCredito.getCredito());
+                        setMensaje("'"+loCredito.getCredito().getCodCta()+"'" + " " + loCredito.getMensaje());
+                        setCredito(new Credito());
+                        setCodigoVenta("");
+                        setCodigoCanal(0);
+                        setLstCreditos(loCredito.getLstCreditos());
                     }
                 } catch (SQLException loErr) {
                     setError(loErr.getMessage());
