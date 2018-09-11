@@ -1,6 +1,7 @@
 package com.softia.web.actions;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.softia.beans.CAutonomias;
 import com.softia.beans.CCanales;
 import com.softia.beans.CClientes;
 import com.softia.beans.CCobranza;
@@ -14,6 +15,7 @@ import com.softia.beans.CProductos;
 import com.softia.beans.CProfesiones;
 import com.softia.beans.CTabla;
 import com.softia.beans.CUsuarios;
+import com.softia.models.Autonomia;
 import com.softia.models.Canal;
 import com.softia.models.Cliente;
 import com.softia.models.Cuenta;
@@ -60,6 +62,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author cgp
  */
 public class MenuAction extends BaseAction {
+
     private Usuario usuario;
     private String result;
     private Cliente cliente;
@@ -130,6 +133,10 @@ public class MenuAction extends BaseAction {
     private String resultadoENEL;
     private String resultadoSENTINEL;
     private String fecha;
+    private Autonomia autonomia;
+    private List<Autonomia> lstAutonomias;
+    private double minimo;
+    private double maximo;
 
     private Menu menu;
     private String menuCompleto = "";
@@ -137,11 +144,12 @@ public class MenuAction extends BaseAction {
     private String menuCreditos = "";
     private String menuUsuarios = "";
     private String menuReportes = "";
-    
+
     private List<Menu> Menus;
     private List<Menu> SubMenus;
     private List<Menu> SubSubMenus;
-/*
+
+    /*
     private String menuClientes = "<li class=\"treeview\">\n"
             + "                    <a href=\"#\">\n"
             + "                        <i class=\"fa fa-copyright\"></i> <span>Clientes</span>\n"
@@ -205,7 +213,7 @@ public class MenuAction extends BaseAction {
             + "                        </li>\n"
             + "                    </ul>\n"
             + "                </li>";
-*/
+     */
     public String login() {
         setResult("login");
         return getResult();
@@ -245,11 +253,11 @@ public class MenuAction extends BaseAction {
                 setSession(ActionContext.getContext().getSession());
                 getSession().put("user", loUsuario.getUsuario().getCorreo());
                 getSession().put("pass", loUsuario.getUsuario().getPasswd());
-                
+
                 Menus = new ArrayList<>();
                 SubMenus = new ArrayList<>();
                 SubSubMenus = new ArrayList<>();
-                
+
                 Menu menu1 = new Menu();
                 menu1.setNombre("Clientes");
                 menu1.setIcono("fa-copyright");
@@ -270,7 +278,7 @@ public class MenuAction extends BaseAction {
                 menu5.setNombre("Administración");
                 menu5.setIcono("fa-pencil-square-o");
                 menu5.setCodPadre("ADM");
-                
+
                 Menu subMenu1 = new Menu();
                 subMenu1.setNombre("Mantenedor de Clientes");
                 subMenu1.setAction("frmCLIMantenedor.action");
@@ -331,14 +339,18 @@ public class MenuAction extends BaseAction {
                 subMenu14.setNombre("Oficinas");
                 subMenu14.setAction("frmADMOficinas.action");
                 subMenu14.setCodHijo("ADM");
-                
+                Menu subMenu15 = new Menu();
+                subMenu15.setNombre("Autonomías");
+                subMenu15.setAction("frmADMAutonomias.action");
+                subMenu15.setCodHijo("ADM");
+
                 switch (loUsuario.getUsuario().getPerfil().getNombre()) {
                     case "EVALUADOR":
                         Menus.add(menu1);
                         Menus.add(menu2);
                         Menus.add(menu3);
                         Menus.add(menu4);
-                        
+
                         SubMenus.add(subMenu1);
                         SubMenus.add(subMenu2);
                         SubMenus.add(subMenu3);
@@ -357,7 +369,7 @@ public class MenuAction extends BaseAction {
                         Menus.add(menu2);
                         Menus.add(menu3);
                         Menus.add(menu4);
-                        
+
                         SubMenus.add(subMenu1);
                         SubMenus.add(subMenu2);
                         SubMenus.add(subMenu4);
@@ -368,14 +380,14 @@ public class MenuAction extends BaseAction {
                         SubMenus.add(subMenu10);
                         SubMenus.add(subMenu11);
                         SubMenus.add(subMenu12);
-                        SubMenus.add(subMenu13);                        
+                        SubMenus.add(subMenu13);
                         break;
                     case "BACK OFFICE":
                         Menus.add(menu1);
                         Menus.add(menu2);
                         Menus.add(menu3);
                         Menus.add(menu4);
-                        
+
                         SubMenus.add(subMenu1);
                         SubMenus.add(subMenu2);
                         SubMenus.add(subMenu3);
@@ -394,14 +406,14 @@ public class MenuAction extends BaseAction {
                         Menus.add(menu3);
                         Menus.add(menu4);
                         Menus.add(menu5);
-                        
+
                         SubMenus.add(subMenu1);
                         SubMenus.add(subMenu2);
                         SubMenus.add(subMenu3);
                         SubMenus.add(subMenu4);
                         SubMenus.add(subMenu5);
                         SubMenus.add(subMenuImp);
-                        SubMenus.add(subMenu6); 
+                        SubMenus.add(subMenu6);
                         SubMenus.add(subMenu7);
                         SubMenus.add(subMenu8);
                         SubMenus.add(subMenu9);
@@ -410,20 +422,21 @@ public class MenuAction extends BaseAction {
                         SubMenus.add(subMenu12);
                         SubMenus.add(subMenu13);
                         SubMenus.add(subMenu14);
+                        SubMenus.add(subMenu15);
                         break;
                     default:
                         Menus.add(menu1);
                         Menus.add(menu2);
                         Menus.add(menu3);
                         Menus.add(menu4);
-                        
+
                         SubMenus.add(subMenu1);
                         SubMenus.add(subMenu2);
                         SubMenus.add(subMenu3);
                         SubMenus.add(subMenu4);
                         SubMenus.add(subMenu5);
                         SubMenus.add(subMenuImp);
-                        SubMenus.add(subMenu6); 
+                        SubMenus.add(subMenu6);
                         SubMenus.add(subMenu7);
                         SubMenus.add(subMenu8);
                         SubMenus.add(subMenu9);
@@ -433,10 +446,10 @@ public class MenuAction extends BaseAction {
                         SubMenus.add(subMenu13);
                         break;
                 }
-                
+
                 getSession().put("menu", Menus);
                 getSession().put("subMenu", SubMenus);
-                
+
                 setMensaje(loUsuario.getMensaje());
                 setResult("bienvenido");
             } else {
@@ -1081,7 +1094,7 @@ public class MenuAction extends BaseAction {
                     setError(loErr.getMessage());
                 }
             } else if (request.getParameter("ver") != null) {
-                String verCod = request.getParameter("ver"); 
+                String verCod = request.getParameter("ver");
                 Credito cred = new Credito();
                 cred.setCodCta(verCod);
                 CCreditos loCredito = new CCreditos();
@@ -1221,7 +1234,7 @@ public class MenuAction extends BaseAction {
                     if (!llOk) {
                         setError(loCreditos.getError());
                     } else {
-                        setMensaje("'"+loCreditos.getCredito().getCodCta()+"'" + " " + loCreditos.getMensaje());
+                        setMensaje("'" + loCreditos.getCredito().getCodCta() + "'" + " " + loCreditos.getMensaje());
                         setCredito(new Credito());
                         setCodigoVenta("");
                         setCodigoCanal(0);
@@ -2303,7 +2316,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");        
+        SubMenus = (List<Menu>) getSession().get("subMenu");
         setResult("frmADMOficinas");
         try {
             CTabla loTabla = new CTabla();
@@ -2320,10 +2333,10 @@ public class MenuAction extends BaseAction {
                 loCanal.setUser(user);
                 loCanal.setPasswd(pass);
                 setLstCanales(loCanal.getLstCanales());
-                if (getLstCanales() == null){
+                if (getLstCanales() == null) {
                     setError(loCanal.getError());
                     setResult("error");
-                }else{
+                } else {
                     COficinas loOficina = new COficinas();
                     loOficina.setUrl(getUrl());
                     loOficina.setUser(user);
@@ -2371,6 +2384,134 @@ public class MenuAction extends BaseAction {
             setResult("error");
         }
         return getResult();
+    }
+
+    public String frmADMAutonomias() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");
+        setResult("frmADMAutonomias");
+        try {
+            CTabla loTabla = new CTabla();
+            loTabla.setUrl(getUrl());
+            loTabla.setUser(user);
+            loTabla.setPasswd(pass);
+            setLstEstados(loTabla.getLstTabla(1));
+            if (getLstEstados() == null) {
+                setError(loTabla.getError());
+                setResult("error");
+            } else {
+                CProductos loProd = new CProductos();
+                loProd.setUrl(getUrl());
+                loProd.setUser(user);
+                loProd.setPasswd(pass);
+                setLstProductos(loProd.getLstProductos());
+                if (getLstProductos() == null) {
+                    setError(loProd.getError());
+                    setResult("error");
+                } else {
+                    CAutonomias loAutonomia = new CAutonomias();
+                    loAutonomia.setUrl(getUrl());
+                    loAutonomia.setUser(user);
+                    loAutonomia.setPasswd(pass);
+                    if (getAutonomia() != null) {
+                        if (getAutonomia().getProducto().getCodigo() != 0) {
+                            getAutonomia().setMoneda("1");
+                            loAutonomia.setAutonomia(getAutonomia());
+                            setLstAutonomias(loAutonomia.getLstAutonomias());
+                            CPerfiles loPer = new CPerfiles();
+                            loPer.setUrl(getUrl());
+                            loPer.setUser(user);
+                            loPer.setPasswd(pass);
+                            setLstPerfiles(loPer.getLstPerfiles());
+                            if (getLstPerfiles() == null){
+                                setError(loPer.getError());
+                                setResult("error");
+                            }
+                        }
+                    }
+                    /*                    
+                    if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
+                        setOficina(new Oficina());
+                        setInformacion("Ingrese Información y presione GRABAR");
+                    } else {
+                        if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
+                            loOficina.setOficina(getOficina());
+                            boolean llOk = loOficina.mxGrabar();
+                            if (llOk) {
+                                setMensaje(loOficina.getMensaje());
+                            } else {
+                                setError(loOficina.getError());
+                            }
+                        } else {
+                            if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
+                                loOficina.setOficina(getOficina());
+                                setLstOficinas(loOficina.mxBuscar());
+                            } else {
+                                if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
+                                        || ActionContext.getContext().getParameters().get("oficina.codOfi") != null) {
+                                    loOficina.setOficina(getOficina());
+                                    boolean llOk = loOficina.mxAplicar();
+                                    if (llOk) {
+                                        setOficina(loOficina.getOficina());
+                                    } else {
+                                        setError(loOficina.getError());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
+                        setLstOficinas(loOficina.getLstOficinas());
+                        if (getLstOficinas() == null) {
+                            setError(loOficina.getError());
+                        }
+                    }
+                     */
+                }
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+            setResult("error");
+        }
+        return getResult();
+    }
+
+    public String actualizaAutonomia() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        CAutonomias loAutonomia = new CAutonomias();
+        loAutonomia.setUrl(getUrl());
+        loAutonomia.setUser(getSession().get("user").toString());
+        loAutonomia.setPasswd(getSession().get("pass").toString());        
+        loAutonomia.setAutonomia(new Autonomia());
+        loAutonomia.getAutonomia().setCodigo(getCodigo());
+        loAutonomia.getAutonomia().setPerfil(new Perfil());
+        loAutonomia.getAutonomia().getPerfil().setCodigo(getPerfil().getCodigo());
+        loAutonomia.getAutonomia().setMinimo(getMinimo());
+        loAutonomia.getAutonomia().setMaximo(getMaximo());
+        loAutonomia.getAutonomia().setEstado(getEstado());
+        try {
+            boolean llOk = loAutonomia.mxActualizar();
+            if (!llOk) {
+                setError(loAutonomia.getError());
+                return frmADMAutonomias();
+            } else {
+                setMensaje(loAutonomia.getMensaje());
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
+        return frmADMAutonomias();
     }
     
     /*
@@ -2645,7 +2786,8 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
             setResult("frmADMNuevoUsuario");
-        } if (request.getParameter("grabarAgencia") != null) {
+        }
+        if (request.getParameter("grabarAgencia") != null) {
             CCanales loCanales = new CCanales();
             loCanales.setUrl(getUrl());
             loCanales.setUser(user);
@@ -3369,7 +3511,7 @@ public class MenuAction extends BaseAction {
         setResult("frmREPCRECartera");
         return getResult();
     }
-    
+
     //SUBMODULO REPORTE CREDITOS OTORGADOS
     public String frmREPCREOtorgados() {
         setSession(ActionContext.getContext().getSession());
@@ -3403,6 +3545,7 @@ public class MenuAction extends BaseAction {
         setResult("frmREPCREOtorgados");
         return getResult();
     }
+
     public String generarCreOtorgadoXLS() {
         if (!validaSession()) {
             return "login";
@@ -3449,6 +3592,7 @@ public class MenuAction extends BaseAction {
         }
         return frmREPCREOtorgados();
     }
+
     //PDF
     public String repCLICalendarioPagos() {
         setResult("repCLICalendarioPagos");
@@ -5905,7 +6049,7 @@ public class MenuAction extends BaseAction {
     public void setMenuCompleto(String menuCompleto) {
         this.menuCompleto = menuCompleto;
     }
-    
+
     public List<Menu> getMenus() {
         return Menus;
     }
@@ -5921,12 +6065,68 @@ public class MenuAction extends BaseAction {
     public void setSubMenus(List<Menu> SubMenus) {
         this.SubMenus = SubMenus;
     }
-    
+
     public List<Menu> getSubSubMenus() {
         return SubSubMenus;
     }
 
     public void setSubSubMenus(List<Menu> SubSubMenus) {
         this.SubSubMenus = SubSubMenus;
+    }
+
+    /**
+     * @return the autonomia
+     */
+    public Autonomia getAutonomia() {
+        return autonomia;
+    }
+
+    /**
+     * @param autonomia the autonomia to set
+     */
+    public void setAutonomia(Autonomia autonomia) {
+        this.autonomia = autonomia;
+    }
+
+    /**
+     * @return the lstAutonomias
+     */
+    public List<Autonomia> getLstAutonomias() {
+        return lstAutonomias;
+    }
+
+    /**
+     * @param lstAutonomias the lstAutonomias to set
+     */
+    public void setLstAutonomias(List<Autonomia> lstAutonomias) {
+        this.lstAutonomias = lstAutonomias;
+    }
+
+    /**
+     * @return the minimo
+     */
+    public double getMinimo() {
+        return minimo;
+    }
+
+    /**
+     * @param minimo the minimo to set
+     */
+    public void setMinimo(double minimo) {
+        this.minimo = minimo;
+    }
+
+    /**
+     * @return the maximo
+     */
+    public double getMaximo() {
+        return maximo;
+    }
+
+    /**
+     * @param maximo the maximo to set
+     */
+    public void setMaximo(double maximo) {
+        this.maximo = maximo;
     }
 }

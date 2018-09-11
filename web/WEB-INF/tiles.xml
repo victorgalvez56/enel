@@ -75,6 +75,10 @@
         <put-attribute name="title"  value="Mantenimiento Oficinas - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/oficinas/frmADMOficinas.jsp"/>
     </definition>
+    <definition name="frmADMAutonomias" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento Autonomias - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/administracion/frmADMAutonomias.jsp"/>
+    </definition>
     
     
     <definition name="frmCAJDesembolso" extends="baseLayout">
