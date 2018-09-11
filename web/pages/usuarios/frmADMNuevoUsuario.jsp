@@ -2,7 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -183,67 +183,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                                        
-                                <!-- Modal Buscar -->
-                                <div class="modal fade" id="modalMntAgencias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h2 class="modal-title">Agencias</h2>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="box-body">
-                                                    <div class="col-md-6">
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th>Descripción</th>
-                                                                    <th>Modificar</th>
-                                                                    <th>Quitar</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <s:iterator value="lstOficinas" status="rowStatus">
-                                                                    <tr>
-                                                                        <th><s:property value="%{#rowStatus.count}" /></th>                                 
-                                                                        <td><s:property value="nombre" /></td>
-                                                                        <td><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarParamCli('<s:property value="codCli"/>')">Modificar</button></td>
-                                                                        <td><button class="btn btn-danger btn-flat btn-sm" type="button" onclick="pasarParamCli('<s:property value="codCli"/>')">Quitar</button></td>
-                                                                    </tr>
-                                                                </s:iterator>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <s:form role="form" id="fBuscar">
-                                                            <div class="row">
-                                                                <div class="col-md-8 col-md-offset-2">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <s:textfield name="paramBusquedaCli" id="tfParamBusquedaCli" cssClass="form-control" style="text-transform: uppercase;"/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <center>
-                                                                        <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default btn-flat" />
-                                                                        <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default btn-flat" />
-                                                                    </center>
-
-                                                                </div>
-                                                            </div>
-                                                        </s:form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">

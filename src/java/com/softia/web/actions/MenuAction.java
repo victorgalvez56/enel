@@ -266,6 +266,10 @@ public class MenuAction extends BaseAction {
                 menu4.setNombre("Reportes");
                 menu4.setIcono("fa-archive");
                 menu4.setCodPadre("REP");
+                Menu menu5 = new Menu();
+                menu5.setNombre("Administración");
+                menu5.setIcono("fa-pencil-square-o");
+                menu5.setCodPadre("ADM");
                 
                 Menu subMenu1 = new Menu();
                 subMenu1.setNombre("Mantenedor de Clientes");
@@ -323,6 +327,10 @@ public class MenuAction extends BaseAction {
                 subMenu13.setNombre("Créditos Otorgados");
                 subMenu13.setAction("frmREPCREOtorgados.action");
                 subMenu13.setCodHijo("REP");
+                Menu subMenu14 = new Menu();
+                subMenu14.setNombre("Oficinas");
+                subMenu14.setAction("frmADMOficinas.action");
+                subMenu14.setCodHijo("ADM");
                 
                 switch (loUsuario.getUsuario().getPerfil().getNombre()) {
                     case "EVALUADOR":
@@ -385,6 +393,7 @@ public class MenuAction extends BaseAction {
                         Menus.add(menu2);
                         Menus.add(menu3);
                         Menus.add(menu4);
+                        Menus.add(menu5);
                         
                         SubMenus.add(subMenu1);
                         SubMenus.add(subMenu2);
@@ -400,6 +409,7 @@ public class MenuAction extends BaseAction {
                         SubMenus.add(subMenu11);
                         SubMenus.add(subMenu12);
                         SubMenus.add(subMenu13);
+                        SubMenus.add(subMenu14);
                         break;
                     default:
                         Menus.add(menu1);
@@ -2283,6 +2293,86 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
+    public String frmADMOficinas() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<Menu>) getSession().get("subMenu");        
+        setResult("frmADMOficinas");
+        try {
+            CTabla loTabla = new CTabla();
+            loTabla.setUrl(getUrl());
+            loTabla.setUser(user);
+            loTabla.setPasswd(pass);
+            setLstEstados(loTabla.getLstTabla(1));
+            if (getLstEstados() == null) {
+                setError(loTabla.getError());
+                setResult("error");
+            } else {
+                CCanales loCanal = new CCanales();
+                loCanal.setUrl(getUrl());
+                loCanal.setUser(user);
+                loCanal.setPasswd(pass);
+                setLstCanales(loCanal.getLstCanales());
+                if (getLstCanales() == null){
+                    setError(loCanal.getError());
+                    setResult("error");
+                }else{
+                    COficinas loOficina = new COficinas();
+                    loOficina.setUrl(getUrl());
+                    loOficina.setUser(user);
+                    loOficina.setPasswd(pass);
+                    if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
+                        setOficina(new Oficina());
+                        setInformacion("Ingrese Información y presione GRABAR");
+                    } else {
+                        if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
+                            loOficina.setOficina(getOficina());
+                            boolean llOk = loOficina.mxGrabar();
+                            if (llOk) {
+                                setMensaje(loOficina.getMensaje());
+                            } else {
+                                setError(loOficina.getError());
+                            }
+                        } else {
+                            if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
+                                loOficina.setOficina(getOficina());
+                                setLstOficinas(loOficina.mxBuscar());
+                            } else {
+                                if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
+                                        || ActionContext.getContext().getParameters().get("oficina.codOfi") != null) {
+                                    loOficina.setOficina(getOficina());
+                                    boolean llOk = loOficina.mxAplicar();
+                                    if (llOk) {
+                                        setOficina(loOficina.getOficina());
+                                    } else {
+                                        setError(loOficina.getError());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
+                        setLstOficinas(loOficina.getLstOficinas());
+                        if (getLstOficinas() == null) {
+                            setError(loOficina.getError());
+                        }
+                    }
+                }
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+            setResult("error");
+        }
+        return getResult();
+    }
+    
     /*
     if (!validaSession()) {
             return "login";
@@ -3316,6 +3406,9 @@ public class MenuAction extends BaseAction {
         loCreditos.setUser(user);
         loCreditos.setPasswd(pass);
         try {
+            loCreditos.setFecIni(getFecIni());
+            loCreditos.setFecFin(getFecFin());
+            loCreditos.setCodigoCanal(getCodigoCanal());
             boolean llOk = loCreditos.mxGenerarReporteCreditosOtorgados();
             if (!llOk) {
                 setError(loCreditos.getError());
