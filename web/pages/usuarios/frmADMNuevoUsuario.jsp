@@ -135,7 +135,7 @@
                                                             <s:select name="usuario.oficina.codigo" id="sOficina" tabindex="7" list="lstOficinas" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
-                                                    <!--<div class="col-md-1">
+<!--                                                    <div class="col-md-1">
                                                         <div class="form-group">
                                                             <button type="button" class="btn btn-success btn-flat form-control" data-toggle="modal" data-target="#modalMntAgencias" id="bMntAgencias">Ver</button>
                                                         </div>
@@ -197,5 +197,21 @@
                 </section>
             </div>
         </div>
+        <script>
+            /*$(document).ready(function () {
+                document.getElementById("tfComent").required = true;
+                boton_habilitado();
+                deshabilitarBotones();
+            });*/
+            function pasarParamCan(codigo, nombre) {
+                document.getElementById("tfCodCanal").value = codigo;
+                document.getElementById("tfNomCanal").value = nombre;
+            }
+            
+            function limpiar() {
+                document.getElementById("tfCodCanal").value = "";
+                document.getElementById("tfNomCanal").value = "";
+            }
+        </script>
     </body>
 </html>

@@ -2645,6 +2645,21 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
             setResult("frmADMNuevoUsuario");
+        } if (request.getParameter("grabarAgencia") != null) {
+            CCanales loCanales = new CCanales();
+            loCanales.setUrl(getUrl());
+            loCanales.setUser(user);
+            loCanales.setPasswd(pass);
+            /*try {<
+                boolean llOk = loCanales.mxGrabar();
+                if (!llOk) {
+                    setError(loUsuario.getError());
+                } else {
+                    setUsuario(loUsuario.getUsuario());
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }*/
         }
         return getResult();
     }
