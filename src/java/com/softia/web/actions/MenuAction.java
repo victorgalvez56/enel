@@ -1041,7 +1041,12 @@ public class MenuAction extends BaseAction {
                         if (!llOk) {
                             setError(loCliente.getError());
                         } else {
-                            setCliente(loCliente.getCliente());
+                            llOk = loCliente.mxCreditosRelacionados();
+                            if (!llOk) {
+                                setError(loCliente.getError());
+                            } else {
+                                setCliente(loCliente.getCliente());
+                            }
                         }
                     }
                 } catch (SQLException loErr) {
@@ -1307,7 +1312,7 @@ public class MenuAction extends BaseAction {
                     if (!llOk) {
                         setError(loCredito.getError());
                     } else {
-                        setMensaje("'"+loCredito.getCredito().getCodCta()+"'" + " " + loCredito.getMensaje());
+                        setMensaje("'" + loCredito.getCredito().getCodCta() + "'" + " " + loCredito.getMensaje());
                         setCredito(new Credito());
                         setCodigoVenta("");
                         setCodigoCanal(0);
@@ -2533,7 +2538,7 @@ public class MenuAction extends BaseAction {
                             loPer.setUser(user);
                             loPer.setPasswd(pass);
                             setLstPerfiles(loPer.getLstPerfiles());
-                            if (getLstPerfiles() == null){
+                            if (getLstPerfiles() == null) {
                                 setError(loPer.getError());
                                 setResult("error");
                             }
@@ -2594,7 +2599,7 @@ public class MenuAction extends BaseAction {
         CAutonomias loAutonomia = new CAutonomias();
         loAutonomia.setUrl(getUrl());
         loAutonomia.setUser(getSession().get("user").toString());
-        loAutonomia.setPasswd(getSession().get("pass").toString());        
+        loAutonomia.setPasswd(getSession().get("pass").toString());
         loAutonomia.setAutonomia(new Autonomia());
         loAutonomia.getAutonomia().setCodigo(getCodigo());
         loAutonomia.getAutonomia().setPerfil(new Perfil());
@@ -2615,7 +2620,7 @@ public class MenuAction extends BaseAction {
         }
         return frmADMAutonomias();
     }
-    
+
     /*
     if (!validaSession()) {
             return "login";
