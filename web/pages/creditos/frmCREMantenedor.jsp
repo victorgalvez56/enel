@@ -61,7 +61,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCta" tabindex="1" name="credito.codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCta" tabindex="1" name="credito.codCta" style="text-transform: uppercase;" onchange="verCambio()" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -155,7 +155,7 @@
                                             <s:hidden name="credito.codigo"></s:hidden>
                                             <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalAsignarVenta" id="bAsignar">Asignar # de venta</button>
-                                            <s:submit name="rechazar" value="Rechazar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="rechazar" value="Rechazar" id="bRechazar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
@@ -168,10 +168,36 @@
         </div>
     </body>
     <script>
+        $(document).ready(function () {
+           botonHabilitado(); 
+        });
+        
         function creSeleccionado(codigo) {
             document.getElementById("tfCodCta").value = codigo;
             document.getElementById("tfCodCre").value = codigo;
             //document.getElementById("tfCodCli").removeAttribute("name");
+            botonHabilitado();
+        }
+        
+        function botonHabilitado() {
+            CodCre = document.getElementById("tfCodCre").value;
+            if (CodCre === "") {
+                document.getElementById("bRechazar").disabled = true;
+                document.getElementById("bAsignar").disabled = true;
+            } else {
+                document.getElementById("bRechazar").disabled = false;
+                document.getElementById("bAsignar").disabled = false;
+            }
+        }
+        
+        function verCambio() {
+            CodCta = document.getElementById("tfCodCta").value;
+            CodCre = document.getElementById("tfCodCre").value;
+            if (CodCta === "") {
+                document.getElementById("bRechazar").disabled = true;
+            } else if (CodCta !== "" && CodCre !== "") {
+                document.getElementById("bRechazar").disabled = false;
+            }
         }
     </script>    
 </html>
