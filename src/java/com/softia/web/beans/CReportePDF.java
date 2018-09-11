@@ -85,14 +85,19 @@ public class CReportePDF {
         loCli.setCliente(getCliente());
         boolean llOk = loCli.mxAplicar();
         if (llOk) {
-            llOk = loCli.mxCreditos();
+            llOk = loCli.mxCreditosRelacionados();
             if (llOk) {
-                llOk = mxPosicionClienteArchivo(loCli.getCliente());
+                llOk = loCli.mxCreditos();
                 if (llOk) {
-                    setRutaReporte("/ftia/files/cartas/posicionCliente_" + getCliente().getCodCli() + ".pdf");
-                    LibFunc.mxLog("Posicion de Cliente OK.");
+                    llOk = mxPosicionClienteArchivo(loCli.getCliente());
+                    if (llOk) {
+                        setRutaReporte("/ftia/files/cartas/posicionCliente_" + getCliente().getCodCli() + ".pdf");
+                        LibFunc.mxLog("Posicion de Cliente OK.");
+                    } else {
+                        LibFunc.mxLog("Posicion de Cliente error: " + getError());
+                    }
                 } else {
-                    LibFunc.mxLog("Posicion de Cliente error: " + getError());
+                    setError(loCli.getError());
                 }
             } else {
                 setError(loCli.getError());
@@ -116,10 +121,12 @@ public class CReportePDF {
             PdfPTable loTablaDatos = new PdfPTable(3);
             PdfPTable loTablaCliente = new PdfPTable(3);
             PdfPTable loTablaCreditos = new PdfPTable(10);
+            PdfPTable loTablaCreRelacionados = new PdfPTable(10);
 
             loTablaDatos.setWidths(new float[]{5, 5, 5});
             loTablaCliente.setWidths(new float[]{1, 1, 9});
             loTablaCreditos.setWidths(new float[]{2, 1, 1, 1, 1, 1, 1, 1, 1, 1});
+            loTablaCreRelacionados.setWidths(new float[]{2, 1, 1, 1, 1, 1, 1, 1, 1, 1});
 
             //Primera Tabla
             //Primera fila
@@ -243,7 +250,7 @@ public class CReportePDF {
             loTablaCliente.addCell(celda22T2);
 
             //Cuarta Tabla
-            loTablaCreditos.setSpacingBefore(30);
+            loTablaCreditos.setSpacingBefore(20);
             //Primera fila
             PdfPCell celda1T4 = new PdfPCell(new Phrase("* REGISTRO DE CRÉDITOS *", fontContenido));
             celda1T4.setBorder(PdfPCell.NO_BORDER);
@@ -335,9 +342,105 @@ public class CReportePDF {
                 loTablaCreditos.addCell(celda10T4);
                 loTablaCreditos.addCell(celda11T4);
             }
+            
+            //Quinta Tabla
+            loTablaCreRelacionados.setSpacingBefore(20);
+            //Primera fila
+            PdfPCell celda1T5 = new PdfPCell(new Phrase("* REGISTRO DE CRÉDITOS RELACIONADOS *", fontContenido));
+            celda1T5.setBorder(PdfPCell.NO_BORDER);
+            celda1T5.setColspan(10);
+
+            //Segunda fila
+            PdfPCell celda2T5 = new PdfPCell(new Phrase("CREDITO", fontContenido));
+            celda2T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda2T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda3T5 = new PdfPCell(new Phrase("FECHA DESEMB.", fontContenido));
+            celda3T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda3T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda4T5 = new PdfPCell(new Phrase("MONTO", fontContenido));
+            celda4T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda4T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda5T5 = new PdfPCell(new Phrase("NRO CUOTA", fontContenido));
+            celda5T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda5T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda6T5 = new PdfPCell(new Phrase("ATRASO MAXIMO", fontContenido));
+            celda6T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda6T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda7T5 = new PdfPCell(new Phrase("DÍA ATRASO", fontContenido));
+            celda7T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda7T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda8T5 = new PdfPCell(new Phrase("ATR PROM", fontContenido));
+            celda8T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda8T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda9T5 = new PdfPCell(new Phrase("FECHA CANC.", fontContenido));
+            celda9T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda9T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda10T5 = new PdfPCell(new Phrase("SALDO", fontContenido));
+            celda10T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda10T5.setBorder(PdfPCell.BOTTOM);
+            PdfPCell celda11T5 = new PdfPCell(new Phrase("ESTADO", fontContenido));
+            celda11T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+            celda11T5.setBorder(PdfPCell.BOTTOM);
+
+            loTablaCreRelacionados.addCell(celda1T5);
+            loTablaCreRelacionados.addCell(celda2T5);
+            loTablaCreRelacionados.addCell(celda3T5);
+            loTablaCreRelacionados.addCell(celda4T5);
+            loTablaCreRelacionados.addCell(celda5T5);
+            loTablaCreRelacionados.addCell(celda6T5);
+            loTablaCreRelacionados.addCell(celda7T5);
+            loTablaCreRelacionados.addCell(celda8T5);
+            loTablaCreRelacionados.addCell(celda9T5);
+            loTablaCreRelacionados.addCell(celda10T5);
+            loTablaCreRelacionados.addCell(celda11T5);
+
+            for (Cuenta loCuenta : p_oCliente.getLstCuentasRelacionadas()) {
+                celda2T5 = new PdfPCell(new Phrase(loCuenta.getCuenta(), fontContenido));
+                celda2T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda2T5.setBorder(PdfPCell.NO_BORDER);
+                celda3T5 = new PdfPCell(new Phrase(loCuenta.getFecDes(), fontContenido));
+                celda3T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda3T5.setBorder(PdfPCell.NO_BORDER);
+                celda4T5 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getCapDes()), fontContenido));
+                celda4T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda4T5.setBorder(PdfPCell.NO_BORDER);
+                celda5T5 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getCuotas()), fontContenido));
+                celda5T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda5T5.setBorder(PdfPCell.NO_BORDER);
+                celda6T5 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getAtrMax()), fontContenido));
+                celda6T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda6T5.setBorder(PdfPCell.NO_BORDER);
+                celda7T5 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getAtraso()), fontContenido));
+                celda7T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda7T5.setBorder(PdfPCell.NO_BORDER);
+                celda8T5 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getAtrPro()), fontContenido));
+                celda8T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda8T5.setBorder(PdfPCell.NO_BORDER);
+                celda9T5 = new PdfPCell(new Phrase(loCuenta.getFecCan(), fontContenido));
+                celda9T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda9T5.setBorder(PdfPCell.NO_BORDER);
+                celda10T5 = new PdfPCell(new Phrase(String.valueOf(loCuenta.getSaldo()), fontContenido));
+                celda10T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda10T5.setBorder(PdfPCell.NO_BORDER);
+                celda11T5 = new PdfPCell(new Phrase(loCuenta.getEstado(), fontContenido));
+                celda11T5.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda11T5.setBorder(PdfPCell.NO_BORDER);
+                loTablaCreRelacionados.addCell(celda2T5);
+                loTablaCreRelacionados.addCell(celda3T5);
+                loTablaCreRelacionados.addCell(celda4T5);
+                loTablaCreRelacionados.addCell(celda5T5);
+                loTablaCreRelacionados.addCell(celda6T5);
+                loTablaCreRelacionados.addCell(celda7T5);
+                loTablaCreRelacionados.addCell(celda8T5);
+                loTablaCreRelacionados.addCell(celda9T5);
+                loTablaCreRelacionados.addCell(celda10T5);
+                loTablaCreRelacionados.addCell(celda11T5);
+            }
+            
             loDoc.add(loTablaDatos);
             loDoc.add(loTablaCliente);
             loDoc.add(loTablaCreditos);
+            loDoc.add(loTablaCreRelacionados);
             loDoc.close();
 
         } catch (FileNotFoundException | DocumentException loErr) {
