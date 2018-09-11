@@ -39,7 +39,7 @@
                                     </s:if>
                                 </div>
                                 <div class="col-md-6">
-                                    <s:form action="frmSisMntOficinas" role="form">
+                                    <s:form action="frmADMOficinas" role="form">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Código:</label>
@@ -62,12 +62,22 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label class="control-label">Canal:</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <s:select name="oficina.canal.codigo" tabindex="3" list="lstCanales" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label class="control-label">Estado:</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <s:select name="oficina.estado" tabindex="3" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                <s:select name="oficina.estado" tabindex="4" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                             </div>
                                         </div>
                                         <s:hidden name="oficina.codigo"/>
@@ -101,7 +111,7 @@
                                                 <td data-th="Nombre"><s:property value="nombre" /></td>
                                                 <td data-th="Estado"><s:property value="estado" /></td>
                                                 <td data-th="Modificar">
-                                                    <s:url id="verURL" action="frmSisMntOficinas">
+                                                    <s:url id="verURL" action="frmADMOficinas">
                                                         <s:param name="oficina.codOfi" value="%{codOfi}"></s:param>
                                                     </s:url>
                                                     <s:a href="%{verURL}">Modificar</s:a>

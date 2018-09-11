@@ -183,69 +183,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                                        
-                                <!-- Modal Buscar -->
-                                <div class="modal fade" id="modalMntAgencias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h2 class="modal-title">Mantenimiento de Agencias</h2>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="box-body">
-                                                    <div class="col-md-6">
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th>Código</th>
-                                                                    <th>Descripción</th>
-                                                                    <th>Modificar</th>
-                                                                    <th>Quitar</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <s:iterator value="lstOficinas" status="rowStatus">
-                                                                    <tr>
-                                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                        <td><s:property value="nombre" /></td>
-                                                                        <td><button class="btn btn-primary btn-flat btn-sm" type="button" onclick="pasarParamCan('<s:property value="codigo"/>', '<s:property value="nombre"/>')">Modificar</button></td>
-                                                                        <td><button class="btn btn-danger btn-flat btn-sm" type="button" onclick="pasarParamCan('<s:property value=""/>')">Quitar</button></td>
-                                                                    </tr>
-                                                                </s:iterator>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <s:form  role="form">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label>AGENCIA</label><br>
-                                                                    <label>Código:</label>
-                                                                    <s:textfield name="canal.codigo" id="tfCodCanal" cssClass="form-control" style="text-transform: uppercase;" readonly="true"/>
-                                                                </div>
-                                                            </div>
-                                                             <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label>Descripción:</label>
-                                                                    <s:textfield name="canal.nombre" id="tfNomCanal" cssClass="form-control" style="text-transform: uppercase;"/>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <div style="float: right">
-                                                                    <button class="btn btn-primary" onclick="limpiar()">Cancelar</button>
-                                                                    <s:submit value="Grabar" name="grabarAgencia" cssClass="btn btn-primary btn-flat" />
-                                                                </div>
-                                                            </div>
-                                                        </s:form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">

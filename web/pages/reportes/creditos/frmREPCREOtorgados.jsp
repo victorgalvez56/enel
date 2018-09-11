@@ -58,7 +58,7 @@
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="form-group">
-                                                            <s:textfield tabindex="1" name="cobranza.fecIni" cssClass="form-control" type="date" required="true" />
+                                                            <s:textfield tabindex="1" name="fecIni" cssClass="form-control" type="date" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -70,7 +70,7 @@
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="form-group">
-                                                            <s:textfield tabindex="2" name="cobranza.fecFin" cssClass="form-control" type="date" required="true"/>
+                                                            <s:textfield tabindex="2" name="fecFin" cssClass="form-control" type="date"/>
                                                         </div>
                                                     </div>
                                                 </div>
