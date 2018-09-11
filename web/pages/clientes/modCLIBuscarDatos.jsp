@@ -42,10 +42,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <center>
-                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default btn-flat" />
-                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default btn-flat" />
+                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-primary btn-flat btn-sm" />
+                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-primary btn-flat btn-sm" />
+                                            <s:submit value="Buscar por Suministro" name="buscarSumini" cssClass="btn btn-primary btn-flat btn-sm" />
                                         </center>
-
                                     </div>
                                 </div>
                             </s:form>
