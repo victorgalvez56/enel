@@ -75,26 +75,27 @@
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
+                            <span class="label label-success"><s:property value="nroMensajes"/></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">Tienes 4 mensajes</li>
+                            <li class="header">Tienes <s:property value="nroMensajes"/> mensajes</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="/enel/img/user.png" class="img-circle" alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Reunion
-                                                <small><i class="fa fa-clock-o"></i> 5 min.</small>
-                                            </h4>
-                                            <p>Sobre los nuevos retiros</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
+                                    <s:iterator value="lstMensajes" id="menu">
+                                        <li><!-- start message -->
+                                            <a href="#">
+                                                <div class="pull-left">
+                                                    <img src="img/mail.jpg" class="img-circle" alt="User Image">
+                                                </div>                                            
+                                                <h4>
+                                                    <s:property value="titulo"/>
+                                                </h4>
+                                                <p><s:property value="detalle"/></p>
+                                            </a>
+                                        </li>
+                                        <!-- end message -->
+                                    </s:iterator>
                                 </ul>
                             </li>
                             <li class="footer"><a href="#">Mirar todos los mensajes</a></li>
@@ -104,20 +105,22 @@
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <span class="label label-warning"><s:property value="nroNotificaciones"/></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">Tienes 10 notificaciones</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 nuevos creditos
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <li class="header">Tienes <s:property value="nroNotificaciones"/> notificaciones</li>
+                                <s:iterator value="lstNotificaciones" id="menu">
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-exclamation-triangle text-aqua"></i> <s:property value="detalle"/>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </s:iterator>
                             <li class="footer"><a href="#">Ver todo</a></li>
                         </ul>
                     </li>
@@ -125,28 +128,23 @@
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
+                            <span class="label label-danger"><s:property value="nroRecordatorios"/></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">Tienes 9 recordatorios</li>
+                            <li class="header">Tienes <s:property value="nroRecordatorios"/> recordatorios</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Revisar pagos
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
+                                    <s:iterator value="lstRecordatorios" id="menu">
+                                        <li><!-- Task item -->
+                                            <a href="#">
+                                                <h3>
+                                                    Revisar pagos
+                                                </h3>
+                                            </a>
+                                        </li>
+                                        <!-- end task item -->
+                                    </s:iterator>
                                 </ul>
                             </li>
                             <li class="footer">
@@ -157,17 +155,17 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/enel/img/user.png" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Administrador</span>
+                            <img src="img/user.png" class="user-image" alt="User Image">
+                            <span class="hidden-xs"><s:property value="perfil"/></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="/enel/img/user.png" class="img-circle" alt="User Image">
+                                <img src="img/user.png" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Administrador
-                                    <small>Miembro desde Nov. 2017</small>
+                                    <s:property value="perfil"/>
+                                    <small><s:property value="correo"/></small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
