@@ -28,15 +28,16 @@ import com.softia.models.Destino;
 import com.softia.models.Direccion;
 import com.softia.models.Distrito;
 import com.softia.models.Log;
+import com.softia.models.Menu;
 import com.softia.models.Oficina;
 import com.softia.models.Perfil;
 import com.softia.models.Producto;
 import com.softia.models.Profesion;
 import com.softia.models.Provincia;
+import com.softia.models.SubMenu;
 import com.softia.models.Tabla;
 import com.softia.models.TipoCliente;
 import com.softia.models.Usuario;
-import com.softia.web.models.Menu;
 import com.softia.utils.LibFunc;
 import com.softia.web.beans.CReporte;
 import com.softia.web.beans.CReportePDF;
@@ -46,7 +47,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,83 +137,9 @@ public class MenuAction extends BaseAction {
     private List<Autonomia> lstAutonomias;
     private double minimo;
     private double maximo;
-
-    private Menu menu;
-    private String menuCompleto = "";
-    private String menuClientes = "";
-    private String menuCreditos = "";
-    private String menuUsuarios = "";
-    private String menuReportes = "";
-
     private List<Menu> Menus;
-    private List<Menu> SubMenus;
-    private List<Menu> SubSubMenus;
+    private List<SubMenu> SubMenus;
 
-    /*
-    private String menuClientes = "<li class=\"treeview\">\n"
-            + "                    <a href=\"#\">\n"
-            + "                        <i class=\"fa fa-copyright\"></i> <span>Clientes</span>\n"
-            + "                        <span class=\"pull-right-container\">\n"
-            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
-            + "                        </span>\n"
-            + "                    </a>\n"
-            + "                    <ul class=\"treeview-menu\">\n"
-            + "                        <li><a href=\"/enel/frmCLIMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Clientes</a></li>\n"
-            + "                        <li><a href=\"/enel/frmCLIPosicion.action\"><i class=\"fa fa-circle-o\"></i> Créditos por Cliente</a></li>\n"
-            + "                    </ul>\n"
-            + "                </li>";
-    private String menuCreditos = "<li class=\"treeview\">\n"
-            + "                    <a href=\"#\">\n"
-            + "                        <i class=\"fa fa-credit-card\"></i> <span>Créditos</span>\n"
-            + "                        <span class=\"pull-right-container\">\n"
-            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
-            + "                        </span>\n"
-            + "                    </a>\n"
-            + "                    <ul class=\"treeview-menu\">\n"
-            + "                        <li><a href=\"/enel/frmSOLMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Solicitudes</a></li>\n"
-            + "                        <li><a href=\"/enel/frmCREMntAprobacion.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Aprobaciones</a></li>\n"
-            + "                        <li><a href=\"/enel/frmCREMantenedor.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Créditos</a></li>\n"
-            + "                        <li><a href=\"/enel/frmCREDocumentos.action\"><i class=\"fa fa-circle-o\"></i> Impresión de Documentos</a></li>\n"
-            + "                        <li><a href=\"/enel/frmCREMovimientos.action\"><i class=\"fa fa-circle-o\"></i> Movimientos</a></li>\n"
-            + "                    </ul>\n"
-            + "                </li>";
-    private String menuUsuarios = "<li class=\"treeview\">\n"
-            + "                    <a href=\"#\">\n"
-            + "                        <i class=\"fa fa-user\"></i> <span>Usuarios</span>\n"
-            + "                        <span class=\"pull-right-container\">\n"
-            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
-            + "                        </span>\n"
-            + "                    </a>\n"
-            + "                    <ul class=\"treeview-menu\">\n"
-            + "                        <li><a href=\"/enel/frmADMUsuarios.action\"><i class=\"fa fa-circle-o\"></i> Mantenedor de Usuarios</a></li>\n"
-            + "                    </ul>\n"
-            + "                </li>";
-    private String menuReportes = "<li class=\"treeview\">\n"
-            + "                    <a href=\"#\">\n"
-            + "                        <i class=\"fa fa-archive\"></i> <span>Reportes</span>\n"
-            + "                        <span class=\"pull-right-container\">\n"
-            + "                            <i class=\"fa fa-angle-left pull-right\"></i>\n"
-            + "                        </span>\n"
-            + "                    </a>\n"
-            + "                    <ul class=\"treeview-menu\">\n"
-            + "                        <li><a href=\"/enel/frmREPCRECartera.action\"><i class=\"fa fa-circle-o\"></i> Cartera de Créditos</a></li>\n"
-            + "                        <li><a href=\"/enel/frmREPCREMora.action\"><i class=\"fa fa-circle-o\"></i> Mora</a></li>\n"
-            + "                        <li class=\"treeview\">\n"
-            + "                            <a href=\"#\">\n"
-            + "                                <i class=\"fa fa-circle-o\"></i> <span>Operaciones</span>\n"
-            + "                                <span class=\"pull-right-container\">\n"
-            + "                                    <i class=\"fa fa-angle-down\"></i>\n"
-            + "                                </span>\n"
-            + "                            </a>\n"
-            + "                            <ul class=\"treeview-menu\">\n"
-            + "                                <li><a href=\"/enel/frmREPCRESolicitud.action\"><i class=\"fa fa-circle-o\"></i> Solicitudes</a></li>\n"
-            + "                                <li><a href=\"/enel/frmREPCREDesembolso.action\"><i class=\"fa fa-circle-o\"></i> Desembolsos</a></li>\n"
-            + "                                <li><a href=\"/enel/frmREPCREPago.action\"><i class=\"fa fa-circle-o\"></i> Cobranzas</a></li>\n"
-            + "                            </ul>\n"
-            + "                        </li>\n"
-            + "                    </ul>\n"
-            + "                </li>";
-     */
     public String login() {
         setResult("login");
         return getResult();
@@ -231,16 +157,16 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CUsuarios loUsuario = new CUsuarios();
         loUsuario.setUsuario(getUsuario());
         loUsuario.setUser(getUsuario().getCorreo());
         loUsuario.setPasswd(getUsuario().getPasswd());
-        try {
+/*        try {
             setDatos(loUsuario.mxCargarDatos());
         } catch (SQLException loErr) {
             setError(loErr.getMessage());
-        }
+        }*/
         return getResult();
     }
 
@@ -254,198 +180,8 @@ public class MenuAction extends BaseAction {
                 getSession().put("user", loUsuario.getUsuario().getCorreo());
                 getSession().put("pass", loUsuario.getUsuario().getPasswd());
 
-                Menus = new ArrayList<>();
-                SubMenus = new ArrayList<>();
-                SubSubMenus = new ArrayList<>();
-
-                Menu menu1 = new Menu();
-                menu1.setNombre("Clientes");
-                menu1.setIcono("fa-copyright");
-                menu1.setCodPadre("CLI");
-                Menu menu2 = new Menu();
-                menu2.setNombre("Créditos");
-                menu2.setIcono("fa-credit-card");
-                menu2.setCodPadre("CRE");
-                Menu menu3 = new Menu();
-                menu3.setNombre("Usuarios");
-                menu3.setIcono("fa-user");
-                menu3.setCodPadre("USU");
-                Menu menu4 = new Menu();
-                menu4.setNombre("Reportes");
-                menu4.setIcono("fa-archive");
-                menu4.setCodPadre("REP");
-                Menu menu5 = new Menu();
-                menu5.setNombre("Administración");
-                menu5.setIcono("fa-pencil-square-o");
-                menu5.setCodPadre("ADM");
-
-                Menu subMenu1 = new Menu();
-                subMenu1.setNombre("Mantenedor de Clientes");
-                subMenu1.setAction("frmCLIMantenedor.action");
-                subMenu1.setCodHijo("CLI");
-                Menu subMenu2 = new Menu();
-                subMenu2.setNombre("Créditos por Cliente");
-                subMenu2.setAction("frmCLIPosicion.action");
-                subMenu2.setCodHijo("CLI");
-                Menu subMenu3 = new Menu();
-                subMenu3.setNombre("Mantenedor de Solicitudes");
-                subMenu3.setAction("frmSOLMantenedor.action");
-                subMenu3.setCodHijo("CRE");
-                Menu subMenu4 = new Menu();
-                subMenu4.setNombre("Mantenedor de Aprobaciones");
-                subMenu4.setAction("frmCREMntAprobacion.action");
-                subMenu4.setCodHijo("CRE");
-                Menu subMenu5 = new Menu();
-                subMenu5.setNombre("Mantenedor de Créditos");
-                subMenu5.setAction("frmCREMantenedor.action");
-                subMenu5.setCodHijo("CRE");
-                Menu subMenuImp = new Menu();
-                subMenuImp.setNombre("Documentos");
-                subMenuImp.setAction("frmCREDocumentos.action");
-                subMenuImp.setCodHijo("CRE");
-                Menu subMenu6 = new Menu();
-                subMenu6.setNombre("Movimientos");
-                subMenu6.setAction("frmCREMovimientos.action");
-                subMenu6.setCodHijo("CRE");
-                Menu subMenu7 = new Menu();
-                subMenu7.setNombre("Mantenedor de Usuarios");
-                subMenu7.setAction("frmADMUsuarios.action");
-                subMenu7.setCodHijo("USU");
-                Menu subMenu8 = new Menu();
-                subMenu8.setNombre("Cartera de Créditos");
-                subMenu8.setAction("frmREPCRECartera.action");
-                subMenu8.setCodHijo("REP");
-                Menu subMenu9 = new Menu();
-                subMenu9.setNombre("Mora");
-                subMenu9.setAction("frmREPCREMora.action");
-                subMenu9.setCodHijo("REP");
-                Menu subMenu10 = new Menu();
-                subMenu10.setNombre("Solicitudes");
-                subMenu10.setAction("frmREPCRESolicitud.action");
-                subMenu10.setCodHijo("REP");
-                Menu subMenu11 = new Menu();
-                subMenu11.setNombre("Desembolsos");
-                subMenu11.setAction("frmREPCREDesembolso.action");
-                subMenu11.setCodHijo("REP");
-                Menu subMenu12 = new Menu();
-                subMenu12.setNombre("Cobranzas");
-                subMenu12.setAction("frmREPCREPago.action");
-                subMenu12.setCodHijo("REP");
-                Menu subMenu13 = new Menu();
-                subMenu13.setNombre("Créditos Otorgados");
-                subMenu13.setAction("frmREPCREOtorgados.action");
-                subMenu13.setCodHijo("REP");
-                Menu subMenu14 = new Menu();
-                subMenu14.setNombre("Oficinas");
-                subMenu14.setAction("frmADMOficinas.action");
-                subMenu14.setCodHijo("ADM");
-                Menu subMenu15 = new Menu();
-                subMenu15.setNombre("Autonomías");
-                subMenu15.setAction("frmADMAutonomias.action");
-                subMenu15.setCodHijo("ADM");
-
-                switch (loUsuario.getUsuario().getPerfil().getNombre()) {
-                    case "EVALUADOR":
-                        Menus.add(menu1);
-                        Menus.add(menu2);
-                        Menus.add(menu3);
-                        Menus.add(menu4);
-
-                        SubMenus.add(subMenu1);
-                        SubMenus.add(subMenu2);
-                        SubMenus.add(subMenu3);
-                        SubMenus.add(subMenu5);
-                        SubMenus.add(subMenuImp);
-                        SubMenus.add(subMenu6);
-                        SubMenus.add(subMenu7);
-                        SubMenus.add(subMenu8);
-                        SubMenus.add(subMenu9);
-                        SubMenus.add(subMenu10);
-                        SubMenus.add(subMenu11);
-                        SubMenus.add(subMenu12);
-                        break;
-                    case "SUPERVISOR":
-                        Menus.add(menu1);
-                        Menus.add(menu2);
-                        Menus.add(menu3);
-                        Menus.add(menu4);
-
-                        SubMenus.add(subMenu1);
-                        SubMenus.add(subMenu2);
-                        SubMenus.add(subMenu4);
-                        SubMenus.add(subMenu6);
-                        SubMenus.add(subMenu7);
-                        SubMenus.add(subMenu8);
-                        SubMenus.add(subMenu9);
-                        SubMenus.add(subMenu10);
-                        SubMenus.add(subMenu11);
-                        SubMenus.add(subMenu12);
-                        SubMenus.add(subMenu13);
-                        break;
-                    case "BACK OFFICE":
-                        Menus.add(menu1);
-                        Menus.add(menu2);
-                        Menus.add(menu3);
-                        Menus.add(menu4);
-
-                        SubMenus.add(subMenu1);
-                        SubMenus.add(subMenu2);
-                        SubMenus.add(subMenu3);
-                        SubMenus.add(subMenu5);
-                        SubMenus.add(subMenu6);
-                        SubMenus.add(subMenu7);
-                        SubMenus.add(subMenu8);
-                        SubMenus.add(subMenu9);
-                        SubMenus.add(subMenu10);
-                        SubMenus.add(subMenu11);
-                        SubMenus.add(subMenu12);
-                        break;
-                    case "ADMINISTRADOR":
-                        Menus.add(menu1);
-                        Menus.add(menu2);
-                        Menus.add(menu3);
-                        Menus.add(menu4);
-                        Menus.add(menu5);
-
-                        SubMenus.add(subMenu1);
-                        SubMenus.add(subMenu2);
-                        SubMenus.add(subMenu3);
-                        SubMenus.add(subMenu4);
-                        SubMenus.add(subMenu5);
-                        SubMenus.add(subMenuImp);
-                        SubMenus.add(subMenu6);
-                        SubMenus.add(subMenu7);
-                        SubMenus.add(subMenu8);
-                        SubMenus.add(subMenu9);
-                        SubMenus.add(subMenu10);
-                        SubMenus.add(subMenu11);
-                        SubMenus.add(subMenu12);
-                        SubMenus.add(subMenu13);
-                        SubMenus.add(subMenu14);
-                        SubMenus.add(subMenu15);
-                        break;
-                    default:
-                        Menus.add(menu1);
-                        Menus.add(menu2);
-                        Menus.add(menu3);
-                        Menus.add(menu4);
-
-                        SubMenus.add(subMenu1);
-                        SubMenus.add(subMenu2);
-                        SubMenus.add(subMenu3);
-                        SubMenus.add(subMenu4);
-                        SubMenus.add(subMenu5);
-                        SubMenus.add(subMenuImp);
-                        SubMenus.add(subMenu6);
-                        SubMenus.add(subMenu7);
-                        SubMenus.add(subMenu8);
-                        SubMenus.add(subMenu9);
-                        SubMenus.add(subMenu10);
-                        SubMenus.add(subMenu11);
-                        SubMenus.add(subMenu12);
-                        SubMenus.add(subMenu13);
-                        break;
-                }
+                setMenus(loUsuario.getLstMenus());
+                setSubMenus(loUsuario.getLstSubMenus());
 
                 getSession().put("menu", Menus);
                 getSession().put("subMenu", SubMenus);
@@ -474,7 +210,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -656,7 +392,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -866,7 +602,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -1021,7 +757,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1196,7 +932,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -1405,7 +1141,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -1605,7 +1341,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -1793,7 +1529,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -1903,7 +1639,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -2119,7 +1855,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -2290,7 +2026,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -2423,7 +2159,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmADMOficinas");
         try {
             CTabla loTabla = new CTabla();
@@ -2503,7 +2239,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmADMAutonomias");
         try {
             CTabla loTabla = new CTabla();
@@ -2830,7 +2566,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -2924,7 +2660,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -3188,7 +2924,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -3392,7 +3128,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -3441,7 +3177,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -3579,7 +3315,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CProductos loPro = new CProductos();
         loPro.setUrl(getUrl());
         loPro.setUser(user);
@@ -3695,7 +3431,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmREPCREMora");
         return getResult();
     }
@@ -3706,7 +3442,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmREPCRECartera");
         return getResult();
     }
@@ -3719,7 +3455,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CTabla loTabla = new CTabla();
         loTabla.setUrl(getUrl());
         loTabla.setUser(user);
@@ -3755,7 +3491,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         CCreditos loCreditos = new CCreditos();
@@ -3833,7 +3569,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmREPCREDesembolso");
         return getResult();
     }
@@ -3846,7 +3582,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3877,7 +3613,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmREPCREPago");
         return getResult();
     }
@@ -3890,7 +3626,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3921,7 +3657,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmREPCRESolicitud");
         return getResult();
     }
@@ -3934,7 +3670,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -3967,7 +3703,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -4000,7 +3736,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CReporte loRep = new CReporte();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
         try {
@@ -4069,7 +3805,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -4135,7 +3871,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -4201,7 +3937,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             setLstEstados(loTabla.getLstTabla(1));
             if (getLstEstados() == null) {
                 setError(loTabla.getError());
@@ -4297,7 +4033,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             boolean llOk = loCobranza.mxSeguimiento();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -4325,7 +4061,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosEstado());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -4347,7 +4083,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosHistoricos());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -4369,7 +4105,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosOficinas());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -4391,7 +4127,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setDatos(loCobranza.mxDatosRecuperacion());
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
@@ -4425,7 +4161,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             loCobranza.setTipoOrden(getTipoOrden());
             boolean llOk = loCobranza.mxAsignados();
             if (!llOk) {
@@ -4503,7 +4239,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             loCobranza.setTipoOrden(getTipoOrden());
             boolean llOk = loCobranza.mxLlamadas();
             if (!llOk) {
@@ -4589,7 +4325,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             boolean llOk = loCobranza.mxProgramados();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -4615,7 +4351,7 @@ public class MenuAction extends BaseAction {
             Menus = new ArrayList<>();
             SubMenus = new ArrayList<>();
             Menus = (List<Menu>) getSession().get("menu");
-            SubMenus = (List<Menu>) getSession().get("subMenu");
+            SubMenus = (List<SubMenu>) getSession().get("subMenu");
             boolean llOk = loCobranza.mxProgramados();
             if (!llOk) {
                 setError(loCobranza.getError());
@@ -4637,7 +4373,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmCOBParametrizar");
         CUsuarios loUsuario = new CUsuarios();
         try {
@@ -4712,7 +4448,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4751,7 +4487,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4789,7 +4525,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4831,7 +4567,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4938,7 +4674,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -4969,7 +4705,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -5006,7 +4742,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -5042,7 +4778,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -5081,7 +4817,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -5128,7 +4864,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -5175,7 +4911,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         if (LibFunc.fxEmpty(getArchivoUsuariosFileName())) {
             setError("Debe seleccionar archivo de usuarios");
         }
@@ -5207,7 +4943,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         if (LibFunc.fxEmpty(getArchivoClientesFileName())) {
             setError("Debe seleccionar archivo de clientes");
         }
@@ -5239,7 +4975,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         if (LibFunc.fxEmpty(getArchivoCreditosFileName())) {
             setError("Debe seleccionar archivo de créditos");
         }
@@ -5271,7 +5007,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CConfigCobranza loConfiguracion = new CConfigCobranza();
         loConfiguracion.setUser(getSession().get("user").toString());
         loConfiguracion.setPasswd(getSession().get("pass").toString());
@@ -5295,7 +5031,7 @@ public class MenuAction extends BaseAction {
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<Menu>) getSession().get("subMenu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CCobranza loCobranza = new CCobranza();
         loCobranza.setUser(getSession().get("user").toString());
         loCobranza.setPasswd(getSession().get("pass").toString());
@@ -6241,14 +5977,6 @@ public class MenuAction extends BaseAction {
         this.fecha = fecha;
     }
 
-    public String getMenuCompleto() {
-        return menuCompleto;
-    }
-
-    public void setMenuCompleto(String menuCompleto) {
-        this.menuCompleto = menuCompleto;
-    }
-
     public List<Menu> getMenus() {
         return Menus;
     }
@@ -6257,20 +5985,12 @@ public class MenuAction extends BaseAction {
         this.Menus = Menus;
     }
 
-    public List<Menu> getSubMenus() {
+    public List<SubMenu> getSubMenus() {
         return SubMenus;
     }
 
-    public void setSubMenus(List<Menu> SubMenus) {
+    public void setSubMenus(List<SubMenu> SubMenus) {
         this.SubMenus = SubMenus;
-    }
-
-    public List<Menu> getSubSubMenus() {
-        return SubSubMenus;
-    }
-
-    public void setSubSubMenus(List<Menu> SubSubMenus) {
-        this.SubSubMenus = SubSubMenus;
     }
 
     /**

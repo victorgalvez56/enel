@@ -99,13 +99,19 @@
                                                             <s:textfield cssClass="form-control" id="tfCapital" tabindex="5" name="credito.salCap" readonly="true"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label>Interés:</label>
                                                             <s:textfield id="tfInteres" tabindex="6" name="credito.interes" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Mora:</label>
+                                                            <s:textfield id="tfMora" tabindex="6" name="credito.morAtr" cssClass="form-control" readonly="true"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
                                                         <div class="form-group">
                                                             <label>Comisiones:</label>
                                                             <s:textfield id="tfComisiones" tabindex="7" name="credito.comision" cssClass="form-control" readonly="true"/>
@@ -117,22 +123,22 @@
                                                             <s:textfield id="tfTotal" tabindex="8" name="credito.monTot" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Cuota:</label>
-                                                            <s:textfield id="tfCuota" tabindex="9" name="credito.cuota" cssClass="form-control" readonly="true"/>
+                                                            <s:textfield id="tfCuota" tabindex="9" name="credito.cuoAct" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>Mora:</label>
-                                                            <s:textfield id="tfMora" tabindex="10" name="credito.morAtr" cssClass="form-control" readonly="true"/>
+                                                            <label>Atraso:</label>
+                                                            <s:textfield id="tfMora" tabindex="10" name="credito.diaAtr" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Cuota Ref.:</label>
-                                                            <s:textfield id="tfCuotaRef" tabindex="11" name="credito.cuotas" cssClass="form-control" readonly="true"/>
+                                                            <s:textfield id="tfCuotaRef" tabindex="11" name="credito.cuota" cssClass="form-control" readonly="true"/>
                                                         </div>
                                                     </div>
                                                 </div>
