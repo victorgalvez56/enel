@@ -2011,6 +2011,31 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
+    
+    public String frmCREMntRangoScore() {
+        setResult("frmCREMntRangoScore");
+        return getResult();
+    }
+    
+    public String frmCREMntVerificacion() {
+        setResult("frmCREMntVerificacion");
+        return getResult();
+    }
+    
+    public String frmCREMntLineaCredito() {
+        setResult("frmCREMntLineaCredito");
+        return getResult();
+    }
+    
+    public String frmCREMntPlazos() {
+        setResult("frmCREMntPlazos");
+        return getResult();
+    }
+    
+    public String frmCREValorCuotaCredito() {
+        setResult("frmCREValorCuotaCredito");
+        return getResult();
+    }
 
     //WORKFLOW 
     public String frmREPCREWorkflow() {

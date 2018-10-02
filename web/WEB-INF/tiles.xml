@@ -63,6 +63,26 @@
         <put-attribute name="title"  value="WorkFlow de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmREPCREWorkflow.jsp"/>
     </definition>
+    <definition name="frmCREMntRangoScore" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento de Rango - Score - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMntRangoScore.jsp"/>
+    </definition>
+    <definition name="frmCREMntVerificacion" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento de Verificación - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMntVerificacion.jsp"/>
+    </definition>
+    <definition name="frmCREMntLineaCredito" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento de Línea de Crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMntLineaCredito.jsp"/>
+    </definition>
+    <definition name="frmCREMntPlazos" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento de Plazos - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREMntPlazos.jsp"/>
+    </definition>
+    <definition name="frmCREValorCuotaCredito" extends="baseLayout">
+        <put-attribute name="title"  value="Valor Cuota del Crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREValorCuotaCredito.jsp"/>
+    </definition>
     <definition name="frmADMUsuarios" extends="baseLayout">
         <put-attribute name="title"  value="Mantenedor de Usuarios - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/usuarios/frmADMUsuarios.jsp"/>

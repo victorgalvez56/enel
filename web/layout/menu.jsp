@@ -24,6 +24,11 @@
                         </ul>
                     </li>
                 </s:iterator>
+                <li><a href="<s:url action="frmCREMntRangoScore"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Rango - Score</a></li>
+                <li><a href="<s:url action="frmCREMntVerificacion"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Verificación</a></li>
+                <li><a href="<s:url action="frmCREMntLineaCredito"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Línea de Crédito</a></li>
+                <li><a href="<s:url action="frmCREMntPlazos"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Plazos</a></li>
+                <li><a href="<s:url action="frmCREValorCuotaCredito"/>"><i class="fa fa-circle-o"></i> Valor Cuota de Crédito</a></li>
             </ul>
         </section>
     </aside>
