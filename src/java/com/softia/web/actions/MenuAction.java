@@ -737,6 +737,9 @@ public class MenuAction extends BaseAction {
                         setError(loCliente.getError());
                     } else {
                         setCliente(loCliente.getCliente());
+                        if (loCliente.getCliente().getDireccion().getDireccion() == null && loCliente.getCliente().getEstado() == null) {
+                            setAdvertencia("El número de suministro indicado no existe, intente con otro.");
+                        }
                     }
                 } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
