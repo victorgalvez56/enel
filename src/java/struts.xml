@@ -53,6 +53,14 @@
             <result name="frmCREMntCondiciones" type="tiles">frmCREMntCondiciones</result>
             <result name="frmCREMntProductos" type="tiles">frmCREMntProductos</result>
             <result name="frmCRECargarCreditos" type="tiles">frmCRECargarCreditos</result>
+            <result name="frmCREAmortizacion" type="tiles">frmCREAmortizacion</result>
+            <result name="frmCREAmortizar" type="tiles">frmCREAmortizar</result>
+            <result name="frmCRECancelacion" type="tiles">frmCRECancelacion</result>
+            <result name="frmCREReestructuracion" type="tiles">frmCREReestructuracion</result>
+            <result name="frmCREReestructurar" type="tiles">frmCREReestructurar</result>
+            <result name="frmCRERefinanciacion" type="tiles">frmCRERefinanciacion</result>
+            <result name="frmCRERefinanciar" type="tiles">frmCRERefinanciar</result>
+            
 
             <result name="frmCOBParametrizar" type="tiles">frmCOBParametrizar</result>
             <result name="frmCOBAsignar" type="tiles">frmCOBAsignar</result>
