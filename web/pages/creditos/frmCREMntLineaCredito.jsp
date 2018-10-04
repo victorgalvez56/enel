@@ -82,14 +82,25 @@
                                                                 <tbody>
                                                                     <s:iterator value="" status="rowStatus">
                                                                         <tr style="text-transform: uppercase;">
-                                                                            <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
+                                                                            <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label name="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><s:property value="" /></td>
+                                                                            <td width="90" nowrap contenteditable="true"><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
                                                                         </tr>
                                                                     </s:iterator>
-                                                                    <tr>
+<!--                                                                    <tr>
                                                                         <td><s:label name="" value="Perfil 1" /></td>
                                                                         <td contenteditable="true"><s:label name="" value="100.0" /></td>
                                                                         <td contenteditable="true"><s:label name="" value="100.0" /></td>
@@ -106,7 +117,7 @@
                                                                         <td>1000000.0</td>
                                                                         <td>1000000.0</td>
                                                                         <td><button type="button" class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modalVerificacion" id="bBuscarCre">Ver</button></td>
-                                                                    </tr>
+                                                                    </tr>-->
                                                                 </tbody>
                                                             </table><br>
                                                         </div>

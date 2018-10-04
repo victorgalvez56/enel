@@ -42,6 +42,10 @@ import com.softia.utils.LibFunc;
 import com.softia.web.beans.CReporte;
 import com.softia.web.beans.CReportePDF;
 import com.softia.web.beans.CReporteXls;
+import com.softia.web.beans.CTab;
+import com.softia.web.models.Tab;
+import com.softia.web.beans.CVerificacion;
+import com.softia.web.models.Verificacion;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -95,6 +99,10 @@ public class MenuAction extends BaseAction {
     private List<Cliente> lstClientes;
     private List<Credito> lstCreditos;
     private List<Usuario> lstUsuarios;
+    private List<Tab> lstVerificacion;
+    private List<Verificacion> lstVerifiPerfCB;
+    private List<Verificacion> lstVerifiPerfCNB;
+    private Verificacion verificacion;
     private Oficina oficina;
     private Perfil perfil;
     private Condicion condicion;
@@ -2018,6 +2026,18 @@ public class MenuAction extends BaseAction {
     }
     
     public String frmCREMntVerificacion() {
+        CTab tab = new CTab();
+        setLstVerificacion(tab.getLstVerificacion());
+        CVerificacion verifiPerf = new CVerificacion();
+        setLstVerifiPerfCB(verifiPerf.getLstVerifiPerfCB());
+        setLstVerifiPerfCNB(verifiPerf.getLstVerifiPerfCNB());
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("guardar") != null) {
+            setLstVerifiPerfCB(getLstVerifiPerfCNB());
+            System.out.print(getVerificacion().getTitular());
+        }
+        
         setResult("frmCREMntVerificacion");
         return getResult();
     }
@@ -6075,5 +6095,38 @@ public class MenuAction extends BaseAction {
      */
     public void setMaximo(double maximo) {
         this.maximo = maximo;
+    }
+    
+    //AUX
+    public List<Tab> getLstVerificacion() {
+        return lstVerificacion;
+    }
+
+    public void setLstVerificacion(List<Tab> lstVerificacion) {
+        this.lstVerificacion = lstVerificacion;
+    }
+    
+    public Verificacion getVerificacion() {
+        return verificacion;
+    }
+
+    public void setVerificacion(Verificacion verificacion) {
+        this.verificacion = verificacion;
+    }
+    
+    public List<Verificacion> getLstVerifiPerfCB() {
+        return lstVerifiPerfCB;
+    }
+
+    public void setLstVerifiPerfCB(List<Verificacion> lstVerifiPerfCB) {
+        this.lstVerifiPerfCB = lstVerifiPerfCB;
+    }
+
+    public List<Verificacion> getLstVerifiPerfCNB() {
+        return lstVerifiPerfCNB;
+    }
+
+    public void setLstVerifiPerfCNB(List<Verificacion> lstVerifiPerfCNB) {
+        this.lstVerifiPerfCNB = lstVerifiPerfCNB;
     }
 }

@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <s:form action="frmCREMntVerificacion" role="form">
+                <%--<s:form action="frmCREMntVerificacion" role="form">--%>
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>Mantenimiento de Verificación</h1>
@@ -81,46 +81,33 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <s:iterator value="" status="rowStatus">
-                                                                        <tr style="text-transform: uppercase;">
-                                                                            <td width="100" nowrap><s:property value="%{#rowStatus.count}" /></th>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td width="85" nowrap><s:property value="" /></td>
-                                                                            <td><s:submit name="" value="Guardar" cssClass="btn btn-primary btn-flat btn-sm" /></td>
+                                                                    <s:iterator value="lstVerifiPerfCB" status="rowStatus">
+                                                                        <s:if test="true">
+                                                                            <tr style="text-transform: uppercase;">
+                                                                        </s:if>
+                                                                            <s:form action="frmCREMntVerificacion" role="form">
+                                                                                <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
+                                                                                <td width="85" nowrap data-th="Titular"><s:select name="verificacion.titular" tabindex="1" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Familiar"><s:select name="verificacion.familiar" tabindex="2" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Inquilino"><s:select name="verificacion.inquilino" tabindex="3" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Taxistas"><s:select name="verificacion.taxistas" tabindex="4" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Mil oficios"><s:select name="verificacion.milOficios" tabindex="5" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Emprendedores"><s:select name="verificacion.emprendedores" tabindex="6" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Amas de casa"><s:select name="verificacion.amasCasa" tabindex="7" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Empleadas del hogar"><s:select name="verificacion.empleadasHogar" tabindex="8" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Jubilado, pensionista"><s:select name="verificacion.jubiPen" tabindex="9" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Remesas"><s:select name="verificacion.remesas" tabindex="10" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X1"><s:select name="verificacion.x1" tabindex="11" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X2"><s:select name="verificacion.x2" tabindex="12" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X3"><s:select name="verificacion.x3" tabindex="13" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X4"><s:select name="verificacion.x4" tabindex="14" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td data-th="Guardar">
+                                                                                    <s:hidden name="verificacion.codigo" value="%{codigo}" />
+                                                                                    <s:submit name="guardar" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                </td>
+                                                                            </s:form>
                                                                         </tr>
                                                                     </s:iterator>
-                                                                    <tr>
-                                                                        <td width="100" nowrap>Perfil 1</td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td width="85" nowrap><select class="form-control"><option>SI</option><option>NO</option></select></td>
-                                                                        <td><s:submit name="" value="Guardar" cssClass="btn btn-primary btn-flat btn-sm" /></td>
-                                                                        <td><button type="button" class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modalVerificacion" id="bBuscarCre">Ver</button></td>
-                                                                    </tr>
                                                                 </tbody>
                                                             </table><br>
                                                         </div>
@@ -154,49 +141,37 @@
                                                                         <th>X2</th>
                                                                         <th>X3</th>
                                                                         <th>X4</th>
-                                                                        <th>Ver</th>
+                                                                        <th>Guardar</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <s:iterator value="" status="rowStatus">
-                                                                        <tr style="text-transform: uppercase;">
-                                                                            <th contenteditable="true"><s:property value="%{#rowStatus.count}" /></th>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td><s:submit name="" value="Guardar" cssClass="btn btn-primary btn-flat btn-sm" /></td>
+                                                                    <s:iterator value="lstVerifiPerfCNB" status="rowStatus">
+                                                                        <s:if test="true">
+                                                                            <tr style="text-transform: uppercase;">
+                                                                        </s:if>
+                                                                            <s:form action="frmCREMntVerificacion" role="form">
+                                                                                <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
+                                                                                <td width="85" nowrap data-th="Titular"><s:select name="verificacion.titular" tabindex="1" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Familiar"><s:select name="verificacion.familiar" tabindex="2" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Inquilino"><s:select name="verificacion.inquilino" tabindex="3" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Taxistas"><s:select name="verificacion.taxistas" tabindex="4" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Mil oficios"><s:select name="verificacion.milOficios" tabindex="5" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Emprendedores"><s:select name="verificacion.emprendedores" tabindex="6" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Amas de casa"><s:select name="verificacion.amasCasa" tabindex="7" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Empleadas del hogar"><s:select name="verificacion.empleadasHogar" tabindex="8" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Jubilado, pensionista"><s:select name="verificacion.jubiPen" tabindex="9" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="Remesas"><s:select name="verificacion.remesas" tabindex="10" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X1"><s:select name="verificacion.x1" tabindex="11" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X2"><s:select name="verificacion.x2" tabindex="12" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X3"><s:select name="verificacion.x3" tabindex="13" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td width="85" nowrap data-th="X4"><s:select name="verificacion.x4" tabindex="14" list="lstVerificacion" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="---" cssClass="form-control"/></td>
+                                                                                <td data-th="Guardar">
+                                                                                    <s:hidden name="verificacion.codigo" value="%{codigo}" />
+                                                                                    <s:submit name="guardar" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                </td>
+                                                                            </s:form>
                                                                         </tr>
                                                                     </s:iterator>
-                                                                    <tr>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td><button type="button" class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modalVerificacion" id="bBuscarCre">Ver</button></td>
-                                                                    </tr>
                                                                 </tbody>
                                                             </table><br>
                                                         </div>
@@ -206,233 +181,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!--Modal Verficación-->
-                                <div class="modal fade" id="modalVerificacion" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h3 class="modal-title">Verficación</h3>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-12" style="background-color:#ECF0F5;"><label>REGULARES</label></div>
-                                                    <div class="col-md-12" style="padding-left: 0; padding-right: 0; background-color:#ECF0F5;">
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Titular:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Familiar:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Inquilino:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12"><label>COMERCIALES</label></div>
-                                                    <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Taxistas:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Mil oficios:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Otros:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12" style="background-color:#ECF0F5;"><label>OTROS</label></div>
-                                                    <div class="col-md-12" style="padding-left: 0; padding-right: 0; background-color:#ECF0F5;">
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Amas de casa:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Empleadas del hogar:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Jubilado, pensionista:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Remesas:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12"><label>COMODINES</label></div>
-                                                    <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>X1:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>X2:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>X3:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>X4:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <select class="form-control">
-                                                                    <option>SI</option>
-                                                                    <option>NO</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div style="float: right">
-                                                            <s:submit value="Aceptar" name="agregarProducto" cssClass="btn btn-success btn-flat btn-sm" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
-                                
-<!--                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="float: right">
-                                            <s:submit value="Grabar" name="" cssClass="btn btn-primary btn-flat" />
-                                        </div>
-                                    </div>
-                                </div>-->
                             </div>
                         </div>
                     </section>
-                </s:form>
+                <%--</s:form>--%>
             </div>
         </div>
     </body>
