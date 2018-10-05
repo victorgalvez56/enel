@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <s:form action="frmCREMntLineaCredito" role="form">
+                <%--<s:form action="frmCREMntLineaCredito" role="form">--%>
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>Mantenimiento de Línea de Crédito</h1>
@@ -77,47 +77,38 @@
                                                                         <th>X2</th>
                                                                         <th>X3</th>
                                                                         <th>X4</th>
+                                                                        <th>Guardar</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <s:iterator value="" status="rowStatus">
-                                                                        <tr style="text-transform: uppercase;">
-                                                                            <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label name="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:label value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><s:property value="" /></td>
-                                                                            <td width="90" nowrap contenteditable="true"><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
+                                                                    <s:iterator value="lstLineaCreCB" status="rowStatus">
+                                                                        <s:if test="true">
+                                                                            <tr style="text-transform: uppercase;">
+                                                                        </s:if>
+                                                                            <s:form action="frmCREMntLineaCredito_RDC" role="form">
+                                                                                <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
+                                                                                <td width="120" nowrap data-th="Titular"><s:textfield name="lineaTitular" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Familiar"><s:textfield name="lineaFamiliar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Inquilino"><s:textfield name="lineaInquilino" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="lineaTaxistas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="lineaMilOficios" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="lineaEmprendedores" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="lineaAmasCasa" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="lineaEmpleadasHogar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="lineaJubiPen" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="lineaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X1"><s:textfield name="lineaX1" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X2"><s:textfield name="lineaX2" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X3"><s:textfield name="lineaX3" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X4"><s:textfield name="lineaX4" cssClass="form-control" /></td>
+                                                                                <td data-th="Guardar">
+                                                                                    <%--<s:hidden name="codigo" value="%{codigo}" />--%>
+                                                                                    <s:hidden name="codigo" value="%{#rowStatus.count}" />
+                                                                                    <s:submit name="guardarCB" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                </td>
+                                                                            </s:form>
                                                                         </tr>
                                                                     </s:iterator>
-<!--                                                                    <tr>
-                                                                        <td><s:label name="" value="Perfil 1" /></td>
-                                                                        <td contenteditable="true"><s:label name="" value="100.0" /></td>
-                                                                        <td contenteditable="true"><s:label name="" value="100.0" /></td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td><button type="button" class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modalVerificacion" id="bBuscarCre">Ver</button></td>
-                                                                    </tr>-->
                                                                 </tbody>
                                                             </table><br>
                                                         </div>
@@ -151,36 +142,38 @@
                                                                         <th>X2</th>
                                                                         <th>X3</th>
                                                                         <th>X4</th>
+                                                                        <th>Guardar</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <s:iterator value="" status="rowStatus">
-                                                                        <tr style="text-transform: uppercase;">
-                                                                            <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><s:property value="" /></td>
-                                                                            <td contenteditable="true"><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
+                                                                    <s:iterator value="lstLineaCreCNB" status="rowStatus">
+                                                                        <s:if test="true">
+                                                                            <tr style="text-transform: uppercase;">
+                                                                        </s:if>
+                                                                            <s:form action="frmCREMntLineaCredito_RDC" role="form">
+                                                                                <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
+                                                                                <td width="120" nowrap data-th="Titular"><s:textfield name="lineaTitular" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Familiar"><s:textfield name="lineaFamiliar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Inquilino"><s:textfield name="lineaInquilino" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="lineaTaxistas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="lineaMilOficios" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="lineaEmprendedores" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="lineaAmasCasa" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="lineaEmpleadasHogar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="lineaJubiPen" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="lineaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X1"><s:textfield name="lineaX1" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X2"><s:textfield name="lineaX2" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X3"><s:textfield name="lineaX3" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X4"><s:textfield name="lineaX4" cssClass="form-control" /></td>
+                                                                                <td data-th="Guardar">
+                                                                                    <%--<s:hidden name="codigo" value="%{codigo}" />--%>
+                                                                                    <s:hidden name="codigo" value="%{#rowStatus.count}" />
+                                                                                    <s:submit name="guardarCNB" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                </td>
+                                                                            </s:form>
                                                                         </tr>
                                                                     </s:iterator>
-                                                                    <tr>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td><button type="button" class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modalVerificacion" id="bBuscarCre">Ver</button></td>
-                                                                    </tr>
                                                                 </tbody>
                                                             </table><br>
                                                         </div>
@@ -374,7 +367,7 @@
                             </div>
                         </div>
                     </section>
-                </s:form>
+                <%--</s:form>--%>
             </div>
         </div>
     </body>

@@ -21,6 +21,21 @@ public class Verificacion {
     private int x2;
     private int x3;
     private int x4;
+    private double lineaTitular;
+    private double lineaFamiliar;
+    private double lineaInquilino;
+    private double lineaTaxistas;
+    private double lineaMilOficios;
+    private double lineaEmprendedores;
+    private double lineaAmasCasa;
+    private double lineaEmpleadasHogar;
+    private double lineaJubiPen;
+    private double lineaRemesas;
+    private double lineaX1;
+    private double lineaX2;
+    private double lineaX3;
+    private double lineaX4;
+    
 
     public String getCodigo() {
         return codigo;
@@ -148,5 +163,117 @@ public class Verificacion {
 
     public void setX4(int x4) {
         this.x4 = x4;
+    }
+    
+    public double getLineaTitular() {
+        return lineaTitular;
+    }
+
+    public void setLineaTitular(double lineaTitular) {
+        this.lineaTitular = lineaTitular;
+    }
+
+    public double getLineaFamiliar() {
+        return lineaFamiliar;
+    }
+
+    public void setLineaFamiliar(double lineaFamiliar) {
+        this.lineaFamiliar = lineaFamiliar;
+    }
+
+    public double getLineaInquilino() {
+        return lineaInquilino;
+    }
+
+    public void setLineaInquilino(double lineaInquilino) {
+        this.lineaInquilino = lineaInquilino;
+    }
+
+    public double getLineaTaxistas() {
+        return lineaTaxistas;
+    }
+
+    public void setLineaTaxistas(double lineaTaxistas) {
+        this.lineaTaxistas = lineaTaxistas;
+    }
+
+    public double getLineaMilOficios() {
+        return lineaMilOficios;
+    }
+
+    public void setLineaMilOficios(double lineaMilOficios) {
+        this.lineaMilOficios = lineaMilOficios;
+    }
+
+    public double getLineaEmprendedores() {
+        return lineaEmprendedores;
+    }
+
+    public void setLineaEmprendedores(double lineaEmprendedores) {
+        this.lineaEmprendedores = lineaEmprendedores;
+    }
+
+    public double getLineaAmasCasa() {
+        return lineaAmasCasa;
+    }
+
+    public void setLineaAmasCasa(double lineaAmasCasa) {
+        this.lineaAmasCasa = lineaAmasCasa;
+    }
+
+    public double getLineaEmpleadasHogar() {
+        return lineaEmpleadasHogar;
+    }
+
+    public void setLineaEmpleadasHogar(double lineaEmpleadasHogar) {
+        this.lineaEmpleadasHogar = lineaEmpleadasHogar;
+    }
+
+    public double getLineaJubiPen() {
+        return lineaJubiPen;
+    }
+
+    public void setLineaJubiPen(double lineaJubiPen) {
+        this.lineaJubiPen = lineaJubiPen;
+    }
+
+    public double getLineaRemesas() {
+        return lineaRemesas;
+    }
+
+    public void setLineaRemesas(double lineaRemesas) {
+        this.lineaRemesas = lineaRemesas;
+    }
+
+    public double getLineaX1() {
+        return lineaX1;
+    }
+
+    public void setLineaX1(double lineaX1) {
+        this.lineaX1 = lineaX1;
+    }
+
+    public double getLineaX2() {
+        return lineaX2;
+    }
+
+    public void setLineaX2(double lineaX2) {
+        this.lineaX2 = lineaX2;
+    }
+
+    public double getLineaX3() {
+        return lineaX3;
+    }
+
+    public void setLineaX3(double lineaX3) {
+        this.lineaX3 = lineaX3;
+    }
+
+    public double getLineaX4() {
+        return lineaX4;
+    }
+
+    public void setLineaX4(double lineaX4) {
+        this.lineaX4 = lineaX4;
     }
 }

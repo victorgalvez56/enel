@@ -53,11 +53,11 @@
             <result name="frmCREMntCondiciones" type="tiles">frmCREMntCondiciones</result>
             <result name="frmCREMntProductos" type="tiles">frmCREMntProductos</result>
             <result name="frmCRECargarCreditos" type="tiles">frmCRECargarCreditos</result>
-            <result name="frmCREMntRangoScore" type="tiles">frmCREMntRangoScore</result>
-            <result name="frmCREMntVerificacion" type="tiles">frmCREMntVerificacion</result>
-            <result name="frmCREMntLineaCredito" type="tiles">frmCREMntLineaCredito</result>
-            <result name="frmCREMntPlazos" type="tiles">frmCREMntPlazos</result>
-            <result name="frmCREValorCuotaCredito" type="tiles">frmCREValorCuotaCredito</result>
+            <result name="frmCREMntRangoScore_RDC" type="tiles">frmCREMntRangoScore_RDC</result>
+            <result name="frmCREMntVerificacion_RDC" type="tiles">frmCREMntVerificacion_RDC</result>
+            <result name="frmCREMntLineaCredito_RDC" type="tiles">frmCREMntLineaCredito_RDC</result>
+            <result name="frmCREMntPlazos_RDC" type="tiles">frmCREMntPlazos_RDC</result>
+            <result name="frmCREValorCuotaCredito_RDC" type="tiles">frmCREValorCuotaCredito_RDC</result>
             
             <result name="frmCOBParametrizar" type="tiles">frmCOBParametrizar</result>
             <result name="frmCOBAsignar" type="tiles">frmCOBAsignar</result>

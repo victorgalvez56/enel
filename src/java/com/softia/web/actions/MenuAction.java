@@ -102,6 +102,8 @@ public class MenuAction extends BaseAction {
     private List<Tab> lstVerificacion;
     private List<Verificacion> lstVerifiPerfCB;
     private List<Verificacion> lstVerifiPerfCNB;
+    private List<Verificacion> lstLineaCreCB;
+    private List<Verificacion> lstLineaCreCNB;
     private Verificacion verificacion;
     private Oficina oficina;
     private Perfil perfil;
@@ -147,6 +149,34 @@ public class MenuAction extends BaseAction {
     private double maximo;
     private List<Menu> Menus;
     private List<SubMenu> SubMenus;
+    private int titular;
+    private int familiar;
+    private int inquilino;
+    private int taxistas;
+    private int milOficios;
+    private int emprendedores;
+    private int amasCasa;
+    private int empleadasHogar;
+    private int jubiPen;
+    private int remesas;
+    private int x1;
+    private int x2;
+    private int x3;
+    private int x4;
+    private double lineaTitular;
+    private double lineaFamiliar;
+    private double lineaInquilino;
+    private double lineaTaxistas;
+    private double lineaMilOficios;
+    private double lineaEmprendedores;
+    private double lineaAmasCasa;
+    private double lineaEmpleadasHogar;
+    private double lineaJubiPen;
+    private double lineaRemesas;
+    private double lineaX1;
+    private double lineaX2;
+    private double lineaX3;
+    private double lineaX4;
 
     public String login() {
         setResult("login");
@@ -2020,12 +2050,13 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
     
-    public String frmCREMntRangoScore() {
-        setResult("frmCREMntRangoScore");
+    public String frmCREMntRangoScore_RDC() {
+        setResult("frmCREMntRangoScore_RDC");
         return getResult();
     }
     
-    public String frmCREMntVerificacion() {
+    public String frmCREMntVerificacion_RDC() {
+        setSession(ActionContext.getContext().getSession());
         CTab tab = new CTab();
         setLstVerificacion(tab.getLstVerificacion());
         CVerificacion verifiPerf = new CVerificacion();
@@ -2033,27 +2064,147 @@ public class MenuAction extends BaseAction {
         setLstVerifiPerfCNB(verifiPerf.getLstVerifiPerfCNB());
         
         HttpServletRequest request = ServletActionContext.getRequest();
-        if (request.getParameter("guardar") != null) {
-            setLstVerifiPerfCB(getLstVerifiPerfCNB());
-            System.out.print(getVerificacion().getTitular());
+        if (request.getParameter("guardarCB") != null) {
+            /*Verificacion verifi = new Verificacion();
+            verifi.setTitular(getTitular());
+            verifi.setFamiliar(getFamiliar());
+            verifi.setInquilino(getInquilino());
+            verifi.setTaxistas(getTaxistas());
+            verifi.setMilOficios(getMilOficios());
+            verifi.setEmprendedores(getEmprendedores());
+            verifi.setAmasCasa(getAmasCasa());
+            verifi.setEmpleadasHogar(getEmpleadasHogar());
+            verifi.setJubiPen(getJubiPen());
+            verifi.setRemesas(getRemesas());
+            verifi.setX1(getX1());
+            verifi.setX2(getX2());
+            verifi.setX3(getX3());
+            verifi.setX4(getX4());
+            getLstVerifiPerfCB().set(0, verifi);*/
+            
+            if (getSession().get("verificacionCB") != null) {
+                setLstVerifiPerfCB((ArrayList<Verificacion>)getSession().get("verificacionCB"));
+            }
+            if (getSession().get("verificacionCNB") != null) {
+                setLstVerifiPerfCNB((ArrayList<Verificacion>)getSession().get("verificacionCNB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstVerifiPerfCB().get(codigo).setTitular(getTitular());
+            getLstVerifiPerfCB().get(codigo).setFamiliar(getFamiliar());
+            getLstVerifiPerfCB().get(codigo).setInquilino(getInquilino());
+            getLstVerifiPerfCB().get(codigo).setTaxistas(getTaxistas());
+            getLstVerifiPerfCB().get(codigo).setMilOficios(getMilOficios());
+            getLstVerifiPerfCB().get(codigo).setEmprendedores(getEmprendedores());
+            getLstVerifiPerfCB().get(codigo).setAmasCasa(getAmasCasa());
+            getLstVerifiPerfCB().get(codigo).setEmpleadasHogar(getEmpleadasHogar());
+            getLstVerifiPerfCB().get(codigo).setJubiPen(getJubiPen());
+            getLstVerifiPerfCB().get(codigo).setRemesas(getRemesas());
+            getLstVerifiPerfCB().get(codigo).setX1(getX1());
+            getLstVerifiPerfCB().get(codigo).setX2(getX2());
+            getLstVerifiPerfCB().get(codigo).setX3(getX3());
+            getLstVerifiPerfCB().get(codigo).setX4(getX4());
+            
+            getSession().put("verificacionCB", getLstVerifiPerfCB());
+        } else if (request.getParameter("guardarCNB") != null) {
+            if (getSession().get("verificacionCNB") != null) {
+                setLstVerifiPerfCNB((ArrayList<Verificacion>)getSession().get("verificacionCNB"));
+            }
+            if (getSession().get("verificacionCB") != null) {
+                setLstVerifiPerfCB((ArrayList<Verificacion>)getSession().get("verificacionCB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstVerifiPerfCNB().get(codigo).setTitular(getTitular());
+            getLstVerifiPerfCNB().get(codigo).setFamiliar(getFamiliar());
+            getLstVerifiPerfCNB().get(codigo).setInquilino(getInquilino());
+            getLstVerifiPerfCNB().get(codigo).setTaxistas(getTaxistas());
+            getLstVerifiPerfCNB().get(codigo).setMilOficios(getMilOficios());
+            getLstVerifiPerfCNB().get(codigo).setEmprendedores(getEmprendedores());
+            getLstVerifiPerfCNB().get(codigo).setAmasCasa(getAmasCasa());
+            getLstVerifiPerfCNB().get(codigo).setEmpleadasHogar(getEmpleadasHogar());
+            getLstVerifiPerfCNB().get(codigo).setJubiPen(getJubiPen());
+            getLstVerifiPerfCNB().get(codigo).setRemesas(getRemesas());
+            getLstVerifiPerfCNB().get(codigo).setX1(getX1());
+            getLstVerifiPerfCNB().get(codigo).setX2(getX2());
+            getLstVerifiPerfCNB().get(codigo).setX3(getX3());
+            getLstVerifiPerfCNB().get(codigo).setX4(getX4());
+            
+            getSession().put("verificacionCNB", getLstVerifiPerfCNB());
         }
+        setResult("frmCREMntVerificacion_RDC");
+        return getResult();
+    }
+    
+    public String frmCREMntLineaCredito_RDC() {
+        setSession(ActionContext.getContext().getSession());
+        CVerificacion lineaCre = new CVerificacion();
+        setLstLineaCreCB(lineaCre.getLstLineaCreCB());
+        setLstLineaCreCNB(lineaCre.getLstLineaCreCNB());
         
-        setResult("frmCREMntVerificacion");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("guardarCB") != null) {
+            if (getSession().get("lineaCreCB") != null) {
+                setLstLineaCreCB((ArrayList<Verificacion>)getSession().get("lineaCreCB"));
+            }
+            if (getSession().get("lineaCreCNB") != null) {
+                setLstLineaCreCNB((ArrayList<Verificacion>)getSession().get("lineaCreCNB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstLineaCreCB().get(codigo).setLineaTitular(getLineaTitular());
+            getLstLineaCreCB().get(codigo).setLineaFamiliar(getLineaFamiliar());
+            getLstLineaCreCB().get(codigo).setLineaInquilino(getLineaInquilino());
+            getLstLineaCreCB().get(codigo).setLineaTaxistas(getLineaTaxistas());
+            getLstLineaCreCB().get(codigo).setLineaMilOficios(getLineaMilOficios());
+            getLstLineaCreCB().get(codigo).setLineaEmprendedores(getLineaEmprendedores());
+            getLstLineaCreCB().get(codigo).setLineaAmasCasa(getLineaAmasCasa());
+            getLstLineaCreCB().get(codigo).setLineaEmpleadasHogar(getLineaEmpleadasHogar());
+            getLstLineaCreCB().get(codigo).setLineaJubiPen(getLineaJubiPen());
+            getLstLineaCreCB().get(codigo).setLineaRemesas(getLineaRemesas());
+            getLstLineaCreCB().get(codigo).setLineaX1(getLineaX1());
+            getLstLineaCreCB().get(codigo).setLineaX2(getLineaX2());
+            getLstLineaCreCB().get(codigo).setLineaX3(getLineaX3());
+            getLstLineaCreCB().get(codigo).setLineaX4(getLineaX4());
+            
+            getSession().put("lineaCreCB", getLstLineaCreCB());
+        } else if (request.getParameter("guardarCNB") != null) {
+            if (getSession().get("lineaCreCNB") != null) {
+                setLstLineaCreCNB((ArrayList<Verificacion>)getSession().get("lineaCreCNB"));
+            }
+            if (getSession().get("lineaCreCB") != null) {
+                setLstLineaCreCB((ArrayList<Verificacion>)getSession().get("lineaCreCB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstLineaCreCNB().get(codigo).setLineaTitular(getLineaTitular());
+            getLstLineaCreCNB().get(codigo).setLineaFamiliar(getLineaFamiliar());
+            getLstLineaCreCNB().get(codigo).setLineaInquilino(getLineaInquilino());
+            getLstLineaCreCNB().get(codigo).setLineaTaxistas(getLineaTaxistas());
+            getLstLineaCreCNB().get(codigo).setLineaMilOficios(getLineaMilOficios());
+            getLstLineaCreCNB().get(codigo).setLineaEmprendedores(getLineaEmprendedores());
+            getLstLineaCreCNB().get(codigo).setLineaAmasCasa(getLineaAmasCasa());
+            getLstLineaCreCNB().get(codigo).setLineaEmpleadasHogar(getLineaEmpleadasHogar());
+            getLstLineaCreCNB().get(codigo).setLineaJubiPen(getLineaJubiPen());
+            getLstLineaCreCNB().get(codigo).setLineaRemesas(getLineaRemesas());
+            getLstLineaCreCNB().get(codigo).setLineaX1(getLineaX1());
+            getLstLineaCreCNB().get(codigo).setLineaX2(getLineaX2());
+            getLstLineaCreCNB().get(codigo).setLineaX3(getLineaX3());
+            getLstLineaCreCNB().get(codigo).setLineaX4(getLineaX4());
+            
+            getSession().put("lineaCreCNB", getLstLineaCreCNB());
+        }
+        setResult("frmCREMntLineaCredito_RDC");
         return getResult();
     }
     
-    public String frmCREMntLineaCredito() {
-        setResult("frmCREMntLineaCredito");
+    public String frmCREMntPlazos_RDC() {
+        setResult("frmCREMntPlazos_RDC");
         return getResult();
     }
     
-    public String frmCREMntPlazos() {
-        setResult("frmCREMntPlazos");
-        return getResult();
-    }
-    
-    public String frmCREValorCuotaCredito() {
-        setResult("frmCREValorCuotaCredito");
+    public String frmCREValorCuotaCredito_RDC() {
+        setResult("frmCREValorCuotaCredito_RDC");
         return getResult();
     }
 
@@ -6128,5 +6279,245 @@ public class MenuAction extends BaseAction {
 
     public void setLstVerifiPerfCNB(List<Verificacion> lstVerifiPerfCNB) {
         this.lstVerifiPerfCNB = lstVerifiPerfCNB;
+    }
+    
+    public List<Verificacion> getLstLineaCreCB() {
+        return lstLineaCreCB;
+    }
+
+    public void setLstLineaCreCB(List<Verificacion> lstLineaCreCB) {
+        this.lstLineaCreCB = lstLineaCreCB;
+    }
+
+    public List<Verificacion> getLstLineaCreCNB() {
+        return lstLineaCreCNB;
+    }
+
+    public void setLstLineaCreCNB(List<Verificacion> lstLineaCreCNB) {
+        this.lstLineaCreCNB = lstLineaCreCNB;
+    }
+    
+    public int getFamiliar() {
+        return familiar;
+    }
+
+    public void setFamiliar(int familiar) {
+        this.familiar = familiar;
+    }
+
+    public int getInquilino() {
+        return inquilino;
+    }
+
+    public void setInquilino(int inquilino) {
+        this.inquilino = inquilino;
+    }
+
+    public int getTaxistas() {
+        return taxistas;
+    }
+
+    public void setTaxistas(int taxistas) {
+        this.taxistas = taxistas;
+    }
+
+    public int getMilOficios() {
+        return milOficios;
+    }
+
+    public void setMilOficios(int milOficios) {
+        this.milOficios = milOficios;
+    }
+
+    public int getEmprendedores() {
+        return emprendedores;
+    }
+
+    public void setEmprendedores(int emprendedores) {
+        this.emprendedores = emprendedores;
+    }
+
+    public int getAmasCasa() {
+        return amasCasa;
+    }
+
+    public void setAmasCasa(int amasCasa) {
+        this.amasCasa = amasCasa;
+    }
+
+    public int getEmpleadasHogar() {
+        return empleadasHogar;
+    }
+
+    public void setEmpleadasHogar(int empleadasHogar) {
+        this.empleadasHogar = empleadasHogar;
+    }
+
+    public int getJubiPen() {
+        return jubiPen;
+    }
+
+    public void setJubiPen(int jubiPen) {
+        this.jubiPen = jubiPen;
+    }
+
+    public int getRemesas() {
+        return remesas;
+    }
+
+    public void setRemesas(int remesas) {
+        this.remesas = remesas;
+    }
+
+    public int getX1() {
+        return x1;
+    }
+
+    public void setX1(int x1) {
+        this.x1 = x1;
+    }
+
+    public int getX2() {
+        return x2;
+    }
+
+    public void setX2(int x2) {
+        this.x2 = x2;
+    }
+
+    public int getX3() {
+        return x3;
+    }
+
+    public void setX3(int x3) {
+        this.x3 = x3;
+    }
+
+    public int getX4() {
+        return x4;
+    }
+
+    public void setX4(int x4) {
+        this.x4 = x4;
+    }
+
+    public int getTitular() {
+        return titular;
+    }
+
+    public void setTitular(int titular) {
+        this.titular = titular;
+    }
+    
+    public double getLineaTitular() {
+        return lineaTitular;
+    }
+
+    public void setLineaTitular(double lineaTitular) {
+        this.lineaTitular = lineaTitular;
+    }
+
+    public double getLineaFamiliar() {
+        return lineaFamiliar;
+    }
+
+    public void setLineaFamiliar(double lineaFamiliar) {
+        this.lineaFamiliar = lineaFamiliar;
+    }
+
+    public double getLineaInquilino() {
+        return lineaInquilino;
+    }
+
+    public void setLineaInquilino(double lineaInquilino) {
+        this.lineaInquilino = lineaInquilino;
+    }
+
+    public double getLineaTaxistas() {
+        return lineaTaxistas;
+    }
+
+    public void setLineaTaxistas(double lineaTaxistas) {
+        this.lineaTaxistas = lineaTaxistas;
+    }
+
+    public double getLineaMilOficios() {
+        return lineaMilOficios;
+    }
+
+    public void setLineaMilOficios(double lineaMilOficios) {
+        this.lineaMilOficios = lineaMilOficios;
+    }
+
+    public double getLineaEmprendedores() {
+        return lineaEmprendedores;
+    }
+
+    public void setLineaEmprendedores(double lineaEmprendedores) {
+        this.lineaEmprendedores = lineaEmprendedores;
+    }
+
+    public double getLineaAmasCasa() {
+        return lineaAmasCasa;
+    }
+
+    public void setLineaAmasCasa(double lineaAmasCasa) {
+        this.lineaAmasCasa = lineaAmasCasa;
+    }
+
+    public double getLineaEmpleadasHogar() {
+        return lineaEmpleadasHogar;
+    }
+
+    public void setLineaEmpleadasHogar(double lineaEmpleadasHogar) {
+        this.lineaEmpleadasHogar = lineaEmpleadasHogar;
+    }
+
+    public double getLineaJubiPen() {
+        return lineaJubiPen;
+    }
+
+    public void setLineaJubiPen(double lineaJubiPen) {
+        this.lineaJubiPen = lineaJubiPen;
+    }
+
+    public double getLineaRemesas() {
+        return lineaRemesas;
+    }
+
+    public void setLineaRemesas(double lineaRemesas) {
+        this.lineaRemesas = lineaRemesas;
+    }
+
+    public double getLineaX1() {
+        return lineaX1;
+    }
+
+    public void setLineaX1(double lineaX1) {
+        this.lineaX1 = lineaX1;
+    }
+
+    public double getLineaX2() {
+        return lineaX2;
+    }
+
+    public void setLineaX2(double lineaX2) {
+        this.lineaX2 = lineaX2;
+    }
+
+    public double getLineaX3() {
+        return lineaX3;
+    }
+
+    public void setLineaX3(double lineaX3) {
+        this.lineaX3 = lineaX3;
+    }
+
+    public double getLineaX4() {
+        return lineaX4;
+    }
+
+    public void setLineaX4(double lineaX4) {
+        this.lineaX4 = lineaX4;
     }
 }
