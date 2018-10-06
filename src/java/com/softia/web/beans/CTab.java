@@ -1,7 +1,6 @@
 package com.softia.web.beans;
 
-
-import com.softia.web.models.Tabla;
+import com.softia.web.models.Tab;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +8,14 @@ import java.util.List;
  *
  * @author Roberto
  */
-public class CTabla {
-    private List<Tabla> lstVerificacion;
+public class CTab {
+    private List<Tab> lstVerificacion;
 
-    public List<Tabla> getLstVerificacion() {
-        Tabla verifi1 = new Tabla();
+    public List<Tab> getLstVerificacion() {
+        Tab verifi1 = new Tab();
         verifi1.setCodigo("1");
         verifi1.setDescripcion("SI");
-        Tabla verifi2 = new Tabla();
+        Tab verifi2 = new Tab();
         verifi2.setCodigo("2");
         verifi2.setDescripcion("NO");
         
@@ -26,7 +25,7 @@ public class CTabla {
         return lstVerificacion;
     }
 
-    public void setLstVerificacion(List<Tabla> lstVerificacion) {
+    public void setLstVerificacion(List<Tab> lstVerificacion) {
         this.lstVerificacion = lstVerificacion;
     }
 }

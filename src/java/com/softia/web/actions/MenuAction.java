@@ -42,7 +42,9 @@ import com.softia.utils.LibFunc;
 import com.softia.web.beans.CReporte;
 import com.softia.web.beans.CReportePDF;
 import com.softia.web.beans.CReporteXls;
-import com.softia.web.models.Rango;
+import com.softia.web.beans.CTab;
+import com.softia.web.models.Tab;
+import com.softia.web.beans.CVerificacion;
 import com.softia.web.models.Verificacion;
 import java.io.File;
 import java.io.FileInputStream;
@@ -97,6 +99,12 @@ public class MenuAction extends BaseAction {
     private List<Cliente> lstClientes;
     private List<Credito> lstCreditos;
     private List<Usuario> lstUsuarios;
+    private List<Tab> lstVerificacion;
+    private List<Verificacion> lstVerifiPerfCB;
+    private List<Verificacion> lstVerifiPerfCNB;
+    private List<Verificacion> lstLineaCreCB;
+    private List<Verificacion> lstLineaCreCNB;
+    private Verificacion verificacion;
     private Oficina oficina;
     private Perfil perfil;
     private Condicion condicion;
@@ -141,11 +149,34 @@ public class MenuAction extends BaseAction {
     private double maximo;
     private List<Menu> Menus;
     private List<SubMenu> SubMenus;
-    private List<Rango> lstRangosB;
-    private List<Rango> lstRangosNB;
-    private List<Verificacion> lstVerificacionesB;
-    private List<Verificacion> lstVerificacionesNB;
-    private List<Tabla> lstSINO;
+    private int titular;
+    private int familiar;
+    private int inquilino;
+    private int taxistas;
+    private int milOficios;
+    private int emprendedores;
+    private int amasCasa;
+    private int empleadasHogar;
+    private int jubiPen;
+    private int remesas;
+    private int x1;
+    private int x2;
+    private int x3;
+    private int x4;
+    private double lineaTitular;
+    private double lineaFamiliar;
+    private double lineaInquilino;
+    private double lineaTaxistas;
+    private double lineaMilOficios;
+    private double lineaEmprendedores;
+    private double lineaAmasCasa;
+    private double lineaEmpleadasHogar;
+    private double lineaJubiPen;
+    private double lineaRemesas;
+    private double lineaX1;
+    private double lineaX2;
+    private double lineaX3;
+    private double lineaX4;
 
     public String login() {
         setResult("login");
@@ -2019,627 +2050,145 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
     
-    public String frmCREMntRangoScore() {
-        setLstRangosB(new ArrayList<>());
-        Rango rango = new Rango();
-        rango.setCodigo(1);
-        rango.setNombre("PR1");
-        rango.setMinimo(800);
-        rango.setMaximo(1000);
-        getLstRangosB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(2);
-        rango.setNombre("PR2");
-        rango.setMinimo(600);
-        rango.setMaximo(799);
-        getLstRangosB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(3);
-        rango.setNombre("PR3");
-        rango.setMinimo(500);
-        rango.setMaximo(699);
-        getLstRangosB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(4);
-        rango.setNombre("PR4");
-        rango.setMinimo(400);
-        rango.setMaximo(499);
-        getLstRangosB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(5);
-        rango.setNombre("PR5");
-        rango.setMinimo(0);
-        rango.setMaximo(400);
-        getLstRangosB().add(rango);
-        setLstRangosNB(new ArrayList<>());
-        rango = new Rango();
-        rango.setCodigo(1);
-        rango.setNombre("PR1");
-        rango.setMinimo(800);
-        rango.setMaximo(1000);
-        getLstRangosNB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(2);
-        rango.setNombre("PR2");
-        rango.setMinimo(600);
-        rango.setMaximo(799);
-        getLstRangosNB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(3);
-        rango.setNombre("PR3");
-        rango.setMinimo(500);
-        rango.setMaximo(699);
-        getLstRangosNB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(4);
-        rango.setNombre("PR4");
-        rango.setMinimo(400);
-        rango.setMaximo(499);
-        getLstRangosNB().add(rango);
-        rango = new Rango();
-        rango.setCodigo(5);
-        rango.setNombre("PR5");
-        rango.setMinimo(0);
-        rango.setMaximo(400);
-        getLstRangosNB().add(rango);        
-        setResult("frmCREMntRangoScore");
+    public String frmCREMntRangoScore_RDC() {
+        setResult("frmCREMntRangoScore_RDC");
         return getResult();
     }
     
-    public String frmCREMntVerificacion() {
-        setLstSINO(new ArrayList<>());
-        Tabla tabla = new Tabla();
-        tabla.setCodigo("0");
-        tabla.setDescripcion("NO");
-        getLstSINO().add(tabla);
-        tabla = new Tabla();
-        tabla.setCodigo("1");
-        tabla.setDescripcion("SI");
-        getLstSINO().add(tabla);
-        setLstVerificacionesB(new ArrayList<>());
-        Verificacion ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesB().add(ver);
-        setLstVerificacionesNB(new ArrayList<>());
-        ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setTitular(1);
-        ver.setFamiliar(1);
-        ver.setInquilino(1);
-        ver.setTaxista(1);
-        ver.setMilOficio(1);
-        ver.setEmprendedor(1);
-        ver.setAma(1);
-        ver.setEmpleada(1);
-        ver.setJubilado(1);
-        ver.setRemesa(1);
-        getLstVerificacionesNB().add(ver);        
-        setResult("frmCREMntVerificacion");
+    public String frmCREMntVerificacion_RDC() {
+        setSession(ActionContext.getContext().getSession());
+        CTab tab = new CTab();
+        setLstVerificacion(tab.getLstVerificacion());
+        CVerificacion verifiPerf = new CVerificacion();
+        setLstVerifiPerfCB(verifiPerf.getLstVerifiPerfCB());
+        setLstVerifiPerfCNB(verifiPerf.getLstVerifiPerfCNB());
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("guardarCB") != null) {
+            /*Verificacion verifi = new Verificacion();
+            verifi.setTitular(getTitular());
+            verifi.setFamiliar(getFamiliar());
+            verifi.setInquilino(getInquilino());
+            verifi.setTaxistas(getTaxistas());
+            verifi.setMilOficios(getMilOficios());
+            verifi.setEmprendedores(getEmprendedores());
+            verifi.setAmasCasa(getAmasCasa());
+            verifi.setEmpleadasHogar(getEmpleadasHogar());
+            verifi.setJubiPen(getJubiPen());
+            verifi.setRemesas(getRemesas());
+            verifi.setX1(getX1());
+            verifi.setX2(getX2());
+            verifi.setX3(getX3());
+            verifi.setX4(getX4());
+            getLstVerifiPerfCB().set(0, verifi);*/
+            
+            if (getSession().get("verificacionCB") != null) {
+                setLstVerifiPerfCB((ArrayList<Verificacion>)getSession().get("verificacionCB"));
+            }
+            if (getSession().get("verificacionCNB") != null) {
+                setLstVerifiPerfCNB((ArrayList<Verificacion>)getSession().get("verificacionCNB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstVerifiPerfCB().get(codigo).setTitular(getTitular());
+            getLstVerifiPerfCB().get(codigo).setFamiliar(getFamiliar());
+            getLstVerifiPerfCB().get(codigo).setInquilino(getInquilino());
+            getLstVerifiPerfCB().get(codigo).setTaxista(getTaxistas());
+            getLstVerifiPerfCB().get(codigo).setMilOficio(getMilOficios());
+            getLstVerifiPerfCB().get(codigo).setEmprendedor(getEmprendedores());
+            getLstVerifiPerfCB().get(codigo).setAma(getAmasCasa());
+            getLstVerifiPerfCB().get(codigo).setEmpleada(getEmpleadasHogar());
+            getLstVerifiPerfCB().get(codigo).setJubilado(getJubiPen());
+            getLstVerifiPerfCB().get(codigo).setRemesa(getRemesas());
+            
+            getSession().put("verificacionCB", getLstVerifiPerfCB());
+        } else if (request.getParameter("guardarCNB") != null) {
+            if (getSession().get("verificacionCNB") != null) {
+                setLstVerifiPerfCNB((ArrayList<Verificacion>)getSession().get("verificacionCNB"));
+            }
+            if (getSession().get("verificacionCB") != null) {
+                setLstVerifiPerfCB((ArrayList<Verificacion>)getSession().get("verificacionCB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstVerifiPerfCNB().get(codigo).setTitular(getTitular());
+            getLstVerifiPerfCNB().get(codigo).setFamiliar(getFamiliar());
+            getLstVerifiPerfCNB().get(codigo).setInquilino(getInquilino());
+            getLstVerifiPerfCNB().get(codigo).setTaxista(getTaxistas());
+            getLstVerifiPerfCNB().get(codigo).setMilOficio(getMilOficios());
+            getLstVerifiPerfCNB().get(codigo).setEmprendedor(getEmprendedores());
+            getLstVerifiPerfCNB().get(codigo).setAma(getAmasCasa());
+            getLstVerifiPerfCNB().get(codigo).setEmpleada(getEmpleadasHogar());
+            getLstVerifiPerfCNB().get(codigo).setJubilado(getJubiPen());
+            getLstVerifiPerfCNB().get(codigo).setRemesa(getRemesas());
+            
+            getSession().put("verificacionCNB", getLstVerifiPerfCNB());
+        }
+        setResult("frmCREMntVerificacion_RDC");
         return getResult();
     }
     
-    public String frmCREMntLineaCredito() {
-        setLstVerificacionesB(new ArrayList<>());
-        Verificacion ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesB().add(ver);
-        setLstVerificacionesNB(new ArrayList<>());
-        ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setLineaTitular(1000);
-        ver.setLineaFamiliar(1000);
-        ver.setLineaInquilino(1000);
-        ver.setLineaTaxista(1000);
-        ver.setLineaMilOficio(1000);
-        ver.setLineaEmprendedor(1000);
-        ver.setLineaAma(1000);
-        ver.setLineaEmpleada(1000);
-        ver.setLineaJubilado(1000);
-        ver.setLineaRemesa(1000);
-        getLstVerificacionesNB().add(ver);        
-        setResult("frmCREMntLineaCredito");
+    public String frmCREMntLineaCredito_RDC() {
+        setSession(ActionContext.getContext().getSession());
+        CVerificacion lineaCre = new CVerificacion();
+        setLstLineaCreCB(lineaCre.getLstLineaCreCB());
+        setLstLineaCreCNB(lineaCre.getLstLineaCreCNB());
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("guardarCB") != null) {
+            if (getSession().get("lineaCreCB") != null) {
+                setLstLineaCreCB((ArrayList<Verificacion>)getSession().get("lineaCreCB"));
+            }
+            if (getSession().get("lineaCreCNB") != null) {
+                setLstLineaCreCNB((ArrayList<Verificacion>)getSession().get("lineaCreCNB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstLineaCreCB().get(codigo).setLineaTitular(getLineaTitular());
+            getLstLineaCreCB().get(codigo).setLineaFamiliar(getLineaFamiliar());
+            getLstLineaCreCB().get(codigo).setLineaInquilino(getLineaInquilino());
+            getLstLineaCreCB().get(codigo).setLineaTaxista(getLineaTaxistas());
+            getLstLineaCreCB().get(codigo).setLineaMilOficio(getLineaMilOficios());
+            getLstLineaCreCB().get(codigo).setLineaEmprendedor(getLineaEmprendedores());
+            getLstLineaCreCB().get(codigo).setLineaAma(getLineaAmasCasa());
+            getLstLineaCreCB().get(codigo).setLineaEmpleada(getLineaEmpleadasHogar());
+            getLstLineaCreCB().get(codigo).setLineaJubilado(getLineaJubiPen());
+            getLstLineaCreCB().get(codigo).setLineaRemesa(getLineaRemesas());
+            
+            getSession().put("lineaCreCB", getLstLineaCreCB());
+        } else if (request.getParameter("guardarCNB") != null) {
+            if (getSession().get("lineaCreCNB") != null) {
+                setLstLineaCreCNB((ArrayList<Verificacion>)getSession().get("lineaCreCNB"));
+            }
+            if (getSession().get("lineaCreCB") != null) {
+                setLstLineaCreCB((ArrayList<Verificacion>)getSession().get("lineaCreCB"));
+            }
+            
+            codigo = getCodigo() - 1;
+            getLstLineaCreCNB().get(codigo).setLineaTitular(getLineaTitular());
+            getLstLineaCreCNB().get(codigo).setLineaFamiliar(getLineaFamiliar());
+            getLstLineaCreCNB().get(codigo).setLineaInquilino(getLineaInquilino());
+            getLstLineaCreCNB().get(codigo).setLineaTaxista(getLineaTaxistas());
+            getLstLineaCreCNB().get(codigo).setLineaMilOficio(getLineaMilOficios());
+            getLstLineaCreCNB().get(codigo).setLineaEmprendedor(getLineaEmprendedores());
+            getLstLineaCreCNB().get(codigo).setLineaAma(getLineaAmasCasa());
+            getLstLineaCreCNB().get(codigo).setLineaEmpleada(getLineaEmpleadasHogar());
+            getLstLineaCreCNB().get(codigo).setLineaJubilado(getLineaJubiPen());
+            getLstLineaCreCNB().get(codigo).setLineaRemesa(getLineaRemesas());
+            
+            getSession().put("lineaCreCNB", getLstLineaCreCNB());
+        }
+        setResult("frmCREMntLineaCredito_RDC");
         return getResult();
     }
     
-    public String frmCREMntPlazos() {
-        setLstVerificacionesB(new ArrayList<>());
-        Verificacion ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesB().add(ver);
-        setLstVerificacionesNB(new ArrayList<>());
-        ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setCuotasTitular(10);
-        ver.setCuotasFamiliar(10);
-        ver.setCuotasInquilino(10);
-        ver.setCuotasTaxista(10);
-        ver.setCuotasMilOficio(10);
-        ver.setCuotasEmprendedor(10);
-        ver.setCuotasAma(10);
-        ver.setCuotasEmpleada(10);
-        ver.setCuotasJubilado(10);
-        ver.setCuotasRemesa(10);
-        getLstVerificacionesNB().add(ver);        
-        setResult("frmCREMntPlazos");
+    public String frmCREMntPlazos_RDC() {
+        setResult("frmCREMntPlazos_RDC");
         return getResult();
     }
     
-    public String frmCREValorCuotaCredito() {
-        setLstVerificacionesB(new ArrayList<>());
-        Verificacion ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesB().add(ver);
-        setLstVerificacionesNB(new ArrayList<>());
-        ver = new Verificacion();
-        ver.setPerfil("PR1");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR2");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR3");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();
-        ver.setPerfil("PR4");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesNB().add(ver);
-        ver = new Verificacion();        
-        ver.setPerfil("PR5");
-        ver.setCuotaTitular(100);
-        ver.setCuotaFamiliar(100);
-        ver.setCuotaInquilino(100);
-        ver.setCuotaTaxista(100);
-        ver.setCuotaMilOficio(100);
-        ver.setCuotaEmprendedor(100);
-        ver.setCuotaAma(100);
-        ver.setCuotaEmpleada(100);
-        ver.setCuotaJubilado(100);
-        ver.setCuotaRemesa(100);
-        getLstVerificacionesNB().add(ver);        
-        setResult("frmCREValorCuotaCredito");
+    public String frmCREValorCuotaCredito_RDC() {
+        setResult("frmCREValorCuotaCredito_RDC");
         return getResult();
     }
 
@@ -7356,75 +6905,277 @@ public class MenuAction extends BaseAction {
     public void setMaximo(double maximo) {
         this.maximo = maximo;
     }
-
-    /**
-     * @return the lstRangosB
-     */
-    public List<Rango> getLstRangosB() {
-        return lstRangosB;
+    
+    //AUX
+    public List<Tab> getLstVerificacion() {
+        return lstVerificacion;
     }
 
-    /**
-     * @param lstRangosB the lstRangosB to set
-     */
-    public void setLstRangosB(List<Rango> lstRangosB) {
-        this.lstRangosB = lstRangosB;
+    public void setLstVerificacion(List<Tab> lstVerificacion) {
+        this.lstVerificacion = lstVerificacion;
+    }
+    
+    public Verificacion getVerificacion() {
+        return verificacion;
     }
 
-    /**
-     * @return the lstRangosNB
-     */
-    public List<Rango> getLstRangosNB() {
-        return lstRangosNB;
+    public void setVerificacion(Verificacion verificacion) {
+        this.verificacion = verificacion;
+    }
+    
+    public List<Verificacion> getLstVerifiPerfCB() {
+        return lstVerifiPerfCB;
     }
 
-    /**
-     * @param lstRangosNB the lstRangosNB to set
-     */
-    public void setLstRangosNB(List<Rango> lstRangosNB) {
-        this.lstRangosNB = lstRangosNB;
+    public void setLstVerifiPerfCB(List<Verificacion> lstVerifiPerfCB) {
+        this.lstVerifiPerfCB = lstVerifiPerfCB;
     }
 
-    /**
-     * @return the lstVerificacionesB
-     */
-    public List<Verificacion> getLstVerificacionesB() {
-        return lstVerificacionesB;
+    public List<Verificacion> getLstVerifiPerfCNB() {
+        return lstVerifiPerfCNB;
     }
 
-    /**
-     * @param lstVerificacionesB the lstVerificacionesB to set
-     */
-    public void setLstVerificacionesB(List<Verificacion> lstVerificacionesB) {
-        this.lstVerificacionesB = lstVerificacionesB;
+    public void setLstVerifiPerfCNB(List<Verificacion> lstVerifiPerfCNB) {
+        this.lstVerifiPerfCNB = lstVerifiPerfCNB;
+    }
+    
+    public List<Verificacion> getLstLineaCreCB() {
+        return lstLineaCreCB;
     }
 
-    /**
-     * @return the lstVerificacionesNB
-     */
-    public List<Verificacion> getLstVerificacionesNB() {
-        return lstVerificacionesNB;
+    public void setLstLineaCreCB(List<Verificacion> lstLineaCreCB) {
+        this.lstLineaCreCB = lstLineaCreCB;
     }
 
-    /**
-     * @param lstVerfiicacionesNB the lstVerfiicacionesNB to set
-     */
-    public void setLstVerificacionesNB(List<Verificacion> lstVerificacionesNB) {
-        this.lstVerificacionesNB = lstVerificacionesNB;
+    public List<Verificacion> getLstLineaCreCNB() {
+        return lstLineaCreCNB;
     }
 
-    /**
-     * @return the lstSINO
-     */
-    public List<Tabla> getLstSINO() {
-        return lstSINO;
+    public void setLstLineaCreCNB(List<Verificacion> lstLineaCreCNB) {
+        this.lstLineaCreCNB = lstLineaCreCNB;
+    }
+    
+    public int getFamiliar() {
+        return familiar;
     }
 
-    /**
-     * @param lstSINO the lstSINO to set
-     */
-    public void setLstSINO(List<Tabla> lstSINO) {
-        this.lstSINO = lstSINO;
+    public void setFamiliar(int familiar) {
+        this.familiar = familiar;
     }
 
+    public int getInquilino() {
+        return inquilino;
+    }
+
+    public void setInquilino(int inquilino) {
+        this.inquilino = inquilino;
+    }
+
+    public int getTaxistas() {
+        return taxistas;
+    }
+
+    public void setTaxistas(int taxistas) {
+        this.taxistas = taxistas;
+    }
+
+    public int getMilOficios() {
+        return milOficios;
+    }
+
+    public void setMilOficios(int milOficios) {
+        this.milOficios = milOficios;
+    }
+
+    public int getEmprendedores() {
+        return emprendedores;
+    }
+
+    public void setEmprendedores(int emprendedores) {
+        this.emprendedores = emprendedores;
+    }
+
+    public int getAmasCasa() {
+        return amasCasa;
+    }
+
+    public void setAmasCasa(int amasCasa) {
+        this.amasCasa = amasCasa;
+    }
+
+    public int getEmpleadasHogar() {
+        return empleadasHogar;
+    }
+
+    public void setEmpleadasHogar(int empleadasHogar) {
+        this.empleadasHogar = empleadasHogar;
+    }
+
+    public int getJubiPen() {
+        return jubiPen;
+    }
+
+    public void setJubiPen(int jubiPen) {
+        this.jubiPen = jubiPen;
+    }
+
+    public int getRemesas() {
+        return remesas;
+    }
+
+    public void setRemesas(int remesas) {
+        this.remesas = remesas;
+    }
+
+    public int getX1() {
+        return x1;
+    }
+
+    public void setX1(int x1) {
+        this.x1 = x1;
+    }
+
+    public int getX2() {
+        return x2;
+    }
+
+    public void setX2(int x2) {
+        this.x2 = x2;
+    }
+
+    public int getX3() {
+        return x3;
+    }
+
+    public void setX3(int x3) {
+        this.x3 = x3;
+    }
+
+    public int getX4() {
+        return x4;
+    }
+
+    public void setX4(int x4) {
+        this.x4 = x4;
+    }
+
+    public int getTitular() {
+        return titular;
+    }
+
+    public void setTitular(int titular) {
+        this.titular = titular;
+    }
+    
+    public double getLineaTitular() {
+        return lineaTitular;
+    }
+
+    public void setLineaTitular(double lineaTitular) {
+        this.lineaTitular = lineaTitular;
+    }
+
+    public double getLineaFamiliar() {
+        return lineaFamiliar;
+    }
+
+    public void setLineaFamiliar(double lineaFamiliar) {
+        this.lineaFamiliar = lineaFamiliar;
+    }
+
+    public double getLineaInquilino() {
+        return lineaInquilino;
+    }
+
+    public void setLineaInquilino(double lineaInquilino) {
+        this.lineaInquilino = lineaInquilino;
+    }
+
+    public double getLineaTaxistas() {
+        return lineaTaxistas;
+    }
+
+    public void setLineaTaxistas(double lineaTaxistas) {
+        this.lineaTaxistas = lineaTaxistas;
+    }
+
+    public double getLineaMilOficios() {
+        return lineaMilOficios;
+    }
+
+    public void setLineaMilOficios(double lineaMilOficios) {
+        this.lineaMilOficios = lineaMilOficios;
+    }
+
+    public double getLineaEmprendedores() {
+        return lineaEmprendedores;
+    }
+
+    public void setLineaEmprendedores(double lineaEmprendedores) {
+        this.lineaEmprendedores = lineaEmprendedores;
+    }
+
+    public double getLineaAmasCasa() {
+        return lineaAmasCasa;
+    }
+
+    public void setLineaAmasCasa(double lineaAmasCasa) {
+        this.lineaAmasCasa = lineaAmasCasa;
+    }
+
+    public double getLineaEmpleadasHogar() {
+        return lineaEmpleadasHogar;
+    }
+
+    public void setLineaEmpleadasHogar(double lineaEmpleadasHogar) {
+        this.lineaEmpleadasHogar = lineaEmpleadasHogar;
+    }
+
+    public double getLineaJubiPen() {
+        return lineaJubiPen;
+    }
+
+    public void setLineaJubiPen(double lineaJubiPen) {
+        this.lineaJubiPen = lineaJubiPen;
+    }
+
+    public double getLineaRemesas() {
+        return lineaRemesas;
+    }
+
+    public void setLineaRemesas(double lineaRemesas) {
+        this.lineaRemesas = lineaRemesas;
+    }
+
+    public double getLineaX1() {
+        return lineaX1;
+    }
+
+    public void setLineaX1(double lineaX1) {
+        this.lineaX1 = lineaX1;
+    }
+
+    public double getLineaX2() {
+        return lineaX2;
+    }
+
+    public void setLineaX2(double lineaX2) {
+        this.lineaX2 = lineaX2;
+    }
+
+    public double getLineaX3() {
+        return lineaX3;
+    }
+
+    public void setLineaX3(double lineaX3) {
+        this.lineaX3 = lineaX3;
+    }
+
+    public double getLineaX4() {
+        return lineaX4;
+    }
+
+    public void setLineaX4(double lineaX4) {
+        this.lineaX4 = lineaX4;
+    }
 }

@@ -4,7 +4,7 @@ package com.softia.web.models;
  *
  * @author Roberto
  */
-public class Tabla {
+public class Tab {
     private String codigo;
     private String descripcion;
 
