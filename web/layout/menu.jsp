@@ -24,12 +24,14 @@
                         </ul>
                     </li>
                 </s:iterator>
+<!--                    
                 <li><a href="<s:url action="frmCREMntRangoScore_RDC"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Rango - Score</a></li>
                 <li><a href="<s:url action="frmCREMntVerificacion_RDC"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Verificación</a></li>
                 <li><a href="<s:url action="frmCREMntLineaCredito_RDC"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Línea de Crédito</a></li>
                 <li><a href="<s:url action="frmCREMntPlazos_RDC"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Plazos</a></li>
                 <li><a href="<s:url action="frmCREValorCuotaCredito_RDC"/>"><i class="fa fa-circle-o"></i> Valor Cuota de Crédito</a></li>
-            </ul>
+-->
+</ul>
         </section>
     </aside>
 </html>

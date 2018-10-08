@@ -10,6 +10,7 @@ package com.softia.web.models;
  * @author carlosgaldos
  */
 public class Verificacion {
+    private String codigo;
     private String perfil;
     private int titular;
     private int familiar;
@@ -625,6 +626,20 @@ public class Verificacion {
      */
     public void setCuotaRemesa(double cuotaRemesa) {
         this.cuotaRemesa = cuotaRemesa;
+    }
+
+    /**
+     * @return the codigo
+     */
+    public String getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
 }

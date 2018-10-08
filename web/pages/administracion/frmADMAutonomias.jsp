@@ -72,6 +72,27 @@
                                         </div>
                                     </div>
                                 </div>                                
+                                <div class="col-xs-12">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Canal:</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <s:select 
+                                                name="autonomia.canal.codigo" 
+                                                tabindex="1" 
+                                                list="lstCanales" 
+                                                listKey="codigo" 
+                                                listValue="nombre" 
+                                                headerKey="0" 
+                                                headerValue="-- Seleccione --" 
+                                                cssClass="form-control"
+                                                onchange="cargarAutonomias();"/>
+                                        </div>
+                                    </div>
+                                </div>                                
                             </s:form>
                             <div class="col-xs-12">
                                 <div class="box box-primary box-solid">
@@ -99,6 +120,7 @@
                                                             <td data-th="Actualizar">
                                                                 <s:hidden name="codigo" value="%{codigo}"></s:hidden>
                                                                 <s:hidden name="autonomia.producto.codigo" value="%{autonomia.producto.codigo}"></s:hidden>
+                                                                <s:hidden name="autonomia.canal.codigo" value="%{autonomia.canal.codigo}"></s:hidden>
                                                                 <s:submit key="Actualizar" cssClass="btn btn-info btn-sm"/>
                                                             </td>                                                            
                                                             <!-- /.content -->

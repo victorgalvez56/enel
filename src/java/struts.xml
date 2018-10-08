@@ -17,6 +17,7 @@
         <action name="*" method="{1}" class="com.softia.web.actions.MenuAction">
             <result name="login" type="tiles">login</result>
             <result name="bienvenido" type="tiles">bienvenido</result>
+            <result name="perfil" type="tiles">perfil</result>
             
             <result name="frmSOLMantenedor" type="tiles">frmSOLMantenedor</result>
             <result name="frmCREMantenedor" type="tiles">frmCREMantenedor</result>

@@ -2049,12 +2049,12 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String frmCREMntRangoScore_RDC() {
         setResult("frmCREMntRangoScore_RDC");
         return getResult();
     }
-    
+
     public String frmCREMntVerificacion_RDC() {
         setSession(ActionContext.getContext().getSession());
         CTab tab = new CTab();
@@ -2062,7 +2062,7 @@ public class MenuAction extends BaseAction {
         CVerificacion verifiPerf = new CVerificacion();
         setLstVerifiPerfCB(verifiPerf.getLstVerifiPerfCB());
         setLstVerifiPerfCNB(verifiPerf.getLstVerifiPerfCNB());
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
             /*Verificacion verifi = new Verificacion();
@@ -2081,14 +2081,14 @@ public class MenuAction extends BaseAction {
             verifi.setX3(getX3());
             verifi.setX4(getX4());
             getLstVerifiPerfCB().set(0, verifi);*/
-            
+
             if (getSession().get("verificacionCB") != null) {
-                setLstVerifiPerfCB((ArrayList<Verificacion>)getSession().get("verificacionCB"));
+                setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
             }
             if (getSession().get("verificacionCNB") != null) {
-                setLstVerifiPerfCNB((ArrayList<Verificacion>)getSession().get("verificacionCNB"));
+                setLstVerifiPerfCNB((ArrayList<Verificacion>) getSession().get("verificacionCNB"));
             }
-            
+
             codigo = getCodigo() - 1;
             getLstVerifiPerfCB().get(codigo).setTitular(getTitular());
             getLstVerifiPerfCB().get(codigo).setFamiliar(getFamiliar());
@@ -2100,16 +2100,16 @@ public class MenuAction extends BaseAction {
             getLstVerifiPerfCB().get(codigo).setEmpleada(getEmpleadasHogar());
             getLstVerifiPerfCB().get(codigo).setJubilado(getJubiPen());
             getLstVerifiPerfCB().get(codigo).setRemesa(getRemesas());
-            
+
             getSession().put("verificacionCB", getLstVerifiPerfCB());
         } else if (request.getParameter("guardarCNB") != null) {
             if (getSession().get("verificacionCNB") != null) {
-                setLstVerifiPerfCNB((ArrayList<Verificacion>)getSession().get("verificacionCNB"));
+                setLstVerifiPerfCNB((ArrayList<Verificacion>) getSession().get("verificacionCNB"));
             }
             if (getSession().get("verificacionCB") != null) {
-                setLstVerifiPerfCB((ArrayList<Verificacion>)getSession().get("verificacionCB"));
+                setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
             }
-            
+
             codigo = getCodigo() - 1;
             getLstVerifiPerfCNB().get(codigo).setTitular(getTitular());
             getLstVerifiPerfCNB().get(codigo).setFamiliar(getFamiliar());
@@ -2121,28 +2121,28 @@ public class MenuAction extends BaseAction {
             getLstVerifiPerfCNB().get(codigo).setEmpleada(getEmpleadasHogar());
             getLstVerifiPerfCNB().get(codigo).setJubilado(getJubiPen());
             getLstVerifiPerfCNB().get(codigo).setRemesa(getRemesas());
-            
+
             getSession().put("verificacionCNB", getLstVerifiPerfCNB());
         }
         setResult("frmCREMntVerificacion_RDC");
         return getResult();
     }
-    
+
     public String frmCREMntLineaCredito_RDC() {
         setSession(ActionContext.getContext().getSession());
         CVerificacion lineaCre = new CVerificacion();
         setLstLineaCreCB(lineaCre.getLstLineaCreCB());
         setLstLineaCreCNB(lineaCre.getLstLineaCreCNB());
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
             if (getSession().get("lineaCreCB") != null) {
-                setLstLineaCreCB((ArrayList<Verificacion>)getSession().get("lineaCreCB"));
+                setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
             }
             if (getSession().get("lineaCreCNB") != null) {
-                setLstLineaCreCNB((ArrayList<Verificacion>)getSession().get("lineaCreCNB"));
+                setLstLineaCreCNB((ArrayList<Verificacion>) getSession().get("lineaCreCNB"));
             }
-            
+
             codigo = getCodigo() - 1;
             getLstLineaCreCB().get(codigo).setLineaTitular(getLineaTitular());
             getLstLineaCreCB().get(codigo).setLineaFamiliar(getLineaFamiliar());
@@ -2154,16 +2154,16 @@ public class MenuAction extends BaseAction {
             getLstLineaCreCB().get(codigo).setLineaEmpleada(getLineaEmpleadasHogar());
             getLstLineaCreCB().get(codigo).setLineaJubilado(getLineaJubiPen());
             getLstLineaCreCB().get(codigo).setLineaRemesa(getLineaRemesas());
-            
+
             getSession().put("lineaCreCB", getLstLineaCreCB());
         } else if (request.getParameter("guardarCNB") != null) {
             if (getSession().get("lineaCreCNB") != null) {
-                setLstLineaCreCNB((ArrayList<Verificacion>)getSession().get("lineaCreCNB"));
+                setLstLineaCreCNB((ArrayList<Verificacion>) getSession().get("lineaCreCNB"));
             }
             if (getSession().get("lineaCreCB") != null) {
-                setLstLineaCreCB((ArrayList<Verificacion>)getSession().get("lineaCreCB"));
+                setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
             }
-            
+
             codigo = getCodigo() - 1;
             getLstLineaCreCNB().get(codigo).setLineaTitular(getLineaTitular());
             getLstLineaCreCNB().get(codigo).setLineaFamiliar(getLineaFamiliar());
@@ -2175,18 +2175,18 @@ public class MenuAction extends BaseAction {
             getLstLineaCreCNB().get(codigo).setLineaEmpleada(getLineaEmpleadasHogar());
             getLstLineaCreCNB().get(codigo).setLineaJubilado(getLineaJubiPen());
             getLstLineaCreCNB().get(codigo).setLineaRemesa(getLineaRemesas());
-            
+
             getSession().put("lineaCreCNB", getLstLineaCreCNB());
         }
         setResult("frmCREMntLineaCredito_RDC");
         return getResult();
     }
-    
+
     public String frmCREMntPlazos_RDC() {
         setResult("frmCREMntPlazos_RDC");
         return getResult();
     }
-    
+
     public String frmCREValorCuotaCredito_RDC() {
         setResult("frmCREValorCuotaCredito_RDC");
         return getResult();
@@ -2332,6 +2332,43 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
+    public String perfil() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("grabar") != null) {
+            CUsuarios loUsuario = new CUsuarios();
+            loUsuario.setUrl(getUrl());
+            loUsuario.setUser(user);
+            loUsuario.setPasswd(pass);
+            loUsuario.setUsuario(getUsuario());
+            try {
+                boolean llOk = loUsuario.mxActualizarPassword();
+                if (!llOk) {
+                    setError(loUsuario.getError());
+                } else {
+                    setMensaje(loUsuario.getMensaje());
+                    setResult("login");
+                }
+            } catch (SQLException | ParseException loErr) {
+                setError(loErr.getMessage());
+            }
+        }else{
+            setUsuario(new Usuario());
+            getUsuario().setCorreo(user);
+            setResult("perfil");
+        }
+        return getResult();
+    }
+
     public String frmADMOficinas() {
         if (!validaSession()) {
             return "login";
@@ -2443,64 +2480,36 @@ public class MenuAction extends BaseAction {
                     setError(loProd.getError());
                     setResult("error");
                 } else {
-                    CAutonomias loAutonomia = new CAutonomias();
-                    loAutonomia.setUrl(getUrl());
-                    loAutonomia.setUser(user);
-                    loAutonomia.setPasswd(pass);
-                    if (getAutonomia() != null) {
-                        if (getAutonomia().getProducto().getCodigo() != 0) {
-                            getAutonomia().setMoneda("1");
-                            loAutonomia.setAutonomia(getAutonomia());
-                            setLstAutonomias(loAutonomia.getLstAutonomias());
-                            CPerfiles loPer = new CPerfiles();
-                            loPer.setUrl(getUrl());
-                            loPer.setUser(user);
-                            loPer.setPasswd(pass);
-                            setLstPerfiles(loPer.getLstPerfiles());
-                            if (getLstPerfiles() == null) {
-                                setError(loPer.getError());
-                                setResult("error");
-                            }
-                        }
-                    }
-                    /*                    
-                    if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
-                        setOficina(new Oficina());
-                        setInformacion("Ingrese Información y presione GRABAR");
+                    CCanales loCanal = new CCanales();
+                    loCanal.setUrl(getUrl());
+                    loCanal.setUser(user);
+                    loCanal.setPasswd(pass);
+                    setLstCanales(loCanal.getLstCanales());
+                    if (getLstCanales() == null) {
+                        setError(loCanal.getError());
+                        setResult("error");
                     } else {
-                        if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
-                            loOficina.setOficina(getOficina());
-                            boolean llOk = loOficina.mxGrabar();
-                            if (llOk) {
-                                setMensaje(loOficina.getMensaje());
-                            } else {
-                                setError(loOficina.getError());
-                            }
-                        } else {
-                            if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
-                                setLstOficinas(loOficina.mxBuscar());
-                                loOficina.setOficina(getOficina());
-                            } else {
-                                if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
-                                        || ActionContext.getContext().getParameters().get("oficina.codOfi") != null) {
-                                    loOficina.setOficina(getOficina());
-                                    boolean llOk = loOficina.mxAplicar();
-                                    if (llOk) {
-                                        setOficina(loOficina.getOficina());
-                                    } else {
-                                        setError(loOficina.getError());
-                                    }
+                        CAutonomias loAutonomia = new CAutonomias();
+                        loAutonomia.setUrl(getUrl());
+                        loAutonomia.setUser(user);
+                        loAutonomia.setPasswd(pass);
+                        if (getAutonomia() != null) {
+                            if (getAutonomia().getProducto().getCodigo() != 0) {
+                                getAutonomia().setMoneda("1");
+                                loAutonomia.setAutonomia(getAutonomia());
+                                setLstAutonomias(loAutonomia.getLstAutonomias());
+                                CPerfiles loPer = new CPerfiles();
+                                loPer.setUrl(getUrl());
+                                loPer.setUser(user);
+                                loPer.setPasswd(pass);
+                                setLstPerfiles(loPer.getLstPerfiles());
+                                if (getLstPerfiles() == null) {
+                                    setError(loPer.getError());
+                                    setResult("error");
                                 }
                             }
                         }
                     }
-                    if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
-                        setLstOficinas(loOficina.getLstOficinas());
-                        if (getLstOficinas() == null) {
-                            setError(loOficina.getError());
-                        }
-                    }
-                     */
                 }
             }
         } catch (SQLException loErr) {
@@ -4184,7 +4193,7 @@ public class MenuAction extends BaseAction {
         }
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
-        String pass = getSession().get("pass").toString();        
+        String pass = getSession().get("pass").toString();
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
@@ -4219,7 +4228,7 @@ public class MenuAction extends BaseAction {
         }
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
-        String pass = getSession().get("pass").toString();        
+        String pass = getSession().get("pass").toString();
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
@@ -4254,7 +4263,7 @@ public class MenuAction extends BaseAction {
         }
         setSession(ActionContext.getContext().getSession());
         String user = getSession().get("user").toString();
-        String pass = getSession().get("pass").toString();        
+        String pass = getSession().get("pass").toString();
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
@@ -6905,7 +6914,7 @@ public class MenuAction extends BaseAction {
     public void setMaximo(double maximo) {
         this.maximo = maximo;
     }
-    
+
     //AUX
     public List<Tab> getLstVerificacion() {
         return lstVerificacion;
@@ -6914,7 +6923,7 @@ public class MenuAction extends BaseAction {
     public void setLstVerificacion(List<Tab> lstVerificacion) {
         this.lstVerificacion = lstVerificacion;
     }
-    
+
     public Verificacion getVerificacion() {
         return verificacion;
     }
@@ -6922,7 +6931,7 @@ public class MenuAction extends BaseAction {
     public void setVerificacion(Verificacion verificacion) {
         this.verificacion = verificacion;
     }
-    
+
     public List<Verificacion> getLstVerifiPerfCB() {
         return lstVerifiPerfCB;
     }
@@ -6938,7 +6947,7 @@ public class MenuAction extends BaseAction {
     public void setLstVerifiPerfCNB(List<Verificacion> lstVerifiPerfCNB) {
         this.lstVerifiPerfCNB = lstVerifiPerfCNB;
     }
-    
+
     public List<Verificacion> getLstLineaCreCB() {
         return lstLineaCreCB;
     }
@@ -6954,7 +6963,7 @@ public class MenuAction extends BaseAction {
     public void setLstLineaCreCNB(List<Verificacion> lstLineaCreCNB) {
         this.lstLineaCreCNB = lstLineaCreCNB;
     }
-    
+
     public int getFamiliar() {
         return familiar;
     }
@@ -7066,7 +7075,7 @@ public class MenuAction extends BaseAction {
     public void setTitular(int titular) {
         this.titular = titular;
     }
-    
+
     public double getLineaTitular() {
         return lineaTitular;
     }
