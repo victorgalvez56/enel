@@ -113,40 +113,42 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Nro. Solicitud</th>
-                                                    <th>Cod. Cliente</th>
-                                                    <th>Suministro</th>
-                                                    <th>Ape. Paterno</th>
-                                                    <th>Ape. Materno</th>
-                                                    <th>Nombre(s)</th>
-                                                    <th>Tipo documento</th>
-                                                    <th>Nro. documento</th>
-                                                    <th>Fecha de solicitud</th>
-                                                    <th>Seleccionar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <s:iterator value="lstCreditos" status="rowStatus">
-                                                    <tr style="text-transform: uppercase;">
-                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                        <td><s:property value="codCta" /></td>
-                                                        <td><s:property value="cliente.codCli" /></td>
-                                                        <td><s:property value="cliente.sumini" /></td>
-                                                        <td><s:property value="cliente.apePat" /></td>
-                                                        <td><s:property value="cliente.apeMat" /></td>
-                                                        <td><s:property value="cliente.nombre" /></td>
-                                                        <td><s:property value="cliente.tipDocCiv" /></td>
-                                                        <td><s:property value="cliente.nroDocCiv" /></td>
-                                                        <td><s:property value="fecSol" /></td>
-                                                        <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codCta"/>')"></center></td>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Nro. Solicitud</th>
+                                                        <th>Cod. Cliente</th>
+                                                        <th>Suministro</th>
+                                                        <th>Ape. Paterno</th>
+                                                        <th>Ape. Materno</th>
+                                                        <th>Nombre(s)</th>
+                                                        <th>Tipo documento</th>
+                                                        <th>Nro. documento</th>
+                                                        <th>Fecha de solicitud</th>
+                                                        <th>Seleccionar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <s:iterator value="lstCreditos" status="rowStatus">
+                                                        <tr style="text-transform: uppercase;">
+                                                            <th><s:property value="%{#rowStatus.count}" /></th>
+                                                            <td><s:property value="codCta" /></td>
+                                                            <td><s:property value="cliente.codCli" /></td>
+                                                            <td><s:property value="cliente.sumini" /></td>
+                                                            <td><s:property value="cliente.apePat" /></td>
+                                                            <td><s:property value="cliente.apeMat" /></td>
+                                                            <td><s:property value="cliente.nombre" /></td>
+                                                            <td><s:property value="cliente.tipDocCiv" /></td>
+                                                            <td><s:property value="cliente.nroDocCiv" /></td>
+                                                            <td><s:property value="fecSol" /></td>
+                                                            <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codCta"/>')"></center></td>
                                                     </tr>
                                                 </s:iterator>
-                                            </tbody>
-                                        </table><br>
+                                                </tbody>
+                                            </table><br>
+                                        </div>
                                     </div>          
                                 </div>
                                 <div class="row">
@@ -169,16 +171,16 @@
     </body>
     <script>
         $(document).ready(function () {
-           botonHabilitado(); 
+            botonHabilitado();
         });
-        
+
         function creSeleccionado(codigo) {
             document.getElementById("tfCodCta").value = codigo;
             document.getElementById("tfCodCre").value = codigo;
             //document.getElementById("tfCodCli").removeAttribute("name");
             botonHabilitado();
         }
-        
+
         function botonHabilitado() {
             CodCre = document.getElementById("tfCodCre").value;
             if (CodCre === "") {
@@ -189,7 +191,7 @@
                 document.getElementById("bAsignar").disabled = false;
             }
         }
-        
+
         function verCambio() {
             CodCta = document.getElementById("tfCodCta").value;
             CodCre = document.getElementById("tfCodCre").value;

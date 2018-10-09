@@ -97,38 +97,40 @@
                             <div class="col-xs-12">
                                 <div class="box box-primary box-solid">
                                     <div class="box-body">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Código</th>
-                                                    <th>Perfil</th>
-                                                    <th>Minimo</th>
-                                                    <th>Maximo</th>
-                                                    <th>Estado</th>
-                                                    <th>Actualizar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <s:iterator value="lstAutonomias">
-                                                    <tr>                                                            
-                                                        <s:form action="actualizaAutonomia" role="form">
-                                                            <td data-th="Código"><s:property value="codigo"/></td>
-                                                            <td data-th="Perfil"><s:select name="perfil.codigo" tabindex="1" list="lstPerfiles" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/></td>
-                                                            <td data-th="Minimo"><s:textfield name="minimo" cssClass="form-control" /></td>
-                                                            <td data-th="Maximo"><s:textfield name="maximo" cssClass="form-control" /></td>
-                                                            <td data-th="Resultado"><s:select name="estado" tabindex="1" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/></td>
-                                                            <td data-th="Actualizar">
-                                                                <s:hidden name="codigo" value="%{codigo}"></s:hidden>
-                                                                <s:hidden name="autonomia.producto.codigo" value="%{autonomia.producto.codigo}"></s:hidden>
-                                                                <s:hidden name="autonomia.canal.codigo" value="%{autonomia.canal.codigo}"></s:hidden>
-                                                                <s:submit key="Actualizar" cssClass="btn btn-info btn-sm"/>
-                                                            </td>                                                            
-                                                            <!-- /.content -->
-                                                        </s:form>
-                                                    </tr>                                                     
-                                            </s:iterator>
-                                            </tbody>
-                                        </table>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Código</th>
+                                                        <th>Perfil</th>
+                                                        <th>Minimo</th>
+                                                        <th>Maximo</th>
+                                                        <th>Estado</th>
+                                                        <th>Actualizar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <s:iterator value="lstAutonomias">
+                                                        <tr>                                                            
+                                                            <s:form action="actualizaAutonomia" role="form">
+                                                                <td data-th="Código"><s:property value="codigo"/></td>
+                                                                <td data-th="Perfil"><s:select name="perfil.codigo" tabindex="1" list="lstPerfiles" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/></td>
+                                                                <td data-th="Minimo"><s:textfield name="minimo" cssClass="form-control" /></td>
+                                                                <td data-th="Maximo"><s:textfield name="maximo" cssClass="form-control" /></td>
+                                                                <td data-th="Resultado"><s:select name="estado" tabindex="1" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/></td>
+                                                                <td data-th="Actualizar">
+                                                                    <s:hidden name="codigo" value="%{codigo}"></s:hidden>
+                                                                    <s:hidden name="autonomia.producto.codigo" value="%{autonomia.producto.codigo}"></s:hidden>
+                                                                    <s:hidden name="autonomia.canal.codigo" value="%{autonomia.canal.codigo}"></s:hidden>
+                                                                    <s:submit key="Actualizar" cssClass="btn btn-info btn-sm"/>
+                                                                </td>                                                            
+                                                                <!-- /.content -->
+                                                            </s:form>
+                                                        </tr>                                                     
+                                                    </s:iterator>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

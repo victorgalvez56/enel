@@ -175,101 +175,105 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>CRÉDITOS:</label>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Nro. cuenta</th>
-                                                    <th>Producto</th>
-                                                    <th>Moneda</th>
-                                                    <th>Desembolso</th>
-                                                    <th>Pagos</th>
-                                                    <th>Saldo</th>
-                                                    <th>Monto cuota</th>
-                                                    <th>Monto vencido</th>
-                                                    <th>Cuotas</th>
-                                                    <th>Estado</th>
-                                                    <th>Canal</th>
-                                                    <th>Venta</th>
-                                                    <th>Ver</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <s:iterator value="cliente.lstCuentas" status="rowStatus">
-                                                    <tr style="text-transform: uppercase;">
-                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                        <td><s:property value="cuenta" /></td>
-                                                        <td><s:property value="producto" /></td>
-                                                        <td><s:property value="moneda" /></td>
-                                                        <td><s:property value="capDes" /></td>
-                                                        <td><s:property value="capPag" /></td>
-                                                        <td><s:property value="saldo" /></td>
-                                                        <td><s:property value="cuota" /></td>
-                                                        <td><s:property value="capVen" /></td>
-                                                        <td><s:property value="cuotas" /></td>
-                                                        <td><s:property value="estado" /></td>
-                                                        <td><s:property value="canal" /></td>
-                                                        <td><s:property value="venta" /></td>
-                                                        <td>
-                                                            <s:url id="verURL" action="verCredito">
-                                                                <s:param name="codCta" value="%{cuenta}"></s:param>
-                                                            </s:url>
-                                                            <s:a href="%{verURL}">Ver</s:a>
-                                                            </td>
-                                                        </tr>
-                                                </s:iterator>
-                                            </tbody>
-                                        </table>                
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Nro. cuenta</th>
+                                                        <th>Producto</th>
+                                                        <th>Moneda</th>
+                                                        <th>Desembolso</th>
+                                                        <th>Pagos</th>
+                                                        <th>Saldo</th>
+                                                        <th>Monto cuota</th>
+                                                        <th>Monto vencido</th>
+                                                        <th>Cuotas</th>
+                                                        <th>Estado</th>
+                                                        <th>Canal</th>
+                                                        <th>Venta</th>
+                                                        <th>Ver</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <s:iterator value="cliente.lstCuentas" status="rowStatus">
+                                                        <tr style="text-transform: uppercase;">
+                                                            <th><s:property value="%{#rowStatus.count}" /></th>
+                                                            <td><s:property value="cuenta" /></td>
+                                                            <td><s:property value="producto" /></td>
+                                                            <td><s:property value="moneda" /></td>
+                                                            <td><s:property value="capDes" /></td>
+                                                            <td><s:property value="capPag" /></td>
+                                                            <td><s:property value="saldo" /></td>
+                                                            <td><s:property value="cuota" /></td>
+                                                            <td><s:property value="capVen" /></td>
+                                                            <td><s:property value="cuotas" /></td>
+                                                            <td><s:property value="estado" /></td>
+                                                            <td><s:property value="canal" /></td>
+                                                            <td><s:property value="venta" /></td>
+                                                            <td>
+                                                                <s:url id="verURL" action="verCredito">
+                                                                    <s:param name="codCta" value="%{cuenta}"></s:param>
+                                                                </s:url>
+                                                                <s:a href="%{verURL}">Ver</s:a>
+                                                                </td>
+                                                            </tr>
+                                                    </s:iterator>
+                                                </tbody>
+                                            </table>   
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>CRÉDITOS RELACIONADOS:</label>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Nro. cuenta</th>
-                                                    <th>Producto</th>
-                                                    <th>Moneda</th>
-                                                    <th>Desembolso</th>
-                                                    <th>Pagos</th>
-                                                    <th>Saldo</th>
-                                                    <th>Monto cuota</th>
-                                                    <th>Monto vencido</th>
-                                                    <th>Cuotas</th>
-                                                    <th>Estado</th>
-                                                    <th>Canal</th>
-                                                    <th>Venta</th>
-                                                    <th>Ver</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <s:iterator value="cliente.lstCuentasRelacionadas" status="rowStatus">
-                                                    <tr style="text-transform: uppercase;">
-                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                        <td><s:property value="cuenta" /></td>
-                                                        <td><s:property value="producto" /></td>
-                                                        <td><s:property value="moneda" /></td>
-                                                        <td><s:property value="capDes" /></td>
-                                                        <td><s:property value="capPag" /></td>
-                                                        <td><s:property value="saldo" /></td>
-                                                        <td><s:property value="cuota" /></td>
-                                                        <td><s:property value="capVen" /></td>
-                                                        <td><s:property value="cuotas" /></td>
-                                                        <td><s:property value="estado" /></td>
-                                                        <td><s:property value="canal" /></td>
-                                                        <td><s:property value="venta" /></td>
-                                                        <td>
-                                                            <s:url id="verURL" action="verCredito">
-                                                                <s:param name="codCta" value="%{cuenta}"></s:param>
-                                                            </s:url>
-                                                            <s:a href="%{verURL}">Ver</s:a>
-                                                            </td>
-                                                        </tr>
-                                                </s:iterator>
-                                            </tbody>
-                                        </table>                
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Nro. cuenta</th>
+                                                        <th>Producto</th>
+                                                        <th>Moneda</th>
+                                                        <th>Desembolso</th>
+                                                        <th>Pagos</th>
+                                                        <th>Saldo</th>
+                                                        <th>Monto cuota</th>
+                                                        <th>Monto vencido</th>
+                                                        <th>Cuotas</th>
+                                                        <th>Estado</th>
+                                                        <th>Canal</th>
+                                                        <th>Venta</th>
+                                                        <th>Ver</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <s:iterator value="cliente.lstCuentasRelacionadas" status="rowStatus">
+                                                        <tr style="text-transform: uppercase;">
+                                                            <th><s:property value="%{#rowStatus.count}" /></th>
+                                                            <td><s:property value="cuenta" /></td>
+                                                            <td><s:property value="producto" /></td>
+                                                            <td><s:property value="moneda" /></td>
+                                                            <td><s:property value="capDes" /></td>
+                                                            <td><s:property value="capPag" /></td>
+                                                            <td><s:property value="saldo" /></td>
+                                                            <td><s:property value="cuota" /></td>
+                                                            <td><s:property value="capVen" /></td>
+                                                            <td><s:property value="cuotas" /></td>
+                                                            <td><s:property value="estado" /></td>
+                                                            <td><s:property value="canal" /></td>
+                                                            <td><s:property value="venta" /></td>
+                                                            <td>
+                                                                <s:url id="verURL" action="verCredito">
+                                                                    <s:param name="codCta" value="%{cuenta}"></s:param>
+                                                                </s:url>
+                                                                <s:a href="%{verURL}">Ver</s:a>
+                                                                </td>
+                                                            </tr>
+                                                    </s:iterator>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
 
