@@ -35,9 +35,9 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="frmCAJPago" role="form">
+                <s:form action="frmCRECancelacion" role="form">
                     <section class="content-header">
-                        <h1>Pago</h1>
+                        <h1>Cancelación</h1>
                     </section>
                     <!-- Main content -->
                     <section class="content">
@@ -146,100 +146,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="box box-primary box-solid">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">Deuda Pendiente</h3>
-                                            </div>
-                                            <div class="box-body">
-                                                <div class="box-body">
-                                                    <div class="col-md-6">
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Capital:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-10">
-                                                            <div class="form-group">
-                                                                <s:textfield cssClass="form-control" tabindex="12" id="tfCapitalPendiente" name="credito.capCuo" readonly="true"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Interés:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-10">
-                                                            <div class="form-group">
-                                                                <s:textfield tabindex="13" cssClass="form-control" name="credito.intCuo" id="tfInteresPendiente" readonly="true"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Mora:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-10">
-                                                            <div class="form-group">
-                                                                <s:textfield tabindex="14" id="tfMoraPendiente" name="credito.morCuo" cssClass="form-control" readonly="true"/>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-2">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Gastos:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-10">
-                                                            <div class="form-group">
-                                                                <s:textfield tabindex="15" name="credito.gasCuo" id="tfGastoPendiente" cssClass="form-control" readonly="true"/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label">I.T.F.:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="form-group">
-                                                                <s:textfield tabindex="16" name="credito.itfCuo" id="tfITF" cssClass="form-control" readonly="true"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Deuda Neta:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="form-group">
-                                                                <s:textfield tabindex="17" cssClass="form-control" id="tfPendienteNeto" name="credito.cuoTot" readonly="true"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Monto de Pago:</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="form-group">
-                                                                <s:textfield tabindex="18" cssClass="form-control" name="credito.monPag" />
-                                                                <s:hidden name="credito.codigo"></s:hidden>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div style="float: right">
+                                <s:hidden name="credito.codigo"></s:hidden>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div style="float: right">
                                             <s:submit name="aplicar" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
-                                            <s:submit value="Grabar" name="grabar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit value="Autorizar" name="grabar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit value="Cancelar" name="cancelar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre" >Buscar</button>
                                         </div>

@@ -26,6 +26,10 @@
         <put-attribute name="title"  value="Bienvenido - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/general/bienvenido.jsp"/>
     </definition>
+    <definition name="perfil" extends="baseLayout">
+        <put-attribute name="title"  value="Perfil - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/general/perfil.jsp"/>
+    </definition>
     
     <definition name="frmSOLMantenedor" extends="baseLayout">
         <put-attribute name="title"  value="Mantendor de solicitudes - FINANSOFT v3.0 | SOFTIA.COM"/>
@@ -58,6 +62,34 @@
     <definition name="frmCREMovimientos" extends="baseLayout">
         <put-attribute name="title"  value="Consulta de movimientos - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/creditos/frmCREMovimientos.jsp"/>
+    </definition>
+    <definition name="frmCREAmortizacion" extends="baseLayout">
+        <put-attribute name="title"  value="Amortización - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREAmortizacion.jsp"/>
+    </definition>
+    <definition name="frmCREAmortizar" extends="baseLayout">
+        <put-attribute name="title"  value="Amortización - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREAmortizar.jsp"/>
+    </definition>
+    <definition name="frmCRECancelacion" extends="baseLayout">
+        <put-attribute name="title"  value="Cancelación - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCRECancelacion.jsp"/>
+    </definition>
+    <definition name="frmCREReestructuracion" extends="baseLayout">
+        <put-attribute name="title"  value="Reestructuración - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREReestructuracion.jsp"/>
+    </definition>
+    <definition name="frmCREReestructurar" extends="baseLayout">
+        <put-attribute name="title"  value="Reestructuración - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCREReestructurar.jsp"/>
+    </definition>
+    <definition name="frmCRERefinanciacion" extends="baseLayout">
+        <put-attribute name="title"  value="Refinanciación - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCRERefinanciacion.jsp"/>
+    </definition>
+    <definition name="frmCRERefinanciar" extends="baseLayout">
+        <put-attribute name="title"  value="Refinanciación - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/creditos/frmCRERefinanciar.jsp"/>
     </definition>
     <definition name="frmREPCREWorkflow" extends="baseLayout">
         <put-attribute name="title"  value="WorkFlow de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>

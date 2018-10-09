@@ -1,8 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.softia.web.models;
 
 /**
  *
- * @author Roberto
+ * @author carlosgaldos
  */
 public class Verificacion {
     private String codigo;
@@ -10,17 +15,13 @@ public class Verificacion {
     private int titular;
     private int familiar;
     private int inquilino;
-    private int taxistas;
-    private int milOficios;
-    private int emprendedores;
-    private int amasCasa;
-    private int empleadasHogar;
-    private int jubiPen;
-    private int remesas;
-    private int x1;
-    private int x2;
-    private int x3;
-    private int x4;
+    private int taxista;
+    private int milOficio;
+    private int emprendedor;
+    private int ama;
+    private int empleada;
+    private int jubilado;
+    private int remesa;
     private double lineaTitular;
     private double lineaFamiliar;
     private double lineaInquilino;
@@ -64,244 +65,354 @@ public class Verificacion {
     private double cuotaX3;
     private double cuotaX4;
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
+    /**
+     * @return the perfil
+     */
     public String getPerfil() {
         return perfil;
     }
 
+    /**
+     * @param perfil the perfil to set
+     */
     public void setPerfil(String perfil) {
         this.perfil = perfil;
     }
 
+    /**
+     * @return the titular
+     */
     public int getTitular() {
         return titular;
     }
 
+    /**
+     * @param titular the titular to set
+     */
     public void setTitular(int titular) {
         this.titular = titular;
     }
 
+    /**
+     * @return the familiar
+     */
     public int getFamiliar() {
         return familiar;
     }
 
+    /**
+     * @param familiar the familiar to set
+     */
     public void setFamiliar(int familiar) {
         this.familiar = familiar;
     }
-    
+
+    /**
+     * @return the inquilino
+     */
     public int getInquilino() {
         return inquilino;
     }
 
+    /**
+     * @param inquilino the inquilino to set
+     */
     public void setInquilino(int inquilino) {
         this.inquilino = inquilino;
     }
-    
-    public int getTaxistas() {
-        return taxistas;
+
+    /**
+     * @return the taxista
+     */
+    public int getTaxista() {
+        return taxista;
     }
 
-    public void setTaxistas(int taxistas) {
-        this.taxistas = taxistas;
+    /**
+     * @param taxista the taxista to set
+     */
+    public void setTaxista(int taxista) {
+        this.taxista = taxista;
     }
 
-    public int getMilOficios() {
-        return milOficios;
+    /**
+     * @return the milOficio
+     */
+    public int getMilOficio() {
+        return milOficio;
     }
 
-    public void setMilOficios(int milOficios) {
-        this.milOficios = milOficios;
+    /**
+     * @param milOficio the milOficio to set
+     */
+    public void setMilOficio(int milOficio) {
+        this.milOficio = milOficio;
     }
 
-    public int getEmprendedores() {
-        return emprendedores;
+    /**
+     * @return the emprendedor
+     */
+    public int getEmprendedor() {
+        return emprendedor;
     }
 
-    public void setEmprendedores(int emprendedores) {
-        this.emprendedores = emprendedores;
+    /**
+     * @param emprendedor the emprendedor to set
+     */
+    public void setEmprendedor(int emprendedor) {
+        this.emprendedor = emprendedor;
     }
 
-    public int getAmasCasa() {
-        return amasCasa;
+    /**
+     * @return the ama
+     */
+    public int getAma() {
+        return ama;
     }
 
-    public void setAmasCasa(int amasCasa) {
-        this.amasCasa = amasCasa;
+    /**
+     * @param ama the ama to set
+     */
+    public void setAma(int ama) {
+        this.ama = ama;
     }
 
-    public int getEmpleadasHogar() {
-        return empleadasHogar;
+    /**
+     * @return the empleada
+     */
+    public int getEmpleada() {
+        return empleada;
     }
 
-    public void setEmpleadasHogar(int empleadasHogar) {
-        this.empleadasHogar = empleadasHogar;
+    /**
+     * @param empleada the empleada to set
+     */
+    public void setEmpleada(int empleada) {
+        this.empleada = empleada;
     }
 
-    public int getJubiPen() {
-        return jubiPen;
+    /**
+     * @return the jubilado
+     */
+    public int getJubilado() {
+        return jubilado;
     }
 
-    public void setJubiPen(int jubiPen) {
-        this.jubiPen = jubiPen;
+    /**
+     * @param jubilado the jubilado to set
+     */
+    public void setJubilado(int jubilado) {
+        this.jubilado = jubilado;
     }
 
-    public int getRemesas() {
-        return remesas;
+    /**
+     * @return the remesa
+     */
+    public int getRemesa() {
+        return remesa;
     }
 
-    public void setRemesas(int remesas) {
-        this.remesas = remesas;
+    /**
+     * @param remesa the remesa to set
+     */
+    public void setRemesa(int remesa) {
+        this.remesa = remesa;
     }
 
-    public int getX1() {
-        return x1;
-    }
-
-    public void setX1(int x1) {
-        this.x1 = x1;
-    }
-
-    public int getX2() {
-        return x2;
-    }
-
-    public void setX2(int x2) {
-        this.x2 = x2;
-    }
-
-    public int getX3() {
-        return x3;
-    }
-
-    public void setX3(int x3) {
-        this.x3 = x3;
-    }
-
-    public int getX4() {
-        return x4;
-    }
-
-    public void setX4(int x4) {
-        this.x4 = x4;
-    }
-    
+    /**
+     * @return the lineaTitular
+     */
     public double getLineaTitular() {
         return lineaTitular;
     }
 
+    /**
+     * @param lineaTitular the lineaTitular to set
+     */
     public void setLineaTitular(double lineaTitular) {
         this.lineaTitular = lineaTitular;
     }
 
+    /**
+     * @return the lineaFamiliar
+     */
     public double getLineaFamiliar() {
         return lineaFamiliar;
     }
 
+    /**
+     * @param lineaFamiliar the lineFamiliar to set
+     */
     public void setLineaFamiliar(double lineaFamiliar) {
         this.lineaFamiliar = lineaFamiliar;
     }
 
+    /**
+     * @return the lineaInquilino
+     */
     public double getLineaInquilino() {
         return lineaInquilino;
     }
 
+    /**
+     * @param lineaInquilino the lineaInquilino to set
+     */
     public void setLineaInquilino(double lineaInquilino) {
         this.lineaInquilino = lineaInquilino;
     }
 
-    public double getLineaTaxistas() {
-        return lineaTaxistas;
+    /**
+     * @return the lineaTaxista
+     */
+    public double getLineaTaxista() {
+        return lineaTaxista;
     }
 
-    public void setLineaTaxistas(double lineaTaxistas) {
-        this.lineaTaxistas = lineaTaxistas;
+    /**
+     * @param lineaTaxista the lineaTaxista to set
+     */
+    public void setLineaTaxista(double lineaTaxista) {
+        this.lineaTaxista = lineaTaxista;
     }
 
-    public double getLineaMilOficios() {
-        return lineaMilOficios;
+    /**
+     * @return the lineaMilOficio
+     */
+    public double getLineaMilOficio() {
+        return lineaMilOficio;
     }
 
-    public void setLineaMilOficios(double lineaMilOficios) {
-        this.lineaMilOficios = lineaMilOficios;
+    /**
+     * @param lineaMilOficio the lineaMilOficio to set
+     */
+    public void setLineaMilOficio(double lineaMilOficio) {
+        this.lineaMilOficio = lineaMilOficio;
     }
 
-    public double getLineaEmprendedores() {
-        return lineaEmprendedores;
+    /**
+     * @return the lineaEmprendedor
+     */
+    public double getLineaEmprendedor() {
+        return lineaEmprendedor;
     }
 
-    public void setLineaEmprendedores(double lineaEmprendedores) {
-        this.lineaEmprendedores = lineaEmprendedores;
+    /**
+     * @param lineaEmprendedor the lineaEmprendedor to set
+     */
+    public void setLineaEmprendedor(double lineaEmprendedor) {
+        this.lineaEmprendedor = lineaEmprendedor;
     }
 
-    public double getLineaAmasCasa() {
-        return lineaAmasCasa;
+    /**
+     * @return the lineaAma
+     */
+    public double getLineaAma() {
+        return lineaAma;
     }
 
-    public void setLineaAmasCasa(double lineaAmasCasa) {
-        this.lineaAmasCasa = lineaAmasCasa;
+    /**
+     * @param lineaAma the lineaAma to set
+     */
+    public void setLineaAma(double lineaAma) {
+        this.lineaAma = lineaAma;
     }
 
-    public double getLineaEmpleadasHogar() {
-        return lineaEmpleadasHogar;
+    /**
+     * @return the lineaEmpleada
+     */
+    public double getLineaEmpleada() {
+        return lineaEmpleada;
     }
 
-    public void setLineaEmpleadasHogar(double lineaEmpleadasHogar) {
-        this.lineaEmpleadasHogar = lineaEmpleadasHogar;
+    /**
+     * @param lineaEmpleada the lineaEmpleada to set
+     */
+    public void setLineaEmpleada(double lineaEmpleada) {
+        this.lineaEmpleada = lineaEmpleada;
     }
 
-    public double getLineaJubiPen() {
-        return lineaJubiPen;
+    /**
+     * @return the lineaJubilado
+     */
+    public double getLineaJubilado() {
+        return lineaJubilado;
     }
 
-    public void setLineaJubiPen(double lineaJubiPen) {
-        this.lineaJubiPen = lineaJubiPen;
+    /**
+     * @param lineaJubilado the lineaJubilado to set
+     */
+    public void setLineaJubilado(double lineaJubilado) {
+        this.lineaJubilado = lineaJubilado;
     }
 
-    public double getLineaRemesas() {
-        return lineaRemesas;
+    /**
+     * @return the lineaRemesa
+     */
+    public double getLineaRemesa() {
+        return lineaRemesa;
     }
 
-    public void setLineaRemesas(double lineaRemesas) {
-        this.lineaRemesas = lineaRemesas;
+    /**
+     * @param lineaRemesa the lineaRemesa to set
+     */
+    public void setLineaRemesa(double lineaRemesa) {
+        this.lineaRemesa = lineaRemesa;
     }
 
-    public double getLineaX1() {
-        return lineaX1;
+    /**
+     * @return the cuotasTitular
+     */
+    public int getCuotasTitular() {
+        return cuotasTitular;
     }
 
-    public void setLineaX1(double lineaX1) {
-        this.lineaX1 = lineaX1;
+    /**
+     * @param cuotasTitular the cuotasTitular to set
+     */
+    public void setCuotasTitular(int cuotasTitular) {
+        this.cuotasTitular = cuotasTitular;
     }
 
-    public double getLineaX2() {
-        return lineaX2;
+    /**
+     * @return the cuotasFamiliar
+     */
+    public int getCuotasFamiliar() {
+        return cuotasFamiliar;
     }
 
-    public void setLineaX2(double lineaX2) {
-        this.lineaX2 = lineaX2;
+    /**
+     * @param cuotasFamiliar the cuotasFamiliar to set
+     */
+    public void setCuotasFamiliar(int cuotasFamiliar) {
+        this.cuotasFamiliar = cuotasFamiliar;
     }
 
-    public double getLineaX3() {
-        return lineaX3;
+    /**
+     * @return the cuotasInquilino
+     */
+    public int getCuotasInquilino() {
+        return cuotasInquilino;
     }
 
-    public void setLineaX3(double lineaX3) {
-        this.lineaX3 = lineaX3;
+    /**
+     * @param cuotasInquilino the cuotasInquilino to set
+     */
+    public void setCuotasInquilino(int cuotasInquilino) {
+        this.cuotasInquilino = cuotasInquilino;
     }
 
-    public double getLineaX4() {
-        return lineaX4;
+    /**
+     * @return the cuotasTaxista
+     */
+    public int getCuotasTaxista() {
+        return cuotasTaxista;
     }
 
-    public void setLineaX4(double lineaX4) {
-        this.lineaX4 = lineaX4;
+    /**
+     * @param cuotasTaxista the cuotasTaxista to set
+     */
+    public void setCuotasTaxista(int cuotasTaxista) {
+        this.cuotasTaxista = cuotasTaxista;
     }
     
     public int getCuotasTitular() {

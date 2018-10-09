@@ -17,6 +17,7 @@
         <action name="*" method="{1}" class="com.softia.web.actions.MenuAction">
             <result name="login" type="tiles">login</result>
             <result name="bienvenido" type="tiles">bienvenido</result>
+            <result name="perfil" type="tiles">perfil</result>
             
             <result name="frmSOLMantenedor" type="tiles">frmSOLMantenedor</result>
             <result name="frmCREMantenedor" type="tiles">frmCREMantenedor</result>
@@ -53,11 +54,20 @@
             <result name="frmCREMntCondiciones" type="tiles">frmCREMntCondiciones</result>
             <result name="frmCREMntProductos" type="tiles">frmCREMntProductos</result>
             <result name="frmCRECargarCreditos" type="tiles">frmCRECargarCreditos</result>
-            <result name="frmCREMntRangoScore_RDC" type="tiles">frmCREMntRangoScore_RDC</result>
-            <result name="frmCREMntVerificacion_RDC" type="tiles">frmCREMntVerificacion_RDC</result>
-            <result name="frmCREMntLineaCredito_RDC" type="tiles">frmCREMntLineaCredito_RDC</result>
-            <result name="frmCREMntPlazos_RDC" type="tiles">frmCREMntPlazos_RDC</result>
-            <result name="frmCREValorCuotaCredito_RDC" type="tiles">frmCREValorCuotaCredito_RDC</result>
+            <result name="frmCREAmortizacion" type="tiles">frmCREAmortizacion</result>
+            <result name="frmCREAmortizar" type="tiles">frmCREAmortizar</result>
+            <result name="frmCRECancelacion" type="tiles">frmCRECancelacion</result>
+            <result name="frmCREReestructuracion" type="tiles">frmCREReestructuracion</result>
+            <result name="frmCREReestructurar" type="tiles">frmCREReestructurar</result>
+            <result name="frmCRERefinanciacion" type="tiles">frmCRERefinanciacion</result>
+            <result name="frmCRERefinanciar" type="tiles">frmCRERefinanciar</result>
+            
+
+            <result name="frmCREMntRangoScore" type="tiles">frmCREMntRangoScore</result>
+            <result name="frmCREMntVerificacion" type="tiles">frmCREMntVerificacion</result>
+            <result name="frmCREMntLineaCredito" type="tiles">frmCREMntLineaCredito</result>
+            <result name="frmCREMntPlazos" type="tiles">frmCREMntPlazos</result>
+            <result name="frmCREValorCuotaCredito" type="tiles">frmCREValorCuotaCredito</result>
             
             <result name="frmCOBParametrizar" type="tiles">frmCOBParametrizar</result>
             <result name="frmCOBAsignar" type="tiles">frmCOBAsignar</result>
