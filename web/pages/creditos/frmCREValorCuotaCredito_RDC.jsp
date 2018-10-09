@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <s:form action="frmCREValorCuotaCredito" role="form">
+                <%--<s:form action="frmCREValorCuotaCredito" role="form">--%>
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>Valor Cuota del Crédito</h1>
@@ -52,36 +52,66 @@
                                                 <div class="active tab-pane" id="bancarizados">
                                                     <div class="box-body">
                                                         <div class="table-responsive">
-                                                            <table class="table">
+                                                            <table class="table table-condensed">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th colspan="11"></th>
+                                                                        <th colspan="16"><center>Segmento de Clientes</center></th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th colspan="3" class="active"><center>Regulares</center></th>
+                                                                        <th colspan="3"><center>Comerciales</center></th>
+                                                                        <th colspan="4" class="active"><center>Otros</center></th>
+                                                                        <th colspan="4"><center>Comodines</center></th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Perfil</th>
+                                                                        <th class="active">Titular</th>
+                                                                        <th class="active">Familiar</th>
+                                                                        <th class="active">Inquilino</th>
+                                                                        <th>Taxistas</th>
+                                                                        <th>Mil oficios</th>
+                                                                        <th>Emprendedores</th>
+                                                                        <th class="active">Amas de casa</th>
+                                                                        <th class="active">Empleadas del hogar</th>
+                                                                        <th class="active">Jubilado, pensionista</th>
+                                                                        <th class="active">Remesas</th>
+                                                                        <th>X1</th>
+                                                                        <th>X2</th>
+                                                                        <th>X3</th>
+                                                                        <th>X4</th>
+                                                                        <th>Guardar</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <s:iterator value="" status="rowStatus">
-                                                                        <tr style="text-transform: uppercase;">
-                                                                            <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                            <td><s:property value="" /></td>
-                                                                            <td><s:property value="" /></td>
-                                                                            <td><s:property value="" /></td>
-                                                                            <td><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
+                                                                    <s:iterator value="lstValorCuotaCB" status="rowStatus">
+                                                                        <s:if test="true">
+                                                                            <tr style="text-transform: uppercase;">
+                                                                        </s:if>
+                                                                            <s:form action="frmCREValorCuotaCredito_RDC" role="form">
+                                                                                <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
+                                                                                <td width="120" nowrap data-th="Titular"><s:textfield name="cuotaTitular" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Familiar"><s:textfield name="cuotaFamiliar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Inquilino"><s:textfield name="cuotaInquilino" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxistas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficios" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedores" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAmasCasa" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleadasHogar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubiPen" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X1"><s:textfield name="cuotaX1" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X2"><s:textfield name="cuotaX2" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X3"><s:textfield name="cuotaX3" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X4"><s:textfield name="cuotaX4" cssClass="form-control" /></td>
+                                                                                <td data-th="Guardar">
+                                                                                    <%--<s:hidden name="codigo" value="%{codigo}" />--%>
+                                                                                    <s:hidden name="codigo" value="%{#rowStatus.count}" />
+                                                                                    <s:submit name="guardarCB" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                </td>
+                                                                            </s:form>
                                                                         </tr>
                                                                     </s:iterator>
-                                                                    <tr>
-                                                                        <th>Valor Cuota del Crédito</th>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td><button type="button" class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modalVerificacion" id="bBuscarCre">Ver</button></td>
-                                                                    </tr>
                                                                 </tbody>
                                                             </table><br>
                                                         </div>
@@ -90,36 +120,66 @@
                                                 <div class="tab-pane" id="noBancarizados">
                                                     <div class="box-body">
                                                         <div class="table-responsive">
-                                                            <table class="table">
+                                                            <table class="table table-condensed">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th colspan="11"></th>
+                                                                        <th colspan="16"><center>Segmento de Clientes</center></th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th colspan="3" class="active"><center>Regulares</center></th>
+                                                                        <th colspan="3"><center>Comerciales</center></th>
+                                                                        <th colspan="4" class="active"><center>Otros</center></th>
+                                                                        <th colspan="4"><center>Comodines</center></th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Perfil</th>
+                                                                        <th class="active">Titular</th>
+                                                                        <th class="active">Familiar</th>
+                                                                        <th class="active">Inquilino</th>
+                                                                        <th>Taxistas</th>
+                                                                        <th>Mil oficios</th>
+                                                                        <th>Emprendedores</th>
+                                                                        <th class="active">Amas de casa</th>
+                                                                        <th class="active">Empleadas del hogar</th>
+                                                                        <th class="active">Jubilado, pensionista</th>
+                                                                        <th class="active">Remesas</th>
+                                                                        <th>X1</th>
+                                                                        <th>X2</th>
+                                                                        <th>X3</th>
+                                                                        <th>X4</th>
+                                                                        <th>Guardar</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <s:iterator value="" status="rowStatus">
-                                                                        <tr style="text-transform: uppercase;">
-                                                                            <th><s:property value="%{#rowStatus.count}" /></th>
-                                                                            <td><s:property value="" /></td>
-                                                                            <td><s:property value="" /></td>
-                                                                            <td><s:property value="" /></td>
-                                                                            <td><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
+                                                                    <s:iterator value="lstValorCuotaCNB" status="rowStatus">
+                                                                        <s:if test="true">
+                                                                            <tr style="text-transform: uppercase;">
+                                                                        </s:if>
+                                                                            <s:form action="frmCREValorCuotaCredito_RDC" role="form">
+                                                                                <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
+                                                                                <td width="120" nowrap data-th="Titular"><s:textfield name="cuotaTitular" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Familiar"><s:textfield name="cuotaFamiliar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Inquilino"><s:textfield name="cuotaInquilino" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxistas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficios" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedores" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAmasCasa" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleadasHogar" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubiPen" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X1"><s:textfield name="cuotaX1" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X2"><s:textfield name="cuotaX2" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X3"><s:textfield name="cuotaX3" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="X4"><s:textfield name="cuotaX4" cssClass="form-control" /></td>
+                                                                                <td data-th="Guardar">
+                                                                                    <%--<s:hidden name="codigo" value="%{codigo}" />--%>
+                                                                                    <s:hidden name="codigo" value="%{#rowStatus.count}" />
+                                                                                    <s:submit name="guardarCNB" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                </td>
+                                                                            </s:form>
                                                                         </tr>
                                                                     </s:iterator>
-                                                                    <tr>
-                                                                        <th>Valor Cuota del Crédito</th>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td>1000000.0</td>
-                                                                        <td><button type="button" class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modalVerificacion" id="bBuscarCre">Ver</button></td>
-                                                                    </tr>
                                                                 </tbody>
                                                             </table><br>
                                                         </div>
@@ -355,7 +415,7 @@
                             </div>
                         </div>
                     </section>
-                </s:form>
+                <%--</s:form>--%>
             </div>
         </div>
     </body>
