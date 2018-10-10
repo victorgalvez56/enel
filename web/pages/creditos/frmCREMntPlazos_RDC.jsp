@@ -93,13 +93,13 @@
                                                                                 <td width="120" nowrap><s:textfield name="cuotasTitular" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasFamiliar" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxista" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficio" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedor" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasAma" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleada" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasJubilado" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesa" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasX1" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasX2" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasX3" cssClass="form-control" /></td>
@@ -161,13 +161,13 @@
                                                                                 <td width="120" nowrap><s:textfield name="cuotasTitular" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasFamiliar" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxista" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficio" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedor" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasAma" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleada" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasJubilado" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesa" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasX1" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasX2" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap><s:textfield name="cuotasX3" cssClass="form-control" /></td>

@@ -93,13 +93,13 @@
                                                                                 <td width="120" nowrap data-th="Titular"><s:textfield name="lineaTitular" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Familiar"><s:textfield name="lineaFamiliar" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Inquilino"><s:textfield name="lineaInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="lineaTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="lineaMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="lineaEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="lineaAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="lineaEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="lineaJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="lineaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="lineaTaxista" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="lineaMilOficio" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="lineaEmprendedor" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="lineaAma" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="lineaEmpleada" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="lineaJubilado" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="lineaRemesa" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X1"><s:textfield name="lineaX1" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X2"><s:textfield name="lineaX2" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X3"><s:textfield name="lineaX3" cssClass="form-control" /></td>
@@ -161,13 +161,13 @@
                                                                                 <td width="120" nowrap data-th="Titular"><s:textfield name="lineaTitular" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Familiar"><s:textfield name="lineaFamiliar" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Inquilino"><s:textfield name="lineaInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="lineaTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="lineaMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="lineaEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="lineaAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="lineaEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="lineaJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="lineaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="lineaTaxista" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="lineaMilOficio" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="lineaEmprendedor" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="lineaAma" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="lineaEmpleada" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="lineaJubilado" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="lineaRemesa" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X1"><s:textfield name="lineaX1" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X2"><s:textfield name="lineaX2" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X3"><s:textfield name="lineaX3" cssClass="form-control" /></td>

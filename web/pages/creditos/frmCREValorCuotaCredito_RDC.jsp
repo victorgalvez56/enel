@@ -93,13 +93,13 @@
                                                                                 <td width="120" nowrap data-th="Titular"><s:textfield name="cuotaTitular" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Familiar"><s:textfield name="cuotaFamiliar" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Inquilino"><s:textfield name="cuotaInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxista" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficio" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedor" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAma" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleada" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubilado" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesa" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X1"><s:textfield name="cuotaX1" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X2"><s:textfield name="cuotaX2" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X3"><s:textfield name="cuotaX3" cssClass="form-control" /></td>
@@ -161,13 +161,13 @@
                                                                                 <td width="120" nowrap data-th="Titular"><s:textfield name="cuotaTitular" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Familiar"><s:textfield name="cuotaFamiliar" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="Inquilino"><s:textfield name="cuotaInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesas" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxista" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficio" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedor" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAma" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleada" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubilado" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesa" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X1"><s:textfield name="cuotaX1" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X2"><s:textfield name="cuotaX2" cssClass="form-control" /></td>
                                                                                 <td width="120" nowrap data-th="X3"><s:textfield name="cuotaX3" cssClass="form-control" /></td>
