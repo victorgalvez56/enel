@@ -25,34 +25,45 @@ public class Verificacion {
     private double lineaTitular;
     private double lineaFamiliar;
     private double lineaInquilino;
-    private double lineaTaxista;
-    private double lineaMilOficio;
-    private double lineaEmprendedor;
-    private double lineaAma;
-    private double lineaEmpleada;
-    private double lineaJubilado;
-    private double lineaRemesa;
+    private double lineaTaxistas;
+    private double lineaMilOficios;
+    private double lineaEmprendedores;
+    private double lineaAmasCasa;
+    private double lineaEmpleadasHogar;
+    private double lineaJubiPen;
+    private double lineaRemesas;
+    private double lineaX1;
+    private double lineaX2;
+    private double lineaX3;
+    private double lineaX4;
     private int cuotasTitular;
     private int cuotasFamiliar;
     private int cuotasInquilino;
-    private int cuotasTaxista;
-    private int cuotasMilOficio;
-    private int cuotasEmprendedor;
-    private int cuotasAma;
-    private int cuotasEmpleada;
-    private int cuotasJubilado;
-    private int cuotasRemesa;
+    private int cuotasTaxistas;
+    private int cuotasMilOficios;
+    private int cuotasEmprendedores;
+    private int cuotasAmasCasa;
+    private int cuotasEmpleadasHogar;
+    private int cuotasJubiPen;
+    private int cuotasRemesas;
+    private int cuotasX1;
+    private int cuotasX2;
+    private int cuotasX3;
+    private int cuotasX4;
     private double cuotaTitular;
     private double cuotaFamiliar;
     private double cuotaInquilino;
-    private double cuotaTaxista;
-    private double cuotaMilOficio;
-    private double cuotaEmprendedor;
-    private double cuotaAma;
-    private double cuotaEmpleada;
-    private double cuotaJubilado;
-    private double cuotaRemesa;
-    
+    private double cuotaTaxistas;
+    private double cuotaMilOficios;
+    private double cuotaEmprendedores;
+    private double cuotaAmasCasa;
+    private double cuotaEmpleadasHogar;
+    private double cuotaJubiPen;
+    private double cuotaRemesas;
+    private double cuotaX1;
+    private double cuotaX2;
+    private double cuotaX3;
+    private double cuotaX4;
 
     /**
      * @return the perfil
@@ -403,243 +414,228 @@ public class Verificacion {
     public void setCuotasTaxista(int cuotasTaxista) {
         this.cuotasTaxista = cuotasTaxista;
     }
-
-    /**
-     * @return the cuotasMilOficio
-     */
-    public int getCuotasMilOficio() {
-        return cuotasMilOficio;
+    
+    public int getCuotasTitular() {
+        return cuotasTitular;
     }
 
-    /**
-     * @param cuotasMilOficio the cuotasMilOficio to set
-     */
-    public void setCuotasMilOficio(int cuotasMilOficio) {
-        this.cuotasMilOficio = cuotasMilOficio;
+    public void setCuotasTitular(int cuotasTitular) {
+        this.cuotasTitular = cuotasTitular;
     }
 
-    /**
-     * @return the cuotasEmprendedor
-     */
-    public int getCuotasEmprendedor() {
-        return cuotasEmprendedor;
+    public int getCuotasFamiliar() {
+        return cuotasFamiliar;
     }
 
-    /**
-     * @param cuotasEmprendedor the cuotasEmprendedor to set
-     */
-    public void setCuotasEmprendedor(int cuotasEmprendedor) {
-        this.cuotasEmprendedor = cuotasEmprendedor;
+    public void setCuotasFamiliar(int cuotasFamiliar) {
+        this.cuotasFamiliar = cuotasFamiliar;
     }
 
-    /**
-     * @return the cuotasAma
-     */
-    public int getCuotasAma() {
-        return cuotasAma;
+    public int getCuotasInquilino() {
+        return cuotasInquilino;
     }
 
-    /**
-     * @param cuotasAma the cuotasAma to set
-     */
-    public void setCuotasAma(int cuotasAma) {
-        this.cuotasAma = cuotasAma;
+    public void setCuotasInquilino(int cuotasInquilino) {
+        this.cuotasInquilino = cuotasInquilino;
     }
 
-    /**
-     * @return the cuotasEmpleada
-     */
-    public int getCuotasEmpleada() {
-        return cuotasEmpleada;
+    public int getCuotasTaxistas() {
+        return cuotasTaxistas;
     }
 
-    /**
-     * @param cuotasEmpleada the cuotasEmpleada to set
-     */
-    public void setCuotasEmpleada(int cuotasEmpleada) {
-        this.cuotasEmpleada = cuotasEmpleada;
+    public void setCuotasTaxistas(int cuotasTaxistas) {
+        this.cuotasTaxistas = cuotasTaxistas;
     }
 
-    /**
-     * @return the cuotasJubilado
-     */
-    public int getCuotasJubilado() {
-        return cuotasJubilado;
+    public int getCuotasMilOficios() {
+        return cuotasMilOficios;
     }
 
-    /**
-     * @param cuotasJubilado the cuotasJubilado to set
-     */
-    public void setCuotasJubilado(int cuotasJubilado) {
-        this.cuotasJubilado = cuotasJubilado;
+    public void setCuotasMilOficios(int cuotasMilOficios) {
+        this.cuotasMilOficios = cuotasMilOficios;
     }
 
-    /**
-     * @return the cuotasRemesa
-     */
-    public int getCuotasRemesa() {
-        return cuotasRemesa;
+    public int getCuotasEmprendedores() {
+        return cuotasEmprendedores;
     }
 
-    /**
-     * @param cuotasRemesa the cuotasRemesa to set
-     */
-    public void setCuotasRemesa(int cuotasRemesa) {
-        this.cuotasRemesa = cuotasRemesa;
+    public void setCuotasEmprendedores(int cuotasEmprendedores) {
+        this.cuotasEmprendedores = cuotasEmprendedores;
     }
 
-    /**
-     * @return the cuotaTitular
-     */
+    public int getCuotasJubiPen() {
+        return cuotasJubiPen;
+    }
+
+    public void setCuotasJubiPen(int cuotasJubiPen) {
+        this.cuotasJubiPen = cuotasJubiPen;
+    }
+
+    public int getCuotasRemesas() {
+        return cuotasRemesas;
+    }
+
+    public void setCuotasRemesas(int cuotasRemesas) {
+        this.cuotasRemesas = cuotasRemesas;
+    }
+
+    public int getCuotasX1() {
+        return cuotasX1;
+    }
+
+    public void setCuotasX1(int cuotasX1) {
+        this.cuotasX1 = cuotasX1;
+    }
+
+    public int getCuotasX2() {
+        return cuotasX2;
+    }
+
+    public void setCuotasX2(int cuotasX2) {
+        this.cuotasX2 = cuotasX2;
+    }
+
+    public int getCuotasX3() {
+        return cuotasX3;
+    }
+
+    public void setCuotasX3(int cuotasX3) {
+        this.cuotasX3 = cuotasX3;
+    }
+
+    public int getCuotasX4() {
+        return cuotasX4;
+    }
+
+    public void setCuotasX4(int cuotasX4) {
+        this.cuotasX4 = cuotasX4;
+    }
+    
+    public int getCuotasAmasCasa() {
+        return cuotasAmasCasa;
+    }
+
+    public void setCuotasAmasCasa(int cuotasAmasCasa) {
+        this.cuotasAmasCasa = cuotasAmasCasa;
+    }
+
+    public int getCuotasEmpleadasHogar() {
+        return cuotasEmpleadasHogar;
+    }
+
+    public void setCuotasEmpleadasHogar(int cuotasEmpleadasHogar) {
+        this.cuotasEmpleadasHogar = cuotasEmpleadasHogar;
+    }
+    
     public double getCuotaTitular() {
         return cuotaTitular;
     }
 
-    /**
-     * @param cuotaTitular the cuotaTitular to set
-     */
     public void setCuotaTitular(double cuotaTitular) {
         this.cuotaTitular = cuotaTitular;
     }
 
-    /**
-     * @return the cuotaFamiliar
-     */
     public double getCuotaFamiliar() {
         return cuotaFamiliar;
     }
 
-    /**
-     * @param cuotaFamiliar the cuotaFamiliar to set
-     */
     public void setCuotaFamiliar(double cuotaFamiliar) {
         this.cuotaFamiliar = cuotaFamiliar;
     }
 
-    /**
-     * @return the cuotaInquilino
-     */
     public double getCuotaInquilino() {
         return cuotaInquilino;
     }
 
-    /**
-     * @param cuotaInquilino the cuotaInquilino to set
-     */
     public void setCuotaInquilino(double cuotaInquilino) {
         this.cuotaInquilino = cuotaInquilino;
     }
 
-    /**
-     * @return the cuotaTaxista
-     */
-    public double getCuotaTaxista() {
-        return cuotaTaxista;
+    public double getCuotaTaxistas() {
+        return cuotaTaxistas;
     }
 
-    /**
-     * @param cuotaTaxista the cuotaTaxista to set
-     */
-    public void setCuotaTaxista(double cuotaTaxista) {
-        this.cuotaTaxista = cuotaTaxista;
+    public void setCuotaTaxistas(double cuotaTaxistas) {
+        this.cuotaTaxistas = cuotaTaxistas;
     }
 
-    /**
-     * @return the cuotaMilOficio
-     */
-    public double getCuotaMilOficio() {
-        return cuotaMilOficio;
+    public double getCuotaMilOficios() {
+        return cuotaMilOficios;
     }
 
-    /**
-     * @param cuotaMilOficio the cuotaMilOficio to set
-     */
-    public void setCuotaMilOficio(double cuotaMilOficio) {
-        this.cuotaMilOficio = cuotaMilOficio;
+    public void setCuotaMilOficios(double cuotaMilOficios) {
+        this.cuotaMilOficios = cuotaMilOficios;
     }
 
-    /**
-     * @return the cuotaEmprendedor
-     */
-    public double getCuotaEmprendedor() {
-        return cuotaEmprendedor;
+    public double getCuotaEmprendedores() {
+        return cuotaEmprendedores;
     }
 
-    /**
-     * @param cuotaEmprendedor the cuotaEmprendedor to set
-     */
-    public void setCuotaEmprendedor(double cuotaEmprendedor) {
-        this.cuotaEmprendedor = cuotaEmprendedor;
+    public void setCuotaEmprendedores(double cuotaEmprendedores) {
+        this.cuotaEmprendedores = cuotaEmprendedores;
     }
 
-    /**
-     * @return the cuotaAma
-     */
-    public double getCuotaAma() {
-        return cuotaAma;
+    public double getCuotaAmasCasa() {
+        return cuotaAmasCasa;
     }
 
-    /**
-     * @param cuotaAma the cuotaAma to set
-     */
-    public void setCuotaAma(double cuotaAma) {
-        this.cuotaAma = cuotaAma;
+    public void setCuotaAmasCasa(double cuotaAmasCasa) {
+        this.cuotaAmasCasa = cuotaAmasCasa;
     }
 
-    /**
-     * @return the cuotaEmpleada
-     */
-    public double getCuotaEmpleada() {
-        return cuotaEmpleada;
+    public double getCuotaEmpleadasHogar() {
+        return cuotaEmpleadasHogar;
     }
 
-    /**
-     * @param cuotaEmpleada the cuotaEmpleada to set
-     */
-    public void setCuotaEmpleada(double cuotaEmpleada) {
-        this.cuotaEmpleada = cuotaEmpleada;
+    public void setCuotaEmpleadasHogar(double cuotaEmpleadasHogar) {
+        this.cuotaEmpleadasHogar = cuotaEmpleadasHogar;
     }
 
-    /**
-     * @return the cuotaJubilado
-     */
-    public double getCuotaJubilado() {
-        return cuotaJubilado;
+    public double getCuotaJubiPen() {
+        return cuotaJubiPen;
     }
 
-    /**
-     * @param cuotaJubilado the cuotaJubilado to set
-     */
-    public void setCuotaJubilado(double cuotaJubilado) {
-        this.cuotaJubilado = cuotaJubilado;
+    public void setCuotaJubiPen(double cuotaJubiPen) {
+        this.cuotaJubiPen = cuotaJubiPen;
     }
 
-    /**
-     * @return the cuotaRemesa
-     */
-    public double getCuotaRemesa() {
-        return cuotaRemesa;
+    public double getCuotaRemesas() {
+        return cuotaRemesas;
     }
 
-    /**
-     * @param cuotaRemesa the cuotaRemesa to set
-     */
-    public void setCuotaRemesa(double cuotaRemesa) {
-        this.cuotaRemesa = cuotaRemesa;
+    public void setCuotaRemesas(double cuotaRemesas) {
+        this.cuotaRemesas = cuotaRemesas;
     }
 
-    /**
-     * @return the codigo
-     */
-    public String getCodigo() {
-        return codigo;
+    public double getCuotaX1() {
+        return cuotaX1;
     }
 
-    /**
-     * @param codigo the codigo to set
-     */
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCuotaX1(double cuotaX1) {
+        this.cuotaX1 = cuotaX1;
     }
 
+    public double getCuotaX2() {
+        return cuotaX2;
+    }
+
+    public void setCuotaX2(double cuotaX2) {
+        this.cuotaX2 = cuotaX2;
+    }
+
+    public double getCuotaX3() {
+        return cuotaX3;
+    }
+
+    public void setCuotaX3(double cuotaX3) {
+        this.cuotaX3 = cuotaX3;
+    }
+
+    public double getCuotaX4() {
+        return cuotaX4;
+    }
+
+    public void setCuotaX4(double cuotaX4) {
+        this.cuotaX4 = cuotaX4;
+    }
 }

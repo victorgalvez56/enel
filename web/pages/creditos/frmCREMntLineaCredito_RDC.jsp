@@ -52,8 +52,11 @@
                                                 <div class="active tab-pane" id="bancarizados">
                                                     <div class="box-body">
                                                         <div class="table-responsive">
-                                                            <table class="table">
+                                                            <table class="table table-condensed">
                                                                 <thead>
+                                                                    <tr>
+                                                                        <th colspan="16"><center>Segmento de Clientes</center></th>
+                                                                    </tr>
                                                                     <tr>
                                                                         <th></th>
                                                                         <th colspan="3" class="active"><center>Regulares</center></th>
@@ -63,16 +66,16 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Perfil</th>
-                                                                        <th>Titular</th>
-                                                                        <th>Familiar</th>
-                                                                        <th>Inquilino</th>
+                                                                        <th class="active">Titular</th>
+                                                                        <th class="active">Familiar</th>
+                                                                        <th class="active">Inquilino</th>
                                                                         <th>Taxistas</th>
                                                                         <th>Mil oficios</th>
                                                                         <th>Emprendedores</th>
-                                                                        <th>Amas de casa</th>
-                                                                        <th>Empleadas del hogar</th>
-                                                                        <th>Jubilado, pensionista</th>
-                                                                        <th>Remesas</th>
+                                                                        <th class="active">Amas de casa</th>
+                                                                        <th class="active">Empleadas del hogar</th>
+                                                                        <th class="active">Jubilado, pensionista</th>
+                                                                        <th class="active">Remesas</th>
                                                                         <th>X1</th>
                                                                         <th>X2</th>
                                                                         <th>X3</th>
@@ -117,8 +120,11 @@
                                                 <div class="tab-pane" id="noBancarizados">
                                                     <div class="box-body">
                                                         <div class="table-responsive">
-                                                            <table class="table">
+                                                            <table class="table table-condensed">
                                                                 <thead>
+                                                                    <tr>
+                                                                        <th colspan="16"><center>Segmento de Clientes</center></th>
+                                                                    </tr>
                                                                     <tr>
                                                                         <th></th>
                                                                         <th colspan="3" class="active"><center>Regulares</center></th>
