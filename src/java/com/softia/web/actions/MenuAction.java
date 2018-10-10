@@ -46,6 +46,8 @@ import com.softia.web.beans.CTab;
 import com.softia.web.models.Tab;
 import com.softia.web.beans.CVerificacion;
 import com.softia.web.models.Verificacion;
+import com.softia.web.beans.CRango;
+import com.softia.web.models.Rango;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -108,6 +110,8 @@ public class MenuAction extends BaseAction {
     private List<Verificacion> lstPlazosCNB;
     private List<Verificacion> lstValorCuotaCB;
     private List<Verificacion> lstValorCuotaCNB;
+    private List<Rango> lstRangosCB;
+    private List<Rango> lstRangosCNB;
     private Verificacion verificacion;
     private Oficina oficina;
     private Perfil perfil;
@@ -149,6 +153,7 @@ public class MenuAction extends BaseAction {
     private String fecha;
     private Autonomia autonomia;
     private List<Autonomia> lstAutonomias;
+    private String nombre;
     private double minimo;
     private double maximo;
     private List<Menu> Menus;
@@ -2083,6 +2088,61 @@ public class MenuAction extends BaseAction {
     }
 
     public String frmCREMntRangoScore_RDC() {
+        setSession(ActionContext.getContext().getSession());
+        CRango rangos = new CRango();
+        setLstRangosCB(rangos.getLstRangosCB());
+        setLstRangosCNB(rangos.getLstRangosCNB());
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("guardarCB") != null) {
+            if (getSession().get("rangosCB") != null) {
+                setLstRangosCB((ArrayList<Rango>) getSession().get("rangosCB"));
+            }
+            if (getSession().get("rangosCNB") != null) {
+                setLstRangosCNB((ArrayList<Rango>) getSession().get("rangosCNB"));
+            }
+
+            codigo = getCodigo() - 1;
+            getLstRangosCB().get(codigo).setNombre(getNombre());
+            getLstRangosCB().get(codigo).setMinimo(getMinimo());
+            getLstRangosCB().get(codigo).setMaximo(getMaximo());
+
+            getSession().put("rangosCB", getLstRangosCB());
+        } else if (request.getParameter("guardarCNB") != null) {
+            if (getSession().get("rangosCNB") != null) {
+                setLstRangosCNB((ArrayList<Rango>) getSession().get("rangosCNB"));
+            }
+            if (getSession().get("rangosCB") != null) {
+                setLstRangosCB((ArrayList<Rango>) getSession().get("rangosCB"));
+            }
+
+            codigo = getCodigo() - 1;
+            getLstRangosCNB().get(codigo).setNombre(getNombre());
+            getLstRangosCNB().get(codigo).setMinimo(getMinimo());
+            getLstRangosCNB().get(codigo).setMaximo(getMaximo());
+
+            getSession().put("rangosCNB", getLstRangosCNB());
+        } else if (request.getParameter("nuevoCB") != null) {
+            if (getSession().get("rangosCNB") != null) {
+                setLstRangosCNB((ArrayList<Rango>) getSession().get("rangosCNB"));
+            }
+            if (getSession().get("rangosCB") != null) {
+                setLstRangosCB((ArrayList<Rango>) getSession().get("rangosCB"));
+            }
+            
+            getLstRangosCB().add(new Rango());
+            getSession().put("rangosCB", getLstRangosCB());
+        } else if (request.getParameter("nuevoCNB") != null) {
+            if (getSession().get("rangosCNB") != null) {
+                setLstRangosCNB((ArrayList<Rango>) getSession().get("rangosCNB"));
+            }
+            if (getSession().get("rangosCB") != null) {
+                setLstRangosCB((ArrayList<Rango>) getSession().get("rangosCB"));
+            }
+            
+            getLstRangosCNB().add(new Rango());
+            getSession().put("rangosCNB", getLstRangosCNB());
+        } 
         setResult("frmCREMntRangoScore_RDC");
         return getResult();
     }
@@ -7158,6 +7218,22 @@ public class MenuAction extends BaseAction {
         this.lstValorCuotaCNB = lstValorCuotaCNB;
     }
     
+    public List<Rango> getLstRangosCB() {
+        return lstRangosCB;
+    }
+    
+    public void setLstRangosCB(List<Rango> lstRangosCB) {
+        this.lstRangosCB = lstRangosCB;
+    }
+    
+    public List<Rango> getLstRangosCNB() {
+        return lstRangosCNB;
+    }
+    
+    public void setLstRangosCNB(List<Rango> lstRangosCNB) {
+        this.lstRangosCNB = lstRangosCNB;
+    }
+    
     public int getFamiliar() {
         return familiar;
     }
@@ -7604,5 +7680,13 @@ public class MenuAction extends BaseAction {
 
     public void setCuotaX4(double cuotaX4) {
         this.cuotaX4 = cuotaX4;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
