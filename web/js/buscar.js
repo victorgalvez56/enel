@@ -72,3 +72,10 @@ function resultadoEva() {
         }
     }
 }
+
+function bancarizadoNo() {
+    if(document.getElementById("estado").value === "CNB" ) {
+        document.getElementById("navCB").removeAttribute("class");
+        document.getElementById("navCNB").setAttribute("class", "active");
+    }
+}

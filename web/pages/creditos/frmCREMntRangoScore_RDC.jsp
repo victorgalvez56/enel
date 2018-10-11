@@ -2,7 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-mini" onload="bancarizadoNo()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -46,10 +46,11 @@
                                         <div class="box box-primary box-solid">
                                             <div class="box-body">
                                                 <div class="col-md-12">
+                                                    <s:hidden name="estado" id="estado" />
                                                     <div class="nav-tabs-custom">
                                                         <ul class="nav nav-tabs">
-                                                            <li class="active"><a href="#bancarizados" data-toggle="tab">Clientes Bancarizados</a></li>
-                                                            <li><a  href="#noBancarizados" data-toggle="tab">Clientes no Bancarizados</a></li>
+                                                            <li class="active" id="navCB"><a href="#bancarizados" data-toggle="tab">Clientes Bancarizados</a></li>
+                                                            <li id="navCNB"><a  href="#noBancarizados" data-toggle="tab">Clientes no Bancarizados</a></li>
                                                         </ul>
                                                         <div class="tab-content">
                                                             <div class="active tab-pane" id="bancarizados">
@@ -63,6 +64,7 @@
                                                                                         <th>Puntaje mínimo</th>
                                                                                         <th>Puntaje máximo</th>
                                                                                         <th>Guardar</th>
+                                                                                        <th>Quitar</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody id="tBodyCB">
@@ -71,13 +73,16 @@
                                                                                             <tr style="text-transform: uppercase;" id="paraClonar">
                                                                                         </s:if>
                                                                                             <s:form action="frmCREMntRangoScore_RDC" role="form">
-                                                                                                <td><s:textfield name="nombre" cssClass="form-control" /></td>
-                                                                                                <td><s:textfield name="minimo" cssClass="form-control" /></td>
-                                                                                                <td><s:textfield name="maximo" cssClass="form-control" /></td>
+                                                                                                <td><s:textfield name="nombre" cssClass="form-control input-sm" /></td>
+                                                                                                <td><s:textfield name="minimo" cssClass="form-control input-sm" /></td>
+                                                                                                <td><s:textfield name="maximo" cssClass="form-control input-sm" /></td>
                                                                                                 <td data-th="Guardar">
                                                                                                     <%--<s:hidden name="codigo" value="%{codigo}" />--%>
                                                                                                     <s:hidden name="codigo" value="%{#rowStatus.count}" />
                                                                                                     <s:submit name="guardarCB" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                                </td>
+                                                                                                <td data-th="Quitar">
+                                                                                                    <s:submit name="quitarCB" value="Quitar" cssClass="btn btn-danger btn-sm btn-flat" />
                                                                                                 </td>
                                                                                             </s:form>
                                                                                         </tr>
@@ -107,6 +112,7 @@
                                                                                         <th>Puntaje mínimo</th>
                                                                                         <th>Puntaje máximo</th>
                                                                                         <th>Guardar</th>
+                                                                                        <th>Quitar</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
@@ -115,13 +121,16 @@
                                                                                             <tr style="text-transform: uppercase;">
                                                                                         </s:if>
                                                                                             <s:form action="frmCREMntRangoScore_RDC" role="form">
-                                                                                                <td><s:textfield name="nombre" cssClass="form-control" /></td>
-                                                                                                <td><s:textfield name="minimo" cssClass="form-control" /></td>
-                                                                                                <td><s:textfield name="maximo" cssClass="form-control" /></td>
+                                                                                                <td><s:textfield name="nombre" cssClass="form-control input-sm" /></td>
+                                                                                                <td><s:textfield name="minimo" cssClass="form-control input-sm" /></td>
+                                                                                                <td><s:textfield name="maximo" cssClass="form-control input-sm" /></td>
                                                                                                 <td data-th="Guardar">
                                                                                                     <%--<s:hidden name="codigo" value="%{codigo}" />--%>
                                                                                                     <s:hidden name="codigo" value="%{#rowStatus.count}" />
                                                                                                     <s:submit name="guardarCNB" value="Guardar" cssClass="btn btn-primary btn-sm btn-flat" />
+                                                                                                </td>
+                                                                                                <td data-th="Quitar">
+                                                                                                    <s:submit name="quitarCNB" value="Quitar" cssClass="btn btn-danger btn-sm btn-flat" />
                                                                                                 </td>
                                                                                             </s:form>
                                                                                         </tr>
