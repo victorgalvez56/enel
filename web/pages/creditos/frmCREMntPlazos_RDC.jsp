@@ -46,8 +46,8 @@
                                         <s:hidden name="estado" id="estado" />
                                         <div class="nav-tabs-custom">
                                             <ul class="nav nav-tabs">
-                                                <li class="active" id="navCB"><a href="#bancarizados" data-toggle="tab">Clientes Bancarizados</a></li>
-                                                <li id="navCNB"><a  href="#noBancarizados" data-toggle="tab">Clientes no Bancarizados</a></li>
+                                                <li class="active"><a href="#bancarizados" data-toggle="tab">Clientes Bancarizados</a></li>
+                                                <li><a  href="#noBancarizados" data-toggle="tab" id="aCNB">Clientes no Bancarizados</a></li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="active tab-pane" id="bancarizados">

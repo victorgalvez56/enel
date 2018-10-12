@@ -46,8 +46,8 @@
                                         <s:hidden name="estado" id="estado" />
                                         <div class="nav-tabs-custom">
                                             <ul class="nav nav-tabs">
-                                                <li class="active" id="navCB"><a href="#bancarizados" data-toggle="tab">Clientes Bancarizados</a></li>
-                                                <li id="navCNB"><a  href="#noBancarizados" data-toggle="tab">Clientes no Bancarizados</a></li>
+                                                <li class="active"><a href="#bancarizados" data-toggle="tab">Clientes Bancarizados</a></li>
+                                                <li><a  href="#noBancarizados" data-toggle="tab" id="aCNB">Clientes no Bancarizados</a></li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="active tab-pane" id="bancarizados">
@@ -135,16 +135,16 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <th>Perfil</th>
-                                                                        <th>Titular</th>
-                                                                        <th>Familiar</th>
-                                                                        <th>Inquilino</th>
+                                                                        <th class="active">Titular</th>
+                                                                        <th class="active">Familiar</th>
+                                                                        <th class="active">Inquilino</th>
                                                                         <th>Taxistas</th>
                                                                         <th>Mil oficios</th>
                                                                         <th>Emprendedores</th>
-                                                                        <th>Amas de casa</th>
-                                                                        <th>Empleadas del hogar</th>
-                                                                        <th>Jubilado, pensionista</th>
-                                                                        <th>Remesas</th>
+                                                                        <th class="active">Amas de casa</th>
+                                                                        <th class="active">Empleadas del hogar</th>
+                                                                        <th class="active">Jubilado, pensionista</th>
+                                                                        <th class="active">Remesas</th>
                                                                         <th>X1</th>
                                                                         <th>X2</th>
                                                                         <th>X3</th>
