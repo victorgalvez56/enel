@@ -213,7 +213,7 @@
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" disabled="true"/>
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat"/>
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
-                                            <a href="<s:url action="frmCREMantenedor"/>" class="btn btn-primary btn-flat">Siguiente</a>
+                                            <a href="<s:url action="frmCREMantenedor"/>" class="btn btn-primary btn-flat" id="bSiguiente" onclick="return false;" disabled="true">Siguiente</a>
                                         </div>
                                     </div>
                                 </div>
@@ -298,12 +298,18 @@
                 if (estado === "rechazada") {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bEnviar").disabled = true; 
+                    document.getElementById("bSiguiente").removeAttribute("disabled"); 
+                    document.getElementById("bSiguiente").removeAttribute("onclick"); 
                 } else if (estado === "enviada") {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bRechazar").disabled = true;
+                    document.getElementById("bSiguiente").removeAttribute("disabled"); 
+                    document.getElementById("bSiguiente").removeAttribute("onclick"); 
                 } else if (estado === "aprobada") {
                     document.getElementById("bRechazar").disabled = true;
                     document.getElementById("bEnviar").disabled = true;
+                    document.getElementById("bSiguiente").removeAttribute("disabled");
+                    document.getElementById("bSiguiente").removeAttribute("onclick"); 
                 }
             }
         </script>
