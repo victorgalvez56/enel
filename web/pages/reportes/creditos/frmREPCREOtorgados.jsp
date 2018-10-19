@@ -82,7 +82,7 @@
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="form-group">
-                                                            <s:select name="codigoCanal" tabindex="3" list="lstCanales" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
+                                                            <s:select name="codigoCanal" tabindex="3" list="lstCanales" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- TODOS --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>

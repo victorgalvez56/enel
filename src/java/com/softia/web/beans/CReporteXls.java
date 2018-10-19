@@ -1001,7 +1001,7 @@ public class CReporteXls {
     public boolean mxCREOtorgadosXls(List<Credito> p_oCredito,String po_Titulo) throws FileNotFoundException, IOException {
         boolean llOk = true;
         HSSFWorkbook loWB = new HSSFWorkbook();
-        HSSFSheet loSheet = loWB.createSheet("RECUPERACION");
+        HSSFSheet loSheet = loWB.createSheet("CREDITOS");
         HSSFRow loRowHeadTitle = loSheet.createRow((short) 0);
         HSSFRow loRowHeadTitle1 = loSheet.createRow((short) 1);
         HSSFRow loRowHead = loSheet.createRow((short) 2);
@@ -1013,27 +1013,26 @@ public class CReporteXls {
         //cabecera
         loRowHead.createCell((short) 0).setCellValue("Fecha");
         loRowHead.createCell((short) 1).setCellValue("Tienda");
-        loRowHead.createCell((short) 2).setCellValue("Distrito");
-        loRowHead.createCell((short) 3).setCellValue("EValuador");
-        loRowHead.createCell((short) 4).setCellValue("Vendedor");
-        loRowHead.createCell((short) 5).setCellValue("N°de Suministro");
-        loRowHead.createCell((short) 6).setCellValue("Tipo de Documento");
-        loRowHead.createCell((short) 7).setCellValue("N°de Documento");
-        loRowHead.createCell((short) 8).setCellValue("Nombres");
-        loRowHead.createCell((short) 9).setCellValue("Apellido Paterno");
-        loRowHead.createCell((short) 10).setCellValue("Apellido Materno");
-        loRowHead.createCell((short) 11).setCellValue("Direccion");
-        loRowHead.createCell((short) 12).setCellValue("Distrito");
-        loRowHead.createCell((short) 13).setCellValue("Telefono");
-        loRowHead.createCell((short) 14).setCellValue("Correo");
-        loRowHead.createCell((short) 15).setCellValue("Tipo de Venta");
-        loRowHead.createCell((short) 16).setCellValue("EStatus");
-        loRowHead.createCell((short) 17).setCellValue("N°Contrato");
-        loRowHead.createCell((short) 18).setCellValue("N°De Boleta de Venta");
-        loRowHead.createCell((short) 19).setCellValue("Total Precio venta (con IGV)");
-        loRowHead.createCell((short) 20).setCellValue("Total Precio Venta (Sin IGV)");
-        loRowHead.createCell((short) 21).setCellValue("N° de Cuotas");
-        loRowHead.createCell((short) 22).setCellValue("Valor de Cuotas (Con IGV)");
+        loRowHead.createCell((short) 2).setCellValue("EValuador");
+        loRowHead.createCell((short) 3).setCellValue("Vendedor");
+        loRowHead.createCell((short) 4).setCellValue("N°de Suministro");
+        loRowHead.createCell((short) 5).setCellValue("Tipo de Documento");
+        loRowHead.createCell((short) 6).setCellValue("N°de Documento");
+        loRowHead.createCell((short) 7).setCellValue("Nombres");
+        loRowHead.createCell((short) 8).setCellValue("Apellido Paterno");
+        loRowHead.createCell((short) 9).setCellValue("Apellido Materno");
+        loRowHead.createCell((short) 10).setCellValue("Direccion");
+        loRowHead.createCell((short) 11).setCellValue("Distrito");
+        loRowHead.createCell((short) 12).setCellValue("Telefono");
+        loRowHead.createCell((short) 13).setCellValue("Correo");
+        loRowHead.createCell((short) 14).setCellValue("Tipo de Venta");
+        loRowHead.createCell((short) 15).setCellValue("EStatus");
+        loRowHead.createCell((short) 16).setCellValue("N°Contrato");
+        loRowHead.createCell((short) 17).setCellValue("N°De Boleta de Venta");
+        loRowHead.createCell((short) 18).setCellValue("Total Precio venta (con IGV)");
+        loRowHead.createCell((short) 19).setCellValue("Total Precio Venta (Sin IGV)");
+        loRowHead.createCell((short) 20).setCellValue("N° de Cuotas");
+        loRowHead.createCell((short) 21).setCellValue("Valor de Cuotas (Con IGV)");
         //ESTILO
         HSSFFont font = loWB.createFont();
         font.setColor(IndexedColors.WHITE.getIndex());
@@ -1049,7 +1048,7 @@ public class CReporteXls {
 	style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
         stylehead.setBorderBottom(BorderStyle.THIN);
 	stylehead.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-        for (int j=0; j<= 22; j++){
+        for (int j=0; j<= 21; j++){
             loRowHeadTitle1.createCell((short) j).setCellStyle(style);
             loRowHeadTitle.createCell((short) j).setCellStyle(style1);
             loRowHead.getCell(j).setCellStyle(stylehead);
@@ -1072,27 +1071,26 @@ public class CReporteXls {
             loRow.createCell((short) 1).setCellValue(loCredito.getOficina().getNombre());
             //loRow.createCell((short) 1).setCellValue("probando");
             //loRow.createCell((short) 2).setCellValue("probando");
-            loRow.createCell((short) 2).setCellValue(loCredito.getCliente().getDireccion().getDistrito().getNombre());
-            loRow.createCell((short) 3).setCellValue(loCredito.getNomEva());
-            loRow.createCell((short) 4).setCellValue(loCredito.getNomVen());
-            loRow.createCell((short) 5).setCellValue(loCredito.getCliente().getSumini());//suministro
-            loRow.createCell((short) 6).setCellValue(loCredito.getCliente().getTipDocCiv());
-            loRow.createCell((short) 7).setCellValue(loCredito.getCliente().getNroDocCiv());
-            loRow.createCell((short) 8).setCellValue(loCredito.getCliente().getNombre());
-            loRow.createCell((short) 9).setCellValue(loCredito.getCliente().getApePat());
-            loRow.createCell((short) 10).setCellValue(loCredito.getCliente().getApeMat());
-            loRow.createCell((short) 11).setCellValue(loCredito.getCliente().getDireccion().getDireccion());
-            loRow.createCell((short) 12).setCellValue(loCredito.getCliente().getDireccion().getDistrito().getNombre());
-            loRow.createCell((short) 13).setCellValue(loCredito.getCliente().getTelefono());
-            loRow.createCell((short) 14).setCellValue(loCredito.getCliente().getCorreo());
-            loRow.createCell((short) 15).setCellValue("CREDITO");//tipo de venta
-            loRow.createCell((short) 16).setCellValue(loCredito.getEstado());//estatus
-            loRow.createCell((short) 17).setCellValue(loCredito.getCodCta());//contrato
-            loRow.createCell((short) 18).setCellValue(loCredito.getNroVen());
-            loRow.createCell((short) 19).setCellValue(loCredito.getPreVen());
-            loRow.createCell((short) 20).setCellValue(loCredito.getPreVenSinIGV());
-            loRow.createCell((short) 21).setCellValue(loCredito.getCuotas());
-            loRow.createCell((short) 22).setCellValue(loCredito.getCuota());//cuotas con igv
+            loRow.createCell((short) 2).setCellValue(loCredito.getNomEva());
+            loRow.createCell((short) 3).setCellValue(loCredito.getNomVen());
+            loRow.createCell((short) 4).setCellValue(loCredito.getCliente().getSumini());//suministro
+            loRow.createCell((short) 5).setCellValue(loCredito.getCliente().getTipDocCiv());
+            loRow.createCell((short) 6).setCellValue(loCredito.getCliente().getNroDocCiv());
+            loRow.createCell((short) 7).setCellValue(loCredito.getCliente().getNombre());
+            loRow.createCell((short) 8).setCellValue(loCredito.getCliente().getApePat());
+            loRow.createCell((short) 9).setCellValue(loCredito.getCliente().getApeMat());
+            loRow.createCell((short) 10).setCellValue(loCredito.getCliente().getDireccion().getDireccion());
+            loRow.createCell((short) 11).setCellValue(loCredito.getCliente().getDireccion().getDistrito().getNombre());
+            loRow.createCell((short) 12).setCellValue(loCredito.getCliente().getTelefono());
+            loRow.createCell((short) 13).setCellValue(loCredito.getCliente().getCorreo());
+            loRow.createCell((short) 14).setCellValue("CREDITO");//tipo de venta
+            loRow.createCell((short) 15).setCellValue(loCredito.getEstado());//estatus
+            loRow.createCell((short) 16).setCellValue(loCredito.getCodCta());//contrato
+            loRow.createCell((short) 17).setCellValue(loCredito.getNroVen());
+            loRow.createCell((short) 18).setCellValue(loCredito.getPreVen());
+            loRow.createCell((short) 19).setCellValue(loCredito.getPreVenSinIGV());
+            loRow.createCell((short) 20).setCellValue(loCredito.getCuotas());
+            loRow.createCell((short) 21).setCellValue(loCredito.getCuota());//cuotas con igv
             index++;
         }
         setRutaReporte("/ftia/files/cierres/CREDITOS_" + LibFunc.getFechaActual() + ".xls");
