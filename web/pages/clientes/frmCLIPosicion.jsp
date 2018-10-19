@@ -190,6 +190,7 @@
                                                         <th>Monto vencido</th>
                                                         <th>Cuotas</th>
                                                         <th>Estado</th>
+                                                        <th>Condición</th>
                                                         <th>Canal</th>
                                                         <th>Venta</th>
                                                         <th>Ver</th>
@@ -209,6 +210,7 @@
                                                             <td><s:property value="capVen" /></td>
                                                             <td><s:property value="cuotas" /></td>
                                                             <td><s:property value="estado" /></td>
+                                                            <td><s:property value="" /></td>
                                                             <td><s:property value="canal" /></td>
                                                             <td><s:property value="venta" /></td>
                                                             <td>
@@ -242,6 +244,7 @@
                                                         <th>Monto vencido</th>
                                                         <th>Cuotas</th>
                                                         <th>Estado</th>
+                                                        <th>Condición</th>
                                                         <th>Canal</th>
                                                         <th>Venta</th>
                                                         <th>Ver</th>
@@ -261,6 +264,7 @@
                                                             <td><s:property value="capVen" /></td>
                                                             <td><s:property value="cuotas" /></td>
                                                             <td><s:property value="estado" /></td>
+                                                            <td><s:property value="" /></td>
                                                             <td><s:property value="canal" /></td>
                                                             <td><s:property value="venta" /></td>
                                                             <td>
@@ -268,8 +272,8 @@
                                                                     <s:param name="codCta" value="%{cuenta}"></s:param>
                                                                 </s:url>
                                                                 <s:a href="%{verURL}">Ver</s:a>
-                                                                </td>
-                                                            </tr>
+                                                            </td>
+                                                        </tr>
                                                     </s:iterator>
                                                 </tbody>
                                             </table>

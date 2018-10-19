@@ -80,7 +80,8 @@
                                                                 <tr style="text-transform: uppercase;">
                                                                     <th><s:property value="%{#rowStatus.count}" /></th>
                                                                     <td><s:property value="operacion" /></td>
-                                                                    <td><s:property value="fecha" /></td>
+                                                                    <td><s:date name="fecha" format="dd/MM/yyyy" /></td>
+                                                                    <!--<td><s:property value="fecha" /></td>-->
                                                                     <td><s:property value="hora" /></td>
                                                                     <td><s:property value="usuario" /></td>
                                                                 </tr>

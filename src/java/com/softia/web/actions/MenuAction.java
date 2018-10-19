@@ -52,8 +52,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -214,7 +217,7 @@ public class MenuAction extends BaseAction {
     private double cuotaX2;
     private double cuotaX3;
     private double cuotaX4;
-
+    
     public String login() {
         setResult("login");
         return getResult();
@@ -656,6 +659,22 @@ public class MenuAction extends BaseAction {
                     } else {
                         setCredito(loCreditos.getCredito());
                         setLstLog(loCreditos.getLstLog());
+                        for(int i=0; i<loCreditos.getLstLog().size(); i++){
+                            System.out.print(loCreditos.getLstLog().get(i).getFecha());
+                        }
+                        //Formateo de fecha
+                        /*SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+                        for(int i=0; i<loCreditos.getLstLog().size(); i++){
+                            String fechaString = formateador.format(loCreditos.getLstLog().get(i).getFecha());
+                            java.util.Date fechaDate = formateador.parse(fechaString);
+                            
+                            java.sql.Date fechaSQL = new java.sql.Date(fechaDate.getTime()); 
+                            //loCreditos.getLstLog().get(i).setFecha(java.sql.Date.valueOf(formateador.format(loCreditos.getLstLog().get(i).getFecha())));
+                            loCreditos.getLstLog().get(i).setFecha(fechaSQL);
+                            
+                            System.out.print(fechaSQL);
+                        }
+                        setLstLog(loCreditos.getLstLog());*/
                     }
                 } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());

@@ -274,6 +274,22 @@
                                                     </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
+                                                            <label class="control-label">Nro. hijos:</label>
+                                                            <div class=" form-group">
+                                                                <s:textfield cssClass="form-control" name="cliente.hijos" id="tfNroHijos" tabindex="18" style="text-transform: uppercase;" readonly="true" />
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Nro. Dependientes:</label>
+                                                            <div class=" form-group">
+                                                                <s:textfield cssClass="form-control" name="" id="tfNroDepend" tabindex="19" style="text-transform: uppercase;" readonly="true" />
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                    <!--<div class="col-xs-3">
+                                                        <div class="form-group">
                                                             <label class="control-label">Profesión:</label>
                                                             <s:select name="cliente.profesion.codigo" tabindex="18" id="sProfesion" list="lstProfesiones" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
                                                         </div>                                                                    
@@ -283,9 +299,9 @@
                                                             <label class="control-label">Grado de instrucción</label>
                                                             <s:select name="cliente.nivIns" tabindex="19" id="sInstruccion" list="lstNivIns" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
-                                                <div class="col-xs-12">
+                                                <!--<div class="col-xs-12">
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Tipo de zona:</label>
@@ -299,7 +315,7 @@
                                                                 <s:textfield cssClass="form-control" name="cliente.correo" id="tfCorreo" tabindex="21" style="text-transform: uppercase;" readonly="true"/>
                                                             </div>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <div class="col-xs-3">
                                                         <div class="form-group">
                                                             <label class="control-label">Nro. hijos:</label>
@@ -314,6 +330,166 @@
                                                             <div class=" form-group">
                                                                 <s:textfield cssClass="form-control" name="cliente.ingreso" id="tfIngresos" tabindex="23" style="text-transform: uppercase;" readonly="true" />
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Condición laboral:</label>
+                                                            <select class="form-control" tabindex="20">
+                                                                <option>Dependiente</option>
+                                                                <option>Independiente</option>
+                                                                <option>Jubilado</option>
+                                                                <option>Ama de casa</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Profesión:</label>
+                                                            <s:select name="cliente.profesion.codigo" tabindex="21" id="sProfesion" list="lstProfesiones" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
+                                                        </div>                                                                    
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Grado de instrucción</label>
+                                                            <s:select name="cliente.nivIns" tabindex="22" id="sInstruccion" list="lstNivIns" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Ingresos:</label>
+                                                            <div class=" form-group">
+                                                                <s:textfield cssClass="form-control" name="cliente.ingreso" id="tfIngresos" tabindex="23" style="text-transform: uppercase;" readonly="true" />
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Tipo de zona:</label>
+                                                            <s:select name="cliente.direccion.tipoZona" tabindex="24" id="sTipoZona" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Tipo de vivienda:</label>
+                                                            <select class="form-control" tabindex="25">
+                                                                <option>Propia</option>
+                                                                <option>Alquilada</option>
+                                                                <option>Familiar</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Tiempo de residencia:</label>
+                                                            <div class=" form-group">
+                                                                <s:textfield cssClass="form-control" name="" id="tfTipoResi" tabindex="26" style="text-transform: uppercase;" readonly="true" />
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Correo:</label>
+                                                            <div class=" form-group">
+                                                                <s:textfield cssClass="form-control" name="cliente.correo" id="tfCorreo" tabindex="27" style="text-transform: uppercase;" readonly="true"/>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Estado civil:</label>
+                                                            <select class="form-control" tabindex="28">
+                                                                <option>Soltero</option>
+                                                                <option>Casado</optio
+                                                                <option>Viudo</option>
+                                                                <option>Divorciado</option>
+                                                                <option>Conviviente</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-12">
+                                                        <br>
+                                                        <label>DATOS DEL CONYUGE:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Sexo:</label>
+                                                            <select class="form-control" tabindex="29">
+                                                                <option>Masculino</option>
+                                                                <option>Femenino</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Grado instrucción:</label>
+                                                            <select class="form-control" tabindex="30">
+                                                                <option>Ninguna</option>
+                                                                <option>Primaria</option>
+                                                                <option>Secudaria</option>
+                                                                <option>Técnica</option>
+                                                                <option>Superior</option>
+                                                            </select>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="col-xs-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Condición laboral:</label>
+                                                            <select class="form-control" tabindex="31">
+                                                                <option>Dependiente</option>
+                                                                <option>Independiente</option>
+                                                                <option>Jubilado</option>
+                                                                <option>Ama de casa</option>
+                                                            </select>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                                 <div class="col-xs-12">
+                                                    <div class="col-xs-12">
+                                                        <br>
+                                                        <label>SEGMENTO DE CLIENTE:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="col-xs-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Seg. regulares:</label>
+                                                            <select class="form-control" tabindex="32">
+                                                                <option>Titular</option>
+                                                                <option>Familiar</option>
+                                                                <option>Inquilino</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Seg. comerciales:</label>
+                                                            <select class="form-control" tabindex="33">
+                                                                <option>Taxistas</option>
+                                                                <option>Mil oficios</option>
+                                                                <option>Emprendedores</option>
+                                                            </select>
+                                                        </div>
+                                                    </div> 
+                                                    <div class="col-xs-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Seg. otros:</label>
+                                                            <select class="form-control" tabindex="34">
+                                                                <option>Amas de casa</option>
+                                                                <option>Empleadas del hogar</option>
+                                                                <option>Jubilado, pensionista</option>
+                                                                <option>Remesas</option>
+                                                            </select>
                                                         </div>
                                                     </div> 
                                                 </div>
