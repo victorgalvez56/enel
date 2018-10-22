@@ -58,6 +58,32 @@
                 document.getElementById("nombre").removeAttribute("required");
                 document.getElementById("codciv").removeAttribute("required");
             }
+            
+            function fecNac(event) {
+                codigo = event.which || event.keyCode;
+                fecha = document.getElementById("fecnac").value;
+                if(codigo !== 8){
+                    if (fecha.length === 2){
+                        document.getElementById("fecnac").value = fecha + "/";
+                    } else if (fecha.length === 5){
+                        document.getElementById("fecnac").value = fecha + "/";
+                    }
+                }
+            }
+            
+            function existeFecha() {
+                fecha = document.getElementById("fecnac").value;
+                fechaf = fecha.split("/");
+                day = fechaf[0];
+                month = fechaf[1];
+                year = fechaf[2];
+                date = new Date(year,month,'0');
+                if((day-0)>(date.getDate()-0)){
+                    alert("Fecha ingresada incorrecta");
+                } else {
+                    alert("true");
+                }
+            }
         </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini" onload="habilitarCLINuevoActualizar()">
@@ -174,7 +200,8 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Nacimiento:</label>
                                                             <div class=" form-group">
-                                                                <s:textfield cssClass="form-control" type="date" id="fecnac" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" readonly="true" />
+                                                                <%--<s:textfield cssClass="form-control" id="fecnac" type="date" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" readonly="true" />--%>
+                                                                <s:textfield cssClass="form-control" id="fecnac" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" maxlength="10" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" onKeyup="fecNac(event);" placeholder="DD/MM/AAAA" onblur="existeFecha();" readonly="true" />
                                                             </div>
                                                         </div>
                                                     </div>

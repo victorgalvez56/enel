@@ -765,6 +765,7 @@ public class MenuAction extends BaseAction {
                 loCliente.setUser(user);
                 loCliente.setPasswd(pass);
                 try {
+                    loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac()));
                     boolean llOk = loCliente.mxGrabar();
                     if (!llOk) {
                         setError(loCliente.getError());
@@ -842,6 +843,18 @@ public class MenuAction extends BaseAction {
             setResult("frmCLINuevoActualizar");
         }
         return getResult();
+    }
+    
+    public String formateador(String fecha) throws ParseException {
+        String fec = "";
+        if (fecha != null) {
+            DateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = formateador.parse(fecha);
+
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            fec = formatter.format(date);
+        }
+        return fec;
     }
 
     public String frmCLIPosicion() {
