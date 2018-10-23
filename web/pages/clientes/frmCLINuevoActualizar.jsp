@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@include file="modCLIBuscar.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -79,9 +79,11 @@
                 year = fechaf[2];
                 date = new Date(year,month,'0');
                 if((day-0)>(date.getDate()-0)){
-                    alert("Fecha ingresada incorrecta");
+                   document.getElementById("fecnacGroup").setAttribute("class", "form-group has-error");
+                   document.getElementById("labelError").setAttribute("style", "display: block;");
                 } else {
-                    alert("true");
+                   document.getElementById("fecnacGroup").setAttribute("class", "form-group"); 
+                   document.getElementById("labelError").setAttribute("style", "display: none;");
                 }
             }
         </script>
@@ -197,11 +199,12 @@
                                                 </div>                                           
                                                 <div class="col-xs-12">
                                                     <div class="col-xs-3">
-                                                        <div class="form-group">
+                                                        <div class="form-group" id="fecnacGroup">
                                                             <label class="control-label">Nacimiento:</label>
                                                             <div class=" form-group">
                                                                 <%--<s:textfield cssClass="form-control" id="fecnac" type="date" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" readonly="true" />--%>
                                                                 <s:textfield cssClass="form-control" id="fecnac" name="cliente.fecNac" tabindex="8" style="text-transform: uppercase;" maxlength="10" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" onKeyup="fecNac(event);" placeholder="DD/MM/AAAA" onblur="existeFecha();" readonly="true" />
+                                                                <label style="display: none;" id="labelError">Error: Fecha no existe</label>
                                                             </div>
                                                         </div>
                                                     </div>
