@@ -32,6 +32,7 @@
             <result name="frmADMNuevoUsuario" type="tiles">frmADMNuevoUsuario</result>
             <result name="frmADMOficinas" type="tiles">frmADMOficinas</result>
             <result name="frmADMAutonomias" type="tiles">frmADMAutonomias</result>
+            <result name="frmADMMntProductos" type="tiles">frmADMMntProductos</result>
             
             <result name="frmCAJDesembolso" type="tiles">frmCAJDesembolso</result>
             <result name="frmCAJPago" type="tiles">frmCAJPago</result>

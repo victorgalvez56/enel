@@ -48,6 +48,8 @@ import com.softia.web.beans.CVerificacion;
 import com.softia.web.models.Verificacion;
 import com.softia.web.beans.CRango;
 import com.softia.web.models.Rango;
+import com.softia.web.beans.CProduct;
+import com.softia.web.models.Product;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -217,7 +219,9 @@ public class MenuAction extends BaseAction {
     private double cuotaX2;
     private double cuotaX3;
     private double cuotaX4;
-    
+    private List<Product> lstProducts;
+    private Product product;
+
     public String login() {
         setResult("login");
         return getResult();
@@ -659,7 +663,7 @@ public class MenuAction extends BaseAction {
                     } else {
                         setCredito(loCreditos.getCredito());
                         setLstLog(loCreditos.getLstLog());
-                        for(int i=0; i<loCreditos.getLstLog().size(); i++){
+                        for (int i = 0; i < loCreditos.getLstLog().size(); i++) {
                             System.out.print(loCreditos.getLstLog().get(i).getFecha());
                         }
                         //Formateo de fecha
@@ -844,7 +848,7 @@ public class MenuAction extends BaseAction {
         }
         return getResult();
     }
-    
+
     public String formateador(String fecha) throws ParseException {
         String fec = "";
         if (fecha != null) {
@@ -2127,12 +2131,13 @@ public class MenuAction extends BaseAction {
         } else {
             setLstRangosCB((ArrayList<Rango>) getSession().get("rangosCB"));
         }
-        
-        if (getSession().get("rangosCNB") == null)
+
+        if (getSession().get("rangosCNB") == null) {
             setLstRangosCNB(rangos.getLstRangosCNB());
-        else
+        } else {
             setLstRangosCNB((ArrayList<Rango>) getSession().get("rangosCNB"));
-        
+        }
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
             /*if (getSession().get("rangosCB") != null) {
@@ -2171,7 +2176,7 @@ public class MenuAction extends BaseAction {
             getLstRangosCNB().remove(codigo);
             getSession().put("rangosCNB", getLstRangosCNB());
             setEstado("CNB");
-        } 
+        }
         setResult("frmCREMntRangoScore_RDC");
         return getResult();
     }
@@ -2186,13 +2191,12 @@ public class MenuAction extends BaseAction {
         } else {
             setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
         }
-        
+
         if (getSession().get("verificacionCNB") == null) {
             setLstVerifiPerfCNB(verifiPerf.getLstVerifiPerfCNB());
         } else {
             setLstVerifiPerfCNB((ArrayList<Verificacion>) getSession().get("verificacionCNB"));
         }
-        
 
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
@@ -2213,13 +2217,12 @@ public class MenuAction extends BaseAction {
             verifi.setX4(getX4());
             getLstVerifiPerfCB().set(0, verifi);*/
 
-            /*if (getSession().get("verificacionCB") != null) {
+ /*if (getSession().get("verificacionCB") != null) {
                 setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
             }
             if (getSession().get("verificacionCNB") != null) {
                 setLstVerifiPerfCNB((ArrayList<Verificacion>) getSession().get("verificacionCNB"));
             }*/
-
             codigo = getCodigo() - 1;
             getLstVerifiPerfCB().get(codigo).setTitular(getTitular());
             getLstVerifiPerfCB().get(codigo).setFamiliar(getFamiliar());
@@ -2268,7 +2271,7 @@ public class MenuAction extends BaseAction {
         } else {
             setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
         }
-        
+
         if (getSession().get("lineaCreCNB") == null) {
             setLstLineaCreCNB(lineaCre.getLstLineaCreCNB());
         } else {
@@ -2330,15 +2333,15 @@ public class MenuAction extends BaseAction {
         if (getSession().get("plazosCB") == null) {
             setLstPlazosCB(plazos.getLstPlazosCB());
         } else {
-            setLstPlazosCB((ArrayList<Verificacion>)getSession().get("plazosCB"));
+            setLstPlazosCB((ArrayList<Verificacion>) getSession().get("plazosCB"));
         }
-        
+
         if (getSession().get("plazosCNB") != null) {
             setLstPlazosCNB(plazos.getLstPlazosCNB());
-        } else{
-            setLstPlazosCNB((ArrayList<Verificacion>)getSession().get("plazosCNB"));
+        } else {
+            setLstPlazosCNB((ArrayList<Verificacion>) getSession().get("plazosCNB"));
         }
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
             /*if (getSession().get("plazosCB") != null) {
@@ -2347,7 +2350,7 @@ public class MenuAction extends BaseAction {
             if (getSession().get("plazosCNB") != null) {
                 setLstPlazosCNB((ArrayList<Verificacion>)getSession().get("plazosCNB"));
             }*/
-            
+
             codigo = getCodigo() - 1;
             getLstPlazosCB().get(codigo).setCuotasTitular(getCuotasTitular());
             getLstPlazosCB().get(codigo).setCuotasFamiliar(getCuotasFamiliar());
@@ -2363,7 +2366,7 @@ public class MenuAction extends BaseAction {
             getLstPlazosCB().get(codigo).setCuotasX2(getCuotasX2());
             getLstPlazosCB().get(codigo).setCuotasX3(getCuotasX3());
             getLstPlazosCB().get(codigo).setCuotasX4(getCuotasX4());
-            
+
             getSession().put("plazosCB", getLstPlazosCB());
         } else if (request.getParameter("guardarCNB") != null) {
             codigo = getCodigo() - 1;
@@ -2393,14 +2396,14 @@ public class MenuAction extends BaseAction {
         CVerificacion valorCuota = new CVerificacion();
         setLstValorCuotaCB(valorCuota.getLstValorCuotaCB());
         setLstValorCuotaCNB(valorCuota.getLstValorCuotaCNB());
-        
+
         //CALCULO
         double tea = 47.64;
         if (getSession().get("lineaCreCB") != null && getSession().get("plazosCB") != null) {
             setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
-            setLstPlazosCB((ArrayList<Verificacion>)getSession().get("plazosCB"));
-            
-            for(int x=0;x<getLstValorCuotaCB().size();x++) {
+            setLstPlazosCB((ArrayList<Verificacion>) getSession().get("plazosCB"));
+
+            for (int x = 0; x < getLstValorCuotaCB().size(); x++) {
                 getLstValorCuotaCB().get(x).setCuotaTitular(calcularCuota(getLstLineaCreCB().get(x).getLineaTitular(), getLstPlazosCB().get(x).getCuotasTitular(), tea));
                 getLstValorCuotaCB().get(x).setCuotaFamiliar(calcularCuota(getLstLineaCreCB().get(x).getLineaFamiliar(), getLstPlazosCB().get(x).getCuotasFamiliar(), tea));
                 getLstValorCuotaCB().get(x).setCuotaInquilino(calcularCuota(getLstLineaCreCB().get(x).getLineaInquilino(), getLstPlazosCB().get(x).getCuotasInquilino(), tea));
@@ -2419,9 +2422,9 @@ public class MenuAction extends BaseAction {
         }
         if (getSession().get("lineaCreCNB") != null && getSession().get("plazosCNB") != null) {
             setLstLineaCreCNB((ArrayList<Verificacion>) getSession().get("lineaCreCNB"));
-            setLstPlazosCNB((ArrayList<Verificacion>)getSession().get("plazosCNB"));
-            
-            for(int x=0;x<getLstValorCuotaCNB().size();x++) {
+            setLstPlazosCNB((ArrayList<Verificacion>) getSession().get("plazosCNB"));
+
+            for (int x = 0; x < getLstValorCuotaCNB().size(); x++) {
                 getLstValorCuotaCNB().get(x).setCuotaTitular(calcularCuota(getLstLineaCreCNB().get(x).getLineaTitular(), getLstPlazosCNB().get(x).getCuotasTitular(), tea));
                 getLstValorCuotaCNB().get(x).setCuotaFamiliar(calcularCuota(getLstLineaCreCNB().get(x).getLineaFamiliar(), getLstPlazosCNB().get(x).getCuotasFamiliar(), tea));
                 getLstValorCuotaCNB().get(x).setCuotaInquilino(calcularCuota(getLstLineaCreCNB().get(x).getLineaInquilino(), getLstPlazosCNB().get(x).getCuotasInquilino(), tea));
@@ -2641,7 +2644,7 @@ public class MenuAction extends BaseAction {
             } catch (SQLException | ParseException loErr) {
                 setError(loErr.getMessage());
             }
-        }else{
+        } else {
             setUsuario(new Usuario());
             getUsuario().setCorreo(user);
             setResult("perfil");
@@ -2796,6 +2799,60 @@ public class MenuAction extends BaseAction {
             setError(loErr.getMessage());
             setResult("error");
         }
+        return getResult();
+    }
+
+    public String frmADMMntProductos() {
+        CProduct products = new CProduct();
+        setLstProducts(products.getLstProducts());
+        if (!validaSession()) {
+            return "login";
+        }
+        setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
+        Menus = new ArrayList<>();
+        SubMenus = new ArrayList<>();
+        Menus = (List<Menu>) getSession().get("menu");
+        SubMenus = (List<SubMenu>) getSession().get("subMenu");
+        setResult("frmADMMntProductos");
+
+        if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
+            setProduct(new Product());
+            setInformacion("Ingrese información y presione GRABAR");
+        } else {
+            if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
+                /*loOficina.setOficina(getOficina());
+                boolean llOk = loOficina.mxGrabar();
+                if (llOk) {
+                    setMensaje(loOficina.getMensaje());
+                } else {
+                    setError(loOficina.getError());
+                }*/
+            } else {
+                if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
+                    /*loOficina.setOficina(getOficina());
+                    setLstOficinas(loOficina.mxBuscar());*/
+                } else {
+                    if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
+                            || ActionContext.getContext().getParameters().get("oficina.codOfi") != null) {
+                        /*loOficina.setOficina(getOficina());
+                        boolean llOk = loOficina.mxAplicar();
+                        if (llOk) {
+                            setOficina(loOficina.getOficina());
+                        } else {
+                            setError(loOficina.getError());
+                        }*/
+                    }
+                }
+            }
+        }
+        /*if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
+            setLstOficinas(loOficina.getLstOficinas());
+            if (getLstOficinas() == null) {
+                setError(loOficina.getError());
+            }
+        }*/
         return getResult();
     }
 
@@ -6232,7 +6289,7 @@ public class MenuAction extends BaseAction {
         }
         return "DIRECCION";
     }
-    
+
     /*public void llenarListas(int lista) {
         switch (lista) {
             case 1:
@@ -6271,16 +6328,15 @@ public class MenuAction extends BaseAction {
                 break;
         }
     }*/
-    
-    public double calcularTEM(double tea){
-        double tem = ((Math.pow((1 + (tea/100)), (1.0/12.0))) - 1)*100;
+    public double calcularTEM(double tea) {
+        double tem = ((Math.pow((1 + (tea / 100)), (1.0 / 12.0))) - 1) * 100;
         tem = Math.rint(tem * 100) / 100;
         return tem;
     }
-    
+
     public double calcularCuota(double monto, int n, double tea) {
         double tem = calcularTEM(tea);
-        double cuota = monto * (((tem/100) * Math.pow(1 + (tem/100), n))/(Math.pow(1 + (tem/100), n) - 1));
+        double cuota = monto * (((tem / 100) * Math.pow(1 + (tem / 100), n)) / (Math.pow(1 + (tem / 100), n) - 1));
         cuota = Math.rint(cuota * 100) / 100;
         return cuota;
     }
@@ -7295,7 +7351,7 @@ public class MenuAction extends BaseAction {
     public void setLstLineaCreCNB(List<Verificacion> lstLineaCreCNB) {
         this.lstLineaCreCNB = lstLineaCreCNB;
     }
-    
+
     public List<Verificacion> getLstPlazosCB() {
         return lstPlazosCB;
     }
@@ -7311,7 +7367,7 @@ public class MenuAction extends BaseAction {
     public void setLstPlazosCNB(List<Verificacion> lstPlazosCNB) {
         this.lstPlazosCNB = lstPlazosCNB;
     }
-    
+
     public List<Verificacion> getLstValorCuotaCB() {
         return lstValorCuotaCB;
     }
@@ -7327,23 +7383,23 @@ public class MenuAction extends BaseAction {
     public void setLstValorCuotaCNB(List<Verificacion> lstValorCuotaCNB) {
         this.lstValorCuotaCNB = lstValorCuotaCNB;
     }
-    
+
     public List<Rango> getLstRangosCB() {
         return lstRangosCB;
     }
-    
+
     public void setLstRangosCB(List<Rango> lstRangosCB) {
         this.lstRangosCB = lstRangosCB;
     }
-    
+
     public List<Rango> getLstRangosCNB() {
         return lstRangosCNB;
     }
-    
+
     public void setLstRangosCNB(List<Rango> lstRangosCNB) {
         this.lstRangosCNB = lstRangosCNB;
     }
-    
+
     public int getFamiliar() {
         return familiar;
     }
@@ -7567,7 +7623,7 @@ public class MenuAction extends BaseAction {
     public void setLineaX4(double lineaX4) {
         this.lineaX4 = lineaX4;
     }
-    
+
     public int getCuotasTitular() {
         return cuotasTitular;
     }
@@ -7679,7 +7735,7 @@ public class MenuAction extends BaseAction {
     public void setCuotasX4(int cuotasX4) {
         this.cuotasX4 = cuotasX4;
     }
-    
+
     public double getCuotaTitular() {
         return cuotaTitular;
     }
@@ -7791,12 +7847,40 @@ public class MenuAction extends BaseAction {
     public void setCuotaX4(double cuotaX4) {
         this.cuotaX4 = cuotaX4;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
-    
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the lstProducts
+     */
+    public List<Product> getLstProducts() {
+        return lstProducts;
+    }
+
+    /**
+     * @param lstProducts the lstProducts to set
+     */
+    public void setLstProducts(List<Product> lstProducts) {
+        this.lstProducts = lstProducts;
+    }
+    
+    /**
+     * @return the product
+     */
+    public Product getProduct() {
+        return product;
+    }
+
+    /**
+     * @param product the product to set
+     */
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

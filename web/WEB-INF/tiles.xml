@@ -131,7 +131,10 @@
         <put-attribute name="title"  value="Mantenimiento Autonomias - FINANSOFT v3.0 | SOFTIA.COM"/>
         <put-attribute name="body"   value="/pages/administracion/frmADMAutonomias.jsp"/>
     </definition>
-    
+    <definition name="frmADMMntProductos" extends="baseLayout">
+        <put-attribute name="title"  value="Mantenimiento de Productos - FINANSOFT v3.0 | SOFTIA.COM"/>
+        <put-attribute name="body"   value="/pages/administracion/frmADMMntProductos.jsp"/>
+    </definition>
     
     <definition name="frmCAJDesembolso" extends="baseLayout">
         <put-attribute name="title"  value="Desembolso de crédito - FINANSOFT v3.0 | SOFTIA.COM"/>
