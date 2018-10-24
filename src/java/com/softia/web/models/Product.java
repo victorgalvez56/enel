@@ -5,21 +5,36 @@ package com.softia.web.models;
  * @author Roberto
  */
 public class Product {
-    private int codigo;
+    private int cod;
+    private String codigo;
     private String producto;
     private double porcentaje;
 
     /**
+     * @return the cod
+     */
+    public int getCod() {
+        return cod;
+    }
+
+    /**
+     * @param cod the cod to set
+     */
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+    
+     /**
      * @return the codigo
      */
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
     /**
      * @param codigo the codigo to set
      */
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

@@ -2816,42 +2816,53 @@ public class MenuAction extends BaseAction {
         Menus = (List<Menu>) getSession().get("menu");
         SubMenus = (List<SubMenu>) getSession().get("subMenu");
         setResult("frmADMMntProductos");
-
-        if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
+        /*try {
+            CProduct loProduct = new CProduct();
+            loProduct.setUrl(getUrl());
+            loProduct.setUser(user);
+            loProduct.setPasswd(pass);*/
+            
+            if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
             setProduct(new Product());
             setInformacion("Ingrese información y presione GRABAR");
-        } else {
-            if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
-                /*loOficina.setOficina(getOficina());
-                boolean llOk = loOficina.mxGrabar();
-                if (llOk) {
-                    setMensaje(loOficina.getMensaje());
-                } else {
-                    setError(loOficina.getError());
-                }*/
             } else {
-                if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
+                if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
                     /*loOficina.setOficina(getOficina());
-                    setLstOficinas(loOficina.mxBuscar());*/
+                    boolean llOk = loOficina.mxGrabar();
+                    if (llOk) {
+                        setMensaje(loOficina.getMensaje());
+                    } else {
+                        setError(loOficina.getError());
+                    }*/
+                    setProduct(getProduct());
+                    setMensaje("Información grabada correctamente");
                 } else {
-                    if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
-                            || ActionContext.getContext().getParameters().get("oficina.codOfi") != null) {
+                    if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
                         /*loOficina.setOficina(getOficina());
-                        boolean llOk = loOficina.mxAplicar();
-                        if (llOk) {
-                            setOficina(loOficina.getOficina());
-                        } else {
-                            setError(loOficina.getError());
-                        }*/
+                        setLstOficinas(loOficina.mxBuscar());*/
+                    } else {
+                        if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
+                                || ActionContext.getContext().getParameters().get("product.cod") != null) {
+                            /*loOficina.setOficina(getOficina());
+                            boolean llOk = loOficina.mxAplicar();
+                            if (llOk) {
+                                setOficina(loOficina.getOficina());
+                            } else {
+                                setError(loOficina.getError());
+                            }*/
+                        }
                     }
                 }
             }
-        }
-        /*if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
-            setLstOficinas(loOficina.getLstOficinas());
-            if (getLstOficinas() == null) {
-                setError(loOficina.getError());
+            if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
+                //setLstOficinas(loOficina.getLstOficinas());
+                if (getLstOficinas() == null) {
+                    //setError(loOficina.getError());
+                }
             }
+        /*} catch (SQLException loErr) {
+            setError(loErr.getMessage());
+            setResult("error");
         }*/
         return getResult();
     }

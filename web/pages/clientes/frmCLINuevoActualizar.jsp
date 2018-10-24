@@ -81,9 +81,11 @@
                 if((day-0)>(date.getDate()-0)){
                    document.getElementById("fecnacGroup").setAttribute("class", "form-group has-error");
                    document.getElementById("labelError").setAttribute("style", "display: block;");
+                   document.getElementById("bGrabar").disabled = true;
                 } else {
                    document.getElementById("fecnacGroup").setAttribute("class", "form-group"); 
                    document.getElementById("labelError").setAttribute("style", "display: none;");
+                   document.getElementById("bGrabar").disabled = false;
                 }
             }
         </script>
