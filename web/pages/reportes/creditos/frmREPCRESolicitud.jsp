@@ -45,6 +45,50 @@
                                 </div>
                             </div>
                         </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <div class="box box-primary box-solid">
+                                            <div class="box-body">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Fecha Inicial:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <s:textfield tabindex="1" name="fecIni" cssClass="form-control" type="date" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Fecha Final:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <s:textfield tabindex="2" name="fecFin" cssClass="form-control" type="date"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Canal:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group">
+                                                            <s:select name="codigoCanal" tabindex="3" list="lstCanales" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- TODOS --" cssClass="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <center>

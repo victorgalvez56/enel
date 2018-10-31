@@ -4883,12 +4883,35 @@ public class MenuAction extends BaseAction {
     }
 
     //SUBMODULO REPORTE SOLICITUDES
-    public String frmREPCRESolicitud() {
+    public String frmREPCRESolicitud() {        
         setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
         SubMenus = (List<SubMenu>) getSession().get("subMenu");
+        CTabla loTabla = new CTabla();
+        loTabla.setUrl(getUrl());
+        loTabla.setUser(user);
+        loTabla.setPasswd(pass);
+        try {
+            setLstTipDocCiv(loTabla.getLstTabla(4));
+            if (getLstTipDocCiv() == null) {
+                setError(loTabla.getError());
+            } else {
+                CCanales loCanal = new CCanales();
+                loCanal.setUrl(getUrl());
+                loCanal.setUser(user);
+                loCanal.setPasswd(pass);
+                setLstCanales(loCanal.getLstCanales());
+                if (getLstCanales() == null) {
+                    setError(loCanal.getError());
+                }
+            }
+        } catch (SQLException loErr) {
+            setError(loErr.getMessage());
+        }
         setResult("frmREPCRESolicitud");
         return getResult();
     }
@@ -4911,7 +4934,10 @@ public class MenuAction extends BaseAction {
         loCreditos.setUser(user);
         loCreditos.setPasswd(pass);
         try {
-            boolean llOk = loCreditos.mxGenerarReporteCreditosOtorgados();
+            loCreditos.setFecIni(getFecIni());
+            loCreditos.setFecFin(getFecFin());
+            loCreditos.setCodigoCanal(getCodigoCanal());
+            boolean llOk = loCreditos.mxGenerarReporteSolicitudesPresentadas();
             if (!llOk) {
                 setError(loCreditos.getError());
             } else {
@@ -4934,26 +4960,7 @@ public class MenuAction extends BaseAction {
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
         }
-        /*try {
-            boolean llOk = loRep.mxgenerarSolicitudXLS();
-            if (!llOk) {
-                setError(loRep.getError());
-            } else {
-                File file = new File(loRep.getRutaReporte());
-                byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
-                FileUtils.writeByteArrayToFile(file, archivo);
-                HttpServletResponse response = ServletActionContext.getResponse();
-                response.setContentLength(archivo.length);
-                response.setContentType("application/vnd.ms-excel");
-                response.setHeader("Content-Disposition", "attachment; filename=\"OPE_SOL_" + LibFunc.getFechaActual() + ".xls\"");
-                ServletOutputStream out = response.getOutputStream();
-                out.write(archivo);
-                out.flush();
-            }
-        } catch (SQLException | IOException | ParseException loErr) {
-            setError(loErr.getMessage());
-        }*/
-        return frmREPCRECartera();
+        return frmREPCRESolicitud();
     }
 
     public String generarMoraXLS() {
