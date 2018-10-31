@@ -50,29 +50,29 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nro.Solicitud</label>
+                                                            <label class="control-label">Nro.Solicitud:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="1" name="credito.codCta" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Código Cliente</label>
+                                                            <label class="control-label">Código Cliente:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="2" name="credito.cliente.codCli" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1" align="right">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nombre</label>
+                                                            <label class="control-label">Nombre:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-7">
@@ -84,12 +84,12 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Analista</label>
+                                                            <label class="control-label">Analista:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-11">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNomAna" tabindex="4" name="credito.nomAna" readonly="true"/>
+                                                            <s:textfield cssClass="form-control" id="tfNomAna" tabindex="4" name="credito.nomAna" readonly="true" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,12 +99,12 @@
                                                     </div>
                                                     <div class="col-md-1" align="right">
                                                         <div class="form-group">
-                                                            <label class="control-label">Resultado</label>
+                                                            <label class="control-label">Resultado:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="input-group">
-                                                            <s:textfield cssClass="form-control" id="tfResultadoEva" readonly="true" />
+                                                            <s:textfield cssClass="form-control" id="tfResultadoEva" readonly="true" style="text-transform: uppercase;" />
                                                             <span class="input-group-btn">
                                                                 <button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modalDetalleEva" id="bDetalleEva"><b>!</b></button>
                                                             </span>
@@ -112,7 +112,7 @@
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group" align="right">
-                                                            <label class="control-label">Fecha Evaluación</label>
+                                                            <label class="control-label">Fecha Evaluación:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -135,7 +135,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label class="control-label">Monto Solicitado</label>
+                                                            <label class="control-label">Monto Solicitado:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -145,7 +145,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nro. de Cuotas Solicitada</label>
+                                                            <label class="control-label">Nro. de Cuotas Solicitada:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -157,7 +157,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Monto Cuota Solicitada</label>
+                                                            <label>Monto Cuota Solicitada:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -167,7 +167,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Monto Cuota Aprobada</label>
+                                                            <label>Monto Cuota Aprobada:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -179,19 +179,19 @@
                                                 <div class="col-md-12">        
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Producto</label>
+                                                            <label>Producto:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield name="credito.producto.nombre" tabindex="11"  cssClass="form-control" readonly="true" />
+                                                            <s:textfield name="credito.producto.nombre" tabindex="11"  cssClass="form-control" readonly="true" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>                                                        
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Comentarios</label>
+                                                            <label>Comentarios:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-10">
@@ -213,6 +213,8 @@
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" onclick="campo_requerido()" cssClass="btn btn-primary btn-flat" disabled="true"/>
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat"/>
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
+                                            <a href="<s:url action="frmCREMantenedor"/>" class="btn btn-primary btn-flat" id="bSiguiente" onclick="return false;" disabled="true">Siguiente</a>
+                                            <!--onclick="return false;" disabled="true"-->
                                         </div>
                                     </div>
                                 </div>
@@ -277,6 +279,12 @@
                 } else {
                     document.getElementById("bAprobar").disabled = false;
                 }
+                
+                if (document.getElementById("tfResultadoEva").value === "") {
+                    document.getElementById("bAprobar").disabled = true;
+                    document.getElementById("bRechazar").disabled = true;
+                    document.getElementById("bEnviar").disabled = true;
+                }
             }
             function frmRechazarSolici() {
                 document.getElementById("fRechazar").setAttribute("action", "frmCREAprobacion");
@@ -291,12 +299,18 @@
                 if (estado === "rechazada") {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bEnviar").disabled = true; 
+                    document.getElementById("bSiguiente").removeAttribute("disabled"); 
+                    document.getElementById("bSiguiente").removeAttribute("onclick"); 
                 } else if (estado === "enviada") {
                     document.getElementById("bAprobar").disabled = true;
                     document.getElementById("bRechazar").disabled = true;
+                    document.getElementById("bSiguiente").removeAttribute("disabled"); 
+                    document.getElementById("bSiguiente").removeAttribute("onclick"); 
                 } else if (estado === "aprobada") {
                     document.getElementById("bRechazar").disabled = true;
                     document.getElementById("bEnviar").disabled = true;
+                    document.getElementById("bSiguiente").removeAttribute("disabled");
+                    document.getElementById("bSiguiente").removeAttribute("onclick"); 
                 }
             }
         </script>

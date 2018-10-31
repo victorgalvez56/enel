@@ -82,7 +82,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="cliente.sumini" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tfsuministro" tabindex="4" name="cliente.sumini" style="text-transform: uppercase;" maxlength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -126,7 +126,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="10" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="codciv" name="cliente.nroDocCiv" tabindex="10" style="text-transform: uppercase;" maxlength="15" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -168,38 +168,40 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Cod. cliente</th>
-                                                    <th>Nro. suministro</th>
-                                                    <th>Ape. paterno</th>
-                                                    <th>Ape. materno</th>
-                                                    <th>Nombre(s)</th>
-                                                    <th>Tipo documento</th>
-                                                    <th>Nro. documento</th>
-                                                    <th>Fecha de registro</th>
-                                                    <th>Seleccionar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <s:iterator value="lstClientes" status="rowStatus">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
                                                     <tr>
-                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                        <td><s:property value="codCli" /></td>
-                                                        <td><s:property value="sumini" /></td>
-                                                        <td><s:property value="apePat" /></td>
-                                                        <td><s:property value="apeMat" /></td>
-                                                        <td><s:property value="nombre" /></td>
-                                                        <td><s:property value="tipDocCiv" /></td>
-                                                        <td><s:property value="nroDocCiv" /></td>
-                                                        <td><s:property value="registro" /></td>
-                                                        <td><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
+                                                        <th>#</th>
+                                                        <th>Cod. cliente</th>
+                                                        <th>Nro. suministro</th>
+                                                        <th>Ape. paterno</th>
+                                                        <th>Ape. materno</th>
+                                                        <th>Nombre(s)</th>
+                                                        <th>Tipo documento</th>
+                                                        <th>Nro. documento</th>
+                                                        <th>Fecha de registro</th>
+                                                        <th>Seleccionar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <s:iterator value="lstClientes" status="rowStatus">
+                                                        <tr style="text-transform: uppercase;">
+                                                            <th><s:property value="%{#rowStatus.count}" /></th>
+                                                            <td><s:property value="codCli" /></td>
+                                                            <td><s:property value="sumini" /></td>
+                                                            <td><s:property value="apePat" /></td>
+                                                            <td><s:property value="apeMat" /></td>
+                                                            <td><s:property value="nombre" /></td>
+                                                            <td><s:property value="tipDocCiv" /></td>
+                                                            <td><s:property value="nroDocCiv" /></td>
+                                                            <td><s:property value="registro" /></td>
+                                                            <td><center><input type="checkbox" onclick="cliSeleccionado('<s:property value="codCli"/>')"></center></td>
                                                     </tr>
                                                 </s:iterator>
-                                            </tbody>
-                                        </table><br>
+                                                </tbody>
+                                            </table><br>
+                                        </div>
                                     </div>          
                                 </div>
                                 <div class="row">

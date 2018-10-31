@@ -42,10 +42,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <center>
-                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-default btn-flat" />
-                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-default btn-flat" />
+                                            <s:submit value="Buscar por Nombre" name="buscarNombre" cssClass="btn btn-primary btn-flat btn-sm" />
+                                            <s:submit value="Buscar por DNI" name="buscarDNI" cssClass="btn btn-primary btn-flat btn-sm" />
+                                            <s:submit value="Buscar por Suministro" name="buscarSumini" cssClass="btn btn-primary btn-flat btn-sm" />
                                         </center>
-
                                     </div>
                                 </div>
                             </s:form>
@@ -60,7 +60,7 @@
                                 </thead>
                                 <tbody>
                                     <s:iterator value="lstClientes" status="rowStatus">
-                                        <tr>
+                                        <tr style="text-transform: uppercase;">
                                             <th><s:property value="%{#rowStatus.count}" /></th>
                                             <td><s:property value="codCli" /></td>                                            
                                             <td><s:property value="nomCom" /></td>
@@ -121,7 +121,7 @@
                                                             </div>
                                                         </div>                                                                
                                                         <s:iterator value="lstCuentas" status="rowStatus">
-                                                            <div class="row">
+                                                            <div class="row" style="text-transform: uppercase;">
                                                                 <div class="col-md-3"><s:property value="cuenta" /></div>
                                                                 <div class="col-md-2"><s:property value="producto" /></div>
                                                                 <div class="col-md-2"><s:property value="saldo" /></div>

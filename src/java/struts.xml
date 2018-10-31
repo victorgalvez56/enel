@@ -17,6 +17,7 @@
         <action name="*" method="{1}" class="com.softia.web.actions.MenuAction">
             <result name="login" type="tiles">login</result>
             <result name="bienvenido" type="tiles">bienvenido</result>
+            <result name="perfil" type="tiles">perfil</result>
             
             <result name="frmSOLMantenedor" type="tiles">frmSOLMantenedor</result>
             <result name="frmCREMantenedor" type="tiles">frmCREMantenedor</result>
@@ -29,6 +30,9 @@
             <result name="frmREPCREWorkflow" type="tiles">frmREPCREWorkflow</result>
             <result name="frmADMUsuarios" type="tiles">frmADMUsuarios</result>
             <result name="frmADMNuevoUsuario" type="tiles">frmADMNuevoUsuario</result>
+            <result name="frmADMOficinas" type="tiles">frmADMOficinas</result>
+            <result name="frmADMAutonomias" type="tiles">frmADMAutonomias</result>
+            <result name="frmADMMntProductos" type="tiles">frmADMMntProductos</result>
             
             <result name="frmCAJDesembolso" type="tiles">frmCAJDesembolso</result>
             <result name="frmCAJPago" type="tiles">frmCAJPago</result>
@@ -41,7 +45,6 @@
             <result name="frmREPCREOtorgados" type="tiles">frmREPCREOtorgados</result>
 
             <result name="frmSISCargarUsuarios" type="tiles">frmSISCargarUsuarios</result>
-            <result name="frmSISMntOficinas" type="tiles">frmSISMntOficinas</result>
             
             <result name="frmCLIMantenedor" type="tiles">frmCLIMantenedor</result>
             <result name="frmCLINuevoActualizar" type="tiles">frmCLINuevoActualizar</result>
@@ -52,7 +55,20 @@
             <result name="frmCREMntCondiciones" type="tiles">frmCREMntCondiciones</result>
             <result name="frmCREMntProductos" type="tiles">frmCREMntProductos</result>
             <result name="frmCRECargarCreditos" type="tiles">frmCRECargarCreditos</result>
+            <result name="frmCREAmortizacion" type="tiles">frmCREAmortizacion</result>
+            <result name="frmCREAmortizar" type="tiles">frmCREAmortizar</result>
+            <result name="frmCRECancelacion" type="tiles">frmCRECancelacion</result>
+            <result name="frmCREReestructuracion" type="tiles">frmCREReestructuracion</result>
+            <result name="frmCREReestructurar" type="tiles">frmCREReestructurar</result>
+            <result name="frmCRERefinanciacion" type="tiles">frmCRERefinanciacion</result>
+            <result name="frmCRERefinanciar" type="tiles">frmCRERefinanciar</result>
 
+            <result name="frmCREMntRangoScore_RDC" type="tiles">frmCREMntRangoScore_RDC</result>
+            <result name="frmCREMntVerificacion_RDC" type="tiles">frmCREMntVerificacion_RDC</result>
+            <result name="frmCREMntLineaCredito_RDC" type="tiles">frmCREMntLineaCredito_RDC</result>
+            <result name="frmCREMntPlazos_RDC" type="tiles">frmCREMntPlazos_RDC</result>
+            <result name="frmCREValorCuotaCredito_RDC" type="tiles">frmCREValorCuotaCredito_RDC</result>
+            
             <result name="frmCOBParametrizar" type="tiles">frmCOBParametrizar</result>
             <result name="frmCOBAsignar" type="tiles">frmCOBAsignar</result>
             <result name="frmCOBProgramarVisitas" type="tiles">frmCOBProgramarVisitas</result>

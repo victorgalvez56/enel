@@ -55,6 +55,8 @@ function habilitarCLINuevoActualizar() {
         document.getElementById("tfCorreo").removeAttribute("readonly");
         document.getElementById("tfNroHijos").removeAttribute("readonly");
         document.getElementById("tfIngresos").removeAttribute("readonly");
+        document.getElementById("tfNroDepend").removeAttribute("readonly");
+        document.getElementById("tfTipoResi").removeAttribute("readonly");
     }
 }
 
@@ -70,5 +72,13 @@ function resultadoEva() {
         } else {
             document.getElementById("tfResultadoEva").setAttribute("value", "APROBADO"); 
         }
+    }
+}
+
+function bancarizadoNo() {
+    if(document.getElementById("estado").value === "CNB" ) {
+        //document.getElementById("navCB").removeAttribute("class");
+        //document.getElementById("navCNB").setAttribute("class", "active");
+        document.getElementById("aCNB").click();
     }
 }

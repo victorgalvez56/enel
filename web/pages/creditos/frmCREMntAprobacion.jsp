@@ -6,6 +6,32 @@
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <s:if test="mensaje.length() != 0">
+                                <div class="alert alert-success">
+                                    <div><span class="glyphicon glyphicon-ok"></span><strong> Mensaje:</strong> <s:property value="mensaje"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="informacion.length() != 0">
+                                <div class="alert alert-info">
+                                    <div><span class="glyphicon glyphicon-info-sign"></span><strong> Información</strong> <s:property value="informacion"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="advertencia.length() != 0">
+                                <div class="alert alert-warning">
+                                    <div><span class="glyphicon glyphicon-exclamation-sign"></span><strong> ¡Advertencia!</strong> <s:property value="advertencia"/> </div>
+                                </div>
+                            </s:if>
+                            <s:if test="error.length() != 0">
+                                <div class="alert alert-danger">
+                                    <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
+                                </div>
+                            </s:if>
+                        </div>
+                    </div>
+                </div>
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>Mantenedor de Aprobaciones de Desembolso Pendientes</h1>
@@ -14,32 +40,7 @@
                 <section class="content">
                     <div class="box box-primary">
                         <div class="box-body">
-                            <s:form action="frmCREMntAprobacion" role="form">                            
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <s:if test="mensaje.length() != 0">
-                                            <div class="alert alert-success">
-                                                <div><span class="glyphicon glyphicon-ok"></span><strong> Mensaje:</strong> <s:property value="mensaje"/> </div>
-                                            </div>
-                                        </s:if>
-                                        <s:if test="informacion.length() != 0">
-                                            <div class="alert alert-info">
-                                                <div><span class="glyphicon glyphicon-info-sign"></span><strong> Información</strong> <s:property value="informacion"/> </div>
-                                            </div>
-                                        </s:if>
-                                        <s:if test="advertencia.length() != 0">
-                                            <div class="alert alert-warning">
-                                                <div><span class="glyphicon glyphicon-exclamation-sign"></span><strong> ¡Advertencia!</strong> <s:property value="advertencia"/> </div>
-                                            </div>
-                                        </s:if>
-                                        <s:if test="error.length() != 0">
-                                            <div class="alert alert-danger">
-                                                <div><span class="glyphicon glyphicon-exclamation-sign"></span> <s:property value="error"/></div>
-                                            </div>
-                                        </s:if>
-                                    </div>
-                                </div>
-
+                            <s:form action="frmCREMntAprobacion" role="form">
                                 <div class="row">                                
                                     <div class="col-md-12">
                                         <div class="box box-primary box-solid">
@@ -47,7 +48,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Nro.Solicitud</label>
+                                                            <label class="control-label">Nro.Solicitud:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -59,29 +60,45 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label class="control-label">Tipo Doc.</label>
+                                                            <label class="control-label">Tipo Doc.:</label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <s:select name="credito.cliente.tipDocCiv" tabindex="2" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">                                                        
+                                                <div class="col-md-12">                                                  
                                                     <div class="col-md-1">
                                                         <div class="form-group">
-                                                            <label>Nro.Doc</label>
+                                                            <label>Nro.Doc:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" />
+                                                            <s:textfield cssClass="form-control" id="tfNroDoc" tabindex="3" name="credito.cliente.nroDocCiv" maxLength="15" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
+                                            </div>
+                                        </div>
+                                        <div class="box box-primary box-solid">
+                                            <div class="box-body">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <label>Comentarios:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-11">
+                                                        <div class="form-group">
+                                                            <s:textarea cssClass="form-control" id="tfComent" tabindex="4" name="comentario" required="true"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
                                                         <table class="table">
                                                             <thead>
                                                                 <tr>
@@ -94,13 +111,16 @@
                                                                     <th>Nombre(s)</th>
                                                                     <th>Tipo documento</th>
                                                                     <th>Nro. documento</th>
-                                                                    <th>Fecha de solicitud</th>
+                                                                    <th>Fecha deSolicitud</th>
+                                                                    <th>Monto Solicitado</th>
+                                                                    <th>Cuotas</th>
+                                                                    <th>Cuota</th>
                                                                     <th>Seleccionar</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <s:iterator value="lstCreditos" status="rowStatus">
-                                                                    <tr>
+                                                                    <tr style="text-transform: uppercase;" >
                                                                         <th><s:property value="%{#rowStatus.count}" /></th>
                                                                         <td><s:property value="codCta" /></td>
                                                                         <td><s:property value="cliente.codCli" /></td>
@@ -111,37 +131,27 @@
                                                                         <td><s:property value="cliente.tipDocCiv" /></td>
                                                                         <td><s:property value="cliente.nroDocCiv" /></td>
                                                                         <td><s:property value="fecSol" /></td>
+                                                                        <td><s:property value="capSol" /></td>
+                                                                        <td><s:property value="cuotas" /></td>
+                                                                        <td><s:property value="cuota" /></td>
                                                                         <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codCta"/>')"></center></td>
-                                                                </tr>
-                                                            </s:iterator>
+                                                                    </tr>
+                                                                </s:iterator>
                                                             </tbody>
                                                         </table><br>
-                                                    </div>          
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-12">
-                                                        <div class="col-md-1">
-                                                            <div class="form-group">
-                                                                <label>Comentarios</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-11">
-                                                            <div class="form-group">
-                                                                <s:textarea cssClass="form-control" id="tfComent" tabindex="4" name="comentario" required="true"/>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                                                <s:hidden name="credito.codigo"></s:hidden>
+                                <s:hidden name="credito.codigo"></s:hidden>
+                                <s:hidden name="estado" id="estado"></s:hidden>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <!--<button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalBuscarCre" id="bBuscarCre">Buscar</button>-->
-                                            <s:submit name="buscar" value="Buscar" id = "bBuscar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="buscar" value="Buscar" id = "bBuscar" onclick="campoRequerido();" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="aprobar" value="Aprobar" id = "bAprobar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat" />
                                         </div>
@@ -155,9 +165,22 @@
         </div>
     </body>
     <script>
+        $(document).ready(function () {
+            estado = document.getElementById("estado").value;
+            if (estado === "rechazada") {
+                document.getElementById("bAprobar").disabled = true;
+            } else if (estado === "aprobada"){ 
+                document.getElementById("bRechazar").disabled = true;
+            }
+        });
+        
         function creSeleccionado(codigo) {
             document.getElementById("tfCodCta").value = codigo;
             //document.getElementById("tfCodCli").removeAttribute("name");
+        }
+        
+        function campoRequerido() {
+            document.getElementById("tfComent").required = false;
         }
     </script>    
 </html>

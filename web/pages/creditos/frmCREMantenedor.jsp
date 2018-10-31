@@ -61,7 +61,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCta" tabindex="1" name="credito.codCta" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCta" tabindex="1" name="credito.codCta" style="text-transform: uppercase;" onchange="verCambio()" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -71,7 +71,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfSumini" tabindex="2" name="credito.cliente.sumini" />
+                                                            <s:textfield cssClass="form-control" id="tfSumini" tabindex="2" name="credito.cliente.sumini" maxLength="7" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -81,7 +81,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="3" name="credito.cliente.codCli" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCli" tabindex="3" name="credito.cliente.codCli" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,7 +103,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv" tabindex="4"/>
+                                                            <s:textfield cssClass="form-control" id="codciv" name="credito.cliente.nroDocCiv" tabindex="4" maxLength="15" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -113,40 +113,42 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Nro. Solicitud</th>
-                                                    <th>Cod. Cliente</th>
-                                                    <th>Suministro</th>
-                                                    <th>Ape. Paterno</th>
-                                                    <th>Ape. Materno</th>
-                                                    <th>Nombre(s)</th>
-                                                    <th>Tipo documento</th>
-                                                    <th>Nro. documento</th>
-                                                    <th>Fecha de solicitud</th>
-                                                    <th>Seleccionar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <s:iterator value="lstCreditos" status="rowStatus">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
                                                     <tr>
-                                                        <th><s:property value="%{#rowStatus.count}" /></th>
-                                                        <td><s:property value="codCta" /></td>
-                                                        <td><s:property value="cliente.codCli" /></td>
-                                                        <td><s:property value="cliente.sumini" /></td>
-                                                        <td><s:property value="cliente.apePat" /></td>
-                                                        <td><s:property value="cliente.apeMat" /></td>
-                                                        <td><s:property value="cliente.nombre" /></td>
-                                                        <td><s:property value="cliente.tipDocCiv" /></td>
-                                                        <td><s:property value="cliente.nroDocCiv" /></td>
-                                                        <td><s:property value="fecSol" /></td>
-                                                        <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codCta"/>')"></center></td>
-                                                </tr>
-                                            </s:iterator>
-                                            </tbody>
-                                        </table><br>
+                                                        <th>#</th>
+                                                        <th>Nro. Solicitud</th>
+                                                        <th>Cod. Cliente</th>
+                                                        <th>Suministro</th>
+                                                        <th>Ape. Paterno</th>
+                                                        <th>Ape. Materno</th>
+                                                        <th>Nombre(s)</th>
+                                                        <th>Tipo documento</th>
+                                                        <th>Nro. documento</th>
+                                                        <th>Fecha de solicitud</th>
+                                                        <th>Seleccionar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <s:iterator value="lstCreditos" status="rowStatus">
+                                                        <tr style="text-transform: uppercase;">
+                                                            <th><s:property value="%{#rowStatus.count}" /></th>
+                                                            <td><s:property value="codCta" /></td>
+                                                            <td><s:property value="cliente.codCli" /></td>
+                                                            <td><s:property value="cliente.sumini" /></td>
+                                                            <td><s:property value="cliente.apePat" /></td>
+                                                            <td><s:property value="cliente.apeMat" /></td>
+                                                            <td><s:property value="cliente.nombre" /></td>
+                                                            <td><s:property value="cliente.tipDocCiv" /></td>
+                                                            <td><s:property value="cliente.nroDocCiv" /></td>
+                                                            <td><s:property value="fecSol" /></td>
+                                                            <td><center><input type="checkbox" onclick="creSeleccionado('<s:property value="codCta"/>')"></center></td>
+                                                    </tr>
+                                                </s:iterator>
+                                                </tbody>
+                                            </table><br>
+                                        </div>
                                     </div>          
                                 </div>
                                 <div class="row">
@@ -155,7 +157,7 @@
                                             <s:hidden name="credito.codigo"></s:hidden>
                                             <s:submit name="buscar" value="Buscar" cssClass="btn btn-primary btn-flat" />
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalAsignarVenta" id="bAsignar">Asignar # de venta</button>
-                                            <s:submit name="rechazar" value="Rechazar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="rechazar" value="Rechazar" id="bRechazar" cssClass="btn btn-primary btn-flat" />
                                             <s:submit name="exportar" value="Exportar" cssClass="btn btn-primary btn-flat" />
                                         </div>
                                     </div>
@@ -168,10 +170,36 @@
         </div>
     </body>
     <script>
+        $(document).ready(function () {
+            botonHabilitado();
+        });
+
         function creSeleccionado(codigo) {
             document.getElementById("tfCodCta").value = codigo;
             document.getElementById("tfCodCre").value = codigo;
             //document.getElementById("tfCodCli").removeAttribute("name");
+            botonHabilitado();
+        }
+
+        function botonHabilitado() {
+            CodCre = document.getElementById("tfCodCre").value;
+            if (CodCre === "") {
+                document.getElementById("bRechazar").disabled = true;
+                document.getElementById("bAsignar").disabled = true;
+            } else {
+                document.getElementById("bRechazar").disabled = false;
+                document.getElementById("bAsignar").disabled = false;
+            }
+        }
+
+        function verCambio() {
+            CodCta = document.getElementById("tfCodCta").value;
+            CodCre = document.getElementById("tfCodCre").value;
+            if (CodCta === "") {
+                document.getElementById("bRechazar").disabled = true;
+            } else if (CodCta !== "" && CodCre !== "") {
+                document.getElementById("bRechazar").disabled = false;
+            }
         }
     </script>    
 </html>

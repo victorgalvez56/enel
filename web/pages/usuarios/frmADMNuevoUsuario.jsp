@@ -2,7 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true" name="usuario.codUsu" id="tfCodUsu"/>
+                                                            <s:textfield cssClass="form-control" tabindex="1" readonly="true" name="usuario.codUsu" id="tfCodUsu" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -86,7 +86,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.apePat" id="tfApePat"/>
+                                                            <s:textfield cssClass="form-control" tabindex="4" name="usuario.apePat" id="tfApePat" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -96,7 +96,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="5" name="usuario.nuDoCi" id="tfNuDoCi"/>
+                                                            <s:textfield cssClass="form-control" tabindex="5" name="usuario.nuDoCi" id="tfNuDoCi" style="text-transform: uppercase;" maxLength="15"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,7 +108,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="6" name="usuario.apeMat" id="tfApeMat"/>
+                                                            <s:textfield cssClass="form-control" tabindex="6" name="usuario.apeMat" id="tfApeMat" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +120,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" tabindex="7" name="usuario.nombre" id="tfNombre"/>
+                                                            <s:textfield cssClass="form-control" tabindex="7" name="usuario.nombre" id="tfNombre" style="text-transform: uppercase;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -135,6 +135,11 @@
                                                             <s:select name="usuario.oficina.codigo" id="sOficina" tabindex="7" list="lstOficinas" listKey="codigo" listValue="nombre" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control"/>
                                                         </div>
                                                     </div>
+<!--                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <button type="button" class="btn btn-success btn-flat form-control" data-toggle="modal" data-target="#modalMntAgencias" id="bMntAgencias">Ver</button>
+                                                        </div>
+                                                    </div>-->
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-1">
@@ -192,5 +197,21 @@
                 </section>
             </div>
         </div>
+        <script>
+            /*$(document).ready(function () {
+                document.getElementById("tfComent").required = true;
+                boton_habilitado();
+                deshabilitarBotones();
+            });*/
+            function pasarParamCan(codigo, nombre) {
+                document.getElementById("tfCodCanal").value = codigo;
+                document.getElementById("tfNomCanal").value = nombre;
+            }
+            
+            function limpiar() {
+                document.getElementById("tfCodCanal").value = "";
+                document.getElementById("tfNomCanal").value = "";
+            }
+        </script>
     </body>
 </html>

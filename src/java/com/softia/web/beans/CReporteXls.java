@@ -1032,11 +1032,8 @@ public class CReporteXls {
         loRowHead.createCell((short) 18).setCellValue("N°De Boleta de Venta");
         loRowHead.createCell((short) 19).setCellValue("Total Precio venta (con IGV)");
         loRowHead.createCell((short) 20).setCellValue("Total Precio Venta (Sin IGV)");
-        loRowHead.createCell((short) 21).setCellValue("Precio Contado COA");
-        loRowHead.createCell((short) 22).setCellValue("N° de Cuotas");
-        loRowHead.createCell((short) 23).setCellValue("Valor de Cuotas (Con IGV)");
-        loRowHead.createCell((short) 24).setCellValue("ID Producto");
-        loRowHead.createCell((short) 25).setCellValue("Descripcion del Producto");
+        loRowHead.createCell((short) 21).setCellValue("N° de Cuotas");
+        loRowHead.createCell((short) 22).setCellValue("Valor de Cuotas (Con IGV)");
         //ESTILO
         HSSFFont font = loWB.createFont();
         font.setColor(IndexedColors.WHITE.getIndex());
@@ -1052,7 +1049,7 @@ public class CReporteXls {
 	style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
         stylehead.setBorderBottom(BorderStyle.THIN);
 	stylehead.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-        for (int j=0; j<= 25; j++){
+        for (int j=0; j<= 22; j++){
             loRowHeadTitle1.createCell((short) j).setCellStyle(style);
             loRowHeadTitle.createCell((short) j).setCellStyle(style1);
             loRowHead.getCell(j).setCellStyle(stylehead);
@@ -1094,11 +1091,8 @@ public class CReporteXls {
             loRow.createCell((short) 18).setCellValue(loCredito.getNroVen());
             loRow.createCell((short) 19).setCellValue(loCredito.getPreVen());
             loRow.createCell((short) 20).setCellValue(loCredito.getPreVenSinIGV());
-            loRow.createCell((short) 21).setCellValue(loCredito.getPreContado());
-            loRow.createCell((short) 22).setCellValue(loCredito.getCuotas());
-            loRow.createCell((short) 23).setCellValue(loCredito.getCuotaAprobada());//cuotas con igv
-            loRow.createCell((short) 24).setCellValue(loCredito.getCodPro());
-            loRow.createCell((short) 25).setCellValue(loCredito.getDesPro());
+            loRow.createCell((short) 21).setCellValue(loCredito.getCuotas());
+            loRow.createCell((short) 22).setCellValue(loCredito.getCuota());//cuotas con igv
             index++;
         }
         setRutaReporte("/ftia/files/cierres/CREDITOS_" + LibFunc.getFechaActual() + ".xls");
