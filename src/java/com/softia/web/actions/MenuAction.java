@@ -393,9 +393,10 @@ public class MenuAction extends BaseAction {
                     if (!llOk) {
                         setError(loCliente.getError());
                     } else {
+                        loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac(), 2));
                         setCliente(loCliente.getCliente());
                     }
-                } catch (SQLException loErr) {
+                } catch (SQLException | ParseException loErr) {
                     setError(loErr.getMessage());
                 }
                 setMensaje("actualizar");
@@ -769,7 +770,7 @@ public class MenuAction extends BaseAction {
                 loCliente.setUser(user);
                 loCliente.setPasswd(pass);
                 try {
-                    loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac()));
+                    loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac(), 1));
                     boolean llOk = loCliente.mxGrabar();
                     if (!llOk) {
                         setError(loCliente.getError());
@@ -831,10 +832,12 @@ public class MenuAction extends BaseAction {
                 loCliente.setUser(user);
                 loCliente.setPasswd(pass);
                 try {
+                    loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac(), 1));
                     boolean llOk = loCliente.mxConsultaSuministro();
                     if (!llOk) {
                         setError(loCliente.getError());
                     } else {
+                        loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac(), 2));
                         setCliente(loCliente.getCliente());
                         if (loCliente.getCliente().getDireccion().getDireccion() == null && loCliente.getCliente().getEstado() == null) {
                             setAdvertencia("El número de suministro indicado no existe, intente con otro.");
@@ -849,14 +852,23 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String formateador(String fecha) throws ParseException {
+    public String formateador(String fecha, int opcion) throws ParseException {
         String fec = "";
         if (fecha != null) {
-            DateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
-            Date date = formateador.parse(fecha);
+            if (opcion == 1) {
+                DateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = formateador.parse(fecha);
 
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            fec = formatter.format(date);
+                DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                fec = formatter.format(date);
+            } else if (opcion == 2){
+                DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = formateador.parse(fecha);
+
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                fec = formatter.format(date);
+            }
+
         }
         return fec;
     }
@@ -2838,45 +2850,45 @@ public class MenuAction extends BaseAction {
             loProduct.setUrl(getUrl());
             loProduct.setUser(user);
             loProduct.setPasswd(pass);*/
-            
-            if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
+
+        if (ActionContext.getContext().getParameters().get("boton.nuevo") != null) {
             setProduct(new Product());
             setInformacion("Ingrese información y presione GRABAR");
-            } else {
-                if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
-                    /*loOficina.setOficina(getOficina());
+        } else {
+            if (ActionContext.getContext().getParameters().get("boton.grabar") != null) {
+                /*loOficina.setOficina(getOficina());
                     boolean llOk = loOficina.mxGrabar();
                     if (llOk) {
                         setMensaje(loOficina.getMensaje());
                     } else {
                         setError(loOficina.getError());
                     }*/
-                    setProduct(getProduct());
-                    setMensaje("Información grabada correctamente");
-                } else {
-                    if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
-                        /*loOficina.setOficina(getOficina());
+                setProduct(getProduct());
+                setMensaje("Información grabada correctamente");
+            } else {
+                if (ActionContext.getContext().getParameters().get("boton.buscar") != null) {
+                    /*loOficina.setOficina(getOficina());
                         setLstOficinas(loOficina.mxBuscar());*/
-                    } else {
-                        if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
-                                || ActionContext.getContext().getParameters().get("product.cod") != null) {
-                            /*loOficina.setOficina(getOficina());
+                } else {
+                    if (ActionContext.getContext().getParameters().get("boton.aplicar") != null
+                            || ActionContext.getContext().getParameters().get("product.cod") != null) {
+                        /*loOficina.setOficina(getOficina());
                             boolean llOk = loOficina.mxAplicar();
                             if (llOk) {
                                 setOficina(loOficina.getOficina());
                             } else {
                                 setError(loOficina.getError());
                             }*/
-                        }
                     }
                 }
             }
-            if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
-                //setLstOficinas(loOficina.getLstOficinas());
-                if (getLstOficinas() == null) {
-                    //setError(loOficina.getError());
-                }
+        }
+        if (ActionContext.getContext().getParameters().get("boton.buscar") == null) {
+            //setLstOficinas(loOficina.getLstOficinas());
+            if (getLstOficinas() == null) {
+                //setError(loOficina.getError());
             }
+        }
         /*} catch (SQLException loErr) {
             setError(loErr.getMessage());
             setResult("error");
@@ -7934,7 +7946,7 @@ public class MenuAction extends BaseAction {
     public void setLstProducts(List<Product> lstProducts) {
         this.lstProducts = lstProducts;
     }
-    
+
     /**
      * @return the product
      */
