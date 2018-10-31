@@ -880,4 +880,5 @@ public class Verificacion {
     public void setCuotaX4(double cuotaX4) {
         this.cuotaX4 = cuotaX4;
     }
+
 }

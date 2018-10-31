@@ -2455,6 +2455,23 @@ public class MenuAction extends BaseAction {
         /*HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
             
+            codigo = getCodigo() - 1;
+            getLstValorCuotaCB().get(codigo).setCuotaTitular(getCuotaTitular());
+            getLstValorCuotaCB().get(codigo).setCuotaFamiliar(getCuotaFamiliar());
+            getLstValorCuotaCB().get(codigo).setCuotaInquilino(getCuotaInquilino());
+            getLstValorCuotaCB().get(codigo).setCuotaTaxista(getCuotaTaxistas());
+            getLstValorCuotaCB().get(codigo).setCuotaMilOficio(getCuotaMilOficios());
+            getLstValorCuotaCB().get(codigo).setCuotaEmprendedor(getCuotaEmprendedores());
+            getLstValorCuotaCB().get(codigo).setCuotaAma(getCuotaAmasCasa());
+            getLstValorCuotaCB().get(codigo).setCuotaEmpleada(getCuotaEmpleadasHogar());
+            getLstValorCuotaCB().get(codigo).setCuotaJubilado(getCuotaJubiPen());
+            getLstValorCuotaCB().get(codigo).setCuotaRemesa(getCuotaRemesas());
+            getLstValorCuotaCB().get(codigo).setCuotaX1(getCuotaX1());
+            getLstValorCuotaCB().get(codigo).setCuotaX2(getCuotaX2());
+            getLstValorCuotaCB().get(codigo).setCuotaX3(getCuotaX3());
+            getLstValorCuotaCB().get(codigo).setCuotaX4(getCuotaX4());
+            
+            getSession().put("valorCuotaCB", getLstValorCuotaCB());
         } else if (request.getParameter("guardarCNB") != null) {
             if (getSession().get("valorCuotaCNB") != null) {
                 setLstValorCuotaCNB((ArrayList<Verificacion>)getSession().get("valorCuotaCNB"));
@@ -2467,13 +2484,13 @@ public class MenuAction extends BaseAction {
             getLstValorCuotaCNB().get(codigo).setCuotaTitular(getCuotaTitular());
             getLstValorCuotaCNB().get(codigo).setCuotaFamiliar(getCuotaFamiliar());
             getLstValorCuotaCNB().get(codigo).setCuotaInquilino(getCuotaInquilino());
-            getLstValorCuotaCNB().get(codigo).setCuotaTaxista(getCuotaTaxista());
-            getLstValorCuotaCNB().get(codigo).setCuotaMilOficio(getCuotaMilOficio());
-            getLstValorCuotaCNB().get(codigo).setCuotaEmprendedor(getCuotaEmprendedor());
-            getLstValorCuotaCNB().get(codigo).setCuotaAma(getCuotaAma());
-            getLstValorCuotaCNB().get(codigo).setCuotaEmpleada(getCuotaEmpleada());
-            getLstValorCuotaCNB().get(codigo).setCuotaJubilado(getCuotaJubilado());
-            getLstValorCuotaCNB().get(codigo).setCuotaRemesa(getCuotaRemesa());
+            getLstValorCuotaCNB().get(codigo).setCuotaTaxista(getCuotaTaxistas());
+            getLstValorCuotaCNB().get(codigo).setCuotaMilOficio(getCuotaMilOficios());
+            getLstValorCuotaCNB().get(codigo).setCuotaEmprendedor(getCuotaEmprendedores());
+            getLstValorCuotaCNB().get(codigo).setCuotaAma(getCuotaAmasCasa());
+            getLstValorCuotaCNB().get(codigo).setCuotaEmpleada(getCuotaEmpleadasHogar());
+            getLstValorCuotaCNB().get(codigo).setCuotaJubilado(getCuotaJubiPen());
+            getLstValorCuotaCNB().get(codigo).setCuotaRemesa(getCuotaRemesas());
             getLstValorCuotaCNB().get(codigo).setCuotaX1(getCuotaX1());
             getLstValorCuotaCNB().get(codigo).setCuotaX2(getCuotaX2());
             getLstValorCuotaCNB().get(codigo).setCuotaX3(getCuotaX3());
@@ -4891,13 +4908,43 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
         SubMenus = (List<SubMenu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        CCreditos loCreditos = new CCreditos();
+        loCreditos.setUrl(getUrl());
+        loCreditos.setUser(user);
+        loCreditos.setPasswd(pass);
         try {
+            boolean llOk = loCreditos.mxGenerarReporteCreditosOtorgados();
+            if (!llOk) {
+                setError(loCreditos.getError());
+            } else {
+                llOk = loRep.mxGenerarSolicitudesPresentadas(loCreditos.getLstCreditos());
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/vnd.ms-excel");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"CREDITOS_" + LibFunc.getFechaActual() + ".xls\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            }
+        } catch (SQLException | IOException | ParseException loErr) {
+            setError(loErr.getMessage());
+        }
+        /*try {
             boolean llOk = loRep.mxgenerarSolicitudXLS();
             if (!llOk) {
                 setError(loRep.getError());
@@ -4915,7 +4962,7 @@ public class MenuAction extends BaseAction {
             }
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
-        }
+        }*/
         return frmREPCRECartera();
     }
 
