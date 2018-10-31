@@ -2,7 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-blue sidebar-mini" onload="bancarizadoNo()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <s:form action="frmCREMntPlazos_RDC" role="form">
+                <%--<s:form action="frmCREMntPlazos_RDC" role="form">--%>
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>Mantenimiento de Plazos</h1>
@@ -43,10 +43,11 @@
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <s:hidden name="estado" id="estado" />
                                         <div class="nav-tabs-custom">
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a href="#bancarizados" data-toggle="tab">Clientes Bancarizados</a></li>
-                                                <li><a  href="#noBancarizados" data-toggle="tab">Clientes no Bancarizados</a></li>
+                                                <li><a  href="#noBancarizados" data-toggle="tab" id="aCNB">Clientes no Bancarizados</a></li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="active tab-pane" id="bancarizados">
@@ -90,20 +91,20 @@
                                                                         </s:if>
                                                                             <s:form action="frmCREMntPlazos_RDC" role="form">
                                                                                 <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasTitular" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasFamiliar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX1" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX2" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX3" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX4" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasTitular" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasFamiliar" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasInquilino" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxista" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficio" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedor" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasAma" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleada" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasJubilado" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesa" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX1" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX2" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX3" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX4" cssClass="form-control input-sm" /></td>
                                                                                 <td data-th="Guardar">
                                                                                     <%--<s:hidden name="codigo" value="%{codigo}" />--%>
                                                                                     <s:hidden name="codigo" value="%{#rowStatus.count}" />
@@ -158,20 +159,20 @@
                                                                         </s:if>
                                                                             <s:form action="frmCREMntPlazos_RDC" role="form">
                                                                                 <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasTitular" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasFamiliar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX1" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX2" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX3" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap><s:textfield name="cuotasX4" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasTitular" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasFamiliar" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasInquilino" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasTaxista" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasMilOficio" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmprendedor" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasAma" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasEmpleada" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasJubilado" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasRemesa" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX1" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX2" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX3" cssClass="form-control input-sm" /></td>
+                                                                                <td width="120" nowrap><s:textfield name="cuotasX4" cssClass="form-control input-sm" /></td>
                                                                                 <td data-th="Guardar">
                                                                                     <%--<s:hidden name="codigo" value="%{codigo}" />--%>
                                                                                     <s:hidden name="codigo" value="%{#rowStatus.count}" />
@@ -415,7 +416,7 @@
                             </div>
                         </div>
                     </section>
-                </s:form>
+                <%--</s:form>--%>
             </div>
         </div>
     </body>

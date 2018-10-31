@@ -90,20 +90,20 @@
                                                                         </s:if>
                                                                             <s:form action="frmCREValorCuotaCredito_RDC" role="form">
                                                                                 <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
-                                                                                <td width="120" nowrap data-th="Titular"><s:textfield name="cuotaTitular" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Familiar"><s:textfield name="cuotaFamiliar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Inquilino"><s:textfield name="cuotaInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X1"><s:textfield name="cuotaX1" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X2"><s:textfield name="cuotaX2" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X3"><s:textfield name="cuotaX3" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X4"><s:textfield name="cuotaX4" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Titular"><s:property value="cuotaTitular" /></td>
+                                                                                <td width="120" nowrap data-th="Familiar"><s:property value="cuotaFamiliar" /></td>
+                                                                                <td width="120" nowrap data-th="Inquilino"><s:property value="cuotaInquilino" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:property value="cuotaTaxista" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:property value="cuotaMilOficio" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:property value="cuotaEmprendedor" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:property value="cuotaAma" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:property value="cuotaEmpleada" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:property value="cuotaJubilado" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:property value="cuotaRemesa" /></td>
+                                                                                <td width="120" nowrap data-th="X1"><s:property value="cuotaX1" /></td>
+                                                                                <td width="120" nowrap data-th="X2"><s:property value="cuotaX2" /></td>
+                                                                                <td width="120" nowrap data-th="X3"><s:property value="cuotaX3" /></td>
+                                                                                <td width="120" nowrap data-th="X4"><s:property value="cuotaX4" /></td>
                                                                                 <td data-th="Guardar">
                                                                                     <%--<s:hidden name="codigo" value="%{codigo}" />--%>
                                                                                     <s:hidden name="codigo" value="%{#rowStatus.count}" />
@@ -158,20 +158,20 @@
                                                                         </s:if>
                                                                             <s:form action="frmCREValorCuotaCredito_RDC" role="form">
                                                                                 <td width="100" nowrap data-th="Perfil"><s:property value="perfil" /></td>
-                                                                                <td width="120" nowrap data-th="Titular"><s:textfield name="cuotaTitular" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Familiar"><s:textfield name="cuotaFamiliar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Inquilino"><s:textfield name="cuotaInquilino" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Taxistas"><s:textfield name="cuotaTaxistas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Mil oficios"><s:textfield name="cuotaMilOficios" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Emprendedores"><s:textfield name="cuotaEmprendedores" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Amas de casa"><s:textfield name="cuotaAmasCasa" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:textfield name="cuotaEmpleadasHogar" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:textfield name="cuotaJubiPen" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="Remesas"><s:textfield name="cuotaRemesas" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X1"><s:textfield name="cuotaX1" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X2"><s:textfield name="cuotaX2" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X3"><s:textfield name="cuotaX3" cssClass="form-control" /></td>
-                                                                                <td width="120" nowrap data-th="X4"><s:textfield name="cuotaX4" cssClass="form-control" /></td>
+                                                                                <td width="120" nowrap data-th="Titular"><s:property value="cuotaTitular" /></td>
+                                                                                <td width="120" nowrap data-th="Familiar"><s:property value="cuotaFamiliar" /></td>
+                                                                                <td width="120" nowrap data-th="Inquilino"><s:property value="cuotaInquilino" /></td>
+                                                                                <td width="120" nowrap data-th="Taxistas"><s:property value="cuotaTaxista" /></td>
+                                                                                <td width="120" nowrap data-th="Mil oficios"><s:property value="cuotaMilOficio" /></td>
+                                                                                <td width="120" nowrap data-th="Emprendedores"><s:property value="cuotaEmprendedor" /></td>
+                                                                                <td width="120" nowrap data-th="Amas de casa"><s:property value="cuotaAma" /></td>
+                                                                                <td width="120" nowrap data-th="Empleadas del hogar"><s:property value="cuotaEmpleada" /></td>
+                                                                                <td width="120" nowrap data-th="Jubilado, pensionista"><s:property value="cuotaJubilado" /></td>
+                                                                                <td width="120" nowrap data-th="Remesas"><s:property value="cuotaRemesa" /></td>
+                                                                                <td width="120" nowrap data-th="X1"><s:property value="cuotaX1" /></td>
+                                                                                <td width="120" nowrap data-th="X2"><s:property value="cuotaX2" /></td>
+                                                                                <td width="120" nowrap data-th="X3"><s:property value="cuotaX3" /></td>
+                                                                                <td width="120" nowrap data-th="X4"><s:property value="cuotaX4" /></td>
                                                                                 <td data-th="Guardar">
                                                                                     <%--<s:hidden name="codigo" value="%{codigo}" />--%>
                                                                                     <s:hidden name="codigo" value="%{#rowStatus.count}" />

@@ -46,6 +46,8 @@ import com.softia.web.beans.CTab;
 import com.softia.web.models.Tab;
 import com.softia.web.beans.CVerificacion;
 import com.softia.web.models.Verificacion;
+import com.softia.web.beans.CRango;
+import com.softia.web.models.Rango;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -108,6 +110,8 @@ public class MenuAction extends BaseAction {
     private List<Verificacion> lstPlazosCNB;
     private List<Verificacion> lstValorCuotaCB;
     private List<Verificacion> lstValorCuotaCNB;
+    private List<Rango> lstRangosCB;
+    private List<Rango> lstRangosCNB;
     private Verificacion verificacion;
     private Oficina oficina;
     private Perfil perfil;
@@ -149,6 +153,7 @@ public class MenuAction extends BaseAction {
     private String fecha;
     private Autonomia autonomia;
     private List<Autonomia> lstAutonomias;
+    private String nombre;
     private double minimo;
     private double maximo;
     private List<Menu> Menus;
@@ -156,13 +161,13 @@ public class MenuAction extends BaseAction {
     private int titular;
     private int familiar;
     private int inquilino;
-    private int taxistas;
-    private int milOficios;
-    private int emprendedores;
-    private int amasCasa;
-    private int empleadasHogar;
-    private int jubiPen;
-    private int remesas;
+    private int taxista;
+    private int milOficio;
+    private int emprendedor;
+    private int ama;
+    private int empleada;
+    private int jubilado;
+    private int remesa;
     private int x1;
     private int x2;
     private int x3;
@@ -170,13 +175,13 @@ public class MenuAction extends BaseAction {
     private double lineaTitular;
     private double lineaFamiliar;
     private double lineaInquilino;
-    private double lineaTaxistas;
-    private double lineaMilOficios;
-    private double lineaEmprendedores;
-    private double lineaAmasCasa;
-    private double lineaEmpleadasHogar;
-    private double lineaJubiPen;
-    private double lineaRemesas;
+    private double lineaTaxista;
+    private double lineaMilOficio;
+    private double lineaEmprendedor;
+    private double lineaAma;
+    private double lineaEmpleada;
+    private double lineaJubilado;
+    private double lineaRemesa;
     private double lineaX1;
     private double lineaX2;
     private double lineaX3;
@@ -184,13 +189,13 @@ public class MenuAction extends BaseAction {
     private int cuotasTitular;
     private int cuotasFamiliar;
     private int cuotasInquilino;
-    private int cuotasTaxistas;
-    private int cuotasMilOficios;
-    private int cuotasEmprendedores;
-    private int cuotasAmasCasa;
-    private int cuotasEmpleadasHogar;
-    private int cuotasJubiPen;
-    private int cuotasRemesas;
+    private int cuotasTaxista;
+    private int cuotasMilOficio;
+    private int cuotasEmprendedor;
+    private int cuotasAma;
+    private int cuotasEmpleada;
+    private int cuotasJubilado;
+    private int cuotasRemesa;
     private int cuotasX1;
     private int cuotasX2;
     private int cuotasX3;
@@ -198,13 +203,13 @@ public class MenuAction extends BaseAction {
     private double cuotaTitular;
     private double cuotaFamiliar;
     private double cuotaInquilino;
-    private double cuotaTaxistas;
-    private double cuotaMilOficios;
-    private double cuotaEmprendedores;
-    private double cuotaAmasCasa;
-    private double cuotaEmpleadasHogar;
-    private double cuotaJubiPen;
-    private double cuotaRemesas;
+    private double cuotaTaxista;
+    private double cuotaMilOficio;
+    private double cuotaEmprendedor;
+    private double cuotaAma;
+    private double cuotaEmpleada;
+    private double cuotaJubilado;
+    private double cuotaRemesa;
     private double cuotaX1;
     private double cuotaX2;
     private double cuotaX3;
@@ -2083,6 +2088,58 @@ public class MenuAction extends BaseAction {
     }
 
     public String frmCREMntRangoScore_RDC() {
+        setSession(ActionContext.getContext().getSession());
+        CRango rangos = new CRango();
+        if (getSession().get("rangosCB") == null) {
+            setLstRangosCB(rangos.getLstRangosCB());
+        } else {
+            setLstRangosCB((ArrayList<Rango>) getSession().get("rangosCB"));
+        }
+        
+        if (getSession().get("rangosCNB") == null)
+            setLstRangosCNB(rangos.getLstRangosCNB());
+        else
+            setLstRangosCNB((ArrayList<Rango>) getSession().get("rangosCNB"));
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("guardarCB") != null) {
+            /*if (getSession().get("rangosCB") != null) {
+                setLstRangosCB((ArrayList<Rango>) getSession().get("rangosCB"));
+            }
+            if (getSession().get("rangosCNB") != null) {
+                setLstRangosCNB((ArrayList<Rango>) getSession().get("rangosCNB"));
+            }*/
+            codigo = getCodigo() - 1;
+            getLstRangosCB().get(codigo).setNombre(getNombre());
+            getLstRangosCB().get(codigo).setMinimo(getMinimo());
+            getLstRangosCB().get(codigo).setMaximo(getMaximo());
+
+            getSession().put("rangosCB", getLstRangosCB());
+        } else if (request.getParameter("guardarCNB") != null) {
+            codigo = getCodigo() - 1;
+            getLstRangosCNB().get(codigo).setNombre(getNombre());
+            getLstRangosCNB().get(codigo).setMinimo(getMinimo());
+            getLstRangosCNB().get(codigo).setMaximo(getMaximo());
+
+            getSession().put("rangosCNB", getLstRangosCNB());
+            setEstado("CNB");
+        } else if (request.getParameter("nuevoCB") != null) {
+            getLstRangosCB().add(new Rango());
+            getSession().put("rangosCB", getLstRangosCB());
+        } else if (request.getParameter("nuevoCNB") != null) {
+            getLstRangosCNB().add(new Rango());
+            getSession().put("rangosCNB", getLstRangosCNB());
+            setEstado("CNB");
+        } else if (request.getParameter("quitarCB") != null) {
+            codigo = getCodigo() - 1;
+            getLstRangosCB().remove(codigo);
+            getSession().put("rangosCNB", getLstRangosCNB());
+        } else if (request.getParameter("quitarCNB") != null) {
+            codigo = getCodigo() - 1;
+            getLstRangosCNB().remove(codigo);
+            getSession().put("rangosCNB", getLstRangosCNB());
+            setEstado("CNB");
+        } 
         setResult("frmCREMntRangoScore_RDC");
         return getResult();
     }
@@ -2092,8 +2149,18 @@ public class MenuAction extends BaseAction {
         CTab tab = new CTab();
         setLstVerificacion(tab.getLstVerificacion());
         CVerificacion verifiPerf = new CVerificacion();
-        setLstVerifiPerfCB(verifiPerf.getLstVerifiPerfCB());
-        setLstVerifiPerfCNB(verifiPerf.getLstVerifiPerfCNB());
+        if (getSession().get("verificacionCB") == null) {
+            setLstVerifiPerfCB(verifiPerf.getLstVerifiPerfCB());
+        } else {
+            setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
+        }
+        
+        if (getSession().get("verificacionCNB") == null) {
+            setLstVerifiPerfCNB(verifiPerf.getLstVerifiPerfCNB());
+        } else {
+            setLstVerifiPerfCNB((ArrayList<Verificacion>) getSession().get("verificacionCNB"));
+        }
+        
 
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
@@ -2114,47 +2181,48 @@ public class MenuAction extends BaseAction {
             verifi.setX4(getX4());
             getLstVerifiPerfCB().set(0, verifi);*/
 
-            if (getSession().get("verificacionCB") != null) {
+            /*if (getSession().get("verificacionCB") != null) {
                 setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
             }
             if (getSession().get("verificacionCNB") != null) {
                 setLstVerifiPerfCNB((ArrayList<Verificacion>) getSession().get("verificacionCNB"));
-            }
+            }*/
 
             codigo = getCodigo() - 1;
             getLstVerifiPerfCB().get(codigo).setTitular(getTitular());
             getLstVerifiPerfCB().get(codigo).setFamiliar(getFamiliar());
             getLstVerifiPerfCB().get(codigo).setInquilino(getInquilino());
-            getLstVerifiPerfCB().get(codigo).setTaxista(getTaxistas());
-            getLstVerifiPerfCB().get(codigo).setMilOficio(getMilOficios());
-            getLstVerifiPerfCB().get(codigo).setEmprendedor(getEmprendedores());
-            getLstVerifiPerfCB().get(codigo).setAma(getAmasCasa());
-            getLstVerifiPerfCB().get(codigo).setEmpleada(getEmpleadasHogar());
-            getLstVerifiPerfCB().get(codigo).setJubilado(getJubiPen());
-            getLstVerifiPerfCB().get(codigo).setRemesa(getRemesas());
+            getLstVerifiPerfCB().get(codigo).setTaxista(getTaxista());
+            getLstVerifiPerfCB().get(codigo).setMilOficio(getMilOficio());
+            getLstVerifiPerfCB().get(codigo).setEmprendedor(getEmprendedor());
+            getLstVerifiPerfCB().get(codigo).setAma(getAma());
+            getLstVerifiPerfCB().get(codigo).setEmpleada(getEmpleada());
+            getLstVerifiPerfCB().get(codigo).setJubilado(getJubilado());
+            getLstVerifiPerfCB().get(codigo).setRemesa(getRemesa());
+            getLstVerifiPerfCB().get(codigo).setX1(getX1());
+            getLstVerifiPerfCB().get(codigo).setX2(getX2());
+            getLstVerifiPerfCB().get(codigo).setX3(getX3());
+            getLstVerifiPerfCB().get(codigo).setX4(getX4());
 
             getSession().put("verificacionCB", getLstVerifiPerfCB());
         } else if (request.getParameter("guardarCNB") != null) {
-            if (getSession().get("verificacionCNB") != null) {
-                setLstVerifiPerfCNB((ArrayList<Verificacion>) getSession().get("verificacionCNB"));
-            }
-            if (getSession().get("verificacionCB") != null) {
-                setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
-            }
-
             codigo = getCodigo() - 1;
             getLstVerifiPerfCNB().get(codigo).setTitular(getTitular());
             getLstVerifiPerfCNB().get(codigo).setFamiliar(getFamiliar());
             getLstVerifiPerfCNB().get(codigo).setInquilino(getInquilino());
-            getLstVerifiPerfCNB().get(codigo).setTaxista(getTaxistas());
-            getLstVerifiPerfCNB().get(codigo).setMilOficio(getMilOficios());
-            getLstVerifiPerfCNB().get(codigo).setEmprendedor(getEmprendedores());
-            getLstVerifiPerfCNB().get(codigo).setAma(getAmasCasa());
-            getLstVerifiPerfCNB().get(codigo).setEmpleada(getEmpleadasHogar());
-            getLstVerifiPerfCNB().get(codigo).setJubilado(getJubiPen());
-            getLstVerifiPerfCNB().get(codigo).setRemesa(getRemesas());
-
+            getLstVerifiPerfCNB().get(codigo).setTaxista(getTaxista());
+            getLstVerifiPerfCNB().get(codigo).setMilOficio(getMilOficio());
+            getLstVerifiPerfCNB().get(codigo).setEmprendedor(getEmprendedor());
+            getLstVerifiPerfCNB().get(codigo).setAma(getAma());
+            getLstVerifiPerfCNB().get(codigo).setEmpleada(getEmpleada());
+            getLstVerifiPerfCNB().get(codigo).setJubilado(getJubilado());
+            getLstVerifiPerfCNB().get(codigo).setRemesa(getRemesa());
+            getLstVerifiPerfCNB().get(codigo).setX1(getX1());
+            getLstVerifiPerfCNB().get(codigo).setX2(getX2());
+            getLstVerifiPerfCNB().get(codigo).setX3(getX3());
+            getLstVerifiPerfCNB().get(codigo).setX4(getX4());
             getSession().put("verificacionCNB", getLstVerifiPerfCNB());
+            setEstado("CNB");
         }
         setResult("frmCREMntVerificacion_RDC");
         return getResult();
@@ -2163,52 +2231,62 @@ public class MenuAction extends BaseAction {
     public String frmCREMntLineaCredito_RDC() {
         setSession(ActionContext.getContext().getSession());
         CVerificacion lineaCre = new CVerificacion();
-        setLstLineaCreCB(lineaCre.getLstLineaCreCB());
-        setLstLineaCreCNB(lineaCre.getLstLineaCreCNB());
+        if (getSession().get("lineaCreCB") == null) {
+            setLstLineaCreCB(lineaCre.getLstLineaCreCB());
+        } else {
+            setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
+        }
+        
+        if (getSession().get("lineaCreCNB") == null) {
+            setLstLineaCreCNB(lineaCre.getLstLineaCreCNB());
+        } else {
+            setLstLineaCreCNB((ArrayList<Verificacion>) getSession().get("lineaCreCNB"));
+        }
 
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
-            if (getSession().get("lineaCreCB") != null) {
+            /*if (getSession().get("lineaCreCB") != null) {
                 setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
             }
             if (getSession().get("lineaCreCNB") != null) {
                 setLstLineaCreCNB((ArrayList<Verificacion>) getSession().get("lineaCreCNB"));
-            }
+            }*/
 
             codigo = getCodigo() - 1;
             getLstLineaCreCB().get(codigo).setLineaTitular(getLineaTitular());
             getLstLineaCreCB().get(codigo).setLineaFamiliar(getLineaFamiliar());
             getLstLineaCreCB().get(codigo).setLineaInquilino(getLineaInquilino());
-            getLstLineaCreCB().get(codigo).setLineaTaxista(getLineaTaxistas());
-            getLstLineaCreCB().get(codigo).setLineaMilOficio(getLineaMilOficios());
-            getLstLineaCreCB().get(codigo).setLineaEmprendedor(getLineaEmprendedores());
-            getLstLineaCreCB().get(codigo).setLineaAma(getLineaAmasCasa());
-            getLstLineaCreCB().get(codigo).setLineaEmpleada(getLineaEmpleadasHogar());
-            getLstLineaCreCB().get(codigo).setLineaJubilado(getLineaJubiPen());
-            getLstLineaCreCB().get(codigo).setLineaRemesa(getLineaRemesas());
+            getLstLineaCreCB().get(codigo).setLineaTaxista(getLineaTaxista());
+            getLstLineaCreCB().get(codigo).setLineaMilOficio(getLineaMilOficio());
+            getLstLineaCreCB().get(codigo).setLineaEmprendedor(getLineaEmprendedor());
+            getLstLineaCreCB().get(codigo).setLineaAma(getLineaAma());
+            getLstLineaCreCB().get(codigo).setLineaEmpleada(getLineaEmpleada());
+            getLstLineaCreCB().get(codigo).setLineaJubilado(getLineaJubilado());
+            getLstLineaCreCB().get(codigo).setLineaRemesa(getLineaRemesa());
+            getLstLineaCreCB().get(codigo).setLineaX1(getLineaX1());
+            getLstLineaCreCB().get(codigo).setLineaX2(getLineaX2());
+            getLstLineaCreCB().get(codigo).setLineaX3(getLineaX3());
+            getLstLineaCreCB().get(codigo).setLineaX4(getLineaX4());
 
             getSession().put("lineaCreCB", getLstLineaCreCB());
         } else if (request.getParameter("guardarCNB") != null) {
-            if (getSession().get("lineaCreCNB") != null) {
-                setLstLineaCreCNB((ArrayList<Verificacion>) getSession().get("lineaCreCNB"));
-            }
-            if (getSession().get("lineaCreCB") != null) {
-                setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
-            }
-
             codigo = getCodigo() - 1;
             getLstLineaCreCNB().get(codigo).setLineaTitular(getLineaTitular());
             getLstLineaCreCNB().get(codigo).setLineaFamiliar(getLineaFamiliar());
             getLstLineaCreCNB().get(codigo).setLineaInquilino(getLineaInquilino());
-            getLstLineaCreCNB().get(codigo).setLineaTaxista(getLineaTaxistas());
-            getLstLineaCreCNB().get(codigo).setLineaMilOficio(getLineaMilOficios());
-            getLstLineaCreCNB().get(codigo).setLineaEmprendedor(getLineaEmprendedores());
-            getLstLineaCreCNB().get(codigo).setLineaAma(getLineaAmasCasa());
-            getLstLineaCreCNB().get(codigo).setLineaEmpleada(getLineaEmpleadasHogar());
-            getLstLineaCreCNB().get(codigo).setLineaJubilado(getLineaJubiPen());
-            getLstLineaCreCNB().get(codigo).setLineaRemesa(getLineaRemesas());
-
+            getLstLineaCreCNB().get(codigo).setLineaTaxista(getLineaTaxista());
+            getLstLineaCreCNB().get(codigo).setLineaMilOficio(getLineaMilOficio());
+            getLstLineaCreCNB().get(codigo).setLineaEmprendedor(getLineaEmprendedor());
+            getLstLineaCreCNB().get(codigo).setLineaAma(getLineaAma());
+            getLstLineaCreCNB().get(codigo).setLineaEmpleada(getLineaEmpleada());
+            getLstLineaCreCNB().get(codigo).setLineaJubilado(getLineaJubilado());
+            getLstLineaCreCNB().get(codigo).setLineaRemesa(getLineaRemesa());
+            getLstLineaCreCNB().get(codigo).setLineaX1(getLineaX1());
+            getLstLineaCreCNB().get(codigo).setLineaX2(getLineaX2());
+            getLstLineaCreCNB().get(codigo).setLineaX3(getLineaX3());
+            getLstLineaCreCNB().get(codigo).setLineaX4(getLineaX4());
             getSession().put("lineaCreCNB", getLstLineaCreCNB());
+            setEstado("CNB");
         }
         setResult("frmCREMntLineaCredito_RDC");
         return getResult();
@@ -2217,29 +2295,38 @@ public class MenuAction extends BaseAction {
     public String frmCREMntPlazos_RDC() {
         setSession(ActionContext.getContext().getSession());
         CVerificacion plazos = new CVerificacion();
-        setLstPlazosCB(plazos.getLstPlazosCB());
-        setLstPlazosCNB(plazos.getLstPlazosCNB());
+        if (getSession().get("plazosCB") == null) {
+            setLstPlazosCB(plazos.getLstPlazosCB());
+        } else {
+            setLstPlazosCB((ArrayList<Verificacion>)getSession().get("plazosCB"));
+        }
+        
+        if (getSession().get("plazosCNB") != null) {
+            setLstPlazosCNB(plazos.getLstPlazosCNB());
+        } else{
+            setLstPlazosCNB((ArrayList<Verificacion>)getSession().get("plazosCNB"));
+        }
         
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
-            if (getSession().get("plazosCB") != null) {
+            /*if (getSession().get("plazosCB") != null) {
                 setLstPlazosCB((ArrayList<Verificacion>)getSession().get("plazosCB"));
             }
             if (getSession().get("plazosCNB") != null) {
                 setLstPlazosCNB((ArrayList<Verificacion>)getSession().get("plazosCNB"));
-            }
+            }*/
             
             codigo = getCodigo() - 1;
             getLstPlazosCB().get(codigo).setCuotasTitular(getCuotasTitular());
             getLstPlazosCB().get(codigo).setCuotasFamiliar(getCuotasFamiliar());
             getLstPlazosCB().get(codigo).setCuotasInquilino(getCuotasInquilino());
-            getLstPlazosCB().get(codigo).setCuotasTaxista(getCuotasTaxistas());
-            getLstPlazosCB().get(codigo).setCuotasMilOficio(getCuotasMilOficios());
-            getLstPlazosCB().get(codigo).setCuotasEmprendedor(getCuotasEmprendedores());
-            getLstPlazosCB().get(codigo).setCuotasAma(getCuotasAmasCasa());
-            getLstPlazosCB().get(codigo).setCuotasEmpleada(getCuotasEmpleadasHogar());
-            getLstPlazosCB().get(codigo).setCuotasJubilado(getCuotasJubiPen());
-            getLstPlazosCB().get(codigo).setCuotasRemesa(getCuotasRemesas());
+            getLstPlazosCB().get(codigo).setCuotasTaxista(getCuotasTaxista());
+            getLstPlazosCB().get(codigo).setCuotasMilOficio(getCuotasMilOficio());
+            getLstPlazosCB().get(codigo).setCuotasEmprendedor(getCuotasEmprendedor());
+            getLstPlazosCB().get(codigo).setCuotasAma(getCuotasAma());
+            getLstPlazosCB().get(codigo).setCuotasEmpleada(getCuotasEmpleada());
+            getLstPlazosCB().get(codigo).setCuotasJubilado(getCuotasJubilado());
+            getLstPlazosCB().get(codigo).setCuotasRemesa(getCuotasRemesa());
             getLstPlazosCB().get(codigo).setCuotasX1(getCuotasX1());
             getLstPlazosCB().get(codigo).setCuotasX2(getCuotasX2());
             getLstPlazosCB().get(codigo).setCuotasX3(getCuotasX3());
@@ -2247,30 +2334,23 @@ public class MenuAction extends BaseAction {
             
             getSession().put("plazosCB", getLstPlazosCB());
         } else if (request.getParameter("guardarCNB") != null) {
-            if (getSession().get("plazosCNB") != null) {
-                setLstPlazosCNB((ArrayList<Verificacion>)getSession().get("plazosCNB"));
-            }
-            if (getSession().get("plazosCB") != null) {
-                setLstPlazosCB((ArrayList<Verificacion>)getSession().get("plazosCB"));
-            }
-            
             codigo = getCodigo() - 1;
             getLstPlazosCNB().get(codigo).setCuotasTitular(getCuotasTitular());
             getLstPlazosCNB().get(codigo).setCuotasFamiliar(getCuotasFamiliar());
             getLstPlazosCNB().get(codigo).setCuotasInquilino(getCuotasInquilino());
-            getLstPlazosCNB().get(codigo).setCuotasTaxista(getCuotasTaxistas());
-            getLstPlazosCNB().get(codigo).setCuotasMilOficio(getCuotasMilOficios());
-            getLstPlazosCNB().get(codigo).setCuotasEmprendedor(getCuotasEmprendedores());
-            getLstPlazosCNB().get(codigo).setCuotasAma(getCuotasAmasCasa());
-            getLstPlazosCNB().get(codigo).setCuotasEmpleada(getCuotasEmpleadasHogar());
-            getLstPlazosCNB().get(codigo).setCuotasJubilado(getCuotasJubiPen());
-            getLstPlazosCNB().get(codigo).setCuotasRemesa(getCuotasRemesas());
+            getLstPlazosCNB().get(codigo).setCuotasTaxista(getCuotasTaxista());
+            getLstPlazosCNB().get(codigo).setCuotasMilOficio(getCuotasMilOficio());
+            getLstPlazosCNB().get(codigo).setCuotasEmprendedor(getCuotasEmprendedor());
+            getLstPlazosCNB().get(codigo).setCuotasAma(getCuotasAma());
+            getLstPlazosCNB().get(codigo).setCuotasEmpleada(getCuotasEmpleada());
+            getLstPlazosCNB().get(codigo).setCuotasJubilado(getCuotasJubilado());
+            getLstPlazosCNB().get(codigo).setCuotasRemesa(getCuotasRemesa());
             getLstPlazosCNB().get(codigo).setCuotasX1(getCuotasX1());
             getLstPlazosCNB().get(codigo).setCuotasX2(getCuotasX2());
             getLstPlazosCNB().get(codigo).setCuotasX3(getCuotasX3());
             getLstPlazosCNB().get(codigo).setCuotasX4(getCuotasX4());
-            
             getSession().put("plazosCNB", getLstPlazosCNB());
+            setEstado("CNB");
         }
         setResult("frmCREMntPlazos_RDC");
         return getResult();
@@ -2282,14 +2362,53 @@ public class MenuAction extends BaseAction {
         setLstValorCuotaCB(valorCuota.getLstValorCuotaCB());
         setLstValorCuotaCNB(valorCuota.getLstValorCuotaCNB());
         
-        HttpServletRequest request = ServletActionContext.getRequest();
+        //CALCULO
+        double tea = 47.64;
+        if (getSession().get("lineaCreCB") != null && getSession().get("plazosCB") != null) {
+            setLstLineaCreCB((ArrayList<Verificacion>) getSession().get("lineaCreCB"));
+            setLstPlazosCB((ArrayList<Verificacion>)getSession().get("plazosCB"));
+            
+            for(int x=0;x<getLstValorCuotaCB().size();x++) {
+                getLstValorCuotaCB().get(x).setCuotaTitular(calcularCuota(getLstLineaCreCB().get(x).getLineaTitular(), getLstPlazosCB().get(x).getCuotasTitular(), tea));
+                getLstValorCuotaCB().get(x).setCuotaFamiliar(calcularCuota(getLstLineaCreCB().get(x).getLineaFamiliar(), getLstPlazosCB().get(x).getCuotasFamiliar(), tea));
+                getLstValorCuotaCB().get(x).setCuotaInquilino(calcularCuota(getLstLineaCreCB().get(x).getLineaInquilino(), getLstPlazosCB().get(x).getCuotasInquilino(), tea));
+                getLstValorCuotaCB().get(x).setCuotaTaxista(calcularCuota(getLstLineaCreCB().get(x).getLineaTaxista(), getLstPlazosCB().get(x).getCuotasTaxista(), tea));
+                getLstValorCuotaCB().get(x).setCuotaMilOficio(calcularCuota(getLstLineaCreCB().get(x).getLineaMilOficio(), getLstPlazosCB().get(x).getCuotasMilOficio(), tea));
+                getLstValorCuotaCB().get(x).setCuotaEmprendedor(calcularCuota(getLstLineaCreCB().get(x).getLineaEmprendedor(), getLstPlazosCB().get(x).getCuotasEmprendedor(), tea));
+                getLstValorCuotaCB().get(x).setCuotaAma(calcularCuota(getLstLineaCreCB().get(x).getLineaAma(), getLstPlazosCB().get(x).getCuotasAma(), tea));
+                getLstValorCuotaCB().get(x).setCuotaEmpleada(calcularCuota(getLstLineaCreCB().get(x).getLineaEmpleada(), getLstPlazosCB().get(x).getCuotasEmpleada(), tea));
+                getLstValorCuotaCB().get(x).setCuotaJubilado(calcularCuota(getLstLineaCreCB().get(x).getLineaJubilado(), getLstPlazosCB().get(x).getCuotasJubilado(), tea));
+                getLstValorCuotaCB().get(x).setCuotaRemesa(calcularCuota(getLstLineaCreCB().get(x).getLineaRemesa(), getLstPlazosCB().get(x).getCuotasRemesa(), tea));
+                getLstValorCuotaCB().get(x).setCuotaX1(calcularCuota(getLstLineaCreCB().get(x).getLineaX1(), getLstPlazosCB().get(x).getCuotasX1(), tea));
+                getLstValorCuotaCB().get(x).setCuotaX2(calcularCuota(getLstLineaCreCB().get(x).getLineaX2(), getLstPlazosCB().get(x).getCuotasX2(), tea));
+                getLstValorCuotaCB().get(x).setCuotaX3(calcularCuota(getLstLineaCreCB().get(x).getLineaX3(), getLstPlazosCB().get(x).getCuotasX3(), tea));
+                getLstValorCuotaCB().get(x).setCuotaX4(calcularCuota(getLstLineaCreCB().get(x).getLineaX4(), getLstPlazosCB().get(x).getCuotasX4(), tea));
+            }
+        }
+        if (getSession().get("lineaCreCNB") != null && getSession().get("plazosCNB") != null) {
+            setLstLineaCreCNB((ArrayList<Verificacion>) getSession().get("lineaCreCNB"));
+            setLstPlazosCNB((ArrayList<Verificacion>)getSession().get("plazosCNB"));
+            
+            for(int x=0;x<getLstValorCuotaCNB().size();x++) {
+                getLstValorCuotaCNB().get(x).setCuotaTitular(calcularCuota(getLstLineaCreCNB().get(x).getLineaTitular(), getLstPlazosCNB().get(x).getCuotasTitular(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaFamiliar(calcularCuota(getLstLineaCreCNB().get(x).getLineaFamiliar(), getLstPlazosCNB().get(x).getCuotasFamiliar(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaInquilino(calcularCuota(getLstLineaCreCNB().get(x).getLineaInquilino(), getLstPlazosCNB().get(x).getCuotasInquilino(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaTaxista(calcularCuota(getLstLineaCreCNB().get(x).getLineaTaxista(), getLstPlazosCNB().get(x).getCuotasTaxista(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaMilOficio(calcularCuota(getLstLineaCreCNB().get(x).getLineaMilOficio(), getLstPlazosCNB().get(x).getCuotasMilOficio(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaEmprendedor(calcularCuota(getLstLineaCreCNB().get(x).getLineaEmprendedor(), getLstPlazosCNB().get(x).getCuotasEmprendedor(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaAma(calcularCuota(getLstLineaCreCNB().get(x).getLineaAma(), getLstPlazosCNB().get(x).getCuotasAma(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaEmpleada(calcularCuota(getLstLineaCreCNB().get(x).getLineaEmpleada(), getLstPlazosCNB().get(x).getCuotasEmpleada(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaJubilado(calcularCuota(getLstLineaCreCNB().get(x).getLineaJubilado(), getLstPlazosCNB().get(x).getCuotasJubilado(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaRemesa(calcularCuota(getLstLineaCreCNB().get(x).getLineaRemesa(), getLstPlazosCNB().get(x).getCuotasRemesa(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaX1(calcularCuota(getLstLineaCreCNB().get(x).getLineaX1(), getLstPlazosCNB().get(x).getCuotasX1(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaX2(calcularCuota(getLstLineaCreCNB().get(x).getLineaX2(), getLstPlazosCNB().get(x).getCuotasX2(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaX3(calcularCuota(getLstLineaCreCNB().get(x).getLineaX3(), getLstPlazosCNB().get(x).getCuotasX3(), tea));
+                getLstValorCuotaCNB().get(x).setCuotaX4(calcularCuota(getLstLineaCreCNB().get(x).getLineaX4(), getLstPlazosCNB().get(x).getCuotasX4(), tea));
+            }
+        }
+        //System.out.print(calcularCuota(10000, 6, 47.64));
+        /*HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("guardarCB") != null) {
-            if (getSession().get("valorCuotaCB") != null) {
-                setLstValorCuotaCB((ArrayList<Verificacion>)getSession().get("valorCuotaCB"));
-            }
-            if (getSession().get("valorCuotaCNB") != null) {
-                setLstValorCuotaCNB((ArrayList<Verificacion>)getSession().get("valorCuotaCNB"));
-            }
             
             codigo = getCodigo() - 1;
             getLstValorCuotaCB().get(codigo).setCuotaTitular(getCuotaTitular());
@@ -2333,7 +2452,7 @@ public class MenuAction extends BaseAction {
             getLstValorCuotaCNB().get(codigo).setCuotaX4(getCuotaX4());
             
             getSession().put("valorCuotaCNB", getLstValorCuotaCNB());
-        }
+        }*/
         setResult("frmCREValorCuotaCredito_RDC");
         return getResult();
     }
@@ -6098,6 +6217,58 @@ public class MenuAction extends BaseAction {
         }
         return "DIRECCION";
     }
+    
+    /*public void llenarListas(int lista) {
+        switch (lista) {
+            case 1:
+                for(int x=0;x<getLstRangosCB().size();x++) {
+                    getLstVerifiPerfCB().get(x).setPerfil(getLstRangosCB().get(x).getNombre());
+                }
+                for(int x=0;x<getLstRangosCNB().size();x++) {
+                    getLstVerifiPerfCNB().get(x).setPerfil(getLstRangosCNB().get(x).getNombre());
+                }
+                break;
+            case 2:
+                for(int x=0;x<getLstRangosCB().size();x++) {
+                    getLstLineaCreCB().get(x).setPerfil(getLstRangosCB().get(x).getNombre());
+                }
+                for(int x=0;x<getLstRangosCNB().size();x++) {
+                    getLstLineaCreCNB().get(x).setPerfil(getLstRangosCNB().get(x).getNombre());
+                }
+                break;
+            case 3:
+                for(int x=0;x<getLstRangosCB().size();x++) {
+                    getLstPlazosCB().get(x).setPerfil(getLstRangosCB().get(x).getNombre());
+                }
+                for(int x=0;x<getLstRangosCNB().size();x++) {
+                    getLstPlazosCNB().get(x).setPerfil(getLstRangosCNB().get(x).getNombre());
+                }
+                break;
+            case 4:
+                for(int x=0;x<getLstRangosCB().size();x++) {
+                    getLstValorCuotaCB().get(x).setPerfil(getLstRangosCB().get(x).getNombre());
+                }
+                for(int x=0;x<getLstRangosCNB().size();x++) {
+                    getLstValorCuotaCNB().get(x).setPerfil(getLstRangosCNB().get(x).getNombre());
+                }
+                break;
+            default:
+                break;
+        }
+    }*/
+    
+    public double calcularTEM(double tea){
+        double tem = ((Math.pow((1 + (tea/100)), (1.0/12.0))) - 1)*100;
+        tem = Math.rint(tem * 100) / 100;
+        return tem;
+    }
+    
+    public double calcularCuota(double monto, int n, double tea) {
+        double tem = calcularTEM(tea);
+        double cuota = monto * (((tem/100) * Math.pow(1 + (tem/100), n))/(Math.pow(1 + (tem/100), n) - 1));
+        cuota = Math.rint(cuota * 100) / 100;
+        return cuota;
+    }
 
     /**
      * @return the usuario
@@ -7142,6 +7313,22 @@ public class MenuAction extends BaseAction {
         this.lstValorCuotaCNB = lstValorCuotaCNB;
     }
     
+    public List<Rango> getLstRangosCB() {
+        return lstRangosCB;
+    }
+    
+    public void setLstRangosCB(List<Rango> lstRangosCB) {
+        this.lstRangosCB = lstRangosCB;
+    }
+    
+    public List<Rango> getLstRangosCNB() {
+        return lstRangosCNB;
+    }
+    
+    public void setLstRangosCNB(List<Rango> lstRangosCNB) {
+        this.lstRangosCNB = lstRangosCNB;
+    }
+    
     public int getFamiliar() {
         return familiar;
     }
@@ -7158,60 +7345,60 @@ public class MenuAction extends BaseAction {
         this.inquilino = inquilino;
     }
 
-    public int getTaxistas() {
-        return taxistas;
+    public int getTaxista() {
+        return taxista;
     }
 
-    public void setTaxistas(int taxistas) {
-        this.taxistas = taxistas;
+    public void setTaxista(int taxista) {
+        this.taxista = taxista;
     }
 
-    public int getMilOficios() {
-        return milOficios;
+    public int getMilOficio() {
+        return milOficio;
     }
 
-    public void setMilOficios(int milOficios) {
-        this.milOficios = milOficios;
+    public void setMilOficio(int milOficio) {
+        this.milOficio = milOficio;
     }
 
-    public int getEmprendedores() {
-        return emprendedores;
+    public int getEmprendedor() {
+        return emprendedor;
     }
 
-    public void setEmprendedores(int emprendedores) {
-        this.emprendedores = emprendedores;
+    public void setEmprendedor(int emprendedor) {
+        this.emprendedor = emprendedor;
     }
 
-    public int getAmasCasa() {
-        return amasCasa;
+    public int getAma() {
+        return ama;
     }
 
-    public void setAmasCasa(int amasCasa) {
-        this.amasCasa = amasCasa;
+    public void setAma(int ama) {
+        this.ama = ama;
     }
 
-    public int getEmpleadasHogar() {
-        return empleadasHogar;
+    public int getEmpleada() {
+        return empleada;
     }
 
-    public void setEmpleadasHogar(int empleadasHogar) {
-        this.empleadasHogar = empleadasHogar;
+    public void setEmpleada(int empleada) {
+        this.empleada = empleada;
     }
 
-    public int getJubiPen() {
-        return jubiPen;
+    public int getJubilado() {
+        return jubilado;
     }
 
-    public void setJubiPen(int jubiPen) {
-        this.jubiPen = jubiPen;
+    public void setJubilado(int jubilado) {
+        this.jubilado = jubilado;
     }
 
-    public int getRemesas() {
-        return remesas;
+    public int getRemesa() {
+        return remesa;
     }
 
-    public void setRemesas(int remesas) {
-        this.remesas = remesas;
+    public void setRemesa(int remesa) {
+        this.remesa = remesa;
     }
 
     public int getX1() {
@@ -7278,60 +7465,60 @@ public class MenuAction extends BaseAction {
         this.lineaInquilino = lineaInquilino;
     }
 
-    public double getLineaTaxistas() {
-        return lineaTaxistas;
+    public double getLineaTaxista() {
+        return lineaTaxista;
     }
 
-    public void setLineaTaxistas(double lineaTaxistas) {
-        this.lineaTaxistas = lineaTaxistas;
+    public void setLineaTaxista(double lineaTaxista) {
+        this.lineaTaxista = lineaTaxista;
     }
 
-    public double getLineaMilOficios() {
-        return lineaMilOficios;
+    public double getLineaMilOficio() {
+        return lineaMilOficio;
     }
 
-    public void setLineaMilOficios(double lineaMilOficios) {
-        this.lineaMilOficios = lineaMilOficios;
+    public void setLineaMilOficio(double lineaMilOficio) {
+        this.lineaMilOficio = lineaMilOficio;
     }
 
-    public double getLineaEmprendedores() {
-        return lineaEmprendedores;
+    public double getLineaEmprendedor() {
+        return lineaEmprendedor;
     }
 
-    public void setLineaEmprendedores(double lineaEmprendedores) {
-        this.lineaEmprendedores = lineaEmprendedores;
+    public void setLineaEmprendedor(double lineaEmprendedor) {
+        this.lineaEmprendedor = lineaEmprendedor;
     }
 
-    public double getLineaAmasCasa() {
-        return lineaAmasCasa;
+    public double getLineaAma() {
+        return lineaAma;
     }
 
-    public void setLineaAmasCasa(double lineaAmasCasa) {
-        this.lineaAmasCasa = lineaAmasCasa;
+    public void setLineaAma(double lineaAma) {
+        this.lineaAma = lineaAma;
     }
 
-    public double getLineaEmpleadasHogar() {
-        return lineaEmpleadasHogar;
+    public double getLineaEmpleada() {
+        return lineaEmpleada;
     }
 
-    public void setLineaEmpleadasHogar(double lineaEmpleadasHogar) {
-        this.lineaEmpleadasHogar = lineaEmpleadasHogar;
+    public void setLineaEmpleada(double lineaEmpleada) {
+        this.lineaEmpleada = lineaEmpleada;
     }
 
-    public double getLineaJubiPen() {
-        return lineaJubiPen;
+    public double getLineaJubilado() {
+        return lineaJubilado;
     }
 
-    public void setLineaJubiPen(double lineaJubiPen) {
-        this.lineaJubiPen = lineaJubiPen;
+    public void setLineaJubilado(double lineaJubilado) {
+        this.lineaJubilado = lineaJubilado;
     }
 
-    public double getLineaRemesas() {
-        return lineaRemesas;
+    public double getLineaRemesa() {
+        return lineaRemesa;
     }
 
-    public void setLineaRemesas(double lineaRemesas) {
-        this.lineaRemesas = lineaRemesas;
+    public void setLineaRemesa(double lineaRemesa) {
+        this.lineaRemesa = lineaRemesa;
     }
 
     public double getLineaX1() {
@@ -7390,60 +7577,60 @@ public class MenuAction extends BaseAction {
         this.cuotasInquilino = cuotasInquilino;
     }
 
-    public int getCuotasTaxistas() {
-        return cuotasTaxistas;
+    public int getCuotasTaxista() {
+        return cuotasTaxista;
     }
 
-    public void setCuotasTaxistas(int cuotasTaxistas) {
-        this.cuotasTaxistas = cuotasTaxistas;
+    public void setCuotasTaxista(int cuotasTaxista) {
+        this.cuotasTaxista = cuotasTaxista;
     }
 
-    public int getCuotasMilOficios() {
-        return cuotasMilOficios;
+    public int getCuotasMilOficio() {
+        return cuotasMilOficio;
     }
 
-    public void setCuotasMilOficios(int cuotasMilOficios) {
-        this.cuotasMilOficios = cuotasMilOficios;
+    public void setCuotasMilOficio(int cuotasMilOficio) {
+        this.cuotasMilOficio = cuotasMilOficio;
     }
 
-    public int getCuotasEmprendedores() {
-        return cuotasEmprendedores;
+    public int getCuotasEmprendedor() {
+        return cuotasEmprendedor;
     }
 
-    public void setCuotasEmprendedores(int cuotasEmprendedores) {
-        this.cuotasEmprendedores = cuotasEmprendedores;
+    public void setCuotasEmprendedor(int cuotasEmprendedor) {
+        this.cuotasEmprendedor = cuotasEmprendedor;
     }
 
-    public int getCuotasAmasCasa() {
-        return cuotasAmasCasa;
+    public int getCuotasAma() {
+        return cuotasAma;
     }
 
-    public void setCuotasAmasCasa(int cuotasAmasCasa) {
-        this.cuotasAmasCasa = cuotasAmasCasa;
+    public void setCuotasAma(int cuotasAma) {
+        this.cuotasAma = cuotasAma;
     }
 
-    public int getCuotasEmpleadasHogar() {
-        return cuotasEmpleadasHogar;
+    public int getCuotasEmpleada() {
+        return cuotasEmpleada;
     }
 
-    public void setCuotasEmpleadasHogar(int cuotasEmpleadasHogar) {
-        this.cuotasEmpleadasHogar = cuotasEmpleadasHogar;
+    public void setCuotasEmpleada(int cuotasEmpleada) {
+        this.cuotasEmpleada = cuotasEmpleada;
     }
 
-    public int getCuotasJubiPen() {
-        return cuotasJubiPen;
+    public int getCuotasJubilado() {
+        return cuotasJubilado;
     }
 
-    public void setCuotasJubiPen(int cuotasJubiPen) {
-        this.cuotasJubiPen = cuotasJubiPen;
+    public void setCuotasJubilado(int cuotasJubilado) {
+        this.cuotasJubilado = cuotasJubilado;
     }
 
-    public int getCuotasRemesas() {
-        return cuotasRemesas;
+    public int getCuotasRemesa() {
+        return cuotasRemesa;
     }
 
-    public void setCuotasRemesas(int cuotasRemesas) {
-        this.cuotasRemesas = cuotasRemesas;
+    public void setCuotasRemesa(int cuotasRemesa) {
+        this.cuotasRemesa = cuotasRemesa;
     }
 
     public int getCuotasX1() {
@@ -7502,60 +7689,60 @@ public class MenuAction extends BaseAction {
         this.cuotaInquilino = cuotaInquilino;
     }
 
-    public double getCuotaTaxistas() {
-        return cuotaTaxistas;
+    public double getCuotaTaxista() {
+        return cuotaTaxista;
     }
 
-    public void setCuotaTaxistas(double cuotaTaxistas) {
-        this.cuotaTaxistas = cuotaTaxistas;
+    public void setCuotaTaxista(double cuotaTaxista) {
+        this.cuotaTaxista = cuotaTaxista;
     }
 
-    public double getCuotaMilOficios() {
-        return cuotaMilOficios;
+    public double getCuotaMilOficio() {
+        return cuotaMilOficio;
     }
 
-    public void setCuotaMilOficios(double cuotaMilOficios) {
-        this.cuotaMilOficios = cuotaMilOficios;
+    public void setCuotaMilOficio(double cuotaMilOficio) {
+        this.cuotaMilOficio = cuotaMilOficio;
     }
 
-    public double getCuotaEmprendedores() {
-        return cuotaEmprendedores;
+    public double getCuotaEmprendedor() {
+        return cuotaEmprendedor;
     }
 
-    public void setCuotaEmprendedores(double cuotaEmprendedores) {
-        this.cuotaEmprendedores = cuotaEmprendedores;
+    public void setCuotaEmprendedor(double cuotaEmprendedor) {
+        this.cuotaEmprendedor = cuotaEmprendedor;
     }
 
-    public double getCuotaAmasCasa() {
-        return cuotaAmasCasa;
+    public double getCuotaAma() {
+        return cuotaAma;
     }
 
-    public void setCuotaAmasCasa(double cuotaAmasCasa) {
-        this.cuotaAmasCasa = cuotaAmasCasa;
+    public void setCuotaAma(double cuotaAma) {
+        this.cuotaAma = cuotaAma;
     }
 
-    public double getCuotaEmpleadasHogar() {
-        return cuotaEmpleadasHogar;
+    public double getCuotaEmpleada() {
+        return cuotaEmpleada;
     }
 
-    public void setCuotaEmpleadasHogar(double cuotaEmpleadasHogar) {
-        this.cuotaEmpleadasHogar = cuotaEmpleadasHogar;
+    public void setCuotaEmpleada(double cuotaEmpleada) {
+        this.cuotaEmpleada = cuotaEmpleada;
     }
 
-    public double getCuotaJubiPen() {
-        return cuotaJubiPen;
+    public double getCuotaJubilado() {
+        return cuotaJubilado;
     }
 
-    public void setCuotaJubiPen(double cuotaJubiPen) {
-        this.cuotaJubiPen = cuotaJubiPen;
+    public void setCuotaJubilado(double cuotaJubilado) {
+        this.cuotaJubilado = cuotaJubilado;
     }
 
-    public double getCuotaRemesas() {
-        return cuotaRemesas;
+    public double getCuotaRemesa() {
+        return cuotaRemesa;
     }
 
-    public void setCuotaRemesas(double cuotaRemesas) {
-        this.cuotaRemesas = cuotaRemesas;
+    public void setCuotaRemesa(double cuotaRemesa) {
+        this.cuotaRemesa = cuotaRemesa;
     }
 
     public double getCuotaX1() {
@@ -7588,5 +7775,13 @@ public class MenuAction extends BaseAction {
 
     public void setCuotaX4(double cuotaX4) {
         this.cuotaX4 = cuotaX4;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

@@ -24,7 +24,7 @@
                         </ul>
                     </li>
                 </s:iterator>
-<!--                    
+<!--
                 <li><a href="<s:url action="frmCREMntRangoScore_RDC"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Rango - Score</a></li>
                 <li><a href="<s:url action="frmCREMntVerificacion_RDC"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Verificación</a></li>
                 <li><a href="<s:url action="frmCREMntLineaCredito_RDC"/>"><i class="fa fa-circle-o"></i> Mantenimiento de Línea de Crédito</a></li>

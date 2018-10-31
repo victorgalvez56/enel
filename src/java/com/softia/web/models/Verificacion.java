@@ -22,6 +22,10 @@ public class Verificacion {
     private int empleada;
     private int jubilado;
     private int remesa;
+    private int x1;
+    private int x2;
+    private int x3;
+    private int x4;
     private double lineaTitular;
     private double lineaFamiliar;
     private double lineaInquilino;
@@ -231,6 +235,62 @@ public class Verificacion {
      */
     public void setRemesa(int remesa) {
         this.remesa = remesa;
+    }
+
+    /**
+     * @return the x1
+     */
+    public int getX1() {
+        return x1;
+    }
+
+    /**
+     * @param x1 the x1 to set
+     */
+    public void setX1(int x1) {
+        this.x1 = x1;
+    }
+
+    /**
+     * @return the x2
+     */
+    public int getX2() {
+        return x2;
+    }
+
+    /**
+     * @param x2 the x2 to set
+     */
+    public void setX2(int x2) {
+        this.x2 = x2;
+    }
+
+    /**
+     * @return the x3
+     */
+    public int getX3() {
+        return x3;
+    }
+
+    /**
+     * @param x3 the x3 to set
+     */
+    public void setX3(int x3) {
+        this.x3 = x3;
+    }
+
+    /**
+     * @return the x4
+     */
+    public int getX4() {
+        return x4;
+    }
+
+    /**
+     * @param x4 the x4 to set
+     */
+    public void setX4(int x4) {
+        this.x4 = x4;
     }
 
     /**
