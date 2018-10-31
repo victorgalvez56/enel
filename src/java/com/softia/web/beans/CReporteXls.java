@@ -1109,6 +1109,15 @@ public class CReporteXls {
         }
         return llOk;
     }
+    public boolean mxGenerarSolicitudesPresentadas(List<Credito> lstCreditos) throws SQLException, IOException, ParseException {
+        boolean llOk = mxCREOtorgadosXls(lstCreditos, "REPORTE SOLICITUDES");
+        if (llOk) {
+            LibFunc.mxLog("REPORTE XLS OK.");
+        } else {
+            LibFunc.mxLog("REPORTE XLS error: " + getError());
+        }
+        return llOk;
+    }
     /**
      * @return the pthFil
      */

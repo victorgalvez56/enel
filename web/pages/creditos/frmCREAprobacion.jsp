@@ -214,6 +214,7 @@
                                             <s:submit name="rechazar" value="Rechazar" id = "bRechazar" cssClass="btn btn-primary btn-flat"/>
                                             <button type="button" class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modalPlanPagos" id="bBuscarCre">Generar Plan de Pagos</button>
                                             <a href="<s:url action="frmCREMantenedor"/>" class="btn btn-primary btn-flat" id="bSiguiente" onclick="return false;" disabled="true">Siguiente</a>
+                                            <!--onclick="return false;" disabled="true"-->
                                         </div>
                                     </div>
                                 </div>

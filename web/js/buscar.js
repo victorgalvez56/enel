@@ -55,6 +55,8 @@ function habilitarCLINuevoActualizar() {
         document.getElementById("tfCorreo").removeAttribute("readonly");
         document.getElementById("tfNroHijos").removeAttribute("readonly");
         document.getElementById("tfIngresos").removeAttribute("readonly");
+        document.getElementById("tfNroDepend").removeAttribute("readonly");
+        document.getElementById("tfTipoResi").removeAttribute("readonly");
     }
 }
 
