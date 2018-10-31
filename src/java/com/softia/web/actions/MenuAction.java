@@ -832,10 +832,12 @@ public class MenuAction extends BaseAction {
                 loCliente.setUser(user);
                 loCliente.setPasswd(pass);
                 try {
+                    loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac(), 1));
                     boolean llOk = loCliente.mxConsultaSuministro();
                     if (!llOk) {
                         setError(loCliente.getError());
                     } else {
+                        loCliente.getCliente().setFecNac(formateador(loCliente.getCliente().getFecNac(), 2));
                         setCliente(loCliente.getCliente());
                         if (loCliente.getCliente().getDireccion().getDireccion() == null && loCliente.getCliente().getEstado() == null) {
                             setAdvertencia("El número de suministro indicado no existe, intente con otro.");
