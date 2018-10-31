@@ -3427,13 +3427,43 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setSession(ActionContext.getContext().getSession());
+        String user = getSession().get("user").toString();
+        String pass = getSession().get("pass").toString();
         Menus = new ArrayList<>();
         SubMenus = new ArrayList<>();
         Menus = (List<Menu>) getSession().get("menu");
         SubMenus = (List<Menu>) getSession().get("subMenu");
         CReporteXls loRep = new CReporteXls();
         loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+        CCreditos loCreditos = new CCreditos();
+        loCreditos.setUrl(getUrl());
+        loCreditos.setUser(user);
+        loCreditos.setPasswd(pass);
         try {
+            boolean llOk = loCreditos.mxGenerarReporteCreditosOtorgados();
+            if (!llOk) {
+                setError(loCreditos.getError());
+            } else {
+                llOk = loRep.mxGenerarSolicitudesPresentadas(loCreditos.getLstCreditos());
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/vnd.ms-excel");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"CREDITOS_" + LibFunc.getFechaActual() + ".xls\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            }
+        } catch (SQLException | IOException | ParseException loErr) {
+            setError(loErr.getMessage());
+        }
+        /*try {
             boolean llOk = loRep.mxgenerarSolicitudXLS();
             if (!llOk) {
                 setError(loRep.getError());
@@ -3451,7 +3481,7 @@ public class MenuAction extends BaseAction {
             }
         } catch (SQLException | IOException | ParseException loErr) {
             setError(loErr.getMessage());
-        }
+        }*/
         return frmREPCRECartera();
     }
 
