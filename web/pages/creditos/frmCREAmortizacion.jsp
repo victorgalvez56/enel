@@ -5,21 +5,27 @@
 <html>
     <head>
         <script>
+            function fxCuotas(){
+                var cuotas = parseInt(document.getElementById('tfCuotasPag').value);
+                var montoCuota = parseFloat(document.getElementById('tfCuotaRef').value);
+                document.getElementById('tfPago').value = cuotas * montoCuota;
+                fxAmortizacion();
+            }
             function fxAmortizacion() {
                 document.getElementById('tfCapitalAmortizado').value = 0;
                 document.getElementById('tfInteresAmortizado').value = 0;
                 document.getElementById('tfGastosAmortizado').value = 0;
                 document.getElementById('tfNuevoCapital').value = 0;
-                var monAmo = document.getElementById('tfPago').value;
+                var monAmo = parseFloat(document.getElementById('tfPago').value);
                 var salGas = document.getElementById('tfComisiones').value;
                 var salMor = document.getElementById('tfMora').value;
                 var salInt = document.getElementById('tfInteres').value;
                 var salCap = document.getElementById('tfCapital').value;
-                var deuda = document.getElementById('tfTotal').value;
+                var deuda = parseFloat(document.getElementById('tfTotal').value);
                 if (salMor > 0){
                     alert('NO se puede amortizar crédito atrasado');
                 }else{
-                    if (deuda < monAmo){
+                    if (deuda < monAmo){                        
                         alert('NO se puede amortizar monto mayor a deuda');
                     }else{
                         var gasAmo = 0;
@@ -208,17 +214,27 @@
                                                     <div class="col-md-12">
                                                         <div class="col-md-1">
                                                             <div class="form-group">
+                                                                <label class="control-label">Cuotas a Pagar:</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="form-group">
+                                                                <s:textfield tabindex="13" cssClass="form-control" name="credito.cuoPag" id="tfCuotasPag" onblur="fxCuotas();"/>
+                                                            </div>
+                                                        </div>                                                        
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
                                                                 <label class="control-label">Pago:</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
-                                                                <s:textfield cssClass="form-control" tabindex="12" id="tfPago" name="credito.monAmo" onblur="fxAmortizacion();"/>
+                                                                <s:textfield cssClass="form-control" tabindex="12" id="tfPago" name="credito.monAmo" onblur="fxAmortizacion();" readonly="true"/>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-1">
                                                             <div class="form-group">
-                                                                <label class="control-label">Cuotas:</label>
+                                                                <label class="control-label">Nuevo Nro. de Cuotas:</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">

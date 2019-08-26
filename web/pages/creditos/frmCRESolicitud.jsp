@@ -122,6 +122,43 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <div class="box box-primary box-solid">
+                                            <div class="box-header">
+                                                <h3 class="box-title">Archivos:</h3>
+                                            </div>
+                                            <div class="box-body">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Archivo 1:</label>
+                                                            <s:file name="archivo" label="Carga Archivo"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Archivo 2:</label>
+                                                            <s:file name="archivo" label="Carga Archivo"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Archivo 3:</label>
+                                                            <s:file name="archivo" label="Carga Archivo"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>Archivo 4:</label>
+                                                            <s:file name="archivo" label="Carga Archivo"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden name="credito.codigo"></s:hidden>
                                             <s:hidden name="cliente.apePat"></s:hidden>
