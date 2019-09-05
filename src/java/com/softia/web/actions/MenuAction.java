@@ -81,6 +81,8 @@ public class MenuAction extends BaseAction {
     private List<Tabla> lstEstados;
     private List<Tabla> lstSexos;
     private List<Tabla> lstTipDocCiv;
+    private List<Tabla> lstTipProf;
+
     private List<Tabla> lstNivIns;
     private List<Tabla> lstTipZon;
     private List<Profesion> lstProfesiones;
@@ -223,163 +225,121 @@ public class MenuAction extends BaseAction {
     private Product product;
 
     public String frmSolicitudFinanciamiento() {
-        if (!validaSession()) {
-            return "login";
-        }
-        //Tipo de Documento        
-        setLstTipDocCiv(new ArrayList<Tabla>());
-        Tabla documento = new Tabla();
-        documento.setCodigo("1");
-        documento.setDescripcion("DNI");
-        getLstTipDocCiv().add(documento);
-        documento = new Tabla();
-        documento.setCodigo("2");
-        documento.setDescripcion("CE");
-        getLstTipDocCiv().add(documento);
-        //Género 
-        setLstSexos(new ArrayList<Tabla>());
-        Tabla genero = new Tabla();
-        genero.setCodigo("1");
-        genero.setDescripcion("F");
-        getLstSexos().add(genero);
-        genero = new Tabla();
-        genero.setCodigo("2");
-        genero.setDescripcion("M");
-        getLstSexos().add(genero);
-        //Perfiles
-        setLstNivIns(new ArrayList<Tabla>());
-        Tabla perfiles = new Tabla();
-        perfiles.setCodigo("1");
-        perfiles.setDescripcion("Empleado");
-        getLstNivIns().add(perfiles);
-        perfiles = new Tabla();
-        perfiles.setCodigo("2");
-        perfiles.setDescripcion("Independiente");
-        getLstNivIns().add(perfiles);
-        perfiles = new Tabla();
-        perfiles.setCodigo("3");
-        perfiles.setDescripcion("Pensionado");
-        getLstNivIns().add(perfiles);
-        //Estado civil
-        setLstEstados(new ArrayList<Tabla>());
-        Tabla estado = new Tabla();
-        estado.setCodigo("1");
-        estado.setDescripcion("SOLTERO");
-        getLstEstados().add(estado);
-        estado = new Tabla();
-        estado.setCodigo("2");
-        estado.setDescripcion("CASADO");
-        getLstEstados().add(estado);
-        estado = new Tabla();
-        estado.setCodigo("3");
-        estado.setDescripcion("DIVORCIADO");
-        getLstEstados().add(estado);
-        estado = new Tabla();
-        estado.setCodigo("4");
-        estado.setDescripcion("VIUDO");
-        getLstEstados().add(estado);
-        estado = new Tabla();
-        estado.setCodigo("5");
-        estado.setDescripcion("CONVIVIENTE");
-        getLstEstados().add(estado);
+        {
 
-        setSession(ActionContext.getContext().getSession());
-        String user = getSession().get("user").toString();
-        String pass = getSession().get("pass").toString();
-        Menus = new ArrayList<>();
-        SubMenus = new ArrayList<>();
-        Menus = (List<Menu>) getSession().get("menu");
-        SubMenus = (List<SubMenu>) getSession().get("subMenu");
-        CTabla loTabla = new CTabla();
-        loTabla.setUrl(getUrl());
-        loTabla.setUser(user);
-        loTabla.setPasswd(pass);
+            setLstTipDocCiv(new ArrayList<Tabla>());
+            Tabla tipodoc = new Tabla();
+            tipodoc.setCodigo("1");
+            tipodoc.setDescripcion("DNI");
+            getLstTipDocCiv().add(tipodoc);
+            tipodoc = new Tabla();
+            tipodoc.setCodigo("2");
+            tipodoc.setDescripcion("CE");
+            getLstTipDocCiv().add(tipodoc);
 
-        try {
-            if (getLstEstados() == null) {
-                setError(loTabla.getError());
-            } else {
-                setLstSexos(loTabla.getLstTabla(3));
-                if (getLstSexos() == null) {
-                    setError(loTabla.getError());
-                } else {
-                    setLstTipDocCiv(loTabla.getLstTabla(4));
-                    if (getLstTipDocCiv() == null) {
-                        setError(loTabla.getError());
-                    } else {
-                        CProfesiones loProfesion = new CProfesiones();
-                        loProfesion.setUrl(getUrl());
-                        loProfesion.setUser(user);
-                        loProfesion.setPasswd(pass);
-                        setLstProfesiones(loProfesion.getLstProfesiones());
-                        if (getLstProfesiones() == null) {
-                            setError(loProfesion.getError());
-                        } else {
-                            setLstNivIns(loTabla.getLstTabla(5));
-                            if (getLstNivIns() == null) {
-                                setError(loTabla.getError());
-                            } else {
-                                setLstTipZon(loTabla.getLstTabla(6));
-                                if (getLstTipZon() == null) {
-                                    setError(loTabla.getError());
-                                }
-                            }
-                        }
-                    }
+            setLstSexos(new ArrayList<Tabla>());
+            Tabla sexo = new Tabla();
+            sexo.setCodigo("1");
+            sexo.setDescripcion("FEMENINO");
+            getLstSexos().add(sexo);
+            sexo = new Tabla();
+            sexo.setCodigo("2");
+            sexo.setDescripcion("MASCULINO");
+            getLstSexos().add(sexo);
+
+            setLstNivIns(new ArrayList<Tabla>());
+            Tabla nivelest = new Tabla();
+            nivelest.setCodigo("1");
+            nivelest.setDescripcion("PRIMARIA");
+            getLstNivIns().add(nivelest);
+            nivelest = new Tabla();
+            nivelest.setCodigo("2");
+            nivelest.setDescripcion("SECUNDARIA");
+            getLstNivIns().add(nivelest);
+            nivelest = new Tabla();
+            nivelest.setCodigo("3");
+            nivelest.setDescripcion("SUPERIOR");
+            getLstNivIns().add(nivelest);
+
+            setLstTipoOrden(new ArrayList<Tabla>());
+            Tabla tipo = new Tabla();
+            tipo.setCodigo("E");
+            tipo.setDescripcion("EMPLEADO");
+            getLstTipoOrden().add(tipo);
+            tipo = new Tabla();
+            tipo.setCodigo("I");
+            tipo.setDescripcion("INDEPENDIENTE");
+            getLstTipoOrden().add(tipo);
+            tipo = new Tabla();
+            tipo.setCodigo("P");
+            tipo.setDescripcion("PENSIONADO");
+            getLstTipoOrden().add(tipo);
+
+            //Estado civil
+            setLstEstados(new ArrayList<Tabla>());
+            Tabla estado = new Tabla();
+            estado.setCodigo("1");
+            estado.setDescripcion("SOLTERO");
+            getLstEstados().add(estado);
+            estado = new Tabla();
+            estado.setCodigo("2");
+            estado.setDescripcion("CASADO");
+            getLstEstados().add(estado);
+            estado = new Tabla();
+            estado.setCodigo("3");
+            estado.setDescripcion("DIVORCIADO");
+            getLstEstados().add(estado);
+            estado = new Tabla();
+            estado.setCodigo("4");
+            estado.setDescripcion("VIUDO");
+            getLstEstados().add(estado);
+            estado = new Tabla();
+            estado.setCodigo("5");
+            estado.setDescripcion("CONVIVIENTE");
+            getLstEstados().add(estado);
+
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("siguiente") != null) {
+
+                if (getCliente().getEstCiv().equals("2") || getCliente().getEstCiv().equals("5")) {
+                    return frmSolFinan_Conyuge();
+                } else if (getCliente().getEstCiv().equals("1") || getCliente().getEstCiv().equals("3") || getCliente().getEstCiv().equals("4")) {
+                    return frmSolFinan_Vivienda();
                 }
+
             }
-        } catch (SQLException loErr) {
-            setError(loErr.getMessage());
+
         }
+        setResult("frmSolicitudFinanciamiento");
+
+        return getResult();
+    }
+
+    private String frmSolFinan_Conyuge() {
+
+        setResult("frmSolFinan_Conyuge");
+
+        return getResult();
+    }
+
+    public String frmSolFinan_Vivienda() {
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("conyuge") != null) {
-                CClientes loCliente = new CClientes();
-                loCliente.setCliente(getCliente());
-                loCliente.setUrl(getUrl());
-                loCliente.setUser(user);
-                loCliente.setPasswd(pass);
+            if (request.getParameter("siguiente2") != null) {
+                if (getCliente().getTipDocTri().equals("E")) {
+                    return frmSolFinan_Empleado();
+                } else if (getCliente().getTipDocTri().equals("I")) {
+                    return frmSolFinan_Independiente();
+                } else if (getCliente().getTipDocTri().equals("P")) {
+                    return frmSolFinan_Jubilado();
+                }
 
-                return frmSolFinan_Conyuge();
-            } else if (request.getParameter("empleado") != null) {
-                CClientes loCliente = new CClientes();
-                loCliente.setCliente(getCliente());
-                loCliente.setUrl(getUrl());
-                loCliente.setUser(user);
-                loCliente.setPasswd(pass);
-
-                return frmSolFinan_Empleado();
-            } else if (request.getParameter("independiente") != null) {
-                CClientes loCliente = new CClientes();
-                loCliente.setCliente(getCliente());
-                loCliente.setUrl(getUrl());
-                loCliente.setUser(user);
-                loCliente.setPasswd(pass);
-
-                return frmSolFinan_Independiente();
-            } else if (request.getParameter("jubilado") != null) {
-                CClientes loCliente = new CClientes();
-                loCliente.setCliente(getCliente());
-                loCliente.setUrl(getUrl());
-                loCliente.setUser(user);
-                loCliente.setPasswd(pass);
-
-                return frmSolFinan_Jubilado();
             }
-
-            setResult("frmSolicitudFinanciamiento");
+            setResult("frmSolFinan_Vivienda");
 
         }
-        return getResult();
-    }
-
-    public String frmSolFinan_Conyuge() {
-        if (!validaSession()) {
-            return "login";
-        }
-        setResult("frmSolFinan_Conyuge");
         return getResult();
     }
 
@@ -395,6 +355,7 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+
         setResult("frmSolFinan_Independiente");
         return getResult();
     }
@@ -404,6 +365,113 @@ public class MenuAction extends BaseAction {
             return "login";
         }
         setResult("frmSolFinan_Jubilado");
+        return getResult();
+    }
+
+    public String frmSolFinan_InfoFinan() {
+        if (!validaSession()) {
+            return "login";
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("siguiente2") != null) {
+                if (getCliente().getTipDocTri().equals("E")) {
+                    return frmSolFinan_RefPerso();
+                } else if (getCliente().getTipDocTri().equals("I")) {
+                    return frmSolFinan_RefLabor();
+                } else if (getCliente().getTipDocTri().equals("P")) {
+                    return frmSolFinan_RefFamil();
+                }
+
+            }
+            setResult("frmSolFinan_InfoFinan");
+
+        }
+        return getResult();
+    }
+
+    public String frmSolFinan_Documentos() {
+        if (!validaSession()) {
+            return "login";
+        }
+
+        setResult("frmSolFinan_Documentos");
+        return getResult();
+    }
+
+    public String frmSolFinan_RefFamil() {
+        if (!validaSession()) {
+            return "login";
+        }
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("siguiente2") != null) {
+                if (getCliente().getTipDocTri().equals("E")) {
+                    return frmSolFinan_DocEmple();
+                } else if (getCliente().getTipDocTri().equals("I")) {
+                    return frmSolFinan_DocIndpF();
+                } else if (getCliente().getTipDocTri().equals("P")) {
+                    return frmSolFinan_DocJubila();
+                }
+
+            }
+            setResult("frmSolFinan_RefFamil");
+
+        }
+        return getResult();
+    }
+
+    public String frmSolFinan_RefLabor() {
+        if (!validaSession()) {
+            return "login";
+        }
+
+        setResult("frmSolFinan_RefLabor");
+        return getResult();
+    }
+
+    public String frmSolFinan_RefPerso() {
+        if (!validaSession()) {
+            return "login";
+        }
+
+        setResult("frmSolFinan_RefPerso");
+        return getResult();
+    }
+
+    public String frmSolFinan_DocEmple() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setResult("frmSolFinan_DocEmple");
+        return getResult();
+    }
+
+    public String frmSolFinan_DocIndpF() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setResult("frmSolFinan_DocIndpF");
+        return getResult();
+    }
+
+    public String frmSolFinan_DocIndpN() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setResult("frmSolFinan_DocIndpN");
+        return getResult();
+    }
+
+    public String frmSolFinan_DocJubila() {
+        if (!validaSession()) {
+            return "login";
+        }
+        setResult("frmSolFinan_DocJubila");
         return getResult();
     }
 
@@ -438,32 +506,22 @@ public class MenuAction extends BaseAction {
     }
 
     public String autenticar() {
+
         CUsuarios loUsuario = new CUsuarios();
         loUsuario.setUsuario(getUsuario());
         loUsuario.setUrl(getUrl());
-        try {
-            if (loUsuario.mxLogin()) {
-                setSession(ActionContext.getContext().getSession());
-                getSession().put("user", loUsuario.getUsuario().getCorreo());
-                getSession().put("pass", loUsuario.getUsuario().getPasswd());
+        setSession(ActionContext.getContext().getSession());
+        getSession().put("user", loUsuario.getUsuario().getCorreo());
+        getSession().put("pass", loUsuario.getUsuario().getPasswd());
+        setMenus(loUsuario.getLstMenus());
+        setSubMenus(loUsuario.getLstSubMenus());
 
-                setMenus(loUsuario.getLstMenus());
-                setSubMenus(loUsuario.getLstSubMenus());
+        getSession().put("menu", Menus);
+        getSession().put("subMenu", SubMenus);
 
-                getSession().put("menu", Menus);
-                getSession().put("subMenu", SubMenus);
+        setMensaje(loUsuario.getMensaje());
 
-                setMensaje(loUsuario.getMensaje());
-                setResult("bienvenido");
-            } else {
-                setError(loUsuario.getError());
-                setResult("login");
-            }
-        } catch (SQLException loErr) {
-            setMensaje("");
-            setError(loErr.getMessage());
-            setResult("login");
-        }
+        setResult("bienvenido");
         return getResult();
     }
 
@@ -7194,6 +7252,20 @@ public class MenuAction extends BaseAction {
     }
 
     /**
+     * @return the lstTipProf
+     */
+    public List<Tabla> getLstTipProf() {
+        return lstTipProf;
+    }
+
+    /**
+     * @param lstTipProf the lstNivEst to set
+     */
+    public void setLstTipProf(List<Tabla> lstTipProf) {
+        this.lstNivIns = lstTipProf;
+    }
+
+    /**
      * @return the lstTipZon
      */
     public List<Tabla> getLstTipZon() {
@@ -8147,4 +8219,5 @@ public class MenuAction extends BaseAction {
     public void setProduct(Product product) {
         this.product = product;
     }
+
 }
