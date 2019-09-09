@@ -237,7 +237,7 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden name="cliente.TipDocTri"></s:hidden>
-                                            <s:hidden name="tipoinde"/>
+                                            <s:hidden name="cliente.tipoInde"/>
                                             <s:submit name="siguiente4" value="Siguiente" id = "bSiguiente" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
