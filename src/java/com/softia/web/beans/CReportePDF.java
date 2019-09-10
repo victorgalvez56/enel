@@ -80,6 +80,75 @@ public class CReportePDF {
         return fec;
     }
 
+    //------------Métodos para reporte Solicitud de Financiamiento--------------
+    public boolean mxSolicitudCliente() throws SQLException, IOException {
+        CClientes loCli = new CClientes();
+        /*loCli.setUrl(getUrl());
+         loCli.setUser(getUser());
+         loCli.setPasswd(getPasswd());
+         loCli.setCliente(getCliente());
+      
+         boolean llOk = loCli.mxAplicar();
+         if (llOk) {
+         llOk = loCli.mxCreditosRelacionados();
+         if (llOk) {
+         llOk = loCli.mxCreditos();
+         if (llOk) {
+                    
+         */
+        mxSolicitudClienteArchivo(loCli.getCliente());
+        setRutaReporte("/ftia/files/cartas/solicitudFinanciamientoCliente.pdf");
+        LibFunc.mxLog("Solicitud de financiamiento Cliente OK.");
+
+        return true;
+    }
+
+    public boolean mxSolicitudClienteArchivo(Cliente p_oCliente) throws IOException {
+        boolean llOk = true;
+        try {
+            FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/solicitudFinanciamientoCliente.pdf");
+            Document loDoc = new Document(PageSize.A4, -50, -50, 5, 5);
+            PdfWriter writer = PdfWriter.getInstance(loDoc, loArchivo);
+            loDoc.open();
+     
+            Font fontTitulos = FontFactory.getFont(
+                    FontFactory.HELVETICA, 12, Font.BOLD,
+                    BaseColor.BLACK);
+
+            Font fontContenido = FontFactory.getFont(
+                    FontFactory.TIMES_ROMAN, 7, Font.NORMAL,
+                    BaseColor.BLACK);
+            
+            Paragraph loTitulo = new Paragraph();
+
+
+            //Titulo
+            loTitulo.add(new Phrase(Chunk.NEWLINE));
+            loTitulo.add(new Paragraph("SOLICITUD DE EVALUACIÓN FINANCIERA", fontTitulos));
+            loTitulo.setAlignment(Element.ALIGN_CENTER);
+            loTitulo.add(new Phrase(Chunk.NEWLINE));
+            //Segunda fila
+            PdfPCell celda2T2 = new PdfPCell(new Phrase("CÓDIGO", fontContenido));
+            celda2T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T2 = new PdfPCell(new Phrase(":", fontContenido));
+            celda3T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T2 = new PdfPCell(new Phrase("1512914", fontContenido));
+            celda4T2.setBorder(PdfPCell.NO_BORDER);
+ 
+
+            PdfContentByte contentByte = writer.getDirectContent();
+
+            loDoc.add(loTitulo);
+            loDoc.close();
+
+        } catch (FileNotFoundException | DocumentException loErr) {
+            setError(loErr.getMessage());
+            llOk = false;
+        }
+        return llOk;
+    }
+
+    //--------------------------------------------------------------------------
     public boolean mxPosicionCliente() throws SQLException, IOException {
         CClientes loCli = new CClientes();
         loCli.setUrl(getUrl());
