@@ -19,6 +19,38 @@
             <result name="bienvenido" type="tiles">bienvenido</result>
             <result name="perfil" type="tiles">perfil</result>
             
+            <!-- Página Principal de Solicitud de Financiamiento xyza -->
+            <result name="frmSolicitudFinanciamiento" type="tiles">frmSolicitudFinanciamiento</result>
+            <!-- Página Cónyuge--><!-- -->
+            <result name="frmSolFinan_Conyuge" type="tiles">frmSolFinan_Conyuge</result>
+            <!-- Página Vivienda-->
+            <result name="frmSolFinan_Vivienda" type="tiles">frmSolFinan_Vivienda</result>
+            <!-- Página Empleado-Solicitante-->
+            <result name="frmSolFinan_Empleado" type="tiles">frmSolFinan_Empleado</result>
+            <!-- Página Independiente-Solicitante-->
+            <result name="frmSolFinan_Independiente" type="tiles">frmSolFinan_Independiente</result>
+            <!-- Página Jubilado-Solicitante-->
+            <result name="frmSolFinan_Jubilado" type="tiles">frmSolFinan_Jubilado</result>
+            <!-- Página InformaciónFinanciera-Solicitante-->
+            <result name="frmSolFinan_InfoFinan" type="tiles">frmSolFinan_InfoFinan</result>
+            <!-- Página ReferenciaFamiliar-Solicitante-->
+            <result name="frmSolFinan_RefFamil" type="tiles">frmSolFinan_RefFamil</result>
+            <!-- Página ReferenciaLaboral-Solicitante-->
+            <result name="frmSolFinan_RefLabor" type="tiles">frmSolFinan_RefLabor</result>
+            <!-- Página ReferenciaPersonal-Solicitante-->
+            <result name="frmSolFinan_RefPerso" type="tiles">frmSolFinan_RefPerso</result>
+            <!-- Página DocumentoEmpleado-Solicitante-->
+            <result name="frmSolFinan_DocEmple" type="tiles">frmSolFinan_DocEmple</result>
+            <!-- Página DocumentoIndependienteFormal-Solicitante-->
+            <result name="frmSolFinan_DocIndpF" type="tiles">frmSolFinan_DocIndpF</result>
+            <!-- Página DocumentoNOFormalIndependiente-Solicitante-->
+            <result name="frmSolFinan_DocIndpN" type="tiles">frmSolFinan_DocIndpN</result>
+            <!-- Página DocumentoJubilado-Solicitante-->
+            <result name="frmSolFinan_DocJubila" type="tiles">frmSolFinan_DocJubila</result>
+            
+            
+            
+            
             <result name="frmSOLMantenedor" type="tiles">frmSOLMantenedor</result>
             <result name="frmCREMantenedor" type="tiles">frmCREMantenedor</result>
             <result name="frmCRESolicitud" type="tiles">frmCRESolicitud</result>
