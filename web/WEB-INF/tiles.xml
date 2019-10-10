@@ -282,4 +282,61 @@
         <put-attribute name="body"   value="/general/error.jsp"/>
     </definition>
 
+    <!-- Página Principal de Solicitud de Financiamiento  commits-->
+    <definition name="frmSolicitudFinanciamiento" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolicitudFinanciamiento.jsp"/>
+    </definition><!-- Página Cónyuge-->
+    <definition name="frmSolFinan_Conyuge" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_Conyuge.jsp"/>
+    </definition><!-- Página Vivienda-->
+    <definition name="frmSolFinan_Vivienda" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_Vivienda.jsp"/>
+    </definition><!-- Página Empleado-Solicitante-->
+    <definition name="frmSolFinan_Empleado" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_Empleado.jsp"/>
+    </definition><!-- Página Independiente-Solicitante-->
+    <definition name="frmSolFinan_Independiente" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_Independiente.jsp"/>
+    </definition><!-- Página Jubilado-Solicitante-->
+    <definition name="frmSolFinan_Jubilado" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_Jubilado.jsp"/>
+    </definition><!-- Página InformaciónFinanciera-Solicitante-->
+    <definition name="frmSolFinan_InfoFinan" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_InfoFinan.jsp"/>
+    </definition><!-- Página ReferenciaFamiliar-Solicitante-->
+    <definition name="frmSolFinan_RefFamil" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_RefFamil.jsp"/>
+    </definition><!-- Página ReferenciaLaboral-Solicitante-->
+    <definition name="frmSolFinan_RefLabor" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_RefLabor.jsp"/>
+    </definition><!-- Página ReferenciaPersonal-Solicitante-->
+    <definition name="frmSolFinan_RefPerso" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_RefPerso.jsp"/>
+    </definition><!-- Página DocumentoEmpleado-Solicitante-->
+    <definition name="frmSolFinan_DocEmple" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_DocEmple.jsp"/>
+    </definition><!-- Página DocumentoIndependienteFormal-Solicitante-->
+    <definition name="frmSolFinan_DocIndpF" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_DocIndpF.jsp"/>
+    </definition><!-- Página DocumentoNOFormalIndependiente-Solicitante-->
+    <definition name="frmSolFinan_DocIndpN" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_DocIndpN.jsp"/>
+    </definition><!-- Página DocumentoJubilado-Solicitante-->
+    <definition name="frmSolFinan_DocJubila" extends="baseLayout">
+        <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
+        <put-attribute name="body" value="/pages/general/frmSolFinan_DocJubila.jsp"/>
+    </definition>
 </tiles-definitions>
