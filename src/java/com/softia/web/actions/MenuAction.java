@@ -224,94 +224,196 @@ public class MenuAction extends BaseAction {
     private List<Product> lstProducts;
     private Product product;
 
+    private String CodEvaluador;
+    private String PuntVenta;
+    private String FecSolicitud;
+    private String CiudadExp;
+    private String Nacionalidad;
+    private String CiudadNac;
+    private String PaisNac;
+    private String NperDepend;
+
     public String frmSolicitudFinanciamiento() {
-        {
 
-            setLstTipDocCiv(new ArrayList<Tabla>());
-            Tabla tipodoc = new Tabla();
-            tipodoc.setCodigo("1");
-            tipodoc.setDescripcion("DNI");
-            getLstTipDocCiv().add(tipodoc);
-            tipodoc = new Tabla();
-            tipodoc.setCodigo("2");
-            tipodoc.setDescripcion("CE");
-            getLstTipDocCiv().add(tipodoc);
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
 
-            setLstSexos(new ArrayList<Tabla>());
-            Tabla sexo = new Tabla();
-            sexo.setCodigo("1");
-            sexo.setDescripcion("FEMENINO");
-            getLstSexos().add(sexo);
-            sexo = new Tabla();
-            sexo.setCodigo("2");
-            sexo.setDescripcion("MASCULINO");
-            getLstSexos().add(sexo);
+        setLstTipDocCiv(new ArrayList<Tabla>());
+        Tabla tipodoc = new Tabla();
+        tipodoc.setCodigo("1");
+        tipodoc.setDescripcion("DNI");
+        getLstTipDocCiv().add(tipodoc);
+        tipodoc = new Tabla();
+        tipodoc.setCodigo("2");
+        tipodoc.setDescripcion("CE");
+        getLstTipDocCiv().add(tipodoc);
 
-            setLstNivIns(new ArrayList<Tabla>());
-            Tabla nivelest = new Tabla();
-            nivelest.setCodigo("1");
-            nivelest.setDescripcion("PRIMARIA");
-            getLstNivIns().add(nivelest);
-            nivelest = new Tabla();
-            nivelest.setCodigo("2");
-            nivelest.setDescripcion("SECUNDARIA");
-            getLstNivIns().add(nivelest);
-            nivelest = new Tabla();
-            nivelest.setCodigo("3");
-            nivelest.setDescripcion("SUPERIOR");
-            getLstNivIns().add(nivelest);
+        setLstSexos(new ArrayList<Tabla>());
+        Tabla sexo = new Tabla();
+        sexo.setCodigo("1");
+        sexo.setDescripcion("FEMENINO");
+        getLstSexos().add(sexo);
+        sexo = new Tabla();
+        sexo.setCodigo("2");
+        sexo.setDescripcion("MASCULINO");
+        getLstSexos().add(sexo);
 
-            setLstTipoOrden(new ArrayList<Tabla>());
-            Tabla tipo = new Tabla();
-            tipo.setCodigo("E");
-            tipo.setDescripcion("EMPLEADO");
-            getLstTipoOrden().add(tipo);
-            tipo = new Tabla();
-            tipo.setCodigo("I");
-            tipo.setDescripcion("INDEPENDIENTE");
-            getLstTipoOrden().add(tipo);
-            tipo = new Tabla();
-            tipo.setCodigo("P");
-            tipo.setDescripcion("PENSIONADO");
-            getLstTipoOrden().add(tipo);
+        setLstNivIns(new ArrayList<Tabla>());
+        Tabla nivelest = new Tabla();
+        nivelest.setCodigo("1");
+        nivelest.setDescripcion("PRIMARIA");
+        getLstNivIns().add(nivelest);
+        nivelest = new Tabla();
+        nivelest.setCodigo("2");
+        nivelest.setDescripcion("SECUNDARIA");
+        getLstNivIns().add(nivelest);
+        nivelest = new Tabla();
+        nivelest.setCodigo("3");
+        nivelest.setDescripcion("SUPERIOR");
+        getLstNivIns().add(nivelest);
 
-            //Estado civil
-            setLstEstados(new ArrayList<Tabla>());
-            Tabla estado = new Tabla();
-            estado.setCodigo("1");
-            estado.setDescripcion("SOLTERO");
-            getLstEstados().add(estado);
-            estado = new Tabla();
-            estado.setCodigo("2");
-            estado.setDescripcion("CASADO");
-            getLstEstados().add(estado);
-            estado = new Tabla();
-            estado.setCodigo("3");
-            estado.setDescripcion("DIVORCIADO");
-            getLstEstados().add(estado);
-            estado = new Tabla();
-            estado.setCodigo("4");
-            estado.setDescripcion("VIUDO");
-            getLstEstados().add(estado);
-            estado = new Tabla();
-            estado.setCodigo("5");
-            estado.setDescripcion("CONVIVIENTE");
-            getLstEstados().add(estado);
+        setLstTipoOrden(new ArrayList<Tabla>());
+        Tabla tipo = new Tabla();
+        tipo.setCodigo("E");
+        tipo.setDescripcion("EMPLEADO");
+        getLstTipoOrden().add(tipo);
+        tipo = new Tabla();
+        tipo.setCodigo("I");
+        tipo.setDescripcion("INDEPENDIENTE");
+        getLstTipoOrden().add(tipo);
+        tipo = new Tabla();
+        tipo.setCodigo("P");
+        tipo.setDescripcion("PENSIONADO");
+        getLstTipoOrden().add(tipo);
 
-            HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente") != null) {
+        //Estado civil
+        setLstEstados(new ArrayList<Tabla>());
+        Tabla estado = new Tabla();
+        estado.setCodigo("1");
+        estado.setDescripcion("SOLTERO");
+        getLstEstados().add(estado);
+        estado = new Tabla();
+        estado.setCodigo("2");
+        estado.setDescripcion("CASADO");
+        getLstEstados().add(estado);
+        estado = new Tabla();
+        estado.setCodigo("3");
+        estado.setDescripcion("DIVORCIADO");
+        getLstEstados().add(estado);
+        estado = new Tabla();
+        estado.setCodigo("4");
+        estado.setDescripcion("VIUDO");
+        getLstEstados().add(estado);
+        estado = new Tabla();
+        estado.setCodigo("5");
+        estado.setDescripcion("CONVIVIENTE");
+        getLstEstados().add(estado);
 
-                if (getCliente().getEstCiv().equals("2") || getCliente().getEstCiv().equals("5")) {
-                    return frmSolFinan_Conyuge();
-                } else if (getCliente().getEstCiv().equals("1") || getCliente().getEstCiv().equals("3") || getCliente().getEstCiv().equals("4")) {
-                    return frmSolFinan_Vivienda();
+        //VALIDACIONES DE CAMPOSss
+        try {
+            setCodEvaluador(getCodEvaluador());
+            if (getCodEvaluador().equals("")) {
+                setError("Por favor llenar el campo Código Evaluador");
+            } else {
+                setPuntVenta(getPuntVenta());
+                if (getPuntVenta().equals("")) {
+                    setError("Por favor llenar el campo Punto de Venta");
+                } else {
+                    setFecSolicitud(getFecSolicitud());
+                    if (getFecSolicitud().equals("")) {
+                        setError("No se cargó la Fecha");
+                    } else {
+                        getCliente().setTipDocCiv(getCliente().getTipDocCiv());
+                        if (getCliente().getTipDocCiv().equals("0")) {
+                            setError("Seleccionar un Tipo de Documento");
+                        } else {
+                            if (getCliente().getNroDocCiv().equals("")) {
+                                setError("Por favor llenar el campo Número de Doc Civil");
+                            } else {
+                                if (getCiudadExp().equals("0")) {
+                                    setError("Seleccionar una Ciudad de Expedición");
+                                } else {
+                                    if (getCliente().getNombre().equals("")) {
+                                        setError("Por favor llenar el campo Nombre");
+                                    } else {
+                                        if (getCliente().getApePat().equals("")) {
+                                            setError("Por favor llenar el campo Apellido Paterno");
+                                        } else {
+                                            if (getCliente().getApeMat().equals("")) {
+                                                setError("Por favor llenar el campo Apellido Materno");
+                                            } else {
+                                                if (getNacionalidad().equals("")) {
+                                                    setError("Por favor llenar el campo Nacionalidad");
+                                                } else {
+                                                    if (getCliente().getFecNac().equals("")) {
+                                                        setError("Por favor llenar el campo Fecha de Nacimiento");
+                                                    } else {
+                                                        if (getCiudadNac().equals("")) {
+                                                            setError("Por favor llenar el campo Ciudad de Nacimiento");
+                                                        } else {
+                                                            if (getPaisNac().equals("")) {
+                                                                setError("Por favor llenar el campo País de Nacimiento");
+                                                            } else {
+                                                                if (getCliente().getSexo().equals("")) {
+                                                                    setError("Por favor llenar el campo Género");
+                                                                } else {
+                                                                    if (getCliente().getDesOcu().equals("0")) {
+                                                                        setError("Por favor llenar el campo Ocupación");
+                                                                    } else {
+                                                                        if (getNperDepend().equals("")) {
+                                                                            setError("Por favor llenar el campo Número de personas que dependen económicamente del solicitante");
+                                                                        } else {
+                                                                            if (getCliente().getNivIns().equals("0")) {
+                                                                                setError("Por favor llenar el campo Estudios");
+                                                                            } else {
+                                                                                if (getCliente().getCorreo().equals("")) {
+                                                                                    setError("Por favor llenar el campo Correo Electrónico");
+                                                                                } else {
+                                                                                    if (getCliente().getTelefono().equals("")) {
+                                                                                        setError("Por favor llenar el campo Teléfono");
+                                                                                    } else {
+                                                                                        if (!getCliente().getEstCiv().equals("0") && !getCliente().getDesOcu().equals("0")) {
+                                                                                            HttpServletRequest request = ServletActionContext.getRequest();
+                                                                                            if (request.getParameter("siguiente") != null) {
+                                                                                                if (getCliente().getEstCiv().equals("2") || getCliente().getEstCiv().equals("5")) {
+                                                                                                    return frmSolFinan_Conyuge();
+                                                                                                } else {
+                                                                                                    return frmSolFinan_Vivienda();
+                                                                                                }
+                                                                                            }
+                                                                                        } else {
+                                                                                            setError("Seleccionar Estado Civil");
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-
             }
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         setResult("frmSolicitudFinanciamiento");
-
         return getResult();
     }
 
@@ -323,16 +425,27 @@ public class MenuAction extends BaseAction {
     }
 
     public String frmSolFinan_Vivienda() {
+
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
+
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             HttpServletRequest request = ServletActionContext.getRequest();
             if (request.getParameter("siguiente2") != null) {
-                if (getCliente().getTipDocTri().equals("E")) {
+                if (getCliente().getDesOcu().equals("E")) {
                     return frmSolFinan_Empleado();
-                } else if (getCliente().getTipDocTri().equals("I")) {
+                } else if (getCliente().getDesOcu().equals("I")) {
                     return frmSolFinan_Independiente();
-                } else if (getCliente().getTipDocTri().equals("P")) {
+                } else if (getCliente().getDesOcu().equals("P")) {
                     return frmSolFinan_Jubilado();
                 }
 
@@ -347,6 +460,17 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
+
         setResult("frmSolFinan_Empleado");
         return getResult();
     }
@@ -355,7 +479,15 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
-
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
         setResult("frmSolFinan_Independiente");
         return getResult();
     }
@@ -364,6 +496,15 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
         setResult("frmSolFinan_Jubilado");
         return getResult();
     }
@@ -372,11 +513,21 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
+        /*
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente2") != null) {
+            if (request.getParameter("siguiente4") != null) {
                 if (getCliente().getTipDocTri().equals("E")) {
                     return frmSolFinan_RefPerso();
                 } else if (getCliente().getTipDocTri().equals("I")) {
@@ -388,16 +539,8 @@ public class MenuAction extends BaseAction {
             }
             setResult("frmSolFinan_InfoFinan");
 
-        }
-        return getResult();
-    }
-
-    public String frmSolFinan_Documentos() {
-        if (!validaSession()) {
-            return "login";
-        }
-
-        setResult("frmSolFinan_Documentos");
+        }*/
+        setResult("frmSolFinan_InfoFinan");
         return getResult();
     }
 
@@ -405,11 +548,25 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
+
+        /*
+        
+        
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente2") != null) {
+            if (request.getParameter("siguiente3") != null) {
                 if (getCliente().getTipDocTri().equals("E")) {
                     return frmSolFinan_DocEmple();
                 } else if (getCliente().getTipDocTri().equals("I")) {
@@ -417,11 +574,10 @@ public class MenuAction extends BaseAction {
                 } else if (getCliente().getTipDocTri().equals("P")) {
                     return frmSolFinan_DocJubila();
                 }
-
             }
             setResult("frmSolFinan_RefFamil");
-
-        }
+        }*/
+        setResult("frmSolFinan_RefFamil");
         return getResult();
     }
 
@@ -429,8 +585,58 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
 
-        setResult("frmSolFinan_RefLabor");
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("siguiente3") != null) {
+                if (getCliente().getDesOcu().equals("E")) {
+                    return frmSolFinan_DocEmple();
+                } else if (getCliente().getDesOcu().equals("I")) {
+                    if (getCliente().getSexo().equals("Formal")) {
+                        return frmSolFinan_DocIndpF();
+                    } else {
+                        return frmSolFinan_DocIndpN();
+                    }
+                } else if (getCliente().getDesOcu().equals("P")) {
+                    return frmSolFinan_DocJubila();
+                }
+            }
+            setResult("frmSolFinan_RefLabor");
+        }
+
+        /*        
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("siguiente3") != null) {
+                if (getCliente().getTipDocTri().equals("E")) {
+                    return frmSolFinan_DocEmple();
+                } else if (getCliente().getTipDocTri().equals("I")) {
+                    if (getCliente().getDesOcu().equals("FORMAL")) {
+                        return frmSolFinan_DocIndpF();
+                    } else {
+                        return frmSolFinan_DocIndpN();
+                    }
+                } else if (getCliente().getTipDocTri().equals("P")) {
+                    return frmSolFinan_DocIndpF();
+                }
+            }
+            setResult("frmSolFinan_RefLabor");
+        }
+         */
+        //setResult("frmSolFinan_RefLabor");
         return getResult();
     }
 
@@ -438,7 +644,32 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        setLstTipZon(new ArrayList<Tabla>());
+        Tabla zona = new Tabla();
+        zona.setCodigo("1");
+        zona.setDescripcion("Arequipa");
+        getLstTipZon().add(zona);
+        zona = new Tabla();
+        zona.setCodigo("2");
+        zona.setDescripcion("Lima");
+        getLstTipZon().add(zona);
 
+        /*
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            HttpServletRequest request = ServletActionContext.getRequest();
+            if (request.getParameter("siguiente3") != null) {
+                if (getCliente().getTipDocTri().equals("E")) {
+                    return frmSolFinan_DocEmple();
+                } else if (getCliente().getTipDocTri().equals("I")) {
+                    return frmSolFinan_DocIndpF();
+                } else if (getCliente().getTipDocTri().equals("P")) {
+                    return frmSolFinan_DocIndpF();
+                }
+            }
+            setResult("frmSolFinan_RefPerso");
+        }*/
         setResult("frmSolFinan_RefPerso");
         return getResult();
     }
@@ -446,6 +677,35 @@ public class MenuAction extends BaseAction {
     public String frmSolFinan_DocEmple() {
         if (!validaSession()) {
             return "login";
+        }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("reporte") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+
+                loRep.setCliente(getCliente());
+                //loRep.setUrl(getUrl());
+                //loRep.setUser(user);
+                //loRep.setPasswd(pass);
+                boolean llOk = loRep.mxSolicitudCliente();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException loErr) {
+                setError(loErr.getMessage());
+            }
         }
         setResult("frmSolFinan_DocEmple");
         return getResult();
@@ -455,6 +715,35 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("reporte") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+
+                loRep.setCliente(getCliente());
+                //loRep.setUrl(getUrl());
+                //loRep.setUser(user);
+                //loRep.setPasswd(pass);
+                boolean llOk = loRep.mxSolicitudCliente();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        }
         setResult("frmSolFinan_DocIndpF");
         return getResult();
     }
@@ -463,6 +752,35 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("reporte") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+
+                loRep.setCliente(getCliente());
+                //loRep.setUrl(getUrl());
+                //loRep.setUser(user);
+                //loRep.setPasswd(pass);
+                boolean llOk = loRep.mxSolicitudCliente();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException loErr) {
+                setError(loErr.getMessage());
+            }
+        }
         setResult("frmSolFinan_DocIndpN");
         return getResult();
     }
@@ -470,6 +788,35 @@ public class MenuAction extends BaseAction {
     public String frmSolFinan_DocJubila() {
         if (!validaSession()) {
             return "login";
+        }
+        HttpServletRequest request = ServletActionContext.getRequest();
+        if (request.getParameter("reporte") != null) {
+            CReportePDF loRep = new CReportePDF();
+            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
+            try {
+
+                loRep.setCliente(getCliente());
+                //loRep.setUrl(getUrl());
+                //loRep.setUser(user);
+                //loRep.setPasswd(pass);
+                boolean llOk = loRep.mxSolicitudCliente();
+                if (!llOk) {
+                    setError(loRep.getError());
+                } else {
+                    File file = new File(loRep.getRutaReporte());
+                    byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
+                    FileUtils.writeByteArrayToFile(file, archivo);
+                    HttpServletResponse response = ServletActionContext.getResponse();
+                    response.setContentLength(archivo.length);
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    ServletOutputStream out = response.getOutputStream();
+                    out.write(archivo);
+                    out.flush();
+                }
+            } catch (IOException | SQLException loErr) {
+                setError(loErr.getMessage());
+            }
         }
         setResult("frmSolFinan_DocJubila");
         return getResult();
@@ -2473,7 +2820,7 @@ public class MenuAction extends BaseAction {
              verifi.setX4(getX4());
              getLstVerifiPerfCB().set(0, verifi);*/
 
-            /*if (getSession().get("verificacionCB") != null) {
+ /*if (getSession().get("verificacionCB") != null) {
              setLstVerifiPerfCB((ArrayList<Verificacion>) getSession().get("verificacionCB"));
              }
              if (getSession().get("verificacionCNB") != null) {
@@ -8218,6 +8565,70 @@ public class MenuAction extends BaseAction {
      */
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public String getCodEvaluador() {
+        return CodEvaluador;
+    }
+
+    public void setCodEvaluador(String CodEvaluador) {
+        this.CodEvaluador = CodEvaluador;
+    }
+
+    public String getPuntVenta() {
+        return PuntVenta;
+    }
+
+    public void setPuntVenta(String PuntVenta) {
+        this.PuntVenta = PuntVenta;
+    }
+
+    public String getFecSolicitud() {
+        return FecSolicitud;
+    }
+
+    public void setFecSolicitud(String FecSolicitud) {
+        this.FecSolicitud = FecSolicitud;
+    }
+
+    public String getCiudadExp() {
+        return CiudadExp;
+    }
+
+    public void setCiudadExp(String CiudadExp) {
+        this.CiudadExp = CiudadExp;
+    }
+
+    public String getNacionalidad() {
+        return Nacionalidad;
+    }
+
+    public void setNacionalidad(String Nacionalidad) {
+        this.Nacionalidad = Nacionalidad;
+    }
+
+    public String getCiudadNac() {
+        return CiudadNac;
+    }
+
+    public void setCiudadNac(String CiudadNac) {
+        this.CiudadNac = CiudadNac;
+    }
+
+    public String getNperDepend() {
+        return NperDepend;
+    }
+
+    public void setNperDepend(String NperDepend) {
+        this.NperDepend = NperDepend;
+    }
+
+    public String getPaisNac() {
+        return PaisNac;
+    }
+
+    public void setPaisNac(String PaisNac) {
+        this.PaisNac = PaisNac;
     }
 
 }
