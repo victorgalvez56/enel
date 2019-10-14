@@ -53,72 +53,68 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Número Suministro: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="nSuminis" tabindex="11" name="vSuministro" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Titular del Suministro: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="TSuminis" tabindex="11" name="vTitularSum" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Relación con el titular: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Rtitular" tabindex="11" name="vRelacTitul" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Tipo de Vivienda: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Tvivienda" tabindex="11" name="vTipoVivien" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Hace cuanto vive allí: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Tiempviv" tabindex="11" name="vHaceCVivea" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Dirección residencia: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="DirecResid" tabindex="11" name="vDireccResi" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="box-body">
-                                                <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:select name="vDistVivien" tabindex="10" id="Distr" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Provincia: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:select name="vProvVivien" tabindex="10" id="Pronv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Despartamento: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Departamento: </label>
+                                                            <s:select name="vDepaVivien" tabindex="10" id="Depar" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            </div>                                      
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="cliente.TipDocTri"></s:hidden>
-                                            <s:submit name="siguiente2" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:submit name="siguienteViviend" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -128,4 +124,33 @@
                     </section>
                 </s:form>
             </div>
+        </div>
+        <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/enel/js/script.js"></script>        
+        <script type="text/javascript" src="/enel/js/main.js"></script>
+        <!-- iCheck -->
+        <script src="/enel/plugins/iCheck/icheck.min.js"></script>
+
+        <script>
+
+        /*
+         $("#nSuminis").prop('required', true);
+         $("#TSuminis").prop('required', true);
+         $("#Rtitular").prop('required', true);
+         $("#Tvivienda").prop('required', true);
+         $("#EmpTrabaja").prop('required', true);
+         $("#Tiempviv").prop('required', true);
+         $("#DirecResid").prop('required', true);
+         $("#Distr").prop('required', true);
+         $("#Pronv").prop('required', true);
+         $("#Depar").prop('required', true);
+         */
+
+
+
+
+
+        </script>
+
+    </body>
 </html>
