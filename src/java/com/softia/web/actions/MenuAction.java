@@ -223,7 +223,7 @@ public class MenuAction extends BaseAction {
     private double cuotaX4;
     private List<Product> lstProducts;
     private Product product;
-
+    //Datos Solicitante Financiero
     private String CodEvaluador;
     private String PuntVenta;
     private String FecSolicitud;
@@ -232,6 +232,106 @@ public class MenuAction extends BaseAction {
     private String CiudadNac;
     private String PaisNac;
     private String NperDepend;
+//Datos Cónyuge
+    private String CPrimerNomb;
+    private String CSegundNomb;
+    private String CPrimerApel;
+    private String CSegundApel;
+    private String CEmpdondTrab;
+    private String CEmpCargo;
+    private String CEmpTelef;
+//Datos Vivienda
+    private String VSuministro;
+    private String VTitularSum;
+    private String VRelacTitul;
+    private String VTipoVivien;
+    private String VHaceCVivea;
+    private String VDireccResi;
+    private String VDistVivien;
+    private String VProvVivien;
+    private String VDepaVivien;
+//Datos Empleado
+    private String ENombreEmpr;
+    private String ERUCEmpr;
+    private String EActivdEmpr;
+    private String EDirEmpr;
+    private String EDepEmpr;
+    private String EDisEmpr;
+    private String EProvEmpr;
+//Datos Independiente Informal
+    private String ILabor;
+    private String IHacecuantInd;
+    private String ITipodeInd;
+//Datos Independiente Formal;   
+    private String FNombEmpr;
+    private String FRUCEmpr;
+    private String FCargo;
+    private String FDirLabo;
+    private String FDisLabo;
+    private String FProLabo;
+    private String FDepLabo;
+    private String FTelef;
+    private String FAnexo;
+    private String FCorreo;
+//Datos Jubilado
+    private String JNombEmpJ;
+    private String JNombEmpA;
+    private String JHacecuaJ;
+//Datos Información Financiera-Ingresos
+    private double ISueldBas;
+    private double IComisiones;
+    private double IHonorarios;
+    private double IAlquileres;
+    private double IOtrosIngres;
+    private double ITotalIng;
+    private double ITotalAct;
+//Datos Información Financiera-Gastos
+    private double GAlquiler;
+    private double GCréditoViv;
+    private double GGastosFamil;
+    private double GTarjetasCred;
+    private double GOtrosGas;
+    private double GTotalGas;
+    private double GTotalPat;
+//Datos Referencias Personales
+    private String RPPrimerNomb;
+    private String RPSegundoNomb;
+    private String RPPrimerApell;
+    private String RPSegundoApell;
+    private String RPDirec;
+    private String RPDistr;
+    private String RPProvi;
+    private String RPEStad;
+    private String RPTelef;
+    private String RPCelul;
+    private String RPParen;
+//Datos Referencias Familiares
+    private String RFPrimerNomb;
+    private String RFSegundoNomb;
+    private String RFPrimerApell;
+    private String RFSegundoApell;
+    private String RFDirec;
+    private String RFDistr;
+    private String RFProvi;
+    private String RFEStad;
+    private String RFTelef;
+    private String RFCelul;
+    private String RFParen;
+//Datos Referencias Laborales
+    private String RLCNombre;
+    private String RLCActividad;
+    private String RLCTelef;
+    private String RLCDireClient;
+    private String RLCDistrito;
+    private String RLCProvincia;
+    private String RLCEstado;
+    private String RLPNombre;
+    private String RLPActividad;
+    private String RLPTelef;
+    private String RLPDireClient;
+    private String RLPDistrito;
+    private String RLPProvincia;
+    private String RLPEstado;
 
     public String frmSolicitudFinanciamiento() {
 
@@ -315,81 +415,86 @@ public class MenuAction extends BaseAction {
         estado.setCodigo("5");
         estado.setDescripcion("CONVIVIENTE");
         getLstEstados().add(estado);
+        setResult("frmSolicitudFinanciamiento");
 
-        //VALIDACIONES DE CAMPOSss
-        try {
-            setCodEvaluador(getCodEvaluador());
-            if (getCodEvaluador().equals("")) {
-                setError("Por favor llenar el campo Código Evaluador");
-            } else {
-                setPuntVenta(getPuntVenta());
-                if (getPuntVenta().equals("")) {
-                    setError("Por favor llenar el campo Punto de Venta");
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getCodEvaluador().equals("")) {
+                    setError("Por favor llenar el campo Código Evaluador");
                 } else {
-                    setFecSolicitud(getFecSolicitud());
-                    if (getFecSolicitud().equals("")) {
-                        setError("No se cargó la Fecha");
+                    if (getPuntVenta().equals("")) {
+                        setError("Por favor llenar el campo Punto de Venta");
                     } else {
-                        getCliente().setTipDocCiv(getCliente().getTipDocCiv());
-                        if (getCliente().getTipDocCiv().equals("0")) {
-                            setError("Seleccionar un Tipo de Documento");
+                        if (getFecSolicitud().equals("")) {
+                            setError("No se cargó la Fecha");
                         } else {
-                            if (getCliente().getNroDocCiv().equals("")) {
-                                setError("Por favor llenar el campo Número de Doc Civil");
+                            if (getCliente().getTipDocCiv().equals("0")) {
+                                setError("Seleccionar un Tipo de Documento");
                             } else {
-                                if (getCiudadExp().equals("0")) {
-                                    setError("Seleccionar una Ciudad de Expedición");
+                                if (getCliente().getNroDocCiv().equals("")) {
+                                    setError("Por favor llenar el campo Número de Doc Civil");
                                 } else {
-                                    if (getCliente().getNombre().equals("")) {
-                                        setError("Por favor llenar el campo Nombre");
+                                    if (getCiudadExp().equals("0")) {
+                                        setError("Seleccionar una Ciudad de Expedición");
                                     } else {
-                                        if (getCliente().getApePat().equals("")) {
-                                            setError("Por favor llenar el campo Apellido Paterno");
+                                        if (getCliente().getNombre().equals("")) {
+                                            setError("Por favor llenar el campo Nombre");
                                         } else {
-                                            if (getCliente().getApeMat().equals("")) {
-                                                setError("Por favor llenar el campo Apellido Materno");
+                                            if (getCliente().getApePat().equals("")) {
+                                                setError("Por favor llenar el campo Apellido Paterno");
                                             } else {
-                                                if (getNacionalidad().equals("")) {
-                                                    setError("Por favor llenar el campo Nacionalidad");
+                                                if (getCliente().getApeMat().equals("")) {
+                                                    setError("Por favor llenar el campo Apellido Materno");
                                                 } else {
-                                                    if (getCliente().getFecNac().equals("")) {
-                                                        setError("Por favor llenar el campo Fecha de Nacimiento");
+                                                    if (getNacionalidad().equals("")) {
+                                                        setError("Por favor llenar el campo Nacionalidad");
                                                     } else {
-                                                        if (getCiudadNac().equals("")) {
-                                                            setError("Por favor llenar el campo Ciudad de Nacimiento");
+                                                        if (getCliente().getFecNac().equals("")) {
+                                                            setError("Por favor llenar el campo Fecha de Nacimiento");
                                                         } else {
-                                                            if (getPaisNac().equals("")) {
-                                                                setError("Por favor llenar el campo País de Nacimiento");
+                                                            if (getCiudadNac().equals("")) {
+                                                                setError("Por favor llenar el campo Ciudad de Nacimiento");
                                                             } else {
-                                                                if (getCliente().getSexo().equals("")) {
-                                                                    setError("Por favor llenar el campo Género");
+                                                                if (getPaisNac().equals("")) {
+                                                                    setError("Por favor llenar el campo País de Nacimiento");
                                                                 } else {
-                                                                    if (getCliente().getDesOcu().equals("0")) {
-                                                                        setError("Por favor llenar el campo Ocupación");
+                                                                    if (getCliente().getSexo().equals("")) {
+                                                                        setError("Por favor llenar el campo Género");
                                                                     } else {
-                                                                        if (getNperDepend().equals("")) {
-                                                                            setError("Por favor llenar el campo Número de personas que dependen económicamente del solicitante");
+                                                                        if (getCliente().getDesOcu().equals("0")) {
+                                                                            setError("Por favor llenar el campo Ocupación");
                                                                         } else {
-                                                                            if (getCliente().getNivIns().equals("0")) {
-                                                                                setError("Por favor llenar el campo Estudios");
+                                                                            if (getNperDepend().equals("")) {
+                                                                                setError("Por favor llenar el campo Número de personas que dependen económicamente del Solicitante");
                                                                             } else {
-                                                                                if (getCliente().getCorreo().equals("")) {
-                                                                                    setError("Por favor llenar el campo Correo Electrónico");
+                                                                                if (getCliente().getNivIns().equals("")) {
+                                                                                    setError("Por favor llenar el campo Estudios");
                                                                                 } else {
-                                                                                    if (getCliente().getTelefono().equals("")) {
-                                                                                        setError("Por favor llenar el campo Teléfono");
+                                                                                    if (getCliente().getCorreo().equals("")) {
+                                                                                        setError("Por favor llenar el campo Correo Electrónico");
                                                                                     } else {
-                                                                                        if (!getCliente().getEstCiv().equals("0") && !getCliente().getDesOcu().equals("0")) {
-                                                                                            HttpServletRequest request = ServletActionContext.getRequest();
-                                                                                            if (request.getParameter("siguiente") != null) {
-                                                                                                if (getCliente().getEstCiv().equals("2") || getCliente().getEstCiv().equals("5")) {
-                                                                                                    return frmSolFinan_Conyuge();
-                                                                                                } else {
-                                                                                                    return frmSolFinan_Vivienda();
-                                                                                                }
-                                                                                            }
+                                                                                        if (getCliente().getTelefono().equals("")) {
+                                                                                            setError("Por favor llenar el campo Teléfono");
                                                                                         } else {
-                                                                                            setError("Seleccionar Estado Civil");
+                                                                                            if (!getCliente().getEstCiv().equals("0") && !getCliente().getDesOcu().equals("0")) {
+                                                                                                HttpServletRequest request = ServletActionContext.getRequest();
+                                                                                                if (request.getParameter("siguienteSolc") != null) {
+                                                                                                    if (getCliente().getEstCiv().equals("2") || getCliente().getEstCiv().equals("5")) {
+                                                                                                        return frmSolFinan_Conyuge();
+                                                                                                    } else {
+                                                                                                        return frmSolFinan_Vivienda();
+
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    setResult("frmSolicitudFinanciamiento");
+
+                                                                                                }
+                                                                                            } else {
+                                                                                                setError("Seleccionar Estado Civil");
+                                                                                            }
                                                                                         }
                                                                                     }
                                                                                 }
@@ -409,23 +514,66 @@ public class MenuAction extends BaseAction {
                         }
                     }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        setResult("frmSolicitudFinanciamiento");
         return getResult();
     }
 
-    private String frmSolFinan_Conyuge() {
-
+    public String frmSolFinan_Conyuge() {
         setResult("frmSolFinan_Conyuge");
 
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getCPrimerNomb().equals("")) {
+                    setError("Por favor llenar el campo Primer Nombre");
+                } else {
+                    if (getCSegundNomb().equals("")) {
+                        setError("Por favor llenar el campo Segundo Nombre");
+                    } else {
+                        if (getCPrimerApel().equals("")) {
+                            setError("Por favor llenar el campo Primer Apellido");
+                        } else {
+                            if (getCSegundApel().equals("")) {
+                                setError("Por favor llenar el campo Segundo Apellido");
+                            } else {
+                                if (getCEmpdondTrab().equals("")) {
+                                    setError("Por favor llenar el campo Empresa donde Trabaja");
+                                } else {
+                                    if (getCEmpCargo().equals("")) {
+                                        setError("Por favor llenar el campo Cargo");
+                                    } else {
+                                        if (getCEmpTelef().equals("")) {
+                                            setError("Por favor llenar el campo Teléfono");
+                                        } else {
+                                            HttpServletRequest request = ServletActionContext.getRequest();
+                                            if (request.getParameter("siguienteConyu") != null) {
+                                                return frmSolFinan_Vivienda();
+                                            } else {
+                                                setResult("frmSolFinan_Conyuge");
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+
+        }
+
         return getResult();
+
     }
 
     public String frmSolFinan_Vivienda() {
-
         setLstTipZon(new ArrayList<Tabla>());
         Tabla zona = new Tabla();
         zona.setCodigo("1");
@@ -436,24 +584,69 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
+        setResult("frmSolFinan_Vivienda");
+
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente2") != null) {
-                if (getCliente().getDesOcu().equals("E")) {
-                    return frmSolFinan_Empleado();
-                } else if (getCliente().getDesOcu().equals("I")) {
-                    return frmSolFinan_Independiente();
-                } else if (getCliente().getDesOcu().equals("P")) {
-                    return frmSolFinan_Jubilado();
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getVSuministro().equals("")) {
+                    setError("Por favor llenar el campo Número de Suministro");
+                } else {
+                    if (getVTitularSum().equals("")) {
+                        setError("Por favor llenar el campo Titular de Suministro");
+                    } else {
+                        if (getVRelacTitul().equals("")) {
+                            setError("Por favor llenar el campo Relación con el titular");
+                        } else {
+                            if (getVTipoVivien().equals("")) {
+                                setError("Por favor llenar el campo Tipo de Vivienda");
+                            } else {
+                                if (getVHaceCVivea().equals("")) {
+                                    setError("Por favor llenar el campo Hace cuanto vive ahí");
+                                } else {
+                                    if (getVDireccResi().equals("")) {
+                                        setError("Por favor llenar el campo Dirección de Residencia");
+                                    } else {
+                                        System.out.println("DISTR" + getVDistVivien());
+                                        if (getVDistVivien().equals("0")) {
+                                            setError("Por favor seleccionar Distrito");
+                                        } else {
+                                            if (getVProvVivien().equals("0")) {
+                                                setError("Por favor seleccionar Provincia");
+                                            } else {
+                                                if (getVDepaVivien().equals("0")) {
+                                                    setError("Por favor seleccionar Departamento");
+                                                } else {
+                                                    HttpServletRequest request = ServletActionContext.getRequest();
+                                                    if (request.getParameter("siguienteViviend") != null) {
+                                                        if (getCliente().getDesOcu().equals("E")) {
+                                                            return frmSolFinan_Empleado();
+                                                        } else if (getCliente().getDesOcu().equals("I")) {
+                                                            return frmSolFinan_Independiente();
+                                                        } else if (getCliente().getDesOcu().equals("P")) {
+                                                            return frmSolFinan_Jubilado();
+                                                        }
+                                                    } else {
+                                                        setResult("frmSolFinan_Vivienda");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-
+            } catch (Exception e) {
             }
-            setResult("frmSolFinan_Vivienda");
 
         }
+
         return getResult();
+
     }
 
     public String frmSolFinan_Empleado() {
@@ -472,7 +665,55 @@ public class MenuAction extends BaseAction {
         getLstTipZon().add(zona);
 
         setResult("frmSolFinan_Empleado");
+
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+
+                if (getENombreEmpr().equals("")) {
+                    setError("Por favor llenar el campo Nombre de la Empresa");
+                } else {
+                    if (getERUCEmpr().equals("")) {
+                        setError("Por favor llenar el campo Ruc de la Empresa");
+                    } else {
+                        if (getEActivdEmpr().equals("")) {
+                            setError("Por favor llenar el campo Actividad de la Empresa");
+                        } else {
+                            if (getEDirEmpr().equals("")) {
+                                setError("Por favor llenar el campo Dirección de la Empresa");
+                            } else {
+                                if (getEDepEmpr().equals("0")) {
+                                    setError("Por favor llenar el campo Departamento");
+                                } else {
+                                    if (getEDisEmpr().equals("0")) {
+                                        setError("Por favor llenar el campo Distrito");
+                                    } else {
+                                        if (getEProvEmpr().equals("0")) {
+                                            setError("Por favor seleccionar Provincia");
+                                        } else {
+                                            HttpServletRequest request = ServletActionContext.getRequest();
+                                            if (request.getParameter("siguienteEmp") != null) {
+                                                return frmSolFinan_InfoFinan();
+                                            } else {
+                                                setResult("frmSolFinan_Empleado");
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+
+        }
+
         return getResult();
+
     }
 
     public String frmSolFinan_Independiente() {
@@ -513,6 +754,89 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+
+        setResult("frmSolFinan_InfoFinan");
+        System.out.println("SUELDO" + getISueldBas());
+
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getISueldBas() <= 0) {
+                    setError("Por favor llenar el campo Sueldo Básico");
+                } else {
+                    if (getIComisiones() <= 0) {
+                        setError("Por favor llenar el campo Comisiones");
+                    } else {
+                        if (getIHonorarios() <= 0) {
+                            setError("Por favor llenar el campo Honorarios");
+                        } else {
+                            if (getIAlquileres() <= 0) {
+                                setError("Por favor llenar el campo Alquileres");
+                            } else {
+                                if (getIOtrosIngres() <= 0) {
+                                    setError("Por favor llenar el campo Otros Ingresos");
+                                } else {
+                                    if (getITotalIng() <= 0) {
+                                        setError("Por favor llenar el campo Total de Ingresos");
+                                    } else {
+                                        if (getITotalAct() <= 0) {
+                                            setError("Por favor llenar el campo Total de Activos");
+                                        } else {
+                                            if (getGAlquiler() <= 0) {
+                                                setError("Por favor llenar el campo Apellido Paterno");
+                                            } else {
+                                                if (getGCréditoViv() <= 0) {
+                                                    setError("Por favor llenar el campo Apellido Materno");
+                                                } else {
+                                                    if (getGGastosFamil() <= 0) {
+                                                        setError("Por favor llenar el campo Nacionalidad");
+                                                    } else {
+                                                        if (getGTarjetasCred() <= 0) {
+                                                            setError("Por favor llenar el campo Fecha de Nacimiento");
+                                                        } else {
+                                                            if (getGOtrosGas() <= 0) {
+                                                                setError("Por favor llenar el campo Ciudad de Nacimiento");
+                                                            } else {
+                                                                if (getGTotalGas() <= 0) {
+                                                                    setError("Por favor llenar el campo País de Nacimiento");
+                                                                } else {
+                                                                    if (getGTotalPat() <= 0) {
+                                                                        setError("Por favor llenar el campo País de Nacimiento");
+                                                                    } else {
+                                                                        HttpServletRequest request = ServletActionContext.getRequest();
+                                                                        if (request.getParameter("siguienteInfo") != null) {
+                                                                            return frmSolFinan_RefPerso();
+                                                                        } else {
+                                                                            setResult("frmSolFinan_InfoFinan");
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        return getResult();
+
+    }
+
+    /*
+
         setLstTipZon(new ArrayList<Tabla>());
         Tabla zona = new Tabla();
         zona.setCodigo("1");
@@ -522,28 +846,11 @@ public class MenuAction extends BaseAction {
         zona.setCodigo("2");
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
-        /*
-        if (!LibFunc.fxEmpty(getError())) {
-            setResult("error");
-        } else {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente4") != null) {
-                if (getCliente().getTipDocTri().equals("E")) {
-                    return frmSolFinan_RefPerso();
-                } else if (getCliente().getTipDocTri().equals("I")) {
-                    return frmSolFinan_RefLabor();
-                } else if (getCliente().getTipDocTri().equals("P")) {
-                    return frmSolFinan_RefFamil();
-                }
 
-            }
-            setResult("frmSolFinan_InfoFinan");
-
-        }*/
         setResult("frmSolFinan_InfoFinan");
         return getResult();
     }
-
+     */
     public String frmSolFinan_RefFamil() {
         if (!validaSession()) {
             return "login";
@@ -559,24 +866,6 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
-        /*
-        
-        
-        if (!LibFunc.fxEmpty(getError())) {
-            setResult("error");
-        } else {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente3") != null) {
-                if (getCliente().getTipDocTri().equals("E")) {
-                    return frmSolFinan_DocEmple();
-                } else if (getCliente().getTipDocTri().equals("I")) {
-                    return frmSolFinan_DocIndpF();
-                } else if (getCliente().getTipDocTri().equals("P")) {
-                    return frmSolFinan_DocJubila();
-                }
-            }
-            setResult("frmSolFinan_RefFamil");
-        }*/
         setResult("frmSolFinan_RefFamil");
         return getResult();
     }
@@ -615,28 +904,6 @@ public class MenuAction extends BaseAction {
             setResult("frmSolFinan_RefLabor");
         }
 
-        /*        
-        if (!LibFunc.fxEmpty(getError())) {
-            setResult("error");
-        } else {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente3") != null) {
-                if (getCliente().getTipDocTri().equals("E")) {
-                    return frmSolFinan_DocEmple();
-                } else if (getCliente().getTipDocTri().equals("I")) {
-                    if (getCliente().getDesOcu().equals("FORMAL")) {
-                        return frmSolFinan_DocIndpF();
-                    } else {
-                        return frmSolFinan_DocIndpN();
-                    }
-                } else if (getCliente().getTipDocTri().equals("P")) {
-                    return frmSolFinan_DocIndpF();
-                }
-            }
-            setResult("frmSolFinan_RefLabor");
-        }
-         */
-        //setResult("frmSolFinan_RefLabor");
         return getResult();
     }
 
@@ -654,22 +921,6 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
-        /*
-        if (!LibFunc.fxEmpty(getError())) {
-            setResult("error");
-        } else {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente3") != null) {
-                if (getCliente().getTipDocTri().equals("E")) {
-                    return frmSolFinan_DocEmple();
-                } else if (getCliente().getTipDocTri().equals("I")) {
-                    return frmSolFinan_DocIndpF();
-                } else if (getCliente().getTipDocTri().equals("P")) {
-                    return frmSolFinan_DocIndpF();
-                }
-            }
-            setResult("frmSolFinan_RefPerso");
-        }*/
         setResult("frmSolFinan_RefPerso");
         return getResult();
     }
@@ -685,9 +936,7 @@ public class MenuAction extends BaseAction {
             try {
 
                 loRep.setCliente(getCliente());
-                //loRep.setUrl(getUrl());
-                //loRep.setUser(user);
-                //loRep.setPasswd(pass);
+
                 boolean llOk = loRep.mxSolicitudCliente();
                 if (!llOk) {
                     setError(loRep.getError());
@@ -8629,6 +8878,718 @@ public class MenuAction extends BaseAction {
 
     public void setPaisNac(String PaisNac) {
         this.PaisNac = PaisNac;
+    }
+
+    public String getCPrimerNomb() {
+        return CPrimerNomb;
+    }
+
+    public void setCPrimerNomb(String CPrimerNomb) {
+        this.CPrimerNomb = CPrimerNomb;
+    }
+
+    public String getCSegundNomb() {
+        return CSegundNomb;
+    }
+
+    public void setCSegundNomb(String CSegundNomb) {
+        this.CSegundNomb = CSegundNomb;
+    }
+
+    public String getCPrimerApel() {
+        return CPrimerApel;
+    }
+
+    public void setCPrimerApel(String CPrimerApel) {
+        this.CPrimerApel = CPrimerApel;
+    }
+
+    public String getCSegundApel() {
+        return CSegundApel;
+    }
+
+    public void setCSegundApel(String CSegundApel) {
+        this.CSegundApel = CSegundApel;
+    }
+
+    public String getCEmpdondTrab() {
+        return CEmpdondTrab;
+    }
+
+    public void setCEmpdondTrab(String CEmpdondTrab) {
+        this.CEmpdondTrab = CEmpdondTrab;
+    }
+
+    public String getCEmpCargo() {
+        return CEmpCargo;
+    }
+
+    public void setCEmpCargo(String CEmpCargo) {
+        this.CEmpCargo = CEmpCargo;
+    }
+
+    public String getCEmpTelef() {
+        return CEmpTelef;
+    }
+
+    public void setCEmpTelef(String CEmpTelef) {
+        this.CEmpTelef = CEmpTelef;
+    }
+
+    public String getVSuministro() {
+        return VSuministro;
+    }
+
+    public void setVSuministro(String VSuministro) {
+        this.VSuministro = VSuministro;
+    }
+
+    public String getVTitularSum() {
+        return VTitularSum;
+    }
+
+    public void setVTitularSum(String VTitularSum) {
+        this.VTitularSum = VTitularSum;
+    }
+
+    public String getVRelacTitul() {
+        return VRelacTitul;
+    }
+
+    public void setVRelacTitul(String VRelacTitul) {
+        this.VRelacTitul = VRelacTitul;
+    }
+
+    public String getVTipoVivien() {
+        return VTipoVivien;
+    }
+
+    public void setVTipoVivien(String VTipoVivien) {
+        this.VTipoVivien = VTipoVivien;
+    }
+
+    public String getVHaceCVivea() {
+        return VHaceCVivea;
+    }
+
+    public void setVHaceCVivea(String VHaceCVivea) {
+        this.VHaceCVivea = VHaceCVivea;
+    }
+
+    public String getVDireccResi() {
+        return VDireccResi;
+    }
+
+    public void setVDireccResi(String VDireccResi) {
+        this.VDireccResi = VDireccResi;
+    }
+
+    public String getVDistVivien() {
+        return VDistVivien;
+    }
+
+    public void setVDistVivien(String VDistVivien) {
+        this.VDistVivien = VDistVivien;
+    }
+
+    public String getVProvVivien() {
+        return VProvVivien;
+    }
+
+    public void setVProvVivien(String VProvVivien) {
+        this.VProvVivien = VProvVivien;
+    }
+
+    public String getVDepaVivien() {
+        return VDepaVivien;
+    }
+
+    public void setVDepaVivien(String VDepaVivien) {
+        this.VDepaVivien = VDepaVivien;
+    }
+
+    public String getENombreEmpr() {
+        return ENombreEmpr;
+    }
+
+    public void setENombreEmpr(String ENombreEmpr) {
+        this.ENombreEmpr = ENombreEmpr;
+    }
+
+    public String getERUCEmpr() {
+        return ERUCEmpr;
+    }
+
+    public void setERUCEmpr(String ERUCEmpr) {
+        this.ERUCEmpr = ERUCEmpr;
+    }
+
+    public String getEActivdEmpr() {
+        return EActivdEmpr;
+    }
+
+    public void setEActivdEmpr(String EActivdEmpr) {
+        this.EActivdEmpr = EActivdEmpr;
+    }
+
+    public String getEDirEmpr() {
+        return EDirEmpr;
+    }
+
+    public void setEDirEmpr(String EDirEmpr) {
+        this.EDirEmpr = EDirEmpr;
+    }
+
+    public String getEDepEmpr() {
+        return EDepEmpr;
+    }
+
+    public void setEDepEmpr(String EDepEmpr) {
+        this.EDepEmpr = EDepEmpr;
+    }
+
+    public String getEDisEmpr() {
+        return EDisEmpr;
+    }
+
+    public void setEDisEmpr(String EDisEmpr) {
+        this.EDisEmpr = EDisEmpr;
+    }
+
+    public String getILabor() {
+        return ILabor;
+    }
+
+    public void setILabor(String ILabor) {
+        this.ILabor = ILabor;
+    }
+
+    public String getIHacecuantInd() {
+        return IHacecuantInd;
+    }
+
+    public void setIHacecuantInd(String IHacecuantInd) {
+        this.IHacecuantInd = IHacecuantInd;
+    }
+
+    public String getITipodeInd() {
+        return ITipodeInd;
+    }
+
+    public void setITipodeInd(String ITipodeInd) {
+        this.ITipodeInd = ITipodeInd;
+    }
+
+    public String getFNombEmpr() {
+        return FNombEmpr;
+    }
+
+    public void setFNombEmpr(String FNombEmpr) {
+        this.FNombEmpr = FNombEmpr;
+    }
+
+    public String getFRUCEmpr() {
+        return FRUCEmpr;
+    }
+
+    public void setFRUCEmpr(String FRUCEmpr) {
+        this.FRUCEmpr = FRUCEmpr;
+    }
+
+    public String getFCargo() {
+        return FCargo;
+    }
+
+    public void setFCargo(String FCargo) {
+        this.FCargo = FCargo;
+    }
+
+    public String getFDirLabo() {
+        return FDirLabo;
+    }
+
+    public void setFDirLabo(String FDirLabo) {
+        this.FDirLabo = FDirLabo;
+    }
+
+    public String getFDisLabo() {
+        return FDisLabo;
+    }
+
+    public void setFDisLabo(String FDisLabo) {
+        this.FDisLabo = FDisLabo;
+    }
+
+    public String getFProLabo() {
+        return FProLabo;
+    }
+
+    public void setFProLabo(String FProLabo) {
+        this.FProLabo = FProLabo;
+    }
+
+    public String getFDepLabo() {
+        return FDepLabo;
+    }
+
+    public void setFDepLabo(String FDepLabo) {
+        this.FDepLabo = FDepLabo;
+    }
+
+    public String getFTelef() {
+        return FTelef;
+    }
+
+    public void setFTelef(String FTelef) {
+        this.FTelef = FTelef;
+    }
+
+    public String getFAnexo() {
+        return FAnexo;
+    }
+
+    public void setFAnexo(String FAnexo) {
+        this.FAnexo = FAnexo;
+    }
+
+    public String getFCorreo() {
+        return FCorreo;
+    }
+
+    public void setFCorreo(String FCorreo) {
+        this.FCorreo = FCorreo;
+    }
+
+    public String getJNombEmpJ() {
+        return JNombEmpJ;
+    }
+
+    public void setJNombEmpJ(String JNombEmpJ) {
+        this.JNombEmpJ = JNombEmpJ;
+    }
+
+    public String getJNombEmpA() {
+        return JNombEmpA;
+    }
+
+    public void setJNombEmpA(String JNombEmpA) {
+        this.JNombEmpA = JNombEmpA;
+    }
+
+    public String getJHacecuaJ() {
+        return JHacecuaJ;
+    }
+
+    public void setJHacecuaJ(String JHacecuaJ) {
+        this.JHacecuaJ = JHacecuaJ;
+    }
+
+    public double getISueldBas() {
+        return ISueldBas;
+    }
+
+    public void setISueldBas(double ISueldBas) {
+        this.ISueldBas = ISueldBas;
+    }
+
+    public double getIComisiones() {
+        return IComisiones;
+    }
+
+    public void setIComisiones(double IComisiones) {
+        this.IComisiones = IComisiones;
+    }
+
+    public double getIHonorarios() {
+        return IHonorarios;
+    }
+
+    public void setIHonorarios(double IHonorarios) {
+        this.IHonorarios = IHonorarios;
+    }
+
+    public double getIAlquileres() {
+        return IAlquileres;
+    }
+
+    public void setIAlquileres(double IAlquileres) {
+        this.IAlquileres = IAlquileres;
+    }
+
+    public double getIOtrosIngres() {
+        return IOtrosIngres;
+    }
+
+    public void setIOtrosIngres(double IOtrosIngres) {
+        this.IOtrosIngres = IOtrosIngres;
+    }
+
+    public double getITotalIng() {
+        return ITotalIng;
+    }
+
+    public void setITotalIng(double ITotalIng) {
+        this.ITotalIng = ITotalIng;
+    }
+
+    public double getITotalAct() {
+        return ITotalAct;
+    }
+
+    public void setITotalAct(double ITotalAct) {
+        this.ITotalAct = ITotalAct;
+    }
+
+    public double getGAlquiler() {
+        return GAlquiler;
+    }
+
+    public void setGAlquiler(double GAlquiler) {
+        this.GAlquiler = GAlquiler;
+    }
+
+    public double getGCréditoViv() {
+        return GCréditoViv;
+    }
+
+    public void setGCréditoViv(double GCréditoViv) {
+        this.GCréditoViv = GCréditoViv;
+    }
+
+    public double getGGastosFamil() {
+        return GGastosFamil;
+    }
+
+    public void setGGastosFamil(double GGastosFamil) {
+        this.GGastosFamil = GGastosFamil;
+    }
+
+    public double getGTarjetasCred() {
+        return GTarjetasCred;
+    }
+
+    public void setGTarjetasCred(double GTarjetasCred) {
+        this.GTarjetasCred = GTarjetasCred;
+    }
+
+    public double getGOtrosGas() {
+        return GOtrosGas;
+    }
+
+    public void setGOtrosGas(double GOtrosGas) {
+        this.GOtrosGas = GOtrosGas;
+    }
+
+    public double getGTotalGas() {
+        return GTotalGas;
+    }
+
+    public void setGTotalGas(double GTotalGas) {
+        this.GTotalGas = GTotalGas;
+    }
+
+    public double getGTotalPat() {
+        return GTotalPat;
+    }
+
+    public void setGTotalPat(double GTotalPat) {
+        this.GTotalPat = GTotalPat;
+    }
+
+    public String getRPPrimerNomb() {
+        return RPPrimerNomb;
+    }
+
+    public void setRPPrimerNomb(String RPPrimerNomb) {
+        this.RPPrimerNomb = RPPrimerNomb;
+    }
+
+    public String getRPSegundoNomb() {
+        return RPSegundoNomb;
+    }
+
+    public void setRPSegundoNomb(String RPSegundoNomb) {
+        this.RPSegundoNomb = RPSegundoNomb;
+    }
+
+    public String getRPPrimerApell() {
+        return RPPrimerApell;
+    }
+
+    public void setRPPrimerApell(String RPPrimerApell) {
+        this.RPPrimerApell = RPPrimerApell;
+    }
+
+    public String getRPSegundoApell() {
+        return RPSegundoApell;
+    }
+
+    public void setRPSegundoApell(String RPSegundoApell) {
+        this.RPSegundoApell = RPSegundoApell;
+    }
+
+    public String getRPDirec() {
+        return RPDirec;
+    }
+
+    public void setRPDirec(String RPDirec) {
+        this.RPDirec = RPDirec;
+    }
+
+    public String getRPDistr() {
+        return RPDistr;
+    }
+
+    public void setRPDistr(String RPDistr) {
+        this.RPDistr = RPDistr;
+    }
+
+    public String getRPProvi() {
+        return RPProvi;
+    }
+
+    public void setRPProvi(String RPProvi) {
+        this.RPProvi = RPProvi;
+    }
+
+    public String getRPEStad() {
+        return RPEStad;
+    }
+
+    public void setRPEStad(String RPEStad) {
+        this.RPEStad = RPEStad;
+    }
+
+    public String getRPTelef() {
+        return RPTelef;
+    }
+
+    public void setRPTelef(String RPTelef) {
+        this.RPTelef = RPTelef;
+    }
+
+    public String getRPCelul() {
+        return RPCelul;
+    }
+
+    public void setRPCelul(String RPCelul) {
+        this.RPCelul = RPCelul;
+    }
+
+    public String getRPParen() {
+        return RPParen;
+    }
+
+    public void setRPParen(String RPParen) {
+        this.RPParen = RPParen;
+    }
+
+    public String getRFPrimerNomb() {
+        return RFPrimerNomb;
+    }
+
+    public void setRFPrimerNomb(String RFPrimerNomb) {
+        this.RFPrimerNomb = RFPrimerNomb;
+    }
+
+    public String getRFSegundoNomb() {
+        return RFSegundoNomb;
+    }
+
+    public void setRFSegundoNomb(String RFSegundoNomb) {
+        this.RFSegundoNomb = RFSegundoNomb;
+    }
+
+    public String getRFPrimerApell() {
+        return RFPrimerApell;
+    }
+
+    public void setRFPrimerApell(String RFPrimerApell) {
+        this.RFPrimerApell = RFPrimerApell;
+    }
+
+    public String getRFSegundoApell() {
+        return RFSegundoApell;
+    }
+
+    public void setRFSegundoApell(String RFSegundoApell) {
+        this.RFSegundoApell = RFSegundoApell;
+    }
+
+    public String getRFDirec() {
+        return RFDirec;
+    }
+
+    public void setRFDirec(String RFDirec) {
+        this.RFDirec = RFDirec;
+    }
+
+    public String getRFDistr() {
+        return RFDistr;
+    }
+
+    public void setRFDistr(String RFDistr) {
+        this.RFDistr = RFDistr;
+    }
+
+    public String getRFProvi() {
+        return RFProvi;
+    }
+
+    public void setRFProvi(String RFProvi) {
+        this.RFProvi = RFProvi;
+    }
+
+    public String getRFEStad() {
+        return RFEStad;
+    }
+
+    public void setRFEStad(String RFEStad) {
+        this.RFEStad = RFEStad;
+    }
+
+    public String getRFTelef() {
+        return RFTelef;
+    }
+
+    public void setRFTelef(String RFTelef) {
+        this.RFTelef = RFTelef;
+    }
+
+    public String getRFCelul() {
+        return RFCelul;
+    }
+
+    public void setRFCelul(String RFCelul) {
+        this.RFCelul = RFCelul;
+    }
+
+    public String getRFParen() {
+        return RFParen;
+    }
+
+    public void setRFParen(String RFParen) {
+        this.RFParen = RFParen;
+    }
+
+    public String getRLCNombre() {
+        return RLCNombre;
+    }
+
+    public void setRLCNombre(String RLCNombre) {
+        this.RLCNombre = RLCNombre;
+    }
+
+    public String getRLCActividad() {
+        return RLCActividad;
+    }
+
+    public void setRLCActividad(String RLCActividad) {
+        this.RLCActividad = RLCActividad;
+    }
+
+    public String getRLCTelef() {
+        return RLCTelef;
+    }
+
+    public void setRLCTelef(String RLCTelef) {
+        this.RLCTelef = RLCTelef;
+    }
+
+    public String getRLCDireClient() {
+        return RLCDireClient;
+    }
+
+    public void setRLCDireClient(String RLCDireClient) {
+        this.RLCDireClient = RLCDireClient;
+    }
+
+    public String getRLCDistrito() {
+        return RLCDistrito;
+    }
+
+    public void setRLCDistrito(String RLCDistrito) {
+        this.RLCDistrito = RLCDistrito;
+    }
+
+    public String getRLCProvincia() {
+        return RLCProvincia;
+    }
+
+    public void setRLCProvincia(String RLCProvincia) {
+        this.RLCProvincia = RLCProvincia;
+    }
+
+    public String getRLCEstado() {
+        return RLCEstado;
+    }
+
+    public void setRLCEstado(String RLCEstado) {
+        this.RLCEstado = RLCEstado;
+    }
+
+    public String getRLPNombre() {
+        return RLPNombre;
+    }
+
+    public void setRLPNombre(String RLPNombre) {
+        this.RLPNombre = RLPNombre;
+    }
+
+    public String getRLPActividad() {
+        return RLPActividad;
+    }
+
+    public void setRLPActividad(String RLPActividad) {
+        this.RLPActividad = RLPActividad;
+    }
+
+    public String getRLPTelef() {
+        return RLPTelef;
+    }
+
+    public void setRLPTelef(String RLPTelef) {
+        this.RLPTelef = RLPTelef;
+    }
+
+    public String getRLPDireClient() {
+        return RLPDireClient;
+    }
+
+    public void setRLPDireClient(String RLPDireClient) {
+        this.RLPDireClient = RLPDireClient;
+    }
+
+    public String getRLPDistrito() {
+        return RLPDistrito;
+    }
+
+    public void setRLPDistrito(String RLPDistrito) {
+        this.RLPDistrito = RLPDistrito;
+    }
+
+    public String getRLPProvincia() {
+        return RLPProvincia;
+    }
+
+    public void setRLPProvincia(String RLPProvincia) {
+        this.RLPProvincia = RLPProvincia;
+    }
+
+    public String getRLPEstado() {
+        return RLPEstado;
+    }
+
+    public void setRLPEstado(String RLPEstado) {
+        this.RLPEstado = RLPEstado;
+    }
+
+    public String getEProvEmpr() {
+        return EProvEmpr;
+    }
+
+    public void setEProvEmpr(String EProvEmpr) {
+        this.EProvEmpr = EProvEmpr;
     }
 
 }
