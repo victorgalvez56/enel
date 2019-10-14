@@ -2,7 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
-    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    //commit    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -49,34 +49,22 @@
                                         <div class="box box-primary box-solid">
                                             <div class="box-body">
                                                 <div class="col-md-12">
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="control-label">Código Evaluador</label>
+                                                            <label>Código Evaluador </label>
+                                                            <s:textfield type="text" cssClass="form-control" id="CodEvaluador" tabindex="11" name="CodEvaluador" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="codEva" tabindex="11" name="codEva" style="text-transform: uppercase;" />
+                                                            <label>Punto de Venta  </label>
+                                                            <s:textfield type="text" cssClass="form-control" id="PuntVenta" tabindex="11" name="PuntVenta" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="control-label">Punto de Venta</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="puntoVent" tabindex="11" name="puntoVent" style="text-transform: uppercase;" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Fecha de Solicitud</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <s:textfield cssClass="form-control" id="FecSolic" tabindex="11" name="FecSolic" style="text-transform: uppercase;" />
+                                                            <label>Fecha de Solicitud  </label>
+                                                            <s:textfield type="text" cssClass="form-control" id="FecSolicitud" tabindex="11" name="FecSolicitud" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,72 +83,72 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Documento de Identidad: </label>
-                                                            <s:select name="cliente.tipDocCiv" tabindex="10" id="sTipoDoc" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="cliente.TipDocCiv" tabindex="10" id="TipDocCiv" list="lstTipDocCiv" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Número &emsp; documento:  </label>
-                                                            <s:textfield cssClass="form-control" id="ndocum" tabindex="11" name="ndocum" style="text-transform: uppercase;" />
+                                                            <label>Número documento:  </label>
+                                                            <s:textfield type="number" cssClass="form-control" id="NroDocCiv" tabindex="11" name="cliente.NroDocCiv" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Ciudad de &emsp; Expedición:  </label>
-                                                            <s:textfield cssClass="form-control" id="ciudExp" tabindex="11" name="ciudExp" style="text-transform: uppercase;" />
+                                                            <label>Ciudad de Expedición:  </label>
+                                                            <s:select name="CiudadExp" tabindex="10" id="CiudadExp" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Primer &emsp; &emsp; &emsp;Nombre: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Primer Nombre: </label>
+                                                            <s:textfield cssClass="form-control" id="PriNomb" tabindex="11" name="cliente.nombre" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Segundo &emsp; &emsp;Nombre:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Segundo Nombre:  </label>
+                                                            <s:textfield cssClass="form-control" id="SegNomb" tabindex="11" name="cliente.SegundoNo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Primer  &emsp; &emsp; &emsp;Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Primer Apellido:  </label>
+                                                            <s:textfield cssClass="form-control" id="ApePat" tabindex="11" name="cliente.ApePat" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                                        
+
                                             <div class="box-body">
                                                 <div class="col-md-12">
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Segundo &emsp; &emsp;Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Segundo Apellido:  </label>
+                                                            <s:textfield cssClass="form-control" id="ApeMat" tabindex="11" name="cliente.ApeMat" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>&emsp; &emsp;&emsp; &emsp;Nacionalidad:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Nacionalidad:  </label>
+                                                            <s:textfield cssClass="form-control" id="sNacion" tabindex="11" name="Nacionalidad" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Fecha de &emsp;Nacimiento:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Fecha de Nacimiento:  </label>
+                                                            <s:textfield type="text" cssClass="form-control" id="FecNac" tabindex="11" name="cliente.FecNac" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Ciudad de Nacimiento:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="CiudadNac" tabindex="11" name="CiudadNac" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>País de &emsp;&emsp;Nacimiento:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>País de Nacimiento:  </label>
+                                                            <s:textfield cssClass="form-control" id="PaisNac" tabindex="11" name="PaisNac" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
@@ -171,27 +159,27 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Género:  </label>
-                                                            <s:select name="cliente.tipDocCiv" tabindex="10" id="sTipoDoc" list="lstSexos" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:textfield cssClass="form-control" id="Sexo" tabindex="11" name="cliente.sexo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
-                                   
+
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Estado Civil:  </label>
-                                                            <s:select name="cliente.estCiv" tabindex="10" id="sTipoDoc" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="cliente.EstCiv" tabindex="10" id="EstadoCiv" list="lstEstados" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
-                                      
+
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Estudios:  </label>
-                                                            <s:select name="cliente.tipDocCiv" tabindex="10" id="sTipoDoc" list="lstNivIns" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:textfield cssClass="form-control" id="sEstudios" tabindex="11" name="cliente.NivIns" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Ocupación:  </label>
-                                                            <s:select name="cliente.TipDocTri" tabindex="10" id="sTipoDoc" list="lstTipoOrden" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="cliente.DesOcu" tabindex="10" id="slistOcupa" list="lstTipoOrden" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,19 +190,19 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Número de personas que dependen económicamente del solicitante:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield min="0" type="number" cssClass="form-control" id="NPersonas" tabindex="11" name="NperDepend" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Correo&emsp;&emsp; Electrónico:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Correo Electrónico:  </label>
+                                                            <s:textfield type="email" cssClass="form-control" id="sCorreo" tabindex="11" name="cliente.Correo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label>Número de &emsp;&emsp;teléfono:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Número de teléfono:  </label>
+                                                            <s:textfield min="0" type="number" cssClass="form-control" id="NumTel" tabindex="11" name="cliente.Telefono" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,8 +213,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:submit name="siguiente" value="Siguiente" id = "bSiguiente" cssClass="btn btn-primary btn-flat" />
-  
+                                            <s:submit name="siguienteSolc" value="Siguiente" id = "bSiguiente" cssClass="btn btn-primary btn-flat" />
+
                                         </div>
 
                                     </div>
@@ -236,4 +224,37 @@
                     </section>
                 </s:form>
             </div>
+        </div>
+        <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/enel/js/script.js"></script>        
+        <script type="text/javascript" src="/enel/js/main.js"></script>
+        <!-- iCheck -->
+        <script src="/enel/plugins/iCheck/icheck.min.js"></script>
+
+        <script>
+        var fechahoy = $("#FecSolicitud")
+        n = new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+
+        fechahoy.val(d + "/" + m + "/" + y)
+        /*
+        $("#FecSolicitud").attr("readonly", "true");
+        $("#PriNomb").attr("readonly", "true");
+        $("#SegNomb").attr("readonly", "true");
+        $("#ApePat").attr("readonly", "true");
+        $("#ApeMat").attr("readonly", "true");
+        $("#Nacionalidad").attr("readonly", "true");
+        $("#FecNac").attr("readonly", "true");
+        $("#CiudaNac").attr("readonly", "true");
+        $("#PaisNac").attr("readonly", "true");
+        $("#Sexo").attr("readonly", "true");
+        $("#sNacion").attr("readonly", "true");
+        $("#CiudadNac").attr("readonly", "true");
+        $("#sEstudios").attr("readonly", "true");
+        */
+        </script>
+
+    </body>
 </html>
