@@ -671,7 +671,7 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-
+//commit
                 if (getENombreEmpr().equals("")) {
                     setError("Por favor llenar el campo Nombre de la Empresa");
                 } else {
