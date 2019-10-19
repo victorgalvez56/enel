@@ -53,25 +53,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primer Nombre: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Pnombre" tabindex="11" name="rPPrimerNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Nombre:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Snombre" tabindex="11" name="rPSegundoNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primer Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Papellido" tabindex="11" name="rPPrimerApell" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Sapellido" tabindex="11" name="rPSegundoApell" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,25 +79,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Dirección: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Direc" tabindex="11" name="rPDirec" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Distrito:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:select name="rPDistr" tabindex="10" id="Distr" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Provincia:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:select name="rPProvi" tabindex="10" id="Provinc" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Estado:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="Telef" tabindex="11" name="rPEstad" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -105,19 +105,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Teléfono </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="Telef" tabindex="11" name="rPTelef" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Celular:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="Celular" tabindex="11" name="rPCelul" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Parentesco:  </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="Parent" tabindex="11" name="rPParen" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,8 +129,9 @@
                                     <div class="col-md-12">
                                         <div style="float: right">
                                             <s:hidden  cssClass="tipoin" id="tipoindeform" tabindex="11" name="codEva" style="text-transform: uppercase;" />
-                                            <s:hidden name="cliente.TipDocTri"></s:hidden>
-                                            <s:submit name="siguiente3" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:hidden name="cliente.Sexo"></s:hidden>
+                                            <s:submit name="siguientePerso" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -140,4 +141,30 @@
                     </section>
                 </s:form>
             </div>
+        </div>
+        <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/enel/js/script.js"></script>        
+        <script type="text/javascript" src="/enel/js/main.js"></script>
+        <!-- iCheck -->
+        <script src="/enel/plugins/iCheck/icheck.min.js"></script>
+        <script>
+            /*
+        $("#Pnombre").prop('required', true);
+        $("#Snombre").prop('required', true);
+        $("#Papellido").prop('required', true);
+        $("#Sapellido").prop('required', true);
+        $("#Direc").prop('required', true);
+        $("#Distr").prop('required', true);
+        $("#Provinc").prop('required', true);
+        $("#Distr").prop('required', true);
+        $("#Pronv").prop('required', true);
+        $("#Depar").prop('required', true);
+        $("#Estad").prop('required', true);
+        $("#Telef").prop('required', true);
+        $("#Celular").prop('required', true);
+        $("#Parent").prop('required', true);
+        */
+        </script>
+
+    </body>
 </html>

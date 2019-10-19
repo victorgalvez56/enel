@@ -278,21 +278,21 @@ public class MenuAction extends BaseAction {
     private String JNombEmpA;
     private String JHacecuaJ;
 //Datos Información Financiera-Ingresos
-    private double ISueldBas;
-    private double IComisiones;
-    private double IHonorarios;
-    private double IAlquileres;
-    private double IOtrosIngres;
-    private double ITotalIng;
-    private double ITotalAct;
+    private String ISueldBas;
+    private String IComisiones;
+    private String IHonorarios;
+    private String IAlquileres;
+    private String IOtrosIngres;
+    private String ITotalIng;
+    private String ITotalAct;
 //Datos Información Financiera-Gastos
-    private double GAlquiler;
-    private double GCréditoViv;
-    private double GGastosFamil;
-    private double GTarjetasCred;
-    private double GOtrosGas;
-    private double GTotalGas;
-    private double GTotalPat;
+    private String GAlquiler;
+    private String GCreditoViv;
+    private String GGastosFamil;
+    private String GTarjetasCred;
+    private String GOtrosGas;
+    private String GTotalGas;
+    private String GTotalPat;
 //Datos Referencias Personales
     private String RPPrimerNomb;
     private String RPSegundoNomb;
@@ -301,7 +301,7 @@ public class MenuAction extends BaseAction {
     private String RPDirec;
     private String RPDistr;
     private String RPProvi;
-    private String RPEStad;
+    private String RPEstad;
     private String RPTelef;
     private String RPCelul;
     private String RPParen;
@@ -313,7 +313,7 @@ public class MenuAction extends BaseAction {
     private String RFDirec;
     private String RFDistr;
     private String RFProvi;
-    private String RFEStad;
+    private String RFEstad;
     private String RFTelef;
     private String RFCelul;
     private String RFParen;
@@ -328,7 +328,7 @@ public class MenuAction extends BaseAction {
     private String RLPNombre;
     private String RLPActividad;
     private String RLPTelef;
-    private String RLPDireClient;
+    private String RLPDire;
     private String RLPDistrito;
     private String RLPProvincia;
     private String RLPEstado;
@@ -566,11 +566,8 @@ public class MenuAction extends BaseAction {
                 }
             } catch (Exception e) {
             }
-
         }
-
         return getResult();
-
     }
 
     public String frmSolFinan_Vivienda() {
@@ -583,9 +580,7 @@ public class MenuAction extends BaseAction {
         zona.setCodigo("2");
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
-
         setResult("frmSolFinan_Vivienda");
-
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
@@ -642,11 +637,8 @@ public class MenuAction extends BaseAction {
                 }
             } catch (Exception e) {
             }
-
         }
-
         return getResult();
-
     }
 
     public String frmSolFinan_Empleado() {
@@ -671,7 +663,6 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-//commit
                 if (getENombreEmpr().equals("")) {
                     setError("Por favor llenar el campo Nombre de la Empresa");
                 } else {
@@ -709,11 +700,8 @@ public class MenuAction extends BaseAction {
                 }
             } catch (Exception e) {
             }
-
         }
-
         return getResult();
-
     }
 
     public String frmSolFinan_Independiente() {
@@ -729,7 +717,81 @@ public class MenuAction extends BaseAction {
         zona.setCodigo("2");
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
+
         setResult("frmSolFinan_Independiente");
+
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getILabor().equals("")) {
+                    setError("Por favor llenar el primer campo");
+                } else {
+                    if (getIHacecuantInd().equals("")) {
+                        setError("Por favor llenar el segundo campo");
+                    } else {
+                        if (getITipodeInd().equals("")) {
+                            setError("Por favor llenar el tercer campo");
+                        } else {
+                            if (!getFNombEmpr().equals("")) {
+                                if (getFNombEmpr().equals("")) {
+                                    setError("Por favor llenar el campo Nombre de la Empresa");
+                                } else {
+                                    if (getFRUCEmpr().equals("")) {
+                                        setError("Por favor llenar el campo RUC");
+                                    } else {
+                                        if (getFCargo().equals("")) {
+                                            setError("Por favor llenar el campo Cargo");
+                                        } else {
+                                            if (getFDirLabo().equals("")) {
+                                                setError("Por favor llenar el campo Dirección");
+                                            } else {
+                                                if (getFDisLabo().equals("0")) {
+                                                    setError("Por favor llenar el campo Distrito");
+                                                } else {
+                                                    if (getFProLabo().equals("0")) {
+                                                        setError("Por favor seleccionar una Provincia");
+                                                    } else {
+                                                        if (getFDepLabo().equals("0")) {
+                                                            setError("Por favor seleccionar un Departamento");
+                                                        } else {
+                                                            if (getFTelef().equals("")) {
+                                                                setError("Por favor llenar el campo Teléfono");
+                                                            } else {
+                                                                if (getFAnexo().equals("")) {
+                                                                    setError("Por favor llenar el campo Anexo");
+                                                                } else {
+                                                                    if (getFCorreo().equals("")) {
+                                                                        setError("Por favor llenar el campo Correo Electrónico");
+                                                                    } else {
+                                                                        HttpServletRequest request = ServletActionContext.getRequest();
+                                                                        if (request.getParameter("siguienteIndep") != null) {
+                                                                            return frmSolFinan_InfoFinan();
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                HttpServletRequest request = ServletActionContext.getRequest();
+                                if (request.getParameter("siguienteIndep") != null) {
+                                    return frmSolFinan_InfoFinan();
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+        }
+
         return getResult();
     }
 
@@ -747,69 +809,92 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
         setResult("frmSolFinan_Jubilado");
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getJNombEmpJ().equals("")) {
+                    setError("Por favor llenar el Primer campo");
+                } else {
+                    if (getJNombEmpA().equals("")) {
+                        setError("Por favor llenar el Segundo campo");
+                    } else {
+                        if (getJHacecuaJ().equals("")) {
+                            setError("Por favor llenar el Tercer campo");
+                        } else {
+                            HttpServletRequest request = ServletActionContext.getRequest();
+                            if (request.getParameter("siguienteJub") != null) {
+                                return frmSolFinan_InfoFinan();
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+
+        }
+
         return getResult();
+
     }
 
     public String frmSolFinan_InfoFinan() {
         if (!validaSession()) {
             return "login";
         }
-
         setResult("frmSolFinan_InfoFinan");
-        System.out.println("SUELDO" + getISueldBas());
 
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getISueldBas() <= 0) {
+                if (getISueldBas().equals("")) {
                     setError("Por favor llenar el campo Sueldo Básico");
                 } else {
-                    if (getIComisiones() <= 0) {
+                    if (getIComisiones().equals("")) {
                         setError("Por favor llenar el campo Comisiones");
                     } else {
-                        if (getIHonorarios() <= 0) {
+                        if (getIHonorarios().equals("")) {
                             setError("Por favor llenar el campo Honorarios");
                         } else {
-                            if (getIAlquileres() <= 0) {
+                            if (getIAlquileres().equals("")) {
                                 setError("Por favor llenar el campo Alquileres");
                             } else {
-                                if (getIOtrosIngres() <= 0) {
+                                if (getIOtrosIngres().equals("")) {
                                     setError("Por favor llenar el campo Otros Ingresos");
                                 } else {
-                                    if (getITotalIng() <= 0) {
+                                    if (getITotalIng().equals("")) {
                                         setError("Por favor llenar el campo Total de Ingresos");
                                     } else {
-                                        if (getITotalAct() <= 0) {
+                                        if (getITotalAct().equals("")) {
                                             setError("Por favor llenar el campo Total de Activos");
                                         } else {
-                                            if (getGAlquiler() <= 0) {
-                                                setError("Por favor llenar el campo Apellido Paterno");
+                                            if (getGAlquiler().equals("")) {
+                                                setError("Por favor llenar el campo Alquiler");
                                             } else {
-                                                if (getGCréditoViv() <= 0) {
-                                                    setError("Por favor llenar el campo Apellido Materno");
+                                                if (getGCreditoViv().equals("")) {
+                                                    setError("Por favor llenar el campo Crédito de Vivienda ");
                                                 } else {
-                                                    if (getGGastosFamil() <= 0) {
-                                                        setError("Por favor llenar el campo Nacionalidad");
+                                                    if (getGGastosFamil().equals("")) {
+                                                        setError("Por favor llenar el campo Gastos Familiares");
                                                     } else {
-                                                        if (getGTarjetasCred() <= 0) {
-                                                            setError("Por favor llenar el campo Fecha de Nacimiento");
+                                                        if (getGTarjetasCred().equals("")) {
+                                                            setError("Por favor llenar el campo Tarjetas de Crédito");
                                                         } else {
-                                                            if (getGOtrosGas() <= 0) {
-                                                                setError("Por favor llenar el campo Ciudad de Nacimiento");
+                                                            if (getGOtrosGas().equals("")) {
+                                                                setError("Por favor llenar el campo Otros Gastos");
                                                             } else {
-                                                                if (getGTotalGas() <= 0) {
-                                                                    setError("Por favor llenar el campo País de Nacimiento");
+                                                                if (getGTotalGas().equals("")) {
+                                                                    setError("Por favor llenar el campo Total de Gastos");
                                                                 } else {
-                                                                    if (getGTotalPat() <= 0) {
-                                                                        setError("Por favor llenar el campo País de Nacimiento");
+                                                                    if (getGTotalPat().equals("")) {
+                                                                        setError("Por favor llenar el campo Total de Patrimonio");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
                                                                         if (request.getParameter("siguienteInfo") != null) {
                                                                             return frmSolFinan_RefPerso();
-                                                                        } else {
-                                                                            setResult("frmSolFinan_InfoFinan");
                                                                         }
                                                                     }
                                                                 }
@@ -826,31 +911,11 @@ public class MenuAction extends BaseAction {
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
             }
-
         }
-
-        return getResult();
-
-    }
-
-    /*
-
-        setLstTipZon(new ArrayList<Tabla>());
-        Tabla zona = new Tabla();
-        zona.setCodigo("1");
-        zona.setDescripcion("Arequipa");
-        getLstTipZon().add(zona);
-        zona = new Tabla();
-        zona.setCodigo("2");
-        zona.setDescripcion("Lima");
-        getLstTipZon().add(zona);
-
-        setResult("frmSolFinan_InfoFinan");
         return getResult();
     }
-     */
+
     public String frmSolFinan_RefFamil() {
         if (!validaSession()) {
             return "login";
@@ -867,6 +932,63 @@ public class MenuAction extends BaseAction {
         getLstTipZon().add(zona);
 
         setResult("frmSolFinan_RefFamil");
+
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getRFPrimerNomb().equals("")) {
+                    setError("Por favor llenar el campo Primer Nombre");
+                } else {
+                    if (getRFSegundoNomb().equals("")) {
+                        setError("Por favor llenar el campo Segundo Nombre");
+                    } else {
+                        if (getRFPrimerApell().equals("")) {
+                            setError("Por favor llenar el campo Primer Apellido");
+                        } else {
+                            if (getRFSegundoApell().equals("")) {
+                                setError("Por favor llenar el campo Segundo Apellido");
+                            } else {
+                                if (getRFDirec().equals("")) {
+                                    setError("Por favor llenar una Dirección");
+                                } else {
+                                    if (getRFDistr().equals("0")) {
+                                        setError("Por favor Seleccionar un Distrito ");
+                                    } else {
+                                        if (getRFProvi().equals("0")) {
+                                            setError("Por favor Seleccionar un Provincia  ");
+                                        } else {
+                                            if (getRFEstad().equals("")) {
+                                                setError("Por favor llenar el campo Estado");
+                                            } else {
+                                                if (getRFTelef().equals("")) {
+                                                    setError("Por favor llenar el campo Teléfono");
+                                                } else {
+                                                    if (getRFCelul().equals("")) {
+                                                        setError("Por favor llenar el campo Celular");
+                                                    } else {
+                                                        if (getRFParen().equals("")) {
+                                                            setError("Por favor llenar el campo Parentesco");
+                                                        } else {
+                                                            HttpServletRequest request = ServletActionContext.getRequest();
+                                                            if (request.getParameter("siguienteFamil") != null) {
+                                                                return frmSolFinan_RefLabor();
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+        }
         return getResult();
     }
 
@@ -884,26 +1006,86 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
+        setResult("frmSolFinan_RefLabor");
+
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
-            HttpServletRequest request = ServletActionContext.getRequest();
-            if (request.getParameter("siguiente3") != null) {
-                if (getCliente().getDesOcu().equals("E")) {
-                    return frmSolFinan_DocEmple();
-                } else if (getCliente().getDesOcu().equals("I")) {
-                    if (getCliente().getSexo().equals("Formal")) {
-                        return frmSolFinan_DocIndpF();
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getRLCNombre().equals("")) {
+                    setError("Por favor llenar el campo Nombre del Cliente");
+                } else {
+                    if (getRLCActividad().equals("")) {
+                        setError("Por favor llenar el campo Actividad del Cliente");
                     } else {
-                        return frmSolFinan_DocIndpN();
+                        if (getRLCTelef().equals("")) {
+                            setError("Por favor llenar el campo Teléfono del Cliente");
+                        } else {
+                            if (getRLCDireClient().equals("")) {
+                                setError("Por favor llenar el campo Dirección del Cliente");
+                            } else {
+                                if (getRLCDistrito().equals("0")) {
+                                    setError("Por favor Seleccionar un Distrito");
+                                } else {
+                                    if (getRLCProvincia().equals("0")) {
+                                        setError("Por favor Seleccionar una Provincia ");
+                                    } else {
+                                        if (getRLCEstado().equals("")) {
+                                            setError("Por favor llenar el campo Estado del Cliente");
+                                        } else {
+                                            if (getRLPNombre().equals("")) {
+                                                setError("Por favor llenar el campo Nombre del Proveedor");
+                                            } else {
+                                                if (getRLPActividad().equals("")) {
+                                                    setError("Por favor llenar el campo Actividad del Proveedor");
+                                                } else {
+                                                    if (getRLPTelef().equals("")) {
+                                                        setError("Por favor llenar el campo Teléfono del Proveedor");
+                                                    } else {
+                                                        if (getRLPDire().equals("")) {
+                                                            setError("Por favor llenar el campo Dirección del Proveedor");
+                                                        } else {
+                                                            if (getRLPDistrito().equals("0")) {
+                                                                setError("Por favor Seleccionar una Distrito ");
+                                                            } else {
+                                                                if (getRLPProvincia().equals("0")) {
+                                                                    setError("Por favor Seleccionar una Provincia ");
+                                                                } else {
+                                                                    if (getRLPEstado().equals("")) {
+                                                                        setError("Por favor llenar el campo Estado del Proveedor");
+                                                                    } else {
+                                                                        HttpServletRequest request = ServletActionContext.getRequest();
+                                                                        if (request.getParameter("siguienteLabor") != null) {
+                                                                            if (getCliente().getDesOcu().equals("E")) {
+                                                                                return frmSolFinan_DocEmple();
+                                                                            } else if (getCliente().getDesOcu().equals("I")) {
+                                                                                if (getCliente().getSexo().equals("Formal")) {
+                                                                                    return frmSolFinan_DocIndpF();
+                                                                                } else {
+                                                                                    return frmSolFinan_DocIndpN();
+                                                                                }
+                                                                            } else if (getCliente().getDesOcu().equals("P")) {
+                                                                                return frmSolFinan_DocJubila();
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                } else if (getCliente().getDesOcu().equals("P")) {
-                    return frmSolFinan_DocJubila();
                 }
+            } catch (Exception e) {
             }
-            setResult("frmSolFinan_RefLabor");
         }
-
         return getResult();
     }
 
@@ -920,9 +1102,68 @@ public class MenuAction extends BaseAction {
         zona.setCodigo("2");
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
-
         setResult("frmSolFinan_RefPerso");
+
+        if (!LibFunc.fxEmpty(getError())) {
+            setResult("error");
+        } else {
+            //VALIDACIONES DE CAMPOS
+            try {
+                if (getRPPrimerNomb().equals("")) {
+                    setError("Por favor llenar el campo Primer Nombre");
+                } else {
+                    if (getRPSegundoNomb().equals("")) {
+                        setError("Por favor llenar el campo Segundo Nombre");
+                    } else {
+                        if (getRPPrimerApell().equals("")) {
+                            setError("Por favor llenar el campo Primer Apellido");
+                        } else {
+                            if (getRPSegundoApell().equals("")) {
+                                setError("Por favor llenar el campo Segundo Apellido");
+                            } else {
+                                if (getRPDirec().equals("")) {
+                                    setError("Por favor llenar una Dirección");
+                                } else {
+                                    if (getRPDistr().equals("0")) {
+                                        setError("Por favor Seleccionar un Distrito ");
+                                    } else {
+                                        if (getRPProvi().equals("0")) {
+                                            setError("Por favor Seleccionar un Provincia  ");
+                                        } else {
+                                            if (getRPEstad().equals("")) {
+                                                setError("Por favor llenar el campo Estado");
+                                            } else {
+                                                if (getRPTelef().equals("")) {
+                                                    setError("Por favor llenar el campo Teléfono");
+                                                } else {
+                                                    if (getRPCelul().equals("")) {
+                                                        setError("Por favor llenar el campo Celular");
+                                                    } else {
+                                                        if (getRPParen().equals("")) {
+                                                            setError("Por favor llenar el campo Parentesco");
+                                                        } else {
+                                                            HttpServletRequest request = ServletActionContext.getRequest();
+                                                            if (request.getParameter("siguientePerso") != null) {
+                                                                return frmSolFinan_RefFamil();
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+            }
+
+        }
+
         return getResult();
+
     }
 
     public String frmSolFinan_DocEmple() {
@@ -9184,115 +9425,115 @@ public class MenuAction extends BaseAction {
         this.JHacecuaJ = JHacecuaJ;
     }
 
-    public double getISueldBas() {
+    public String getISueldBas() {
         return ISueldBas;
     }
 
-    public void setISueldBas(double ISueldBas) {
+    public void setISueldBas(String ISueldBas) {
         this.ISueldBas = ISueldBas;
     }
 
-    public double getIComisiones() {
+    public String getIComisiones() {
         return IComisiones;
     }
 
-    public void setIComisiones(double IComisiones) {
+    public void setIComisiones(String IComisiones) {
         this.IComisiones = IComisiones;
     }
 
-    public double getIHonorarios() {
+    public String getIHonorarios() {
         return IHonorarios;
     }
 
-    public void setIHonorarios(double IHonorarios) {
+    public void setIHonorarios(String IHonorarios) {
         this.IHonorarios = IHonorarios;
     }
 
-    public double getIAlquileres() {
+    public String getIAlquileres() {
         return IAlquileres;
     }
 
-    public void setIAlquileres(double IAlquileres) {
+    public void setIAlquileres(String IAlquileres) {
         this.IAlquileres = IAlquileres;
     }
 
-    public double getIOtrosIngres() {
+    public String getIOtrosIngres() {
         return IOtrosIngres;
     }
 
-    public void setIOtrosIngres(double IOtrosIngres) {
+    public void setIOtrosIngres(String IOtrosIngres) {
         this.IOtrosIngres = IOtrosIngres;
     }
 
-    public double getITotalIng() {
+    public String getITotalIng() {
         return ITotalIng;
     }
 
-    public void setITotalIng(double ITotalIng) {
+    public void setITotalIng(String ITotalIng) {
         this.ITotalIng = ITotalIng;
     }
 
-    public double getITotalAct() {
+    public String getITotalAct() {
         return ITotalAct;
     }
 
-    public void setITotalAct(double ITotalAct) {
+    public void setITotalAct(String ITotalAct) {
         this.ITotalAct = ITotalAct;
     }
 
-    public double getGAlquiler() {
+    public String getGAlquiler() {
         return GAlquiler;
     }
 
-    public void setGAlquiler(double GAlquiler) {
+    public void setGAlquiler(String GAlquiler) {
         this.GAlquiler = GAlquiler;
     }
 
-    public double getGCréditoViv() {
-        return GCréditoViv;
+    public String getGCreditoViv() {
+        return GCreditoViv;
     }
 
-    public void setGCréditoViv(double GCréditoViv) {
-        this.GCréditoViv = GCréditoViv;
+    public void setGCreditoViv(String GCreditoViv) {
+        this.GCreditoViv = GCreditoViv;
     }
 
-    public double getGGastosFamil() {
+    public String getGGastosFamil() {
         return GGastosFamil;
     }
 
-    public void setGGastosFamil(double GGastosFamil) {
+    public void setGGastosFamil(String GGastosFamil) {
         this.GGastosFamil = GGastosFamil;
     }
 
-    public double getGTarjetasCred() {
+    public String getGTarjetasCred() {
         return GTarjetasCred;
     }
 
-    public void setGTarjetasCred(double GTarjetasCred) {
+    public void setGTarjetasCred(String GTarjetasCred) {
         this.GTarjetasCred = GTarjetasCred;
     }
 
-    public double getGOtrosGas() {
+    public String getGOtrosGas() {
         return GOtrosGas;
     }
 
-    public void setGOtrosGas(double GOtrosGas) {
+    public void setGOtrosGas(String GOtrosGas) {
         this.GOtrosGas = GOtrosGas;
     }
 
-    public double getGTotalGas() {
+    public String getGTotalGas() {
         return GTotalGas;
     }
 
-    public void setGTotalGas(double GTotalGas) {
+    public void setGTotalGas(String GTotalGas) {
         this.GTotalGas = GTotalGas;
     }
 
-    public double getGTotalPat() {
+    public String getGTotalPat() {
         return GTotalPat;
     }
 
-    public void setGTotalPat(double GTotalPat) {
+    public void setGTotalPat(String GTotalPat) {
         this.GTotalPat = GTotalPat;
     }
 
@@ -9352,12 +9593,12 @@ public class MenuAction extends BaseAction {
         this.RPProvi = RPProvi;
     }
 
-    public String getRPEStad() {
-        return RPEStad;
+    public String getRPEstad() {
+        return RPEstad;
     }
 
-    public void setRPEStad(String RPEStad) {
-        this.RPEStad = RPEStad;
+    public void setRPEstad(String RPEstad) {
+        this.RPEstad = RPEstad;
     }
 
     public String getRPTelef() {
@@ -9440,12 +9681,12 @@ public class MenuAction extends BaseAction {
         this.RFProvi = RFProvi;
     }
 
-    public String getRFEStad() {
-        return RFEStad;
+    public String getRFEstad() {
+        return RFEstad;
     }
 
-    public void setRFEStad(String RFEStad) {
-        this.RFEStad = RFEStad;
+    public void setRFEstad(String RFEstad) {
+        this.RFEstad = RFEstad;
     }
 
     public String getRFTelef() {
@@ -9552,12 +9793,12 @@ public class MenuAction extends BaseAction {
         this.RLPTelef = RLPTelef;
     }
 
-    public String getRLPDireClient() {
-        return RLPDireClient;
+    public String getRLPDire() {
+        return RLPDire;
     }
 
-    public void setRLPDireClient(String RLPDireClient) {
-        this.RLPDireClient = RLPDireClient;
+    public void setRLPDire(String RLPDire) {
+        this.RLPDire = RLPDire;
     }
 
     public String getRLPDistrito() {

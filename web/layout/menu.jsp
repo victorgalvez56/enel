@@ -7,7 +7,7 @@
         <section class="sidebar">
             <ul class="sidebar-menu" data-widget="tree">
                 <li><a href="<s:url action="pantallaPrincipal"/>"><i class="fa fa-dashboard"></i>  <span>Pantalla Principal</span></a></li>
-                <s:iterator value="Menus" id="menu">
+                    <s:iterator value="Menus" id="menu">
                     <li class="treeview">
                         <a href="#">
                             <i class="fa <s:property value="icono"/>"></i> <span><s:property value="nombre"/></span>
@@ -19,11 +19,13 @@
                             <s:iterator value="SubMenus" id="subMenu">
                                 <s:if test="%{#menu.codigo == #subMenu.menu}">
                                     <li><a href="/enel/<s:property value="action" />"><i class="fa fa-circle-o"></i> <s:property value="nombre" /></a></li>
-                                </s:if>
-                            </s:iterator>
+                                    </s:if>
+                                </s:iterator>
                         </ul>
                     </li>
                 </s:iterator>
+                <li><a href="<s:url action="frmSolicitudFinanciamiento"/>"><i class="fa fa-dashboard"></i>  <span>Solicitud de Financiamiento</span></a></li>
+
             </ul>
         </section>
     </aside>

@@ -117,7 +117,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="cliente.TipDocTri"></s:hidden>
+                                            <s:hidden name="cliente.DesOcu"></s:hidden>
                                             <s:submit name="siguiente2" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 

@@ -34,7 +34,7 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form id="formulario" action="frmSolFinan_InfoFinan" role="form">
+                <s:form id="formulario" action="frmSolFinan_Independiente" role="form">
                     <section class="content-header">
                         <h1>Solicitud Persona Natural Crédito ENEL X - INDEPENDIENTE</h1>
                     </section>
@@ -53,19 +53,19 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Describa específicamente la labor que realiza como independiente: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="labIndependiente" tabindex="11" name="iLabor" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Hace cuanto es independiente: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="haceIndependiente" tabindex="11" name="iHacecuantInd" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Tipo de Independiente: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tipIndependiente" tabindex="11" name="iTipodeInd" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
@@ -83,25 +83,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa(Si aplica): </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="nEmpresa" tabindex="11" name="fNombEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>RUC: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="rucEmpresa" tabindex="11" name="fRUCEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Cargo/Ocupación: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="cargEmpresa" tabindex="11" name="fCargo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Dirección donde Labora: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="direcEmpresa" tabindex="11" name="fDirLabo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,37 +111,38 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:select name="fDisLabo" tabindex="10" cssClass="form-control tipoindep" id="provEmpresa" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Provincia: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:select name="fProLabo" tabindex="10" cssClass="form-control tipoindep" id="provEmpresa" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Departamento: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:select name="fDepLabo" tabindex="10" icssClass="form-control tipoindep" id="deparEmpresa" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Teléfono: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control tipoindep" id="tfEmpresa" tabindex="11" name="fTelef" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Anexo: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="anexEmpresa" tabindex="11" name="fAnexo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Correo Electrónico: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control tipoindep" id="corrEmpresa" tabindex="11" name="fCorreo" style="text-transform: uppercase;" />
+                                                            <s:hidden cssClass="form-control Tempresa" id="Tempresa" tabindex="11" name="cliente.Sexo" style="text-transform: uppercase;" />
 
                                                         </div>
                                                     </div>
@@ -153,9 +154,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden cssClass="tipoIndep" name="cliente.DesOcu" />  
-                                            <s:hidden name="cliente.TipDocTri"></s:hidden>
-                                            <s:submit name="siguiente" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:submit name="siguienteIndep" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -174,22 +174,40 @@
 
         <script>
 
-
-
-
-
-
+        /*
+         $("#labIndependiente").prop('required', true);
+         $("#haceIndependiente").prop('required', true);
+         $("#tipIndependiente").prop('required', true);
+         */
+        var obj2 = $("#Tempresa")
+        obj2.val("Informal")
         $(document).on("keyup", ".tipoindep", function () {
             var obj = $(".tipoindep")
+            //console.log(obj.val())
+            console.log(obj2.val())
             //0.Informal. 1.Formal
-
             if (obj.val().length <= 0) {
-                localStorage.setItem('Tipo_Independiente', 'INFORMAL');
+                obj2.val("Informal")
+                console.log(obj2.val())
             } else {
-                localStorage.setItem('Tipo_Independiente', 'FORMAL');
-
+                obj2.val("Formal")
+                console.log(obj2.val())
+                /*
+                 $("#nEmpresa").prop('required', true);
+                 $("#rucEmpresa").prop('required', true);
+                 $("#cargEmpresa").prop('required', true);
+                 $("#direcEmpresa").prop('required', true);
+                 $("#distrEmpresa").prop('required', true);
+                 $("#tipIndependiente").prop('required', true);
+                 $("#provEmpresa").prop('required', true);
+                 $("#deparEmpresa").prop('required', true);
+                 $("#tfEmpresa").prop('required', true);
+                 $("#anexEmpresa").prop('required', true);
+                 $("#corrEmpresa").prop('required', true);
+                 */
             }
         })
+
 
 
 

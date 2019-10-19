@@ -34,7 +34,7 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="frmSolFinan_InfoFinan" role="form">
+                <s:form action="frmSolFinan_Jubilado" role="form">
                     <section class="content-header">
                         <h1>Solicitud Persona Natural Crédito ENEL X - JUBILADO</h1> 
                     </section>
@@ -52,20 +52,20 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label>Nombre de la Empresa en la cual se &emsp; &emsp; &emsp; &emsp;Jubiló: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Nombre de la Empresa en la cual se Jubiló: </label>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="jNombEmpJ" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>     
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa donde hizo el Aporte para Jubilación: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="jNombEmpA" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label>Hace Cuanto es  &emsp; &emsp; &emsp;&emsp; &emsp;Jubilado: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="codCta" style="text-transform: uppercase;" />
+                                                            <label>Hace Cuanto es Jubilado: </label>
+                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="jHacecuaJ" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
@@ -79,8 +79,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="cliente.TipDocTri"></s:hidden>
-                                            <s:submit name="siguiente" value="Aplicar" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:submit name="siguienteJub" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -90,4 +90,24 @@
                     </section>
                 </s:form>
             </div>
+        </div>
+        <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/enel/js/script.js"></script>        
+        <script type="text/javascript" src="/enel/js/main.js"></script>
+        <!-- iCheck -->
+        <script src="/enel/plugins/iCheck/icheck.min.js"></script>
+
+        <script>
+        $("#CodEv").prop('required', true);
+        $("#PuntVen").prop('required', true);
+        $("#FechaSol").prop('required', true);
+        $("#sEstudios").prop('required', true);
+
+
+        
+        
+        
+        </script>
+
+    </body>
 </html>

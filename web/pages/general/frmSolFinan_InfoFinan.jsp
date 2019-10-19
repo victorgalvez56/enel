@@ -68,7 +68,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number"  cssClass="form-control ingresos" id="elemento1" tabindex="11" name="iSueldBas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number"  cssClass="form-control ingresos" id="sueldobasico" tabindex="11" name="iSueldBas" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -100,7 +100,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento4" tabindex="11" name="gCréditoViv" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento4" tabindex="11" name="gCreditoViv" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -246,7 +246,8 @@
 
         <script>
 
-        /* Operaciones de Ingresos mensuales y Gastos mensuales   */
+    
+        /* Operaciones de Ingresos mensuales y Gastos mensuales   */ 
         $("#Resultadoingresos").attr("readonly", "true");
         $("#Resultadogastos").attr("readonly", "true");
         $("#Resultadoactivos").attr("readonly", "true");
@@ -261,12 +262,6 @@
         var resultaux2 = $("#gast")
         var inputaux1 = $(".aux1")
         var inputaux2 = $(".aux2")
-        resultgast.val(0)
-        resultingr.val(0)
-        resultactv.val(0)
-        resultpatr.val(0)
-        resultaux1.val(0)
-        resultaux2.val(0)
         $(document).on("keyup", ".ingresos", function () {
             var auxingr = 0
             inputingr.each(function (index, el) {
@@ -295,7 +290,7 @@
             }
             $("").val(resultgast)
         })
-        /*----------------------------------------------*/
+        
         /*
          $("#elemento1").prop('required', true);
          $("#elemento2").prop('required', true);

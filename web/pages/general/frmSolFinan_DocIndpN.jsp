@@ -34,7 +34,7 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="frmSolFinan_DeclaOrigFondos" role="form">
+                <s:form action="frmSolFinan_DocIndpN" role="form">
                     <section class="content-header">
                         <h1>Solicitud Persona Natural Crédito ENEL X - DOCUMENTOS INDEPENDIENTE NO FORMAL</h1>
                     </section>
@@ -59,14 +59,55 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>               
+                                        <div class="box box-primary box-solid">
+                                            <div class="box-body">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <label class="control-label">2 certificaciones de proveedores o clientes con el nombre de la empresa o persona natural, RUC (si aplica), dirección y teléfonos:</label>
+                                                        <input type="file" name="certificacion1">
+                                                        <input type="file" name="certificacion2">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="control-label">2 facturas de proveedores originales de 2 meses anteriores consecutivos a la fecha de la solicitud. Deben contener nombre de la empresa que la expide con RUC y deben estar a nombre del solicitante:</label>
+                                                        <input type="file" name="facturas1">
+                                                        <input type="file" name="facturas2">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box box-primary box-solid">
+                                            <div class="box-body">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <label class="control-label">Certificación expedida por contador público (con tarjeta profesional vigente) donde especifique los datos del cliente y el valor del ingreso que se está certificando al solicitante:</label>
+                                                        <input type="file" name="certfexp1">
+                                                        <input type="file" name="certfexp2">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="control-label">Extracto de la AFP (si lo tiene).:</label>
+                                                        <input type="file" name="extracAFP">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box box-primary box-solid">
+                                            <div class="box-body">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <label class="control-label">Si tiene ingresos adicionales por alquileres incluir copia del contrato de arrendamiento:</label>
+                                                        <input type="file" name="ingresosadic">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="cliente.TipDocTri"></s:hidden>
-                                            <s:submit key="boton.continuar" cssClass="btn btn-primary btn-block" id="btn-sumar"/>
+                                            <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:submit name="reporte" value="Guardar" id = "bReporte" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>

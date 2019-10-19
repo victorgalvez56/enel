@@ -34,7 +34,7 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="frmSolFinan_DeclaOrigFondos" role="form">
+                <s:form action="frmSolFinan_DocJubila" role="form">
                     <section class="content-header">
                         <h1>Solicitud Persona Natural Crédito ENEL X - DOCUMENTOS JUBILADO</h1>
                     </section>
@@ -48,16 +48,36 @@
                                             <div class="box-body">
                                                 <div class="col-md-12">
                                                     <div class="col-md-4">
-                                                        <label class="control-label">Tres últimas boletas de pago de la mesada pensional:</label>
-                                                        <input type="file" name="copiadni">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label class="control-label">Extractos bancarios de los &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;últimos 3 meses:</label>
+                                                        <label class="control-label">Subir último recibo de luz:</label>
+
                                                         <input type="file" name="recibodeluz">
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <label class="control-label">Si tiene ingresos adicionales por alquileres incluir copia del contrato de arrendamiento:</label>
+                                                        <label class="control-label">Copia de DNI:</label>
+
                                                         <input type="file" name="copiadni">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="control-label">Tres últimas boletas de pago de la mesada pensional:</label>
+                                                        <input type="file" name="boleta1">
+                                                        <input type="file" name="boleta2">
+                                                        <input type="file" name="boleta3">
+                                                    </div>
+                                                </div>
+                                                <div class="box box-primary box-solid">
+
+                                                    <div class="col-md-12">
+
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Extractos bancarios de los últimos 3 meses:</label>
+                                                            <input type="file" name="extrboleta1">
+                                                            <input type="file" name="extrboleta2">
+                                                            <input type="file" name="extrboleta3">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Si tiene ingresos adicionales por alquileres incluir copia del contrato de arrendamiento:</label>
+                                                            <input type="file" name="copiadni">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,8 +87,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="cliente.TipDocTri"></s:hidden>
-                                            <s:submit key="boton.continuar" cssClass="btn btn-primary btn-block" id="btn-sumar"/>
+                                            <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:submit name="reporte" value="Guardar" id = "bReporte" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
