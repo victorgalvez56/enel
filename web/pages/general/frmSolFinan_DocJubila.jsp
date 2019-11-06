@@ -34,7 +34,7 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="frmSolFinan_DocJubila" role="form">
+                <s:form action="frmSolFinan_DocJubila" enctype="multipart/form-data" method="post">
                     <section class="content-header">
                         <h1>Solicitud Persona Natural Crédito ENEL X - DOCUMENTOS JUBILADO</h1>
                     </section>
@@ -50,34 +50,30 @@
                                                     <div class="col-md-4">
                                                         <label class="control-label">Subir último recibo de luz:</label>
 
-                                                        <input type="file" name="recibodeluz">
+                                                        <s:file name="archivoJRecib" cssClass="form-control"/>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="control-label">Copia de DNI:</label>
 
-                                                        <input type="file" name="copiadni">
+                                                        <s:file name="archivoJCopia" cssClass="form-control"/>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <label class="control-label">Tres últimas boletas de pago de la mesada pensional:</label>
-                                                        <input type="file" name="boleta1">
-                                                        <input type="file" name="boleta2">
-                                                        <input type="file" name="boleta3">
+                                                        <s:file name="archivoJBol1" cssClass="form-control"/>
+                                                        <s:file name="archivoJBol2" cssClass="form-control"/>
+                                                        <s:file name="archivoJBol3" cssClass="form-control"/>
                                                     </div>
                                                 </div>
-                                                <div class="box box-primary box-solid">
-
-                                                    <div class="col-md-12">
-
-                                                        <div class="col-md-4">
-                                                            <label class="control-label">Extractos bancarios de los últimos 3 meses:</label>
-                                                            <input type="file" name="extrboleta1">
-                                                            <input type="file" name="extrboleta2">
-                                                            <input type="file" name="extrboleta3">
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label class="control-label">Si tiene ingresos adicionales por alquileres incluir copia del contrato de arrendamiento:</label>
-                                                            <input type="file" name="copiadni">
-                                                        </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-4">
+                                                        <label class="control-label">Extractos bancarios de los últimos 3 meses:</label>
+                                                        <s:file name="archivoJExt1" cssClass="form-control"/>
+                                                        <s:file name="archivoJExt2" cssClass="form-control"/>
+                                                        <s:file name="archivoJExt3" cssClass="form-control"/>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="control-label">Si tiene ingresos adicionales por alquileres incluir copia del contrato de arrendamiento:</label>
+                                                        <s:file name="archivoJIngadic" cssClass="form-control"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -87,7 +83,125 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
+                                            <s:hidden name="CodEvaluador"></s:hidden>
+                                            <s:hidden name="PuntVenta"></s:hidden>
+                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="cliente.TipDocCiv"></s:hidden>
+                                            <s:hidden name="cliente.NroDocCiv"></s:hidden>
+                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="cliente.nombre"></s:hidden>
+                                            <s:hidden name="cliente.SegundoNo"></s:hidden>
+                                            <s:hidden name="cliente.ApePat"></s:hidden>
+                                            <s:hidden name="cliente.ApeMat"></s:hidden>
+                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="cliente.FecNac"></s:hidden>
+                                            <s:hidden name="CiudadNac"></s:hidden>
+                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="cliente.sexo"></s:hidden>
+                                            <s:hidden name="cliente.EstCiv"></s:hidden>
+                                            <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="cliente.Correo"></s:hidden>
+                                            <s:hidden name="cliente.Telefono"></s:hidden>
+                                                <!Cónyuge-->
+                                            <s:hidden name="cPrimerNomb"></s:hidden>
+                                            <s:hidden name="cSegundNomb"></s:hidden>
+                                            <s:hidden name="cPrimerApel"></s:hidden>
+                                            <s:hidden name="cSegundApel"></s:hidden>
+                                            <s:hidden name="cEmpdondTrab"></s:hidden>
+                                            <s:hidden name="cEmpCargo"></s:hidden>
+                                            <s:hidden name="cEmpTelef"></s:hidden>
+                                                <!Vivienda>
+                                            <s:hidden name="vSuministro"></s:hidden>
+                                            <s:hidden name="vTitularSum"></s:hidden>
+                                            <s:hidden name="vRelacTitul"></s:hidden>
+                                            <s:hidden name="vTipoVivien"></s:hidden>
+                                            <s:hidden name="vHaceCVivea"></s:hidden>
+                                            <s:hidden name="vDireccResi"></s:hidden>
+                                            <s:hidden name="vDistVivien"></s:hidden>
+                                            <s:hidden name="vProvVivien"></s:hidden>
+                                            <s:hidden name="vDepaVivien"></s:hidden>
+                                                <!Empleado-->
+                                            <s:hidden name="eNombreEmpr"></s:hidden>
+                                            <s:hidden name="eRUCEmpr"></s:hidden>
+                                            <s:hidden name="eActivdEmpr"></s:hidden>
+                                            <s:hidden name="eDirEmpr"></s:hidden>
+                                            <s:hidden name="eDepEmpr"></s:hidden>
+                                            <s:hidden name="eDisEmpr"></s:hidden>
+                                            <s:hidden name="eProvEmpr"></s:hidden>
+                                                <!Independiente-->
+                                            <s:hidden name="iLabor"></s:hidden>
+                                            <s:hidden name="iHacecuantInd"></s:hidden>
+                                            <s:hidden name="iTipodeInd"></s:hidden>
+                                            <s:hidden name="fNombEmpr"></s:hidden>
+                                            <s:hidden name="fRUCEmpr"></s:hidden>
+                                            <s:hidden name="fCargo"></s:hidden>
+                                            <s:hidden name="fDirLabo"></s:hidden> 
+                                            <s:hidden name="fDisLabo"></s:hidden>
+                                            <s:hidden name="fProLabo"></s:hidden>
+                                            <s:hidden name="fDepLabo"></s:hidden>
+                                            <s:hidden name="fTelef"></s:hidden>
+                                            <s:hidden name="fAnexo"></s:hidden>
+                                                <!Jubilado-->
+                                            <s:hidden name="jNombEmpJ"></s:hidden>
+                                            <s:hidden name="jNombEmpA"></s:hidden>
+                                            <s:hidden name="jHacecuaJ"></s:hidden>  
+                                            <s:hidden name="TipoIndep"></s:hidden>
+                                                <!Información Financiera-->
+                                            <s:hidden name="iSueldBas"></s:hidden>
+                                            <s:hidden name="gAlquiler"></s:hidden>
+                                            <s:hidden name="iComisiones"></s:hidden>
+                                            <s:hidden name="gCreditoViv"></s:hidden>
+                                            <s:hidden name="iHonorarios"></s:hidden>
+                                            <s:hidden name="gGastosFamil"></s:hidden>
+                                            <s:hidden name="iAlquileres"></s:hidden> 
+                                            <s:hidden name="gTarjetasCred"></s:hidden>
+                                            <s:hidden name="iOtrosIngres"></s:hidden>
+                                            <s:hidden name="gOtrosGas"></s:hidden>
+                                            <s:hidden name="iTotalIng"></s:hidden>
+                                            <s:hidden name="gTotalGas"></s:hidden>
+                                            <s:hidden name="iTotalAct"></s:hidden>
+                                            <s:hidden name="gTotalPat"></s:hidden>  
+                                                <!Ref Personales-->
+                                            <s:hidden name="rPPrimerNomb"></s:hidden>
+                                            <s:hidden name="rPSegundoNomb"></s:hidden>
+                                            <s:hidden name="rPPrimerApell"></s:hidden>
+                                            <s:hidden name="rPSegundoApell"></s:hidden>      
+                                            <s:hidden name="rPDirec"></s:hidden>
+                                            <s:hidden name="rPDistr"></s:hidden>
+                                            <s:hidden name="rPProvi"></s:hidden>
+                                            <s:hidden name="rPEstad"></s:hidden>      
+                                            <s:hidden name="rPTelef"></s:hidden>
+                                            <s:hidden name="rPCelul"></s:hidden>
+                                            <s:hidden name="rPParen"></s:hidden>   
+                                                <!Ref Familiares-->
+                                            <s:hidden name="rFPrimerNomb"></s:hidden>
+                                            <s:hidden name="rFSegundoNomb"></s:hidden>
+                                            <s:hidden name="rFPrimerApell"></s:hidden>
+                                            <s:hidden name="rFSegundoApell"></s:hidden>      
+                                            <s:hidden name="rFDirec"></s:hidden>
+                                            <s:hidden name="rFDistr"></s:hidden>
+                                            <s:hidden name="rFProvi"></s:hidden>
+                                            <s:hidden name="rFEstad"></s:hidden>      
+                                            <s:hidden name="rFTelef"></s:hidden>
+                                            <s:hidden name="rFCelul"></s:hidden>
+                                            <s:hidden name="rFParen"></s:hidden> 
+                                                <!Ref Laborales-->
+                                            <s:hidden name="rLCNombre"></s:hidden>
+                                            <s:hidden name="rLCActividad"></s:hidden>
+                                            <s:hidden name="rLCTelef"></s:hidden>
+                                            <s:hidden name="rLCDireClient"></s:hidden>      
+                                            <s:hidden name="rLCDistrito"></s:hidden>
+                                            <s:hidden name="rLCProvincia"></s:hidden>
+                                            <s:hidden name="rLCEstado"></s:hidden>
+                                            <s:hidden name="rLPNombre"></s:hidden>      
+                                            <s:hidden name="rLPActividad"></s:hidden>
+                                            <s:hidden name="rLPTelef"></s:hidden>
+                                            <s:hidden name="rLPDire"></s:hidden> 
+                                            <s:hidden name="rLPDistrito"></s:hidden>
+                                            <s:hidden name="rLPProvincia"></s:hidden>
+                                            <s:hidden name="rLPEstado"></s:hidden> 
                                             <s:submit name="reporte" value="Guardar" id = "bReporte" cssClass="btn btn-primary btn-flat" />
                                         </div>
 

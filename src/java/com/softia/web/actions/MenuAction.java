@@ -1,5 +1,6 @@
 package com.softia.web.actions;
 
+import com.itextpdf.text.pdf.PdfWriter;
 import com.opensymphony.xwork2.ActionContext;
 import com.softia.beans.CAutonomias;
 import com.softia.beans.CCanales;
@@ -52,6 +53,7 @@ import com.softia.web.beans.CProduct;
 import com.softia.web.models.Product;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -129,6 +131,8 @@ public class MenuAction extends BaseAction {
     private String archivoUsuariosFileName;
     private File archivoClientes;
     private String archivoClientesFileName;
+    private File archivoClientes1;
+    private String archivoClientesFileName1;
     private File archivoCreditos;
     private String archivoCreditosFileName;
     private ConfigCobranza configCobranza;
@@ -278,21 +282,21 @@ public class MenuAction extends BaseAction {
     private String JNombEmpA;
     private String JHacecuaJ;
 //Datos Información Financiera-Ingresos
-    private String ISueldBas;
-    private String IComisiones;
-    private String IHonorarios;
-    private String IAlquileres;
-    private String IOtrosIngres;
-    private String ITotalIng;
-    private String ITotalAct;
+    private double ISueldBas;
+    private double IComisiones;
+    private double IHonorarios;
+    private double IAlquileres;
+    private double IOtrosIngres;
+    private double ITotalIng;
+    private double ITotalAct;
 //Datos Información Financiera-Gastos
-    private String GAlquiler;
-    private String GCreditoViv;
-    private String GGastosFamil;
-    private String GTarjetasCred;
-    private String GOtrosGas;
-    private String GTotalGas;
-    private String GTotalPat;
+    private double GAlquiler;
+    private double GCreditoViv;
+    private double GGastosFamil;
+    private double GTarjetasCred;
+    private double GOtrosGas;
+    private double GTotalGas;
+    private double GTotalPat;
 //Datos Referencias Personales
     private String RPPrimerNomb;
     private String RPSegundoNomb;
@@ -332,6 +336,79 @@ public class MenuAction extends BaseAction {
     private String RLPDistrito;
     private String RLPProvincia;
     private String RLPEstado;
+
+    private String TipoIndep;
+
+    //Documentos Empleado
+    private File archivoEmpleadoRecibo;
+    private String archivoEmpleadoReciboFileName;
+    private File archivoEmpleadoCopiaDNI;
+    private String archivoEmpleadoCopiaDNIFileName;
+    private File archivoEmpleadobol1;
+    private String archivoEmpleadobol1FileName;
+    private File archivoEmpleadobol2;
+    private String archivoEmpleadobol2FileName;
+    private File archivoEmpleadobol3;
+    private String archivoEmpleadobol3FileName;
+    private File archivoEmpleadoingadic;
+    private String archivoEmpleadoingadicFileName;
+    //Documentos IF
+    private File archivoIFRecibLuz;
+    private String archivoIFRecibLuzFileName;
+    private File archivoIFCopiaDni;
+    private String archivoIFCopiaDniFileName;
+    private File archivoIFCopiaRuc;
+    private String archivoIFCopiaRucFileName;
+    private File archivoIFExtracb;
+    private String archivoIFExtracbFileName;
+    private File archivoIFExtracafp;
+    private String archivoIFExtracafpFileName;
+    private File archivoIFIngadic;
+    private String archivoIFIngadicFileName;
+    //Documentos INF
+    private File archivoIFNRecibluz;
+    private String archivoIFNRecibluzFileName;
+    private File archivoIFNCopiaDni;
+    private String archivoIFNCopiaDniFileName;
+    private File archivoIFNCertf1;
+    private String archivoIFNCertf1FileName;
+    private File archivoIFNCertf2;
+    private String archivoIFNCertf2FileName;
+    private File archivoIFNFac1;
+    private String archivoIFNFac1FileName;
+    private File archivoIFNFac2;
+    private String archivoIFNFac2FileName;
+    private File archivoIFNC1;
+    private String archivoIFNC1FileName;
+    private File archivoIFNC2;
+    private String archivoIFNC2FileName;
+    private File archivoIFNExtracAfp;
+    private String archivoIFNExtracAfpFileName;
+    private File archivoIFNIngadic;
+    private String archivoIFNIngadicFileName;
+
+    //Documentos INF
+    private File archivoJRecib;
+    private String archivoJRecibFileName;
+    private File archivoJCopia;
+    private String archivoJCopiaFileName;
+
+    private File archivoJBol1;
+    private String archivoJBol1FileName;
+    private File archivoJBol2;
+    private String archivoJBol2FileName;
+    private File archivoJBol3;
+    private String archivoJBol3FileName;
+
+    private File archivoJExt1;
+    private String archivoJExt1FileName;
+    private File archivoJExt2;
+    private String archivoJExt2FileName;
+    private File archivoJExt3;
+    private String archivoJExt3FileName;
+
+    private File archivoJIngadic;
+    private String archivoJIngadicFileName;
 
     public String frmSolicitudFinanciamiento() {
 
@@ -850,46 +927,46 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getISueldBas().equals("")) {
+                if (getISueldBas() < 0) {
                     setError("Por favor llenar el campo Sueldo Básico");
                 } else {
-                    if (getIComisiones().equals("")) {
+                    if (getIComisiones() < 0) {
                         setError("Por favor llenar el campo Comisiones");
                     } else {
-                        if (getIHonorarios().equals("")) {
+                        if (getIHonorarios() < 0) {
                             setError("Por favor llenar el campo Honorarios");
                         } else {
-                            if (getIAlquileres().equals("")) {
+                            if (getIAlquileres() < 0) {
                                 setError("Por favor llenar el campo Alquileres");
                             } else {
-                                if (getIOtrosIngres().equals("")) {
+                                if (getIOtrosIngres() < 0) {
                                     setError("Por favor llenar el campo Otros Ingresos");
                                 } else {
-                                    if (getITotalIng().equals("")) {
+                                    if (getITotalIng() < 0) {
                                         setError("Por favor llenar el campo Total de Ingresos");
                                     } else {
-                                        if (getITotalAct().equals("")) {
+                                        if (getITotalAct() < 0) {
                                             setError("Por favor llenar el campo Total de Activos");
                                         } else {
-                                            if (getGAlquiler().equals("")) {
+                                            if (getGAlquiler() < 0) {
                                                 setError("Por favor llenar el campo Alquiler");
                                             } else {
-                                                if (getGCreditoViv().equals("")) {
+                                                if (getGCreditoViv() < 0) {
                                                     setError("Por favor llenar el campo Crédito de Vivienda ");
                                                 } else {
-                                                    if (getGGastosFamil().equals("")) {
+                                                    if (getGGastosFamil() < 0) {
                                                         setError("Por favor llenar el campo Gastos Familiares");
                                                     } else {
-                                                        if (getGTarjetasCred().equals("")) {
+                                                        if (getGTarjetasCred() < 0) {
                                                             setError("Por favor llenar el campo Tarjetas de Crédito");
                                                         } else {
-                                                            if (getGOtrosGas().equals("")) {
+                                                            if (getGOtrosGas() < 0) {
                                                                 setError("Por favor llenar el campo Otros Gastos");
                                                             } else {
-                                                                if (getGTotalGas().equals("")) {
+                                                                if (getGTotalGas() < 0) {
                                                                     setError("Por favor llenar el campo Total de Gastos");
                                                                 } else {
-                                                                    if (getGTotalPat().equals("")) {
+                                                                    if (getGTotalPat() < 0) {
                                                                         setError("Por favor llenar el campo Total de Patrimonio");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
@@ -1060,7 +1137,7 @@ public class MenuAction extends BaseAction {
                                                                             if (getCliente().getDesOcu().equals("E")) {
                                                                                 return frmSolFinan_DocEmple();
                                                                             } else if (getCliente().getDesOcu().equals("I")) {
-                                                                                if (getCliente().getSexo().equals("Formal")) {
+                                                                                if (getTipoIndep().equals("Formal")) {
                                                                                     return frmSolFinan_DocIndpF();
                                                                                 } else {
                                                                                     return frmSolFinan_DocIndpN();
@@ -1166,32 +1243,122 @@ public class MenuAction extends BaseAction {
 
     }
 
-    public String frmSolFinan_DocEmple() {
+    public String frmSolFinan_DocEmple() throws IOException {
         if (!validaSession()) {
             return "login";
         }
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("reporte") != null) {
+
             CReportePDF loRep = new CReportePDF();
-            loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
             try {
 
                 loRep.setCliente(getCliente());
+                //Solicitud de Financiamiento
+                loRep.setCodEvaluador(getCodEvaluador());
+                loRep.setPuntVenta(getPuntVenta());
+                loRep.setFecSolicitud(getFecSolicitud());
+                loRep.setCiudadExp(getCiudadExp());
+                loRep.setNacionalidad(getNacionalidad());
+                loRep.setCiudadNac(getCiudadNac());
+                loRep.setPaisNac(getPaisNac());
+                loRep.setNperDepend(getNperDepend());
+                //Cónyuge
+                loRep.setCPrimerNomb(getCPrimerNomb());
+                loRep.setCSegundNomb(getCSegundNomb());
+                loRep.setCPrimerApel(getCPrimerApel());
+                loRep.setCSegundApel(getCSegundApel());
+                loRep.setCEmpdondTrab(getCEmpdondTrab());
+                loRep.setCEmpCargo(getCEmpCargo());
+                loRep.setCEmpTelef(getCEmpTelef());
+                //Vivienda
+                loRep.setVSuministro(getVSuministro());
+                loRep.setVTitularSum(getVTitularSum());
+                loRep.setVRelacTitul(getVRelacTitul());
+                loRep.setVTipoVivien(getVTipoVivien());
+                loRep.setVHaceCVivea(getVHaceCVivea());
+                loRep.setVDireccResi(getVDireccResi());
+                loRep.setVDistVivien(getVDistVivien());
+                loRep.setVProvVivien(getVProvVivien());
+                loRep.setVDepaVivien(getVDepaVivien());
+                //Empleado
+                loRep.setENombreEmpr(getENombreEmpr());
+                loRep.setERUCEmpr(getERUCEmpr());
+                loRep.setEActivdEmpr(getEActivdEmpr());
+                loRep.setEDirEmpr(getEDirEmpr());
+                loRep.setEDepEmpr(getEDepEmpr());
+                loRep.setEDisEmpr(getEDisEmpr());
+                loRep.setEProvEmpr(getEProvEmpr());
+                //Datos Información Financiera-Ingresos
+                loRep.setISueldBas(getISueldBas());
+                loRep.setIComisiones(getIComisiones());
+                loRep.setIHonorarios(getIHonorarios());
+                loRep.setIAlquileres(getIAlquileres());
+                loRep.setIOtrosIngres(getIOtrosIngres());
+                loRep.setITotalIng(getITotalIng());
+                loRep.setITotalAct(getITotalAct());
+                //Datos Información Financiera-Gastos
+                loRep.setGAlquiler(getGAlquiler());
+                loRep.setGCreditoViv(getGCreditoViv());
+                loRep.setGGastosFamil(getGGastosFamil());
+                loRep.setGTarjetasCred(getGTarjetasCred());
+                loRep.setGOtrosGas(getGOtrosGas());
+                loRep.setGTotalGas(getGTotalGas());
+                loRep.setGTotalPat(getGTotalPat());
+                //Datos Referencias Personales
+                loRep.setRPPrimerNomb(getRPPrimerNomb());
+                loRep.setRPSegundoNomb(getRPSegundoNomb());
+                loRep.setRPPrimerApell(getRPPrimerApell());
+                loRep.setRPSegundoApell(getRPSegundoApell());
+                loRep.setRPDirec(getRPDirec());
+                loRep.setRPDistr(getRPDistr());
+                loRep.setRPProvi(getRPProvi());
+                loRep.setRPEstad(getRPEstad());
+                loRep.setRPTelef(getRPTelef());
+                loRep.setRPCelul(getRPCelul());
+                loRep.setRPParen(getRPParen());
+
+                File filerecibo = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoReciboFileName());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoRecibo()));
+                FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
+
+                File filecopiadni = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoCopiaDNIFileName());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoCopiaDNI()));
+                FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
+
+                File filebol1 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol1FileName());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol1()));
+                FileUtils.writeByteArrayToFile(filebol1, archivofile1);
+
+                File filebol2 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol2FileName());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol2()));
+                FileUtils.writeByteArrayToFile(filebol2, archivofile2);
+
+                File filebol3 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol3FileName());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol3()));
+                FileUtils.writeByteArrayToFile(filebol3, archivofile3);
+
+                File fileingadic = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoingadicFileName());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoingadic()));
+                FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
                 boolean llOk = loRep.mxSolicitudCliente();
+
                 if (!llOk) {
                     setError(loRep.getError());
                 } else {
+
                     File file = new File(loRep.getRutaReporte());
                     byte[] archivo = IOUtils.toByteArray(new FileInputStream(file));
                     FileUtils.writeByteArrayToFile(file, archivo);
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"solicitudFinanciamiento.pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
+
                 }
             } catch (IOException | SQLException loErr) {
                 setError(loErr.getMessage());
@@ -1212,9 +1379,103 @@ public class MenuAction extends BaseAction {
             try {
 
                 loRep.setCliente(getCliente());
-                //loRep.setUrl(getUrl());
-                //loRep.setUser(user);
-                //loRep.setPasswd(pass);
+                //Solicitud de Financiamiento
+                loRep.setCodEvaluador(getCodEvaluador());
+                loRep.setPuntVenta(getPuntVenta());
+                loRep.setFecSolicitud(getFecSolicitud());
+                loRep.setCiudadExp(getCiudadExp());
+                loRep.setNacionalidad(getNacionalidad());
+                loRep.setCiudadNac(getCiudadNac());
+                loRep.setPaisNac(getPaisNac());
+                loRep.setNperDepend(getNperDepend());
+                //Cónyuge
+                loRep.setCPrimerNomb(getCPrimerNomb());
+                loRep.setCSegundNomb(getCSegundNomb());
+                loRep.setCPrimerApel(getCPrimerApel());
+                loRep.setCSegundApel(getCSegundApel());
+                loRep.setCEmpdondTrab(getCEmpdondTrab());
+                loRep.setCEmpCargo(getCEmpCargo());
+                loRep.setCEmpTelef(getCEmpTelef());
+                //Vivienda
+                loRep.setVSuministro(getVSuministro());
+                loRep.setVTitularSum(getVTitularSum());
+                loRep.setVRelacTitul(getVRelacTitul());
+                loRep.setVTipoVivien(getVTipoVivien());
+                loRep.setVHaceCVivea(getVHaceCVivea());
+                loRep.setVDireccResi(getVDireccResi());
+                loRep.setVDistVivien(getVDistVivien());
+                loRep.setVProvVivien(getVProvVivien());
+                loRep.setVDepaVivien(getVDepaVivien());
+                //FORMAL INDEPENDIENTE
+                loRep.setILabor(getILabor());
+                loRep.setIHacecuantInd(getIHacecuantInd());
+                loRep.setITipodeInd(getITipodeInd());
+
+                loRep.setFNombEmpr(getFNombEmpr());
+                loRep.setFRUCEmpr(getFRUCEmpr());
+                loRep.setFCargo(getFCargo());
+                loRep.setFDirLabo(getFDirLabo());
+                loRep.setFDisLabo(getFDisLabo());
+                loRep.setFProLabo(getFProLabo());
+                loRep.setFDepLabo(getFDepLabo());
+                loRep.setFTelef(getFTelef());
+                loRep.setFAnexo(getFAnexo());
+                //Datos Información Financiera-Ingresos
+                loRep.setISueldBas(getISueldBas());
+                loRep.setIComisiones(getIComisiones());
+                loRep.setIHonorarios(getIHonorarios());
+                loRep.setIAlquileres(getIAlquileres());
+                loRep.setIOtrosIngres(getIOtrosIngres());
+                loRep.setITotalIng(getITotalIng());
+                loRep.setITotalAct(getITotalAct());
+                //Datos Información Financiera-Gastos
+                loRep.setGAlquiler(getGAlquiler());
+                loRep.setGCreditoViv(getGCreditoViv());
+                loRep.setGGastosFamil(getGGastosFamil());
+                loRep.setGTarjetasCred(getGTarjetasCred());
+                loRep.setGOtrosGas(getGOtrosGas());
+                loRep.setGTotalGas(getGTotalGas());
+                loRep.setGTotalPat(getGTotalPat());
+                //Datos Referencias laborales
+                loRep.setRLCNombre(getRLCNombre());
+                loRep.setRLCActividad(getRLCActividad());
+                loRep.setRLCDireClient(getRLCDireClient());
+                loRep.setRLCDistrito(getRLCDistrito());
+                loRep.setRLCEstado(getRLCEstado());
+                loRep.setRLCProvincia(getRLCProvincia());
+                loRep.setRLCTelef(getRLCTelef());
+                loRep.setRLPNombre(getRLPNombre());
+                loRep.setRLPActividad(getRLPActividad());
+                loRep.setRLPDire(getRLPDire());
+                loRep.setRLPDistrito(getRLPDistrito());
+                loRep.setRLPEstado(getRLPEstado());
+                loRep.setRLPProvincia(getRLPProvincia());
+                loRep.setRLPTelef(getRLPTelef());
+
+                File filerecibo = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFRecibLuzFileName());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFRecibLuz()));
+                FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
+
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaDniFileName());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaDni()));
+                FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
+
+                File filebol1 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaRucFileName());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaRuc()));
+                FileUtils.writeByteArrayToFile(filebol1, archivofile1);
+
+                File filebol2 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracbFileName());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb()));
+                FileUtils.writeByteArrayToFile(filebol2, archivofile2);
+
+                File filebol3 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracafpFileName());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracafp()));
+                FileUtils.writeByteArrayToFile(filebol3, archivofile3);
+
+                File fileingadic = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFIngadicFileName());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFIngadic()));
+                FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
+
                 boolean llOk = loRep.mxSolicitudCliente();
                 if (!llOk) {
                     setError(loRep.getError());
@@ -1249,9 +1510,110 @@ public class MenuAction extends BaseAction {
             try {
 
                 loRep.setCliente(getCliente());
-                //loRep.setUrl(getUrl());
-                //loRep.setUser(user);
-                //loRep.setPasswd(pass);
+                //Solicitud de Financiamiento
+                loRep.setCodEvaluador(getCodEvaluador());
+                loRep.setPuntVenta(getPuntVenta());
+                loRep.setFecSolicitud(getFecSolicitud());
+                loRep.setCiudadExp(getCiudadExp());
+                loRep.setNacionalidad(getNacionalidad());
+                loRep.setCiudadNac(getCiudadNac());
+                loRep.setPaisNac(getPaisNac());
+                loRep.setNperDepend(getNperDepend());
+                //Cónyuge
+                loRep.setCPrimerNomb(getCPrimerNomb());
+                loRep.setCSegundNomb(getCSegundNomb());
+                loRep.setCPrimerApel(getCPrimerApel());
+                loRep.setCSegundApel(getCSegundApel());
+                loRep.setCEmpdondTrab(getCEmpdondTrab());
+                loRep.setCEmpCargo(getCEmpCargo());
+                loRep.setCEmpTelef(getCEmpTelef());
+                //Vivienda
+                loRep.setVSuministro(getVSuministro());
+                loRep.setVTitularSum(getVTitularSum());
+                loRep.setVRelacTitul(getVRelacTitul());
+                loRep.setVTipoVivien(getVTipoVivien());
+                loRep.setVHaceCVivea(getVHaceCVivea());
+                loRep.setVDireccResi(getVDireccResi());
+                loRep.setVDistVivien(getVDistVivien());
+                loRep.setVProvVivien(getVProvVivien());
+                loRep.setVDepaVivien(getVDepaVivien());
+                //FORMAL INDEPENDIENTE
+                loRep.setILabor(getILabor());
+                loRep.setIHacecuantInd(getIHacecuantInd());
+                loRep.setITipodeInd(getITipodeInd());
+
+                //Datos Información Financiera-Ingresos
+                loRep.setISueldBas(getISueldBas());
+                loRep.setIComisiones(getIComisiones());
+                loRep.setIHonorarios(getIHonorarios());
+                loRep.setIAlquileres(getIAlquileres());
+                loRep.setIOtrosIngres(getIOtrosIngres());
+                loRep.setITotalIng(getITotalIng());
+                loRep.setITotalAct(getITotalAct());
+                //Datos Información Financiera-Gastos
+                loRep.setGAlquiler(getGAlquiler());
+                loRep.setGCreditoViv(getGCreditoViv());
+                loRep.setGGastosFamil(getGGastosFamil());
+                loRep.setGTarjetasCred(getGTarjetasCred());
+                loRep.setGOtrosGas(getGOtrosGas());
+                loRep.setGTotalGas(getGTotalGas());
+                loRep.setGTotalPat(getGTotalPat());
+                //Datos Referencias laborales
+                loRep.setRLCNombre(getRLCNombre());
+                loRep.setRLCActividad(getRLCActividad());
+                loRep.setRLCDireClient(getRLCDireClient());
+                loRep.setRLCDistrito(getRLCDistrito());
+                loRep.setRLCEstado(getRLCEstado());
+                loRep.setRLCProvincia(getRLCProvincia());
+                loRep.setRLCTelef(getRLCTelef());
+                loRep.setRLPNombre(getRLPNombre());
+                loRep.setRLPActividad(getRLPActividad());
+                loRep.setRLPDire(getRLPDire());
+                loRep.setRLPDistrito(getRLPDistrito());
+                loRep.setRLPEstado(getRLPEstado());
+                loRep.setRLPProvincia(getRLPProvincia());
+                loRep.setRLPTelef(getRLPTelef());
+
+                File filerecibo = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNRecibluzFileName());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFNRecibluz()));
+                FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
+
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCopiaDniFileName());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCopiaDni()));
+                FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
+
+                File filebol1 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf1FileName());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf1()));
+                FileUtils.writeByteArrayToFile(filebol1, archivofile1);
+
+                File filebol2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf2FileName());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf2()));
+                FileUtils.writeByteArrayToFile(filebol2, archivofile2);
+
+                File filebol3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac1FileName());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac1()));
+                FileUtils.writeByteArrayToFile(filebol3, archivofile3);
+
+                File fileingadic = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac2FileName());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac2()));
+                FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
+
+                File filebol4 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC1FileName());
+                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC1()));
+                FileUtils.writeByteArrayToFile(filebol4, archivofile4);
+
+                File fileingadic2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC2FileName());
+                byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC2()));
+                FileUtils.writeByteArrayToFile(fileingadic2, archivoingadic2);
+
+                File filebol5 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNExtracAfpFileName());
+                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNExtracAfp()));
+                FileUtils.writeByteArrayToFile(filebol5, archivofile5);
+
+                File fileingadic3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNIngadicFileName());
+                byte[] archivoingadic3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNIngadic()));
+                FileUtils.writeByteArrayToFile(fileingadic3, archivoingadic3);
+
                 boolean llOk = loRep.mxSolicitudCliente();
                 if (!llOk) {
                     setError(loRep.getError());
@@ -1286,9 +1648,103 @@ public class MenuAction extends BaseAction {
             try {
 
                 loRep.setCliente(getCliente());
-                //loRep.setUrl(getUrl());
-                //loRep.setUser(user);
-                //loRep.setPasswd(pass);
+                //Solicitud de Financiamiento
+                loRep.setCodEvaluador(getCodEvaluador());
+                loRep.setPuntVenta(getPuntVenta());
+                loRep.setFecSolicitud(getFecSolicitud());
+                loRep.setCiudadExp(getCiudadExp());
+                loRep.setNacionalidad(getNacionalidad());
+                loRep.setCiudadNac(getCiudadNac());
+                loRep.setPaisNac(getPaisNac());
+                loRep.setNperDepend(getNperDepend());
+                //Cónyuge
+                loRep.setCPrimerNomb(getCPrimerNomb());
+                loRep.setCSegundNomb(getCSegundNomb());
+                loRep.setCPrimerApel(getCPrimerApel());
+                loRep.setCSegundApel(getCSegundApel());
+                loRep.setCEmpdondTrab(getCEmpdondTrab());
+                loRep.setCEmpCargo(getCEmpCargo());
+                loRep.setCEmpTelef(getCEmpTelef());
+                //Vivienda
+                loRep.setVSuministro(getVSuministro());
+                loRep.setVTitularSum(getVTitularSum());
+                loRep.setVRelacTitul(getVRelacTitul());
+                loRep.setVTipoVivien(getVTipoVivien());
+                loRep.setVHaceCVivea(getVHaceCVivea());
+                loRep.setVDireccResi(getVDireccResi());
+                loRep.setVDistVivien(getVDistVivien());
+                loRep.setVProvVivien(getVProvVivien());
+                loRep.setVDepaVivien(getVDepaVivien());
+                //JUBILADO
+                loRep.setJNombEmpJ(getJNombEmpJ());
+                loRep.setJNombEmpA(getJNombEmpA());
+                loRep.setJHacecuaJ(getJHacecuaJ());
+
+                //Datos Información Financiera-Ingresos
+                loRep.setISueldBas(getISueldBas());
+                loRep.setIComisiones(getIComisiones());
+                loRep.setIHonorarios(getIHonorarios());
+                loRep.setIAlquileres(getIAlquileres());
+                loRep.setIOtrosIngres(getIOtrosIngres());
+                loRep.setITotalIng(getITotalIng());
+                loRep.setITotalAct(getITotalAct());
+                //Datos Información Financiera-Gastos
+                loRep.setGAlquiler(getGAlquiler());
+                loRep.setGCreditoViv(getGCreditoViv());
+                loRep.setGGastosFamil(getGGastosFamil());
+                loRep.setGTarjetasCred(getGTarjetasCred());
+                loRep.setGOtrosGas(getGOtrosGas());
+                loRep.setGTotalGas(getGTotalGas());
+                loRep.setGTotalPat(getGTotalPat());
+                //Datos Referencias Personales
+                loRep.setRFPrimerNomb(getRFPrimerNomb());
+                loRep.setRFSegundoNomb(getRFSegundoNomb());
+                loRep.setRFPrimerApell(getRFPrimerApell());
+                loRep.setRFSegundoApell(getRFSegundoApell());
+                loRep.setRFDirec(getRFDirec());
+                loRep.setRFDistr(getRFDistr());
+                loRep.setRFProvi(getRFProvi());
+                loRep.setRFEstad(getRFEstad());
+                loRep.setRFTelef(getRFTelef());
+                loRep.setRFCelul(getRFCelul());
+                loRep.setRFParen(getRFParen());
+
+                File filerecibo = new File("/ftia/files/cartas/Jubilado/" + getArchivoJRecibFileName());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoJRecib()));
+                FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
+
+                File filecopiadni = new File("/ftia/files/cartas/Jubilado/" + getArchivoJCopiaFileName());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoJCopia()));
+                FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
+
+                File filebol1 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJBol1FileName());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoJBol1()));
+                FileUtils.writeByteArrayToFile(filebol1, archivofile1);
+
+                File filebol2 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJBol2FileName());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoJBol2()));
+                FileUtils.writeByteArrayToFile(filebol2, archivofile2);
+
+                File filebol3 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJBol3FileName());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoJBol3()));
+                FileUtils.writeByteArrayToFile(filebol3, archivofile3);
+
+                File fileingadic = new File("/ftia/files/cartas/Jubilado/" + getArchivoJExt1FileName());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoJExt1()));
+                FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
+
+                File filebol4 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJExt2FileName());
+                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoJExt2()));
+                FileUtils.writeByteArrayToFile(filebol4, archivofile4);
+
+                File fileingadic2 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJExt3FileName());
+                byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoJExt3()));
+                FileUtils.writeByteArrayToFile(fileingadic2, archivoingadic2);
+
+                File filebol5 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJIngadicFileName());
+                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoJIngadic()));
+                FileUtils.writeByteArrayToFile(filebol5, archivofile5);
+
                 boolean llOk = loRep.mxSolicitudCliente();
                 if (!llOk) {
                     setError(loRep.getError());
@@ -7753,6 +8209,34 @@ public class MenuAction extends BaseAction {
     }
 
     /**
+     * @return the archivoClientes
+     */
+    public File getArchivoClientes1() {
+        return archivoClientes1;
+    }
+
+    /**
+     * @param archivoClientes the archivoClientes to set
+     */
+    public void setArchivoClientes1(File archivoClientes1) {
+        this.archivoClientes1 = archivoClientes1;
+    }
+
+    /**
+     * @return the archivoClientesFileName
+     */
+    public String getArchivoClientesFileName1() {
+        return archivoClientesFileName1;
+    }
+
+    /**
+     * @param archivoClientesFileName the archivoClientesFileName to set
+     */
+    public void setArchivoClientesFileName1(String archivoClientesFileName1) {
+        this.archivoClientesFileName1 = archivoClientesFileName1;
+    }
+
+    /**
      * @return the lstGestoresCobranza
      */
     public List<Usuario> getLstGestoresCobranza() {
@@ -9425,115 +9909,115 @@ public class MenuAction extends BaseAction {
         this.JHacecuaJ = JHacecuaJ;
     }
 
-    public String getISueldBas() {
+    public double getISueldBas() {
         return ISueldBas;
     }
 
-    public void setISueldBas(String ISueldBas) {
+    public void setISueldBas(double ISueldBas) {
         this.ISueldBas = ISueldBas;
     }
 
-    public String getIComisiones() {
+    public double getIComisiones() {
         return IComisiones;
     }
 
-    public void setIComisiones(String IComisiones) {
+    public void setIComisiones(double IComisiones) {
         this.IComisiones = IComisiones;
     }
 
-    public String getIHonorarios() {
+    public double getIHonorarios() {
         return IHonorarios;
     }
 
-    public void setIHonorarios(String IHonorarios) {
+    public void setIHonorarios(double IHonorarios) {
         this.IHonorarios = IHonorarios;
     }
 
-    public String getIAlquileres() {
+    public double getIAlquileres() {
         return IAlquileres;
     }
 
-    public void setIAlquileres(String IAlquileres) {
+    public void setIAlquileres(double IAlquileres) {
         this.IAlquileres = IAlquileres;
     }
 
-    public String getIOtrosIngres() {
+    public double getIOtrosIngres() {
         return IOtrosIngres;
     }
 
-    public void setIOtrosIngres(String IOtrosIngres) {
+    public void setIOtrosIngres(double IOtrosIngres) {
         this.IOtrosIngres = IOtrosIngres;
     }
 
-    public String getITotalIng() {
+    public double getITotalIng() {
         return ITotalIng;
     }
 
-    public void setITotalIng(String ITotalIng) {
+    public void setITotalIng(double ITotalIng) {
         this.ITotalIng = ITotalIng;
     }
 
-    public String getITotalAct() {
+    public double getITotalAct() {
         return ITotalAct;
     }
 
-    public void setITotalAct(String ITotalAct) {
+    public void setITotalAct(double ITotalAct) {
         this.ITotalAct = ITotalAct;
     }
 
-    public String getGAlquiler() {
+    public double getGAlquiler() {
         return GAlquiler;
     }
 
-    public void setGAlquiler(String GAlquiler) {
+    public void setGAlquiler(double GAlquiler) {
         this.GAlquiler = GAlquiler;
     }
 
-    public String getGCreditoViv() {
+    public double getGCreditoViv() {
         return GCreditoViv;
     }
 
-    public void setGCreditoViv(String GCreditoViv) {
+    public void setGCreditoViv(double GCreditoViv) {
         this.GCreditoViv = GCreditoViv;
     }
 
-    public String getGGastosFamil() {
+    public double getGGastosFamil() {
         return GGastosFamil;
     }
 
-    public void setGGastosFamil(String GGastosFamil) {
+    public void setGGastosFamil(double GGastosFamil) {
         this.GGastosFamil = GGastosFamil;
     }
 
-    public String getGTarjetasCred() {
+    public double getGTarjetasCred() {
         return GTarjetasCred;
     }
 
-    public void setGTarjetasCred(String GTarjetasCred) {
+    public void setGTarjetasCred(double GTarjetasCred) {
         this.GTarjetasCred = GTarjetasCred;
     }
 
-    public String getGOtrosGas() {
+    public double getGOtrosGas() {
         return GOtrosGas;
     }
 
-    public void setGOtrosGas(String GOtrosGas) {
+    public void setGOtrosGas(double GOtrosGas) {
         this.GOtrosGas = GOtrosGas;
     }
 
-    public String getGTotalGas() {
+    public double getGTotalGas() {
         return GTotalGas;
     }
 
-    public void setGTotalGas(String GTotalGas) {
+    public void setGTotalGas(double GTotalGas) {
         this.GTotalGas = GTotalGas;
     }
 
-    public String getGTotalPat() {
+    public double getGTotalPat() {
         return GTotalPat;
     }
 
-    public void setGTotalPat(String GTotalPat) {
+    public void setGTotalPat(double GTotalPat) {
         this.GTotalPat = GTotalPat;
     }
 
@@ -9831,6 +10315,534 @@ public class MenuAction extends BaseAction {
 
     public void setEProvEmpr(String EProvEmpr) {
         this.EProvEmpr = EProvEmpr;
+    }
+
+    public String getTipoIndep() {
+        return TipoIndep;
+    }
+
+    public void setTipoIndep(String TipoIndep) {
+        this.TipoIndep = TipoIndep;
+    }
+
+    public File getArchivoEmpleadoRecibo() {
+        return archivoEmpleadoRecibo;
+    }
+
+    public void setArchivoEmpleadoRecibo(File archivoEmpleadoRecibo) {
+        this.archivoEmpleadoRecibo = archivoEmpleadoRecibo;
+    }
+
+    public String getArchivoEmpleadoReciboFileName() {
+        return archivoEmpleadoReciboFileName;
+    }
+
+    public void setArchivoEmpleadoReciboFileName(String archivoEmpleadoReciboFileName) {
+        this.archivoEmpleadoReciboFileName = archivoEmpleadoReciboFileName;
+    }
+
+    public List<String> getLstOficina() {
+        return lstOficina;
+    }
+
+    public void setLstOficina(List<String> lstOficina) {
+        this.lstOficina = lstOficina;
+    }
+
+    public java.sql.Date getFecmoraIni() {
+        return FecmoraIni;
+    }
+
+    public void setFecmoraIni(java.sql.Date FecmoraIni) {
+        this.FecmoraIni = FecmoraIni;
+    }
+
+    public java.sql.Date getFecmoraFin() {
+        return FecmoraFin;
+    }
+
+    public void setFecmoraFin(java.sql.Date FecmoraFin) {
+        this.FecmoraFin = FecmoraFin;
+    }
+
+    public File getArchivoEmpleadoCopiaDNI() {
+        return archivoEmpleadoCopiaDNI;
+    }
+
+    public void setArchivoEmpleadoCopiaDNI(File archivoEmpleadoCopiaDNI) {
+        this.archivoEmpleadoCopiaDNI = archivoEmpleadoCopiaDNI;
+    }
+
+    public String getArchivoEmpleadoCopiaDNIFileName() {
+        return archivoEmpleadoCopiaDNIFileName;
+    }
+
+    public void setArchivoEmpleadoCopiaDNIFileName(String archivoEmpleadoCopiaDNIFileName) {
+        this.archivoEmpleadoCopiaDNIFileName = archivoEmpleadoCopiaDNIFileName;
+    }
+
+    public File getArchivoEmpleadobol1() {
+        return archivoEmpleadobol1;
+    }
+
+    public void setArchivoEmpleadobol1(File archivoEmpleadobol1) {
+        this.archivoEmpleadobol1 = archivoEmpleadobol1;
+    }
+
+    public String getArchivoEmpleadobol1FileName() {
+        return archivoEmpleadobol1FileName;
+    }
+
+    public void setArchivoEmpleadobol1FileName(String archivoEmpleadobol1FileName) {
+        this.archivoEmpleadobol1FileName = archivoEmpleadobol1FileName;
+    }
+
+    public File getArchivoEmpleadobol2() {
+        return archivoEmpleadobol2;
+    }
+
+    public void setArchivoEmpleadobol2(File archivoEmpleadobol2) {
+        this.archivoEmpleadobol2 = archivoEmpleadobol2;
+    }
+
+    public String getArchivoEmpleadobol2FileName() {
+        return archivoEmpleadobol2FileName;
+    }
+
+    public void setArchivoEmpleadobol2FileName(String archivoEmpleadobol2FileName) {
+        this.archivoEmpleadobol2FileName = archivoEmpleadobol2FileName;
+    }
+
+    public File getArchivoEmpleadobol3() {
+        return archivoEmpleadobol3;
+    }
+
+    public void setArchivoEmpleadobol3(File archivoEmpleadobol3) {
+        this.archivoEmpleadobol3 = archivoEmpleadobol3;
+    }
+
+    public String getArchivoEmpleadobol3FileName() {
+        return archivoEmpleadobol3FileName;
+    }
+
+    public void setArchivoEmpleadobol3FileName(String archivoEmpleadobol3FileName) {
+        this.archivoEmpleadobol3FileName = archivoEmpleadobol3FileName;
+    }
+
+    public File getArchivoEmpleadoingadic() {
+        return archivoEmpleadoingadic;
+    }
+
+    public void setArchivoEmpleadoingadic(File archivoEmpleadoingadic) {
+        this.archivoEmpleadoingadic = archivoEmpleadoingadic;
+    }
+
+    public String getArchivoEmpleadoingadicFileName() {
+        return archivoEmpleadoingadicFileName;
+    }
+
+    public void setArchivoEmpleadoingadicFileName(String archivoEmpleadoingadicFileName) {
+        this.archivoEmpleadoingadicFileName = archivoEmpleadoingadicFileName;
+    }
+
+    public File getArchivoIFRecibLuz() {
+        return archivoIFRecibLuz;
+    }
+
+    public void setArchivoIFRecibLuz(File archivoIFRecibLuz) {
+        this.archivoIFRecibLuz = archivoIFRecibLuz;
+    }
+
+    public String getArchivoIFRecibLuzFileName() {
+        return archivoIFRecibLuzFileName;
+    }
+
+    public void setArchivoIFRecibLuzFileName(String archivoIFRecibLuzFileName) {
+        this.archivoIFRecibLuzFileName = archivoIFRecibLuzFileName;
+    }
+
+    public File getArchivoIFCopiaRuc() {
+        return archivoIFCopiaRuc;
+    }
+
+    public void setArchivoIFCopiaRuc(File archivoIFCopiaRuc) {
+        this.archivoIFCopiaRuc = archivoIFCopiaRuc;
+    }
+
+    public String getArchivoIFCopiaRucFileName() {
+        return archivoIFCopiaRucFileName;
+    }
+
+    public void setArchivoIFCopiaRucFileName(String archivoIFCopiaRucFileName) {
+        this.archivoIFCopiaRucFileName = archivoIFCopiaRucFileName;
+    }
+
+    public File getArchivoIFExtracb() {
+        return archivoIFExtracb;
+    }
+
+    public void setArchivoIFExtracb(File archivoIFExtracb) {
+        this.archivoIFExtracb = archivoIFExtracb;
+    }
+
+    public String getArchivoIFExtracbFileName() {
+        return archivoIFExtracbFileName;
+    }
+
+    public void setArchivoIFExtracbFileName(String archivoIFExtracbFileName) {
+        this.archivoIFExtracbFileName = archivoIFExtracbFileName;
+    }
+
+    public File getArchivoIFExtracafp() {
+        return archivoIFExtracafp;
+    }
+
+    public void setArchivoIFExtracafp(File archivoIFExtracafp) {
+        this.archivoIFExtracafp = archivoIFExtracafp;
+    }
+
+    public String getArchivoIFExtracafpFileName() {
+        return archivoIFExtracafpFileName;
+    }
+
+    public void setArchivoIFExtracafpFileName(String archivoIFExtracafpFileName) {
+        this.archivoIFExtracafpFileName = archivoIFExtracafpFileName;
+    }
+
+    public File getArchivoIFIngadic() {
+        return archivoIFIngadic;
+    }
+
+    public void setArchivoIFIngadic(File archivoIFIngadic) {
+        this.archivoIFIngadic = archivoIFIngadic;
+    }
+
+    public String getArchivoIFIngadicFileName() {
+        return archivoIFIngadicFileName;
+    }
+
+    public void setArchivoIFIngadicFileName(String archivoIFIngadicFileName) {
+        this.archivoIFIngadicFileName = archivoIFIngadicFileName;
+    }
+
+    public File getArchivoIFCopiaDni() {
+        return archivoIFCopiaDni;
+    }
+
+    public void setArchivoIFCopiaDni(File archivoIFCopiaDni) {
+        this.archivoIFCopiaDni = archivoIFCopiaDni;
+    }
+
+    public String getArchivoIFCopiaDniFileName() {
+        return archivoIFCopiaDniFileName;
+    }
+
+    public void setArchivoIFCopiaDniFileName(String archivoIFCopiaDniFileName) {
+        this.archivoIFCopiaDniFileName = archivoIFCopiaDniFileName;
+    }
+
+    public File getArchivoIFNRecibluz() {
+        return archivoIFNRecibluz;
+    }
+
+    public void setArchivoIFNRecibluz(File archivoIFNRecibluz) {
+        this.archivoIFNRecibluz = archivoIFNRecibluz;
+    }
+
+    public String getArchivoIFNRecibluzFileName() {
+        return archivoIFNRecibluzFileName;
+    }
+
+    public void setArchivoIFNRecibluzFileName(String archivoIFNRecibluzFileName) {
+        this.archivoIFNRecibluzFileName = archivoIFNRecibluzFileName;
+    }
+
+    public File getArchivoIFNCopiaDni() {
+        return archivoIFNCopiaDni;
+    }
+
+    public void setArchivoIFNCopiaDni(File archivoIFNCopiaDni) {
+        this.archivoIFNCopiaDni = archivoIFNCopiaDni;
+    }
+
+    public String getArchivoIFNCopiaDniFileName() {
+        return archivoIFNCopiaDniFileName;
+    }
+
+    public void setArchivoIFNCopiaDniFileName(String archivoIFNCopiaDniFileName) {
+        this.archivoIFNCopiaDniFileName = archivoIFNCopiaDniFileName;
+    }
+
+    public File getArchivoIFNCertf1() {
+        return archivoIFNCertf1;
+    }
+
+    public void setArchivoIFNCertf1(File archivoIFNCertf1) {
+        this.archivoIFNCertf1 = archivoIFNCertf1;
+    }
+
+    public String getArchivoIFNCertf1FileName() {
+        return archivoIFNCertf1FileName;
+    }
+
+    public void setArchivoIFNCertf1FileName(String archivoIFNCertf1FileName) {
+        this.archivoIFNCertf1FileName = archivoIFNCertf1FileName;
+    }
+
+    public File getArchivoIFNCertf2() {
+        return archivoIFNCertf2;
+    }
+
+    public void setArchivoIFNCertf2(File archivoIFNCertf2) {
+        this.archivoIFNCertf2 = archivoIFNCertf2;
+    }
+
+    public String getArchivoIFNCertf2FileName() {
+        return archivoIFNCertf2FileName;
+    }
+
+    public void setArchivoIFNCertf2FileName(String archivoIFNCertf2FileName) {
+        this.archivoIFNCertf2FileName = archivoIFNCertf2FileName;
+    }
+
+    public File getArchivoIFNFac1() {
+        return archivoIFNFac1;
+    }
+
+    public void setArchivoIFNFac1(File archivoIFNFac1) {
+        this.archivoIFNFac1 = archivoIFNFac1;
+    }
+
+    public String getArchivoIFNFac1FileName() {
+        return archivoIFNFac1FileName;
+    }
+
+    public void setArchivoIFNFac1FileName(String archivoIFNFac1FileName) {
+        this.archivoIFNFac1FileName = archivoIFNFac1FileName;
+    }
+
+    public File getArchivoIFNFac2() {
+        return archivoIFNFac2;
+    }
+
+    public void setArchivoIFNFac2(File archivoIFNFac2) {
+        this.archivoIFNFac2 = archivoIFNFac2;
+    }
+
+    public String getArchivoIFNFac2FileName() {
+        return archivoIFNFac2FileName;
+    }
+
+    public void setArchivoIFNFac2FileName(String archivoIFNFac2FileName) {
+        this.archivoIFNFac2FileName = archivoIFNFac2FileName;
+    }
+
+    public File getArchivoIFNC1() {
+        return archivoIFNC1;
+    }
+
+    public void setArchivoIFNC1(File archivoIFNC1) {
+        this.archivoIFNC1 = archivoIFNC1;
+    }
+
+    public String getArchivoIFNC1FileName() {
+        return archivoIFNC1FileName;
+    }
+
+    public void setArchivoIFNC1FileName(String archivoIFNC1FileName) {
+        this.archivoIFNC1FileName = archivoIFNC1FileName;
+    }
+
+    public File getArchivoIFNC2() {
+        return archivoIFNC2;
+    }
+
+    public void setArchivoIFNC2(File archivoIFNC2) {
+        this.archivoIFNC2 = archivoIFNC2;
+    }
+
+    public String getArchivoIFNC2FileName() {
+        return archivoIFNC2FileName;
+    }
+
+    public void setArchivoIFNC2FileName(String archivoIFNC2FileName) {
+        this.archivoIFNC2FileName = archivoIFNC2FileName;
+    }
+
+    public File getArchivoIFNExtracAfp() {
+        return archivoIFNExtracAfp;
+    }
+
+    public void setArchivoIFNExtracAfp(File archivoIFNExtracAfp) {
+        this.archivoIFNExtracAfp = archivoIFNExtracAfp;
+    }
+
+    public String getArchivoIFNExtracAfpFileName() {
+        return archivoIFNExtracAfpFileName;
+    }
+
+    public void setArchivoIFNExtracAfpFileName(String archivoIFNExtracAfpFileName) {
+        this.archivoIFNExtracAfpFileName = archivoIFNExtracAfpFileName;
+    }
+
+    public File getArchivoIFNIngadic() {
+        return archivoIFNIngadic;
+    }
+
+    public void setArchivoIFNIngadic(File archivoIFNIngadic) {
+        this.archivoIFNIngadic = archivoIFNIngadic;
+    }
+
+    public String getArchivoIFNIngadicFileName() {
+        return archivoIFNIngadicFileName;
+    }
+
+    public void setArchivoIFNIngadicFileName(String archivoIFNIngadicFileName) {
+        this.archivoIFNIngadicFileName = archivoIFNIngadicFileName;
+    }
+
+    public File getArchivoJRecib() {
+        return archivoJRecib;
+    }
+
+    public void setArchivoJRecib(File archivoJRecib) {
+        this.archivoJRecib = archivoJRecib;
+    }
+
+    public String getArchivoJRecibFileName() {
+        return archivoJRecibFileName;
+    }
+
+    public void setArchivoJRecibFileName(String archivoJRecibFileName) {
+        this.archivoJRecibFileName = archivoJRecibFileName;
+    }
+
+    public File getArchivoJCopia() {
+        return archivoJCopia;
+    }
+
+    public void setArchivoJCopia(File archivoJCopia) {
+        this.archivoJCopia = archivoJCopia;
+    }
+
+    public String getArchivoJCopiaFileName() {
+        return archivoJCopiaFileName;
+    }
+
+    public void setArchivoJCopiaFileName(String archivoJCopiaFileName) {
+        this.archivoJCopiaFileName = archivoJCopiaFileName;
+    }
+
+    public File getArchivoJBol1() {
+        return archivoJBol1;
+    }
+
+    public void setArchivoJBol1(File archivoJBol1) {
+        this.archivoJBol1 = archivoJBol1;
+    }
+
+    public String getArchivoJBol1FileName() {
+        return archivoJBol1FileName;
+    }
+
+    public void setArchivoJBol1FileName(String archivoJBol1FileName) {
+        this.archivoJBol1FileName = archivoJBol1FileName;
+    }
+
+    public File getArchivoJBol2() {
+        return archivoJBol2;
+    }
+
+    public void setArchivoJBol2(File archivoJBol2) {
+        this.archivoJBol2 = archivoJBol2;
+    }
+
+    public String getArchivoJBol2FileName() {
+        return archivoJBol2FileName;
+    }
+
+    public void setArchivoJBol2FileName(String archivoJBol2FileName) {
+        this.archivoJBol2FileName = archivoJBol2FileName;
+    }
+
+    public File getArchivoJBol3() {
+        return archivoJBol3;
+    }
+
+    public void setArchivoJBol3(File archivoJBol3) {
+        this.archivoJBol3 = archivoJBol3;
+    }
+
+    public String getArchivoJBol3FileName() {
+        return archivoJBol3FileName;
+    }
+
+    public void setArchivoJBol3FileName(String archivoJBol3FileName) {
+        this.archivoJBol3FileName = archivoJBol3FileName;
+    }
+
+    public File getArchivoJExt1() {
+        return archivoJExt1;
+    }
+
+    public void setArchivoJExt1(File archivoJExt1) {
+        this.archivoJExt1 = archivoJExt1;
+    }
+
+    public String getArchivoJExt1FileName() {
+        return archivoJExt1FileName;
+    }
+
+    public void setArchivoJExt1FileName(String archivoJExt1FileName) {
+        this.archivoJExt1FileName = archivoJExt1FileName;
+    }
+
+    public File getArchivoJExt2() {
+        return archivoJExt2;
+    }
+
+    public void setArchivoJExt2(File archivoJExt2) {
+        this.archivoJExt2 = archivoJExt2;
+    }
+
+    public String getArchivoJExt2FileName() {
+        return archivoJExt2FileName;
+    }
+
+    public void setArchivoJExt2FileName(String archivoJExt2FileName) {
+        this.archivoJExt2FileName = archivoJExt2FileName;
+    }
+
+    public File getArchivoJExt3() {
+        return archivoJExt3;
+    }
+
+    public void setArchivoJExt3(File archivoJExt3) {
+        this.archivoJExt3 = archivoJExt3;
+    }
+
+    public String getArchivoJExt3FileName() {
+        return archivoJExt3FileName;
+    }
+
+    public void setArchivoJExt3FileName(String archivoJExt3FileName) {
+        this.archivoJExt3FileName = archivoJExt3FileName;
+    }
+
+    public File getArchivoJIngadic() {
+        return archivoJIngadic;
+    }
+
+    public void setArchivoJIngadic(File archivoJIngadic) {
+        this.archivoJIngadic = archivoJIngadic;
+    }
+
+    public String getArchivoJIngadicFileName() {
+        return archivoJIngadicFileName;
+    }
+
+    public void setArchivoJIngadicFileName(String archivoJIngadicFileName) {
+        this.archivoJIngadicFileName = archivoJIngadicFileName;
     }
 
 }

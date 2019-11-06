@@ -2,7 +2,7 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
-    //commit    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
+    <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
         <!-- Site wrapper -->
         <div class="wrapper">
             <div class="content-wrapper">
@@ -240,20 +240,20 @@
 
         fechahoy.val(d + "/" + m + "/" + y)
         /*
-        $("#FecSolicitud").attr("readonly", "true");
-        $("#PriNomb").attr("readonly", "true");
-        $("#SegNomb").attr("readonly", "true");
-        $("#ApePat").attr("readonly", "true");
-        $("#ApeMat").attr("readonly", "true");
-        $("#Nacionalidad").attr("readonly", "true");
-        $("#FecNac").attr("readonly", "true");
-        $("#CiudaNac").attr("readonly", "true");
-        $("#PaisNac").attr("readonly", "true");
-        $("#Sexo").attr("readonly", "true");
-        $("#sNacion").attr("readonly", "true");
-        $("#CiudadNac").attr("readonly", "true");
-        $("#sEstudios").attr("readonly", "true");
-        */
+         $("#FecSolicitud").attr("readonly", "true");
+         $("#PriNomb").attr("readonly", "true");
+         $("#SegNomb").attr("readonly", "true");
+         $("#ApePat").attr("readonly", "true");
+         $("#ApeMat").attr("readonly", "true");
+         $("#Nacionalidad").attr("readonly", "true");
+         $("#FecNac").attr("readonly", "true");
+         $("#CiudaNac").attr("readonly", "true");
+         $("#PaisNac").attr("readonly", "true");
+         $("#Sexo").attr("readonly", "true");
+         $("#sNacion").attr("readonly", "true");
+         $("#CiudadNac").attr("readonly", "true");
+         $("#sEstudios").attr("readonly", "true");
+         */
         </script>
 
     </body>

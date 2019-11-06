@@ -67,6 +67,117 @@ public class CReportePDF {
     private String url;
     private String user;
     private String passwd;
+    //Datos Solicitante Financiero
+    private String CodEvaluador;
+    private String PuntVenta;
+    private String FecSolicitud;
+    private String CiudadExp;
+    private String Nacionalidad;
+    private String CiudadNac;
+    private String PaisNac;
+    private String NperDepend;
+//Datos Cónyuge
+    private String CPrimerNomb;
+    private String CSegundNomb;
+    private String CPrimerApel;
+    private String CSegundApel;
+    private String CEmpdondTrab;
+    private String CEmpCargo;
+    private String CEmpTelef;
+//Datos Vivienda
+    private String VSuministro;
+    private String VTitularSum;
+    private String VRelacTitul;
+    private String VTipoVivien;
+    private String VHaceCVivea;
+    private String VDireccResi;
+    private String VDistVivien;
+    private String VProvVivien;
+    private String VDepaVivien;
+//Datos Empleado
+    private String ENombreEmpr;
+    private String ERUCEmpr;
+    private String EActivdEmpr;
+    private String EDirEmpr;
+    private String EDepEmpr;
+    private String EDisEmpr;
+    private String EProvEmpr;
+//Datos Independiente Informal
+    private String ILabor;
+    private String IHacecuantInd;
+    private String ITipodeInd;
+//Datos Independiente Formal;   
+    private String FNombEmpr;
+    private String FRUCEmpr;
+    private String FCargo;
+    private String FDirLabo;
+    private String FDisLabo;
+    private String FProLabo;
+    private String FDepLabo;
+    private String FTelef;
+    private String FAnexo;
+    private String FCorreo;
+//Datos Jubilado
+    private String JNombEmpJ;
+    private String JNombEmpA;
+    private String JHacecuaJ;
+//Datos Información Financiera-Ingresos
+    private double ISueldBas;
+    private double IComisiones;
+    private double IHonorarios;
+    private double IAlquileres;
+    private double IOtrosIngres;
+    private double ITotalIng;
+    private double ITotalAct;
+//Datos Información Financiera-Gastos
+    private double GAlquiler;
+    private double GCreditoViv;
+    private double GGastosFamil;
+    private double GTarjetasCred;
+    private double GOtrosGas;
+    private double GTotalGas;
+    private double GTotalPat;
+//Datos Referencias Personales
+    private String RPPrimerNomb;
+    private String RPSegundoNomb;
+    private String RPPrimerApell;
+    private String RPSegundoApell;
+    private String RPDirec;
+    private String RPDistr;
+    private String RPProvi;
+    private String RPEstad;
+    private String RPTelef;
+    private String RPCelul;
+    private String RPParen;
+//Datos Referencias Familiares
+    private String RFPrimerNomb;
+    private String RFSegundoNomb;
+    private String RFPrimerApell;
+    private String RFSegundoApell;
+    private String RFDirec;
+    private String RFDistr;
+    private String RFProvi;
+    private String RFEstad;
+    private String RFTelef;
+    private String RFCelul;
+    private String RFParen;
+//Datos Referencias Laborales
+    private String RLCNombre;
+    private String RLCActividad;
+    private String RLCTelef;
+    private String RLCDireClient;
+    private String RLCDistrito;
+    private String RLCProvincia;
+    private String RLCEstado;
+    private String RLPNombre;
+    private String RLPActividad;
+    private String RLPTelef;
+    private String RLPDire;
+    private String RLPDistrito;
+    private String RLPProvincia;
+    private String RLPEstado;
+
+    private String TipoIndep;
 
     public String formateador(String fecha) throws ParseException {
         String fec = "";
@@ -83,62 +194,1021 @@ public class CReportePDF {
     //------------Métodos para reporte Solicitud de Financiamiento--------------
     public boolean mxSolicitudCliente() throws SQLException, IOException {
         CClientes loCli = new CClientes();
-        /*loCli.setUrl(getUrl());
-         loCli.setUser(getUser());
-         loCli.setPasswd(getPasswd());
-         loCli.setCliente(getCliente());
-      
-         boolean llOk = loCli.mxAplicar();
-         if (llOk) {
-         llOk = loCli.mxCreditosRelacionados();
-         if (llOk) {
-         llOk = loCli.mxCreditos();
-         if (llOk) {
-                    
-         */
-        mxSolicitudClienteArchivo(loCli.getCliente());
+        Cliente clienteprueba = new Cliente();
+
         setRutaReporte("/ftia/files/cartas/solicitudFinanciamientoCliente.pdf");
         LibFunc.mxLog("Solicitud de financiamiento Cliente OK.");
+        mxSolicitudClienteArchivo(getCliente());
 
         return true;
     }
 
-    public boolean mxSolicitudClienteArchivo(Cliente p_oCliente) throws IOException {
+    public boolean mxSolicitudClienteArchivo(Cliente p_olCiente) throws IOException {
         boolean llOk = true;
         try {
             FileOutputStream loArchivo = new FileOutputStream("/ftia/files/cartas/solicitudFinanciamientoCliente.pdf");
+
             Document loDoc = new Document(PageSize.A4, -50, -50, 5, 5);
             PdfWriter writer = PdfWriter.getInstance(loDoc, loArchivo);
             loDoc.open();
-     
             Font fontTitulos = FontFactory.getFont(
                     FontFactory.HELVETICA, 12, Font.BOLD,
                     BaseColor.BLACK);
-
             Font fontContenido = FontFactory.getFont(
                     FontFactory.TIMES_ROMAN, 7, Font.NORMAL,
                     BaseColor.BLACK);
-            
+            PdfPTable loTablaDatos = new PdfPTable(3);
+            PdfPTable loTablaCliente = new PdfPTable(8);
+            PdfPTable loTablaCliente2 = new PdfPTable(6);
+            PdfPTable loTablaCliente3 = new PdfPTable(6);
+            PdfPTable loTablaCliente4 = new PdfPTable(6);
+            PdfPTable loTablaCliente5 = new PdfPTable(6);
+            PdfPTable loTablaCliente51 = new PdfPTable(6);
+
+            PdfPTable loTablaCliente6 = new PdfPTable(6);
+            PdfPTable loTablaCliente61 = new PdfPTable(10);
+
+            PdfPTable loTablaCliente7 = new PdfPTable(14);
+            PdfPTable loTablaCliente8 = new PdfPTable(8);
+            PdfPTable loTablaCliente9 = new PdfPTable(8);
+            PdfPTable loTablaCliente10 = new PdfPTable(8);
+
+            loTablaDatos.setWidths(new float[]{5, 5, 5});
+            loTablaCliente.setWidths(new float[]{4, 4, 4, 4, 4, 4, 4, 4});
+            loTablaCliente2.setWidths(new float[]{4, 1, 4, 4, 4, 4});
+            loTablaCliente3.setWidths(new float[]{4, 4, 4, 4, 4, 4});
+            loTablaCliente4.setWidths(new float[]{4, 4, 4, 4, 4, 4});
+            loTablaCliente5.setWidths(new float[]{6, 6, 4, 4, 4, 4});
+            loTablaCliente51.setWidths(new float[]{6, 6, 4, 4, 4, 4});
+
+            loTablaCliente6.setWidths(new float[]{6, 6, 7, 6, 6, 6});
+            loTablaCliente61.setWidths(new float[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4});
+
+            loTablaCliente7.setWidths(new float[]{5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3});
+            loTablaCliente8.setWidths(new float[]{4, 4, 4, 4, 4, 4, 4, 4});
+            loTablaCliente9.setWidths(new float[]{4, 4, 4, 4, 4, 4, 4, 4});
+            loTablaCliente10.setWidths(new float[]{4, 4, 4, 4, 4, 4, 4, 4});
+
             Paragraph loTitulo = new Paragraph();
-
-
             //Titulo
             loTitulo.add(new Phrase(Chunk.NEWLINE));
             loTitulo.add(new Paragraph("SOLICITUD DE EVALUACIÓN FINANCIERA", fontTitulos));
             loTitulo.setAlignment(Element.ALIGN_CENTER);
             loTitulo.add(new Phrase(Chunk.NEWLINE));
-            //Segunda fila
-            PdfPCell celda2T2 = new PdfPCell(new Phrase("CÓDIGO", fontContenido));
-            celda2T2.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T2 = new PdfPCell(new Phrase(":", fontContenido));
-            celda3T2.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda4T2 = new PdfPCell(new Phrase("1512914", fontContenido));
-            celda4T2.setBorder(PdfPCell.NO_BORDER);
- 
 
+            //Primera Tabla
+            //Primera filaCódigo Evaluador               Punto de Venta               Fecha de Solicitud
+            PdfPCell celda1T1 = new PdfPCell(new Phrase("CÓDIGO EVALUADOR", fontContenido));
+            celda1T1.setBorder(PdfPCell.NO_BORDER);
+            celda1T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell celda2T1 = new PdfPCell(new Phrase("PUNTO DE VENTA", fontContenido));
+            celda2T1.setBorder(PdfPCell.NO_BORDER);
+            celda2T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell celda3T1 = new PdfPCell(new Phrase("FECHA DE SOLICITUD", fontContenido));
+            celda3T1.setBorder(PdfPCell.NO_BORDER);
+            celda3T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+            PdfPCell celda4T1 = new PdfPCell(new Phrase(getCodEvaluador(), fontContenido));
+            celda4T1.setBorder(PdfPCell.NO_BORDER);
+            celda4T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell celda5T1 = new PdfPCell(new Phrase(getPuntVenta(), fontContenido));
+            celda5T1.setBorder(PdfPCell.NO_BORDER);
+            celda5T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            PdfPCell celda6T1 = new PdfPCell(new Phrase(getFecSolicitud(), fontContenido));
+            celda6T1.setBorder(PdfPCell.NO_BORDER);
+            celda6T1.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+            loTablaDatos.addCell(celda1T1);
+            loTablaDatos.addCell(celda2T1);
+            loTablaDatos.addCell(celda3T1);
+            loTablaDatos.addCell(celda4T1);
+            loTablaDatos.addCell(celda5T1);
+            loTablaDatos.addCell(celda6T1);
+            loTablaDatos.setSpacingAfter(20);
+            //PRIMERA TABLA
+            //Títutlo
+            PdfPCell celda1T2 = new PdfPCell(new Phrase("* DATOS PERSONALES DEL SOLICITANTE *", fontContenido));
+            celda1T2.setBorder(PdfPCell.BOX);
+            celda1T2.setColspan(8);
+
+            //Primera Fila
+            PdfPCell celda2T2 = new PdfPCell(new Phrase("Documento Indentidad:", fontContenido));
+            celda2T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T2 = new PdfPCell(new Phrase(p_olCiente.getNroDocCiv(), fontContenido));
+            celda3T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T2 = new PdfPCell(new Phrase("Ciudad de Expedición:", fontContenido));
+            celda4T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T2 = new PdfPCell(new Phrase(getCiudadExp(), fontContenido));
+            celda5T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T2 = new PdfPCell(new Phrase("Primer Nombre", fontContenido));
+            celda6T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T2 = new PdfPCell(new Phrase(p_olCiente.getNombre(), fontContenido));
+            celda7T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T2 = new PdfPCell(new Phrase("Segundo Nombre", fontContenido));
+            celda8T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T2 = new PdfPCell(new Phrase("Edison", fontContenido));
+            celda9T2.setBorder(PdfPCell.NO_BORDER);
+            //Segunda Fila
+            PdfPCell celda10T2 = new PdfPCell(new Phrase("Primer Apellido:", fontContenido));
+            celda10T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T2 = new PdfPCell(new Phrase(p_olCiente.getApePat(), fontContenido));
+            celda11T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T2 = new PdfPCell(new Phrase("Segundo Apellido:", fontContenido));
+            celda12T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T2 = new PdfPCell(new Phrase(p_olCiente.getApeMat(), fontContenido));
+            celda13T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T2 = new PdfPCell(new Phrase("Nacionalidad", fontContenido));
+            celda14T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T2 = new PdfPCell(new Phrase(getNacionalidad(), fontContenido));
+            celda15T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda16T2 = new PdfPCell(new Phrase("Fecha Nacimiento", fontContenido));
+            celda16T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda17T2 = new PdfPCell(new Phrase(p_olCiente.getFecNac(), fontContenido));
+            celda17T2.setBorder(PdfPCell.NO_BORDER);
+            //Tercera Fila
+            PdfPCell celda18T2 = new PdfPCell(new Phrase("Ciudad de Nacimiento:", fontContenido));
+            celda18T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda19T2 = new PdfPCell(new Phrase(getCiudadNac(), fontContenido));
+            celda19T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda20T2 = new PdfPCell(new Phrase("País de Nacimiento:", fontContenido));
+            celda20T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda21T2 = new PdfPCell(new Phrase(getPaisNac(), fontContenido));
+            celda21T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda22T2 = new PdfPCell(new Phrase("Género", fontContenido));
+            celda22T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda23T2 = new PdfPCell(new Phrase(getCliente().getSexo(), fontContenido));
+            celda23T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda24T2 = new PdfPCell(new Phrase("Estado Civil", fontContenido));
+            celda24T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda25T2 = new PdfPCell(new Phrase(getCliente().getEstCiv(), fontContenido));
+            celda25T2.setBorder(PdfPCell.NO_BORDER);
+            //Cuarta Fila
+            PdfPCell celda26T2 = new PdfPCell(new Phrase("Estudios:", fontContenido));
+            celda26T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda27T2 = new PdfPCell(new Phrase(getCliente().getNivIns(), fontContenido));
+            celda27T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda28T2 = new PdfPCell(new Phrase("Ocupación:", fontContenido));
+            celda28T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda29T2 = new PdfPCell(new Phrase(getCliente().getDesOcu(), fontContenido));
+            celda29T2.setBorder(PdfPCell.NO_BORDER);
+
+            PdfPCell celda30T2 = new PdfPCell(new Phrase("Número de personas que dependen económicamente del solicitante:", fontContenido));
+            celda30T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda31T2 = new PdfPCell(new Phrase(getNperDepend(), fontContenido));
+            celda31T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda32T2 = new PdfPCell(new Phrase("Correo Electrónico:", fontContenido));
+            celda32T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda33T2 = new PdfPCell(new Phrase(getCliente().getCorreo(), fontContenido));
+            celda33T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda34T2 = new PdfPCell(new Phrase("Celular / Télefono fijo:", fontContenido));
+            celda34T2.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda35T2 = new PdfPCell(new Phrase(getCliente().getTelefono(), fontContenido));
+            celda35T2.setBorder(PdfPCell.NO_BORDER);
+
+            //loTablaCliente2.setSpacingAfter(20);
+            //SEGUNDA TABLA
+            //Títutlo
+            PdfPCell celda1T3 = new PdfPCell(new Phrase("* DATOS DEL CÓNYUGE *", fontContenido));
+            celda1T3.setBorder(PdfPCell.BOX);
+            celda1T3.setColspan(8);
+
+            //Primera Fila
+            PdfPCell celda2T3 = new PdfPCell(new Phrase("Primer Nombre:", fontContenido));
+            celda2T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T3 = new PdfPCell(new Phrase(getCPrimerNomb(), fontContenido));
+            celda3T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T3 = new PdfPCell(new Phrase("Segundo Nombre:", fontContenido));
+            celda4T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T3 = new PdfPCell(new Phrase(getCSegundNomb(), fontContenido));
+            celda5T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T3 = new PdfPCell(new Phrase("Primer Apellido", fontContenido));
+            celda6T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T3 = new PdfPCell(new Phrase(getCPrimerApel(), fontContenido));
+            celda7T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T3 = new PdfPCell(new Phrase("Segundo Apellido", fontContenido));
+            celda8T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T3 = new PdfPCell(new Phrase(getCSegundApel(), fontContenido));
+            celda9T3.setBorder(PdfPCell.NO_BORDER);
+            //Segunda Fila
+            PdfPCell celda10T3 = new PdfPCell(new Phrase("Empresa donde Trabaja:", fontContenido));
+            celda10T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T3 = new PdfPCell(new Phrase(getCEmpdondTrab(), fontContenido));
+            celda11T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T3 = new PdfPCell(new Phrase("Cargo:", fontContenido));
+            celda12T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T3 = new PdfPCell(new Phrase(getCEmpCargo(), fontContenido));
+            celda13T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T3 = new PdfPCell(new Phrase("Teléfono", fontContenido));
+            celda14T3.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T3 = new PdfPCell(new Phrase(getCEmpTelef(), fontContenido));
+            celda15T3.setBorder(PdfPCell.NO_BORDER);
+
+            //loTablaCliente3.setSpacingAfter(20);
+            //TERCERA TABLA
+            //Títutlo
+            PdfPCell celda1T4 = new PdfPCell(new Phrase("* LUGAR DONDE VIVE ACTUALMENTE EL SOLICITANTE *", fontContenido));
+            celda1T4.setBorder(PdfPCell.BOX);
+            celda1T4.setColspan(8);
+
+            //Primera Fila
+            PdfPCell celda2T4 = new PdfPCell(new Phrase("Número de Sumunistro:", fontContenido));
+            celda2T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T4 = new PdfPCell(new Phrase(getVSuministro(), fontContenido));
+            celda3T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T4 = new PdfPCell(new Phrase("Titular de Suministro:", fontContenido));
+            celda4T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T4 = new PdfPCell(new Phrase(getVTitularSum(), fontContenido));
+            celda5T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T4 = new PdfPCell(new Phrase("Relación con el Titular", fontContenido));
+            celda6T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T4 = new PdfPCell(new Phrase(getVRelacTitul(), fontContenido));
+            celda7T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T4 = new PdfPCell(new Phrase("Tipo de Vivienda", fontContenido));
+            celda8T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T4 = new PdfPCell(new Phrase(getVTipoVivien(), fontContenido));
+            celda9T4.setBorder(PdfPCell.NO_BORDER);
+            //Segunda Fila
+            PdfPCell celda10T4 = new PdfPCell(new Phrase("Hace cuanto tiempo vive allí:", fontContenido));
+            celda10T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T4 = new PdfPCell(new Phrase(getVHaceCVivea(), fontContenido));
+            celda11T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T4 = new PdfPCell(new Phrase("Dirección de Residencia:", fontContenido));
+            celda12T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T4 = new PdfPCell(new Phrase(getVDireccResi(), fontContenido));
+            celda13T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T4 = new PdfPCell(new Phrase("Distrito:", fontContenido));
+            celda14T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T4 = new PdfPCell(new Phrase(getVDistVivien(), fontContenido));
+            celda15T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda16T4 = new PdfPCell(new Phrase("Provincia:", fontContenido));
+            celda16T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda17T4 = new PdfPCell(new Phrase(getVProvVivien(), fontContenido));
+            celda17T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda18T4 = new PdfPCell(new Phrase("Departamento:", fontContenido));
+            celda18T4.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda19T4 = new PdfPCell(new Phrase(getVDepaVivien(), fontContenido));
+            celda19T4.setBorder(PdfPCell.NO_BORDER);
+
+            //loTablaCliente4.setSpacingAfter(20);
+            //CUARTA TABLA
+            //Títutlo
+            PdfPCell celda1T5 = new PdfPCell(new Phrase("* SI ES EMPLEADO POR FAVOR DILIGENCIE ESTE ESPACIO*", fontContenido));
+            celda1T5.setBorder(PdfPCell.BOX);
+            celda1T5.setColspan(8);
+
+            //Primera Fila
+            PdfPCell celda2T5 = new PdfPCell(new Phrase("Nombre de la Empresa Contratante:", fontContenido));
+            celda2T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T5 = new PdfPCell(new Phrase(getENombreEmpr(), fontContenido));
+            celda3T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T5 = new PdfPCell(new Phrase("RUC:", fontContenido));
+            celda4T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T5 = new PdfPCell(new Phrase(getERUCEmpr(), fontContenido));
+            celda5T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T5 = new PdfPCell(new Phrase("Actividad de la Empresa", fontContenido));
+            celda6T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T5 = new PdfPCell(new Phrase(getEActivdEmpr(), fontContenido));
+            celda7T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T5 = new PdfPCell(new Phrase("Dirección de la Empresa", fontContenido));
+            celda8T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T5 = new PdfPCell(new Phrase(getEDirEmpr(), fontContenido));
+            celda9T5.setBorder(PdfPCell.NO_BORDER);
+            //Segunda Fila
+            PdfPCell celda10T5 = new PdfPCell(new Phrase("Distrito:", fontContenido));
+            celda10T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T5 = new PdfPCell(new Phrase(getEDisEmpr(), fontContenido));
+            celda11T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T5 = new PdfPCell(new Phrase("Provincia:", fontContenido));
+            celda12T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T5 = new PdfPCell(new Phrase(getEProvEmpr(), fontContenido));
+            celda13T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T5 = new PdfPCell(new Phrase("Departamento:", fontContenido));
+            celda14T5.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T5 = new PdfPCell(new Phrase(getEDepEmpr(), fontContenido));
+            celda15T5.setBorder(PdfPCell.NO_BORDER);
+
+            //loTablaCliente4.setSpacingAfter(20);
+            //QUINTA TABLA
+            //Títutlo
+            PdfPCell celda1T6 = new PdfPCell(new Phrase("* SI ES INDEPENDIENTE POR FAVOR DILIGENCIE ESTE ESPACIO*", fontContenido));
+            celda1T6.setBorder(PdfPCell.BOX);
+            celda1T6.setColspan(8);
+
+            //Primera Fila
+            PdfPCell celda2T6 = new PdfPCell(new Phrase("Describa específicamente la labor que realiza como independiente:", fontContenido));
+            celda2T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T6 = new PdfPCell(new Phrase(getILabor(), fontContenido));
+            celda3T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T6 = new PdfPCell(new Phrase("Hace cuanto es independiente:", fontContenido));
+            celda4T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T6 = new PdfPCell(new Phrase(getIHacecuantInd(), fontContenido));
+            celda5T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T6 = new PdfPCell(new Phrase("Tipo de Independiente:", fontContenido));
+            celda6T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T6 = new PdfPCell(new Phrase(getITipodeInd(), fontContenido));
+            celda7T6.setBorder(PdfPCell.NO_BORDER);
+
+            //Segunda Fila
+            PdfPCell celda10T6 = new PdfPCell(new Phrase("Nombre de la Empresa:", fontContenido));
+            celda10T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T6 = new PdfPCell(new Phrase(getFNombEmpr(), fontContenido));
+            celda11T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T6 = new PdfPCell(new Phrase("RUC:", fontContenido));
+            celda12T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T6 = new PdfPCell(new Phrase(getFRUCEmpr(), fontContenido));
+            celda13T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T6 = new PdfPCell(new Phrase("Cargo/Ocupación:", fontContenido));
+            celda14T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T6 = new PdfPCell(new Phrase(getFCargo(), fontContenido));
+            celda15T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda16T6 = new PdfPCell(new Phrase("Dirección donde Labora:", fontContenido));
+            celda16T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda17T6 = new PdfPCell(new Phrase(getFDirLabo(), fontContenido));
+            celda17T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda18T6 = new PdfPCell(new Phrase("Distrito:", fontContenido));
+            celda18T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda19T6 = new PdfPCell(new Phrase(getFDisLabo(), fontContenido));
+            celda19T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda20T6 = new PdfPCell(new Phrase("Provincia:", fontContenido));
+            celda20T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda21T6 = new PdfPCell(new Phrase(getFProLabo(), fontContenido));
+            celda21T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda22T6 = new PdfPCell(new Phrase("Departamento:", fontContenido));
+            celda22T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda23T6 = new PdfPCell(new Phrase(getFDepLabo(), fontContenido));
+            celda23T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda24T6 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
+            celda24T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda25T6 = new PdfPCell(new Phrase(getFTelef(), fontContenido));
+            celda25T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda26T6 = new PdfPCell(new Phrase("Anexo:", fontContenido));
+            celda26T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda27T6 = new PdfPCell(new Phrase(getFAnexo(), fontContenido));
+            celda27T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda28T6 = new PdfPCell(new Phrase("Correo Electrónico:", fontContenido));
+            celda28T6.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda29T6 = new PdfPCell(new Phrase(getFAnexo(), fontContenido));
+            celda29T6.setBorder(PdfPCell.NO_BORDER);
+
+            //loTablaCliente4.setSpacingAfter(20);
+            //SEXTA TABLA
+            //Títutlo
+            PdfPCell celda1T7 = new PdfPCell(new Phrase("* SI ES JUBILADO POR FAVOR DILIGENCIE ESTE ESPACIO*", fontContenido));
+            celda1T7.setBorder(PdfPCell.BOX);
+            celda1T7.setColspan(8);
+
+            //Primera Fila
+            PdfPCell celda2T7 = new PdfPCell(new Phrase("Nombre de la Empresa en la cual se jubiló:", fontContenido));
+            celda2T7.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T7 = new PdfPCell(new Phrase(getJNombEmpJ(), fontContenido));
+            celda3T7.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T7 = new PdfPCell(new Phrase("Nombre de la Empresa donde hizo el aporte para la jubilación:", fontContenido));
+            celda4T7.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T7 = new PdfPCell(new Phrase(getJNombEmpA(), fontContenido));
+            celda5T7.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T7 = new PdfPCell(new Phrase("Hace Cuanto es Jubilado:", fontContenido));
+            celda6T7.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T7 = new PdfPCell(new Phrase(getJHacecuaJ(), fontContenido));
+            celda7T7.setBorder(PdfPCell.NO_BORDER);
+
+            //SEPTIMA TABLA
+            //Títutlo
+            PdfPCell celda1T8 = new PdfPCell(new Phrase("* INFORMACIÓN FINANCIERA DEL SOLICITANTE*", fontContenido));
+            celda1T8.setBorder(PdfPCell.BOX);
+            celda1T8.setColspan(14);
+            PdfPCell celda2T8 = new PdfPCell(new Phrase("Ingresos Mensuales del Solicitante", fontContenido));
+            celda2T8.setBorder(PdfPCell.NO_BORDER);
+            celda2T8.setColspan(14);
+
+            //Primera Fila
+            PdfPCell celda3T8 = new PdfPCell(new Phrase("Suledo-Ingreso básico:", fontContenido));
+            celda3T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T8 = new PdfPCell(new Phrase("S/." + getISueldBas(), fontContenido));
+            celda4T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T8 = new PdfPCell(new Phrase("Comisiones:", fontContenido));
+            celda5T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T8 = new PdfPCell(new Phrase("S/." + getIComisiones(), fontContenido));
+            celda6T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T8 = new PdfPCell(new Phrase("Honorarios:", fontContenido));
+            celda7T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T8 = new PdfPCell(new Phrase("S/." + getIHonorarios(), fontContenido));
+            celda8T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T8 = new PdfPCell(new Phrase("Alquileres:", fontContenido));
+            celda9T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda10T8 = new PdfPCell(new Phrase("S/." + getIAlquileres(), fontContenido));
+            celda10T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T8 = new PdfPCell(new Phrase("Otros Ingresos:", fontContenido));
+            celda11T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T8 = new PdfPCell(new Phrase("S/." + getIOtrosIngres(), fontContenido));
+            celda12T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T8 = new PdfPCell(new Phrase("Total Ingresos:", fontContenido));
+            celda13T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T8 = new PdfPCell(new Phrase("S/." + getITotalIng(), fontContenido));
+            celda14T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T8 = new PdfPCell(new Phrase("Total Activos:", fontContenido));
+            celda15T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda16T8 = new PdfPCell(new Phrase("S/." + getITotalAct(), fontContenido));
+            celda16T8.setBorder(PdfPCell.NO_BORDER);
+
+            PdfPCell celda17T8 = new PdfPCell(new Phrase("Gastos Mensuales del Solicitante", fontContenido));
+            celda17T8.setBorder(PdfPCell.NO_BORDER);
+            celda17T8.setColspan(14);
+
+            //Primera Fila
+            PdfPCell celda18T8 = new PdfPCell(new Phrase("Alquiler:", fontContenido));
+            celda18T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda19T8 = new PdfPCell(new Phrase("S/." + getGAlquiler(), fontContenido));
+            celda19T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda20T8 = new PdfPCell(new Phrase("Crédito de Vivienda:", fontContenido));
+            celda20T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda21T8 = new PdfPCell(new Phrase("S/." + getGCreditoViv(), fontContenido));
+            celda21T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda22T8 = new PdfPCell(new Phrase("Gastos Familiares:", fontContenido));
+            celda22T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda23T8 = new PdfPCell(new Phrase("S/." + getGGastosFamil(), fontContenido));
+            celda23T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda24T8 = new PdfPCell(new Phrase("Tarjetas de Crédito:", fontContenido));
+            celda24T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda25T8 = new PdfPCell(new Phrase("S/." + getGTarjetasCred(), fontContenido));
+            celda25T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda26T8 = new PdfPCell(new Phrase("Otros Gasttos:", fontContenido));
+            celda26T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda27T8 = new PdfPCell(new Phrase("S/." + getGOtrosGas(), fontContenido));
+            celda27T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda28T8 = new PdfPCell(new Phrase("Total Gastos:", fontContenido));
+            celda28T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda29T8 = new PdfPCell(new Phrase("S/." + getGTotalGas(), fontContenido));
+            celda29T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda30T8 = new PdfPCell(new Phrase("Total Patrimonio:", fontContenido));
+            celda30T8.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda31T8 = new PdfPCell(new Phrase("S/." + getGTotalPat(), fontContenido));
+            celda31T8.setBorder(PdfPCell.NO_BORDER);
+
+            //OCTAVA TABLA
+            //Títutlo
+            PdfPCell celda1T9 = new PdfPCell(new Phrase("* REFERENCIAS PERSONALES (QUE NO TRABAJE CON EL SOLICITANTE) *", fontContenido));
+            celda1T9.setBorder(PdfPCell.BOX);
+            celda1T9.setColspan(14);
+
+            //Primera Fila
+            PdfPCell celda2T9 = new PdfPCell(new Phrase("Primer Nombre:", fontContenido));
+            celda2T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T9 = new PdfPCell(new Phrase(getRPPrimerNomb(), fontContenido));
+            celda3T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T9 = new PdfPCell(new Phrase("Segundo Nombre:", fontContenido));
+            celda4T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T9 = new PdfPCell(new Phrase(getRPSegundoNomb(), fontContenido));
+            celda5T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T9 = new PdfPCell(new Phrase("Primer Apellido:", fontContenido));
+            celda6T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T9 = new PdfPCell(new Phrase(getRPPrimerApell(), fontContenido));
+            celda7T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T9 = new PdfPCell(new Phrase("Segundo Apellido:", fontContenido));
+            celda8T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T9 = new PdfPCell(new Phrase(getRPSegundoApell(), fontContenido));
+            celda9T9.setBorder(PdfPCell.NO_BORDER);
+            //Segunda Fila
+            PdfPCell celda10T9 = new PdfPCell(new Phrase("Dirección:", fontContenido));
+            celda10T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T9 = new PdfPCell(new Phrase(getRPDirec(), fontContenido));
+            celda11T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T9 = new PdfPCell(new Phrase("Distrito:", fontContenido));
+            celda12T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T9 = new PdfPCell(new Phrase(getRPDistr(), fontContenido));
+            celda13T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T9 = new PdfPCell(new Phrase("Provincia:", fontContenido));
+            celda14T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T9 = new PdfPCell(new Phrase(getRPProvi(), fontContenido));
+            celda15T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda16T9 = new PdfPCell(new Phrase("Estado:", fontContenido));
+            celda16T9.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda17T9 = new PdfPCell(new Phrase(getRPEstad(), fontContenido));
+            celda17T9.setBorder(PdfPCell.NO_BORDER);
+
+            //NOVENA TABLA
+            //Títutlo
+            PdfPCell celda1T10 = new PdfPCell(new Phrase("* REFERENCIAS FAMILIARES (QUE NO VIVAN CON EL SOLICITANTE) *", fontContenido));
+            celda1T10.setBorder(PdfPCell.BOX);
+            celda1T10.setColspan(8);
+
+            //Primera Fila
+            PdfPCell celda2T10 = new PdfPCell(new Phrase("Primer Nombre:", fontContenido));
+            celda2T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T10 = new PdfPCell(new Phrase(getRFPrimerNomb(), fontContenido));
+            celda3T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T10 = new PdfPCell(new Phrase("Segundo Nombre:", fontContenido));
+            celda4T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T10 = new PdfPCell(new Phrase(getRFSegundoNomb(), fontContenido));
+            celda5T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T10 = new PdfPCell(new Phrase("Primer Apellido:", fontContenido));
+            celda6T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T10 = new PdfPCell(new Phrase(getRFPrimerApell(), fontContenido));
+            celda7T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T10 = new PdfPCell(new Phrase("Segundo Apellido:", fontContenido));
+            celda8T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T10 = new PdfPCell(new Phrase(getRFSegundoApell(), fontContenido));
+            celda9T10.setBorder(PdfPCell.NO_BORDER);
+            //Segunda Fila
+            PdfPCell celda10T10 = new PdfPCell(new Phrase("Dirección:", fontContenido));
+            celda10T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T10 = new PdfPCell(new Phrase(getRFDirec(), fontContenido));
+            celda11T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T10 = new PdfPCell(new Phrase("Distrito:", fontContenido));
+            celda12T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T10 = new PdfPCell(new Phrase(getRFDistr(), fontContenido));
+            celda13T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T10 = new PdfPCell(new Phrase("Provincia:", fontContenido));
+            celda14T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T10 = new PdfPCell(new Phrase(getRFProvi(), fontContenido));
+            celda15T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda16T10 = new PdfPCell(new Phrase("Estado:", fontContenido));
+            celda16T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda17T10 = new PdfPCell(new Phrase(getRFEstad(), fontContenido));
+            celda17T10.setBorder(PdfPCell.NO_BORDER);
+            //Tercera Fila
+            PdfPCell celda18T10 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
+            celda18T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda19T10 = new PdfPCell(new Phrase(getRFTelef(), fontContenido));
+            celda19T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda20T10 = new PdfPCell(new Phrase("Celular:", fontContenido));
+            celda20T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda21T10 = new PdfPCell(new Phrase(getRFCelul(), fontContenido));
+            celda21T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda22T10 = new PdfPCell(new Phrase("Parentesco:", fontContenido));
+            celda22T10.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda23T10 = new PdfPCell(new Phrase(getRFParen(), fontContenido));
+            celda23T10.setBorder(PdfPCell.NO_BORDER);
+
+            //DECIMA TABLA
+            //Títutlo
+            PdfPCell celda1T11 = new PdfPCell(new Phrase("* REFERENCIAS LABORALES *", fontContenido));
+            celda1T11.setBorder(PdfPCell.BOX);
+            celda1T11.setColspan(14);
+
+            //Primera Fila
+            PdfPCell celda2T11 = new PdfPCell(new Phrase("Nombre del Cliente:", fontContenido));
+            celda2T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda3T11 = new PdfPCell(new Phrase(getRLPNombre(), fontContenido));
+            celda3T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda4T11 = new PdfPCell(new Phrase("Actividad:", fontContenido));
+            celda4T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda5T11 = new PdfPCell(new Phrase(getRLCActividad(), fontContenido));
+            celda5T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda6T11 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
+            celda6T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda7T11 = new PdfPCell(new Phrase(getRLCTelef(), fontContenido));
+            celda7T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda8T11 = new PdfPCell(new Phrase("Dirección del Cliente:", fontContenido));
+            celda8T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda9T11 = new PdfPCell(new Phrase(getRLCDireClient(), fontContenido));
+            celda9T11.setBorder(PdfPCell.NO_BORDER);
+            //Segunda Fila
+            PdfPCell celda10T11 = new PdfPCell(new Phrase("Distrito:", fontContenido));
+            celda10T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda11T11 = new PdfPCell(new Phrase(getRLCDistrito(), fontContenido));
+            celda11T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda12T11 = new PdfPCell(new Phrase("Provincia:", fontContenido));
+            celda12T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda13T11 = new PdfPCell(new Phrase(getRLCProvincia(), fontContenido));
+            celda13T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda14T11 = new PdfPCell(new Phrase("Estado:", fontContenido));
+            celda14T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda15T11 = new PdfPCell(new Phrase(getRLCEstado(), fontContenido));
+            celda15T11.setBorder(PdfPCell.NO_BORDER);
+
+            PdfPCell celda16T11 = new PdfPCell(new Phrase("Nombre del Proveedor:", fontContenido));
+            celda16T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda17T11 = new PdfPCell(new Phrase(getRLPNombre(), fontContenido));
+            celda17T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda18T11 = new PdfPCell(new Phrase("Actividad:", fontContenido));
+            celda18T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda19T11 = new PdfPCell(new Phrase(getRLPActividad(), fontContenido));
+            celda19T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda20T11 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
+            celda20T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda21T11 = new PdfPCell(new Phrase(getRLPTelef(), fontContenido));
+            celda21T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda22T11 = new PdfPCell(new Phrase("Dirección del Cliente:", fontContenido));
+            celda22T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda23T11 = new PdfPCell(new Phrase(getRLPDire(), fontContenido));
+            celda23T11.setBorder(PdfPCell.NO_BORDER);
+
+            PdfPCell celda24T11 = new PdfPCell(new Phrase("Distrito:", fontContenido));
+            celda24T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda25T11 = new PdfPCell(new Phrase(getRLPDistrito(), fontContenido));
+            celda25T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda26T11 = new PdfPCell(new Phrase("Provincia:", fontContenido));
+            celda26T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda27T11 = new PdfPCell(new Phrase(getRLPProvincia(), fontContenido));
+            celda27T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda28T11 = new PdfPCell(new Phrase("Estado:", fontContenido));
+            celda28T11.setBorder(PdfPCell.NO_BORDER);
+            PdfPCell celda29T11 = new PdfPCell(new Phrase(getRLPEstado(), fontContenido));
+            celda29T11.setBorder(PdfPCell.NO_BORDER);
+
+            //Rectangulos
             PdfContentByte contentByte = writer.getDirectContent();
+            Rectangle rectGrande = new Rectangle(120, 50, 480, 180);
+            rectGrande.setBorder(Rectangle.BOX);
+            contentByte.setColorStroke(BaseColor.BLACK);
+            rectGrande.setBorderWidth(1);
+
+            Rectangle rectABC = new Rectangle(43, 800, 165, 825);
+            rectABC.setBorder(Rectangle.BOX);
+            contentByte.setColorStroke(BaseColor.BLACK);
+            rectABC.setBorderWidth(1);
+
+            Rectangle rectHuella = new Rectangle(385, 85, 450, 170);
+            rectHuella.setBorder(Rectangle.BOX);
+            contentByte.setColorStroke(BaseColor.BLACK);
+            rectHuella.setBorderWidth(1);
+
+            Rectangle rectSi1 = new Rectangle(385, 245, 400, 260);
+            rectSi1.setBorder(Rectangle.BOX);
+            contentByte.setColorStroke(BaseColor.BLACK);
+            rectSi1.setBorderWidth(1);
+
+            Rectangle rectSi2 = new Rectangle(385, 215, 400, 230);
+            rectSi2.setBorder(Rectangle.BOX);
+            contentByte.setColorStroke(BaseColor.BLACK);
+            rectSi2.setBorderWidth(1);
+
+            Rectangle rectNo1 = new Rectangle(435, 245, 450, 260);
+            rectNo1.setBorder(Rectangle.BOX);
+            contentByte.setColorStroke(BaseColor.BLACK);
+            rectNo1.setBorderWidth(1);
+
+            Rectangle rectNo2 = new Rectangle(435, 215, 450, 230);
+            rectNo2.setBorder(Rectangle.BOX);
+            contentByte.setColorStroke(BaseColor.BLACK);
+            rectNo2.setBorderWidth(1);
+
+            contentByte.rectangle(rectHuella);
+            contentByte.rectangle(rectGrande);
+
+            //Linea Firma
+            contentByte.moveTo(150, 90);
+            contentByte.lineTo(295, 90);
+            contentByte.closePathStroke();
+
+            ColumnText firmaText = new ColumnText(contentByte);
+            firmaText.setSimpleColumn(175, 75, 350, 95);
+            firmaText.addElement(new Paragraph("FIRMA DEL TITULAR / DNI", fontContenido));
+
+            firmaText.go();
+
+            ColumnText huellaText = new ColumnText(contentByte);
+            huellaText.setSimpleColumn(375, 40, 493, 90);
+            huellaText.addElement(new Paragraph("HUELLA DEL CLIENTE", fontContenido));
+            huellaText.go();
+
+            //PRIMERA TABLA DATOS PERSONALES DEL SOLICITANTE
+            //Título
+            loTablaCliente.addCell(celda1T2);
+            //Primera Fila
+            loTablaCliente.addCell(celda2T2);
+            loTablaCliente.addCell(celda3T2);
+            loTablaCliente.addCell(celda4T2);
+            loTablaCliente.addCell(celda5T2);
+            loTablaCliente.addCell(celda6T2);
+            loTablaCliente.addCell(celda7T2);
+            loTablaCliente.addCell(celda8T2);
+            loTablaCliente.addCell(celda9T2);
+            //Segunda Fila
+            loTablaCliente.addCell(celda10T2);
+            loTablaCliente.addCell(celda11T2);
+            loTablaCliente.addCell(celda12T2);
+            loTablaCliente.addCell(celda13T2);
+            loTablaCliente.addCell(celda14T2);
+            loTablaCliente.addCell(celda15T2);
+            loTablaCliente.addCell(celda16T2);
+            loTablaCliente.addCell(celda17T2);
+            //Tercera Fila
+            loTablaCliente.addCell(celda18T2);
+            loTablaCliente.addCell(celda19T2);
+            loTablaCliente.addCell(celda20T2);
+            loTablaCliente.addCell(celda21T2);
+            loTablaCliente.addCell(celda22T2);
+            loTablaCliente.addCell(celda23T2);
+            loTablaCliente.addCell(celda24T2);
+            loTablaCliente.addCell(celda25T2);
+            //Cuarta Fila
+            loTablaCliente.addCell(celda26T2);
+            loTablaCliente.addCell(celda27T2);
+            loTablaCliente.addCell(celda28T2);
+            loTablaCliente.addCell(celda29T2);
+            //Quinta Fila
+            loTablaCliente2.addCell(celda30T2);
+            loTablaCliente2.addCell(celda31T2);
+            loTablaCliente2.addCell(celda32T2);
+            loTablaCliente2.addCell(celda33T2);
+            loTablaCliente2.addCell(celda34T2);
+            loTablaCliente2.addCell(celda35T2);
+
+            //SEGUNDA TABLA DATOS DEL CÓNYUGE
+            //Título
+            loTablaCliente3.addCell(celda1T3);
+            //Primera Fila
+            loTablaCliente3.addCell(celda2T3);
+            loTablaCliente3.addCell(celda3T3);
+            loTablaCliente3.addCell(celda4T3);
+            loTablaCliente3.addCell(celda5T3);
+            loTablaCliente3.addCell(celda6T3);
+            loTablaCliente3.addCell(celda7T3);
+            loTablaCliente3.addCell(celda8T3);
+            loTablaCliente3.addCell(celda9T3);
+            //Segunda Fila
+            loTablaCliente3.addCell(celda10T3);
+            loTablaCliente3.addCell(celda11T3);
+            loTablaCliente3.addCell(celda12T3);
+            loTablaCliente3.addCell(celda13T3);
+            loTablaCliente3.addCell(celda14T3);
+            loTablaCliente3.addCell(celda15T3);
+
+            //TERCERA TABLA VIVIENDA
+            //Título
+            loTablaCliente4.addCell(celda1T4);
+            //Primera Fila
+            loTablaCliente4.addCell(celda2T4);
+            loTablaCliente4.addCell(celda3T4);
+            loTablaCliente4.addCell(celda4T4);
+            loTablaCliente4.addCell(celda5T4);
+            loTablaCliente4.addCell(celda6T4);
+            loTablaCliente4.addCell(celda7T4);
+            loTablaCliente4.addCell(celda8T4);
+            loTablaCliente4.addCell(celda9T4);
+            //Segunda Fila
+            loTablaCliente4.addCell(celda10T4);
+            loTablaCliente4.addCell(celda11T4);
+            loTablaCliente4.addCell(celda12T4);
+            loTablaCliente4.addCell(celda13T4);
+            loTablaCliente4.addCell(celda14T4);
+            loTablaCliente4.addCell(celda15T4);
+            loTablaCliente4.addCell(celda16T4);
+            loTablaCliente4.addCell(celda17T4);
+            loTablaCliente4.addCell(celda18T4);
+            loTablaCliente4.addCell(celda19T4);
+
+            //CUARTA TABLA EMPLEADO
+            //Título
+            loTablaCliente5.addCell(celda1T5);
+            //Primera Fila
+            loTablaCliente5.addCell(celda2T5);
+            loTablaCliente5.addCell(celda3T5);
+            loTablaCliente5.addCell(celda4T5);
+            loTablaCliente5.addCell(celda5T5);
+            loTablaCliente5.addCell(celda6T5);
+            loTablaCliente5.addCell(celda7T5);
+            loTablaCliente5.addCell(celda8T5);
+            loTablaCliente5.addCell(celda9T5);
+            //Segunda Fila
+            loTablaCliente5.addCell(celda10T5);
+            loTablaCliente5.addCell(celda11T5);
+            loTablaCliente5.addCell(celda12T5);
+            loTablaCliente5.addCell(celda13T5);
+            loTablaCliente5.addCell(celda14T5);
+            loTablaCliente5.addCell(celda15T5);
+
+            //QUINTA TABLA INDEPENDIENTE
+            //Título
+            loTablaCliente51.addCell(celda1T6);
+            //Primera Fila
+            loTablaCliente51.addCell(celda2T6);
+            loTablaCliente51.addCell(celda3T6);
+            loTablaCliente51.addCell(celda4T6);
+            loTablaCliente51.addCell(celda5T6);
+            loTablaCliente51.addCell(celda6T6);
+            loTablaCliente51.addCell(celda7T6);
+
+            loTablaCliente51.addCell(celda10T6);
+            loTablaCliente51.addCell(celda11T6);
+            loTablaCliente51.addCell(celda12T6);
+            //Segunda Fila
+            loTablaCliente61.addCell(celda13T6);
+            loTablaCliente61.addCell(celda14T6);
+            loTablaCliente61.addCell(celda15T6);
+            loTablaCliente61.addCell(celda16T6);
+            loTablaCliente61.addCell(celda17T6);
+            loTablaCliente61.addCell(celda18T6);
+            loTablaCliente61.addCell(celda19T6);
+            loTablaCliente61.addCell(celda20T6);
+            loTablaCliente61.addCell(celda21T6);
+            loTablaCliente61.addCell(celda22T6);
+
+            loTablaCliente61.addCell(celda23T6);
+            loTablaCliente61.addCell(celda24T6);
+            loTablaCliente61.addCell(celda25T6);
+            loTablaCliente61.addCell(celda26T6);
+            loTablaCliente61.addCell(celda27T6);
+            loTablaCliente61.addCell(celda28T6);
+            loTablaCliente61.addCell(celda29T6);
+
+            //SEXTA TABLA JUBILADO
+            //Título
+            loTablaCliente6.addCell(celda1T7);
+            //Primera Fila
+            loTablaCliente6.addCell(celda2T7);
+            loTablaCliente6.addCell(celda3T7);
+            loTablaCliente6.addCell(celda4T7);
+            loTablaCliente6.addCell(celda5T7);
+            loTablaCliente6.addCell(celda6T7);
+            loTablaCliente6.addCell(celda7T7);
+
+            //SEPTIMA TABLA INFOMRACIÓN FINANCIERA
+            //Título
+            loTablaCliente7.addCell(celda1T8);
+            loTablaCliente7.addCell(celda2T8);
+            //Primera Fila
+            loTablaCliente7.addCell(celda3T8);
+            loTablaCliente7.addCell(celda4T8);
+            loTablaCliente7.addCell(celda5T8);
+            loTablaCliente7.addCell(celda6T8);
+            loTablaCliente7.addCell(celda7T8);
+            loTablaCliente7.addCell(celda8T8);
+            loTablaCliente7.addCell(celda9T8);
+            loTablaCliente7.addCell(celda10T8);
+            loTablaCliente7.addCell(celda11T8);
+            loTablaCliente7.addCell(celda12T8);
+            loTablaCliente7.addCell(celda13T8);
+            loTablaCliente7.addCell(celda14T8);
+            loTablaCliente7.addCell(celda15T8);
+            loTablaCliente7.addCell(celda16T8);
+            //Título
+            loTablaCliente7.addCell(celda17T8);
+            //Primera Fila
+            loTablaCliente7.addCell(celda18T8);
+            loTablaCliente7.addCell(celda19T8);
+            loTablaCliente7.addCell(celda20T8);
+            loTablaCliente7.addCell(celda21T8);
+            loTablaCliente7.addCell(celda22T8);
+            loTablaCliente7.addCell(celda23T8);
+            loTablaCliente7.addCell(celda24T8);
+            loTablaCliente7.addCell(celda25T8);
+            loTablaCliente7.addCell(celda26T8);
+            loTablaCliente7.addCell(celda27T8);
+            loTablaCliente7.addCell(celda28T8);
+            loTablaCliente7.addCell(celda29T8);
+            loTablaCliente7.addCell(celda30T8);
+            loTablaCliente7.addCell(celda31T8);
+
+            //OCTAVA TABLA REFERENCIAS PERSONALES
+            //Título
+            loTablaCliente8.addCell(celda1T9);
+            //Primera Fila
+            loTablaCliente8.addCell(celda2T9);
+            loTablaCliente8.addCell(celda3T9);
+            loTablaCliente8.addCell(celda4T9);
+            loTablaCliente8.addCell(celda5T9);
+            loTablaCliente8.addCell(celda6T9);
+            loTablaCliente8.addCell(celda7T9);
+            loTablaCliente8.addCell(celda8T9);
+            loTablaCliente8.addCell(celda9T9);
+            //Segunda Fila
+            loTablaCliente8.addCell(celda10T9);
+            loTablaCliente8.addCell(celda11T9);
+            loTablaCliente8.addCell(celda12T9);
+            loTablaCliente8.addCell(celda13T9);
+            loTablaCliente8.addCell(celda14T9);
+            loTablaCliente8.addCell(celda15T9);
+            loTablaCliente8.addCell(celda16T9);
+            loTablaCliente8.addCell(celda17T9);
+
+            //NOVENA TABLA REFERENCIAS FAMILIARES
+            //Título
+            loTablaCliente9.addCell(celda1T10);
+            //Primera Fila
+            loTablaCliente9.addCell(celda2T10);
+            loTablaCliente9.addCell(celda3T10);
+            loTablaCliente9.addCell(celda4T10);
+            loTablaCliente9.addCell(celda5T10);
+            loTablaCliente9.addCell(celda6T10);
+            loTablaCliente9.addCell(celda7T10);
+            loTablaCliente9.addCell(celda8T10);
+            loTablaCliente9.addCell(celda9T10);
+            //Segunda Fila
+            loTablaCliente9.addCell(celda10T10);
+            loTablaCliente9.addCell(celda11T10);
+            loTablaCliente9.addCell(celda12T10);
+            loTablaCliente9.addCell(celda13T10);
+            loTablaCliente9.addCell(celda14T10);
+            loTablaCliente9.addCell(celda15T10);
+            loTablaCliente9.addCell(celda16T10);
+            loTablaCliente9.addCell(celda17T10);
+            //Tercer Fila 
+            loTablaCliente9.addCell(celda18T10);
+            loTablaCliente9.addCell(celda19T10);
+            loTablaCliente9.addCell(celda20T10);
+            loTablaCliente9.addCell(celda21T10);
+            loTablaCliente9.addCell(celda22T10);
+            loTablaCliente9.addCell(celda23T10);
+
+            //DECIMA TABLA REFERENCIAS LABORALES
+            //Título
+            loTablaCliente10.addCell(celda1T11);
+            //Primera Fila
+            loTablaCliente10.addCell(celda2T11);
+            loTablaCliente10.addCell(celda3T11);
+            loTablaCliente10.addCell(celda4T11);
+            loTablaCliente10.addCell(celda5T11);
+            loTablaCliente10.addCell(celda6T11);
+            loTablaCliente10.addCell(celda7T11);
+            loTablaCliente10.addCell(celda8T11);
+            loTablaCliente10.addCell(celda9T11);
+            loTablaCliente10.addCell(celda10T11);
+            loTablaCliente10.addCell(celda11T11);
+            loTablaCliente10.addCell(celda12T11);
+            loTablaCliente10.addCell(celda13T11);
+            loTablaCliente10.addCell(celda14T11);
+            loTablaCliente10.addCell(celda15T11);
+            loTablaCliente10.addCell(celda16T11);
+            loTablaCliente10.addCell(celda17T11);
+            loTablaCliente10.addCell(celda18T11);
+            loTablaCliente10.addCell(celda19T11);
+            loTablaCliente10.addCell(celda20T11);
+            loTablaCliente10.addCell(celda21T11);
+            loTablaCliente10.addCell(celda22T11);
+            loTablaCliente10.addCell(celda23T11);
+            loTablaCliente10.addCell(celda24T11);
+            loTablaCliente10.addCell(celda25T11);
+            loTablaCliente10.addCell(celda26T11);
+            loTablaCliente10.addCell(celda27T11);
+            loTablaCliente10.addCell(celda28T11);
+            loTablaCliente10.addCell(celda29T11);
 
             loDoc.add(loTitulo);
+            loDoc.add(loTablaDatos);
+
+            //MOSTRAR DATOS PERSONASLES
+            loDoc.add(loTablaCliente);
+            loDoc.add(loTablaCliente2);
+
+            if (getCPrimerNomb().equals("")) {
+                //MOSTRAR LUGAR DONDE VIVE ACTUALMENTE
+                loDoc.add(loTablaCliente4);
+                if (getENombreEmpr() != null) {
+                    //MOSTRAR SI ES EMPLEADO
+                    loDoc.add(loTablaCliente5);
+                    //MOSTRAR INFORMACIÓN FINANCIERA
+                    loDoc.add(loTablaCliente7);
+                    //MOSTRAR REFERENCIAS PERSONALES
+                    loDoc.add(loTablaCliente8);
+                } else if (getILabor() != null) {
+
+                    loDoc.add(loTablaCliente51);
+                    loDoc.add(loTablaCliente61);
+                    //MOSTRAR INFORMACIÓN FINANCIERA
+                    loDoc.add(loTablaCliente7);
+                    //MOSTRAR REFERENCIAS PERSONALES
+                    loDoc.add(loTablaCliente8);
+
+                } else if (getJNombEmpJ() != null) {
+                    //MOSTRAR SI ES JUBILADO
+                    loDoc.add(loTablaCliente6);
+                    //MOSTRAR INFORMACIÓN FINANCIERA
+                    loDoc.add(loTablaCliente7);
+                    //MOSTRAR REFERENCIAS PERSONALES
+                    loDoc.add(loTablaCliente8);
+                }
+            } else {
+                //MOSTRAR DATOS DEL CÓNYUGE
+                loDoc.add(loTablaCliente3);
+                //MOSTRAR LUGAR DONDE VIVE ACTUALMENTE
+                loDoc.add(loTablaCliente4);
+                if (getENombreEmpr() != null) {
+                    //MOSTRAR SI ES EMPLEADO
+                    loDoc.add(loTablaCliente5);
+                    //MOSTRAR INFORMACIÓN FINANCIERA
+                    loDoc.add(loTablaCliente7);
+                    //MOSTRAR REFERENCIAS PERSONALES
+                    loDoc.add(loTablaCliente8);
+                } else if (getILabor() != null) {
+                    if (getFNombEmpr() != null) {
+                        loDoc.add(loTablaCliente51);
+                        loDoc.add(loTablaCliente61);
+                        //MOSTRAR INFORMACIÓN FINANCIERA
+                        loDoc.add(loTablaCliente7);
+                        //MOSTRAR REFERENCIAS PERSONALES
+                        loDoc.add(loTablaCliente10);
+                    } else {
+                        loDoc.add(loTablaCliente51);
+
+                        //MOSTRAR INFORMACIÓN FINANCIERA
+                        loDoc.add(loTablaCliente7);
+                        //MOSTRAR REFERENCIAS PERSONALES
+                        loDoc.add(loTablaCliente10);
+                    }
+
+                } else if (getJNombEmpJ() != null) {
+                    //MOSTRAR SI ES JUBILADO
+                    loDoc.add(loTablaCliente6);
+                    //MOSTRAR INFORMACIÓN FINANCIERA
+                    loDoc.add(loTablaCliente7);
+                    //MOSTRAR REFERENCIAS PERSONALES
+                    loDoc.add(loTablaCliente8);
+                }
+
+            }
+
             loDoc.close();
 
         } catch (FileNotFoundException | DocumentException loErr) {
@@ -3068,4 +4138,790 @@ public class CReportePDF {
     public void setPasswd(String passwd) {
         this.passwd = passwd;
     }
+
+    public String getCodEvaluador() {
+        return CodEvaluador;
+    }
+
+    public void setCodEvaluador(String CodEvaluador) {
+        this.CodEvaluador = CodEvaluador;
+    }
+
+    public String getPuntVenta() {
+        return PuntVenta;
+    }
+
+    public void setPuntVenta(String PuntVenta) {
+        this.PuntVenta = PuntVenta;
+    }
+
+    public String getFecSolicitud() {
+        return FecSolicitud;
+    }
+
+    public void setFecSolicitud(String FecSolicitud) {
+        this.FecSolicitud = FecSolicitud;
+    }
+
+    public String getCiudadExp() {
+        return CiudadExp;
+    }
+
+    public void setCiudadExp(String CiudadExp) {
+        this.CiudadExp = CiudadExp;
+    }
+
+    public String getNacionalidad() {
+        return Nacionalidad;
+    }
+
+    public void setNacionalidad(String Nacionalidad) {
+        this.Nacionalidad = Nacionalidad;
+    }
+
+    public String getCiudadNac() {
+        return CiudadNac;
+    }
+
+    public void setCiudadNac(String CiudadNac) {
+        this.CiudadNac = CiudadNac;
+    }
+
+    public String getPaisNac() {
+        return PaisNac;
+    }
+
+    public void setPaisNac(String PaisNac) {
+        this.PaisNac = PaisNac;
+    }
+
+    public String getNperDepend() {
+        return NperDepend;
+    }
+
+    public void setNperDepend(String NperDepend) {
+        this.NperDepend = NperDepend;
+    }
+
+    public String getCPrimerNomb() {
+        return CPrimerNomb;
+    }
+
+    public void setCPrimerNomb(String CPrimerNomb) {
+        this.CPrimerNomb = CPrimerNomb;
+    }
+
+    public String getCSegundNomb() {
+        return CSegundNomb;
+    }
+
+    public void setCSegundNomb(String CSegundNomb) {
+        this.CSegundNomb = CSegundNomb;
+    }
+
+    public String getCPrimerApel() {
+        return CPrimerApel;
+    }
+
+    public void setCPrimerApel(String CPrimerApel) {
+        this.CPrimerApel = CPrimerApel;
+    }
+
+    public String getCSegundApel() {
+        return CSegundApel;
+    }
+
+    public void setCSegundApel(String CSegundApel) {
+        this.CSegundApel = CSegundApel;
+    }
+
+    public String getCEmpdondTrab() {
+        return CEmpdondTrab;
+    }
+
+    public void setCEmpdondTrab(String CEmpdondTrab) {
+        this.CEmpdondTrab = CEmpdondTrab;
+    }
+
+    public String getCEmpCargo() {
+        return CEmpCargo;
+    }
+
+    public void setCEmpCargo(String CEmpCargo) {
+        this.CEmpCargo = CEmpCargo;
+    }
+
+    public String getCEmpTelef() {
+        return CEmpTelef;
+    }
+
+    public void setCEmpTelef(String CEmpTelef) {
+        this.CEmpTelef = CEmpTelef;
+    }
+
+    public String getVSuministro() {
+        return VSuministro;
+    }
+
+    public void setVSuministro(String VSuministro) {
+        this.VSuministro = VSuministro;
+    }
+
+    public String getVTitularSum() {
+        return VTitularSum;
+    }
+
+    public void setVTitularSum(String VTitularSum) {
+        this.VTitularSum = VTitularSum;
+    }
+
+    public String getVRelacTitul() {
+        return VRelacTitul;
+    }
+
+    public void setVRelacTitul(String VRelacTitul) {
+        this.VRelacTitul = VRelacTitul;
+    }
+
+    public String getVTipoVivien() {
+        return VTipoVivien;
+    }
+
+    public void setVTipoVivien(String VTipoVivien) {
+        this.VTipoVivien = VTipoVivien;
+    }
+
+    public String getVHaceCVivea() {
+        return VHaceCVivea;
+    }
+
+    public void setVHaceCVivea(String VHaceCVivea) {
+        this.VHaceCVivea = VHaceCVivea;
+    }
+
+    public String getVDireccResi() {
+        return VDireccResi;
+    }
+
+    public void setVDireccResi(String VDireccResi) {
+        this.VDireccResi = VDireccResi;
+    }
+
+    public String getVDistVivien() {
+        return VDistVivien;
+    }
+
+    public void setVDistVivien(String VDistVivien) {
+        this.VDistVivien = VDistVivien;
+    }
+
+    public String getVProvVivien() {
+        return VProvVivien;
+    }
+
+    public void setVProvVivien(String VProvVivien) {
+        this.VProvVivien = VProvVivien;
+    }
+
+    public String getVDepaVivien() {
+        return VDepaVivien;
+    }
+
+    public void setVDepaVivien(String VDepaVivien) {
+        this.VDepaVivien = VDepaVivien;
+    }
+
+    public String getENombreEmpr() {
+        return ENombreEmpr;
+    }
+
+    public void setENombreEmpr(String ENombreEmpr) {
+        this.ENombreEmpr = ENombreEmpr;
+    }
+
+    public String getERUCEmpr() {
+        return ERUCEmpr;
+    }
+
+    public void setERUCEmpr(String ERUCEmpr) {
+        this.ERUCEmpr = ERUCEmpr;
+    }
+
+    public String getEActivdEmpr() {
+        return EActivdEmpr;
+    }
+
+    public void setEActivdEmpr(String EActivdEmpr) {
+        this.EActivdEmpr = EActivdEmpr;
+    }
+
+    public String getEDirEmpr() {
+        return EDirEmpr;
+    }
+
+    public void setEDirEmpr(String EDirEmpr) {
+        this.EDirEmpr = EDirEmpr;
+    }
+
+    public String getEDepEmpr() {
+        return EDepEmpr;
+    }
+
+    public void setEDepEmpr(String EDepEmpr) {
+        this.EDepEmpr = EDepEmpr;
+    }
+
+    public String getEDisEmpr() {
+        return EDisEmpr;
+    }
+
+    public void setEDisEmpr(String EDisEmpr) {
+        this.EDisEmpr = EDisEmpr;
+    }
+
+    public String getEProvEmpr() {
+        return EProvEmpr;
+    }
+
+    public void setEProvEmpr(String EProvEmpr) {
+        this.EProvEmpr = EProvEmpr;
+    }
+
+    public String getILabor() {
+        return ILabor;
+    }
+
+    public void setILabor(String ILabor) {
+        this.ILabor = ILabor;
+    }
+
+    public String getIHacecuantInd() {
+        return IHacecuantInd;
+    }
+
+    public void setIHacecuantInd(String IHacecuantInd) {
+        this.IHacecuantInd = IHacecuantInd;
+    }
+
+    public String getITipodeInd() {
+        return ITipodeInd;
+    }
+
+    public void setITipodeInd(String ITipodeInd) {
+        this.ITipodeInd = ITipodeInd;
+    }
+
+    public String getFNombEmpr() {
+        return FNombEmpr;
+    }
+
+    public void setFNombEmpr(String FNombEmpr) {
+        this.FNombEmpr = FNombEmpr;
+    }
+
+    public String getFRUCEmpr() {
+        return FRUCEmpr;
+    }
+
+    public void setFRUCEmpr(String FRUCEmpr) {
+        this.FRUCEmpr = FRUCEmpr;
+    }
+
+    public String getFCargo() {
+        return FCargo;
+    }
+
+    public void setFCargo(String FCargo) {
+        this.FCargo = FCargo;
+    }
+
+    public String getFDirLabo() {
+        return FDirLabo;
+    }
+
+    public void setFDirLabo(String FDirLabo) {
+        this.FDirLabo = FDirLabo;
+    }
+
+    public String getFDisLabo() {
+        return FDisLabo;
+    }
+
+    public void setFDisLabo(String FDisLabo) {
+        this.FDisLabo = FDisLabo;
+    }
+
+    public String getFProLabo() {
+        return FProLabo;
+    }
+
+    public void setFProLabo(String FProLabo) {
+        this.FProLabo = FProLabo;
+    }
+
+    public String getFDepLabo() {
+        return FDepLabo;
+    }
+
+    public void setFDepLabo(String FDepLabo) {
+        this.FDepLabo = FDepLabo;
+    }
+
+    public String getFTelef() {
+        return FTelef;
+    }
+
+    public void setFTelef(String FTelef) {
+        this.FTelef = FTelef;
+    }
+
+    public String getFAnexo() {
+        return FAnexo;
+    }
+
+    public void setFAnexo(String FAnexo) {
+        this.FAnexo = FAnexo;
+    }
+
+    public String getFCorreo() {
+        return FCorreo;
+    }
+
+    public void setFCorreo(String FCorreo) {
+        this.FCorreo = FCorreo;
+    }
+
+    public String getJNombEmpJ() {
+        return JNombEmpJ;
+    }
+
+    public void setJNombEmpJ(String JNombEmpJ) {
+        this.JNombEmpJ = JNombEmpJ;
+    }
+
+    public String getJNombEmpA() {
+        return JNombEmpA;
+    }
+
+    public void setJNombEmpA(String JNombEmpA) {
+        this.JNombEmpA = JNombEmpA;
+    }
+
+    public String getJHacecuaJ() {
+        return JHacecuaJ;
+    }
+
+    public void setJHacecuaJ(String JHacecuaJ) {
+        this.JHacecuaJ = JHacecuaJ;
+    }
+
+    public double getISueldBas() {
+        return ISueldBas;
+    }
+
+    public void setISueldBas(double ISueldBas) {
+        this.ISueldBas = ISueldBas;
+    }
+
+    public double getIComisiones() {
+        return IComisiones;
+    }
+
+    public void setIComisiones(double IComisiones) {
+        this.IComisiones = IComisiones;
+    }
+
+    public double getIHonorarios() {
+        return IHonorarios;
+    }
+
+    public void setIHonorarios(double IHonorarios) {
+        this.IHonorarios = IHonorarios;
+    }
+
+    public double getIAlquileres() {
+        return IAlquileres;
+    }
+
+    public void setIAlquileres(double IAlquileres) {
+        this.IAlquileres = IAlquileres;
+    }
+
+    public double getIOtrosIngres() {
+        return IOtrosIngres;
+    }
+
+    public void setIOtrosIngres(double IOtrosIngres) {
+        this.IOtrosIngres = IOtrosIngres;
+    }
+
+    public double getITotalIng() {
+        return ITotalIng;
+    }
+
+    public void setITotalIng(double ITotalIng) {
+        this.ITotalIng = ITotalIng;
+    }
+
+    public double getITotalAct() {
+        return ITotalAct;
+    }
+
+    public void setITotalAct(double ITotalAct) {
+        this.ITotalAct = ITotalAct;
+    }
+
+    public double getGAlquiler() {
+        return GAlquiler;
+    }
+
+    public void setGAlquiler(double GAlquiler) {
+        this.GAlquiler = GAlquiler;
+    }
+
+    public double getGCreditoViv() {
+        return GCreditoViv;
+    }
+
+    public void setGCreditoViv(double GCreditoViv) {
+        this.GCreditoViv = GCreditoViv;
+    }
+
+    public double getGGastosFamil() {
+        return GGastosFamil;
+    }
+
+    public void setGGastosFamil(double GGastosFamil) {
+        this.GGastosFamil = GGastosFamil;
+    }
+
+    public double getGTarjetasCred() {
+        return GTarjetasCred;
+    }
+
+    public void setGTarjetasCred(double GTarjetasCred) {
+        this.GTarjetasCred = GTarjetasCred;
+    }
+
+    public double getGOtrosGas() {
+        return GOtrosGas;
+    }
+
+    public void setGOtrosGas(double GOtrosGas) {
+        this.GOtrosGas = GOtrosGas;
+    }
+
+    public double getGTotalGas() {
+        return GTotalGas;
+    }
+
+    public void setGTotalGas(double GTotalGas) {
+        this.GTotalGas = GTotalGas;
+    }
+
+    public double getGTotalPat() {
+        return GTotalPat;
+    }
+
+    public void setGTotalPat(double GTotalPat) {
+        this.GTotalPat = GTotalPat;
+    }
+
+
+    public String getRPPrimerNomb() {
+        return RPPrimerNomb;
+    }
+
+    public void setRPPrimerNomb(String RPPrimerNomb) {
+        this.RPPrimerNomb = RPPrimerNomb;
+    }
+
+    public String getRPSegundoNomb() {
+        return RPSegundoNomb;
+    }
+
+    public void setRPSegundoNomb(String RPSegundoNomb) {
+        this.RPSegundoNomb = RPSegundoNomb;
+    }
+
+    public String getRPPrimerApell() {
+        return RPPrimerApell;
+    }
+
+    public void setRPPrimerApell(String RPPrimerApell) {
+        this.RPPrimerApell = RPPrimerApell;
+    }
+
+    public String getRPSegundoApell() {
+        return RPSegundoApell;
+    }
+
+    public void setRPSegundoApell(String RPSegundoApell) {
+        this.RPSegundoApell = RPSegundoApell;
+    }
+
+    public String getRPDirec() {
+        return RPDirec;
+    }
+
+    public void setRPDirec(String RPDirec) {
+        this.RPDirec = RPDirec;
+    }
+
+    public String getRPDistr() {
+        return RPDistr;
+    }
+
+    public void setRPDistr(String RPDistr) {
+        this.RPDistr = RPDistr;
+    }
+
+    public String getRPProvi() {
+        return RPProvi;
+    }
+
+    public void setRPProvi(String RPProvi) {
+        this.RPProvi = RPProvi;
+    }
+
+    public String getRPEstad() {
+        return RPEstad;
+    }
+
+    public void setRPEstad(String RPEstad) {
+        this.RPEstad = RPEstad;
+    }
+
+    public String getRPTelef() {
+        return RPTelef;
+    }
+
+    public void setRPTelef(String RPTelef) {
+        this.RPTelef = RPTelef;
+    }
+
+    public String getRPCelul() {
+        return RPCelul;
+    }
+
+    public void setRPCelul(String RPCelul) {
+        this.RPCelul = RPCelul;
+    }
+
+    public String getRPParen() {
+        return RPParen;
+    }
+
+    public void setRPParen(String RPParen) {
+        this.RPParen = RPParen;
+    }
+
+    public String getRFPrimerNomb() {
+        return RFPrimerNomb;
+    }
+
+    public void setRFPrimerNomb(String RFPrimerNomb) {
+        this.RFPrimerNomb = RFPrimerNomb;
+    }
+
+    public String getRFSegundoNomb() {
+        return RFSegundoNomb;
+    }
+
+    public void setRFSegundoNomb(String RFSegundoNomb) {
+        this.RFSegundoNomb = RFSegundoNomb;
+    }
+
+    public String getRFPrimerApell() {
+        return RFPrimerApell;
+    }
+
+    public void setRFPrimerApell(String RFPrimerApell) {
+        this.RFPrimerApell = RFPrimerApell;
+    }
+
+    public String getRFSegundoApell() {
+        return RFSegundoApell;
+    }
+
+    public void setRFSegundoApell(String RFSegundoApell) {
+        this.RFSegundoApell = RFSegundoApell;
+    }
+
+    public String getRFDirec() {
+        return RFDirec;
+    }
+
+    public void setRFDirec(String RFDirec) {
+        this.RFDirec = RFDirec;
+    }
+
+    public String getRFDistr() {
+        return RFDistr;
+    }
+
+    public void setRFDistr(String RFDistr) {
+        this.RFDistr = RFDistr;
+    }
+
+    public String getRFProvi() {
+        return RFProvi;
+    }
+
+    public void setRFProvi(String RFProvi) {
+        this.RFProvi = RFProvi;
+    }
+
+    public String getRFEstad() {
+        return RFEstad;
+    }
+
+    public void setRFEstad(String RFEstad) {
+        this.RFEstad = RFEstad;
+    }
+
+    public String getRFTelef() {
+        return RFTelef;
+    }
+
+    public void setRFTelef(String RFTelef) {
+        this.RFTelef = RFTelef;
+    }
+
+    public String getRFCelul() {
+        return RFCelul;
+    }
+
+    public void setRFCelul(String RFCelul) {
+        this.RFCelul = RFCelul;
+    }
+
+    public String getRFParen() {
+        return RFParen;
+    }
+
+    public void setRFParen(String RFParen) {
+        this.RFParen = RFParen;
+    }
+
+    public String getRLCNombre() {
+        return RLCNombre;
+    }
+
+    public void setRLCNombre(String RLCNombre) {
+        this.RLCNombre = RLCNombre;
+    }
+
+    public String getRLCActividad() {
+        return RLCActividad;
+    }
+
+    public void setRLCActividad(String RLCActividad) {
+        this.RLCActividad = RLCActividad;
+    }
+
+    public String getRLCTelef() {
+        return RLCTelef;
+    }
+
+    public void setRLCTelef(String RLCTelef) {
+        this.RLCTelef = RLCTelef;
+    }
+
+    public String getRLCDireClient() {
+        return RLCDireClient;
+    }
+
+    public void setRLCDireClient(String RLCDireClient) {
+        this.RLCDireClient = RLCDireClient;
+    }
+
+    public String getRLCDistrito() {
+        return RLCDistrito;
+    }
+
+    public void setRLCDistrito(String RLCDistrito) {
+        this.RLCDistrito = RLCDistrito;
+    }
+
+    public String getRLCProvincia() {
+        return RLCProvincia;
+    }
+
+    public void setRLCProvincia(String RLCProvincia) {
+        this.RLCProvincia = RLCProvincia;
+    }
+
+    public String getRLCEstado() {
+        return RLCEstado;
+    }
+
+    public void setRLCEstado(String RLCEstado) {
+        this.RLCEstado = RLCEstado;
+    }
+
+    public String getRLPNombre() {
+        return RLPNombre;
+    }
+
+    public void setRLPNombre(String RLPNombre) {
+        this.RLPNombre = RLPNombre;
+    }
+
+    public String getRLPActividad() {
+        return RLPActividad;
+    }
+
+    public void setRLPActividad(String RLPActividad) {
+        this.RLPActividad = RLPActividad;
+    }
+
+    public String getRLPTelef() {
+        return RLPTelef;
+    }
+
+    public void setRLPTelef(String RLPTelef) {
+        this.RLPTelef = RLPTelef;
+    }
+
+    public String getRLPDire() {
+        return RLPDire;
+    }
+
+    public void setRLPDire(String RLPDire) {
+        this.RLPDire = RLPDire;
+    }
+
+    public String getRLPDistrito() {
+        return RLPDistrito;
+    }
+
+    public void setRLPDistrito(String RLPDistrito) {
+        this.RLPDistrito = RLPDistrito;
+    }
+
+    public String getRLPProvincia() {
+        return RLPProvincia;
+    }
+
+    public void setRLPProvincia(String RLPProvincia) {
+        this.RLPProvincia = RLPProvincia;
+    }
+
+    public String getRLPEstado() {
+        return RLPEstado;
+    }
+
+    public void setRLPEstado(String RLPEstado) {
+        this.RLPEstado = RLPEstado;
+    }
+
+    public String getTipoIndep() {
+        return TipoIndep;
+    }
+
+    public void setTipoIndep(String TipoIndep) {
+        this.TipoIndep = TipoIndep;
+    }
+
 }

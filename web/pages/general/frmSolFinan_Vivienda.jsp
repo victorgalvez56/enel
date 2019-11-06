@@ -113,7 +113,39 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
+                                            <s:hidden name="CodEvaluador"></s:hidden>
+                                            <s:hidden name="PuntVenta"></s:hidden>
+                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="cliente.TipDocCiv"></s:hidden>
+                                            <s:hidden name="cliente.NroDocCiv"></s:hidden>
+                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="cliente.nombre"></s:hidden>
+                                            <s:hidden name="cliente.SegundoNo"></s:hidden>
+                                            <s:hidden name="cliente.ApePat"></s:hidden>
+                                            <s:hidden name="cliente.ApeMat"></s:hidden>
+                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="cliente.FecNac"></s:hidden>
+                                            <s:hidden name="CiudadNac"></s:hidden>
+                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="cliente.sexo"></s:hidden>
+                                            <s:hidden name="cliente.EstCiv"></s:hidden>
+                                            <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
+                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="cliente.Correo"></s:hidden>
+                                            <s:hidden name="cliente.Telefono"></s:hidden>
+                                                <!Cónyuge-->
+                                            <s:hidden name="cPrimerNomb"></s:hidden>
+                                            <s:hidden name="cSegundNomb"></s:hidden>
+                                            <s:hidden name="cPrimerApel"></s:hidden>
+                                            <s:hidden name="cSegundApel"></s:hidden>
+                                            <s:hidden name="cEmpdondTrab"></s:hidden>
+                                            <s:hidden name="cEmpCargo"></s:hidden>
+                                            <s:hidden name="cEmpTelef"></s:hidden>
+
+
+
+
                                             <s:submit name="siguienteViviend" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
