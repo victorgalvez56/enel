@@ -53,19 +53,19 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa en la cual se Jubiló: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="jNombEmpJ" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="nEmprJub" tabindex="1" name="jNombEmpJ" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>     
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa donde hizo el Aporte para Jubilación: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="jNombEmpA" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="nEmprAp" tabindex="2" name="jNombEmpA" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Hace Cuanto es Jubilado: </label>
-                                                            <s:textfield cssClass="form-control" id="tfCodCre" tabindex="11" name="jHacecuaJ" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="hcJub" tabindex="3" name="jHacecuaJ" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
@@ -141,7 +141,21 @@
         $("#FechaSol").prop('required', true);
         $("#sEstudios").prop('required', true);
 
-
+        $('#nEmprJub').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#nEmprAp').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#hcJub').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
 
 
 

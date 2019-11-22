@@ -53,19 +53,19 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Describa específicamente la labor que realiza como independiente: </label>
-                                                            <s:textfield cssClass="form-control" id="labIndependiente" tabindex="11" name="iLabor" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="labIndependiente" tabindex="1" name="iLabor" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Hace cuanto es independiente: </label>
-                                                            <s:textfield cssClass="form-control" id="haceIndependiente" tabindex="11" name="iHacecuantInd" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="haceIndependiente" tabindex="2" name="iHacecuantInd" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Tipo de Independiente: </label>
-                                                            <s:textfield cssClass="form-control" id="tipIndependiente" tabindex="11" name="iTipodeInd" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tipIndependiente" tabindex="3" name="iTipodeInd" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
@@ -83,25 +83,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa(Si aplica): </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="nEmpresa" tabindex="11" name="fNombEmpr" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="nEmpresa" tabindex="4" name="fNombEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>RUC: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="rucEmpresa" tabindex="11" name="fRUCEmpr" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="rucEmpresa" tabindex="5" name="fRUCEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Cargo/Ocupación: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="cargEmpresa" tabindex="11" name="fCargo" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="cargEmpresa" tabindex="6" name="fCargo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Dirección donde Labora: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="direcEmpresa" tabindex="11" name="fDirLabo" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="direcEmpresa" tabindex="7" name="fDirLabo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,13 +111,13 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:select name="fDisLabo" tabindex="10" cssClass="form-control tipoindep" id="provEmpresa" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="fDisLabo" tabindex="8" cssClass="form-control tipoindep" id="provEmpresa" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Provincia: </label>
-                                                            <s:select name="fProLabo" tabindex="10" cssClass="form-control tipoindep" id="provEmpresa" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="fProLabo" tabindex="9" cssClass="form-control tipoindep" id="provEmpresa" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
@@ -135,14 +135,14 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Anexo: </label>
-                                                            <s:textfield cssClass="form-control tipoindep" id="anexEmpresa" tabindex="11" name="fAnexo" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control tipoindep" id="anexEmpresa" tabindex="12" name="fAnexo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Correo Electrónico: </label>
-                                                            <s:textfield type="text" cssClass="form-control tipoindep" id="corrEmpresa" tabindex="11" name="fCorreo" style="text-transform: uppercase;" />
-                                                            <s:hidden cssClass="form-control Tempresa" id="Tempresa" tabindex="11" name="TipoIndep" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control tipoindep" id="corrEmpresa" tabindex="13" name="fCorreo" style="text-transform: uppercase;" />
+                                                            <s:hidden cssClass="form-control Tempresa" id="Tempresa"  name="TipoIndep" style="text-transform: uppercase;" />
 
                                                         </div>
                                                     </div>
@@ -193,7 +193,7 @@
                                             <s:hidden name="vDistVivien"></s:hidden>
                                             <s:hidden name="vProvVivien"></s:hidden>
                                             <s:hidden name="vDepaVivien"></s:hidden>
-                                            <s:submit name="siguienteIndep" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="siguienteIndep" value="Siguiente" tabindex="14"  id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -230,24 +230,60 @@
             } else {
                 obj2.val("Formal")
                 console.log(obj2.val())
-                /*
-                 $("#nEmpresa").prop('required', true);
-                 $("#rucEmpresa").prop('required', true);
-                 $("#cargEmpresa").prop('required', true);
-                 $("#direcEmpresa").prop('required', true);
-                 $("#distrEmpresa").prop('required', true);
-                 $("#tipIndependiente").prop('required', true);
-                 $("#provEmpresa").prop('required', true);
-                 $("#deparEmpresa").prop('required', true);
-                 $("#tfEmpresa").prop('required', true);
-                 $("#anexEmpresa").prop('required', true);
-                 $("#corrEmpresa").prop('required', true);
-                 */
             }
         })
 
+        $('#labIndependiente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#haceIndependiente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#tipIndependiente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#nEmpresa').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rucEmpresa').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#cargEmpresa').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#direcEmpresa').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
 
-
+        $('#tfEmpresa').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#anexEmpresa').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#corrEmpresa').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
 
         </script>
 

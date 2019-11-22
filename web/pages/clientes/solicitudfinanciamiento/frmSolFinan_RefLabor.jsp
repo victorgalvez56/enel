@@ -53,25 +53,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Nombre del Cliente: </label>
-                                                            <s:textfield cssClass="form-control rf" id="nCliente" tabindex="11" name="rLCNombre" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control rf" id="nCliente" tabindex="1" name="rLCNombre" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Actividad:  </label>
-                                                            <s:textfield cssClass="form-control" id="actCliente" tabindex="11" name="rLCActividad" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="actCliente" tabindex="2" name="rLCActividad" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Teléfono:  </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="tfCliente" tabindex="11" name="rLCTelef" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="tfCliente" tabindex="3" name="rLCTelef" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Dirección del Cliente:  </label>
-                                                            <s:textfield cssClass="form-control" id="dirCliente" tabindex="11" name="rLCDireClient" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="dirCliente" tabindex="4" name="rLCDireClient" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,19 +79,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:select name="rLCDistrito" tabindex="10" id="distCliente" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rLCDistrito" tabindex="5" id="distCliente" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Provincia:  </label>
-                                                            <s:select name="rLCProvincia" tabindex="10" id="provCliente" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rLCProvincia" tabindex="6" id="provCliente" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Estado:  </label>
-                                                            <s:textfield cssClass="form-control" id="estCliente" tabindex="11" name="rLCEstado" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="estCliente" tabindex="7" name="rLCEstado" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -99,19 +99,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Nombre del proveedor: </label>
-                                                            <s:textfield cssClass="form-control" id="nProveedor" tabindex="11" name="rLPNombre" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="nProveedor" tabindex="8" name="rLPNombre" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Actividad:  </label>
-                                                            <s:textfield cssClass="form-control" id="nProveedor" tabindex="11" name="rLPActividad" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="actProveedor" tabindex="9" name="rLPActividad" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Teléfono:  </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="tfProveedor" tabindex="11" name="rLPTelef" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="tfProveedor" tabindex="10" name="rLPTelef" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -125,19 +125,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:select name="rLPDistrito" tabindex="10" id="distProveedor" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rLPDistrito" tabindex="12" id="distProveedor" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Provincia:  </label>
-                                                            <s:select name="rLPProvincia" tabindex="10" id="provProveedor" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rLPProvincia" tabindex="13" id="provProveedor" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Estado:  </label>
-                                                            <s:textfield cssClass="form-control" id="estProveedor" tabindex="11" name="rLPEstado" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="estProveedor" tabindex="14" name="rLPEstado" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,7 +254,7 @@
                                             <s:hidden name="rFParen"></s:hidden>   
 
 
-                                            <s:submit name="siguienteLabor" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="siguienteLabor" value="Siguiente" tabindex="15" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -272,23 +272,54 @@
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
 
         <script>
-        /*
-         $("#nCliente").prop('required', true);
-         $("#actCliente").prop('required', true);
-         $("#tfCliente").prop('required', true);
-         $("#dirCliente").prop('required', true);
-         $("#distCliente").prop('required', true);
-         $("#provCliente").prop('required', true);
-         $("#estCliente").prop('required', true);
-         
-         $("#nProveedor").prop('required', true);
-         $("#actProveedor").prop('required', true);
-         $("#tfProveedor").prop('required', true);
-         $("#dirProveedor").prop('required', true);
-         $("#distProveedor").prop('required', true);
-         $("#provProveedor").prop('required', true);
-         $("#estProveedor").prop('required', true);
-         */
+
+        $('#nCliente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#actCliente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#tfCliente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#dirCliente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+
+        $('#estCliente').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#nProveedor').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#actProveedor').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#dirProveedor').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#estProveedor').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+
         </script>
 
     </body>

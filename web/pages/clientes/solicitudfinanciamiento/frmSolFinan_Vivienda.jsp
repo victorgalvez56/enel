@@ -53,56 +53,56 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Número Suministro: </label>
-                                                            <s:textfield cssClass="form-control" id="nSuminis" tabindex="11" name="vSuministro" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="numSumins" tabindex="1" name="vSuministro" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Titular del Suministro: </label>
-                                                            <s:textfield cssClass="form-control" id="TSuminis" tabindex="11" name="vTitularSum" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="titSumins" tabindex="2" name="vTitularSum" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Relación con el titular: </label>
-                                                            <s:textfield cssClass="form-control" id="Rtitular" tabindex="11" name="vRelacTitul" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="relaSumins" tabindex="3" name="vRelacTitul" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Tipo de Vivienda: </label>
-                                                            <s:textfield cssClass="form-control" id="Tvivienda" tabindex="11" name="vTipoVivien" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tipoViv" tabindex="4" name="vTipoVivien" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Hace cuanto vive allí: </label>
-                                                            <s:textfield cssClass="form-control" id="Tiempviv" tabindex="11" name="vHaceCVivea" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="tiemViv" tabindex="5" name="vHaceCVivea" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Dirección residencia: </label>
-                                                            <s:textfield cssClass="form-control" id="DirecResid" tabindex="11" name="vDireccResi" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="direcViv" tabindex="6" name="vDireccResi" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:select name="vDistVivien" tabindex="10" id="Distr" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="vDistVivien" tabindex="7" id="distViv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Provincia: </label>
-                                                            <s:select name="vProvVivien" tabindex="10" id="Pronv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="vProvVivien" tabindex="8" id="provViv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Departamento: </label>
-                                                            <s:select name="vDepaVivien" tabindex="10" id="Depar" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="vDepaVivien" tabindex="9" id="depaViv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                 </div>
@@ -146,7 +146,7 @@
 
 
 
-                                            <s:submit name="siguienteViviend" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="siguienteViviend" value="Siguiente" tabindex="10" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -165,23 +165,52 @@
 
         <script>
 
-        /*
-         $("#nSuminis").prop('required', true);
-         $("#TSuminis").prop('required', true);
-         $("#Rtitular").prop('required', true);
-         $("#Tvivienda").prop('required', true);
-         $("#EmpTrabaja").prop('required', true);
-         $("#Tiempviv").prop('required', true);
-         $("#DirecResid").prop('required', true);
-         $("#Distr").prop('required', true);
-         $("#Pronv").prop('required', true);
-         $("#Depar").prop('required', true);
-         */
-
-
-
-
-
+        $('#numSumins').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#titSumins').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#relaSumins').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#tipoViv').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#tiemViv').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#direcViv').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#distViv').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#provViv').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#depaViv').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+  
         </script>
 
     </body>

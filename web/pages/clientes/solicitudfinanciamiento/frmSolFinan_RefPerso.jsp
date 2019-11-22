@@ -53,25 +53,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primer Nombre: </label>
-                                                            <s:textfield cssClass="form-control" id="Pnombre" tabindex="11" name="rPPrimerNomb" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="rppNombre" tabindex="1" name="rPPrimerNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Nombre:  </label>
-                                                            <s:textfield cssClass="form-control" id="Snombre" tabindex="11" name="rPSegundoNomb" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="rpsNombre" tabindex="2" name="rPSegundoNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primer Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="Papellido" tabindex="11" name="rPPrimerApell" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="rppApellido" tabindex="3" name="rPPrimerApell" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="Sapellido" tabindex="11" name="rPSegundoApell" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="rpsApellido" tabindex="4" name="rPSegundoApell" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,25 +79,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Dirección: </label>
-                                                            <s:textfield cssClass="form-control" id="Direc" tabindex="11" name="rPDirec" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="rpDirec" tabindex="5" name="rPDirec" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Distrito:  </label>
-                                                            <s:select name="rPDistr" tabindex="10" id="Distr" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rPDistr" tabindex="6" id="rpDistr" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Provincia:  </label>
-                                                            <s:select name="rPProvi" tabindex="10" id="Provinc" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rPProvi" tabindex="7" id="rpProvc" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Estado:  </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="Telef" tabindex="11" name="rPEstad" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="rpEstado" tabindex="8" name="rPEstad" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -105,19 +105,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Teléfono </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="Telef" tabindex="11" name="rPTelef" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="rpTelef" tabindex="9" name="rPTelef" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Celular:  </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="Celular" tabindex="11" name="rPCelul" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="rpCelu" tabindex="10" name="rPCelul" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Parentesco:  </label>
-                                                            <s:textfield cssClass="form-control" id="Parent" tabindex="11" name="rPParen" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="rpParent" tabindex="11" name="rPParen" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -228,22 +228,64 @@
         <!-- iCheck -->
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
         <script>
-        /*
-         $("#Pnombre").prop('required', true);
-         $("#Snombre").prop('required', true);
-         $("#Papellido").prop('required', true);
-         $("#Sapellido").prop('required', true);
-         $("#Direc").prop('required', true);
-         $("#Distr").prop('required', true);
-         $("#Provinc").prop('required', true);
-         $("#Distr").prop('required', true);
-         $("#Pronv").prop('required', true);
-         $("#Depar").prop('required', true);
-         $("#Estad").prop('required', true);
-         $("#Telef").prop('required', true);
-         $("#Celular").prop('required', true);
-         $("#Parent").prop('required', true);
-         */
+        $('#rppNombre').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rpsNombre').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rppApellido').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rpsApellido').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+
+        $('#rpDirec').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rPDistr').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rPProvi').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rpEstado').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+
+        $('#rpTelef').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rpCelu').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rpParent').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+
         </script>
 
     </body>

@@ -228,14 +228,14 @@ public class MenuAction extends BaseAction {
     private List<Product> lstProducts;
     private Product product;
     //Datos Solicitante Financiero
-    private String CodEvaluador;
-    private String PuntVenta;
-    private String FecSolicitud;
-    private String CiudadExp;
-    private String Nacionalidad;
-    private String CiudadNac;
-    private String PaisNac;
-    private String NperDepend;
+    private String codEvaluador;
+    private String puntVenta;
+    private String fecSolicitud;
+    private String ciudadExp;
+    private String nacionalidad;
+    private String ciudadNac;
+    private String paisNac;
+    private String nperDepend;
 //Datos Cónyuge
     private String CPrimerNomb;
     private String CSegundNomb;
@@ -497,7 +497,6 @@ public class MenuAction extends BaseAction {
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
-            //VALIDACIONES DE CAMPOS
             try {
                 if (getCodEvaluador().equals("")) {
                     setError("Por favor llenar el campo Código Evaluador");
@@ -681,7 +680,6 @@ public class MenuAction extends BaseAction {
                                     if (getVDireccResi().equals("")) {
                                         setError("Por favor llenar el campo Dirección de Residencia");
                                     } else {
-                                        System.out.println("DISTR" + getVDistVivien());
                                         if (getVDistVivien().equals("0")) {
                                             setError("Por favor seleccionar Distrito");
                                         } else {
@@ -1318,19 +1316,19 @@ public class MenuAction extends BaseAction {
                 loRep.setRPCelul(getRPCelul());
                 loRep.setRPParen(getRPParen());
 
-                File filerecibo = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoReciboFileName());
+                File filerecibo = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoReciboFileName()+"_"+getCliente().getNombre());
                 byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoRecibo()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoCopiaDNIFileName());
+                File filecopiadni = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoCopiaDNIFileName()+"_"+getCliente().getNombre());
                 byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoCopiaDNI()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol1FileName());
+                File filebol1 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol1FileName()+"_"+getCliente().getNombre());
                 byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol1()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol2FileName());
+                File filebol2 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol2FileName()+"_"+getCliente().getNombre());
                 byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol2()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
@@ -1354,7 +1352,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"solicitudFinanciamiento.pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1452,27 +1450,27 @@ public class MenuAction extends BaseAction {
                 loRep.setRLPProvincia(getRLPProvincia());
                 loRep.setRLPTelef(getRLPTelef());
 
-                File filerecibo = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFRecibLuzFileName());
+                File filerecibo = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFRecibLuzFileName()+"_"+getCliente().getNombre());
                 byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFRecibLuz()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaDniFileName());
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaDniFileName()+"_"+getCliente().getNombre());
                 byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaRucFileName());
+                File filebol1 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaRucFileName()+"_"+getCliente().getNombre());
                 byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaRuc()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracbFileName());
+                File filebol2 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracbFileName()+"_"+getCliente().getNombre());
                 byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
-                File filebol3 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracafpFileName());
+                File filebol3 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracafpFileName()+"_"+getCliente().getNombre());
                 byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracafp()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFIngadicFileName());
+                File fileingadic = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFIngadicFileName()+"_"+getCliente().getNombre());
                 byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFIngadic()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
@@ -1486,7 +1484,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1566,7 +1564,7 @@ public class MenuAction extends BaseAction {
                 loRep.setRLCEstado(getRLCEstado());
                 loRep.setRLCProvincia(getRLCProvincia());
                 loRep.setRLCTelef(getRLCTelef());
-                loRep.setRLPNombre(getRLPNombre());
+                loRep.setRLPNombre(getRPPrimerNomb());
                 loRep.setRLPActividad(getRLPActividad());
                 loRep.setRLPDire(getRLPDire());
                 loRep.setRLPDistrito(getRLPDistrito());
@@ -1574,43 +1572,43 @@ public class MenuAction extends BaseAction {
                 loRep.setRLPProvincia(getRLPProvincia());
                 loRep.setRLPTelef(getRLPTelef());
 
-                File filerecibo = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNRecibluzFileName());
+                File filerecibo = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNRecibluzFileName()+"_"+getCliente().getNombre());
                 byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFNRecibluz()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCopiaDniFileName());
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCopiaDniFileName()+"_"+getCliente().getNombre());
                 byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf1FileName());
+                File filebol1 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf1FileName()+"_"+getCliente().getNombre());
                 byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf1()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf2FileName());
+                File filebol2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf2FileName()+"_"+getCliente().getNombre());
                 byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf2()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
-                File filebol3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac1FileName());
+                File filebol3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac1FileName()+"_"+getCliente().getNombre());
                 byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac1()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac2FileName());
+                File fileingadic = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac2FileName()+"_"+getCliente().getNombre());
                 byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac2()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
-                File filebol4 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC1FileName());
+                File filebol4 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC1FileName()+"_"+getCliente().getNombre());
                 byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC1()));
                 FileUtils.writeByteArrayToFile(filebol4, archivofile4);
 
-                File fileingadic2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC2FileName());
+                File fileingadic2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC2FileName()+"_"+getCliente().getNombre());
                 byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC2()));
                 FileUtils.writeByteArrayToFile(fileingadic2, archivoingadic2);
 
-                File filebol5 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNExtracAfpFileName());
+                File filebol5 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNExtracAfpFileName()+"_"+getCliente().getNombre());
                 byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNExtracAfp()));
                 FileUtils.writeByteArrayToFile(filebol5, archivofile5);
 
-                File fileingadic3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNIngadicFileName());
+                File fileingadic3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNIngadicFileName()+"_"+getCliente().getNombre());
                 byte[] archivoingadic3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNIngadic()));
                 FileUtils.writeByteArrayToFile(fileingadic3, archivoingadic3);
 
@@ -1624,7 +1622,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1755,7 +1753,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento.pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -2202,7 +2200,6 @@ public class MenuAction extends BaseAction {
                         setCredito(loCreditos.getCredito());
                         setLstLog(loCreditos.getLstLog());
                         for (int i = 0; i < loCreditos.getLstLog().size(); i++) {
-                            System.out.print(loCreditos.getLstLog().get(i).getFecha());
                         }
                         //Formateo de fecha
                         /*SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
@@ -2214,7 +2211,6 @@ public class MenuAction extends BaseAction {
                          //loCreditos.getLstLog().get(i).setFecha(java.sql.Date.valueOf(formateador.format(loCreditos.getLstLog().get(i).getFecha())));
                          loCreditos.getLstLog().get(i).setFecha(fechaSQL);
                             
-                         System.out.print(fechaSQL);
                          }
                          setLstLog(loCreditos.getLstLog());*/
                     }
@@ -3990,7 +3986,6 @@ public class MenuAction extends BaseAction {
                 getLstValorCuotaCNB().get(x).setCuotaX4(calcularCuota(getLstLineaCreCNB().get(x).getLineaX4(), getLstPlazosCNB().get(x).getCuotasX4(), tea));
             }
         }
-        //System.out.print(calcularCuota(10000, 6, 47.64));
         /*HttpServletRequest request = ServletActionContext.getRequest();
          if (request.getParameter("guardarCB") != null) {
             
@@ -9542,67 +9537,67 @@ public class MenuAction extends BaseAction {
     }
 
     public String getCodEvaluador() {
-        return CodEvaluador;
+        return codEvaluador;
     }
 
-    public void setCodEvaluador(String CodEvaluador) {
-        this.CodEvaluador = CodEvaluador;
+    public void setCodEvaluador(String codEvaluador) {
+        this.codEvaluador = codEvaluador;
     }
 
     public String getPuntVenta() {
-        return PuntVenta;
+        return puntVenta;
     }
 
-    public void setPuntVenta(String PuntVenta) {
-        this.PuntVenta = PuntVenta;
+    public void setPuntVenta(String puntVenta) {
+        this.puntVenta = puntVenta;
     }
 
     public String getFecSolicitud() {
-        return FecSolicitud;
+        return fecSolicitud;
     }
 
-    public void setFecSolicitud(String FecSolicitud) {
-        this.FecSolicitud = FecSolicitud;
+    public void setFecSolicitud(String fecSolicitud) {
+        this.fecSolicitud = fecSolicitud;
     }
 
     public String getCiudadExp() {
-        return CiudadExp;
+        return ciudadExp;
     }
 
-    public void setCiudadExp(String CiudadExp) {
-        this.CiudadExp = CiudadExp;
+    public void setCiudadExp(String ciudadExp) {
+        this.ciudadExp = ciudadExp;
     }
 
     public String getNacionalidad() {
-        return Nacionalidad;
+        return nacionalidad;
     }
 
-    public void setNacionalidad(String Nacionalidad) {
-        this.Nacionalidad = Nacionalidad;
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
     }
 
     public String getCiudadNac() {
-        return CiudadNac;
+        return ciudadNac;
     }
 
-    public void setCiudadNac(String CiudadNac) {
-        this.CiudadNac = CiudadNac;
-    }
-
-    public String getNperDepend() {
-        return NperDepend;
-    }
-
-    public void setNperDepend(String NperDepend) {
-        this.NperDepend = NperDepend;
+    public void setCiudadNac(String ciudadNac) {
+        this.ciudadNac = ciudadNac;
     }
 
     public String getPaisNac() {
-        return PaisNac;
+        return paisNac;
     }
 
-    public void setPaisNac(String PaisNac) {
-        this.PaisNac = PaisNac;
+    public void setPaisNac(String paisNac) {
+        this.paisNac = paisNac;
+    }
+
+    public String getNperDepend() {
+        return nperDepend;
+    }
+
+    public void setNperDepend(String nperDepend) {
+        this.nperDepend = nperDepend;
     }
 
     public String getCPrimerNomb() {
@@ -9779,6 +9774,14 @@ public class MenuAction extends BaseAction {
 
     public void setEDisEmpr(String EDisEmpr) {
         this.EDisEmpr = EDisEmpr;
+    }
+
+    public String getEProvEmpr() {
+        return EProvEmpr;
+    }
+
+    public void setEProvEmpr(String EProvEmpr) {
+        this.EProvEmpr = EProvEmpr;
     }
 
     public String getILabor() {
@@ -10309,14 +10312,6 @@ public class MenuAction extends BaseAction {
         this.RLPEstado = RLPEstado;
     }
 
-    public String getEProvEmpr() {
-        return EProvEmpr;
-    }
-
-    public void setEProvEmpr(String EProvEmpr) {
-        this.EProvEmpr = EProvEmpr;
-    }
-
     public String getTipoIndep() {
         return TipoIndep;
     }
@@ -10324,6 +10319,9 @@ public class MenuAction extends BaseAction {
     public void setTipoIndep(String TipoIndep) {
         this.TipoIndep = TipoIndep;
     }
+
+
+
 
     public File getArchivoEmpleadoRecibo() {
         return archivoEmpleadoRecibo;

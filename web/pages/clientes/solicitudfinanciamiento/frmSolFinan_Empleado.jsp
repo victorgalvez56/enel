@@ -54,25 +54,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa Contratante: </label>
-                                                            <s:textfield cssClass="form-control" id="NEmpr" tabindex="11" name="eNombreEmpr" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="numEmpl" tabindex="1" name="eNombreEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Ruc de la Empresa: </label>
-                                                            <s:textfield cssClass="form-control" id="RucEmpr" tabindex="11" name="eRUCEmpr" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="rucEmpl" tabindex="2" name="eRUCEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Actividad de la Empresa: </label>
-                                                            <s:textfield cssClass="form-control" id="ActEmpr" tabindex="11" name="eActivdEmpr" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="actvEmpl" tabindex="3" name="eActivdEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Dirección de la Empresa: </label>
-                                                            <s:textfield cssClass="form-control" id="DirecEmpr" tabindex="11" name="eDirEmpr" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="direcEmpl" tabindex="4" name="eDirEmpr" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -80,19 +80,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Departamento </label>
-                                                            <s:select name="eDepEmpr" tabindex="10" id="DepartEmp" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="eDepEmpr" tabindex="5" id="deparEmpl" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:select name="eDisEmpr" tabindex="10" id="DistrEmp" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="eDisEmpr" tabindex="6" id="distrEmpl" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>  
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Provincia: </label>
-                                                            <s:select name="eProvEmpr" tabindex="10" id="ProviEmp" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="eProvEmpr" tabindex="7" id="provnEmpl" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                 </div> 
@@ -162,17 +162,26 @@
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
 
         <script>
-        /*
-         $("#NEmpr").prop('required', true);
-         $("#RucEmpr").prop('required', true);
-         $("#ActEmpr").prop('required', true);
-         $("#DirecEmpr").prop('required', true);
-         $("#DepartEmpr").prop('required', true);
-         $("#ProvEmpr").prop('required', true);
-         $("#DistrEmpr").prop('required', true);
-         
-         */
-
+       $('#numEmpl').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#rucEmpl').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#actvEmpl').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#direcEmpl').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
 
         </script>
 

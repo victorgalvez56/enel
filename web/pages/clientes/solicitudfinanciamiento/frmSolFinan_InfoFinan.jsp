@@ -68,7 +68,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number"  cssClass="form-control ingresos" id="sueldobasico" tabindex="11" name="iSueldBas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number"  cssClass="form-control ingresos" id="sueldobasico" tabindex="1" name="iSueldBas" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -78,7 +78,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento2" tabindex="11" name="gAlquiler" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento2" tabindex="6" name="gAlquiler" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,7 +90,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento3" tabindex="11" name="iComisiones" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento3" tabindex="2" name="iComisiones" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -100,7 +100,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento4" tabindex="11" name="gCreditoViv" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento4" tabindex="7" name="gCreditoViv" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,7 +112,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento5" tabindex="11" name="iHonorarios" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento5" tabindex="3" name="iHonorarios" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -122,7 +122,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento6" tabindex="11" name="gGastosFamil" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento6" tabindex="8" name="gGastosFamil" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,7 +134,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento7" tabindex="11" name="iAlquileres" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento7" tabindex="4" name="iAlquileres" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -144,7 +144,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento8" tabindex="11" name="gTarjetasCred" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento8" tabindex="9" name="gTarjetasCred" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,7 +156,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento9" tabindex="11" name="iOtrosIngres" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento9" tabindex="5" name="iOtrosIngres" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -166,7 +166,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento10" tabindex="11" name="gOtrosGas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento10" tabindex="10" name="gOtrosGas" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,7 +178,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadoingresos" tabindex="11" name="iTotalIng" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="Resultadoingresos"  name="iTotalIng" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -188,7 +188,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadogastos" tabindex="11" name="gTotalGas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="Resultadogastos"  name="gTotalGas" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,7 +200,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadoactivos" tabindex="11" name="iTotalAct" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="Resultadoactivos" name="iTotalAct" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -210,7 +210,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadopatrimonio" tabindex="11" name="gTotalPat" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="Resultadopatrimonio" name="gTotalPat" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <s:hidden type="number" cssClass="aux1" id="ingr" tabindex="11" name="codEva" style="text-transform: uppercase;" />
@@ -292,7 +292,7 @@
                                             <s:hidden name="TipoIndep"></s:hidden>
 
 
-                                            <s:submit name="siguienteInfo" value="Siguiente" id = "bSiguiente" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="siguienteInfo" value="Siguiente" tabindex="10" id = "bSiguiente" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -355,22 +355,6 @@
             }
             $("").val(resultgast)
         })
-
-        /*
-         $("#elemento1").prop('required', true);
-         $("#elemento2").prop('required', true);
-         $("#elemento3").prop('required', true);
-         $("#elemento4").prop('required', true);
-         $("#elemento5").prop('required', true);
-         $("#elemento6").prop('required', true);
-         $("#elemento7").prop('required', true);
-         $("#elemento8").prop('required', true);
-         $("#elemento9").prop('required', true);
-         $("#elemento10").prop('required', true);
-         */
-
-
-
         </script>
 
     </body>

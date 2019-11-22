@@ -53,25 +53,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primer Nombre: </label>
-                                                            <s:textfield cssClass="form-control" id="pNombre" tabindex="11" name="cPrimerNomb" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="pNombre" tabindex="1" name="cPrimerNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div> 
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Nombre: </label>
-                                                            <s:textfield cssClass="form-control" id="sNombre" tabindex="11" name="cSegundNomb" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="sNombre" tabindex="2" name="CSegundNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primero Apellido: </label>
-                                                            <s:textfield cssClass="form-control" id="pApellido" tabindex="11" name="cPrimerApel" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="pApellido" tabindex="3" name="CPrimerApel" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Apellido: </label>
-                                                            <s:textfield cssClass="form-control" id="sApellido" tabindex="11" name="cSegundApel" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="sApellido" tabindex="4" name="CSegundApel" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,19 +79,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Empresa donde trabaja: </label>
-                                                            <s:textfield cssClass="form-control" id="EmpTrabaja" tabindex="11" name="cEmpdondTrab" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="emprTrab" tabindex="5" name="CEmpdondTrab" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>          
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Cargo: </label>
-                                                            <s:textfield cssClass="form-control" id="Cargo" tabindex="11" name="cEmpCargo" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="cargoEmpr" tabindex="6" name="CEmpCargo" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Teléfono: </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="Telef" tabindex="11" name="cEmpTelef" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="telefEmpr" tabindex="7" name="CEmpTelef" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,25 +103,25 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="CodEvaluador"></s:hidden>
-                                            <s:hidden name="PuntVenta"></s:hidden>
-                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="codEvaluador"></s:hidden>
+                                            <s:hidden name="puntVenta"></s:hidden>
+                                            <s:hidden name="fecSolicitud"></s:hidden>
                                             <s:hidden name="cliente.TipDocCiv"></s:hidden>
                                             <s:hidden name="cliente.NroDocCiv"></s:hidden>
-                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="ciudadExp"></s:hidden>
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="cliente.SegundoNo"></s:hidden>
                                             <s:hidden name="cliente.ApePat"></s:hidden>
                                             <s:hidden name="cliente.ApeMat"></s:hidden>
-                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="nacionalidad"></s:hidden>
                                             <s:hidden name="cliente.FecNac"></s:hidden>
-                                            <s:hidden name="CiudadNac"></s:hidden>
-                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="ciudadNac"></s:hidden>
+                                            <s:hidden name="paisNac"></s:hidden>
                                             <s:hidden name="cliente.sexo"></s:hidden>
                                             <s:hidden name="cliente.EstCiv"></s:hidden>
                                             <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
-                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="nperDepend"></s:hidden>
                                             <s:hidden name="cliente.Correo"></s:hidden>
                                             <s:hidden name="cliente.Telefono"></s:hidden>
 
@@ -129,7 +129,7 @@
 
 
 
-                                            <s:submit name="siguienteConyu" value="Siguiente" id = "bsiguiente" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="siguienteConyu" value="Siguiente" id = "bsiguiente" cssClass="btn btn-primary btn-flat" tabindex="8" />
                                         </div>
 
                                     </div>
@@ -147,14 +147,41 @@
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
 
         <script>
-        /*
-         $("#pNombre").prop('required', true);
-         $("#sNombre").prop('required', true);
-         $("#pApellido").prop('required', true);
-         $("#sApellido").prop('required', true);
-         $("#EmpTrabaja").prop('required', true);
-         $("#Cargo").prop('required', true);
-         $("#Telef").prop('required', true);*/
+        $('#pNombre').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#sNombre').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#pApellido').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#sApellido').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#emprTrab').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#cargoEmpr').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
+        $('#telefEmpr').on('input', function (e) {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+            }
+        });
         </script>
 
     </body>
