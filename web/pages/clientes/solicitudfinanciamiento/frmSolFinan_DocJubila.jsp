@@ -83,125 +83,125 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="CodEvaluador"></s:hidden>
-                                            <s:hidden name="PuntVenta"></s:hidden>
-                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="codEvaluador"></s:hidden>
+                                            <s:hidden name="puntVenta"></s:hidden>
+                                            <s:hidden name="fecSolicitud"></s:hidden>
                                             <s:hidden name="cliente.TipDocCiv"></s:hidden>
                                             <s:hidden name="cliente.NroDocCiv"></s:hidden>
-                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="ciudadExp"></s:hidden>
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="cliente.SegundoNo"></s:hidden>
                                             <s:hidden name="cliente.ApePat"></s:hidden>
                                             <s:hidden name="cliente.ApeMat"></s:hidden>
-                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="nacionalidad"></s:hidden>
                                             <s:hidden name="cliente.FecNac"></s:hidden>
-                                            <s:hidden name="CiudadNac"></s:hidden>
-                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="ciudadNac"></s:hidden>
+                                            <s:hidden name="paisNac"></s:hidden>
                                             <s:hidden name="cliente.sexo"></s:hidden>
                                             <s:hidden name="cliente.EstCiv"></s:hidden>
                                             <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
-                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="nperDepend"></s:hidden>
                                             <s:hidden name="cliente.Correo"></s:hidden>
                                             <s:hidden name="cliente.Telefono"></s:hidden>
                                                 <!Cónyuge-->
-                                            <s:hidden name="cPrimerNomb"></s:hidden>
-                                            <s:hidden name="cSegundNomb"></s:hidden>
-                                            <s:hidden name="cPrimerApel"></s:hidden>
-                                            <s:hidden name="cSegundApel"></s:hidden>
-                                            <s:hidden name="cEmpdondTrab"></s:hidden>
-                                            <s:hidden name="cEmpCargo"></s:hidden>
-                                            <s:hidden name="cEmpTelef"></s:hidden>
+                                            <s:hidden name="cprimerNomb"></s:hidden>
+                                            <s:hidden name="csegundNomb"></s:hidden>
+                                            <s:hidden name="cprimerApel"></s:hidden>
+                                            <s:hidden name="csegundApel"></s:hidden>
+                                            <s:hidden name="cempdondTrab"></s:hidden>
+                                            <s:hidden name="cempCargo"></s:hidden>
+                                            <s:hidden name="cempTelef"></s:hidden>
                                                 <!Vivienda>
-                                            <s:hidden name="vSuministro"></s:hidden>
-                                            <s:hidden name="vTitularSum"></s:hidden>
-                                            <s:hidden name="vRelacTitul"></s:hidden>
-                                            <s:hidden name="vTipoVivien"></s:hidden>
-                                            <s:hidden name="vHaceCVivea"></s:hidden>
-                                            <s:hidden name="vDireccResi"></s:hidden>
-                                            <s:hidden name="vDistVivien"></s:hidden>
-                                            <s:hidden name="vProvVivien"></s:hidden>
-                                            <s:hidden name="vDepaVivien"></s:hidden>
+                                            <s:hidden name="vsuministro"></s:hidden>
+                                            <s:hidden name="vtitularSum"></s:hidden>
+                                            <s:hidden name="vrelacTitul"></s:hidden>
+                                            <s:hidden name="vtipoVivien"></s:hidden>
+                                            <s:hidden name="vhaceCVivea"></s:hidden>
+                                            <s:hidden name="vdireccResi"></s:hidden>
+                                            <s:hidden name="vdistVivien"></s:hidden>
+                                            <s:hidden name="vprovVivien"></s:hidden>
+                                            <s:hidden name="vdepaVivien"></s:hidden>
                                                 <!Empleado-->
-                                            <s:hidden name="eNombreEmpr"></s:hidden>
-                                            <s:hidden name="eRUCEmpr"></s:hidden>
-                                            <s:hidden name="eActivdEmpr"></s:hidden>
-                                            <s:hidden name="eDirEmpr"></s:hidden>
-                                            <s:hidden name="eDepEmpr"></s:hidden>
-                                            <s:hidden name="eDisEmpr"></s:hidden>
-                                            <s:hidden name="eProvEmpr"></s:hidden>
+                                            <s:hidden name="enombreEmpr"></s:hidden>
+                                            <s:hidden name="erUCEmpr"></s:hidden>
+                                            <s:hidden name="eactivdEmpr"></s:hidden>
+                                            <s:hidden name="edirEmpr"></s:hidden>
+                                            <s:hidden name="edepEmpr"></s:hidden>
+                                            <s:hidden name="edisEmpr"></s:hidden>
+                                            <s:hidden name="eprovEmpr"></s:hidden>
                                                 <!Independiente-->
-                                            <s:hidden name="iLabor"></s:hidden>
-                                            <s:hidden name="iHacecuantInd"></s:hidden>
-                                            <s:hidden name="iTipodeInd"></s:hidden>
-                                            <s:hidden name="fNombEmpr"></s:hidden>
-                                            <s:hidden name="fRUCEmpr"></s:hidden>
-                                            <s:hidden name="fCargo"></s:hidden>
-                                            <s:hidden name="fDirLabo"></s:hidden> 
-                                            <s:hidden name="fDisLabo"></s:hidden>
-                                            <s:hidden name="fProLabo"></s:hidden>
-                                            <s:hidden name="fDepLabo"></s:hidden>
-                                            <s:hidden name="fTelef"></s:hidden>
-                                            <s:hidden name="fAnexo"></s:hidden>
+                                            <s:hidden name="ilabor"></s:hidden>
+                                            <s:hidden name="ihacecuantInd"></s:hidden>
+                                            <s:hidden name="itipodeInd"></s:hidden>
+                                            <s:hidden name="fnombEmpr"></s:hidden>
+                                            <s:hidden name="frucEmpr"></s:hidden>
+                                            <s:hidden name="fcargo"></s:hidden>
+                                            <s:hidden name="fdirLabo"></s:hidden> 
+                                            <s:hidden name="fdisLabo"></s:hidden>
+                                            <s:hidden name="fproLabo"></s:hidden>
+                                            <s:hidden name="fdepLabo"></s:hidden>
+                                            <s:hidden name="ftelef"></s:hidden>
+                                            <s:hidden name="fanexo"></s:hidden>
                                                 <!Jubilado-->
-                                            <s:hidden name="jNombEmpJ"></s:hidden>
-                                            <s:hidden name="jNombEmpA"></s:hidden>
-                                            <s:hidden name="jHacecuaJ"></s:hidden>  
-                                            <s:hidden name="TipoIndep"></s:hidden>
+                                            <s:hidden name="jnombEmpJ"></s:hidden>
+                                            <s:hidden name="jnombEmpA"></s:hidden>
+                                            <s:hidden name="jhacecuaJ"></s:hidden>  
+                                            <s:hidden name="tipoIndep"></s:hidden>
                                                 <!Información Financiera-->
-                                            <s:hidden name="iSueldBas"></s:hidden>
-                                            <s:hidden name="gAlquiler"></s:hidden>
-                                            <s:hidden name="iComisiones"></s:hidden>
-                                            <s:hidden name="gCreditoViv"></s:hidden>
-                                            <s:hidden name="iHonorarios"></s:hidden>
-                                            <s:hidden name="gGastosFamil"></s:hidden>
-                                            <s:hidden name="iAlquileres"></s:hidden> 
-                                            <s:hidden name="gTarjetasCred"></s:hidden>
-                                            <s:hidden name="iOtrosIngres"></s:hidden>
-                                            <s:hidden name="gOtrosGas"></s:hidden>
-                                            <s:hidden name="iTotalIng"></s:hidden>
-                                            <s:hidden name="gTotalGas"></s:hidden>
-                                            <s:hidden name="iTotalAct"></s:hidden>
-                                            <s:hidden name="gTotalPat"></s:hidden>  
+                                            <s:hidden name="isueldBas"></s:hidden>
+                                            <s:hidden name="galquiler"></s:hidden>
+                                            <s:hidden name="icomisiones"></s:hidden>
+                                            <s:hidden name="gcreditoViv"></s:hidden>
+                                            <s:hidden name="ihonorarios"></s:hidden>
+                                            <s:hidden name="ggastosFamil"></s:hidden>
+                                            <s:hidden name="ialquileres"></s:hidden> 
+                                            <s:hidden name="gtarjetasCred"></s:hidden>
+                                            <s:hidden name="iotrosIngres"></s:hidden>
+                                            <s:hidden name="gotrosGas"></s:hidden>
+                                            <s:hidden name="itotalIng"></s:hidden>
+                                            <s:hidden name="gtotalGas"></s:hidden>
+                                            <s:hidden name="itotalAct"></s:hidden>
+                                            <s:hidden name="gtotalPat"></s:hidden>  
                                                 <!Ref Personales-->
-                                            <s:hidden name="rPPrimerNomb"></s:hidden>
-                                            <s:hidden name="rPSegundoNomb"></s:hidden>
-                                            <s:hidden name="rPPrimerApell"></s:hidden>
-                                            <s:hidden name="rPSegundoApell"></s:hidden>      
-                                            <s:hidden name="rPDirec"></s:hidden>
-                                            <s:hidden name="rPDistr"></s:hidden>
-                                            <s:hidden name="rPProvi"></s:hidden>
-                                            <s:hidden name="rPEstad"></s:hidden>      
-                                            <s:hidden name="rPTelef"></s:hidden>
-                                            <s:hidden name="rPCelul"></s:hidden>
-                                            <s:hidden name="rPParen"></s:hidden>   
+                                            <s:hidden name="rpprimerNomb"></s:hidden>
+                                            <s:hidden name="rpsegundoNomb"></s:hidden>
+                                            <s:hidden name="rpprimerApell"></s:hidden>
+                                            <s:hidden name="rpsegundoApell"></s:hidden>      
+                                            <s:hidden name="rpdirec"></s:hidden>
+                                            <s:hidden name="rpdistr"></s:hidden>
+                                            <s:hidden name="rpprovi"></s:hidden>
+                                            <s:hidden name="rpestad"></s:hidden>      
+                                            <s:hidden name="rptelef"></s:hidden>
+                                            <s:hidden name="rpcelul"></s:hidden>
+                                            <s:hidden name="rpparen"></s:hidden>      
                                                 <!Ref Familiares-->
-                                            <s:hidden name="rFPrimerNomb"></s:hidden>
-                                            <s:hidden name="rFSegundoNomb"></s:hidden>
-                                            <s:hidden name="rFPrimerApell"></s:hidden>
-                                            <s:hidden name="rFSegundoApell"></s:hidden>      
-                                            <s:hidden name="rFDirec"></s:hidden>
-                                            <s:hidden name="rFDistr"></s:hidden>
-                                            <s:hidden name="rFProvi"></s:hidden>
-                                            <s:hidden name="rFEstad"></s:hidden>      
-                                            <s:hidden name="rFTelef"></s:hidden>
-                                            <s:hidden name="rFCelul"></s:hidden>
-                                            <s:hidden name="rFParen"></s:hidden> 
+                                            <s:hidden name="rfprimerNomb"></s:hidden>
+                                            <s:hidden name="rfsegundoNomb"></s:hidden>
+                                            <s:hidden name="rfprimerApell"></s:hidden>
+                                            <s:hidden name="rfsegundoApell"></s:hidden>      
+                                            <s:hidden name="rfdirec"></s:hidden>
+                                            <s:hidden name="rfdistr"></s:hidden>
+                                            <s:hidden name="rfprovi"></s:hidden>
+                                            <s:hidden name="rfestad"></s:hidden>      
+                                            <s:hidden name="rftelef"></s:hidden>
+                                            <s:hidden name="rfcelul"></s:hidden>
+                                            <s:hidden name="rfparen"></s:hidden> 
                                                 <!Ref Laborales-->
-                                            <s:hidden name="rLCNombre"></s:hidden>
-                                            <s:hidden name="rLCActividad"></s:hidden>
-                                            <s:hidden name="rLCTelef"></s:hidden>
-                                            <s:hidden name="rLCDireClient"></s:hidden>      
-                                            <s:hidden name="rLCDistrito"></s:hidden>
-                                            <s:hidden name="rLCProvincia"></s:hidden>
-                                            <s:hidden name="rLCEstado"></s:hidden>
-                                            <s:hidden name="rLPNombre"></s:hidden>      
-                                            <s:hidden name="rLPActividad"></s:hidden>
-                                            <s:hidden name="rLPTelef"></s:hidden>
-                                            <s:hidden name="rLPDire"></s:hidden> 
-                                            <s:hidden name="rLPDistrito"></s:hidden>
-                                            <s:hidden name="rLPProvincia"></s:hidden>
-                                            <s:hidden name="rLPEstado"></s:hidden> 
+                                            <s:hidden name="rlcNombre"></s:hidden>
+                                            <s:hidden name="rlcActividad"></s:hidden>
+                                            <s:hidden name="rlcTelef"></s:hidden>
+                                            <s:hidden name="rlcDireClient"></s:hidden>      
+                                            <s:hidden name="rlcDistrito"></s:hidden>
+                                            <s:hidden name="rlcProvincia"></s:hidden>
+                                            <s:hidden name="rlcEstado"></s:hidden>
+                                            <s:hidden name="rlpNombre"></s:hidden>      
+                                            <s:hidden name="rlpActividad"></s:hidden>
+                                            <s:hidden name="rlpTelef"></s:hidden>
+                                            <s:hidden name="rlpDire"></s:hidden> 
+                                            <s:hidden name="rlpDistrito"></s:hidden>
+                                            <s:hidden name="rlpProvincia"></s:hidden>
+                                            <s:hidden name="rlpEstado"></s:hidden> 
                                             <s:submit name="reporte" value="Guardar" id = "bReporte" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
@@ -218,84 +218,5 @@
         <script type="text/javascript" src="/enel/js/main.js"></script>
         <!-- iCheck -->
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
-
-        <script>
-        $("#Resultadoingresos").attr("disabled", "true");
-        $("#Resultadogastos").attr("disabled", "true");
-        $("#Resultadoactivos").attr("disabled", "true");
-        $("#Resultadopatrimonio").attr("disabled", "true");
-
-
-
-        var inputgast = $(".gastos")
-        var inputingr = $(".ingresos")
-
-        var resultgast = $("#Resultadogastos")
-        var resultingr = $("#Resultadoingresos")
-        var resultactv = $("#Resultadoactivos")
-        var resultpatr = $("#Resultadopatrimonio")
-
-        var resultaux1 = $("#ingr")
-        var resultaux2 = $("#gast")
-
-        var inputaux1 = $(".aux1")
-        var inputaux2 = $(".aux2")
-
-
-        resultgast.val(0)
-        resultingr.val(0)
-        resultactv.val(0)
-        resultpatr.val(0)
-        resultaux1.val(0)
-        resultaux2.val(0)
-
-
-        $(document).on("keyup", ".ingresos", function () {
-            var auxingr = 0
-            inputingr.each(function (index, el) {
-                auxingr = auxingr + Number($(el).val())
-                console.log(auxingr)
-            })
-            if (!isNaN(auxingr)) {
-                resultingr.val(auxingr)
-                resultaux1.val(auxingr)
-                resultactv.val(auxingr)
-
-
-            }
-            console.log(auxingr)
-            $("").val(resultingr)
-        })
-        $(document).on("keyup", ".gastos", function () {
-            var auxgast = 0
-            inputgast.each(function (index, el) {
-
-                auxgast = auxgast + Number($(el).val())
-                console.log(auxgast)
-            })
-            if (!isNaN(auxgast)) {
-                resultgast.val(auxgast)
-                resultaux2.val(auxgast)
-                resultpatr.val(Number($(".aux1").val()) - Number($(".aux2").val()))
-
-
-                console.log(Number($(".aux1").val()) - Number($(".aux2").val()))
-
-            }
-            $("").val(resultgast)
-
-        })
-
-
-
-
-
-
-
-
-
-
-        </script>
-
     </body>
 </html>

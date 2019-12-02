@@ -53,25 +53,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primer Nombre: </label>
-                                                            <s:textfield cssClass="form-control" id="rppNombre" tabindex="1" name="rPPrimerNomb" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="rpprimerNomb" tabindex="1" name="rpprimerNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Nombre:  </label>
-                                                            <s:textfield cssClass="form-control" id="rpsNombre" tabindex="2" name="rPSegundoNomb" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="rpsegundoNomb" tabindex="2" name="rpsegundoNomb" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Primer Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="rppApellido" tabindex="3" name="rPPrimerApell" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="rpprimerApell" tabindex="3" name="rpprimerApell" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Segundo Apellido:  </label>
-                                                            <s:textfield cssClass="form-control" id="rpsApellido" tabindex="4" name="rPSegundoApell" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="rpsegundoApell" tabindex="4" name="rpsegundoApell" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,25 +79,25 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Dirección: </label>
-                                                            <s:textfield cssClass="form-control" id="rpDirec" tabindex="5" name="rPDirec" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="rpdirec" tabindex="5" name="rpdirec" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Distrito:  </label>
-                                                            <s:select name="rPDistr" tabindex="6" id="rpDistr" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rpdistr" tabindex="6" id="rpdistr" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Provincia:  </label>
-                                                            <s:select name="rPProvi" tabindex="7" id="rpProvc" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="rpprovi" tabindex="7" id="rpprovi" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Estado:  </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="rpEstado" tabindex="8" name="rPEstad" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="rpestad" tabindex="8" name="rpestad" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -105,19 +105,19 @@
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Teléfono </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="rpTelef" tabindex="9" name="rPTelef" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="rptelef" tabindex="9" name="rptelef" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Celular:  </label>
-                                                            <s:textfield type="number" cssClass="form-control" id="rpCelu" tabindex="10" name="rPCelul" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" cssClass="form-control" id="rpcelul" tabindex="10" name="rpcelul" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Parentesco:  </label>
-                                                            <s:textfield cssClass="form-control" id="rpParent" tabindex="11" name="rPParen" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="rpparen" tabindex="11" name="rpparen" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -128,90 +128,90 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="CodEvaluador"></s:hidden>
-                                            <s:hidden name="PuntVenta"></s:hidden>
-                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="codEvaluador"></s:hidden>
+                                            <s:hidden name="puntVenta"></s:hidden>
+                                            <s:hidden name="fecSolicitud"></s:hidden>
                                             <s:hidden name="cliente.TipDocCiv"></s:hidden>
                                             <s:hidden name="cliente.NroDocCiv"></s:hidden>
-                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="ciudadExp"></s:hidden>
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="cliente.SegundoNo"></s:hidden>
                                             <s:hidden name="cliente.ApePat"></s:hidden>
                                             <s:hidden name="cliente.ApeMat"></s:hidden>
-                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="nacionalidad"></s:hidden>
                                             <s:hidden name="cliente.FecNac"></s:hidden>
-                                            <s:hidden name="CiudadNac"></s:hidden>
-                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="ciudadNac"></s:hidden>
+                                            <s:hidden name="paisNac"></s:hidden>
                                             <s:hidden name="cliente.sexo"></s:hidden>
                                             <s:hidden name="cliente.EstCiv"></s:hidden>
                                             <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
-                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="nperDepend"></s:hidden>
                                             <s:hidden name="cliente.Correo"></s:hidden>
                                             <s:hidden name="cliente.Telefono"></s:hidden>
                                                 <!Cónyuge-->
-                                            <s:hidden name="cPrimerNomb"></s:hidden>
-                                            <s:hidden name="cSegundNomb"></s:hidden>
-                                            <s:hidden name="cPrimerApel"></s:hidden>
-                                            <s:hidden name="cSegundApel"></s:hidden>
-                                            <s:hidden name="cEmpdondTrab"></s:hidden>
-                                            <s:hidden name="cEmpCargo"></s:hidden>
-                                            <s:hidden name="cEmpTelef"></s:hidden>
+                                            <s:hidden name="cprimerNomb"></s:hidden>
+                                            <s:hidden name="csegundNomb"></s:hidden>
+                                            <s:hidden name="cprimerApel"></s:hidden>
+                                            <s:hidden name="csegundApel"></s:hidden>
+                                            <s:hidden name="cempdondTrab"></s:hidden>
+                                            <s:hidden name="cempCargo"></s:hidden>
+                                            <s:hidden name="cempTelef"></s:hidden>
                                                 <!Vivienda>
-                                            <s:hidden name="vSuministro"></s:hidden>
-                                            <s:hidden name="vTitularSum"></s:hidden>
-                                            <s:hidden name="vRelacTitul"></s:hidden>
-                                            <s:hidden name="vTipoVivien"></s:hidden>
-                                            <s:hidden name="vHaceCVivea"></s:hidden>
-                                            <s:hidden name="vDireccResi"></s:hidden>
-                                            <s:hidden name="vDistVivien"></s:hidden>
-                                            <s:hidden name="vProvVivien"></s:hidden>
-                                            <s:hidden name="vDepaVivien"></s:hidden>
+                                            <s:hidden name="vsuministro"></s:hidden>
+                                            <s:hidden name="vtitularSum"></s:hidden>
+                                            <s:hidden name="vrelacTitul"></s:hidden>
+                                            <s:hidden name="vtipoVivien"></s:hidden>
+                                            <s:hidden name="vhaceCVivea"></s:hidden>
+                                            <s:hidden name="vdireccResi"></s:hidden>
+                                            <s:hidden name="vdistVivien"></s:hidden>
+                                            <s:hidden name="vprovVivien"></s:hidden>
+                                            <s:hidden name="vdepaVivien"></s:hidden>
                                                 <!Empleado-->
-                                            <s:hidden name="eNombreEmpr"></s:hidden>
-                                            <s:hidden name="eRUCEmpr"></s:hidden>
-                                            <s:hidden name="eActivdEmpr"></s:hidden>
-                                            <s:hidden name="eDirEmpr"></s:hidden>
-                                            <s:hidden name="eDepEmpr"></s:hidden>
-                                            <s:hidden name="eDisEmpr"></s:hidden>
-                                            <s:hidden name="eProvEmpr"></s:hidden>
+                                            <s:hidden name="enombreEmpr"></s:hidden>
+                                            <s:hidden name="erUCEmpr"></s:hidden>
+                                            <s:hidden name="eactivdEmpr"></s:hidden>
+                                            <s:hidden name="edirEmpr"></s:hidden>
+                                            <s:hidden name="edepEmpr"></s:hidden>
+                                            <s:hidden name="edisEmpr"></s:hidden>
+                                            <s:hidden name="eprovEmpr"></s:hidden>
                                                 <!Independiente-->
-                                            <s:hidden name="iLabor"></s:hidden>
-                                            <s:hidden name="iHacecuantInd"></s:hidden>
-                                            <s:hidden name="iTipodeInd"></s:hidden>
-                                            <s:hidden name="fNombEmpr"></s:hidden>
-                                            <s:hidden name="fRUCEmpr"></s:hidden>
-                                            <s:hidden name="fCargo"></s:hidden>
-                                            <s:hidden name="fDirLabo"></s:hidden> 
-                                            <s:hidden name="fDisLabo"></s:hidden>
-                                            <s:hidden name="fProLabo"></s:hidden>
-                                            <s:hidden name="fDepLabo"></s:hidden>
-                                            <s:hidden name="fTelef"></s:hidden>
-                                            <s:hidden name="fAnexo"></s:hidden>
+                                            <s:hidden name="ilabor"></s:hidden>
+                                            <s:hidden name="ihacecuantInd"></s:hidden>
+                                            <s:hidden name="itipodeInd"></s:hidden>
+                                            <s:hidden name="fnombEmpr"></s:hidden>
+                                            <s:hidden name="frucEmpr"></s:hidden>
+                                            <s:hidden name="fcargo"></s:hidden>
+                                            <s:hidden name="fdirLabo"></s:hidden> 
+                                            <s:hidden name="fdisLabo"></s:hidden>
+                                            <s:hidden name="fproLabo"></s:hidden>
+                                            <s:hidden name="fdepLabo"></s:hidden>
+                                            <s:hidden name="ftelef"></s:hidden>
+                                            <s:hidden name="fanexo"></s:hidden>
                                                 <!Jubilado-->
-                                            <s:hidden name="jNombEmpJ"></s:hidden>
-                                            <s:hidden name="jNombEmpA"></s:hidden>
-                                            <s:hidden name="jHacecuaJ"></s:hidden>  
-                                            <s:hidden name="TipoIndep"></s:hidden>
+                                            <s:hidden name="jnombEmpJ"></s:hidden>
+                                            <s:hidden name="jnombEmpA"></s:hidden>
+                                            <s:hidden name="jhacecuaJ"></s:hidden>  
+                                            <s:hidden name="tipoIndep"></s:hidden>
                                                 <!Información Financiera-->
-                                            <s:hidden name="iSueldBas"></s:hidden>
-                                            <s:hidden name="gAlquiler"></s:hidden>
-                                            <s:hidden name="iComisiones"></s:hidden>
-                                            <s:hidden name="gCreditoViv"></s:hidden>
-                                            <s:hidden name="iHonorarios"></s:hidden>
-                                            <s:hidden name="gGastosFamil"></s:hidden>
-                                            <s:hidden name="iAlquileres"></s:hidden> 
-                                            <s:hidden name="gTarjetasCred"></s:hidden>
-                                            <s:hidden name="iOtrosIngres"></s:hidden>
-                                            <s:hidden name="gOtrosGas"></s:hidden>
-                                            <s:hidden name="iTotalIng"></s:hidden>
-                                            <s:hidden name="gTotalGas"></s:hidden>
-                                            <s:hidden name="iTotalAct"></s:hidden>
-                                            <s:hidden name="gTotalPat"></s:hidden>  
+                                            <s:hidden name="isueldBas"></s:hidden>
+                                            <s:hidden name="galquiler"></s:hidden>
+                                            <s:hidden name="icomisiones"></s:hidden>
+                                            <s:hidden name="gcreditoViv"></s:hidden>
+                                            <s:hidden name="ihonorarios"></s:hidden>
+                                            <s:hidden name="ggastosFamil"></s:hidden>
+                                            <s:hidden name="ialquileres"></s:hidden> 
+                                            <s:hidden name="gtarjetasCred"></s:hidden>
+                                            <s:hidden name="iotrosIngres"></s:hidden>
+                                            <s:hidden name="gotrosGas"></s:hidden>
+                                            <s:hidden name="itotalIng"></s:hidden>
+                                            <s:hidden name="gtotalGas"></s:hidden>
+                                            <s:hidden name="itotalAct"></s:hidden>
+                                            <s:hidden name="gtotalPat"></s:hidden>  
 
 
 
-                                            <s:submit name="siguientePerso" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:submit name="siguientePerso" value="Siguiente"tabindex="12"  id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -228,63 +228,11 @@
         <!-- iCheck -->
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
         <script>
-        $('#rppNombre').on('input', function (e) {
+        $(document).on("keyup", 'input[type="text"]', function () {
             if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ]+/ig, "");
             }
-        });
-        $('#rpsNombre').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#rppApellido').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#rpsApellido').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-
-        $('#rpDirec').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#rPDistr').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#rPProvi').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#rpEstado').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-
-        $('#rpTelef').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#rpCelu').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#rpParent').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
+        })
 
         </script>
 

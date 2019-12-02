@@ -53,56 +53,56 @@
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Número Suministro: </label>
-                                                            <s:textfield cssClass="form-control" id="numSumins" tabindex="1" name="vSuministro" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="vsuministro" tabindex="1" name="vsuministro" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Titular del Suministro: </label>
-                                                            <s:textfield cssClass="form-control" id="titSumins" tabindex="2" name="vTitularSum" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="vtitularSum" tabindex="2" name="vtitularSum" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Relación con el titular: </label>
-                                                            <s:textfield cssClass="form-control" id="relaSumins" tabindex="3" name="vRelacTitul" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="vrelacTitul" tabindex="3" name="vrelacTitul" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Tipo de Vivienda: </label>
-                                                            <s:textfield cssClass="form-control" id="tipoViv" tabindex="4" name="vTipoVivien" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="vtipoVivien" tabindex="4" name="vtipoVivien" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Hace cuanto vive allí: </label>
-                                                            <s:textfield cssClass="form-control" id="tiemViv" tabindex="5" name="vHaceCVivea" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="vhaceCVivea" tabindex="5" name="vhaceCVivea" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Dirección residencia: </label>
-                                                            <s:textfield cssClass="form-control" id="direcViv" tabindex="6" name="vDireccResi" style="text-transform: uppercase;" />
+                                                            <s:textfield cssClass="form-control" id="vdireccResi" tabindex="6" name="vdireccResi" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Distrito: </label>
-                                                            <s:select name="vDistVivien" tabindex="7" id="distViv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="vdistVivien" tabindex="7" id="vdistVivien" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Provincia: </label>
-                                                            <s:select name="vProvVivien" tabindex="8" id="provViv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="vprovVivien" tabindex="8" id="vprovVivien" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
                                                             <label>Departamento: </label>
-                                                            <s:select name="vDepaVivien" tabindex="9" id="depaViv" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
+                                                            <s:select name="vdepaVivien" tabindex="9" id="vdepaVivien" list="lstTipZon" listKey="codigo" listValue="descripcion" headerKey="0" headerValue="-- Seleccione --" cssClass="form-control" readonly="true" />    
                                                         </div>
                                                     </div>
                                                 </div>
@@ -113,35 +113,35 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="CodEvaluador"></s:hidden>
-                                            <s:hidden name="PuntVenta"></s:hidden>
-                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="codEvaluador"></s:hidden>
+                                            <s:hidden name="puntVenta"></s:hidden>
+                                            <s:hidden name="fecSolicitud"></s:hidden>
                                             <s:hidden name="cliente.TipDocCiv"></s:hidden>
                                             <s:hidden name="cliente.NroDocCiv"></s:hidden>
-                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="ciudadExp"></s:hidden>
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="cliente.SegundoNo"></s:hidden>
                                             <s:hidden name="cliente.ApePat"></s:hidden>
                                             <s:hidden name="cliente.ApeMat"></s:hidden>
-                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="nacionalidad"></s:hidden>
                                             <s:hidden name="cliente.FecNac"></s:hidden>
-                                            <s:hidden name="CiudadNac"></s:hidden>
-                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="ciudadNac"></s:hidden>
+                                            <s:hidden name="paisNac"></s:hidden>
                                             <s:hidden name="cliente.sexo"></s:hidden>
                                             <s:hidden name="cliente.EstCiv"></s:hidden>
                                             <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
-                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="nperDepend"></s:hidden>
                                             <s:hidden name="cliente.Correo"></s:hidden>
                                             <s:hidden name="cliente.Telefono"></s:hidden>
                                                 <!Cónyuge-->
-                                            <s:hidden name="cPrimerNomb"></s:hidden>
-                                            <s:hidden name="cSegundNomb"></s:hidden>
-                                            <s:hidden name="cPrimerApel"></s:hidden>
-                                            <s:hidden name="cSegundApel"></s:hidden>
-                                            <s:hidden name="cEmpdondTrab"></s:hidden>
-                                            <s:hidden name="cEmpCargo"></s:hidden>
-                                            <s:hidden name="cEmpTelef"></s:hidden>
+                                            <s:hidden name="cprimerNomb"></s:hidden>
+                                            <s:hidden name="csegundNomb"></s:hidden>
+                                            <s:hidden name="cprimerApel"></s:hidden>
+                                            <s:hidden name="csegundApel"></s:hidden>
+                                            <s:hidden name="cempdondTrab"></s:hidden>
+                                            <s:hidden name="cempCargo"></s:hidden>
+                                            <s:hidden name="cempTelef"></s:hidden>
 
 
 
@@ -164,53 +164,12 @@
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
 
         <script>
+        $(document).on("keyup", 'input[type="text"]', function () {
+            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ]+/ig, "");
+            }
+        })
 
-        $('#numSumins').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#titSumins').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#relaSumins').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#tipoViv').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#tiemViv').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#direcViv').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#distViv').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#provViv').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#depaViv').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-  
         </script>
 
     </body>

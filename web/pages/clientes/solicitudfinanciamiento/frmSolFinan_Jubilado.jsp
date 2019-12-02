@@ -53,19 +53,19 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa en la cual se Jubiló: </label>
-                                                            <s:textfield cssClass="form-control" id="nEmprJub" tabindex="1" name="jNombEmpJ" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="jnombEmpJ" tabindex="1" name="jnombEmpJ" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>     
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label>Nombre de la Empresa donde hizo el Aporte para Jubilación: </label>
-                                                            <s:textfield cssClass="form-control" id="nEmprAp" tabindex="2" name="jNombEmpA" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="jnombEmpA" tabindex="2" name="jnombEmpA" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
                                                             <label>Hace Cuanto es Jubilado: </label>
-                                                            <s:textfield cssClass="form-control" id="hcJub" tabindex="3" name="jHacecuaJ" style="text-transform: uppercase;" />
+                                                            <s:textfield type="text" cssClass="form-control" id="jhacecuaJ" tabindex="3" name="jhacecuaJ" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
 
@@ -79,46 +79,46 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="CodEvaluador"></s:hidden>
-                                            <s:hidden name="PuntVenta"></s:hidden>
-                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="codEvaluador"></s:hidden>
+                                            <s:hidden name="puntVenta"></s:hidden>
+                                            <s:hidden name="fecSolicitud"></s:hidden>
                                             <s:hidden name="cliente.TipDocCiv"></s:hidden>
                                             <s:hidden name="cliente.NroDocCiv"></s:hidden>
-                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="ciudadExp"></s:hidden>
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="cliente.SegundoNo"></s:hidden>
                                             <s:hidden name="cliente.ApePat"></s:hidden>
                                             <s:hidden name="cliente.ApeMat"></s:hidden>
-                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="nacionalidad"></s:hidden>
                                             <s:hidden name="cliente.FecNac"></s:hidden>
-                                            <s:hidden name="CiudadNac"></s:hidden>
-                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="ciudadNac"></s:hidden>
+                                            <s:hidden name="paisNac"></s:hidden>
                                             <s:hidden name="cliente.sexo"></s:hidden>
                                             <s:hidden name="cliente.EstCiv"></s:hidden>
                                             <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
-                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="nperDepend"></s:hidden>
                                             <s:hidden name="cliente.Correo"></s:hidden>
                                             <s:hidden name="cliente.Telefono"></s:hidden>
                                                 <!Cónyuge-->
-                                            <s:hidden name="cPrimerNomb"></s:hidden>
-                                            <s:hidden name="cSegundNomb"></s:hidden>
-                                            <s:hidden name="cPrimerApel"></s:hidden>
-                                            <s:hidden name="cSegundApel"></s:hidden>
-                                            <s:hidden name="cEmpdondTrab"></s:hidden>
-                                            <s:hidden name="cEmpCargo"></s:hidden>
-                                            <s:hidden name="cEmpTelef"></s:hidden>
+                                            <s:hidden name="cprimerNomb"></s:hidden>
+                                            <s:hidden name="csegundNomb"></s:hidden>
+                                            <s:hidden name="cprimerApel"></s:hidden>
+                                            <s:hidden name="csegundApel"></s:hidden>
+                                            <s:hidden name="cempdondTrab"></s:hidden>
+                                            <s:hidden name="cempCargo"></s:hidden>
+                                            <s:hidden name="cempTelef"></s:hidden>
                                                 <!Vivienda>
-                                            <s:hidden name="vSuministro"></s:hidden>
-                                            <s:hidden name="vTitularSum"></s:hidden>
-                                            <s:hidden name="vRelacTitul"></s:hidden>
-                                            <s:hidden name="vTipoVivien"></s:hidden>
-                                            <s:hidden name="vHaceCVivea"></s:hidden>
-                                            <s:hidden name="vDireccResi"></s:hidden>
-                                            <s:hidden name="vDistVivien"></s:hidden>
-                                            <s:hidden name="vProvVivien"></s:hidden>
-                                            <s:hidden name="vDepaVivien"></s:hidden>
-                                            <s:submit name="siguienteJub" value="Siguiente" id = "bAplicar" cssClass="btn btn-primary btn-flat" />
+                                            <s:hidden name="vsuministro"></s:hidden>
+                                            <s:hidden name="vtitularSum"></s:hidden>
+                                            <s:hidden name="vrelacTitul"></s:hidden>
+                                            <s:hidden name="vtipoVivien"></s:hidden>
+                                            <s:hidden name="vhaceCVivea"></s:hidden>
+                                            <s:hidden name="vdireccResi"></s:hidden>
+                                            <s:hidden name="vdistVivien"></s:hidden>
+                                            <s:hidden name="vprovVivien"></s:hidden>
+                                            <s:hidden name="vdepaVivien"></s:hidden>
+                                            <s:submit name="siguienteJub" value="Siguiente" tabindex="4"  id = "bAplicar" cssClass="btn btn-primary btn-flat" />
                                         </div>
 
                                     </div>
@@ -136,26 +136,11 @@
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
 
         <script>
-        $("#CodEv").prop('required', true);
-        $("#PuntVen").prop('required', true);
-        $("#FechaSol").prop('required', true);
-        $("#sEstudios").prop('required', true);
-
-        $('#nEmprJub').on('input', function (e) {
+        $(document).on("keyup", 'input[type="text"]', function () {
             if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
+                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ]+/ig, "");
             }
-        });
-        $('#nEmprAp').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
-        $('#hcJub').on('input', function (e) {
-            if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-                this.value = this.value.replace(/[^ a-z0-9áéíóúüñ@.]+/ig, "");
-            }
-        });
+        })
 
 
 

@@ -68,7 +68,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number"  cssClass="form-control ingresos" id="sueldobasico" tabindex="1" name="iSueldBas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number"  value="0" cssClass="form-control ingresos" id="sueldobasico" tabindex="1" name="iSueldBas" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -78,7 +78,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento2" tabindex="6" name="gAlquiler" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento2" tabindex="6" name="gAlquiler" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,7 +90,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento3" tabindex="2" name="iComisiones" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento3" tabindex="2" name="iComisiones" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -100,7 +100,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento4" tabindex="7" name="gCreditoViv" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento4" tabindex="7" name="gCreditoViv" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,7 +112,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento5" tabindex="3" name="iHonorarios" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento5" tabindex="3" name="iHonorarios" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -122,7 +122,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento6" tabindex="8" name="gGastosFamil" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento6" tabindex="8" name="gGastosFamil" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,7 +134,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento7" tabindex="4" name="iAlquileres" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento7" tabindex="4" name="iAlquileres" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -144,7 +144,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento8" tabindex="9" name="gTarjetasCred" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento8" tabindex="9" name="gTarjetasCred" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,7 +156,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control ingresos" id="elemento9" tabindex="5" name="iOtrosIngres" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento9" tabindex="5" name="iOtrosIngres" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -166,7 +166,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control gastos" id="elemento10" tabindex="10" name="gOtrosGas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento10" tabindex="10" name="gOtrosGas" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,7 +178,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadoingresos"  name="iTotalIng" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadoingresos"  name="iTotalIng" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -188,7 +188,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadogastos"  name="gTotalGas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadogastos"  name="gTotalGas" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,7 +200,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadoactivos" name="iTotalAct" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadoactivos" name="iTotalAct" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -210,7 +210,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" cssClass="form-control" id="Resultadopatrimonio" name="gTotalPat" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadopatrimonio" name="gTotalPat" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <s:hidden type="number" cssClass="aux1" id="ingr" tabindex="11" name="codEva" style="text-transform: uppercase;" />
@@ -225,71 +225,71 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="CodEvaluador"></s:hidden>
-                                            <s:hidden name="PuntVenta"></s:hidden>
-                                            <s:hidden name="FecSolicitud"></s:hidden>
+                                            <s:hidden name="codEvaluador"></s:hidden>
+                                            <s:hidden name="puntVenta"></s:hidden>
+                                            <s:hidden name="fecSolicitud"></s:hidden>
                                             <s:hidden name="cliente.TipDocCiv"></s:hidden>
                                             <s:hidden name="cliente.NroDocCiv"></s:hidden>
-                                            <s:hidden name="CiudadExp"></s:hidden>
+                                            <s:hidden name="ciudadExp"></s:hidden>
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="cliente.SegundoNo"></s:hidden>
                                             <s:hidden name="cliente.ApePat"></s:hidden>
                                             <s:hidden name="cliente.ApeMat"></s:hidden>
-                                            <s:hidden name="Nacionalidad"></s:hidden>
+                                            <s:hidden name="nacionalidad"></s:hidden>
                                             <s:hidden name="cliente.FecNac"></s:hidden>
-                                            <s:hidden name="CiudadNac"></s:hidden>
-                                            <s:hidden name="PaisNac"></s:hidden>
+                                            <s:hidden name="ciudadNac"></s:hidden>
+                                            <s:hidden name="paisNac"></s:hidden>
                                             <s:hidden name="cliente.sexo"></s:hidden>
                                             <s:hidden name="cliente.EstCiv"></s:hidden>
                                             <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
-                                            <s:hidden name="NperDepend"></s:hidden>
+                                            <s:hidden name="nperDepend"></s:hidden>
                                             <s:hidden name="cliente.Correo"></s:hidden>
                                             <s:hidden name="cliente.Telefono"></s:hidden>
                                                 <!Cónyuge-->
-                                            <s:hidden name="cPrimerNomb"></s:hidden>
-                                            <s:hidden name="cSegundNomb"></s:hidden>
-                                            <s:hidden name="cPrimerApel"></s:hidden>
-                                            <s:hidden name="cSegundApel"></s:hidden>
-                                            <s:hidden name="cEmpdondTrab"></s:hidden>
-                                            <s:hidden name="cEmpCargo"></s:hidden>
-                                            <s:hidden name="cEmpTelef"></s:hidden>
+                                            <s:hidden name="cprimerNomb"></s:hidden>
+                                            <s:hidden name="csegundNomb"></s:hidden>
+                                            <s:hidden name="cprimerApel"></s:hidden>
+                                            <s:hidden name="csegundApel"></s:hidden>
+                                            <s:hidden name="cempdondTrab"></s:hidden>
+                                            <s:hidden name="cempCargo"></s:hidden>
+                                            <s:hidden name="cempTelef"></s:hidden>
                                                 <!Vivienda>
-                                            <s:hidden name="vSuministro"></s:hidden>
-                                            <s:hidden name="vTitularSum"></s:hidden>
-                                            <s:hidden name="vRelacTitul"></s:hidden>
-                                            <s:hidden name="vTipoVivien"></s:hidden>
-                                            <s:hidden name="vHaceCVivea"></s:hidden>
-                                            <s:hidden name="vDireccResi"></s:hidden>
-                                            <s:hidden name="vDistVivien"></s:hidden>
-                                            <s:hidden name="vProvVivien"></s:hidden>
-                                            <s:hidden name="vDepaVivien"></s:hidden>
+                                            <s:hidden name="vsuministro"></s:hidden>
+                                            <s:hidden name="vtitularSum"></s:hidden>
+                                            <s:hidden name="vrelacTitul"></s:hidden>
+                                            <s:hidden name="vtipoVivien"></s:hidden>
+                                            <s:hidden name="vhaceCVivea"></s:hidden>
+                                            <s:hidden name="vdireccResi"></s:hidden>
+                                            <s:hidden name="vdistVivien"></s:hidden>
+                                            <s:hidden name="vprovVivien"></s:hidden>
+                                            <s:hidden name="vdepaVivien"></s:hidden>
                                                 <!Empleado-->
-                                            <s:hidden name="eNombreEmpr"></s:hidden>
-                                            <s:hidden name="eRUCEmpr"></s:hidden>
-                                            <s:hidden name="eActivdEmpr"></s:hidden>
-                                            <s:hidden name="eDirEmpr"></s:hidden>
-                                            <s:hidden name="eDepEmpr"></s:hidden>
-                                            <s:hidden name="eDisEmpr"></s:hidden>
-                                            <s:hidden name="eProvEmpr"></s:hidden>
+                                            <s:hidden name="enombreEmpr"></s:hidden>
+                                            <s:hidden name="erUCEmpr"></s:hidden>
+                                            <s:hidden name="eactivdEmpr"></s:hidden>
+                                            <s:hidden name="edirEmpr"></s:hidden>
+                                            <s:hidden name="edepEmpr"></s:hidden>
+                                            <s:hidden name="edisEmpr"></s:hidden>
+                                            <s:hidden name="eprovEmpr"></s:hidden>
                                                 <!Independiente-->
-                                            <s:hidden name="iLabor"></s:hidden>
-                                            <s:hidden name="iHacecuantInd"></s:hidden>
-                                            <s:hidden name="iTipodeInd"></s:hidden>
-                                            <s:hidden name="fNombEmpr"></s:hidden>
-                                            <s:hidden name="fRUCEmpr"></s:hidden>
-                                            <s:hidden name="fCargo"></s:hidden>
-                                            <s:hidden name="fDirLabo"></s:hidden> 
-                                            <s:hidden name="fDisLabo"></s:hidden>
-                                            <s:hidden name="fProLabo"></s:hidden>
-                                            <s:hidden name="fDepLabo"></s:hidden>
-                                            <s:hidden name="fTelef"></s:hidden>
-                                            <s:hidden name="fAnexo"></s:hidden>
+                                            <s:hidden name="ilabor"></s:hidden>
+                                            <s:hidden name="ihacecuantInd"></s:hidden>
+                                            <s:hidden name="itipodeInd"></s:hidden>
+                                            <s:hidden name="fnombEmpr"></s:hidden>
+                                            <s:hidden name="frucEmpr"></s:hidden>
+                                            <s:hidden name="fcargo"></s:hidden>
+                                            <s:hidden name="fdirLabo"></s:hidden> 
+                                            <s:hidden name="fdisLabo"></s:hidden>
+                                            <s:hidden name="fproLabo"></s:hidden>
+                                            <s:hidden name="fdepLabo"></s:hidden>
+                                            <s:hidden name="ftelef"></s:hidden>
+                                            <s:hidden name="fanexo"></s:hidden>
                                                 <!Jubilado-->
-                                            <s:hidden name="jNombEmpJ"></s:hidden>
-                                            <s:hidden name="jNombEmpA"></s:hidden>
-                                            <s:hidden name="jHacecuaJ"></s:hidden>  
-                                            <s:hidden name="TipoIndep"></s:hidden>
+                                            <s:hidden name="jnombEmpJ"></s:hidden>
+                                            <s:hidden name="jnombEmpA"></s:hidden>
+                                            <s:hidden name="jhacecuaJ"></s:hidden>  
+                                            <s:hidden name="tipoIndep"></s:hidden>
 
 
                                             <s:submit name="siguienteInfo" value="Siguiente" tabindex="10" id = "bSiguiente" cssClass="btn btn-primary btn-flat" />
@@ -329,29 +329,36 @@
         var inputaux2 = $(".aux2")
         $(document).on("keyup", ".ingresos", function () {
             var auxingr = 0
+            var auxgast = 0
+            inputgast.each(function (index, el) {
+                auxgast = auxgast + Number($(el).val())
+            })
             inputingr.each(function (index, el) {
                 auxingr = auxingr + Number($(el).val())
-                console.log(auxingr)
             })
             if (!isNaN(auxingr)) {
                 resultingr.val(auxingr)
                 resultaux1.val(auxingr)
                 resultactv.val(auxingr)
             }
-            console.log(auxingr)
+            if (!isNaN(auxgast)) {
+                resultgast.val(auxgast)
+                resultaux2.val(auxgast)
+                resultpatr.val(Number($(".aux1").val()) - Number($(".aux2").val()))
+            }
             $("").val(resultingr)
+            $("").val(resultgast)
+
         })
         $(document).on("keyup", ".gastos", function () {
             var auxgast = 0
             inputgast.each(function (index, el) {
                 auxgast = auxgast + Number($(el).val())
-                console.log(auxgast)
             })
             if (!isNaN(auxgast)) {
                 resultgast.val(auxgast)
                 resultaux2.val(auxgast)
                 resultpatr.val(Number($(".aux1").val()) - Number($(".aux2").val()))
-                console.log(Number($(".aux1").val()) - Number($(".aux2").val()))
             }
             $("").val(resultgast)
         })

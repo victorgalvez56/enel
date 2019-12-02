@@ -237,107 +237,107 @@ public class MenuAction extends BaseAction {
     private String paisNac;
     private String nperDepend;
 //Datos Cónyuge
-    private String CPrimerNomb;
-    private String CSegundNomb;
-    private String CPrimerApel;
-    private String CSegundApel;
-    private String CEmpdondTrab;
-    private String CEmpCargo;
-    private String CEmpTelef;
+    private String cprimerNomb;
+    private String csegundNomb;
+    private String cprimerApel;
+    private String csegundApel;
+    private String cempdondTrab;
+    private String cempCargo;
+    private String cempTelef;
 //Datos Vivienda
-    private String VSuministro;
-    private String VTitularSum;
-    private String VRelacTitul;
-    private String VTipoVivien;
-    private String VHaceCVivea;
-    private String VDireccResi;
-    private String VDistVivien;
-    private String VProvVivien;
-    private String VDepaVivien;
+    private String vsuministro;
+    private String vtitularSum;
+    private String vrelacTitul;
+    private String vtipoVivien;
+    private String vhaceCVivea;
+    private String vdireccResi;
+    private String vdistVivien;
+    private String vprovVivien;
+    private String vdepaVivien;
 //Datos Empleado
-    private String ENombreEmpr;
-    private String ERUCEmpr;
-    private String EActivdEmpr;
-    private String EDirEmpr;
-    private String EDepEmpr;
-    private String EDisEmpr;
-    private String EProvEmpr;
+    private String enombreEmpr;
+    private String erucEmpr;
+    private String eactivdEmpr;
+    private String edirEmpr;
+    private String edepEmpr;
+    private String edisEmpr;
+    private String eprovEmpr;
 //Datos Independiente Informal
-    private String ILabor;
-    private String IHacecuantInd;
-    private String ITipodeInd;
+    private String ilabor;
+    private String ihacecuantInd;
+    private String itipodeInd;
 //Datos Independiente Formal;   
-    private String FNombEmpr;
-    private String FRUCEmpr;
-    private String FCargo;
-    private String FDirLabo;
-    private String FDisLabo;
-    private String FProLabo;
-    private String FDepLabo;
-    private String FTelef;
-    private String FAnexo;
-    private String FCorreo;
+    private String fnombEmpr;
+    private String frucEmpr;
+    private String fcargo;
+    private String fdirLabo;
+    private String fdisLabo;
+    private String fproLabo;
+    private String fdepLabo;
+    private String ftelef;
+    private String fanexo;
+    private String fcorreo;
 //Datos Jubilado
-    private String JNombEmpJ;
-    private String JNombEmpA;
-    private String JHacecuaJ;
+    private String jnombEmpJ;
+    private String jnombEmpA;
+    private String jhacecuaJ;
 //Datos Información Financiera-Ingresos
-    private double ISueldBas;
-    private double IComisiones;
-    private double IHonorarios;
-    private double IAlquileres;
-    private double IOtrosIngres;
-    private double ITotalIng;
-    private double ITotalAct;
+    private double isueldBas;
+    private double icomisiones;
+    private double ihonorarios;
+    private double ialquileres;
+    private double iotrosIngres;
+    private double itotalIng;
+    private double itotalAct;
 //Datos Información Financiera-Gastos
-    private double GAlquiler;
-    private double GCreditoViv;
-    private double GGastosFamil;
-    private double GTarjetasCred;
-    private double GOtrosGas;
-    private double GTotalGas;
-    private double GTotalPat;
+    private double galquiler;
+    private double gcreditoViv;
+    private double ggastosFamil;
+    private double gtarjetasCred;
+    private double gotrosGas;
+    private double gtotalGas;
+    private double gtotalPat;
 //Datos Referencias Personales
-    private String RPPrimerNomb;
-    private String RPSegundoNomb;
-    private String RPPrimerApell;
-    private String RPSegundoApell;
-    private String RPDirec;
-    private String RPDistr;
-    private String RPProvi;
-    private String RPEstad;
-    private String RPTelef;
-    private String RPCelul;
-    private String RPParen;
+    private String rpprimerNomb;
+    private String rpsegundoNomb;
+    private String rpprimerApell;
+    private String rpsegundoApell;
+    private String rpdirec;
+    private String rpdistr;
+    private String rpprovi;
+    private String rpestad;
+    private String rptelef;
+    private String rpcelul;
+    private String rpparen;
 //Datos Referencias Familiares
-    private String RFPrimerNomb;
-    private String RFSegundoNomb;
-    private String RFPrimerApell;
-    private String RFSegundoApell;
-    private String RFDirec;
-    private String RFDistr;
-    private String RFProvi;
-    private String RFEstad;
-    private String RFTelef;
-    private String RFCelul;
-    private String RFParen;
+    private String rfprimerNomb;
+    private String rfsegundoNomb;
+    private String rfprimerApell;
+    private String rfsegundoApell;
+    private String rfdirec;
+    private String rfdistr;
+    private String rfprovi;
+    private String rfestad;
+    private String rftelef;
+    private String rfcelul;
+    private String rfparen;
 //Datos Referencias Laborales
-    private String RLCNombre;
-    private String RLCActividad;
-    private String RLCTelef;
-    private String RLCDireClient;
-    private String RLCDistrito;
-    private String RLCProvincia;
-    private String RLCEstado;
-    private String RLPNombre;
-    private String RLPActividad;
-    private String RLPTelef;
-    private String RLPDire;
-    private String RLPDistrito;
-    private String RLPProvincia;
-    private String RLPEstado;
+    private String rlcNombre;
+    private String rlcActividad;
+    private String rlcTelef;
+    private String rlcDireClient;
+    private String rlcDistrito;
+    private String rlcProvincia;
+    private String rlcEstado;
+    private String rlpNombre;
+    private String rlpActividad;
+    private String rlpTelef;
+    private String rlpDire;
+    private String rlpDistrito;
+    private String rlpProvincia;
+    private String rlpEstado;
 
-    private String TipoIndep;
+    private String tipoIndep;
 
     //Documentos Empleado
     private File archivoEmpleadoRecibo;
@@ -359,8 +359,14 @@ public class MenuAction extends BaseAction {
     private String archivoIFCopiaDniFileName;
     private File archivoIFCopiaRuc;
     private String archivoIFCopiaRucFileName;
-    private File archivoIFExtracb;
-    private String archivoIFExtracbFileName;
+
+    private File archivoIFExtracb1;
+    private String archivoIFExtracb1FileName;
+    private File archivoIFExtracb2;
+    private String archivoIFExtracb2FileName;
+    private File archivoIFExtracb3;
+    private String archivoIFExtracb3FileName;
+
     private File archivoIFExtracafp;
     private String archivoIFExtracafpFileName;
     private File archivoIFIngadic;
@@ -492,6 +498,7 @@ public class MenuAction extends BaseAction {
         estado.setCodigo("5");
         estado.setDescripcion("CONVIVIENTE");
         getLstEstados().add(estado);
+
         setResult("frmSolicitudFinanciamiento");
 
         if (!LibFunc.fxEmpty(getError())) {
@@ -605,25 +612,25 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getCPrimerNomb().equals("")) {
+                if (getCprimerNomb().equals("")) {
                     setError("Por favor llenar el campo Primer Nombre");
                 } else {
-                    if (getCSegundNomb().equals("")) {
+                    if (getCsegundNomb().equals("")) {
                         setError("Por favor llenar el campo Segundo Nombre");
                     } else {
-                        if (getCPrimerApel().equals("")) {
+                        if (getCprimerApel().equals("")) {
                             setError("Por favor llenar el campo Primer Apellido");
                         } else {
-                            if (getCSegundApel().equals("")) {
+                            if (getCsegundApel().equals("")) {
                                 setError("Por favor llenar el campo Segundo Apellido");
                             } else {
-                                if (getCEmpdondTrab().equals("")) {
+                                if (getCempdondTrab().equals("")) {
                                     setError("Por favor llenar el campo Empresa donde Trabaja");
                                 } else {
-                                    if (getCEmpCargo().equals("")) {
+                                    if (getCempCargo().equals("")) {
                                         setError("Por favor llenar el campo Cargo");
                                     } else {
-                                        if (getCEmpTelef().equals("")) {
+                                        if (getCempTelef().equals("")) {
                                             setError("Por favor llenar el campo Teléfono");
                                         } else {
                                             HttpServletRequest request = ServletActionContext.getRequest();
@@ -662,31 +669,31 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getVSuministro().equals("")) {
+                if (getVsuministro().equals("")) {
                     setError("Por favor llenar el campo Número de Suministro");
                 } else {
-                    if (getVTitularSum().equals("")) {
+                    if (getVtitularSum().equals("")) {
                         setError("Por favor llenar el campo Titular de Suministro");
                     } else {
-                        if (getVRelacTitul().equals("")) {
+                        if (getVrelacTitul().equals("")) {
                             setError("Por favor llenar el campo Relación con el titular");
                         } else {
-                            if (getVTipoVivien().equals("")) {
+                            if (getVtipoVivien().equals("")) {
                                 setError("Por favor llenar el campo Tipo de Vivienda");
                             } else {
-                                if (getVHaceCVivea().equals("")) {
+                                if (getVhaceCVivea().equals("")) {
                                     setError("Por favor llenar el campo Hace cuanto vive ahí");
                                 } else {
-                                    if (getVDireccResi().equals("")) {
+                                    if (getVdireccResi().equals("")) {
                                         setError("Por favor llenar el campo Dirección de Residencia");
                                     } else {
-                                        if (getVDistVivien().equals("0")) {
+                                        if (getVdistVivien().equals("0")) {
                                             setError("Por favor seleccionar Distrito");
                                         } else {
-                                            if (getVProvVivien().equals("0")) {
+                                            if (getVprovVivien().equals("0")) {
                                                 setError("Por favor seleccionar Provincia");
                                             } else {
-                                                if (getVDepaVivien().equals("0")) {
+                                                if (getVdepaVivien().equals("0")) {
                                                     setError("Por favor seleccionar Departamento");
                                                 } else {
                                                     HttpServletRequest request = ServletActionContext.getRequest();
@@ -738,25 +745,25 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getENombreEmpr().equals("")) {
+                if (getEnombreEmpr().equals("")) {
                     setError("Por favor llenar el campo Nombre de la Empresa");
                 } else {
-                    if (getERUCEmpr().equals("")) {
+                    if (getErucEmpr().equals("")) {
                         setError("Por favor llenar el campo Ruc de la Empresa");
                     } else {
-                        if (getEActivdEmpr().equals("")) {
+                        if (getEactivdEmpr().equals("")) {
                             setError("Por favor llenar el campo Actividad de la Empresa");
                         } else {
-                            if (getEDirEmpr().equals("")) {
+                            if (getEdirEmpr().equals("")) {
                                 setError("Por favor llenar el campo Dirección de la Empresa");
                             } else {
-                                if (getEDepEmpr().equals("0")) {
+                                if (getEdepEmpr().equals("0")) {
                                     setError("Por favor llenar el campo Departamento");
                                 } else {
-                                    if (getEDisEmpr().equals("0")) {
+                                    if (getEdisEmpr().equals("0")) {
                                         setError("Por favor llenar el campo Distrito");
                                     } else {
-                                        if (getEProvEmpr().equals("0")) {
+                                        if (getEprovEmpr().equals("0")) {
                                             setError("Por favor seleccionar Provincia");
                                         } else {
                                             HttpServletRequest request = ServletActionContext.getRequest();
@@ -800,44 +807,44 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getILabor().equals("")) {
+                if (getIlabor().equals("")) {
                     setError("Por favor llenar el primer campo");
                 } else {
-                    if (getIHacecuantInd().equals("")) {
+                    if (getIhacecuantInd().equals("")) {
                         setError("Por favor llenar el segundo campo");
                     } else {
-                        if (getITipodeInd().equals("")) {
+                        if (getItipodeInd().equals("")) {
                             setError("Por favor llenar el tercer campo");
                         } else {
-                            if (!getFNombEmpr().equals("")) {
-                                if (getFNombEmpr().equals("")) {
+                            if (!getFnombEmpr().equals("")) {
+                                if (getFnombEmpr().equals("")) {
                                     setError("Por favor llenar el campo Nombre de la Empresa");
                                 } else {
-                                    if (getFRUCEmpr().equals("")) {
+                                    if (getFrucEmpr().equals("")) {
                                         setError("Por favor llenar el campo RUC");
                                     } else {
-                                        if (getFCargo().equals("")) {
+                                        if (getFcargo().equals("")) {
                                             setError("Por favor llenar el campo Cargo");
                                         } else {
-                                            if (getFDirLabo().equals("")) {
+                                            if (getFdirLabo().equals("")) {
                                                 setError("Por favor llenar el campo Dirección");
                                             } else {
-                                                if (getFDisLabo().equals("0")) {
+                                                if (getFdisLabo().equals("0")) {
                                                     setError("Por favor llenar el campo Distrito");
                                                 } else {
-                                                    if (getFProLabo().equals("0")) {
+                                                    if (getFproLabo().equals("0")) {
                                                         setError("Por favor seleccionar una Provincia");
                                                     } else {
-                                                        if (getFDepLabo().equals("0")) {
+                                                        if (getFdepLabo().equals("0")) {
                                                             setError("Por favor seleccionar un Departamento");
                                                         } else {
-                                                            if (getFTelef().equals("")) {
+                                                            if (getFtelef().equals("")) {
                                                                 setError("Por favor llenar el campo Teléfono");
                                                             } else {
-                                                                if (getFAnexo().equals("")) {
+                                                                if (getFanexo().equals("")) {
                                                                     setError("Por favor llenar el campo Anexo");
                                                                 } else {
-                                                                    if (getFCorreo().equals("")) {
+                                                                    if (getFcorreo().equals("")) {
                                                                         setError("Por favor llenar el campo Correo Electrónico");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
@@ -889,13 +896,13 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getJNombEmpJ().equals("")) {
+                if (getJnombEmpJ().equals("")) {
                     setError("Por favor llenar el Primer campo");
                 } else {
-                    if (getJNombEmpA().equals("")) {
+                    if (getJnombEmpA().equals("")) {
                         setError("Por favor llenar el Segundo campo");
                     } else {
-                        if (getJHacecuaJ().equals("")) {
+                        if (getJhacecuaJ().equals("")) {
                             setError("Por favor llenar el Tercer campo");
                         } else {
                             HttpServletRequest request = ServletActionContext.getRequest();
@@ -925,46 +932,46 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getISueldBas() < 0) {
+                if (getIsueldBas() < 0) {
                     setError("Por favor llenar el campo Sueldo Básico");
                 } else {
-                    if (getIComisiones() < 0) {
+                    if (getIcomisiones() < 0) {
                         setError("Por favor llenar el campo Comisiones");
                     } else {
-                        if (getIHonorarios() < 0) {
+                        if (getIhonorarios() < 0) {
                             setError("Por favor llenar el campo Honorarios");
                         } else {
-                            if (getIAlquileres() < 0) {
+                            if (getIalquileres() < 0) {
                                 setError("Por favor llenar el campo Alquileres");
                             } else {
-                                if (getIOtrosIngres() < 0) {
+                                if (getIotrosIngres() < 0) {
                                     setError("Por favor llenar el campo Otros Ingresos");
                                 } else {
-                                    if (getITotalIng() < 0) {
+                                    if (getItotalIng() < 0) {
                                         setError("Por favor llenar el campo Total de Ingresos");
                                     } else {
-                                        if (getITotalAct() < 0) {
+                                        if (getItotalAct() < 0) {
                                             setError("Por favor llenar el campo Total de Activos");
                                         } else {
-                                            if (getGAlquiler() < 0) {
+                                            if (getGalquiler() < 0) {
                                                 setError("Por favor llenar el campo Alquiler");
                                             } else {
-                                                if (getGCreditoViv() < 0) {
+                                                if (getGcreditoViv() < 0) {
                                                     setError("Por favor llenar el campo Crédito de Vivienda ");
                                                 } else {
-                                                    if (getGGastosFamil() < 0) {
+                                                    if (getGgastosFamil() < 0) {
                                                         setError("Por favor llenar el campo Gastos Familiares");
                                                     } else {
-                                                        if (getGTarjetasCred() < 0) {
+                                                        if (getGtarjetasCred() < 0) {
                                                             setError("Por favor llenar el campo Tarjetas de Crédito");
                                                         } else {
-                                                            if (getGOtrosGas() < 0) {
+                                                            if (getGotrosGas() < 0) {
                                                                 setError("Por favor llenar el campo Otros Gastos");
                                                             } else {
-                                                                if (getGTotalGas() < 0) {
+                                                                if (getGtotalGas() < 0) {
                                                                     setError("Por favor llenar el campo Total de Gastos");
                                                                 } else {
-                                                                    if (getGTotalPat() < 0) {
+                                                                    if (getGtotalPat() < 0) {
                                                                         setError("Por favor llenar el campo Total de Patrimonio");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
@@ -1013,37 +1020,37 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getRFPrimerNomb().equals("")) {
+                if (getRfprimerNomb().equals("")) {
                     setError("Por favor llenar el campo Primer Nombre");
                 } else {
-                    if (getRFSegundoNomb().equals("")) {
+                    if (getRfsegundoNomb().equals("")) {
                         setError("Por favor llenar el campo Segundo Nombre");
                     } else {
-                        if (getRFPrimerApell().equals("")) {
+                        if (getRfprimerApell().equals("")) {
                             setError("Por favor llenar el campo Primer Apellido");
                         } else {
-                            if (getRFSegundoApell().equals("")) {
+                            if (getRfsegundoApell().equals("")) {
                                 setError("Por favor llenar el campo Segundo Apellido");
                             } else {
-                                if (getRFDirec().equals("")) {
+                                if (getRfdirec().equals("")) {
                                     setError("Por favor llenar una Dirección");
                                 } else {
-                                    if (getRFDistr().equals("0")) {
+                                    if (getRfdistr().equals("0")) {
                                         setError("Por favor Seleccionar un Distrito ");
                                     } else {
-                                        if (getRFProvi().equals("0")) {
+                                        if (getRfprovi().equals("0")) {
                                             setError("Por favor Seleccionar un Provincia  ");
                                         } else {
-                                            if (getRFEstad().equals("")) {
+                                            if (getRfestad().equals("")) {
                                                 setError("Por favor llenar el campo Estado");
                                             } else {
-                                                if (getRFTelef().equals("")) {
+                                                if (getRftelef().equals("")) {
                                                     setError("Por favor llenar el campo Teléfono");
                                                 } else {
-                                                    if (getRFCelul().equals("")) {
+                                                    if (getRfcelul().equals("")) {
                                                         setError("Por favor llenar el campo Celular");
                                                     } else {
-                                                        if (getRFParen().equals("")) {
+                                                        if (getRfparen().equals("")) {
                                                             setError("Por favor llenar el campo Parentesco");
                                                         } else {
                                                             HttpServletRequest request = ServletActionContext.getRequest();
@@ -1088,46 +1095,46 @@ public class MenuAction extends BaseAction {
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getRLCNombre().equals("")) {
+                if (getRlcNombre().equals("")) {
                     setError("Por favor llenar el campo Nombre del Cliente");
                 } else {
-                    if (getRLCActividad().equals("")) {
+                    if (getRlcActividad().equals("")) {
                         setError("Por favor llenar el campo Actividad del Cliente");
                     } else {
-                        if (getRLCTelef().equals("")) {
+                        if (getRlcTelef().equals("")) {
                             setError("Por favor llenar el campo Teléfono del Cliente");
                         } else {
-                            if (getRLCDireClient().equals("")) {
+                            if (getRlcDireClient().equals("")) {
                                 setError("Por favor llenar el campo Dirección del Cliente");
                             } else {
-                                if (getRLCDistrito().equals("0")) {
+                                if (getRlcDistrito().equals("0")) {
                                     setError("Por favor Seleccionar un Distrito");
                                 } else {
-                                    if (getRLCProvincia().equals("0")) {
+                                    if (getRlcProvincia().equals("0")) {
                                         setError("Por favor Seleccionar una Provincia ");
                                     } else {
-                                        if (getRLCEstado().equals("")) {
+                                        if (getRlcEstado().equals("")) {
                                             setError("Por favor llenar el campo Estado del Cliente");
                                         } else {
-                                            if (getRLPNombre().equals("")) {
+                                            if (getRlpNombre().equals("")) {
                                                 setError("Por favor llenar el campo Nombre del Proveedor");
                                             } else {
-                                                if (getRLPActividad().equals("")) {
+                                                if (getRlpActividad().equals("")) {
                                                     setError("Por favor llenar el campo Actividad del Proveedor");
                                                 } else {
-                                                    if (getRLPTelef().equals("")) {
+                                                    if (getRlpTelef().equals("")) {
                                                         setError("Por favor llenar el campo Teléfono del Proveedor");
                                                     } else {
-                                                        if (getRLPDire().equals("")) {
+                                                        if (getRlpDire().equals("")) {
                                                             setError("Por favor llenar el campo Dirección del Proveedor");
                                                         } else {
-                                                            if (getRLPDistrito().equals("0")) {
+                                                            if (getRlpDistrito().equals("0")) {
                                                                 setError("Por favor Seleccionar una Distrito ");
                                                             } else {
-                                                                if (getRLPProvincia().equals("0")) {
+                                                                if (getRlpProvincia().equals("0")) {
                                                                     setError("Por favor Seleccionar una Provincia ");
                                                                 } else {
-                                                                    if (getRLPEstado().equals("")) {
+                                                                    if (getRlpEstado().equals("")) {
                                                                         setError("Por favor llenar el campo Estado del Proveedor");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
@@ -1178,43 +1185,42 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
         setResult("frmSolFinan_RefPerso");
-
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getRPPrimerNomb().equals("")) {
+                if (getRpprimerNomb().equals("")) {
                     setError("Por favor llenar el campo Primer Nombre");
                 } else {
-                    if (getRPSegundoNomb().equals("")) {
+                    if (getRpsegundoNomb().equals("")) {
                         setError("Por favor llenar el campo Segundo Nombre");
                     } else {
-                        if (getRPPrimerApell().equals("")) {
+                        if (getRpprimerApell().equals("")) {
                             setError("Por favor llenar el campo Primer Apellido");
                         } else {
-                            if (getRPSegundoApell().equals("")) {
+                            if (getRpsegundoApell().equals("")) {
                                 setError("Por favor llenar el campo Segundo Apellido");
                             } else {
-                                if (getRPDirec().equals("")) {
+                                if (getRpdirec().equals("")) {
                                     setError("Por favor llenar una Dirección");
                                 } else {
-                                    if (getRPDistr().equals("0")) {
+                                    if (getRpdistr().equals("0")) {
                                         setError("Por favor Seleccionar un Distrito ");
                                     } else {
-                                        if (getRPProvi().equals("0")) {
+                                        if (getRpprovi().equals("0")) {
                                             setError("Por favor Seleccionar un Provincia  ");
                                         } else {
-                                            if (getRPEstad().equals("")) {
+                                            if (getRpestad().equals("")) {
                                                 setError("Por favor llenar el campo Estado");
                                             } else {
-                                                if (getRPTelef().equals("")) {
+                                                if (getRptelef().equals("")) {
                                                     setError("Por favor llenar el campo Teléfono");
                                                 } else {
-                                                    if (getRPCelul().equals("")) {
+                                                    if (getRpcelul().equals("")) {
                                                         setError("Por favor llenar el campo Celular");
                                                     } else {
-                                                        if (getRPParen().equals("")) {
+                                                        if (getRpparen().equals("")) {
                                                             setError("Por favor llenar el campo Parentesco");
                                                         } else {
                                                             HttpServletRequest request = ServletActionContext.getRequest();
@@ -1245,6 +1251,7 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("reporte") != null) {
 
@@ -1262,73 +1269,73 @@ public class MenuAction extends BaseAction {
                 loRep.setPaisNac(getPaisNac());
                 loRep.setNperDepend(getNperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCPrimerNomb());
-                loRep.setCSegundNomb(getCSegundNomb());
-                loRep.setCPrimerApel(getCPrimerApel());
-                loRep.setCSegundApel(getCSegundApel());
-                loRep.setCEmpdondTrab(getCEmpdondTrab());
-                loRep.setCEmpCargo(getCEmpCargo());
-                loRep.setCEmpTelef(getCEmpTelef());
+                loRep.setCPrimerNomb(getCprimerNomb());
+                loRep.setCSegundNomb(getCsegundNomb());
+                loRep.setCPrimerApel(getCprimerApel());
+                loRep.setCSegundApel(getCsegundApel());
+                loRep.setCEmpdondTrab(getCempdondTrab());
+                loRep.setCEmpCargo(getCempCargo());
+                loRep.setCEmpTelef(getCempTelef());
                 //Vivienda
-                loRep.setVSuministro(getVSuministro());
-                loRep.setVTitularSum(getVTitularSum());
-                loRep.setVRelacTitul(getVRelacTitul());
-                loRep.setVTipoVivien(getVTipoVivien());
-                loRep.setVHaceCVivea(getVHaceCVivea());
-                loRep.setVDireccResi(getVDireccResi());
-                loRep.setVDistVivien(getVDistVivien());
-                loRep.setVProvVivien(getVProvVivien());
-                loRep.setVDepaVivien(getVDepaVivien());
+                loRep.setVSuministro(getVsuministro());
+                loRep.setVTitularSum(getVtitularSum());
+                loRep.setVRelacTitul(getVrelacTitul());
+                loRep.setVTipoVivien(getVtipoVivien());
+                loRep.setVHaceCVivea(getVhaceCVivea());
+                loRep.setVDireccResi(getVdireccResi());
+                loRep.setVDistVivien(getVdistVivien());
+                loRep.setVProvVivien(getVprovVivien());
+                loRep.setVDepaVivien(getVdepaVivien());
                 //Empleado
-                loRep.setENombreEmpr(getENombreEmpr());
-                loRep.setERUCEmpr(getERUCEmpr());
-                loRep.setEActivdEmpr(getEActivdEmpr());
-                loRep.setEDirEmpr(getEDirEmpr());
-                loRep.setEDepEmpr(getEDepEmpr());
-                loRep.setEDisEmpr(getEDisEmpr());
-                loRep.setEProvEmpr(getEProvEmpr());
+                loRep.setENombreEmpr(getEnombreEmpr());
+                loRep.setERUCEmpr(getErucEmpr());
+                loRep.setEActivdEmpr(getEactivdEmpr());
+                loRep.setEDirEmpr(getEdirEmpr());
+                loRep.setEDepEmpr(getEdepEmpr());
+                loRep.setEDisEmpr(getEdisEmpr());
+                loRep.setEProvEmpr(getEprovEmpr());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getISueldBas());
-                loRep.setIComisiones(getIComisiones());
-                loRep.setIHonorarios(getIHonorarios());
-                loRep.setIAlquileres(getIAlquileres());
-                loRep.setIOtrosIngres(getIOtrosIngres());
-                loRep.setITotalIng(getITotalIng());
-                loRep.setITotalAct(getITotalAct());
+                loRep.setISueldBas(getIsueldBas());
+                loRep.setIComisiones(getIcomisiones());
+                loRep.setIHonorarios(getIhonorarios());
+                loRep.setIAlquileres(getIalquileres());
+                loRep.setIOtrosIngres(getIotrosIngres());
+                loRep.setITotalIng(getItotalIng());
+                loRep.setITotalAct(getItotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGAlquiler());
-                loRep.setGCreditoViv(getGCreditoViv());
-                loRep.setGGastosFamil(getGGastosFamil());
-                loRep.setGTarjetasCred(getGTarjetasCred());
-                loRep.setGOtrosGas(getGOtrosGas());
-                loRep.setGTotalGas(getGTotalGas());
-                loRep.setGTotalPat(getGTotalPat());
+                loRep.setGAlquiler(getGalquiler());
+                loRep.setGCreditoViv(getGcreditoViv());
+                loRep.setGGastosFamil(getGgastosFamil());
+                loRep.setGTarjetasCred(getGtarjetasCred());
+                loRep.setGOtrosGas(getGotrosGas());
+                loRep.setGTotalGas(getGtotalGas());
+                loRep.setGTotalPat(getGtotalPat());
                 //Datos Referencias Personales
-                loRep.setRPPrimerNomb(getRPPrimerNomb());
-                loRep.setRPSegundoNomb(getRPSegundoNomb());
-                loRep.setRPPrimerApell(getRPPrimerApell());
-                loRep.setRPSegundoApell(getRPSegundoApell());
-                loRep.setRPDirec(getRPDirec());
-                loRep.setRPDistr(getRPDistr());
-                loRep.setRPProvi(getRPProvi());
-                loRep.setRPEstad(getRPEstad());
-                loRep.setRPTelef(getRPTelef());
-                loRep.setRPCelul(getRPCelul());
-                loRep.setRPParen(getRPParen());
+                loRep.setRPPrimerNomb(getRpprimerNomb());
+                loRep.setRPSegundoNomb(getRpsegundoNomb());
+                loRep.setRPPrimerApell(getRpprimerApell());
+                loRep.setRPSegundoApell(getRpsegundoApell());
+                loRep.setRPDirec(getRpdirec());
+                loRep.setRPDistr(getRpdistr());
+                loRep.setRPProvi(getRpprovi());
+                loRep.setRPEstad(getRpestad());
+                loRep.setRPTelef(getRptelef());
+                loRep.setRPCelul(getRpcelul());
+                loRep.setRPParen(getRpparen());
 
-                File filerecibo = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoReciboFileName()+"_"+getCliente().getNombre());
+                File filerecibo = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoReciboFileName() + "_" + getCliente().getNombre());
                 byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoRecibo()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoCopiaDNIFileName()+"_"+getCliente().getNombre());
+                File filecopiadni = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoCopiaDNIFileName() + "_" + getCliente().getNombre());
                 byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoCopiaDNI()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol1FileName()+"_"+getCliente().getNombre());
+                File filebol1 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol1FileName() + "_" + getCliente().getNombre());
                 byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol1()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol2FileName()+"_"+getCliente().getNombre());
+                File filebol2 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol2FileName() + "_" + getCliente().getNombre());
                 byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol2()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
@@ -1352,7 +1359,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento" + "_" + getCliente().getNombre() + ".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1362,6 +1369,7 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }
+
         setResult("frmSolFinan_DocEmple");
         return getResult();
     }
@@ -1370,12 +1378,12 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("reporte") != null) {
             CReportePDF loRep = new CReportePDF();
             loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
             try {
-
                 loRep.setCliente(getCliente());
                 //Solicitud de Financiamiento
                 loRep.setCodEvaluador(getCodEvaluador());
@@ -1387,90 +1395,94 @@ public class MenuAction extends BaseAction {
                 loRep.setPaisNac(getPaisNac());
                 loRep.setNperDepend(getNperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCPrimerNomb());
-                loRep.setCSegundNomb(getCSegundNomb());
-                loRep.setCPrimerApel(getCPrimerApel());
-                loRep.setCSegundApel(getCSegundApel());
-                loRep.setCEmpdondTrab(getCEmpdondTrab());
-                loRep.setCEmpCargo(getCEmpCargo());
-                loRep.setCEmpTelef(getCEmpTelef());
+                loRep.setCPrimerNomb(getCprimerNomb());
+                loRep.setCSegundNomb(getCsegundNomb());
+                loRep.setCPrimerApel(getCprimerApel());
+                loRep.setCSegundApel(getCsegundApel());
+                loRep.setCEmpdondTrab(getCempdondTrab());
+                loRep.setCEmpCargo(getCempCargo());
+                loRep.setCEmpTelef(getCempTelef());
                 //Vivienda
-                loRep.setVSuministro(getVSuministro());
-                loRep.setVTitularSum(getVTitularSum());
-                loRep.setVRelacTitul(getVRelacTitul());
-                loRep.setVTipoVivien(getVTipoVivien());
-                loRep.setVHaceCVivea(getVHaceCVivea());
-                loRep.setVDireccResi(getVDireccResi());
-                loRep.setVDistVivien(getVDistVivien());
-                loRep.setVProvVivien(getVProvVivien());
-                loRep.setVDepaVivien(getVDepaVivien());
+                loRep.setVSuministro(getVsuministro());
+                loRep.setVTitularSum(getVtitularSum());
+                loRep.setVRelacTitul(getVrelacTitul());
+                loRep.setVTipoVivien(getVtipoVivien());
+                loRep.setVHaceCVivea(getVhaceCVivea());
+                loRep.setVDireccResi(getVdireccResi());
+                loRep.setVDistVivien(getVdistVivien());
+                loRep.setVProvVivien(getVprovVivien());
+                loRep.setVDepaVivien(getVdepaVivien());
                 //FORMAL INDEPENDIENTE
-                loRep.setILabor(getILabor());
-                loRep.setIHacecuantInd(getIHacecuantInd());
-                loRep.setITipodeInd(getITipodeInd());
+                loRep.setILabor(getIlabor());
+                loRep.setIHacecuantInd(getIhacecuantInd());
+                loRep.setITipodeInd(getItipodeInd());
 
-                loRep.setFNombEmpr(getFNombEmpr());
-                loRep.setFRUCEmpr(getFRUCEmpr());
-                loRep.setFCargo(getFCargo());
-                loRep.setFDirLabo(getFDirLabo());
-                loRep.setFDisLabo(getFDisLabo());
-                loRep.setFProLabo(getFProLabo());
-                loRep.setFDepLabo(getFDepLabo());
-                loRep.setFTelef(getFTelef());
-                loRep.setFAnexo(getFAnexo());
+                loRep.setFNombEmpr(getFnombEmpr());
+                loRep.setFRUCEmpr(getFrucEmpr());
+                loRep.setFCargo(getFcargo());
+                loRep.setFDirLabo(getFdirLabo());
+                loRep.setFDisLabo(getFdisLabo());
+                loRep.setFProLabo(getFproLabo());
+                loRep.setFDepLabo(getFdepLabo());
+                loRep.setFTelef(getFtelef());
+                loRep.setFAnexo(getFanexo());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getISueldBas());
-                loRep.setIComisiones(getIComisiones());
-                loRep.setIHonorarios(getIHonorarios());
-                loRep.setIAlquileres(getIAlquileres());
-                loRep.setIOtrosIngres(getIOtrosIngres());
-                loRep.setITotalIng(getITotalIng());
-                loRep.setITotalAct(getITotalAct());
+                loRep.setISueldBas(getIsueldBas());
+                loRep.setIComisiones(getIcomisiones());
+                loRep.setIHonorarios(getIhonorarios());
+                loRep.setIAlquileres(getIalquileres());
+                loRep.setIOtrosIngres(getIotrosIngres());
+                loRep.setITotalIng(getItotalIng());
+                loRep.setITotalAct(getItotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGAlquiler());
-                loRep.setGCreditoViv(getGCreditoViv());
-                loRep.setGGastosFamil(getGGastosFamil());
-                loRep.setGTarjetasCred(getGTarjetasCred());
-                loRep.setGOtrosGas(getGOtrosGas());
-                loRep.setGTotalGas(getGTotalGas());
-                loRep.setGTotalPat(getGTotalPat());
-                //Datos Referencias laborales
-                loRep.setRLCNombre(getRLCNombre());
-                loRep.setRLCActividad(getRLCActividad());
-                loRep.setRLCDireClient(getRLCDireClient());
-                loRep.setRLCDistrito(getRLCDistrito());
-                loRep.setRLCEstado(getRLCEstado());
-                loRep.setRLCProvincia(getRLCProvincia());
-                loRep.setRLCTelef(getRLCTelef());
-                loRep.setRLPNombre(getRLPNombre());
-                loRep.setRLPActividad(getRLPActividad());
-                loRep.setRLPDire(getRLPDire());
-                loRep.setRLPDistrito(getRLPDistrito());
-                loRep.setRLPEstado(getRLPEstado());
-                loRep.setRLPProvincia(getRLPProvincia());
-                loRep.setRLPTelef(getRLPTelef());
+                loRep.setGAlquiler(getGalquiler());
+                loRep.setGCreditoViv(getGcreditoViv());
+                loRep.setGGastosFamil(getGgastosFamil());
+                loRep.setGTarjetasCred(getGtarjetasCred());
+                loRep.setGOtrosGas(getGotrosGas());
+                loRep.setGTotalGas(getGtotalGas());
+                loRep.setGTotalPat(getGtotalPat());
+                //Datos Referencias Personales
+                loRep.setRPPrimerNomb(getRpprimerNomb());
+                loRep.setRPSegundoNomb(getRpsegundoNomb());
+                loRep.setRPPrimerApell(getRpprimerApell());
+                loRep.setRPSegundoApell(getRpsegundoApell());
+                loRep.setRPDirec(getRpdirec());
+                loRep.setRPDistr(getRpdistr());
+                loRep.setRPProvi(getRpprovi());
+                loRep.setRPEstad(getRpestad());
+                loRep.setRPTelef(getRptelef());
+                loRep.setRPCelul(getRpcelul());
+                loRep.setRPParen(getRpparen());
+                loRep.setCliente(getCliente());
 
-                File filerecibo = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFRecibLuzFileName()+"_"+getCliente().getNombre());
+                File filerecibo = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFRecibLuzFileName() + "_" + getCliente().getNombre());
                 byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFRecibLuz()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaDniFileName()+"_"+getCliente().getNombre());
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaDniFileName() + "_" + getCliente().getNombre());
                 byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaRucFileName()+"_"+getCliente().getNombre());
+                File filebol1 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaRucFileName() + "_" + getCliente().getNombre());
                 byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaRuc()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracbFileName()+"_"+getCliente().getNombre());
-                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb()));
+                File filebol2 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracb1FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb1()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
-
-                File filebol3 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracafpFileName()+"_"+getCliente().getNombre());
+                File filebol4 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracb2FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb2()));
+                FileUtils.writeByteArrayToFile(filebol4, archivofile4);
+                File filebol5 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracb3FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb3()));
+                FileUtils.writeByteArrayToFile(filebol5, archivofile5);
+                
+                File filebol3 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracafpFileName() + "_" + getCliente().getNombre());
                 byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracafp()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFIngadicFileName()+"_"+getCliente().getNombre());
+                File fileingadic = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFIngadicFileName() + "_" + getCliente().getNombre());
                 byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFIngadic()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
@@ -1484,7 +1496,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento" + "_" + getCliente().getNombre() + ".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1493,7 +1505,8 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }
-        setResult("frmSolFinan_DocIndpF");
+         
+                 setResult("frmSolFinan_DocIndpF");
         return getResult();
     }
 
@@ -1501,12 +1514,12 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("reporte") != null) {
             CReportePDF loRep = new CReportePDF();
             loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
             try {
-
                 loRep.setCliente(getCliente());
                 //Solicitud de Financiamiento
                 loRep.setCodEvaluador(getCodEvaluador());
@@ -1518,97 +1531,96 @@ public class MenuAction extends BaseAction {
                 loRep.setPaisNac(getPaisNac());
                 loRep.setNperDepend(getNperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCPrimerNomb());
-                loRep.setCSegundNomb(getCSegundNomb());
-                loRep.setCPrimerApel(getCPrimerApel());
-                loRep.setCSegundApel(getCSegundApel());
-                loRep.setCEmpdondTrab(getCEmpdondTrab());
-                loRep.setCEmpCargo(getCEmpCargo());
-                loRep.setCEmpTelef(getCEmpTelef());
+                loRep.setCPrimerNomb(getCprimerNomb());
+                loRep.setCSegundNomb(getCsegundNomb());
+                loRep.setCPrimerApel(getCprimerApel());
+                loRep.setCSegundApel(getCsegundApel());
+                loRep.setCEmpdondTrab(getCempdondTrab());
+                loRep.setCEmpCargo(getCempCargo());
+                loRep.setCEmpTelef(getCempTelef());
                 //Vivienda
-                loRep.setVSuministro(getVSuministro());
-                loRep.setVTitularSum(getVTitularSum());
-                loRep.setVRelacTitul(getVRelacTitul());
-                loRep.setVTipoVivien(getVTipoVivien());
-                loRep.setVHaceCVivea(getVHaceCVivea());
-                loRep.setVDireccResi(getVDireccResi());
-                loRep.setVDistVivien(getVDistVivien());
-                loRep.setVProvVivien(getVProvVivien());
-                loRep.setVDepaVivien(getVDepaVivien());
+                loRep.setVSuministro(getVsuministro());
+                loRep.setVTitularSum(getVtitularSum());
+                loRep.setVRelacTitul(getVrelacTitul());
+                loRep.setVTipoVivien(getVtipoVivien());
+                loRep.setVHaceCVivea(getVhaceCVivea());
+                loRep.setVDireccResi(getVdireccResi());
+                loRep.setVDistVivien(getVdistVivien());
+                loRep.setVProvVivien(getVprovVivien());
+                loRep.setVDepaVivien(getVdepaVivien());
                 //FORMAL INDEPENDIENTE
-                loRep.setILabor(getILabor());
-                loRep.setIHacecuantInd(getIHacecuantInd());
-                loRep.setITipodeInd(getITipodeInd());
-
+                loRep.setILabor(getIlabor());
+                loRep.setIHacecuantInd(getIhacecuantInd());
+                loRep.setITipodeInd(getItipodeInd());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getISueldBas());
-                loRep.setIComisiones(getIComisiones());
-                loRep.setIHonorarios(getIHonorarios());
-                loRep.setIAlquileres(getIAlquileres());
-                loRep.setIOtrosIngres(getIOtrosIngres());
-                loRep.setITotalIng(getITotalIng());
-                loRep.setITotalAct(getITotalAct());
+                loRep.setISueldBas(getIsueldBas());
+                loRep.setIComisiones(getIcomisiones());
+                loRep.setIHonorarios(getIhonorarios());
+                loRep.setIAlquileres(getIalquileres());
+                loRep.setIOtrosIngres(getIotrosIngres());
+                loRep.setITotalIng(getItotalIng());
+                loRep.setITotalAct(getItotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGAlquiler());
-                loRep.setGCreditoViv(getGCreditoViv());
-                loRep.setGGastosFamil(getGGastosFamil());
-                loRep.setGTarjetasCred(getGTarjetasCred());
-                loRep.setGOtrosGas(getGOtrosGas());
-                loRep.setGTotalGas(getGTotalGas());
-                loRep.setGTotalPat(getGTotalPat());
-                //Datos Referencias laborales
-                loRep.setRLCNombre(getRLCNombre());
-                loRep.setRLCActividad(getRLCActividad());
-                loRep.setRLCDireClient(getRLCDireClient());
-                loRep.setRLCDistrito(getRLCDistrito());
-                loRep.setRLCEstado(getRLCEstado());
-                loRep.setRLCProvincia(getRLCProvincia());
-                loRep.setRLCTelef(getRLCTelef());
-                loRep.setRLPNombre(getRPPrimerNomb());
-                loRep.setRLPActividad(getRLPActividad());
-                loRep.setRLPDire(getRLPDire());
-                loRep.setRLPDistrito(getRLPDistrito());
-                loRep.setRLPEstado(getRLPEstado());
-                loRep.setRLPProvincia(getRLPProvincia());
-                loRep.setRLPTelef(getRLPTelef());
+                loRep.setGAlquiler(getGalquiler());
+                loRep.setGCreditoViv(getGcreditoViv());
+                loRep.setGGastosFamil(getGgastosFamil());
+                loRep.setGTarjetasCred(getGtarjetasCred());
+                loRep.setGOtrosGas(getGotrosGas());
+                loRep.setGTotalGas(getGtotalGas());
+                loRep.setGTotalPat(getGtotalPat());
+                //Datos Referencias Personales
+                loRep.setRPPrimerNomb(getRpprimerNomb());
+                loRep.setRPSegundoNomb(getRpsegundoNomb());
+                loRep.setRPPrimerApell(getRpprimerApell());
+                loRep.setRPSegundoApell(getRpsegundoApell());
+                loRep.setRPDirec(getRpdirec());
+                loRep.setRPDistr(getRpdistr());
+                loRep.setRPProvi(getRpprovi());
+                loRep.setRPEstad(getRpestad());
+                loRep.setRPTelef(getRptelef());
+                loRep.setRPCelul(getRpcelul());
+                loRep.setRPParen(getRpparen());
+                loRep.setCliente(getCliente());
+                loRep.setCliente(getCliente());
+       
 
-                File filerecibo = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNRecibluzFileName()+"_"+getCliente().getNombre());
+                File filerecibo = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNRecibluzFileName() + "_" + getCliente().getNombre());
                 byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFNRecibluz()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCopiaDniFileName()+"_"+getCliente().getNombre());
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCopiaDniFileName() + "_" + getCliente().getNombre());
                 byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf1FileName()+"_"+getCliente().getNombre());
+                File filebol1 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf1FileName() + "_" + getCliente().getNombre());
                 byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf1()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf2FileName()+"_"+getCliente().getNombre());
+                File filebol2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf2FileName() + "_" + getCliente().getNombre());
                 byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf2()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
-                File filebol3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac1FileName()+"_"+getCliente().getNombre());
+                File filebol3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac1FileName() + "_" + getCliente().getNombre());
                 byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac1()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac2FileName()+"_"+getCliente().getNombre());
+                File fileingadic = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac2FileName() + "_" + getCliente().getNombre());
                 byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac2()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
-                File filebol4 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC1FileName()+"_"+getCliente().getNombre());
+                File filebol4 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC1FileName() + "_" + getCliente().getNombre());
                 byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC1()));
                 FileUtils.writeByteArrayToFile(filebol4, archivofile4);
 
-                File fileingadic2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC2FileName()+"_"+getCliente().getNombre());
+                File fileingadic2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC2FileName() + "_" + getCliente().getNombre());
                 byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC2()));
                 FileUtils.writeByteArrayToFile(fileingadic2, archivoingadic2);
 
-                File filebol5 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNExtracAfpFileName()+"_"+getCliente().getNombre());
+                File filebol5 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNExtracAfpFileName() + "_" + getCliente().getNombre());
                 byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNExtracAfp()));
                 FileUtils.writeByteArrayToFile(filebol5, archivofile5);
 
-                File fileingadic3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNIngadicFileName()+"_"+getCliente().getNombre());
+                File fileingadic3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNIngadicFileName() + "_" + getCliente().getNombre());
                 byte[] archivoingadic3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNIngadic()));
                 FileUtils.writeByteArrayToFile(fileingadic3, archivoingadic3);
 
@@ -1622,7 +1634,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento" + "_" + getCliente().getNombre() + ".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1631,6 +1643,7 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }
+         
         setResult("frmSolFinan_DocIndpN");
         return getResult();
     }
@@ -1639,12 +1652,12 @@ public class MenuAction extends BaseAction {
         if (!validaSession()) {
             return "login";
         }
+        
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("reporte") != null) {
             CReportePDF loRep = new CReportePDF();
             loRep.setPthFil(ServletActionContext.getServletContext().getRealPath("/"));
             try {
-
                 loRep.setCliente(getCliente());
                 //Solicitud de Financiamiento
                 loRep.setCodEvaluador(getCodEvaluador());
@@ -1656,56 +1669,59 @@ public class MenuAction extends BaseAction {
                 loRep.setPaisNac(getPaisNac());
                 loRep.setNperDepend(getNperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCPrimerNomb());
-                loRep.setCSegundNomb(getCSegundNomb());
-                loRep.setCPrimerApel(getCPrimerApel());
-                loRep.setCSegundApel(getCSegundApel());
-                loRep.setCEmpdondTrab(getCEmpdondTrab());
-                loRep.setCEmpCargo(getCEmpCargo());
-                loRep.setCEmpTelef(getCEmpTelef());
+                loRep.setCPrimerNomb(getCprimerNomb());
+                loRep.setCSegundNomb(getCsegundNomb());
+                loRep.setCPrimerApel(getCprimerApel());
+                loRep.setCSegundApel(getCsegundApel());
+                loRep.setCEmpdondTrab(getCempdondTrab());
+                loRep.setCEmpCargo(getCempCargo());
+                loRep.setCEmpTelef(getCempTelef());
                 //Vivienda
-                loRep.setVSuministro(getVSuministro());
-                loRep.setVTitularSum(getVTitularSum());
-                loRep.setVRelacTitul(getVRelacTitul());
-                loRep.setVTipoVivien(getVTipoVivien());
-                loRep.setVHaceCVivea(getVHaceCVivea());
-                loRep.setVDireccResi(getVDireccResi());
-                loRep.setVDistVivien(getVDistVivien());
-                loRep.setVProvVivien(getVProvVivien());
-                loRep.setVDepaVivien(getVDepaVivien());
+                loRep.setVSuministro(getVsuministro());
+                loRep.setVTitularSum(getVtitularSum());
+                loRep.setVRelacTitul(getVrelacTitul());
+                loRep.setVTipoVivien(getVtipoVivien());
+                loRep.setVHaceCVivea(getVhaceCVivea());
+                loRep.setVDireccResi(getVdireccResi());
+                loRep.setVDistVivien(getVdistVivien());
+                loRep.setVProvVivien(getVprovVivien());
+                loRep.setVDepaVivien(getVdepaVivien());
                 //JUBILADO
-                loRep.setJNombEmpJ(getJNombEmpJ());
-                loRep.setJNombEmpA(getJNombEmpA());
-                loRep.setJHacecuaJ(getJHacecuaJ());
-
+                loRep.setJNombEmpJ(getJnombEmpJ());
+                loRep.setJNombEmpA(getJnombEmpA());
+                loRep.setJHacecuaJ(getJhacecuaJ());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getISueldBas());
-                loRep.setIComisiones(getIComisiones());
-                loRep.setIHonorarios(getIHonorarios());
-                loRep.setIAlquileres(getIAlquileres());
-                loRep.setIOtrosIngres(getIOtrosIngres());
-                loRep.setITotalIng(getITotalIng());
-                loRep.setITotalAct(getITotalAct());
+                loRep.setISueldBas(getIsueldBas());
+                loRep.setIComisiones(getIcomisiones());
+                loRep.setIHonorarios(getIhonorarios());
+                loRep.setIAlquileres(getIalquileres());
+                loRep.setIOtrosIngres(getIotrosIngres());
+                loRep.setITotalIng(getItotalIng());
+                loRep.setITotalAct(getItotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGAlquiler());
-                loRep.setGCreditoViv(getGCreditoViv());
-                loRep.setGGastosFamil(getGGastosFamil());
-                loRep.setGTarjetasCred(getGTarjetasCred());
-                loRep.setGOtrosGas(getGOtrosGas());
-                loRep.setGTotalGas(getGTotalGas());
-                loRep.setGTotalPat(getGTotalPat());
+                loRep.setGAlquiler(getGalquiler());
+                loRep.setGCreditoViv(getGcreditoViv());
+                loRep.setGGastosFamil(getGgastosFamil());
+                loRep.setGTarjetasCred(getGtarjetasCred());
+                loRep.setGOtrosGas(getGotrosGas());
+                loRep.setGTotalGas(getGtotalGas());
+                loRep.setGTotalPat(getGtotalPat());
                 //Datos Referencias Personales
-                loRep.setRFPrimerNomb(getRFPrimerNomb());
-                loRep.setRFSegundoNomb(getRFSegundoNomb());
-                loRep.setRFPrimerApell(getRFPrimerApell());
-                loRep.setRFSegundoApell(getRFSegundoApell());
-                loRep.setRFDirec(getRFDirec());
-                loRep.setRFDistr(getRFDistr());
-                loRep.setRFProvi(getRFProvi());
-                loRep.setRFEstad(getRFEstad());
-                loRep.setRFTelef(getRFTelef());
-                loRep.setRFCelul(getRFCelul());
-                loRep.setRFParen(getRFParen());
+                loRep.setRPPrimerNomb(getRpprimerNomb());
+                loRep.setRPSegundoNomb(getRpsegundoNomb());
+                loRep.setRPPrimerApell(getRpprimerApell());
+                loRep.setRPSegundoApell(getRpsegundoApell());
+                loRep.setRPDirec(getRpdirec());
+                loRep.setRPDistr(getRpdistr());
+                loRep.setRPProvi(getRpprovi());
+                loRep.setRPEstad(getRpestad());
+                loRep.setRPTelef(getRptelef());
+                loRep.setRPCelul(getRpcelul());
+                loRep.setRPParen(getRpparen());
+                loRep.setCliente(getCliente());
+                loRep.setCliente(getCliente());
+                loRep.setCliente(getCliente());
+  
 
                 File filerecibo = new File("/ftia/files/cartas/Jubilado/" + getArchivoJRecibFileName());
                 byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoJRecib()));
@@ -1753,7 +1769,7 @@ public class MenuAction extends BaseAction {
                     HttpServletResponse response = ServletActionContext.getResponse();
                     response.setContentLength(archivo.length);
                     response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento"+"_"+getCliente().getNombre()+".pdf\"");
+                    response.setHeader("Content-Disposition", "attachment; filename=\"SolicitudFinanciamiento" + "_" + getCliente().getNombre() + ".pdf\"");
                     ServletOutputStream out = response.getOutputStream();
                     out.write(archivo);
                     out.flush();
@@ -1762,6 +1778,7 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }
+         
         setResult("frmSolFinan_DocJubila");
         return getResult();
     }
@@ -9600,745 +9617,6 @@ public class MenuAction extends BaseAction {
         this.nperDepend = nperDepend;
     }
 
-    public String getCPrimerNomb() {
-        return CPrimerNomb;
-    }
-
-    public void setCPrimerNomb(String CPrimerNomb) {
-        this.CPrimerNomb = CPrimerNomb;
-    }
-
-    public String getCSegundNomb() {
-        return CSegundNomb;
-    }
-
-    public void setCSegundNomb(String CSegundNomb) {
-        this.CSegundNomb = CSegundNomb;
-    }
-
-    public String getCPrimerApel() {
-        return CPrimerApel;
-    }
-
-    public void setCPrimerApel(String CPrimerApel) {
-        this.CPrimerApel = CPrimerApel;
-    }
-
-    public String getCSegundApel() {
-        return CSegundApel;
-    }
-
-    public void setCSegundApel(String CSegundApel) {
-        this.CSegundApel = CSegundApel;
-    }
-
-    public String getCEmpdondTrab() {
-        return CEmpdondTrab;
-    }
-
-    public void setCEmpdondTrab(String CEmpdondTrab) {
-        this.CEmpdondTrab = CEmpdondTrab;
-    }
-
-    public String getCEmpCargo() {
-        return CEmpCargo;
-    }
-
-    public void setCEmpCargo(String CEmpCargo) {
-        this.CEmpCargo = CEmpCargo;
-    }
-
-    public String getCEmpTelef() {
-        return CEmpTelef;
-    }
-
-    public void setCEmpTelef(String CEmpTelef) {
-        this.CEmpTelef = CEmpTelef;
-    }
-
-    public String getVSuministro() {
-        return VSuministro;
-    }
-
-    public void setVSuministro(String VSuministro) {
-        this.VSuministro = VSuministro;
-    }
-
-    public String getVTitularSum() {
-        return VTitularSum;
-    }
-
-    public void setVTitularSum(String VTitularSum) {
-        this.VTitularSum = VTitularSum;
-    }
-
-    public String getVRelacTitul() {
-        return VRelacTitul;
-    }
-
-    public void setVRelacTitul(String VRelacTitul) {
-        this.VRelacTitul = VRelacTitul;
-    }
-
-    public String getVTipoVivien() {
-        return VTipoVivien;
-    }
-
-    public void setVTipoVivien(String VTipoVivien) {
-        this.VTipoVivien = VTipoVivien;
-    }
-
-    public String getVHaceCVivea() {
-        return VHaceCVivea;
-    }
-
-    public void setVHaceCVivea(String VHaceCVivea) {
-        this.VHaceCVivea = VHaceCVivea;
-    }
-
-    public String getVDireccResi() {
-        return VDireccResi;
-    }
-
-    public void setVDireccResi(String VDireccResi) {
-        this.VDireccResi = VDireccResi;
-    }
-
-    public String getVDistVivien() {
-        return VDistVivien;
-    }
-
-    public void setVDistVivien(String VDistVivien) {
-        this.VDistVivien = VDistVivien;
-    }
-
-    public String getVProvVivien() {
-        return VProvVivien;
-    }
-
-    public void setVProvVivien(String VProvVivien) {
-        this.VProvVivien = VProvVivien;
-    }
-
-    public String getVDepaVivien() {
-        return VDepaVivien;
-    }
-
-    public void setVDepaVivien(String VDepaVivien) {
-        this.VDepaVivien = VDepaVivien;
-    }
-
-    public String getENombreEmpr() {
-        return ENombreEmpr;
-    }
-
-    public void setENombreEmpr(String ENombreEmpr) {
-        this.ENombreEmpr = ENombreEmpr;
-    }
-
-    public String getERUCEmpr() {
-        return ERUCEmpr;
-    }
-
-    public void setERUCEmpr(String ERUCEmpr) {
-        this.ERUCEmpr = ERUCEmpr;
-    }
-
-    public String getEActivdEmpr() {
-        return EActivdEmpr;
-    }
-
-    public void setEActivdEmpr(String EActivdEmpr) {
-        this.EActivdEmpr = EActivdEmpr;
-    }
-
-    public String getEDirEmpr() {
-        return EDirEmpr;
-    }
-
-    public void setEDirEmpr(String EDirEmpr) {
-        this.EDirEmpr = EDirEmpr;
-    }
-
-    public String getEDepEmpr() {
-        return EDepEmpr;
-    }
-
-    public void setEDepEmpr(String EDepEmpr) {
-        this.EDepEmpr = EDepEmpr;
-    }
-
-    public String getEDisEmpr() {
-        return EDisEmpr;
-    }
-
-    public void setEDisEmpr(String EDisEmpr) {
-        this.EDisEmpr = EDisEmpr;
-    }
-
-    public String getEProvEmpr() {
-        return EProvEmpr;
-    }
-
-    public void setEProvEmpr(String EProvEmpr) {
-        this.EProvEmpr = EProvEmpr;
-    }
-
-    public String getILabor() {
-        return ILabor;
-    }
-
-    public void setILabor(String ILabor) {
-        this.ILabor = ILabor;
-    }
-
-    public String getIHacecuantInd() {
-        return IHacecuantInd;
-    }
-
-    public void setIHacecuantInd(String IHacecuantInd) {
-        this.IHacecuantInd = IHacecuantInd;
-    }
-
-    public String getITipodeInd() {
-        return ITipodeInd;
-    }
-
-    public void setITipodeInd(String ITipodeInd) {
-        this.ITipodeInd = ITipodeInd;
-    }
-
-    public String getFNombEmpr() {
-        return FNombEmpr;
-    }
-
-    public void setFNombEmpr(String FNombEmpr) {
-        this.FNombEmpr = FNombEmpr;
-    }
-
-    public String getFRUCEmpr() {
-        return FRUCEmpr;
-    }
-
-    public void setFRUCEmpr(String FRUCEmpr) {
-        this.FRUCEmpr = FRUCEmpr;
-    }
-
-    public String getFCargo() {
-        return FCargo;
-    }
-
-    public void setFCargo(String FCargo) {
-        this.FCargo = FCargo;
-    }
-
-    public String getFDirLabo() {
-        return FDirLabo;
-    }
-
-    public void setFDirLabo(String FDirLabo) {
-        this.FDirLabo = FDirLabo;
-    }
-
-    public String getFDisLabo() {
-        return FDisLabo;
-    }
-
-    public void setFDisLabo(String FDisLabo) {
-        this.FDisLabo = FDisLabo;
-    }
-
-    public String getFProLabo() {
-        return FProLabo;
-    }
-
-    public void setFProLabo(String FProLabo) {
-        this.FProLabo = FProLabo;
-    }
-
-    public String getFDepLabo() {
-        return FDepLabo;
-    }
-
-    public void setFDepLabo(String FDepLabo) {
-        this.FDepLabo = FDepLabo;
-    }
-
-    public String getFTelef() {
-        return FTelef;
-    }
-
-    public void setFTelef(String FTelef) {
-        this.FTelef = FTelef;
-    }
-
-    public String getFAnexo() {
-        return FAnexo;
-    }
-
-    public void setFAnexo(String FAnexo) {
-        this.FAnexo = FAnexo;
-    }
-
-    public String getFCorreo() {
-        return FCorreo;
-    }
-
-    public void setFCorreo(String FCorreo) {
-        this.FCorreo = FCorreo;
-    }
-
-    public String getJNombEmpJ() {
-        return JNombEmpJ;
-    }
-
-    public void setJNombEmpJ(String JNombEmpJ) {
-        this.JNombEmpJ = JNombEmpJ;
-    }
-
-    public String getJNombEmpA() {
-        return JNombEmpA;
-    }
-
-    public void setJNombEmpA(String JNombEmpA) {
-        this.JNombEmpA = JNombEmpA;
-    }
-
-    public String getJHacecuaJ() {
-        return JHacecuaJ;
-    }
-
-    public void setJHacecuaJ(String JHacecuaJ) {
-        this.JHacecuaJ = JHacecuaJ;
-    }
-
-    public double getISueldBas() {
-        return ISueldBas;
-    }
-
-    public void setISueldBas(double ISueldBas) {
-        this.ISueldBas = ISueldBas;
-    }
-
-    public double getIComisiones() {
-        return IComisiones;
-    }
-
-    public void setIComisiones(double IComisiones) {
-        this.IComisiones = IComisiones;
-    }
-
-    public double getIHonorarios() {
-        return IHonorarios;
-    }
-
-    public void setIHonorarios(double IHonorarios) {
-        this.IHonorarios = IHonorarios;
-    }
-
-    public double getIAlquileres() {
-        return IAlquileres;
-    }
-
-    public void setIAlquileres(double IAlquileres) {
-        this.IAlquileres = IAlquileres;
-    }
-
-    public double getIOtrosIngres() {
-        return IOtrosIngres;
-    }
-
-    public void setIOtrosIngres(double IOtrosIngres) {
-        this.IOtrosIngres = IOtrosIngres;
-    }
-
-    public double getITotalIng() {
-        return ITotalIng;
-    }
-
-    public void setITotalIng(double ITotalIng) {
-        this.ITotalIng = ITotalIng;
-    }
-
-    public double getITotalAct() {
-        return ITotalAct;
-    }
-
-    public void setITotalAct(double ITotalAct) {
-        this.ITotalAct = ITotalAct;
-    }
-
-    public double getGAlquiler() {
-        return GAlquiler;
-    }
-
-    public void setGAlquiler(double GAlquiler) {
-        this.GAlquiler = GAlquiler;
-    }
-
-    public double getGCreditoViv() {
-        return GCreditoViv;
-    }
-
-    public void setGCreditoViv(double GCreditoViv) {
-        this.GCreditoViv = GCreditoViv;
-    }
-
-    public double getGGastosFamil() {
-        return GGastosFamil;
-    }
-
-    public void setGGastosFamil(double GGastosFamil) {
-        this.GGastosFamil = GGastosFamil;
-    }
-
-    public double getGTarjetasCred() {
-        return GTarjetasCred;
-    }
-
-    public void setGTarjetasCred(double GTarjetasCred) {
-        this.GTarjetasCred = GTarjetasCred;
-    }
-
-    public double getGOtrosGas() {
-        return GOtrosGas;
-    }
-
-    public void setGOtrosGas(double GOtrosGas) {
-        this.GOtrosGas = GOtrosGas;
-    }
-
-    public double getGTotalGas() {
-        return GTotalGas;
-    }
-
-    public void setGTotalGas(double GTotalGas) {
-        this.GTotalGas = GTotalGas;
-    }
-
-    public double getGTotalPat() {
-        return GTotalPat;
-    }
-
-    public void setGTotalPat(double GTotalPat) {
-        this.GTotalPat = GTotalPat;
-    }
-
-    public String getRPPrimerNomb() {
-        return RPPrimerNomb;
-    }
-
-    public void setRPPrimerNomb(String RPPrimerNomb) {
-        this.RPPrimerNomb = RPPrimerNomb;
-    }
-
-    public String getRPSegundoNomb() {
-        return RPSegundoNomb;
-    }
-
-    public void setRPSegundoNomb(String RPSegundoNomb) {
-        this.RPSegundoNomb = RPSegundoNomb;
-    }
-
-    public String getRPPrimerApell() {
-        return RPPrimerApell;
-    }
-
-    public void setRPPrimerApell(String RPPrimerApell) {
-        this.RPPrimerApell = RPPrimerApell;
-    }
-
-    public String getRPSegundoApell() {
-        return RPSegundoApell;
-    }
-
-    public void setRPSegundoApell(String RPSegundoApell) {
-        this.RPSegundoApell = RPSegundoApell;
-    }
-
-    public String getRPDirec() {
-        return RPDirec;
-    }
-
-    public void setRPDirec(String RPDirec) {
-        this.RPDirec = RPDirec;
-    }
-
-    public String getRPDistr() {
-        return RPDistr;
-    }
-
-    public void setRPDistr(String RPDistr) {
-        this.RPDistr = RPDistr;
-    }
-
-    public String getRPProvi() {
-        return RPProvi;
-    }
-
-    public void setRPProvi(String RPProvi) {
-        this.RPProvi = RPProvi;
-    }
-
-    public String getRPEstad() {
-        return RPEstad;
-    }
-
-    public void setRPEstad(String RPEstad) {
-        this.RPEstad = RPEstad;
-    }
-
-    public String getRPTelef() {
-        return RPTelef;
-    }
-
-    public void setRPTelef(String RPTelef) {
-        this.RPTelef = RPTelef;
-    }
-
-    public String getRPCelul() {
-        return RPCelul;
-    }
-
-    public void setRPCelul(String RPCelul) {
-        this.RPCelul = RPCelul;
-    }
-
-    public String getRPParen() {
-        return RPParen;
-    }
-
-    public void setRPParen(String RPParen) {
-        this.RPParen = RPParen;
-    }
-
-    public String getRFPrimerNomb() {
-        return RFPrimerNomb;
-    }
-
-    public void setRFPrimerNomb(String RFPrimerNomb) {
-        this.RFPrimerNomb = RFPrimerNomb;
-    }
-
-    public String getRFSegundoNomb() {
-        return RFSegundoNomb;
-    }
-
-    public void setRFSegundoNomb(String RFSegundoNomb) {
-        this.RFSegundoNomb = RFSegundoNomb;
-    }
-
-    public String getRFPrimerApell() {
-        return RFPrimerApell;
-    }
-
-    public void setRFPrimerApell(String RFPrimerApell) {
-        this.RFPrimerApell = RFPrimerApell;
-    }
-
-    public String getRFSegundoApell() {
-        return RFSegundoApell;
-    }
-
-    public void setRFSegundoApell(String RFSegundoApell) {
-        this.RFSegundoApell = RFSegundoApell;
-    }
-
-    public String getRFDirec() {
-        return RFDirec;
-    }
-
-    public void setRFDirec(String RFDirec) {
-        this.RFDirec = RFDirec;
-    }
-
-    public String getRFDistr() {
-        return RFDistr;
-    }
-
-    public void setRFDistr(String RFDistr) {
-        this.RFDistr = RFDistr;
-    }
-
-    public String getRFProvi() {
-        return RFProvi;
-    }
-
-    public void setRFProvi(String RFProvi) {
-        this.RFProvi = RFProvi;
-    }
-
-    public String getRFEstad() {
-        return RFEstad;
-    }
-
-    public void setRFEstad(String RFEstad) {
-        this.RFEstad = RFEstad;
-    }
-
-    public String getRFTelef() {
-        return RFTelef;
-    }
-
-    public void setRFTelef(String RFTelef) {
-        this.RFTelef = RFTelef;
-    }
-
-    public String getRFCelul() {
-        return RFCelul;
-    }
-
-    public void setRFCelul(String RFCelul) {
-        this.RFCelul = RFCelul;
-    }
-
-    public String getRFParen() {
-        return RFParen;
-    }
-
-    public void setRFParen(String RFParen) {
-        this.RFParen = RFParen;
-    }
-
-    public String getRLCNombre() {
-        return RLCNombre;
-    }
-
-    public void setRLCNombre(String RLCNombre) {
-        this.RLCNombre = RLCNombre;
-    }
-
-    public String getRLCActividad() {
-        return RLCActividad;
-    }
-
-    public void setRLCActividad(String RLCActividad) {
-        this.RLCActividad = RLCActividad;
-    }
-
-    public String getRLCTelef() {
-        return RLCTelef;
-    }
-
-    public void setRLCTelef(String RLCTelef) {
-        this.RLCTelef = RLCTelef;
-    }
-
-    public String getRLCDireClient() {
-        return RLCDireClient;
-    }
-
-    public void setRLCDireClient(String RLCDireClient) {
-        this.RLCDireClient = RLCDireClient;
-    }
-
-    public String getRLCDistrito() {
-        return RLCDistrito;
-    }
-
-    public void setRLCDistrito(String RLCDistrito) {
-        this.RLCDistrito = RLCDistrito;
-    }
-
-    public String getRLCProvincia() {
-        return RLCProvincia;
-    }
-
-    public void setRLCProvincia(String RLCProvincia) {
-        this.RLCProvincia = RLCProvincia;
-    }
-
-    public String getRLCEstado() {
-        return RLCEstado;
-    }
-
-    public void setRLCEstado(String RLCEstado) {
-        this.RLCEstado = RLCEstado;
-    }
-
-    public String getRLPNombre() {
-        return RLPNombre;
-    }
-
-    public void setRLPNombre(String RLPNombre) {
-        this.RLPNombre = RLPNombre;
-    }
-
-    public String getRLPActividad() {
-        return RLPActividad;
-    }
-
-    public void setRLPActividad(String RLPActividad) {
-        this.RLPActividad = RLPActividad;
-    }
-
-    public String getRLPTelef() {
-        return RLPTelef;
-    }
-
-    public void setRLPTelef(String RLPTelef) {
-        this.RLPTelef = RLPTelef;
-    }
-
-    public String getRLPDire() {
-        return RLPDire;
-    }
-
-    public void setRLPDire(String RLPDire) {
-        this.RLPDire = RLPDire;
-    }
-
-    public String getRLPDistrito() {
-        return RLPDistrito;
-    }
-
-    public void setRLPDistrito(String RLPDistrito) {
-        this.RLPDistrito = RLPDistrito;
-    }
-
-    public String getRLPProvincia() {
-        return RLPProvincia;
-    }
-
-    public void setRLPProvincia(String RLPProvincia) {
-        this.RLPProvincia = RLPProvincia;
-    }
-
-    public String getRLPEstado() {
-        return RLPEstado;
-    }
-
-    public void setRLPEstado(String RLPEstado) {
-        this.RLPEstado = RLPEstado;
-    }
-
-    public String getTipoIndep() {
-        return TipoIndep;
-    }
-
-    public void setTipoIndep(String TipoIndep) {
-        this.TipoIndep = TipoIndep;
-    }
-
-
-
-
-    public File getArchivoEmpleadoRecibo() {
-        return archivoEmpleadoRecibo;
-    }
-
-    public void setArchivoEmpleadoRecibo(File archivoEmpleadoRecibo) {
-        this.archivoEmpleadoRecibo = archivoEmpleadoRecibo;
-    }
-
-    public String getArchivoEmpleadoReciboFileName() {
-        return archivoEmpleadoReciboFileName;
-    }
-
-    public void setArchivoEmpleadoReciboFileName(String archivoEmpleadoReciboFileName) {
-        this.archivoEmpleadoReciboFileName = archivoEmpleadoReciboFileName;
-    }
-
     public List<String> getLstOficina() {
         return lstOficina;
     }
@@ -10361,6 +9639,742 @@ public class MenuAction extends BaseAction {
 
     public void setFecmoraFin(java.sql.Date FecmoraFin) {
         this.FecmoraFin = FecmoraFin;
+    }
+
+    public String getCprimerNomb() {
+        return cprimerNomb;
+    }
+
+    public void setCprimerNomb(String cprimerNomb) {
+        this.cprimerNomb = cprimerNomb;
+    }
+
+    public String getCsegundNomb() {
+        return csegundNomb;
+    }
+
+    public void setCsegundNomb(String csegundNomb) {
+        this.csegundNomb = csegundNomb;
+    }
+
+    public String getCprimerApel() {
+        return cprimerApel;
+    }
+
+    public void setCprimerApel(String cprimerApel) {
+        this.cprimerApel = cprimerApel;
+    }
+
+    public String getCsegundApel() {
+        return csegundApel;
+    }
+
+    public void setCsegundApel(String csegundApel) {
+        this.csegundApel = csegundApel;
+    }
+
+    public String getCempdondTrab() {
+        return cempdondTrab;
+    }
+
+    public void setCempdondTrab(String cempdondTrab) {
+        this.cempdondTrab = cempdondTrab;
+    }
+
+    public String getCempCargo() {
+        return cempCargo;
+    }
+
+    public void setCempCargo(String cempCargo) {
+        this.cempCargo = cempCargo;
+    }
+
+    public String getCempTelef() {
+        return cempTelef;
+    }
+
+    public void setCempTelef(String cempTelef) {
+        this.cempTelef = cempTelef;
+    }
+
+    public String getVsuministro() {
+        return vsuministro;
+    }
+
+    public void setVsuministro(String vsuministro) {
+        this.vsuministro = vsuministro;
+    }
+
+    public String getVtitularSum() {
+        return vtitularSum;
+    }
+
+    public void setVtitularSum(String vtitularSum) {
+        this.vtitularSum = vtitularSum;
+    }
+
+    public String getVrelacTitul() {
+        return vrelacTitul;
+    }
+
+    public void setVrelacTitul(String vrelacTitul) {
+        this.vrelacTitul = vrelacTitul;
+    }
+
+    public String getVtipoVivien() {
+        return vtipoVivien;
+    }
+
+    public void setVtipoVivien(String vtipoVivien) {
+        this.vtipoVivien = vtipoVivien;
+    }
+
+    public String getVhaceCVivea() {
+        return vhaceCVivea;
+    }
+
+    public void setVhaceCVivea(String vhaceCVivea) {
+        this.vhaceCVivea = vhaceCVivea;
+    }
+
+    public String getVdireccResi() {
+        return vdireccResi;
+    }
+
+    public void setVdireccResi(String vdireccResi) {
+        this.vdireccResi = vdireccResi;
+    }
+
+    public String getVdistVivien() {
+        return vdistVivien;
+    }
+
+    public void setVdistVivien(String vdistVivien) {
+        this.vdistVivien = vdistVivien;
+    }
+
+    public String getVprovVivien() {
+        return vprovVivien;
+    }
+
+    public void setVprovVivien(String vprovVivien) {
+        this.vprovVivien = vprovVivien;
+    }
+
+    public String getVdepaVivien() {
+        return vdepaVivien;
+    }
+
+    public void setVdepaVivien(String vdepaVivien) {
+        this.vdepaVivien = vdepaVivien;
+    }
+
+    public String getEnombreEmpr() {
+        return enombreEmpr;
+    }
+
+    public void setEnombreEmpr(String enombreEmpr) {
+        this.enombreEmpr = enombreEmpr;
+    }
+
+    public String getEactivdEmpr() {
+        return eactivdEmpr;
+    }
+
+    public void setEactivdEmpr(String eactivdEmpr) {
+        this.eactivdEmpr = eactivdEmpr;
+    }
+
+    public String getEdirEmpr() {
+        return edirEmpr;
+    }
+
+    public void setEdirEmpr(String edirEmpr) {
+        this.edirEmpr = edirEmpr;
+    }
+
+    public String getEdepEmpr() {
+        return edepEmpr;
+    }
+
+    public void setEdepEmpr(String edepEmpr) {
+        this.edepEmpr = edepEmpr;
+    }
+
+    public String getEdisEmpr() {
+        return edisEmpr;
+    }
+
+    public void setEdisEmpr(String edisEmpr) {
+        this.edisEmpr = edisEmpr;
+    }
+
+    public String getEprovEmpr() {
+        return eprovEmpr;
+    }
+
+    public void setEprovEmpr(String eprovEmpr) {
+        this.eprovEmpr = eprovEmpr;
+    }
+
+    public String getIlabor() {
+        return ilabor;
+    }
+
+    public void setIlabor(String ilabor) {
+        this.ilabor = ilabor;
+    }
+
+    public String getIhacecuantInd() {
+        return ihacecuantInd;
+    }
+
+    public void setIhacecuantInd(String ihacecuantInd) {
+        this.ihacecuantInd = ihacecuantInd;
+    }
+
+    public String getItipodeInd() {
+        return itipodeInd;
+    }
+
+    public void setItipodeInd(String itipodeInd) {
+        this.itipodeInd = itipodeInd;
+    }
+
+    public String getFnombEmpr() {
+        return fnombEmpr;
+    }
+
+    public void setFnombEmpr(String fnombEmpr) {
+        this.fnombEmpr = fnombEmpr;
+    }
+
+    public String getFrucEmpr() {
+        return frucEmpr;
+    }
+
+    public void setFrucEmpr(String frucEmpr) {
+        this.frucEmpr = frucEmpr;
+    }
+
+    public String getFcargo() {
+        return fcargo;
+    }
+
+    public void setFcargo(String fcargo) {
+        this.fcargo = fcargo;
+    }
+
+    public String getFdirLabo() {
+        return fdirLabo;
+    }
+
+    public void setFdirLabo(String fdirLabo) {
+        this.fdirLabo = fdirLabo;
+    }
+
+    public String getFdisLabo() {
+        return fdisLabo;
+    }
+
+    public void setFdisLabo(String fdisLabo) {
+        this.fdisLabo = fdisLabo;
+    }
+
+    public String getFproLabo() {
+        return fproLabo;
+    }
+
+    public void setFproLabo(String fproLabo) {
+        this.fproLabo = fproLabo;
+    }
+
+    public String getFdepLabo() {
+        return fdepLabo;
+    }
+
+    public void setFdepLabo(String fdepLabo) {
+        this.fdepLabo = fdepLabo;
+    }
+
+    public String getFtelef() {
+        return ftelef;
+    }
+
+    public void setFtelef(String ftelef) {
+        this.ftelef = ftelef;
+    }
+
+    public String getFanexo() {
+        return fanexo;
+    }
+
+    public void setFanexo(String fanexo) {
+        this.fanexo = fanexo;
+    }
+
+    public String getFcorreo() {
+        return fcorreo;
+    }
+
+    public void setFcorreo(String fcorreo) {
+        this.fcorreo = fcorreo;
+    }
+
+    public String getJnombEmpJ() {
+        return jnombEmpJ;
+    }
+
+    public void setJnombEmpJ(String jnombEmpJ) {
+        this.jnombEmpJ = jnombEmpJ;
+    }
+
+    public String getJnombEmpA() {
+        return jnombEmpA;
+    }
+
+    public void setJnombEmpA(String jnombEmpA) {
+        this.jnombEmpA = jnombEmpA;
+    }
+
+    public String getJhacecuaJ() {
+        return jhacecuaJ;
+    }
+
+    public void setJhacecuaJ(String jhacecuaJ) {
+        this.jhacecuaJ = jhacecuaJ;
+    }
+
+    public double getIsueldBas() {
+        return isueldBas;
+    }
+
+    public void setIsueldBas(double isueldBas) {
+        this.isueldBas = isueldBas;
+    }
+
+    public double getIcomisiones() {
+        return icomisiones;
+    }
+
+    public void setIcomisiones(double icomisiones) {
+        this.icomisiones = icomisiones;
+    }
+
+    public double getIhonorarios() {
+        return ihonorarios;
+    }
+
+    public void setIhonorarios(double ihonorarios) {
+        this.ihonorarios = ihonorarios;
+    }
+
+    public double getIalquileres() {
+        return ialquileres;
+    }
+
+    public void setIalquileres(double ialquileres) {
+        this.ialquileres = ialquileres;
+    }
+
+    public double getIotrosIngres() {
+        return iotrosIngres;
+    }
+
+    public void setIotrosIngres(double iotrosIngres) {
+        this.iotrosIngres = iotrosIngres;
+    }
+
+    public double getItotalIng() {
+        return itotalIng;
+    }
+
+    public void setItotalIng(double itotalIng) {
+        this.itotalIng = itotalIng;
+    }
+
+    public double getItotalAct() {
+        return itotalAct;
+    }
+
+    public void setItotalAct(double itotalAct) {
+        this.itotalAct = itotalAct;
+    }
+
+    public double getGalquiler() {
+        return galquiler;
+    }
+
+    public void setGalquiler(double galquiler) {
+        this.galquiler = galquiler;
+    }
+
+    public double getGcreditoViv() {
+        return gcreditoViv;
+    }
+
+    public void setGcreditoViv(double gcreditoViv) {
+        this.gcreditoViv = gcreditoViv;
+    }
+
+    public double getGgastosFamil() {
+        return ggastosFamil;
+    }
+
+    public void setGgastosFamil(double ggastosFamil) {
+        this.ggastosFamil = ggastosFamil;
+    }
+
+    public double getGtarjetasCred() {
+        return gtarjetasCred;
+    }
+
+    public void setGtarjetasCred(double gtarjetasCred) {
+        this.gtarjetasCred = gtarjetasCred;
+    }
+
+    public double getGotrosGas() {
+        return gotrosGas;
+    }
+
+    public void setGotrosGas(double gotrosGas) {
+        this.gotrosGas = gotrosGas;
+    }
+
+    public double getGtotalGas() {
+        return gtotalGas;
+    }
+
+    public void setGtotalGas(double gtotalGas) {
+        this.gtotalGas = gtotalGas;
+    }
+
+    public double getGtotalPat() {
+        return gtotalPat;
+    }
+
+    public void setGtotalPat(double gtotalPat) {
+        this.gtotalPat = gtotalPat;
+    }
+
+    public String getRpprimerNomb() {
+        return rpprimerNomb;
+    }
+
+    public void setRpprimerNomb(String rpprimerNomb) {
+        this.rpprimerNomb = rpprimerNomb;
+    }
+
+    public String getRpsegundoNomb() {
+        return rpsegundoNomb;
+    }
+
+    public void setRpsegundoNomb(String rpsegundoNomb) {
+        this.rpsegundoNomb = rpsegundoNomb;
+    }
+
+    public String getRpprimerApell() {
+        return rpprimerApell;
+    }
+
+    public void setRpprimerApell(String rpprimerApell) {
+        this.rpprimerApell = rpprimerApell;
+    }
+
+    public String getRpsegundoApell() {
+        return rpsegundoApell;
+    }
+
+    public void setRpsegundoApell(String rpsegundoApell) {
+        this.rpsegundoApell = rpsegundoApell;
+    }
+
+    public String getRpdirec() {
+        return rpdirec;
+    }
+
+    public String getErucEmpr() {
+        return erucEmpr;
+    }
+
+    public void setErucEmpr(String erucEmpr) {
+        this.erucEmpr = erucEmpr;
+    }
+
+    public void setRpdirec(String rpdirec) {
+        this.rpdirec = rpdirec;
+    }
+
+    public String getRpdistr() {
+        return rpdistr;
+    }
+
+    public void setRpdistr(String rpdistr) {
+        this.rpdistr = rpdistr;
+    }
+
+    public String getRpprovi() {
+        return rpprovi;
+    }
+
+    public void setRpprovi(String rpprovi) {
+        this.rpprovi = rpprovi;
+    }
+
+    public String getRpestad() {
+        return rpestad;
+    }
+
+    public void setRpestad(String rpestad) {
+        this.rpestad = rpestad;
+    }
+
+    public String getRptelef() {
+        return rptelef;
+    }
+
+    public void setRptelef(String rptelef) {
+        this.rptelef = rptelef;
+    }
+
+    public String getRpcelul() {
+        return rpcelul;
+    }
+
+    public void setRpcelul(String rpcelul) {
+        this.rpcelul = rpcelul;
+    }
+
+    public String getRpparen() {
+        return rpparen;
+    }
+
+    public void setRpparen(String rpparen) {
+        this.rpparen = rpparen;
+    }
+
+    public String getRfprimerNomb() {
+        return rfprimerNomb;
+    }
+
+    public void setRfprimerNomb(String rfprimerNomb) {
+        this.rfprimerNomb = rfprimerNomb;
+    }
+
+    public String getRfsegundoNomb() {
+        return rfsegundoNomb;
+    }
+
+    public void setRfsegundoNomb(String rfsegundoNomb) {
+        this.rfsegundoNomb = rfsegundoNomb;
+    }
+
+    public String getRfprimerApell() {
+        return rfprimerApell;
+    }
+
+    public void setRfprimerApell(String rfprimerApell) {
+        this.rfprimerApell = rfprimerApell;
+    }
+
+    public String getRfsegundoApell() {
+        return rfsegundoApell;
+    }
+
+    public void setRfsegundoApell(String rfsegundoApell) {
+        this.rfsegundoApell = rfsegundoApell;
+    }
+
+    public String getRfdirec() {
+        return rfdirec;
+    }
+
+    public void setRfdirec(String rfdirec) {
+        this.rfdirec = rfdirec;
+    }
+
+    public String getRfdistr() {
+        return rfdistr;
+    }
+
+    public void setRfdistr(String rfdistr) {
+        this.rfdistr = rfdistr;
+    }
+
+    public String getRfprovi() {
+        return rfprovi;
+    }
+
+    public void setRfprovi(String rfprovi) {
+        this.rfprovi = rfprovi;
+    }
+
+    public String getRfestad() {
+        return rfestad;
+    }
+
+    public void setRfestad(String rfestad) {
+        this.rfestad = rfestad;
+    }
+
+    public String getRftelef() {
+        return rftelef;
+    }
+
+    public void setRftelef(String rftelef) {
+        this.rftelef = rftelef;
+    }
+
+    public String getRfcelul() {
+        return rfcelul;
+    }
+
+    public void setRfcelul(String rfcelul) {
+        this.rfcelul = rfcelul;
+    }
+
+    public String getRfparen() {
+        return rfparen;
+    }
+
+    public void setRfparen(String rfparen) {
+        this.rfparen = rfparen;
+    }
+
+    public String getRlcNombre() {
+        return rlcNombre;
+    }
+
+    public void setRlcNombre(String rlcNombre) {
+        this.rlcNombre = rlcNombre;
+    }
+
+    public String getRlcActividad() {
+        return rlcActividad;
+    }
+
+    public void setRlcActividad(String rlcActividad) {
+        this.rlcActividad = rlcActividad;
+    }
+
+    public String getRlcTelef() {
+        return rlcTelef;
+    }
+
+    public void setRlcTelef(String rlcTelef) {
+        this.rlcTelef = rlcTelef;
+    }
+
+    public String getRlcDireClient() {
+        return rlcDireClient;
+    }
+
+    public void setRlcDireClient(String rlcDireClient) {
+        this.rlcDireClient = rlcDireClient;
+    }
+
+    public String getRlcDistrito() {
+        return rlcDistrito;
+    }
+
+    public void setRlcDistrito(String rlcDistrito) {
+        this.rlcDistrito = rlcDistrito;
+    }
+
+    public String getRlcProvincia() {
+        return rlcProvincia;
+    }
+
+    public void setRlcProvincia(String rlcProvincia) {
+        this.rlcProvincia = rlcProvincia;
+    }
+
+    public String getRlcEstado() {
+        return rlcEstado;
+    }
+
+    public void setRlcEstado(String rlcEstado) {
+        this.rlcEstado = rlcEstado;
+    }
+
+    public String getRlpNombre() {
+        return rlpNombre;
+    }
+
+    public void setRlpNombre(String rlpNombre) {
+        this.rlpNombre = rlpNombre;
+    }
+
+    public String getRlpActividad() {
+        return rlpActividad;
+    }
+
+    public void setRlpActividad(String rlpActividad) {
+        this.rlpActividad = rlpActividad;
+    }
+
+    public String getRlpTelef() {
+        return rlpTelef;
+    }
+
+    public void setRlpTelef(String rlpTelef) {
+        this.rlpTelef = rlpTelef;
+    }
+
+    public String getRlpDire() {
+        return rlpDire;
+    }
+
+    public void setRlpDire(String rlpDire) {
+        this.rlpDire = rlpDire;
+    }
+
+    public String getRlpDistrito() {
+        return rlpDistrito;
+    }
+
+    public void setRlpDistrito(String rlpDistrito) {
+        this.rlpDistrito = rlpDistrito;
+    }
+
+    public String getRlpProvincia() {
+        return rlpProvincia;
+    }
+
+    public void setRlpProvincia(String rlpProvincia) {
+        this.rlpProvincia = rlpProvincia;
+    }
+
+    public String getRlpEstado() {
+        return rlpEstado;
+    }
+
+    public void setRlpEstado(String rlpEstado) {
+        this.rlpEstado = rlpEstado;
+    }
+
+    public String getTipoIndep() {
+        return tipoIndep;
+    }
+
+    public void setTipoIndep(String tipoIndep) {
+        this.tipoIndep = tipoIndep;
+    }
+
+    public File getArchivoEmpleadoRecibo() {
+        return archivoEmpleadoRecibo;
+    }
+
+    public void setArchivoEmpleadoRecibo(File archivoEmpleadoRecibo) {
+        this.archivoEmpleadoRecibo = archivoEmpleadoRecibo;
+    }
+
+    public String getArchivoEmpleadoReciboFileName() {
+        return archivoEmpleadoReciboFileName;
+    }
+
+    public void setArchivoEmpleadoReciboFileName(String archivoEmpleadoReciboFileName) {
+        this.archivoEmpleadoReciboFileName = archivoEmpleadoReciboFileName;
     }
 
     public File getArchivoEmpleadoCopiaDNI() {
@@ -10459,6 +10473,22 @@ public class MenuAction extends BaseAction {
         this.archivoIFRecibLuzFileName = archivoIFRecibLuzFileName;
     }
 
+    public File getArchivoIFCopiaDni() {
+        return archivoIFCopiaDni;
+    }
+
+    public void setArchivoIFCopiaDni(File archivoIFCopiaDni) {
+        this.archivoIFCopiaDni = archivoIFCopiaDni;
+    }
+
+    public String getArchivoIFCopiaDniFileName() {
+        return archivoIFCopiaDniFileName;
+    }
+
+    public void setArchivoIFCopiaDniFileName(String archivoIFCopiaDniFileName) {
+        this.archivoIFCopiaDniFileName = archivoIFCopiaDniFileName;
+    }
+
     public File getArchivoIFCopiaRuc() {
         return archivoIFCopiaRuc;
     }
@@ -10475,20 +10505,52 @@ public class MenuAction extends BaseAction {
         this.archivoIFCopiaRucFileName = archivoIFCopiaRucFileName;
     }
 
-    public File getArchivoIFExtracb() {
-        return archivoIFExtracb;
+    public File getArchivoIFExtracb1() {
+        return archivoIFExtracb1;
     }
 
-    public void setArchivoIFExtracb(File archivoIFExtracb) {
-        this.archivoIFExtracb = archivoIFExtracb;
+    public void setArchivoIFExtracb1(File archivoIFExtracb1) {
+        this.archivoIFExtracb1 = archivoIFExtracb1;
     }
 
-    public String getArchivoIFExtracbFileName() {
-        return archivoIFExtracbFileName;
+    public String getArchivoIFExtracb1FileName() {
+        return archivoIFExtracb1FileName;
     }
 
-    public void setArchivoIFExtracbFileName(String archivoIFExtracbFileName) {
-        this.archivoIFExtracbFileName = archivoIFExtracbFileName;
+    public void setArchivoIFExtracb1FileName(String archivoIFExtracb1FileName) {
+        this.archivoIFExtracb1FileName = archivoIFExtracb1FileName;
+    }
+
+    public File getArchivoIFExtracb2() {
+        return archivoIFExtracb2;
+    }
+
+    public void setArchivoIFExtracb2(File archivoIFExtracb2) {
+        this.archivoIFExtracb2 = archivoIFExtracb2;
+    }
+
+    public String getArchivoIFExtracb2FileName() {
+        return archivoIFExtracb2FileName;
+    }
+
+    public void setArchivoIFExtracb2FileName(String archivoIFExtracb2FileName) {
+        this.archivoIFExtracb2FileName = archivoIFExtracb2FileName;
+    }
+
+    public File getArchivoIFExtracb3() {
+        return archivoIFExtracb3;
+    }
+
+    public void setArchivoIFExtracb3(File archivoIFExtracb3) {
+        this.archivoIFExtracb3 = archivoIFExtracb3;
+    }
+
+    public String getArchivoIFExtracb3FileName() {
+        return archivoIFExtracb3FileName;
+    }
+
+    public void setArchivoIFExtracb3FileName(String archivoIFExtracb3FileName) {
+        this.archivoIFExtracb3FileName = archivoIFExtracb3FileName;
     }
 
     public File getArchivoIFExtracafp() {
@@ -10521,22 +10583,6 @@ public class MenuAction extends BaseAction {
 
     public void setArchivoIFIngadicFileName(String archivoIFIngadicFileName) {
         this.archivoIFIngadicFileName = archivoIFIngadicFileName;
-    }
-
-    public File getArchivoIFCopiaDni() {
-        return archivoIFCopiaDni;
-    }
-
-    public void setArchivoIFCopiaDni(File archivoIFCopiaDni) {
-        this.archivoIFCopiaDni = archivoIFCopiaDni;
-    }
-
-    public String getArchivoIFCopiaDniFileName() {
-        return archivoIFCopiaDniFileName;
-    }
-
-    public void setArchivoIFCopiaDniFileName(String archivoIFCopiaDniFileName) {
-        this.archivoIFCopiaDniFileName = archivoIFCopiaDniFileName;
     }
 
     public File getArchivoIFNRecibluz() {
