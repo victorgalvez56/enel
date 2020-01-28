@@ -20,33 +20,33 @@
             <result name="perfil" type="tiles">perfil</result>
             
             <!-- Página Principal de Solicitud de Financiamiento xyza -->
-            <result name="frmSolicitudFinanciamiento" type="tiles">frmSolicitudFinanciamiento</result>
+            <result name="frmSOLCliente" type="tiles">frmSOLCliente</result>
             <!-- Página Cónyuge--><!-- -->
-            <result name="frmSolFinan_Conyuge" type="tiles">frmSolFinan_Conyuge</result>
+            <result name="frmSOLConyugue" type="tiles">frmSOLConyugue</result>
             <!-- Página Vivienda-->
-            <result name="frmSolFinan_Vivienda" type="tiles">frmSolFinan_Vivienda</result>
+            <result name="frmSOLVivienda" type="tiles">frmSOLVivienda</result>
             <!-- Página Empleado-Solicitante-->
-            <result name="frmSolFinan_Empleado" type="tiles">frmSolFinan_Empleado</result>
+            <result name="frmSOLEmpleado" type="tiles">frmSOLEmpleado</result>
             <!-- Página Independiente-Solicitante-->
-            <result name="frmSolFinan_Independiente" type="tiles">frmSolFinan_Independiente</result>
+            <result name="frmSOLIndependiente" type="tiles">frmSOLIndependiente</result>
             <!-- Página Jubilado-Solicitante-->
-            <result name="frmSolFinan_Jubilado" type="tiles">frmSolFinan_Jubilado</result>
+            <result name="frmSOLJubilado" type="tiles">frmSOLJubilado</result>
             <!-- Página InformaciónFinanciera-Solicitante-->
-            <result name="frmSolFinan_InfoFinan" type="tiles">frmSolFinan_InfoFinan</result>
+            <result name="frmSOLInfoFinanciera" type="tiles">frmSOLInfoFinanciera</result>
             <!-- Página ReferenciaFamiliar-Solicitante-->
-            <result name="frmSolFinan_RefFamil" type="tiles">frmSolFinan_RefFamil</result>
+            <result name="frmSOLReferenciaFamiliar" type="tiles">frmSOLReferenciaFamiliar</result>
             <!-- Página ReferenciaLaboral-Solicitante-->
-            <result name="frmSolFinan_RefLabor" type="tiles">frmSolFinan_RefLabor</result>
+            <result name="frmSOLReferenciaLaborales" type="tiles">frmSOLReferenciaLaborales</result>
             <!-- Página ReferenciaPersonal-Solicitante-->
-            <result name="frmSolFinan_RefPerso" type="tiles">frmSolFinan_RefPerso</result>
+            <result name="frmSOLReferenciaPersonales" type="tiles">frmSOLReferenciaPersonales</result>
             <!-- Página DocumentoEmpleado-Solicitante-->
-            <result name="frmSolFinan_DocEmple" type="tiles">frmSolFinan_DocEmple</result>
+            <result name="frmSOLDocEmpleado" type="tiles">frmSOLDocEmpleado</result>
             <!-- Página DocumentoIndependienteFormal-Solicitante-->
-            <result name="frmSolFinan_DocIndpF" type="tiles">frmSolFinan_DocIndpF</result>
+            <result name="frmSOLDocIndependienteFormal" type="tiles">frmSOLDocIndependienteFormal</result>
             <!-- Página DocumentoNOFormalIndependiente-Solicitante-->
-            <result name="frmSolFinan_DocIndpN" type="tiles">frmSolFinan_DocIndpN</result>
+            <result name="frmSOLDocIndependienteInformal" type="tiles">frmSOLDocIndependienteInformal</result>
             <!-- Página DocumentoJubilado-Solicitante-->
-            <result name="frmSolFinan_DocJubila" type="tiles">frmSolFinan_DocJubila</result>
+            <result name="frmSOLDocJubilado" type="tiles">frmSOLDocJubilado</result>
             
             
             

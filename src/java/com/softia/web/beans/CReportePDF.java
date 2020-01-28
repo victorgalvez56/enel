@@ -67,117 +67,118 @@ public class CReportePDF {
     private String url;
     private String user;
     private String passwd;
-    //Datos Solicitante Financiero
-    private String CodEvaluador;
-    private String PuntVenta;
-    private String FecSolicitud;
-    private String CiudadExp;
-    private String Nacionalidad;
-    private String CiudadNac;
-    private String PaisNac;
-    private String NperDepend;
+    private String solCLIcodEvaluador;
+    private String solCLIpuntVenta;
+    private String solCLIfecSolicitud;
+//Datos Solicitante Financiero
+    private String solCLIciudadExp;
+    private String solCLInacionalidad;
+    private String solCLIciudadNac;
+    private String solCLIpaisNac;
+    private String solCLInperDepend;
 //Datos Cónyuge
-    private String CPrimerNomb;
-    private String CSegundNomb;
-    private String CPrimerApel;
-    private String CSegundApel;
-    private String CEmpdondTrab;
-    private String CEmpCargo;
-    private String CEmpTelef;
+    private String solCLI_conyugPrimerNomb;
+    private String solCLI_conyugSegundoNomb;
+    private String solCLI_conyugPrimerApel;
+    private String solCLI_conyugSegundoApel;
+    private String solCLI_conyugEmpresaTrab;
+    private String solCLI_conyugEmpresaCarg;
+    private String solCLI_conyugEmpresaTele;
 //Datos Vivienda
-    private String VSuministro;
-    private String VTitularSum;
-    private String VRelacTitul;
-    private String VTipoVivien;
-    private String VHaceCVivea;
-    private String VDireccResi;
-    private String VDistVivien;
-    private String VProvVivien;
-    private String VDepaVivien;
+    private String solCLI_vivienSuministro;
+    private String solCLI_vivienTitularSuminis;
+    private String solCLI_vivienRelacionTitu;
+    private String solCLI_vivienTipo;
+    private String solCLI_vivienTiempo;
+    private String solCLI_vivienDireccion;
+    private String solCLI_vivienDistrito;
+    private String solCLI_vivienProvincia;
+    private String solCLI_vivienDepartamento;
 //Datos Empleado
-    private String ENombreEmpr;
-    private String ERUCEmpr;
-    private String EActivdEmpr;
-    private String EDirEmpr;
-    private String EDepEmpr;
-    private String EDisEmpr;
-    private String EProvEmpr;
+    private String solCLI_empleadEmpresaNomb;
+    private String solCLI_empleadEmpresaRuc;
+    private String solCLI_empleadEmpresaActi;
+    private String solCLI_empleadEmpresaDire;
+    private String solCLI_empleadEmpresaDepa;
+    private String solCLI_empleadEmpresaDist;
+    private String solCLI_empleadEmpresaProv;
 //Datos Independiente Informal
-    private String ILabor;
-    private String IHacecuantInd;
-    private String ITipodeInd;
+    private String solCLI_independILabor;
+    private String solCLI_independITiempoViv;
+    private String solCLI_independITipo;
+    private String solCLI_independITipoaux;
 //Datos Independiente Formal;   
-    private String FNombEmpr;
-    private String FRUCEmpr;
-    private String FCargo;
-    private String FDirLabo;
-    private String FDisLabo;
-    private String FProLabo;
-    private String FDepLabo;
-    private String FTelef;
-    private String FAnexo;
-    private String FCorreo;
+    private String solCLI_independFEmpresaNomb;
+    private String solCLI_independFEmpresaRuc;
+    private String solCLI_independFCargo;
+    private String solCLI_independFLaboraDire;
+    private String solCLI_independFLaboraDist;
+    private String solCLI_independFLaboraProv;
+    private String solCLI_independFLaboraDepa;
+    private String solCLI_independFTelefono;
+    private String solCLI_independFAnexo;
+    private String solCLI_independFCorreo;
 //Datos Jubilado
-    private String JNombEmpJ;
-    private String JNombEmpA;
-    private String JHacecuaJ;
+    private String solCLI_jubilEmpresaNombJubi;
+    private String solCLI_jubilEmpresaNombApor;
+    private String solCLI_jubilEmpresaTiempo;
 //Datos Información Financiera-Ingresos
-    private double ISueldBas;
-    private double IComisiones;
-    private double IHonorarios;
-    private double IAlquileres;
-    private double IOtrosIngres;
-    private double ITotalIng;
-    private double ITotalAct;
+    private double solCLI_infofinanIngSueldoBasic;
+    private double solCLI_infofinanIngComisiones;
+    private double solCLI_infofinanIngHonorarios;
+    private double solCLI_infofinanIngAlquileres;
+    private double solCLI_infofinanIngOtros;
+    private double solCLI_infofinanIngTotal;
+    private double solCLI_infofinanIngTotalAct;
 //Datos Información Financiera-Gastos
-    private double GAlquiler;
-    private double GCreditoViv;
-    private double GGastosFamil;
-    private double GTarjetasCred;
-    private double GOtrosGas;
-    private double GTotalGas;
-    private double GTotalPat;
+    private double solCLI_infofinanGasAlquiler;
+    private double solCLI_infofinanGasCreditoViv;
+    private double solCLI_infofinanGasFamiliar;
+    private double solCLI_infofinanGasTarjetasCred;
+    private double solCLI_infofinanGasOtros;
+    private double solCLI_infofinanGasTotal;
+    private double solCLI_infofinanGasTotalPat;
 //Datos Referencias Personales
-    private String RPPrimerNomb;
-    private String RPSegundoNomb;
-    private String RPPrimerApell;
-    private String RPSegundoApell;
-    private String RPDirec;
-    private String RPDistr;
-    private String RPProvi;
-    private String RPEstad;
-    private String RPTelef;
-    private String RPCelul;
-    private String RPParen;
+    private String solCLI_refepersonPrimerNomb;
+    private String solCLI_refepersonSegundoNomb;
+    private String solCLI_refepersonPrimerApel;
+    private String solCLI_refepersonSegundoApel;
+    private String solCLI_refepersonDireccion;
+    private String solCLI_refepersonDistrito;
+    private String solCLI_refepersonProvincia;
+    private String solCLI_refepersonEstado;
+    private String solCLI_refepersonTelefono;
+    private String solCLI_refepersonCelular;
+    private String solCLI_refepersonParentesco;
 //Datos Referencias Familiares
-    private String RFPrimerNomb;
-    private String RFSegundoNomb;
-    private String RFPrimerApell;
-    private String RFSegundoApell;
-    private String RFDirec;
-    private String RFDistr;
-    private String RFProvi;
-    private String RFEstad;
-    private String RFTelef;
-    private String RFCelul;
-    private String RFParen;
-//Datos Referencias Laborales
-    private String RLCNombre;
-    private String RLCActividad;
-    private String RLCTelef;
-    private String RLCDireClient;
-    private String RLCDistrito;
-    private String RLCProvincia;
-    private String RLCEstado;
-    private String RLPNombre;
-    private String RLPActividad;
-    private String RLPTelef;
-    private String RLPDire;
-    private String RLPDistrito;
-    private String RLPProvincia;
-    private String RLPEstado;
+    private String solCLI_refefamiliPrimerNomb;
+    private String solCLI_refefamiliSegundoNomb;
+    private String solCLI_refefamiliPrimerApel;
+    private String solCLI_refefamiliSegundoApel;
+    private String solCLI_refefamiliDireccion;
+    private String solCLI_refefamiliDistrito;
+    private String solCLI_refefamiliProvincia;
+    private String solCLI_refefamiliEstado;
+    private String solCLI_refefamiliTelefono;
+    private String solCLI_refefamiliCelular;
+    private String solCLI_refefamiliParentesco;
 
-    private String TipoIndep;
+//Datos Referencias Laborales
+    private String solCLI_refelabocliNombre;
+    private String solCLI_refelabocliActividad;
+    private String solCLI_refelabocliTelefono;
+    private String solCLI_refelabocliDireccion;
+    private String solCLI_refelabocliDistrito;
+    private String solCLI_refelabocliProvincia;
+    private String solCLI_refelabocliEstado;
+
+    private String solCLI_refelaboproNombre;
+    private String solCLI_refelaboproActividad;
+    private String solCLI_refelaboproTelefono;
+    private String solCLI_refelaboproDireccion;
+    private String solCLI_refelaboproDistrito;
+    private String solCLI_refelaboproProvincia;
+    private String solCLI_refelaboproEstado;
 
     public String formateador(String fecha) throws ParseException {
         String fec = "";
@@ -268,13 +269,13 @@ public class CReportePDF {
             celda3T1.setBorder(PdfPCell.NO_BORDER);
             celda3T1.setHorizontalAlignment(Element.ALIGN_CENTER);
 
-            PdfPCell celda4T1 = new PdfPCell(new Phrase(getCodEvaluador(), fontContenido));
+            PdfPCell celda4T1 = new PdfPCell(new Phrase(getSolCLIcodEvaluador(), fontContenido));
             celda4T1.setBorder(PdfPCell.NO_BORDER);
             celda4T1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell celda5T1 = new PdfPCell(new Phrase(getPuntVenta(), fontContenido));
+            PdfPCell celda5T1 = new PdfPCell(new Phrase(getSolCLIpuntVenta(), fontContenido));
             celda5T1.setBorder(PdfPCell.NO_BORDER);
             celda5T1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell celda6T1 = new PdfPCell(new Phrase(getFecSolicitud(), fontContenido));
+            PdfPCell celda6T1 = new PdfPCell(new Phrase(getSolCLIfecSolicitud(), fontContenido));
             celda6T1.setBorder(PdfPCell.NO_BORDER);
             celda6T1.setHorizontalAlignment(Element.ALIGN_CENTER);
 
@@ -298,7 +299,7 @@ public class CReportePDF {
             celda3T2.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T2 = new PdfPCell(new Phrase("Ciudad de Expedición:", fontContenido));
             celda4T2.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T2 = new PdfPCell(new Phrase(getCiudadExp(), fontContenido));
+            PdfPCell celda5T2 = new PdfPCell(new Phrase(getSolCLIciudadExp(), fontContenido));
             celda5T2.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T2 = new PdfPCell(new Phrase("Primer Nombre", fontContenido));
             celda6T2.setBorder(PdfPCell.NO_BORDER);
@@ -319,7 +320,7 @@ public class CReportePDF {
             celda13T2.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T2 = new PdfPCell(new Phrase("Nacionalidad", fontContenido));
             celda14T2.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T2 = new PdfPCell(new Phrase(getNacionalidad(), fontContenido));
+            PdfPCell celda15T2 = new PdfPCell(new Phrase(getSolCLInacionalidad(), fontContenido));
             celda15T2.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda16T2 = new PdfPCell(new Phrase("Fecha Nacimiento", fontContenido));
             celda16T2.setBorder(PdfPCell.NO_BORDER);
@@ -328,11 +329,11 @@ public class CReportePDF {
             //Tercera Fila
             PdfPCell celda18T2 = new PdfPCell(new Phrase("Ciudad de Nacimiento:", fontContenido));
             celda18T2.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda19T2 = new PdfPCell(new Phrase(getCiudadNac(), fontContenido));
+            PdfPCell celda19T2 = new PdfPCell(new Phrase(getSolCLIciudadExp(), fontContenido));
             celda19T2.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda20T2 = new PdfPCell(new Phrase("País de Nacimiento:", fontContenido));
             celda20T2.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda21T2 = new PdfPCell(new Phrase(getPaisNac(), fontContenido));
+            PdfPCell celda21T2 = new PdfPCell(new Phrase(getSolCLIpaisNac(), fontContenido));
             celda21T2.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda22T2 = new PdfPCell(new Phrase("Género", fontContenido));
             celda22T2.setBorder(PdfPCell.NO_BORDER);
@@ -354,7 +355,7 @@ public class CReportePDF {
 
             PdfPCell celda30T2 = new PdfPCell(new Phrase("Número de personas que dependen económicamente del solicitante:", fontContenido));
             celda30T2.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda31T2 = new PdfPCell(new Phrase(getNperDepend(), fontContenido));
+            PdfPCell celda31T2 = new PdfPCell(new Phrase(getSolCLInperDepend(), fontContenido));
             celda31T2.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda32T2 = new PdfPCell(new Phrase("Correo Electrónico:", fontContenido));
             celda32T2.setBorder(PdfPCell.NO_BORDER);
@@ -375,32 +376,32 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T3 = new PdfPCell(new Phrase("Primer Nombre:", fontContenido));
             celda2T3.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T3 = new PdfPCell(new Phrase(getCPrimerNomb(), fontContenido));
+            PdfPCell celda3T3 = new PdfPCell(new Phrase(getSolCLI_conyugPrimerNomb(), fontContenido));
             celda3T3.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T3 = new PdfPCell(new Phrase("Segundo Nombre:", fontContenido));
             celda4T3.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T3 = new PdfPCell(new Phrase(getCSegundNomb(), fontContenido));
+            PdfPCell celda5T3 = new PdfPCell(new Phrase(getSolCLI_conyugSegundoNomb(), fontContenido));
             celda5T3.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T3 = new PdfPCell(new Phrase("Primer Apellido", fontContenido));
             celda6T3.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T3 = new PdfPCell(new Phrase(getCPrimerApel(), fontContenido));
+            PdfPCell celda7T3 = new PdfPCell(new Phrase(getSolCLI_conyugPrimerApel(), fontContenido));
             celda7T3.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda8T3 = new PdfPCell(new Phrase("Segundo Apellido", fontContenido));
             celda8T3.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda9T3 = new PdfPCell(new Phrase(getCSegundApel(), fontContenido));
+            PdfPCell celda9T3 = new PdfPCell(new Phrase(getSolCLI_conyugSegundoNomb(), fontContenido));
             celda9T3.setBorder(PdfPCell.NO_BORDER);
             //Segunda Fila
             PdfPCell celda10T3 = new PdfPCell(new Phrase("Empresa donde Trabaja:", fontContenido));
             celda10T3.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda11T3 = new PdfPCell(new Phrase(getCEmpdondTrab(), fontContenido));
+            PdfPCell celda11T3 = new PdfPCell(new Phrase(getSolCLI_conyugEmpresaTrab(), fontContenido));
             celda11T3.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda12T3 = new PdfPCell(new Phrase("Cargo:", fontContenido));
             celda12T3.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda13T3 = new PdfPCell(new Phrase(getCEmpCargo(), fontContenido));
+            PdfPCell celda13T3 = new PdfPCell(new Phrase(getSolCLI_conyugEmpresaCarg(), fontContenido));
             celda13T3.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T3 = new PdfPCell(new Phrase("Teléfono", fontContenido));
             celda14T3.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T3 = new PdfPCell(new Phrase(getCEmpTelef(), fontContenido));
+            PdfPCell celda15T3 = new PdfPCell(new Phrase(getSolCLI_conyugEmpresaTele(), fontContenido));
             celda15T3.setBorder(PdfPCell.NO_BORDER);
 
             //loTablaCliente3.setSpacingAfter(20);
@@ -413,40 +414,40 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T4 = new PdfPCell(new Phrase("Número de Sumunistro:", fontContenido));
             celda2T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T4 = new PdfPCell(new Phrase(getVSuministro(), fontContenido));
+            PdfPCell celda3T4 = new PdfPCell(new Phrase(getSolCLI_vivienSuministro(), fontContenido));
             celda3T4.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T4 = new PdfPCell(new Phrase("Titular de Suministro:", fontContenido));
             celda4T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T4 = new PdfPCell(new Phrase(getVTitularSum(), fontContenido));
+            PdfPCell celda5T4 = new PdfPCell(new Phrase(getSolCLI_vivienTitularSuminis(), fontContenido));
             celda5T4.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T4 = new PdfPCell(new Phrase("Relación con el Titular", fontContenido));
             celda6T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T4 = new PdfPCell(new Phrase(getVRelacTitul(), fontContenido));
+            PdfPCell celda7T4 = new PdfPCell(new Phrase(getSolCLI_vivienRelacionTitu(), fontContenido));
             celda7T4.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda8T4 = new PdfPCell(new Phrase("Tipo de Vivienda", fontContenido));
             celda8T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda9T4 = new PdfPCell(new Phrase(getVTipoVivien(), fontContenido));
+            PdfPCell celda9T4 = new PdfPCell(new Phrase(getSolCLI_vivienTipo(), fontContenido));
             celda9T4.setBorder(PdfPCell.NO_BORDER);
             //Segunda Fila
             PdfPCell celda10T4 = new PdfPCell(new Phrase("Hace cuanto tiempo vive allí:", fontContenido));
             celda10T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda11T4 = new PdfPCell(new Phrase(getVHaceCVivea(), fontContenido));
+            PdfPCell celda11T4 = new PdfPCell(new Phrase(getSolCLI_vivienTiempo(), fontContenido));
             celda11T4.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda12T4 = new PdfPCell(new Phrase("Dirección de Residencia:", fontContenido));
             celda12T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda13T4 = new PdfPCell(new Phrase(getVDireccResi(), fontContenido));
+            PdfPCell celda13T4 = new PdfPCell(new Phrase(getSolCLI_vivienDireccion(), fontContenido));
             celda13T4.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T4 = new PdfPCell(new Phrase("Distrito:", fontContenido));
             celda14T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T4 = new PdfPCell(new Phrase(getVDistVivien(), fontContenido));
+            PdfPCell celda15T4 = new PdfPCell(new Phrase(getSolCLI_vivienDistrito(), fontContenido));
             celda15T4.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda16T4 = new PdfPCell(new Phrase("Provincia:", fontContenido));
             celda16T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda17T4 = new PdfPCell(new Phrase(getVProvVivien(), fontContenido));
+            PdfPCell celda17T4 = new PdfPCell(new Phrase(getSolCLI_vivienProvincia(), fontContenido));
             celda17T4.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda18T4 = new PdfPCell(new Phrase("Departamento:", fontContenido));
             celda18T4.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda19T4 = new PdfPCell(new Phrase(getVDepaVivien(), fontContenido));
+            PdfPCell celda19T4 = new PdfPCell(new Phrase(getSolCLI_vivienDepartamento(), fontContenido));
             celda19T4.setBorder(PdfPCell.NO_BORDER);
 
             //loTablaCliente4.setSpacingAfter(20);
@@ -459,32 +460,32 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T5 = new PdfPCell(new Phrase("Nombre de la Empresa Contratante:", fontContenido));
             celda2T5.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T5 = new PdfPCell(new Phrase(getENombreEmpr(), fontContenido));
+            PdfPCell celda3T5 = new PdfPCell(new Phrase(getSolCLI_empleadEmpresaNomb(), fontContenido));
             celda3T5.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T5 = new PdfPCell(new Phrase("RUC:", fontContenido));
             celda4T5.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T5 = new PdfPCell(new Phrase(getERUCEmpr(), fontContenido));
+            PdfPCell celda5T5 = new PdfPCell(new Phrase(getSolCLI_empleadEmpresaRuc(), fontContenido));
             celda5T5.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T5 = new PdfPCell(new Phrase("Actividad de la Empresa", fontContenido));
             celda6T5.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T5 = new PdfPCell(new Phrase(getEActivdEmpr(), fontContenido));
+            PdfPCell celda7T5 = new PdfPCell(new Phrase(getSolCLI_empleadEmpresaActi(), fontContenido));
             celda7T5.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda8T5 = new PdfPCell(new Phrase("Dirección de la Empresa", fontContenido));
             celda8T5.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda9T5 = new PdfPCell(new Phrase(getEDirEmpr(), fontContenido));
+            PdfPCell celda9T5 = new PdfPCell(new Phrase(getSolCLI_empleadEmpresaDire(), fontContenido));
             celda9T5.setBorder(PdfPCell.NO_BORDER);
             //Segunda Fila
             PdfPCell celda10T5 = new PdfPCell(new Phrase("Distrito:", fontContenido));
             celda10T5.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda11T5 = new PdfPCell(new Phrase(getEDisEmpr(), fontContenido));
+            PdfPCell celda11T5 = new PdfPCell(new Phrase(getSolCLI_empleadEmpresaDist(), fontContenido));
             celda11T5.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda12T5 = new PdfPCell(new Phrase("Provincia:", fontContenido));
             celda12T5.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda13T5 = new PdfPCell(new Phrase(getEProvEmpr(), fontContenido));
+            PdfPCell celda13T5 = new PdfPCell(new Phrase(getSolCLI_empleadEmpresaProv(), fontContenido));
             celda13T5.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T5 = new PdfPCell(new Phrase("Departamento:", fontContenido));
             celda14T5.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T5 = new PdfPCell(new Phrase(getEDepEmpr(), fontContenido));
+            PdfPCell celda15T5 = new PdfPCell(new Phrase(getSolCLI_empleadEmpresaDepa(), fontContenido));
             celda15T5.setBorder(PdfPCell.NO_BORDER);
 
             //loTablaCliente4.setSpacingAfter(20);
@@ -497,57 +498,57 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T6 = new PdfPCell(new Phrase("Describa específicamente la labor que realiza como independiente:", fontContenido));
             celda2T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T6 = new PdfPCell(new Phrase(getILabor(), fontContenido));
+            PdfPCell celda3T6 = new PdfPCell(new Phrase(getSolCLI_independILabor(), fontContenido));
             celda3T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T6 = new PdfPCell(new Phrase("Hace cuanto es independiente:", fontContenido));
             celda4T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T6 = new PdfPCell(new Phrase(getIHacecuantInd(), fontContenido));
+            PdfPCell celda5T6 = new PdfPCell(new Phrase(getSolCLI_independITiempoViv(), fontContenido));
             celda5T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T6 = new PdfPCell(new Phrase("Tipo de Independiente:", fontContenido));
             celda6T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T6 = new PdfPCell(new Phrase(getITipodeInd(), fontContenido));
+            PdfPCell celda7T6 = new PdfPCell(new Phrase(getSolCLI_independITipo(), fontContenido));
             celda7T6.setBorder(PdfPCell.NO_BORDER);
 
             //Segunda Fila
             PdfPCell celda10T6 = new PdfPCell(new Phrase("Nombre de la Empresa:", fontContenido));
             celda10T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda11T6 = new PdfPCell(new Phrase(getFNombEmpr(), fontContenido));
+            PdfPCell celda11T6 = new PdfPCell(new Phrase(getSolCLI_independFEmpresaNomb(), fontContenido));
             celda11T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda12T6 = new PdfPCell(new Phrase("RUC:", fontContenido));
             celda12T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda13T6 = new PdfPCell(new Phrase(getFRUCEmpr(), fontContenido));
+            PdfPCell celda13T6 = new PdfPCell(new Phrase(getSolCLI_independFEmpresaRuc(), fontContenido));
             celda13T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T6 = new PdfPCell(new Phrase("Cargo/Ocupación:", fontContenido));
             celda14T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T6 = new PdfPCell(new Phrase(getFCargo(), fontContenido));
+            PdfPCell celda15T6 = new PdfPCell(new Phrase(getSolCLI_independFCargo(), fontContenido));
             celda15T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda16T6 = new PdfPCell(new Phrase("Dirección donde Labora:", fontContenido));
             celda16T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda17T6 = new PdfPCell(new Phrase(getFDirLabo(), fontContenido));
+            PdfPCell celda17T6 = new PdfPCell(new Phrase(getSolCLI_independFLaboraDire(), fontContenido));
             celda17T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda18T6 = new PdfPCell(new Phrase("Distrito:", fontContenido));
             celda18T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda19T6 = new PdfPCell(new Phrase(getFDisLabo(), fontContenido));
+            PdfPCell celda19T6 = new PdfPCell(new Phrase(getSolCLI_independFLaboraDist(), fontContenido));
             celda19T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda20T6 = new PdfPCell(new Phrase("Provincia:", fontContenido));
             celda20T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda21T6 = new PdfPCell(new Phrase(getFProLabo(), fontContenido));
+            PdfPCell celda21T6 = new PdfPCell(new Phrase(getSolCLI_independFLaboraProv(), fontContenido));
             celda21T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda22T6 = new PdfPCell(new Phrase("Departamento:", fontContenido));
             celda22T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda23T6 = new PdfPCell(new Phrase(getFDepLabo(), fontContenido));
+            PdfPCell celda23T6 = new PdfPCell(new Phrase(getSolCLI_independFLaboraDepa(), fontContenido));
             celda23T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda24T6 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
             celda24T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda25T6 = new PdfPCell(new Phrase(getFTelef(), fontContenido));
+            PdfPCell celda25T6 = new PdfPCell(new Phrase(getSolCLI_independFTelefono(), fontContenido));
             celda25T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda26T6 = new PdfPCell(new Phrase("Anexo:", fontContenido));
             celda26T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda27T6 = new PdfPCell(new Phrase(getFAnexo(), fontContenido));
+            PdfPCell celda27T6 = new PdfPCell(new Phrase(getSolCLI_independFAnexo(), fontContenido));
             celda27T6.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda28T6 = new PdfPCell(new Phrase("Correo Electrónico:", fontContenido));
             celda28T6.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda29T6 = new PdfPCell(new Phrase(getFAnexo(), fontContenido));
+            PdfPCell celda29T6 = new PdfPCell(new Phrase(getSolCLI_independFAnexo(), fontContenido));
             celda29T6.setBorder(PdfPCell.NO_BORDER);
 
             //loTablaCliente4.setSpacingAfter(20);
@@ -560,15 +561,15 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T7 = new PdfPCell(new Phrase("Nombre de la Empresa en la cual se jubiló:", fontContenido));
             celda2T7.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T7 = new PdfPCell(new Phrase(getJNombEmpJ(), fontContenido));
+            PdfPCell celda3T7 = new PdfPCell(new Phrase(getSolCLI_jubilEmpresaNombJubi(), fontContenido));
             celda3T7.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T7 = new PdfPCell(new Phrase("Nombre de la Empresa donde hizo el aporte para la jubilación:", fontContenido));
             celda4T7.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T7 = new PdfPCell(new Phrase(getJNombEmpA(), fontContenido));
+            PdfPCell celda5T7 = new PdfPCell(new Phrase(getSolCLI_jubilEmpresaNombApor(), fontContenido));
             celda5T7.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T7 = new PdfPCell(new Phrase("Hace Cuanto es Jubilado:", fontContenido));
             celda6T7.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T7 = new PdfPCell(new Phrase(getJHacecuaJ(), fontContenido));
+            PdfPCell celda7T7 = new PdfPCell(new Phrase(getSolCLI_jubilEmpresaTiempo(), fontContenido));
             celda7T7.setBorder(PdfPCell.NO_BORDER);
 
             //SEPTIMA TABLA
@@ -583,31 +584,31 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda3T8 = new PdfPCell(new Phrase("Suledo-Ingreso básico:", fontContenido));
             celda3T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda4T8 = new PdfPCell(new Phrase("S/." + getISueldBas(), fontContenido));
+            PdfPCell celda4T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanIngSueldoBasic(), fontContenido));
             celda4T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda5T8 = new PdfPCell(new Phrase("Comisiones:", fontContenido));
             celda5T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda6T8 = new PdfPCell(new Phrase("S/." + getIComisiones(), fontContenido));
+            PdfPCell celda6T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanIngComisiones(), fontContenido));
             celda6T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda7T8 = new PdfPCell(new Phrase("Honorarios:", fontContenido));
             celda7T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda8T8 = new PdfPCell(new Phrase("S/." + getIHonorarios(), fontContenido));
+            PdfPCell celda8T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanIngHonorarios(), fontContenido));
             celda8T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda9T8 = new PdfPCell(new Phrase("Alquileres:", fontContenido));
             celda9T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda10T8 = new PdfPCell(new Phrase("S/." + getIAlquileres(), fontContenido));
+            PdfPCell celda10T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanIngAlquileres(), fontContenido));
             celda10T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda11T8 = new PdfPCell(new Phrase("Otros Ingresos:", fontContenido));
             celda11T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda12T8 = new PdfPCell(new Phrase("S/." + getIOtrosIngres(), fontContenido));
+            PdfPCell celda12T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanIngOtros(), fontContenido));
             celda12T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda13T8 = new PdfPCell(new Phrase("Total Ingresos:", fontContenido));
             celda13T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda14T8 = new PdfPCell(new Phrase("S/." + getITotalIng(), fontContenido));
+            PdfPCell celda14T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanIngTotal(), fontContenido));
             celda14T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda15T8 = new PdfPCell(new Phrase("Total Activos:", fontContenido));
             celda15T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda16T8 = new PdfPCell(new Phrase("S/." + getITotalAct(), fontContenido));
+            PdfPCell celda16T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanIngTotalAct(), fontContenido));
             celda16T8.setBorder(PdfPCell.NO_BORDER);
 
             PdfPCell celda17T8 = new PdfPCell(new Phrase("Gastos Mensuales del Solicitante", fontContenido));
@@ -617,31 +618,31 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda18T8 = new PdfPCell(new Phrase("Alquiler:", fontContenido));
             celda18T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda19T8 = new PdfPCell(new Phrase("S/." + getGAlquiler(), fontContenido));
+            PdfPCell celda19T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanGasAlquiler(), fontContenido));
             celda19T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda20T8 = new PdfPCell(new Phrase("Crédito de Vivienda:", fontContenido));
             celda20T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda21T8 = new PdfPCell(new Phrase("S/." + getGCreditoViv(), fontContenido));
+            PdfPCell celda21T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanGasCreditoViv(), fontContenido));
             celda21T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda22T8 = new PdfPCell(new Phrase("Gastos Familiares:", fontContenido));
             celda22T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda23T8 = new PdfPCell(new Phrase("S/." + getGGastosFamil(), fontContenido));
+            PdfPCell celda23T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanGasFamiliar(), fontContenido));
             celda23T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda24T8 = new PdfPCell(new Phrase("Tarjetas de Crédito:", fontContenido));
             celda24T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda25T8 = new PdfPCell(new Phrase("S/." + getGTarjetasCred(), fontContenido));
+            PdfPCell celda25T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanGasTarjetasCred(), fontContenido));
             celda25T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda26T8 = new PdfPCell(new Phrase("Otros Gasttos:", fontContenido));
             celda26T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda27T8 = new PdfPCell(new Phrase("S/." + getGOtrosGas(), fontContenido));
+            PdfPCell celda27T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanGasOtros(), fontContenido));
             celda27T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda28T8 = new PdfPCell(new Phrase("Total Gastos:", fontContenido));
             celda28T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda29T8 = new PdfPCell(new Phrase("S/." + getGTotalGas(), fontContenido));
+            PdfPCell celda29T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanGasTotal(), fontContenido));
             celda29T8.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda30T8 = new PdfPCell(new Phrase("Total Patrimonio:", fontContenido));
             celda30T8.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda31T8 = new PdfPCell(new Phrase("S/." + getGTotalPat(), fontContenido));
+            PdfPCell celda31T8 = new PdfPCell(new Phrase("S/." + getSolCLI_infofinanGasTotalPat(), fontContenido));
             celda31T8.setBorder(PdfPCell.NO_BORDER);
 
             //OCTAVA TABLA
@@ -653,36 +654,36 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T9 = new PdfPCell(new Phrase("Primer Nombre:", fontContenido));
             celda2T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T9 = new PdfPCell(new Phrase(getRPPrimerNomb(), fontContenido));
+            PdfPCell celda3T9 = new PdfPCell(new Phrase(getSolCLI_refepersonPrimerNomb(), fontContenido));
             celda3T9.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T9 = new PdfPCell(new Phrase("Segundo Nombre:", fontContenido));
             celda4T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T9 = new PdfPCell(new Phrase(getRPSegundoNomb(), fontContenido));
+            PdfPCell celda5T9 = new PdfPCell(new Phrase(getSolCLI_refepersonSegundoNomb(), fontContenido));
             celda5T9.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T9 = new PdfPCell(new Phrase("Primer Apellido:", fontContenido));
             celda6T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T9 = new PdfPCell(new Phrase(getRPPrimerApell(), fontContenido));
+            PdfPCell celda7T9 = new PdfPCell(new Phrase(getSolCLI_refepersonPrimerApel(), fontContenido));
             celda7T9.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda8T9 = new PdfPCell(new Phrase("Segundo Apellido:", fontContenido));
             celda8T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda9T9 = new PdfPCell(new Phrase(getRPSegundoApell(), fontContenido));
+            PdfPCell celda9T9 = new PdfPCell(new Phrase(getSolCLI_refepersonSegundoApel(), fontContenido));
             celda9T9.setBorder(PdfPCell.NO_BORDER);
             //Segunda Fila
             PdfPCell celda10T9 = new PdfPCell(new Phrase("Dirección:", fontContenido));
             celda10T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda11T9 = new PdfPCell(new Phrase(getRPDirec(), fontContenido));
+            PdfPCell celda11T9 = new PdfPCell(new Phrase(getSolCLI_refepersonDireccion(), fontContenido));
             celda11T9.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda12T9 = new PdfPCell(new Phrase("Distrito:", fontContenido));
             celda12T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda13T9 = new PdfPCell(new Phrase(getRPDistr(), fontContenido));
+            PdfPCell celda13T9 = new PdfPCell(new Phrase(getSolCLI_refepersonDistrito(), fontContenido));
             celda13T9.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T9 = new PdfPCell(new Phrase("Provincia:", fontContenido));
             celda14T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T9 = new PdfPCell(new Phrase(getRPProvi(), fontContenido));
+            PdfPCell celda15T9 = new PdfPCell(new Phrase(getSolCLI_refepersonProvincia(), fontContenido));
             celda15T9.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda16T9 = new PdfPCell(new Phrase("Estado:", fontContenido));
             celda16T9.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda17T9 = new PdfPCell(new Phrase(getRPEstad(), fontContenido));
+            PdfPCell celda17T9 = new PdfPCell(new Phrase(getSolCLI_refepersonEstado(), fontContenido));
             celda17T9.setBorder(PdfPCell.NO_BORDER);
 
             //NOVENA TABLA
@@ -694,49 +695,49 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T10 = new PdfPCell(new Phrase("Primer Nombre:", fontContenido));
             celda2T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T10 = new PdfPCell(new Phrase(getRFPrimerNomb(), fontContenido));
+            PdfPCell celda3T10 = new PdfPCell(new Phrase(getSolCLI_refepersonPrimerNomb(), fontContenido));
             celda3T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T10 = new PdfPCell(new Phrase("Segundo Nombre:", fontContenido));
             celda4T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T10 = new PdfPCell(new Phrase(getRFSegundoNomb(), fontContenido));
+            PdfPCell celda5T10 = new PdfPCell(new Phrase(getSolCLI_refepersonSegundoNomb(), fontContenido));
             celda5T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T10 = new PdfPCell(new Phrase("Primer Apellido:", fontContenido));
             celda6T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T10 = new PdfPCell(new Phrase(getRFPrimerApell(), fontContenido));
+            PdfPCell celda7T10 = new PdfPCell(new Phrase(getSolCLI_refepersonPrimerApel(), fontContenido));
             celda7T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda8T10 = new PdfPCell(new Phrase("Segundo Apellido:", fontContenido));
             celda8T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda9T10 = new PdfPCell(new Phrase(getRFSegundoApell(), fontContenido));
+            PdfPCell celda9T10 = new PdfPCell(new Phrase(getSolCLI_refepersonSegundoApel(), fontContenido));
             celda9T10.setBorder(PdfPCell.NO_BORDER);
             //Segunda Fila
             PdfPCell celda10T10 = new PdfPCell(new Phrase("Dirección:", fontContenido));
             celda10T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda11T10 = new PdfPCell(new Phrase(getRFDirec(), fontContenido));
+            PdfPCell celda11T10 = new PdfPCell(new Phrase(getSolCLI_refepersonDireccion(), fontContenido));
             celda11T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda12T10 = new PdfPCell(new Phrase("Distrito:", fontContenido));
             celda12T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda13T10 = new PdfPCell(new Phrase(getRFDistr(), fontContenido));
+            PdfPCell celda13T10 = new PdfPCell(new Phrase(getSolCLI_refepersonDistrito(), fontContenido));
             celda13T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T10 = new PdfPCell(new Phrase("Provincia:", fontContenido));
             celda14T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T10 = new PdfPCell(new Phrase(getRFProvi(), fontContenido));
+            PdfPCell celda15T10 = new PdfPCell(new Phrase(getSolCLI_refepersonProvincia(), fontContenido));
             celda15T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda16T10 = new PdfPCell(new Phrase("Estado:", fontContenido));
             celda16T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda17T10 = new PdfPCell(new Phrase(getRFEstad(), fontContenido));
+            PdfPCell celda17T10 = new PdfPCell(new Phrase(getSolCLI_refepersonEstado(), fontContenido));
             celda17T10.setBorder(PdfPCell.NO_BORDER);
             //Tercera Fila
             PdfPCell celda18T10 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
             celda18T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda19T10 = new PdfPCell(new Phrase(getRFTelef(), fontContenido));
+            PdfPCell celda19T10 = new PdfPCell(new Phrase(getSolCLI_refepersonTelefono(), fontContenido));
             celda19T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda20T10 = new PdfPCell(new Phrase("Celular:", fontContenido));
             celda20T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda21T10 = new PdfPCell(new Phrase(getRFCelul(), fontContenido));
+            PdfPCell celda21T10 = new PdfPCell(new Phrase(getSolCLI_refepersonCelular(), fontContenido));
             celda21T10.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda22T10 = new PdfPCell(new Phrase("Parentesco:", fontContenido));
             celda22T10.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda23T10 = new PdfPCell(new Phrase(getRFParen(), fontContenido));
+            PdfPCell celda23T10 = new PdfPCell(new Phrase(getSolCLI_refepersonParentesco(), fontContenido));
             celda23T10.setBorder(PdfPCell.NO_BORDER);
 
             //DECIMA TABLA
@@ -748,62 +749,62 @@ public class CReportePDF {
             //Primera Fila
             PdfPCell celda2T11 = new PdfPCell(new Phrase("Nombre del Cliente:", fontContenido));
             celda2T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda3T11 = new PdfPCell(new Phrase(getRLPNombre(), fontContenido));
+            PdfPCell celda3T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproNombre(), fontContenido));
             celda3T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda4T11 = new PdfPCell(new Phrase("Actividad:", fontContenido));
             celda4T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda5T11 = new PdfPCell(new Phrase(getRLCActividad(), fontContenido));
+            PdfPCell celda5T11 = new PdfPCell(new Phrase(getSolCLI_refelabocliActividad(), fontContenido));
             celda5T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda6T11 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
             celda6T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda7T11 = new PdfPCell(new Phrase(getRLCTelef(), fontContenido));
+            PdfPCell celda7T11 = new PdfPCell(new Phrase(getSolCLI_refelabocliTelefono(), fontContenido));
             celda7T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda8T11 = new PdfPCell(new Phrase("Dirección del Cliente:", fontContenido));
             celda8T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda9T11 = new PdfPCell(new Phrase(getRLCDireClient(), fontContenido));
+            PdfPCell celda9T11 = new PdfPCell(new Phrase(getSolCLI_refelabocliDireccion(), fontContenido));
             celda9T11.setBorder(PdfPCell.NO_BORDER);
             //Segunda Fila
             PdfPCell celda10T11 = new PdfPCell(new Phrase("Distrito:", fontContenido));
             celda10T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda11T11 = new PdfPCell(new Phrase(getRLCDistrito(), fontContenido));
+            PdfPCell celda11T11 = new PdfPCell(new Phrase(getSolCLI_refelabocliDistrito(), fontContenido));
             celda11T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda12T11 = new PdfPCell(new Phrase("Provincia:", fontContenido));
             celda12T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda13T11 = new PdfPCell(new Phrase(getRLCProvincia(), fontContenido));
+            PdfPCell celda13T11 = new PdfPCell(new Phrase(getSolCLI_refelabocliProvincia(), fontContenido));
             celda13T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda14T11 = new PdfPCell(new Phrase("Estado:", fontContenido));
             celda14T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda15T11 = new PdfPCell(new Phrase(getRLCEstado(), fontContenido));
+            PdfPCell celda15T11 = new PdfPCell(new Phrase(getSolCLI_refelabocliEstado(), fontContenido));
             celda15T11.setBorder(PdfPCell.NO_BORDER);
 
             PdfPCell celda16T11 = new PdfPCell(new Phrase("Nombre del Proveedor:", fontContenido));
             celda16T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda17T11 = new PdfPCell(new Phrase(getRLPNombre(), fontContenido));
+            PdfPCell celda17T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproNombre(), fontContenido));
             celda17T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda18T11 = new PdfPCell(new Phrase("Actividad:", fontContenido));
             celda18T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda19T11 = new PdfPCell(new Phrase(getRLPActividad(), fontContenido));
+            PdfPCell celda19T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproActividad(), fontContenido));
             celda19T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda20T11 = new PdfPCell(new Phrase("Teléfono:", fontContenido));
             celda20T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda21T11 = new PdfPCell(new Phrase(getRLPTelef(), fontContenido));
+            PdfPCell celda21T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproTelefono(), fontContenido));
             celda21T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda22T11 = new PdfPCell(new Phrase("Dirección del Cliente:", fontContenido));
             celda22T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda23T11 = new PdfPCell(new Phrase(getRLPDire(), fontContenido));
+            PdfPCell celda23T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproDireccion(), fontContenido));
             celda23T11.setBorder(PdfPCell.NO_BORDER);
 
             PdfPCell celda24T11 = new PdfPCell(new Phrase("Distrito:", fontContenido));
             celda24T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda25T11 = new PdfPCell(new Phrase(getRLPDistrito(), fontContenido));
+            PdfPCell celda25T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproDistrito(), fontContenido));
             celda25T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda26T11 = new PdfPCell(new Phrase("Provincia:", fontContenido));
             celda26T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda27T11 = new PdfPCell(new Phrase(getRLPProvincia(), fontContenido));
+            PdfPCell celda27T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproProvincia(), fontContenido));
             celda27T11.setBorder(PdfPCell.NO_BORDER);
             PdfPCell celda28T11 = new PdfPCell(new Phrase("Estado:", fontContenido));
             celda28T11.setBorder(PdfPCell.NO_BORDER);
-            PdfPCell celda29T11 = new PdfPCell(new Phrase(getRLPEstado(), fontContenido));
+            PdfPCell celda29T11 = new PdfPCell(new Phrase(getSolCLI_refelaboproEstado(), fontContenido));
             celda29T11.setBorder(PdfPCell.NO_BORDER);
 
             //Rectangulos
@@ -1142,17 +1143,17 @@ public class CReportePDF {
             loDoc.add(loTablaCliente);
             loDoc.add(loTablaCliente2);
 
-            if (getCPrimerNomb().equals("")) {
+            if (getSolCLI_conyugPrimerNomb().equals("")) {
                 //MOSTRAR LUGAR DONDE VIVE ACTUALMENTE
                 loDoc.add(loTablaCliente4);
-                if (getENombreEmpr() != null) {
+                if (getSolCLI_empleadEmpresaNomb() != null) {
                     //MOSTRAR SI ES EMPLEADO
                     loDoc.add(loTablaCliente5);
                     //MOSTRAR INFORMACIÓN FINANCIERA
                     loDoc.add(loTablaCliente7);
                     //MOSTRAR REFERENCIAS PERSONALES
                     loDoc.add(loTablaCliente8);
-                } else if (getILabor() != null) {
+                } else if (getSolCLI_independILabor() != null) {
 
                     loDoc.add(loTablaCliente51);
                     loDoc.add(loTablaCliente61);
@@ -1161,7 +1162,7 @@ public class CReportePDF {
                     //MOSTRAR REFERENCIAS PERSONALES
                     loDoc.add(loTablaCliente8);
 
-                } else if (getJNombEmpJ() != null) {
+                } else if (getSolCLI_jubilEmpresaNombJubi() != null) {
                     //MOSTRAR SI ES JUBILADO
                     loDoc.add(loTablaCliente6);
                     //MOSTRAR INFORMACIÓN FINANCIERA
@@ -1174,15 +1175,15 @@ public class CReportePDF {
                 loDoc.add(loTablaCliente3);
                 //MOSTRAR LUGAR DONDE VIVE ACTUALMENTE
                 loDoc.add(loTablaCliente4);
-                if (getENombreEmpr() != null) {
+                if (getSolCLI_empleadEmpresaNomb() != null) {
                     //MOSTRAR SI ES EMPLEADO
                     loDoc.add(loTablaCliente5);
                     //MOSTRAR INFORMACIÓN FINANCIERA
                     loDoc.add(loTablaCliente7);
                     //MOSTRAR REFERENCIAS PERSONALES
                     loDoc.add(loTablaCliente8);
-                } else if (getILabor() != null) {
-                    if (getFNombEmpr() != null) {
+                } else if (getSolCLI_independILabor() != null) {
+                    if (getSolCLI_independFEmpresaNomb() != null) {
                         loDoc.add(loTablaCliente51);
                         loDoc.add(loTablaCliente61);
                         //MOSTRAR INFORMACIÓN FINANCIERA
@@ -1198,7 +1199,7 @@ public class CReportePDF {
                         loDoc.add(loTablaCliente10);
                     }
 
-                } else if (getJNombEmpJ() != null) {
+                } else if (getSolCLI_jubilEmpresaNombJubi() != null) {
                     //MOSTRAR SI ES JUBILADO
                     loDoc.add(loTablaCliente6);
                     //MOSTRAR INFORMACIÓN FINANCIERA
@@ -4139,789 +4140,788 @@ public class CReportePDF {
         this.passwd = passwd;
     }
 
-    public String getCodEvaluador() {
-        return CodEvaluador;
+    public String getSolCLIcodEvaluador() {
+        return solCLIcodEvaluador;
     }
 
-    public void setCodEvaluador(String CodEvaluador) {
-        this.CodEvaluador = CodEvaluador;
+    public void setSolCLIcodEvaluador(String solCLIcodEvaluador) {
+        this.solCLIcodEvaluador = solCLIcodEvaluador;
     }
 
-    public String getPuntVenta() {
-        return PuntVenta;
+    public String getSolCLIpuntVenta() {
+        return solCLIpuntVenta;
     }
 
-    public void setPuntVenta(String PuntVenta) {
-        this.PuntVenta = PuntVenta;
+    public void setSolCLIpuntVenta(String solCLIpuntVenta) {
+        this.solCLIpuntVenta = solCLIpuntVenta;
     }
 
-    public String getFecSolicitud() {
-        return FecSolicitud;
+    public String getSolCLIfecSolicitud() {
+        return solCLIfecSolicitud;
     }
 
-    public void setFecSolicitud(String FecSolicitud) {
-        this.FecSolicitud = FecSolicitud;
+    public void setSolCLIfecSolicitud(String solCLIfecSolicitud) {
+        this.solCLIfecSolicitud = solCLIfecSolicitud;
     }
 
-    public String getCiudadExp() {
-        return CiudadExp;
+    public String getSolCLIciudadExp() {
+        return solCLIciudadExp;
     }
 
-    public void setCiudadExp(String CiudadExp) {
-        this.CiudadExp = CiudadExp;
+    public void setSolCLIciudadExp(String solCLIciudadExp) {
+        this.solCLIciudadExp = solCLIciudadExp;
     }
 
-    public String getNacionalidad() {
-        return Nacionalidad;
+    public String getSolCLInacionalidad() {
+        return solCLInacionalidad;
     }
 
-    public void setNacionalidad(String Nacionalidad) {
-        this.Nacionalidad = Nacionalidad;
+    public void setSolCLInacionalidad(String solCLInacionalidad) {
+        this.solCLInacionalidad = solCLInacionalidad;
     }
 
-    public String getCiudadNac() {
-        return CiudadNac;
+    public String getSolCLIciudadNac() {
+        return solCLIciudadNac;
     }
 
-    public void setCiudadNac(String CiudadNac) {
-        this.CiudadNac = CiudadNac;
+    public void setSolCLIciudadNac(String solCLIciudadNac) {
+        this.solCLIciudadNac = solCLIciudadNac;
     }
 
-    public String getPaisNac() {
-        return PaisNac;
+    public String getSolCLIpaisNac() {
+        return solCLIpaisNac;
     }
 
-    public void setPaisNac(String PaisNac) {
-        this.PaisNac = PaisNac;
+    public void setSolCLIpaisNac(String solCLIpaisNac) {
+        this.solCLIpaisNac = solCLIpaisNac;
     }
 
-    public String getNperDepend() {
-        return NperDepend;
+    public String getSolCLInperDepend() {
+        return solCLInperDepend;
     }
 
-    public void setNperDepend(String NperDepend) {
-        this.NperDepend = NperDepend;
+    public void setSolCLInperDepend(String solCLInperDepend) {
+        this.solCLInperDepend = solCLInperDepend;
     }
 
-    public String getCPrimerNomb() {
-        return CPrimerNomb;
+    public String getSolCLI_conyugPrimerNomb() {
+        return solCLI_conyugPrimerNomb;
     }
 
-    public void setCPrimerNomb(String CPrimerNomb) {
-        this.CPrimerNomb = CPrimerNomb;
+    public void setSolCLI_conyugPrimerNomb(String solCLI_conyugPrimerNomb) {
+        this.solCLI_conyugPrimerNomb = solCLI_conyugPrimerNomb;
     }
 
-    public String getCSegundNomb() {
-        return CSegundNomb;
+    public String getSolCLI_conyugSegundoNomb() {
+        return solCLI_conyugSegundoNomb;
     }
 
-    public void setCSegundNomb(String CSegundNomb) {
-        this.CSegundNomb = CSegundNomb;
+    public void setSolCLI_conyugSegundoNomb(String solCLI_conyugSegundoNomb) {
+        this.solCLI_conyugSegundoNomb = solCLI_conyugSegundoNomb;
     }
 
-    public String getCPrimerApel() {
-        return CPrimerApel;
+    public String getSolCLI_conyugPrimerApel() {
+        return solCLI_conyugPrimerApel;
     }
 
-    public void setCPrimerApel(String CPrimerApel) {
-        this.CPrimerApel = CPrimerApel;
+    public void setSolCLI_conyugPrimerApel(String solCLI_conyugPrimerApel) {
+        this.solCLI_conyugPrimerApel = solCLI_conyugPrimerApel;
     }
 
-    public String getCSegundApel() {
-        return CSegundApel;
+    public String getSolCLI_conyugSegundoApel() {
+        return solCLI_conyugSegundoApel;
     }
 
-    public void setCSegundApel(String CSegundApel) {
-        this.CSegundApel = CSegundApel;
+    public void setSolCLI_conyugSegundoApel(String solCLI_conyugSegundoApel) {
+        this.solCLI_conyugSegundoApel = solCLI_conyugSegundoApel;
     }
 
-    public String getCEmpdondTrab() {
-        return CEmpdondTrab;
+    public String getSolCLI_conyugEmpresaTrab() {
+        return solCLI_conyugEmpresaTrab;
     }
 
-    public void setCEmpdondTrab(String CEmpdondTrab) {
-        this.CEmpdondTrab = CEmpdondTrab;
+    public void setSolCLI_conyugEmpresaTrab(String solCLI_conyugEmpresaTrab) {
+        this.solCLI_conyugEmpresaTrab = solCLI_conyugEmpresaTrab;
     }
 
-    public String getCEmpCargo() {
-        return CEmpCargo;
+    public String getSolCLI_conyugEmpresaCarg() {
+        return solCLI_conyugEmpresaCarg;
     }
 
-    public void setCEmpCargo(String CEmpCargo) {
-        this.CEmpCargo = CEmpCargo;
+    public void setSolCLI_conyugEmpresaCarg(String solCLI_conyugEmpresaCarg) {
+        this.solCLI_conyugEmpresaCarg = solCLI_conyugEmpresaCarg;
     }
 
-    public String getCEmpTelef() {
-        return CEmpTelef;
+    public String getSolCLI_conyugEmpresaTele() {
+        return solCLI_conyugEmpresaTele;
     }
 
-    public void setCEmpTelef(String CEmpTelef) {
-        this.CEmpTelef = CEmpTelef;
+    public void setSolCLI_conyugEmpresaTele(String solCLI_conyugEmpresaTele) {
+        this.solCLI_conyugEmpresaTele = solCLI_conyugEmpresaTele;
     }
 
-    public String getVSuministro() {
-        return VSuministro;
+    public String getSolCLI_vivienSuministro() {
+        return solCLI_vivienSuministro;
     }
 
-    public void setVSuministro(String VSuministro) {
-        this.VSuministro = VSuministro;
+    public void setSolCLI_vivienSuministro(String solCLI_vivienSuministro) {
+        this.solCLI_vivienSuministro = solCLI_vivienSuministro;
     }
 
-    public String getVTitularSum() {
-        return VTitularSum;
+    public String getSolCLI_vivienTitularSuminis() {
+        return solCLI_vivienTitularSuminis;
     }
 
-    public void setVTitularSum(String VTitularSum) {
-        this.VTitularSum = VTitularSum;
+    public void setSolCLI_vivienTitularSuminis(String solCLI_vivienTitularSuminis) {
+        this.solCLI_vivienTitularSuminis = solCLI_vivienTitularSuminis;
     }
 
-    public String getVRelacTitul() {
-        return VRelacTitul;
+    public String getSolCLI_vivienRelacionTitu() {
+        return solCLI_vivienRelacionTitu;
     }
 
-    public void setVRelacTitul(String VRelacTitul) {
-        this.VRelacTitul = VRelacTitul;
+    public void setSolCLI_vivienRelacionTitu(String solCLI_vivienRelacionTitu) {
+        this.solCLI_vivienRelacionTitu = solCLI_vivienRelacionTitu;
     }
 
-    public String getVTipoVivien() {
-        return VTipoVivien;
+    public String getSolCLI_vivienTipo() {
+        return solCLI_vivienTipo;
     }
 
-    public void setVTipoVivien(String VTipoVivien) {
-        this.VTipoVivien = VTipoVivien;
+    public void setSolCLI_vivienTipo(String solCLI_vivienTipo) {
+        this.solCLI_vivienTipo = solCLI_vivienTipo;
     }
 
-    public String getVHaceCVivea() {
-        return VHaceCVivea;
+    public String getSolCLI_vivienTiempo() {
+        return solCLI_vivienTiempo;
     }
 
-    public void setVHaceCVivea(String VHaceCVivea) {
-        this.VHaceCVivea = VHaceCVivea;
+    public void setSolCLI_vivienTiempo(String solCLI_vivienTiempo) {
+        this.solCLI_vivienTiempo = solCLI_vivienTiempo;
     }
 
-    public String getVDireccResi() {
-        return VDireccResi;
+    public String getSolCLI_vivienDireccion() {
+        return solCLI_vivienDireccion;
     }
 
-    public void setVDireccResi(String VDireccResi) {
-        this.VDireccResi = VDireccResi;
+    public void setSolCLI_vivienDireccion(String solCLI_vivienDireccion) {
+        this.solCLI_vivienDireccion = solCLI_vivienDireccion;
     }
 
-    public String getVDistVivien() {
-        return VDistVivien;
+    public String getSolCLI_vivienDistrito() {
+        return solCLI_vivienDistrito;
     }
 
-    public void setVDistVivien(String VDistVivien) {
-        this.VDistVivien = VDistVivien;
+    public void setSolCLI_vivienDistrito(String solCLI_vivienDistrito) {
+        this.solCLI_vivienDistrito = solCLI_vivienDistrito;
     }
 
-    public String getVProvVivien() {
-        return VProvVivien;
+    public String getSolCLI_vivienProvincia() {
+        return solCLI_vivienProvincia;
     }
 
-    public void setVProvVivien(String VProvVivien) {
-        this.VProvVivien = VProvVivien;
+    public void setSolCLI_vivienProvincia(String solCLI_vivienProvincia) {
+        this.solCLI_vivienProvincia = solCLI_vivienProvincia;
     }
 
-    public String getVDepaVivien() {
-        return VDepaVivien;
+    public String getSolCLI_vivienDepartamento() {
+        return solCLI_vivienDepartamento;
     }
 
-    public void setVDepaVivien(String VDepaVivien) {
-        this.VDepaVivien = VDepaVivien;
+    public void setSolCLI_vivienDepartamento(String solCLI_vivienDepartamento) {
+        this.solCLI_vivienDepartamento = solCLI_vivienDepartamento;
     }
 
-    public String getENombreEmpr() {
-        return ENombreEmpr;
+    public String getSolCLI_empleadEmpresaNomb() {
+        return solCLI_empleadEmpresaNomb;
     }
 
-    public void setENombreEmpr(String ENombreEmpr) {
-        this.ENombreEmpr = ENombreEmpr;
+    public void setSolCLI_empleadEmpresaNomb(String solCLI_empleadEmpresaNomb) {
+        this.solCLI_empleadEmpresaNomb = solCLI_empleadEmpresaNomb;
     }
 
-    public String getERUCEmpr() {
-        return ERUCEmpr;
+    public String getSolCLI_empleadEmpresaRuc() {
+        return solCLI_empleadEmpresaRuc;
     }
 
-    public void setERUCEmpr(String ERUCEmpr) {
-        this.ERUCEmpr = ERUCEmpr;
+    public void setSolCLI_empleadEmpresaRuc(String solCLI_empleadEmpresaRuc) {
+        this.solCLI_empleadEmpresaRuc = solCLI_empleadEmpresaRuc;
     }
 
-    public String getEActivdEmpr() {
-        return EActivdEmpr;
+    public String getSolCLI_empleadEmpresaActi() {
+        return solCLI_empleadEmpresaActi;
     }
 
-    public void setEActivdEmpr(String EActivdEmpr) {
-        this.EActivdEmpr = EActivdEmpr;
+    public void setSolCLI_empleadEmpresaActi(String solCLI_empleadEmpresaActi) {
+        this.solCLI_empleadEmpresaActi = solCLI_empleadEmpresaActi;
     }
 
-    public String getEDirEmpr() {
-        return EDirEmpr;
+    public String getSolCLI_empleadEmpresaDire() {
+        return solCLI_empleadEmpresaDire;
     }
 
-    public void setEDirEmpr(String EDirEmpr) {
-        this.EDirEmpr = EDirEmpr;
+    public void setSolCLI_empleadEmpresaDire(String solCLI_empleadEmpresaDire) {
+        this.solCLI_empleadEmpresaDire = solCLI_empleadEmpresaDire;
     }
 
-    public String getEDepEmpr() {
-        return EDepEmpr;
+    public String getSolCLI_empleadEmpresaDepa() {
+        return solCLI_empleadEmpresaDepa;
     }
 
-    public void setEDepEmpr(String EDepEmpr) {
-        this.EDepEmpr = EDepEmpr;
+    public void setSolCLI_empleadEmpresaDepa(String solCLI_empleadEmpresaDepa) {
+        this.solCLI_empleadEmpresaDepa = solCLI_empleadEmpresaDepa;
     }
 
-    public String getEDisEmpr() {
-        return EDisEmpr;
+    public String getSolCLI_empleadEmpresaDist() {
+        return solCLI_empleadEmpresaDist;
     }
 
-    public void setEDisEmpr(String EDisEmpr) {
-        this.EDisEmpr = EDisEmpr;
+    public void setSolCLI_empleadEmpresaDist(String solCLI_empleadEmpresaDist) {
+        this.solCLI_empleadEmpresaDist = solCLI_empleadEmpresaDist;
     }
 
-    public String getEProvEmpr() {
-        return EProvEmpr;
+    public String getSolCLI_empleadEmpresaProv() {
+        return solCLI_empleadEmpresaProv;
     }
 
-    public void setEProvEmpr(String EProvEmpr) {
-        this.EProvEmpr = EProvEmpr;
+    public void setSolCLI_empleadEmpresaProv(String solCLI_empleadEmpresaProv) {
+        this.solCLI_empleadEmpresaProv = solCLI_empleadEmpresaProv;
     }
 
-    public String getILabor() {
-        return ILabor;
+    public String getSolCLI_independILabor() {
+        return solCLI_independILabor;
     }
 
-    public void setILabor(String ILabor) {
-        this.ILabor = ILabor;
+    public void setSolCLI_independILabor(String solCLI_independILabor) {
+        this.solCLI_independILabor = solCLI_independILabor;
     }
 
-    public String getIHacecuantInd() {
-        return IHacecuantInd;
+    public String getSolCLI_independITiempoViv() {
+        return solCLI_independITiempoViv;
     }
 
-    public void setIHacecuantInd(String IHacecuantInd) {
-        this.IHacecuantInd = IHacecuantInd;
+    public void setSolCLI_independITiempoViv(String solCLI_independITiempoViv) {
+        this.solCLI_independITiempoViv = solCLI_independITiempoViv;
     }
 
-    public String getITipodeInd() {
-        return ITipodeInd;
+    public String getSolCLI_independITipo() {
+        return solCLI_independITipo;
     }
 
-    public void setITipodeInd(String ITipodeInd) {
-        this.ITipodeInd = ITipodeInd;
+    public void setSolCLI_independITipo(String solCLI_independITipo) {
+        this.solCLI_independITipo = solCLI_independITipo;
     }
 
-    public String getFNombEmpr() {
-        return FNombEmpr;
+    public String getSolCLI_independITipoaux() {
+        return solCLI_independITipoaux;
     }
 
-    public void setFNombEmpr(String FNombEmpr) {
-        this.FNombEmpr = FNombEmpr;
+    public void setSolCLI_independITipoaux(String solCLI_independITipoaux) {
+        this.solCLI_independITipoaux = solCLI_independITipoaux;
     }
 
-    public String getFRUCEmpr() {
-        return FRUCEmpr;
+    public String getSolCLI_independFEmpresaNomb() {
+        return solCLI_independFEmpresaNomb;
     }
 
-    public void setFRUCEmpr(String FRUCEmpr) {
-        this.FRUCEmpr = FRUCEmpr;
+    public void setSolCLI_independFEmpresaNomb(String solCLI_independFEmpresaNomb) {
+        this.solCLI_independFEmpresaNomb = solCLI_independFEmpresaNomb;
     }
 
-    public String getFCargo() {
-        return FCargo;
+    public String getSolCLI_independFEmpresaRuc() {
+        return solCLI_independFEmpresaRuc;
     }
 
-    public void setFCargo(String FCargo) {
-        this.FCargo = FCargo;
+    public void setSolCLI_independFEmpresaRuc(String solCLI_independFEmpresaRuc) {
+        this.solCLI_independFEmpresaRuc = solCLI_independFEmpresaRuc;
     }
 
-    public String getFDirLabo() {
-        return FDirLabo;
+    public String getSolCLI_independFCargo() {
+        return solCLI_independFCargo;
     }
 
-    public void setFDirLabo(String FDirLabo) {
-        this.FDirLabo = FDirLabo;
+    public void setSolCLI_independFCargo(String solCLI_independFCargo) {
+        this.solCLI_independFCargo = solCLI_independFCargo;
     }
 
-    public String getFDisLabo() {
-        return FDisLabo;
+    public String getSolCLI_independFLaboraDire() {
+        return solCLI_independFLaboraDire;
     }
 
-    public void setFDisLabo(String FDisLabo) {
-        this.FDisLabo = FDisLabo;
+    public void setSolCLI_independFLaboraDire(String solCLI_independFLaboraDire) {
+        this.solCLI_independFLaboraDire = solCLI_independFLaboraDire;
     }
 
-    public String getFProLabo() {
-        return FProLabo;
+    public String getSolCLI_independFLaboraDist() {
+        return solCLI_independFLaboraDist;
     }
 
-    public void setFProLabo(String FProLabo) {
-        this.FProLabo = FProLabo;
+    public void setSolCLI_independFLaboraDist(String solCLI_independFLaboraDist) {
+        this.solCLI_independFLaboraDist = solCLI_independFLaboraDist;
     }
 
-    public String getFDepLabo() {
-        return FDepLabo;
+    public String getSolCLI_independFLaboraProv() {
+        return solCLI_independFLaboraProv;
     }
 
-    public void setFDepLabo(String FDepLabo) {
-        this.FDepLabo = FDepLabo;
+    public void setSolCLI_independFLaboraProv(String solCLI_independFLaboraProv) {
+        this.solCLI_independFLaboraProv = solCLI_independFLaboraProv;
     }
 
-    public String getFTelef() {
-        return FTelef;
+    public String getSolCLI_independFLaboraDepa() {
+        return solCLI_independFLaboraDepa;
     }
 
-    public void setFTelef(String FTelef) {
-        this.FTelef = FTelef;
+    public void setSolCLI_independFLaboraDepa(String solCLI_independFLaboraDepa) {
+        this.solCLI_independFLaboraDepa = solCLI_independFLaboraDepa;
     }
 
-    public String getFAnexo() {
-        return FAnexo;
+    public String getSolCLI_independFTelefono() {
+        return solCLI_independFTelefono;
     }
 
-    public void setFAnexo(String FAnexo) {
-        this.FAnexo = FAnexo;
+    public void setSolCLI_independFTelefono(String solCLI_independFTelefono) {
+        this.solCLI_independFTelefono = solCLI_independFTelefono;
     }
 
-    public String getFCorreo() {
-        return FCorreo;
+    public String getSolCLI_independFAnexo() {
+        return solCLI_independFAnexo;
     }
 
-    public void setFCorreo(String FCorreo) {
-        this.FCorreo = FCorreo;
+    public void setSolCLI_independFAnexo(String solCLI_independFAnexo) {
+        this.solCLI_independFAnexo = solCLI_independFAnexo;
     }
 
-    public String getJNombEmpJ() {
-        return JNombEmpJ;
+    public String getSolCLI_independFCorreo() {
+        return solCLI_independFCorreo;
     }
 
-    public void setJNombEmpJ(String JNombEmpJ) {
-        this.JNombEmpJ = JNombEmpJ;
+    public void setSolCLI_independFCorreo(String solCLI_independFCorreo) {
+        this.solCLI_independFCorreo = solCLI_independFCorreo;
     }
 
-    public String getJNombEmpA() {
-        return JNombEmpA;
+    public String getSolCLI_jubilEmpresaNombJubi() {
+        return solCLI_jubilEmpresaNombJubi;
     }
 
-    public void setJNombEmpA(String JNombEmpA) {
-        this.JNombEmpA = JNombEmpA;
+    public void setSolCLI_jubilEmpresaNombJubi(String solCLI_jubilEmpresaNombJubi) {
+        this.solCLI_jubilEmpresaNombJubi = solCLI_jubilEmpresaNombJubi;
     }
 
-    public String getJHacecuaJ() {
-        return JHacecuaJ;
+    public String getSolCLI_jubilEmpresaNombApor() {
+        return solCLI_jubilEmpresaNombApor;
     }
 
-    public void setJHacecuaJ(String JHacecuaJ) {
-        this.JHacecuaJ = JHacecuaJ;
+    public void setSolCLI_jubilEmpresaNombApor(String solCLI_jubilEmpresaNombApor) {
+        this.solCLI_jubilEmpresaNombApor = solCLI_jubilEmpresaNombApor;
     }
 
-    public double getISueldBas() {
-        return ISueldBas;
+    public String getSolCLI_jubilEmpresaTiempo() {
+        return solCLI_jubilEmpresaTiempo;
     }
 
-    public void setISueldBas(double ISueldBas) {
-        this.ISueldBas = ISueldBas;
+    public void setSolCLI_jubilEmpresaTiempo(String solCLI_jubilEmpresaTiempo) {
+        this.solCLI_jubilEmpresaTiempo = solCLI_jubilEmpresaTiempo;
     }
 
-    public double getIComisiones() {
-        return IComisiones;
+    public double getSolCLI_infofinanIngSueldoBasic() {
+        return solCLI_infofinanIngSueldoBasic;
     }
 
-    public void setIComisiones(double IComisiones) {
-        this.IComisiones = IComisiones;
+    public void setSolCLI_infofinanIngSueldoBasic(double solCLI_infofinanIngSueldoBasic) {
+        this.solCLI_infofinanIngSueldoBasic = solCLI_infofinanIngSueldoBasic;
     }
 
-    public double getIHonorarios() {
-        return IHonorarios;
+    public double getSolCLI_infofinanIngComisiones() {
+        return solCLI_infofinanIngComisiones;
     }
 
-    public void setIHonorarios(double IHonorarios) {
-        this.IHonorarios = IHonorarios;
+    public void setSolCLI_infofinanIngComisiones(double solCLI_infofinanIngComisiones) {
+        this.solCLI_infofinanIngComisiones = solCLI_infofinanIngComisiones;
     }
 
-    public double getIAlquileres() {
-        return IAlquileres;
+    public double getSolCLI_infofinanIngHonorarios() {
+        return solCLI_infofinanIngHonorarios;
     }
 
-    public void setIAlquileres(double IAlquileres) {
-        this.IAlquileres = IAlquileres;
+    public void setSolCLI_infofinanIngHonorarios(double solCLI_infofinanIngHonorarios) {
+        this.solCLI_infofinanIngHonorarios = solCLI_infofinanIngHonorarios;
     }
 
-    public double getIOtrosIngres() {
-        return IOtrosIngres;
+    public double getSolCLI_infofinanIngAlquileres() {
+        return solCLI_infofinanIngAlquileres;
     }
 
-    public void setIOtrosIngres(double IOtrosIngres) {
-        this.IOtrosIngres = IOtrosIngres;
+    public void setSolCLI_infofinanIngAlquileres(double solCLI_infofinanIngAlquileres) {
+        this.solCLI_infofinanIngAlquileres = solCLI_infofinanIngAlquileres;
     }
 
-    public double getITotalIng() {
-        return ITotalIng;
+    public double getSolCLI_infofinanIngOtros() {
+        return solCLI_infofinanIngOtros;
     }
 
-    public void setITotalIng(double ITotalIng) {
-        this.ITotalIng = ITotalIng;
+    public void setSolCLI_infofinanIngOtros(double solCLI_infofinanIngOtros) {
+        this.solCLI_infofinanIngOtros = solCLI_infofinanIngOtros;
     }
 
-    public double getITotalAct() {
-        return ITotalAct;
+    public double getSolCLI_infofinanIngTotal() {
+        return solCLI_infofinanIngTotal;
     }
 
-    public void setITotalAct(double ITotalAct) {
-        this.ITotalAct = ITotalAct;
+    public void setSolCLI_infofinanIngTotal(double solCLI_infofinanIngTotal) {
+        this.solCLI_infofinanIngTotal = solCLI_infofinanIngTotal;
     }
 
-    public double getGAlquiler() {
-        return GAlquiler;
+    public double getSolCLI_infofinanIngTotalAct() {
+        return solCLI_infofinanIngTotalAct;
     }
 
-    public void setGAlquiler(double GAlquiler) {
-        this.GAlquiler = GAlquiler;
+    public void setSolCLI_infofinanIngTotalAct(double solCLI_infofinanIngTotalAct) {
+        this.solCLI_infofinanIngTotalAct = solCLI_infofinanIngTotalAct;
     }
 
-    public double getGCreditoViv() {
-        return GCreditoViv;
+    public double getSolCLI_infofinanGasAlquiler() {
+        return solCLI_infofinanGasAlquiler;
     }
 
-    public void setGCreditoViv(double GCreditoViv) {
-        this.GCreditoViv = GCreditoViv;
+    public void setSolCLI_infofinanGasAlquiler(double solCLI_infofinanGasAlquiler) {
+        this.solCLI_infofinanGasAlquiler = solCLI_infofinanGasAlquiler;
     }
 
-    public double getGGastosFamil() {
-        return GGastosFamil;
+    public double getSolCLI_infofinanGasCreditoViv() {
+        return solCLI_infofinanGasCreditoViv;
     }
 
-    public void setGGastosFamil(double GGastosFamil) {
-        this.GGastosFamil = GGastosFamil;
+    public void setSolCLI_infofinanGasCreditoViv(double solCLI_infofinanGasCreditoViv) {
+        this.solCLI_infofinanGasCreditoViv = solCLI_infofinanGasCreditoViv;
     }
 
-    public double getGTarjetasCred() {
-        return GTarjetasCred;
+    public double getSolCLI_infofinanGasFamiliar() {
+        return solCLI_infofinanGasFamiliar;
     }
 
-    public void setGTarjetasCred(double GTarjetasCred) {
-        this.GTarjetasCred = GTarjetasCred;
+    public void setSolCLI_infofinanGasFamiliar(double solCLI_infofinanGasFamiliar) {
+        this.solCLI_infofinanGasFamiliar = solCLI_infofinanGasFamiliar;
     }
 
-    public double getGOtrosGas() {
-        return GOtrosGas;
+    public double getSolCLI_infofinanGasTarjetasCred() {
+        return solCLI_infofinanGasTarjetasCred;
     }
 
-    public void setGOtrosGas(double GOtrosGas) {
-        this.GOtrosGas = GOtrosGas;
+    public void setSolCLI_infofinanGasTarjetasCred(double solCLI_infofinanGasTarjetasCred) {
+        this.solCLI_infofinanGasTarjetasCred = solCLI_infofinanGasTarjetasCred;
     }
 
-    public double getGTotalGas() {
-        return GTotalGas;
+    public double getSolCLI_infofinanGasOtros() {
+        return solCLI_infofinanGasOtros;
     }
 
-    public void setGTotalGas(double GTotalGas) {
-        this.GTotalGas = GTotalGas;
+    public void setSolCLI_infofinanGasOtros(double solCLI_infofinanGasOtros) {
+        this.solCLI_infofinanGasOtros = solCLI_infofinanGasOtros;
     }
 
-    public double getGTotalPat() {
-        return GTotalPat;
+    public double getSolCLI_infofinanGasTotal() {
+        return solCLI_infofinanGasTotal;
     }
 
-    public void setGTotalPat(double GTotalPat) {
-        this.GTotalPat = GTotalPat;
+    public void setSolCLI_infofinanGasTotal(double solCLI_infofinanGasTotal) {
+        this.solCLI_infofinanGasTotal = solCLI_infofinanGasTotal;
     }
 
-
-    public String getRPPrimerNomb() {
-        return RPPrimerNomb;
+    public double getSolCLI_infofinanGasTotalPat() {
+        return solCLI_infofinanGasTotalPat;
     }
 
-    public void setRPPrimerNomb(String RPPrimerNomb) {
-        this.RPPrimerNomb = RPPrimerNomb;
+    public void setSolCLI_infofinanGasTotalPat(double solCLI_infofinanGasTotalPat) {
+        this.solCLI_infofinanGasTotalPat = solCLI_infofinanGasTotalPat;
     }
 
-    public String getRPSegundoNomb() {
-        return RPSegundoNomb;
+    public String getSolCLI_refepersonPrimerNomb() {
+        return solCLI_refepersonPrimerNomb;
     }
 
-    public void setRPSegundoNomb(String RPSegundoNomb) {
-        this.RPSegundoNomb = RPSegundoNomb;
+    public void setSolCLI_refepersonPrimerNomb(String solCLI_refepersonPrimerNomb) {
+        this.solCLI_refepersonPrimerNomb = solCLI_refepersonPrimerNomb;
     }
 
-    public String getRPPrimerApell() {
-        return RPPrimerApell;
+    public String getSolCLI_refepersonSegundoNomb() {
+        return solCLI_refepersonSegundoNomb;
     }
 
-    public void setRPPrimerApell(String RPPrimerApell) {
-        this.RPPrimerApell = RPPrimerApell;
+    public void setSolCLI_refepersonSegundoNomb(String solCLI_refepersonSegundoNomb) {
+        this.solCLI_refepersonSegundoNomb = solCLI_refepersonSegundoNomb;
     }
 
-    public String getRPSegundoApell() {
-        return RPSegundoApell;
+    public String getSolCLI_refepersonPrimerApel() {
+        return solCLI_refepersonPrimerApel;
     }
 
-    public void setRPSegundoApell(String RPSegundoApell) {
-        this.RPSegundoApell = RPSegundoApell;
+    public void setSolCLI_refepersonPrimerApel(String solCLI_refepersonPrimerApel) {
+        this.solCLI_refepersonPrimerApel = solCLI_refepersonPrimerApel;
     }
 
-    public String getRPDirec() {
-        return RPDirec;
+    public String getSolCLI_refepersonSegundoApel() {
+        return solCLI_refepersonSegundoApel;
     }
 
-    public void setRPDirec(String RPDirec) {
-        this.RPDirec = RPDirec;
+    public void setSolCLI_refepersonSegundoApel(String solCLI_refepersonSegundoApel) {
+        this.solCLI_refepersonSegundoApel = solCLI_refepersonSegundoApel;
     }
 
-    public String getRPDistr() {
-        return RPDistr;
+    public String getSolCLI_refepersonDireccion() {
+        return solCLI_refepersonDireccion;
     }
 
-    public void setRPDistr(String RPDistr) {
-        this.RPDistr = RPDistr;
+    public void setSolCLI_refepersonDireccion(String solCLI_refepersonDireccion) {
+        this.solCLI_refepersonDireccion = solCLI_refepersonDireccion;
     }
 
-    public String getRPProvi() {
-        return RPProvi;
+    public String getSolCLI_refepersonDistrito() {
+        return solCLI_refepersonDistrito;
     }
 
-    public void setRPProvi(String RPProvi) {
-        this.RPProvi = RPProvi;
+    public void setSolCLI_refepersonDistrito(String solCLI_refepersonDistrito) {
+        this.solCLI_refepersonDistrito = solCLI_refepersonDistrito;
     }
 
-    public String getRPEstad() {
-        return RPEstad;
+    public String getSolCLI_refepersonProvincia() {
+        return solCLI_refepersonProvincia;
     }
 
-    public void setRPEstad(String RPEstad) {
-        this.RPEstad = RPEstad;
+    public void setSolCLI_refepersonProvincia(String solCLI_refepersonProvincia) {
+        this.solCLI_refepersonProvincia = solCLI_refepersonProvincia;
     }
 
-    public String getRPTelef() {
-        return RPTelef;
+    public String getSolCLI_refepersonEstado() {
+        return solCLI_refepersonEstado;
     }
 
-    public void setRPTelef(String RPTelef) {
-        this.RPTelef = RPTelef;
+    public void setSolCLI_refepersonEstado(String solCLI_refepersonEstado) {
+        this.solCLI_refepersonEstado = solCLI_refepersonEstado;
     }
 
-    public String getRPCelul() {
-        return RPCelul;
+    public String getSolCLI_refepersonTelefono() {
+        return solCLI_refepersonTelefono;
     }
 
-    public void setRPCelul(String RPCelul) {
-        this.RPCelul = RPCelul;
+    public void setSolCLI_refepersonTelefono(String solCLI_refepersonTelefono) {
+        this.solCLI_refepersonTelefono = solCLI_refepersonTelefono;
     }
 
-    public String getRPParen() {
-        return RPParen;
+    public String getSolCLI_refepersonCelular() {
+        return solCLI_refepersonCelular;
     }
 
-    public void setRPParen(String RPParen) {
-        this.RPParen = RPParen;
+    public void setSolCLI_refepersonCelular(String solCLI_refepersonCelular) {
+        this.solCLI_refepersonCelular = solCLI_refepersonCelular;
     }
 
-    public String getRFPrimerNomb() {
-        return RFPrimerNomb;
+    public String getSolCLI_refepersonParentesco() {
+        return solCLI_refepersonParentesco;
     }
 
-    public void setRFPrimerNomb(String RFPrimerNomb) {
-        this.RFPrimerNomb = RFPrimerNomb;
+    public void setSolCLI_refepersonParentesco(String solCLI_refepersonParentesco) {
+        this.solCLI_refepersonParentesco = solCLI_refepersonParentesco;
     }
 
-    public String getRFSegundoNomb() {
-        return RFSegundoNomb;
+    public String getSolCLI_refefamiliPrimerNomb() {
+        return solCLI_refefamiliPrimerNomb;
     }
 
-    public void setRFSegundoNomb(String RFSegundoNomb) {
-        this.RFSegundoNomb = RFSegundoNomb;
+    public void setSolCLI_refefamiliPrimerNomb(String solCLI_refefamiliPrimerNomb) {
+        this.solCLI_refefamiliPrimerNomb = solCLI_refefamiliPrimerNomb;
     }
 
-    public String getRFPrimerApell() {
-        return RFPrimerApell;
+    public String getSolCLI_refefamiliSegundoNomb() {
+        return solCLI_refefamiliSegundoNomb;
     }
 
-    public void setRFPrimerApell(String RFPrimerApell) {
-        this.RFPrimerApell = RFPrimerApell;
+    public void setSolCLI_refefamiliSegundoNomb(String solCLI_refefamiliSegundoNomb) {
+        this.solCLI_refefamiliSegundoNomb = solCLI_refefamiliSegundoNomb;
     }
 
-    public String getRFSegundoApell() {
-        return RFSegundoApell;
+    public String getSolCLI_refefamiliPrimerApel() {
+        return solCLI_refefamiliPrimerApel;
     }
 
-    public void setRFSegundoApell(String RFSegundoApell) {
-        this.RFSegundoApell = RFSegundoApell;
+    public void setSolCLI_refefamiliPrimerApel(String solCLI_refefamiliPrimerApel) {
+        this.solCLI_refefamiliPrimerApel = solCLI_refefamiliPrimerApel;
     }
 
-    public String getRFDirec() {
-        return RFDirec;
+    public String getSolCLI_refefamiliSegundoApel() {
+        return solCLI_refefamiliSegundoApel;
     }
 
-    public void setRFDirec(String RFDirec) {
-        this.RFDirec = RFDirec;
+    public void setSolCLI_refefamiliSegundoApel(String solCLI_refefamiliSegundoApel) {
+        this.solCLI_refefamiliSegundoApel = solCLI_refefamiliSegundoApel;
     }
 
-    public String getRFDistr() {
-        return RFDistr;
+    public String getSolCLI_refefamiliDireccion() {
+        return solCLI_refefamiliDireccion;
     }
 
-    public void setRFDistr(String RFDistr) {
-        this.RFDistr = RFDistr;
+    public void setSolCLI_refefamiliDireccion(String solCLI_refefamiliDireccion) {
+        this.solCLI_refefamiliDireccion = solCLI_refefamiliDireccion;
     }
 
-    public String getRFProvi() {
-        return RFProvi;
+    public String getSolCLI_refefamiliDistrito() {
+        return solCLI_refefamiliDistrito;
     }
 
-    public void setRFProvi(String RFProvi) {
-        this.RFProvi = RFProvi;
+    public void setSolCLI_refefamiliDistrito(String solCLI_refefamiliDistrito) {
+        this.solCLI_refefamiliDistrito = solCLI_refefamiliDistrito;
     }
 
-    public String getRFEstad() {
-        return RFEstad;
+    public String getSolCLI_refefamiliProvincia() {
+        return solCLI_refefamiliProvincia;
     }
 
-    public void setRFEstad(String RFEstad) {
-        this.RFEstad = RFEstad;
+    public void setSolCLI_refefamiliProvincia(String solCLI_refefamiliProvincia) {
+        this.solCLI_refefamiliProvincia = solCLI_refefamiliProvincia;
     }
 
-    public String getRFTelef() {
-        return RFTelef;
+    public String getSolCLI_refefamiliEstado() {
+        return solCLI_refefamiliEstado;
     }
 
-    public void setRFTelef(String RFTelef) {
-        this.RFTelef = RFTelef;
+    public void setSolCLI_refefamiliEstado(String solCLI_refefamiliEstado) {
+        this.solCLI_refefamiliEstado = solCLI_refefamiliEstado;
     }
 
-    public String getRFCelul() {
-        return RFCelul;
+    public String getSolCLI_refefamiliTelefono() {
+        return solCLI_refefamiliTelefono;
     }
 
-    public void setRFCelul(String RFCelul) {
-        this.RFCelul = RFCelul;
+    public void setSolCLI_refefamiliTelefono(String solCLI_refefamiliTelefono) {
+        this.solCLI_refefamiliTelefono = solCLI_refefamiliTelefono;
     }
 
-    public String getRFParen() {
-        return RFParen;
+    public String getSolCLI_refefamiliCelular() {
+        return solCLI_refefamiliCelular;
     }
 
-    public void setRFParen(String RFParen) {
-        this.RFParen = RFParen;
+    public void setSolCLI_refefamiliCelular(String solCLI_refefamiliCelular) {
+        this.solCLI_refefamiliCelular = solCLI_refefamiliCelular;
     }
 
-    public String getRLCNombre() {
-        return RLCNombre;
+    public String getSolCLI_refefamiliParentesco() {
+        return solCLI_refefamiliParentesco;
     }
 
-    public void setRLCNombre(String RLCNombre) {
-        this.RLCNombre = RLCNombre;
+    public void setSolCLI_refefamiliParentesco(String solCLI_refefamiliParentesco) {
+        this.solCLI_refefamiliParentesco = solCLI_refefamiliParentesco;
     }
 
-    public String getRLCActividad() {
-        return RLCActividad;
+    public String getSolCLI_refelabocliNombre() {
+        return solCLI_refelabocliNombre;
     }
 
-    public void setRLCActividad(String RLCActividad) {
-        this.RLCActividad = RLCActividad;
+    public void setSolCLI_refelabocliNombre(String solCLI_refelabocliNombre) {
+        this.solCLI_refelabocliNombre = solCLI_refelabocliNombre;
     }
 
-    public String getRLCTelef() {
-        return RLCTelef;
+    public String getSolCLI_refelabocliActividad() {
+        return solCLI_refelabocliActividad;
     }
 
-    public void setRLCTelef(String RLCTelef) {
-        this.RLCTelef = RLCTelef;
+    public void setSolCLI_refelabocliActividad(String solCLI_refelabocliActividad) {
+        this.solCLI_refelabocliActividad = solCLI_refelabocliActividad;
     }
 
-    public String getRLCDireClient() {
-        return RLCDireClient;
+    public String getSolCLI_refelabocliTelefono() {
+        return solCLI_refelabocliTelefono;
     }
 
-    public void setRLCDireClient(String RLCDireClient) {
-        this.RLCDireClient = RLCDireClient;
+    public void setSolCLI_refelabocliTelefono(String solCLI_refelabocliTelefono) {
+        this.solCLI_refelabocliTelefono = solCLI_refelabocliTelefono;
     }
 
-    public String getRLCDistrito() {
-        return RLCDistrito;
+    public String getSolCLI_refelabocliDireccion() {
+        return solCLI_refelabocliDireccion;
     }
 
-    public void setRLCDistrito(String RLCDistrito) {
-        this.RLCDistrito = RLCDistrito;
+    public void setSolCLI_refelabocliDireccion(String solCLI_refelabocliDireccion) {
+        this.solCLI_refelabocliDireccion = solCLI_refelabocliDireccion;
     }
 
-    public String getRLCProvincia() {
-        return RLCProvincia;
+    public String getSolCLI_refelabocliDistrito() {
+        return solCLI_refelabocliDistrito;
     }
 
-    public void setRLCProvincia(String RLCProvincia) {
-        this.RLCProvincia = RLCProvincia;
+    public void setSolCLI_refelabocliDistrito(String solCLI_refelabocliDistrito) {
+        this.solCLI_refelabocliDistrito = solCLI_refelabocliDistrito;
     }
 
-    public String getRLCEstado() {
-        return RLCEstado;
+    public String getSolCLI_refelabocliProvincia() {
+        return solCLI_refelabocliProvincia;
     }
 
-    public void setRLCEstado(String RLCEstado) {
-        this.RLCEstado = RLCEstado;
+    public void setSolCLI_refelabocliProvincia(String solCLI_refelabocliProvincia) {
+        this.solCLI_refelabocliProvincia = solCLI_refelabocliProvincia;
     }
 
-    public String getRLPNombre() {
-        return RLPNombre;
+    public String getSolCLI_refelabocliEstado() {
+        return solCLI_refelabocliEstado;
     }
 
-    public void setRLPNombre(String RLPNombre) {
-        this.RLPNombre = RLPNombre;
+    public void setSolCLI_refelabocliEstado(String solCLI_refelabocliEstado) {
+        this.solCLI_refelabocliEstado = solCLI_refelabocliEstado;
     }
 
-    public String getRLPActividad() {
-        return RLPActividad;
+    public String getSolCLI_refelaboproNombre() {
+        return solCLI_refelaboproNombre;
     }
 
-    public void setRLPActividad(String RLPActividad) {
-        this.RLPActividad = RLPActividad;
+    public void setSolCLI_refelaboproNombre(String solCLI_refelaboproNombre) {
+        this.solCLI_refelaboproNombre = solCLI_refelaboproNombre;
     }
 
-    public String getRLPTelef() {
-        return RLPTelef;
+    public String getSolCLI_refelaboproActividad() {
+        return solCLI_refelaboproActividad;
     }
 
-    public void setRLPTelef(String RLPTelef) {
-        this.RLPTelef = RLPTelef;
+    public void setSolCLI_refelaboproActividad(String solCLI_refelaboproActividad) {
+        this.solCLI_refelaboproActividad = solCLI_refelaboproActividad;
     }
 
-    public String getRLPDire() {
-        return RLPDire;
+    public String getSolCLI_refelaboproTelefono() {
+        return solCLI_refelaboproTelefono;
     }
 
-    public void setRLPDire(String RLPDire) {
-        this.RLPDire = RLPDire;
+    public void setSolCLI_refelaboproTelefono(String solCLI_refelaboproTelefono) {
+        this.solCLI_refelaboproTelefono = solCLI_refelaboproTelefono;
     }
 
-    public String getRLPDistrito() {
-        return RLPDistrito;
+    public String getSolCLI_refelaboproDireccion() {
+        return solCLI_refelaboproDireccion;
     }
 
-    public void setRLPDistrito(String RLPDistrito) {
-        this.RLPDistrito = RLPDistrito;
+    public void setSolCLI_refelaboproDireccion(String solCLI_refelaboproDireccion) {
+        this.solCLI_refelaboproDireccion = solCLI_refelaboproDireccion;
     }
 
-    public String getRLPProvincia() {
-        return RLPProvincia;
+    public String getSolCLI_refelaboproDistrito() {
+        return solCLI_refelaboproDistrito;
     }
 
-    public void setRLPProvincia(String RLPProvincia) {
-        this.RLPProvincia = RLPProvincia;
+    public void setSolCLI_refelaboproDistrito(String solCLI_refelaboproDistrito) {
+        this.solCLI_refelaboproDistrito = solCLI_refelaboproDistrito;
     }
 
-    public String getRLPEstado() {
-        return RLPEstado;
+    public String getSolCLI_refelaboproProvincia() {
+        return solCLI_refelaboproProvincia;
     }
 
-    public void setRLPEstado(String RLPEstado) {
-        this.RLPEstado = RLPEstado;
+    public void setSolCLI_refelaboproProvincia(String solCLI_refelaboproProvincia) {
+        this.solCLI_refelaboproProvincia = solCLI_refelaboproProvincia;
     }
 
-    public String getTipoIndep() {
-        return TipoIndep;
+    public String getSolCLI_refelaboproEstado() {
+        return solCLI_refelaboproEstado;
     }
 
-    public void setTipoIndep(String TipoIndep) {
-        this.TipoIndep = TipoIndep;
+    public void setSolCLI_refelaboproEstado(String solCLI_refelaboproEstado) {
+        this.solCLI_refelaboproEstado = solCLI_refelaboproEstado;
     }
 
 }

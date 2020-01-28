@@ -1,5 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
+
 <!DOCTYPE html>
 <html>
     <body class="hold-transition skin-blue sidebar-mini" onload="onload()">
@@ -11,19 +13,19 @@
                         <s:if test="mensaje.length() != 0">
                             <div class="alert alert-success">
                                 <div class="glyphicon glyphicon-ok"></div>
-                                <div><strong>Â¡Correcto!</strong> <s:property value="mensaje"/> </div>
+                                <div><strong>¡Correcto!</strong> <s:property value="mensaje"/> </div>
                             </div>
                         </s:if>
                         <s:if test="informacion.length() != 0">
                             <div class="alert alert-info">
                                 <div class="glyphicon glyphicon-info-sign"></div>
-                                <div><strong>InformaciÃ³n</strong> <s:property value="informacion"/> </div>
+                                <div><strong>Información</strong> <s:property value="informacion"/> </div>
                             </div>
                         </s:if>
                         <s:if test="advertencia.length() != 0">
                             <div class="alert alert-warning">
                                 <div class="glyphicon glyphicon-exclamation-sign"></div>
-                                <div><strong>Â¡Advertencia!</strong> <s:property value="advertencia"/> </div>
+                                <div><strong>¡Advertencia!</strong> <s:property value="advertencia"/> </div>
                             </div>
                         </s:if>
                         <s:if test="error.length() != 0">
@@ -34,9 +36,9 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="frmSolFinan_InfoFinan" role="form">
+                <s:form action="frmSOLInfoFinanciera" role="form">
                     <section class="content-header">
-                        <h1>Solicitud Persona Natural CrÃ©dito ENEL X - INFORMACIÃ“N FINANCIERA</h1>
+                        <h1>Solicitud Persona Natural Crédito ENEL X - INFORMACIÓN FINANCIERA</h1>
                     </section>
                     <!-- Main content -->
                     <section class="content">
@@ -63,12 +65,12 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="control-label">Sueldo bÃ¡sico:</label>
+                                                            <label class="control-label">Sueldo básico:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number"  value="0" cssClass="form-control ingresos" id="sueldobasico" tabindex="1" name="iSueldBas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number"  value="0" cssClass="form-control ingresos" id="sueldobasico" tabindex="1" name="solCLI_infofinanIngSueldoBasic" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -78,7 +80,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento2" tabindex="6" name="gAlquiler" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento2" tabindex="6" name="solCLI_infofinanGasAlquiler" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -90,17 +92,17 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento3" tabindex="2" name="iComisiones" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento3" tabindex="2" name="solCLI_infofinanIngComisiones" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="control-label">CrÃ©dito de Vivienda:</label>
+                                                            <label class="control-label">Crédito de Vivienda:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento4" tabindex="7" name="gCreditoViv" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento4" tabindex="7" name="solCLI_infofinanGasCreditoViv" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,7 +114,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento5" tabindex="3" name="iHonorarios" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento5" tabindex="3" name="solCLI_infofinanIngHonorarios" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -122,7 +124,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento6" tabindex="8" name="gGastosFamil" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento6" tabindex="8" name="solCLI_infofinanGasFamiliar" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,17 +136,17 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento7" tabindex="4" name="iAlquileres" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento7" tabindex="4" name="solCLI_infofinanIngAlquileres" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="control-label">Tarjetas de CrÃ©dito:</label>
+                                                            <label class="control-label">Tarjetas de Crédito:</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento8" tabindex="9" name="gTarjetasCred" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento8" tabindex="9" name="solCLI_infofinanGasTarjetasCred" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,7 +158,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento9" tabindex="5" name="iOtrosIngres" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control ingresos" id="elemento9" tabindex="5" name="solCLI_infofinanIngOtros" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -166,7 +168,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento10" tabindex="10" name="gOtrosGas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control gastos" id="elemento10" tabindex="10" name="solCLI_infofinanGasOtros" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -178,7 +180,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadoingresos"  name="iTotalIng" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadoingresos"  name="solCLI_infofinanIngTotal" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -188,7 +190,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadogastos"  name="gTotalGas" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadogastos"  name="solCLI_infofinanGasTotal" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,7 +202,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadoactivos" name="iTotalAct" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadoactivos" name="solCLI_infofinanGasTotalPat" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
@@ -210,7 +212,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadopatrimonio" name="gTotalPat" style="text-transform: uppercase;" />
+                                                            <s:textfield type="number" value="0" cssClass="form-control" id="Resultadopatrimonio" name="solCLI_refepersonParentesco" style="text-transform: uppercase;" />
                                                         </div>
                                                     </div>
                                                     <s:hidden type="number" cssClass="aux1" id="ingr" tabindex="11" name="codEva" style="text-transform: uppercase;" />
@@ -225,71 +227,72 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div style="float: right">
-                                            <s:hidden name="codEvaluador"></s:hidden>
-                                            <s:hidden name="puntVenta"></s:hidden>
-                                            <s:hidden name="fecSolicitud"></s:hidden>
+                                            <s:hidden name="solCLIcodEvaluador"></s:hidden>
+                                            <s:hidden name="solCLIpuntVenta"></s:hidden>
+                                            <s:hidden name="solCLIfecSolicitud"></s:hidden>
                                             <s:hidden name="cliente.TipDocCiv"></s:hidden>
                                             <s:hidden name="cliente.NroDocCiv"></s:hidden>
-                                            <s:hidden name="ciudadExp"></s:hidden>
+                                            <s:hidden name="solCLIciudadExp"></s:hidden>
                                             <s:hidden name="cliente.nombre"></s:hidden>
                                             <s:hidden name="cliente.SegundoNo"></s:hidden>
                                             <s:hidden name="cliente.ApePat"></s:hidden>
                                             <s:hidden name="cliente.ApeMat"></s:hidden>
-                                            <s:hidden name="nacionalidad"></s:hidden>
+                                            <s:hidden name="solCLInacionalidad"></s:hidden>
                                             <s:hidden name="cliente.FecNac"></s:hidden>
-                                            <s:hidden name="ciudadNac"></s:hidden>
-                                            <s:hidden name="paisNac"></s:hidden>
+                                            <s:hidden name="solCLIciudadNac"></s:hidden>
+                                            <s:hidden name="solCLIpaisNac"></s:hidden>
                                             <s:hidden name="cliente.sexo"></s:hidden>
                                             <s:hidden name="cliente.EstCiv"></s:hidden>
                                             <s:hidden name="cliente.NivIns"></s:hidden>
                                             <s:hidden name="cliente.DesOcu"></s:hidden>
-                                            <s:hidden name="nperDepend"></s:hidden>
+                                            <s:hidden name="solCLInperDepend"></s:hidden>
                                             <s:hidden name="cliente.Correo"></s:hidden>
                                             <s:hidden name="cliente.Telefono"></s:hidden>
-                                                <!CÃ³nyuge-->
-                                            <s:hidden name="cprimerNomb"></s:hidden>
-                                            <s:hidden name="csegundNomb"></s:hidden>
-                                            <s:hidden name="cprimerApel"></s:hidden>
-                                            <s:hidden name="csegundApel"></s:hidden>
-                                            <s:hidden name="cempdondTrab"></s:hidden>
-                                            <s:hidden name="cempCargo"></s:hidden>
-                                            <s:hidden name="cempTelef"></s:hidden>
+                                                <!Cónyuge-->
+                                            <s:hidden name="solCLI_conyugPrimerNomb"></s:hidden>
+                                            <s:hidden name="solCLI_conyugSegundoNomb"></s:hidden>
+                                            <s:hidden name="solCLI_conyugPrimerApel"></s:hidden>
+                                            <s:hidden name="solCLI_conyugSegundoApel"></s:hidden>
+                                            <s:hidden name="solCLI_conyugEmpresaTrab"></s:hidden>
+                                            <s:hidden name="solCLI_conyugEmpresaCarg"></s:hidden>
+                                            <s:hidden name="solCLI_conyugEmpresaTele"></s:hidden>
                                                 <!Vivienda>
-                                            <s:hidden name="vsuministro"></s:hidden>
-                                            <s:hidden name="vtitularSum"></s:hidden>
-                                            <s:hidden name="vrelacTitul"></s:hidden>
-                                            <s:hidden name="vtipoVivien"></s:hidden>
-                                            <s:hidden name="vhaceCVivea"></s:hidden>
-                                            <s:hidden name="vdireccResi"></s:hidden>
-                                            <s:hidden name="vdistVivien"></s:hidden>
-                                            <s:hidden name="vprovVivien"></s:hidden>
-                                            <s:hidden name="vdepaVivien"></s:hidden>
+                                            <s:hidden name="solCLI_vivienSuministro"></s:hidden>
+                                            <s:hidden name="solCLI_vivienTitularSuminis"></s:hidden>
+                                            <s:hidden name="solCLI_vivienRelacionTitu"></s:hidden>
+                                            <s:hidden name="solCLI_vivienTipo"></s:hidden>
+                                            <s:hidden name="solCLI_vivienTiempo"></s:hidden>
+                                            <s:hidden name="solCLI_vivienDireccion"></s:hidden>
+                                            <s:hidden name="solCLI_vivienDistrito"></s:hidden>
+                                            <s:hidden name="solCLI_vivienProvincia"></s:hidden>
+                                            <s:hidden name="solCLI_vivienDepartamento"></s:hidden>
                                                 <!Empleado-->
-                                            <s:hidden name="enombreEmpr"></s:hidden>
-                                            <s:hidden name="erUCEmpr"></s:hidden>
-                                            <s:hidden name="eactivdEmpr"></s:hidden>
-                                            <s:hidden name="edirEmpr"></s:hidden>
-                                            <s:hidden name="edepEmpr"></s:hidden>
-                                            <s:hidden name="edisEmpr"></s:hidden>
-                                            <s:hidden name="eprovEmpr"></s:hidden>
+                                            <s:hidden name="solCLI_empleadEmpresaNomb"></s:hidden>
+                                            <s:hidden name="solCLI_empleadEmpresaRuc"></s:hidden>
+                                            <s:hidden name="solCLI_empleadEmpresaActi"></s:hidden>
+                                            <s:hidden name="solCLI_empleadEmpresaDire"></s:hidden>
+                                            <s:hidden name="solCLI_empleadEmpresaDepa"></s:hidden>
+                                            <s:hidden name="solCLI_empleadEmpresaDist"></s:hidden>
+                                            <s:hidden name="solCLI_empleadEmpresaProv"></s:hidden>
                                                 <!Independiente-->
-                                            <s:hidden name="ilabor"></s:hidden>
-                                            <s:hidden name="ihacecuantInd"></s:hidden>
-                                            <s:hidden name="itipodeInd"></s:hidden>
-                                            <s:hidden name="fnombEmpr"></s:hidden>
-                                            <s:hidden name="frucEmpr"></s:hidden>
-                                            <s:hidden name="fcargo"></s:hidden>
-                                            <s:hidden name="fdirLabo"></s:hidden> 
-                                            <s:hidden name="fdisLabo"></s:hidden>
-                                            <s:hidden name="fproLabo"></s:hidden>
-                                            <s:hidden name="fdepLabo"></s:hidden>
-                                            <s:hidden name="ftelef"></s:hidden>
-                                            <s:hidden name="fanexo"></s:hidden>
+                                            <s:hidden name="solCLI_independILabor"></s:hidden>
+                                            <s:hidden name="solCLI_independITiempoViv"></s:hidden>
+                                            <s:hidden name="solCLI_independITipo"></s:hidden>
+                                            <s:hidden name="solCLI_independFEmpresaNomb"></s:hidden>
+                                            <s:hidden name="solCLI_independFEmpresaRuc"></s:hidden>
+                                            <s:hidden name="solCLI_independFCargo"></s:hidden>
+                                            <s:hidden name="solCLI_independFLaboraDire"></s:hidden> 
+                                            <s:hidden name="solCLI_independFLaboraDist"></s:hidden>
+                                            <s:hidden name="solCLI_independFLaboraProv"></s:hidden>
+                                            <s:hidden name="solCLI_independFLaboraDepa"></s:hidden>
+                                            <s:hidden name="solCLI_independFTelefono"></s:hidden>
+                                            <s:hidden name="solCLI_independFAnexo"></s:hidden>
+                                            <s:hidden name="solCLI_independFCorreo"></s:hidden>
                                                 <!Jubilado-->
-                                            <s:hidden name="jnombEmpJ"></s:hidden>
-                                            <s:hidden name="jnombEmpA"></s:hidden>
-                                            <s:hidden name="jhacecuaJ"></s:hidden>  
-                                            <s:hidden name="tipoIndep"></s:hidden>
+                                            <s:hidden name="solCLI_jubilEmpresaNombJubi"></s:hidden>
+                                            <s:hidden name="solCLI_jubilEmpresaNombApor"></s:hidden>
+                                            <s:hidden name="solCLI_jubilEmpresaTiempo"></s:hidden>  
+                                            <s:hidden name="solCLI_independITipoaux"></s:hidden>
 
 
                                             <s:submit name="siguienteInfo" value="Siguiente" tabindex="10" id = "bSiguiente" cssClass="btn btn-primary btn-flat" />
@@ -306,63 +309,10 @@
         <script src="/enel/bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="/enel/js/script.js"></script>        
         <script type="text/javascript" src="/enel/js/main.js"></script>
+        <script type="text/javascript" src="/enel/js/buscar.js"></script>
+
         <!-- iCheck -->
         <script src="/enel/plugins/iCheck/icheck.min.js"></script>
-
-        <script>
-
-
-        /* Operaciones de Ingresos mensuales y Gastos mensuales   */
-        $("#Resultadoingresos").attr("readonly", "true");
-        $("#Resultadogastos").attr("readonly", "true");
-        $("#Resultadoactivos").attr("readonly", "true");
-        $("#Resultadopatrimonio").attr("readonly", "true");
-        var inputgast = $(".gastos")
-        var inputingr = $(".ingresos")
-        var resultgast = $("#Resultadogastos")
-        var resultingr = $("#Resultadoingresos")
-        var resultactv = $("#Resultadoactivos")
-        var resultpatr = $("#Resultadopatrimonio")
-        var resultaux1 = $("#ingr")
-        var resultaux2 = $("#gast")
-        var inputaux1 = $(".aux1")
-        var inputaux2 = $(".aux2")
-        $(document).on("keyup", ".ingresos", function () {
-            var auxingr = 0
-            var auxgast = 0
-            inputgast.each(function (index, el) {
-                auxgast = auxgast + Number($(el).val())
-            })
-            inputingr.each(function (index, el) {
-                auxingr = auxingr + Number($(el).val())
-            })
-            if (!isNaN(auxingr)) {
-                resultingr.val(auxingr)
-                resultaux1.val(auxingr)
-                resultactv.val(auxingr)
-            }
-            if (!isNaN(auxgast)) {
-                resultgast.val(auxgast)
-                resultaux2.val(auxgast)
-                resultpatr.val(Number($(".aux1").val()) - Number($(".aux2").val()))
-            }
-            $("").val(resultingr)
-            $("").val(resultgast)
-
-        })
-        $(document).on("keyup", ".gastos", function () {
-            var auxgast = 0
-            inputgast.each(function (index, el) {
-                auxgast = auxgast + Number($(el).val())
-            })
-            if (!isNaN(auxgast)) {
-                resultgast.val(auxgast)
-                resultaux2.val(auxgast)
-                resultpatr.val(Number($(".aux1").val()) - Number($(".aux2").val()))
-            }
-            $("").val(resultgast)
-        })
-        </script>
 
     </body>
 </html>

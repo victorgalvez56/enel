@@ -44,7 +44,7 @@
                         </s:if>
                     </div>
                 </div>
-                <s:form action="frmSolicitudFinanciamiento" role="form">
+                <s:form action="frmSOLCliente" role="form">
                     <section class="content-header">
                         <h1>Solicitud Persona Natural Crédito ENEL X</h1>
                     </section>

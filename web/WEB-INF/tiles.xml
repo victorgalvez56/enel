@@ -283,60 +283,60 @@
     </definition>
 
     <!-- Página Principal de Solicitud de Financiamiento  commits-->
-    <definition name="frmSolicitudFinanciamiento" extends="baseLayout">
+    <definition name="frmSOLCliente" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolicitudFinanciamiento.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLCliente.jsp"/>
     </definition><!-- Página Cónyuge-->
-    <definition name="frmSolFinan_Conyuge" extends="baseLayout">
+    <definition name="frmSOLConyugue" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_Conyuge.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLConyugue.jsp"/>
     </definition><!-- Página Vivienda-->
-    <definition name="frmSolFinan_Vivienda" extends="baseLayout">
+    <definition name="frmSOLVivienda" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_Vivienda.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLVivienda.jsp"/>
     </definition><!-- Página Empleado-Solicitante-->
-    <definition name="frmSolFinan_Empleado" extends="baseLayout">
+    <definition name="frmSOLEmpleado" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_Empleado.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLEmpleado.jsp"/>
     </definition><!-- Página Independiente-Solicitante-->
-    <definition name="frmSolFinan_Independiente" extends="baseLayout">
+    <definition name="frmSOLIndependiente" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_Independiente.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLIndependiente.jsp"/>
     </definition><!-- Página Jubilado-Solicitante-->
-    <definition name="frmSolFinan_Jubilado" extends="baseLayout">
+    <definition name="frmSOLJubilado" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_Jubilado.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLJubilado.jsp"/>
     </definition><!-- Página InformaciónFinanciera-Solicitante-->
-    <definition name="frmSolFinan_InfoFinan" extends="baseLayout">
+    <definition name="frmSOLInfoFinanciera" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_InfoFinan.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLInfoFinanciera.jsp"/>
     </definition><!-- Página ReferenciaFamiliar-Solicitante-->
-    <definition name="frmSolFinan_RefFamil" extends="baseLayout">
+    <definition name="frmSOLReferenciaFamiliar" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_RefFamil.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLReferenciaFamiliar.jsp"/>
     </definition><!-- Página ReferenciaLaboral-Solicitante-->
-    <definition name="frmSolFinan_RefLabor" extends="baseLayout">
+    <definition name="frmSOLReferenciaLaborales" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_RefLabor.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLReferenciaLaborales.jsp"/>
     </definition><!-- Página ReferenciaPersonal-Solicitante-->
-    <definition name="frmSolFinan_RefPerso" extends="baseLayout">
+    <definition name="frmSOLReferenciaPersonales" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_RefPerso.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLReferenciaPersonales.jsp"/>
     </definition><!-- Página DocumentoEmpleado-Solicitante-->
-    <definition name="frmSolFinan_DocEmple" extends="baseLayout">
+    <definition name="frmSOLDocEmpleado" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_DocEmple.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLDocEmpleado.jsp"/>
     </definition><!-- Página DocumentoIndependienteFormal-Solicitante-->
-    <definition name="frmSolFinan_DocIndpF" extends="baseLayout">
+    <definition name="frmSOLDocIndependienteFormal" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_DocIndpF.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLDocIndependienteFormal.jsp"/>
     </definition><!-- Página DocumentoNOFormalIndependiente-Solicitante-->
-    <definition name="frmSolFinan_DocIndpN" extends="baseLayout">
+    <definition name="frmSOLDocIndependienteInformal" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_DocIndpN.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLDocIndependienteInformal.jsp"/>
     </definition><!-- Página DocumentoJubilado-Solicitante-->
-    <definition name="frmSolFinan_DocJubila" extends="baseLayout">
+    <definition name="frmSOLDocJubilado" extends="baseLayout">
         <put-attribute name="title" value="Estadistica Pagos - FINANSOFT"/>
-        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSolFinan_DocJubila.jsp"/>
+        <put-attribute name="body" value="/pages/clientes/solicitudfinanciamiento/frmSOLDocJubilado.jsp"/>
     </definition>
 </tiles-definitions>

@@ -24,7 +24,7 @@
                         </ul>
                     </li>
                 </s:iterator>
-                <li><a href="<s:url action="frmSolicitudFinanciamiento"/>"><i class="fa fa-dashboard"></i>  <span>Solicitud de Financiamiento</span></a></li>
+                <li><a href="<s:url action="frmSOLCliente"/>"><i class="fa fa-dashboard"></i>  <span>Solicitud de Financiamiento</span></a></li>
 
             </ul>
         </section>

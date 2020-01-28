@@ -2,6 +2,7 @@ package com.softia.web.actions;
 
 import com.itextpdf.text.pdf.PdfWriter;
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.util.logging.Logger;
 import com.softia.beans.CAutonomias;
 import com.softia.beans.CCanales;
 import com.softia.beans.CClientes;
@@ -62,6 +63,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -227,196 +229,224 @@ public class MenuAction extends BaseAction {
     private double cuotaX4;
     private List<Product> lstProducts;
     private Product product;
-    //Datos Solicitante Financiero
-    private String codEvaluador;
-    private String puntVenta;
-    private String fecSolicitud;
-    private String ciudadExp;
-    private String nacionalidad;
-    private String ciudadNac;
-    private String paisNac;
-    private String nperDepend;
-//Datos Cónyuge
-    private String cprimerNomb;
-    private String csegundNomb;
-    private String cprimerApel;
-    private String csegundApel;
-    private String cempdondTrab;
-    private String cempCargo;
-    private String cempTelef;
-//Datos Vivienda
-    private String vsuministro;
-    private String vtitularSum;
-    private String vrelacTitul;
-    private String vtipoVivien;
-    private String vhaceCVivea;
-    private String vdireccResi;
-    private String vdistVivien;
-    private String vprovVivien;
-    private String vdepaVivien;
-//Datos Empleado
-    private String enombreEmpr;
-    private String erucEmpr;
-    private String eactivdEmpr;
-    private String edirEmpr;
-    private String edepEmpr;
-    private String edisEmpr;
-    private String eprovEmpr;
-//Datos Independiente Informal
-    private String ilabor;
-    private String ihacecuantInd;
-    private String itipodeInd;
-//Datos Independiente Formal;   
-    private String fnombEmpr;
-    private String frucEmpr;
-    private String fcargo;
-    private String fdirLabo;
-    private String fdisLabo;
-    private String fproLabo;
-    private String fdepLabo;
-    private String ftelef;
-    private String fanexo;
-    private String fcorreo;
-//Datos Jubilado
-    private String jnombEmpJ;
-    private String jnombEmpA;
-    private String jhacecuaJ;
-//Datos Información Financiera-Ingresos
-    private double isueldBas;
-    private double icomisiones;
-    private double ihonorarios;
-    private double ialquileres;
-    private double iotrosIngres;
-    private double itotalIng;
-    private double itotalAct;
-//Datos Información Financiera-Gastos
-    private double galquiler;
-    private double gcreditoViv;
-    private double ggastosFamil;
-    private double gtarjetasCred;
-    private double gotrosGas;
-    private double gtotalGas;
-    private double gtotalPat;
-//Datos Referencias Personales
-    private String rpprimerNomb;
-    private String rpsegundoNomb;
-    private String rpprimerApell;
-    private String rpsegundoApell;
-    private String rpdirec;
-    private String rpdistr;
-    private String rpprovi;
-    private String rpestad;
-    private String rptelef;
-    private String rpcelul;
-    private String rpparen;
-//Datos Referencias Familiares
-    private String rfprimerNomb;
-    private String rfsegundoNomb;
-    private String rfprimerApell;
-    private String rfsegundoApell;
-    private String rfdirec;
-    private String rfdistr;
-    private String rfprovi;
-    private String rfestad;
-    private String rftelef;
-    private String rfcelul;
-    private String rfparen;
-//Datos Referencias Laborales
-    private String rlcNombre;
-    private String rlcActividad;
-    private String rlcTelef;
-    private String rlcDireClient;
-    private String rlcDistrito;
-    private String rlcProvincia;
-    private String rlcEstado;
-    private String rlpNombre;
-    private String rlpActividad;
-    private String rlpTelef;
-    private String rlpDire;
-    private String rlpDistrito;
-    private String rlpProvincia;
-    private String rlpEstado;
 
-    private String tipoIndep;
+    private String solCLIcodEvaluador;
+    private String solCLIpuntVenta;
+    private String solCLIfecSolicitud;
+//Datos Solicitante Financiero
+    private String solCLIciudadExp;
+    private String solCLInacionalidad;
+    private String solCLIciudadNac;
+    private String solCLIpaisNac;
+    private String solCLInperDepend;
+//Datos Cónyuge
+    private String solCLI_conyugPrimerNomb;
+    private String solCLI_conyugSegundoNomb;
+    private String solCLI_conyugPrimerApel;
+    private String solCLI_conyugSegundoApel;
+    private String solCLI_conyugEmpresaTrab;
+    private String solCLI_conyugEmpresaCarg;
+    private String solCLI_conyugEmpresaTele;
+//Datos Vivienda
+    private String solCLI_vivienSuministro;
+    private String solCLI_vivienTitularSuminis;
+    private String solCLI_vivienRelacionTitu;
+    private String solCLI_vivienTipo;
+    private String solCLI_vivienTiempo;
+    private String solCLI_vivienDireccion;
+    private String solCLI_vivienDistrito;
+    private String solCLI_vivienProvincia;
+    private String solCLI_vivienDepartamento;
+
+//Datos Empleado
+    private String solCLI_empleadEmpresaNomb;
+    private String solCLI_empleadEmpresaRuc;
+    private String solCLI_empleadEmpresaActi;
+    private String solCLI_empleadEmpresaDire;
+    private String solCLI_empleadEmpresaDepa;
+    private String solCLI_empleadEmpresaDist;
+    private String solCLI_empleadEmpresaProv;
+//Datos Independiente Informal
+    private String solCLI_independILabor;
+    private String solCLI_independITiempoViv;
+    private String solCLI_independITipo;
+    private String solCLI_independITipoaux;
+//Datos Independiente Formal;   
+    private String solCLI_independFEmpresaNomb;
+    private String solCLI_independFEmpresaRuc;
+    private String solCLI_independFCargo;
+    private String solCLI_independFLaboraDire;
+    private String solCLI_independFLaboraDist;
+    private String solCLI_independFLaboraProv;
+    private String solCLI_independFLaboraDepa;
+    private String solCLI_independFTelefono;
+    private String solCLI_independFAnexo;
+    private String solCLI_independFCorreo;
+//Datos Jubilado
+    private String solCLI_jubilEmpresaNombJubi;
+    private String solCLI_jubilEmpresaNombApor;
+    private String solCLI_jubilEmpresaTiempo;
+//Datos Información Financiera-Ingresos
+    private double solCLI_infofinanIngSueldoBasic;
+    private double solCLI_infofinanIngComisiones;
+    private double solCLI_infofinanIngHonorarios;
+    private double solCLI_infofinanIngAlquileres;
+    private double solCLI_infofinanIngOtros;
+    private double solCLI_infofinanIngTotal;
+    private double solCLI_infofinanIngTotalAct;
+//Datos Información Financiera-Gastos
+    private double solCLI_infofinanGasAlquiler;
+    private double solCLI_infofinanGasCreditoViv;
+    private double solCLI_infofinanGasFamiliar;
+    private double solCLI_infofinanGasTarjetasCred;
+    private double solCLI_infofinanGasOtros;
+    private double solCLI_infofinanGasTotal;
+    private double solCLI_infofinanGasTotalPat;
+//Datos Referencias Personales
+    private String solCLI_refepersonPrimerNomb;
+    private String solCLI_refepersonSegundoNomb;
+    private String solCLI_refepersonPrimerApel;
+    private String solCLI_refepersonSegundoApel;
+    private String solCLI_refepersonDireccion;
+    private String solCLI_refepersonDistrito;
+    private String solCLI_refepersonProvincia;
+    private String solCLI_refepersonEstado;
+    private String solCLI_refepersonTelefono;
+    private String solCLI_refepersonCelular;
+    private String solCLI_refepersonParentesco;
+//Datos Referencias Familiares
+    private String solCLI_refefamiliPrimerNomb;
+    private String solCLI_refefamiliSegundoNomb;
+    private String solCLI_refefamiliPrimerApel;
+    private String solCLI_refefamiliSegundoApel;
+    private String solCLI_refefamiliDireccion;
+    private String solCLI_refefamiliDistrito;
+    private String solCLI_refefamiliProvincia;
+    private String solCLI_refefamiliEstado;
+    private String solCLI_refefamiliTelefono;
+    private String solCLI_refefamiliCelular;
+    private String solCLI_refefamiliParentesco;
+
+//Datos Referencias Laborales
+    private String solCLI_refelabocliNombre;
+    private String solCLI_refelabocliActividad;
+    private String solCLI_refelabocliTelefono;
+    private String solCLI_refelabocliDireccion;
+    private String solCLI_refelabocliDistrito;
+    private String solCLI_refelabocliProvincia;
+    private String solCLI_refelabocliEstado;
+    private String solCLI_refelaboproNombre;
+    private String solCLI_refelaboproActividad;
+    private String solCLI_refelaboproTelefono;
+    private String solCLI_refelaboproDireccion;
+    private String solCLI_refelaboproDistrito;
+    private String solCLI_refelaboproProvincia;
+    private String solCLI_refelaboproEstado;
 
     //Documentos Empleado
-    private File archivoEmpleadoRecibo;
-    private String archivoEmpleadoReciboFileName;
-    private File archivoEmpleadoCopiaDNI;
-    private String archivoEmpleadoCopiaDNIFileName;
-    private File archivoEmpleadobol1;
-    private String archivoEmpleadobol1FileName;
-    private File archivoEmpleadobol2;
-    private String archivoEmpleadobol2FileName;
-    private File archivoEmpleadobol3;
-    private String archivoEmpleadobol3FileName;
-    private File archivoEmpleadoingadic;
-    private String archivoEmpleadoingadicFileName;
-    //Documentos IF
-    private File archivoIFRecibLuz;
-    private String archivoIFRecibLuzFileName;
-    private File archivoIFCopiaDni;
-    private String archivoIFCopiaDniFileName;
-    private File archivoIFCopiaRuc;
-    private String archivoIFCopiaRucFileName;
+    private File archivoSolFinan_EmpleadoRecibo;
+    private String archivoSolFinan_EmpleadoReciboFileName;
 
-    private File archivoIFExtracb1;
-    private String archivoIFExtracb1FileName;
-    private File archivoIFExtracb2;
-    private String archivoIFExtracb2FileName;
-    private File archivoIFExtracb3;
-    private String archivoIFExtracb3FileName;
+    private File archivoSolFinan_EmpleadoCopiaDni;
+    private String archivoSolFinan_EmpleadoCopiaDniFileName;
 
-    private File archivoIFExtracafp;
-    private String archivoIFExtracafpFileName;
-    private File archivoIFIngadic;
-    private String archivoIFIngadicFileName;
-    //Documentos INF
-    private File archivoIFNRecibluz;
-    private String archivoIFNRecibluzFileName;
-    private File archivoIFNCopiaDni;
-    private String archivoIFNCopiaDniFileName;
-    private File archivoIFNCertf1;
-    private String archivoIFNCertf1FileName;
-    private File archivoIFNCertf2;
-    private String archivoIFNCertf2FileName;
-    private File archivoIFNFac1;
-    private String archivoIFNFac1FileName;
-    private File archivoIFNFac2;
-    private String archivoIFNFac2FileName;
-    private File archivoIFNC1;
-    private String archivoIFNC1FileName;
-    private File archivoIFNC2;
-    private String archivoIFNC2FileName;
-    private File archivoIFNExtracAfp;
-    private String archivoIFNExtracAfpFileName;
-    private File archivoIFNIngadic;
-    private String archivoIFNIngadicFileName;
+    private File archivoSolFinan_EmpleadoBoleta1;
+    private String archivoSolFinan_EmpleadoBoleta1FileName;
 
-    //Documentos INF
-    private File archivoJRecib;
-    private String archivoJRecibFileName;
-    private File archivoJCopia;
-    private String archivoJCopiaFileName;
+    private File archivoSolFinan_EmpleadoBoleta2;
+    private String archivoSolFinan_EmpleadoBoleta2FileName;
 
-    private File archivoJBol1;
-    private String archivoJBol1FileName;
-    private File archivoJBol2;
-    private String archivoJBol2FileName;
-    private File archivoJBol3;
-    private String archivoJBol3FileName;
+    private File archivoSolFinan_EmpleadoBoleta3;
+    private String archivoSolFinan_EmpleadoBoleta3FileName;
 
-    private File archivoJExt1;
-    private String archivoJExt1FileName;
-    private File archivoJExt2;
-    private String archivoJExt2FileName;
-    private File archivoJExt3;
-    private String archivoJExt3FileName;
+    private File archivoSolFinan_EmpleadoCopiaArrendamiento;
+    private String archivoSolFinan_EmpleadoCopiaArrendamientoFileName;
 
-    private File archivoJIngadic;
-    private String archivoJIngadicFileName;
+    //Documentos Independiente Formal
+    private File archivoSolFinan_IndependienteFReciboLuz;
+    private String archivoSolFinan_IndependienteFReciboLuzFileName;
 
-    public String frmSolicitudFinanciamiento() {
+    private File archivoSolFinan_IndependienteFCopiaDni;
+    private String archivoSolFinan_IndependienteFCopiaDniFileName;
+
+    private File archivoSolFinan_IndependienteFCopiaRuc;
+    private String archivoSolFinan_IndependienteFCopiaRucFileName;
+
+    private File archivoSolFinan_IndependienteFExtracBanc1;
+    private String archivoSolFinan_IndependienteFExtracBanc1FileName;
+
+    private File archivoSolFinan_IndependienteFExtracBanc2;
+    private String archivoSolFinan_IndependienteFExtracBanc2FileName;
+
+    private File archivoSolFinan_IndependienteFExtracBanc3;
+    private String archivoSolFinan_IndependienteFExtracBanc3FileName;
+
+    private File archivoSolFinan_IndependienteFCopiaArrendamiento;
+    private String archivoSolFinan_IndependienteFCopiaArrendamientoFileName;
+
+    private File archivoSolFinan_IndependienteFExtracAfp;
+    private String archivoSolFinan_IndependienteFExtracAfpFileName;
+
+    //Documentos Independiente Informal
+    private File archivoSolFinan_IndependienteIReciboLuz;
+    private String archivoSolFinan_IndependienteIReciboLuzFileName;
+
+    private File archivoSolFinan_IndependienteICertificadoProveedor1;
+    private String archivoSolFinan_IndependienteICertificadoProveedor1FileName;
+
+    private File archivoSolFinan_IndependienteICopiaDni;
+    private String archivoSolFinan_IndependienteICopiaDniFileName;
+
+    private File archivoSolFinan_IndependienteICertificadoProveedor2;
+    private String archivoSolFinan_IndependienteICertificadoProveedor2FileName;
+
+    private File archivoSolFinan_IndependienteIFactura1;
+    private String archivoSolFinan_IndependienteIFactura1FileName;
+
+    private File archivoSolFinan_IndependienteIFactura2;
+    private String archivoSolFinan_IndependienteIFactura2FileName;
+
+    private File archivoSolFinan_IndependienteICertificadoExp1;
+    private String archivoSolFinan_IndependienteICertificadoExp1FileName;
+
+    private File archivoSolFinan_IndependienteICertificadoExp2;
+    private String archivoSolFinan_IndependienteICertificadoExp2FileName;
+
+    private File archivoSolFinan_IndependienteIExtracAfp;
+    private String archivoSolFinan_IndependienteIExtracAfpFileName;
+
+    private File archivoSolFinan_IndependienteICopiaArrendamiento;
+    private String archivoSolFinan_IndependienteICopiaArrendamientoFileName;
+
+    //Documentos Jubilado
+    private File archivoSolFinan_JubiladoRecibo;
+    private String archivoSolFinan_JubiladoReciboFileName;
+
+    private File archivoSolFinan_JubiladoCopiaDni;
+    private String archivoSolFinan_JubiladoCopiaDniFileName;
+
+    private File archivoSolFinan_JubiladoBoleta1;
+    private String archivoSolFinan_JubiladoBoleta1FileName;
+
+    private File archivoSolFinan_JubiladoBoleta2;
+    private String archivoSolFinan_JubiladoBoleta2FileName;
+
+    private File archivoSolFinan_JubiladoBoleta3;
+    private String archivoSolFinan_JubiladoBoleta3FileName;
+
+    private File archivoSolFinan_JubiladoExtracBanc1;
+    private String archivoSolFinan_JubiladoExtracBanc1FileName;
+
+    private File archivoSolFinan_JubiladoExtracBanc2;
+    private String archivoSolFinan_JubiladoExtracBanc2FileName;
+
+    private File archivoSolFinan_JubiladoExtracBanc3;
+    private String archivoSolFinan_JubiladoExtracBanc3FileName;
+
+    private File archivoSolFinan_JubiladoCopiaArrendamiento;
+    private String archivoSolFinan_JubiladoCopiaArrendamientoFileName;
+
+    public String frmSOLCliente() {
 
         setLstTipZon(new ArrayList<Tabla>());
         Tabla zona = new Tabla();
@@ -499,19 +529,18 @@ public class MenuAction extends BaseAction {
         estado.setDescripcion("CONVIVIENTE");
         getLstEstados().add(estado);
 
-        setResult("frmSolicitudFinanciamiento");
-
+        setResult("frmSOLCliente");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             try {
-                if (getCodEvaluador().equals("")) {
+                if (getSolCLIcodEvaluador().equals("")) {
                     setError("Por favor llenar el campo Código Evaluador");
                 } else {
-                    if (getPuntVenta().equals("")) {
+                    if (getSolCLIpuntVenta().equals("")) {
                         setError("Por favor llenar el campo Punto de Venta");
                     } else {
-                        if (getFecSolicitud().equals("")) {
+                        if (getSolCLIfecSolicitud().equals("")) {
                             setError("No se cargó la Fecha");
                         } else {
                             if (getCliente().getTipDocCiv().equals("0")) {
@@ -520,7 +549,7 @@ public class MenuAction extends BaseAction {
                                 if (getCliente().getNroDocCiv().equals("")) {
                                     setError("Por favor llenar el campo Número de Doc Civil");
                                 } else {
-                                    if (getCiudadExp().equals("0")) {
+                                    if (getSolCLIciudadExp().equals("0")) {
                                         setError("Seleccionar una Ciudad de Expedición");
                                     } else {
                                         if (getCliente().getNombre().equals("")) {
@@ -532,16 +561,16 @@ public class MenuAction extends BaseAction {
                                                 if (getCliente().getApeMat().equals("")) {
                                                     setError("Por favor llenar el campo Apellido Materno");
                                                 } else {
-                                                    if (getNacionalidad().equals("")) {
+                                                    if (getSolCLInacionalidad().equals("")) {
                                                         setError("Por favor llenar el campo Nacionalidad");
                                                     } else {
                                                         if (getCliente().getFecNac().equals("")) {
                                                             setError("Por favor llenar el campo Fecha de Nacimiento");
                                                         } else {
-                                                            if (getCiudadNac().equals("")) {
+                                                            if (getSolCLIciudadNac().equals("")) {
                                                                 setError("Por favor llenar el campo Ciudad de Nacimiento");
                                                             } else {
-                                                                if (getPaisNac().equals("")) {
+                                                                if (getSolCLIpaisNac().equals("")) {
                                                                     setError("Por favor llenar el campo País de Nacimiento");
                                                                 } else {
                                                                     if (getCliente().getSexo().equals("")) {
@@ -550,7 +579,7 @@ public class MenuAction extends BaseAction {
                                                                         if (getCliente().getDesOcu().equals("0")) {
                                                                             setError("Por favor llenar el campo Ocupación");
                                                                         } else {
-                                                                            if (getNperDepend().equals("")) {
+                                                                            if (getSolCLInperDepend().equals("")) {
                                                                                 setError("Por favor llenar el campo Número de personas que dependen económicamente del Solicitante");
                                                                             } else {
                                                                                 if (getCliente().getNivIns().equals("")) {
@@ -566,13 +595,13 @@ public class MenuAction extends BaseAction {
                                                                                                 HttpServletRequest request = ServletActionContext.getRequest();
                                                                                                 if (request.getParameter("siguienteSolc") != null) {
                                                                                                     if (getCliente().getEstCiv().equals("2") || getCliente().getEstCiv().equals("5")) {
-                                                                                                        return frmSolFinan_Conyuge();
+                                                                                                        return frmSOLConyugue();
                                                                                                     } else {
-                                                                                                        return frmSolFinan_Vivienda();
+                                                                                                        return frmSOLVivienda();
 
                                                                                                     }
                                                                                                 } else {
-                                                                                                    setResult("frmSolicitudFinanciamiento");
+                                                                                                    setResult("frmSOLCliente");
 
                                                                                                 }
                                                                                             } else {
@@ -604,40 +633,40 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_Conyuge() {
-        setResult("frmSolFinan_Conyuge");
+    public String frmSOLConyugue() {
+        setResult("frmSOLConyugue");
 
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getCprimerNomb().equals("")) {
+                if (getSolCLI_conyugPrimerNomb().equals("")) {
                     setError("Por favor llenar el campo Primer Nombre");
                 } else {
-                    if (getCsegundNomb().equals("")) {
+                    if (getSolCLI_conyugSegundoNomb().equals("")) {
                         setError("Por favor llenar el campo Segundo Nombre");
                     } else {
-                        if (getCprimerApel().equals("")) {
+                        if (getSolCLI_conyugPrimerApel().equals("")) {
                             setError("Por favor llenar el campo Primer Apellido");
                         } else {
-                            if (getCsegundApel().equals("")) {
+                            if (getSolCLI_conyugSegundoApel().equals("")) {
                                 setError("Por favor llenar el campo Segundo Apellido");
                             } else {
-                                if (getCempdondTrab().equals("")) {
+                                if (getSolCLI_conyugEmpresaTrab().equals("")) {
                                     setError("Por favor llenar el campo Empresa donde Trabaja");
                                 } else {
-                                    if (getCempCargo().equals("")) {
+                                    if (getSolCLI_conyugEmpresaCarg().equals("")) {
                                         setError("Por favor llenar el campo Cargo");
                                     } else {
-                                        if (getCempTelef().equals("")) {
+                                        if (getSolCLI_conyugEmpresaTele().equals("")) {
                                             setError("Por favor llenar el campo Teléfono");
                                         } else {
                                             HttpServletRequest request = ServletActionContext.getRequest();
                                             if (request.getParameter("siguienteConyu") != null) {
-                                                return frmSolFinan_Vivienda();
+                                                return frmSOLVivienda();
                                             } else {
-                                                setResult("frmSolFinan_Conyuge");
+                                                setResult("frmSOLConyugue");
 
                                             }
                                         }
@@ -653,7 +682,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_Vivienda() {
+    public String frmSOLVivienda() {
         setLstTipZon(new ArrayList<Tabla>());
         Tabla zona = new Tabla();
         zona.setCodigo("1");
@@ -663,50 +692,50 @@ public class MenuAction extends BaseAction {
         zona.setCodigo("2");
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
-        setResult("frmSolFinan_Vivienda");
+        setResult("frmSOLVivienda");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getVsuministro().equals("")) {
+                if (getSolCLI_vivienSuministro().equals("")) {
                     setError("Por favor llenar el campo Número de Suministro");
                 } else {
-                    if (getVtitularSum().equals("")) {
+                    if (getSolCLI_vivienTitularSuminis().equals("")) {
                         setError("Por favor llenar el campo Titular de Suministro");
                     } else {
-                        if (getVrelacTitul().equals("")) {
+                        if (getSolCLI_vivienRelacionTitu().equals("")) {
                             setError("Por favor llenar el campo Relación con el titular");
                         } else {
-                            if (getVtipoVivien().equals("")) {
+                            if (getSolCLI_vivienTipo().equals("")) {
                                 setError("Por favor llenar el campo Tipo de Vivienda");
                             } else {
-                                if (getVhaceCVivea().equals("")) {
+                                if (getSolCLI_vivienTiempo().equals("")) {
                                     setError("Por favor llenar el campo Hace cuanto vive ahí");
                                 } else {
-                                    if (getVdireccResi().equals("")) {
+                                    if (getSolCLI_vivienDireccion().equals("")) {
                                         setError("Por favor llenar el campo Dirección de Residencia");
                                     } else {
-                                        if (getVdistVivien().equals("0")) {
+                                        if (getSolCLI_vivienDistrito().equals("0")) {
                                             setError("Por favor seleccionar Distrito");
                                         } else {
-                                            if (getVprovVivien().equals("0")) {
+                                            if (getSolCLI_vivienProvincia().equals("0")) {
                                                 setError("Por favor seleccionar Provincia");
                                             } else {
-                                                if (getVdepaVivien().equals("0")) {
+                                                if (getSolCLI_vivienDepartamento().equals("0")) {
                                                     setError("Por favor seleccionar Departamento");
                                                 } else {
                                                     HttpServletRequest request = ServletActionContext.getRequest();
                                                     if (request.getParameter("siguienteViviend") != null) {
                                                         if (getCliente().getDesOcu().equals("E")) {
-                                                            return frmSolFinan_Empleado();
+                                                            return frmSOLEmpleado();
                                                         } else if (getCliente().getDesOcu().equals("I")) {
-                                                            return frmSolFinan_Independiente();
+                                                            return frmSOLIndependiente();
                                                         } else if (getCliente().getDesOcu().equals("P")) {
-                                                            return frmSolFinan_Jubilado();
+                                                            return frmSOLJubilado();
                                                         }
                                                     } else {
-                                                        setResult("frmSolFinan_Vivienda");
+                                                        setResult("frmSOLVivienda");
                                                     }
                                                 }
                                             }
@@ -723,7 +752,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_Empleado() {
+    public String frmSOLEmpleado() {
         if (!validaSession()) {
             return "login";
         }
@@ -738,39 +767,39 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
-        setResult("frmSolFinan_Empleado");
+        setResult("frmSOLEmpleado");
 
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getEnombreEmpr().equals("")) {
+                if (getSolCLI_empleadEmpresaNomb().equals("")) {
                     setError("Por favor llenar el campo Nombre de la Empresa");
                 } else {
-                    if (getErucEmpr().equals("")) {
+                    if (getSolCLI_empleadEmpresaRuc().equals("")) {
                         setError("Por favor llenar el campo Ruc de la Empresa");
                     } else {
-                        if (getEactivdEmpr().equals("")) {
+                        if (getSolCLI_empleadEmpresaActi().equals("")) {
                             setError("Por favor llenar el campo Actividad de la Empresa");
                         } else {
-                            if (getEdirEmpr().equals("")) {
+                            if (getSolCLI_empleadEmpresaDire().equals("")) {
                                 setError("Por favor llenar el campo Dirección de la Empresa");
                             } else {
-                                if (getEdepEmpr().equals("0")) {
+                                if (getSolCLI_empleadEmpresaDepa().equals("0")) {
                                     setError("Por favor llenar el campo Departamento");
                                 } else {
-                                    if (getEdisEmpr().equals("0")) {
+                                    if (getSolCLI_empleadEmpresaDist().equals("0")) {
                                         setError("Por favor llenar el campo Distrito");
                                     } else {
-                                        if (getEprovEmpr().equals("0")) {
+                                        if (getSolCLI_empleadEmpresaProv().equals("0")) {
                                             setError("Por favor seleccionar Provincia");
                                         } else {
                                             HttpServletRequest request = ServletActionContext.getRequest();
                                             if (request.getParameter("siguienteEmp") != null) {
-                                                return frmSolFinan_InfoFinan();
+                                                return frmSOLInfoFinanciera();
                                             } else {
-                                                setResult("frmSolFinan_Empleado");
+                                                setResult("frmSOLEmpleado");
 
                                             }
                                         }
@@ -786,7 +815,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_Independiente() {
+    public String frmSOLIndependiente() {
         if (!validaSession()) {
             return "login";
         }
@@ -800,56 +829,56 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
-        setResult("frmSolFinan_Independiente");
+        setResult("frmSOLIndependiente");
 
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getIlabor().equals("")) {
+                if (getSolCLI_independILabor().equals("")) {
                     setError("Por favor llenar el primer campo");
                 } else {
-                    if (getIhacecuantInd().equals("")) {
+                    if (getSolCLI_independITiempoViv().equals("")) {
                         setError("Por favor llenar el segundo campo");
                     } else {
-                        if (getItipodeInd().equals("")) {
+                        if (getSolCLI_independITipo().equals("")) {
                             setError("Por favor llenar el tercer campo");
                         } else {
-                            if (!getFnombEmpr().equals("")) {
-                                if (getFnombEmpr().equals("")) {
+                            if (!getSolCLI_independFEmpresaNomb().equals("")) {
+                                if (getSolCLI_independFEmpresaNomb().equals("")) {
                                     setError("Por favor llenar el campo Nombre de la Empresa");
                                 } else {
-                                    if (getFrucEmpr().equals("")) {
+                                    if (getSolCLI_independFEmpresaRuc().equals("")) {
                                         setError("Por favor llenar el campo RUC");
                                     } else {
-                                        if (getFcargo().equals("")) {
+                                        if (getSolCLI_independFCargo().equals("")) {
                                             setError("Por favor llenar el campo Cargo");
                                         } else {
-                                            if (getFdirLabo().equals("")) {
+                                            if (getSolCLI_independFLaboraDire().equals("")) {
                                                 setError("Por favor llenar el campo Dirección");
                                             } else {
-                                                if (getFdisLabo().equals("0")) {
+                                                if (getSolCLI_independFLaboraDist().equals("0")) {
                                                     setError("Por favor llenar el campo Distrito");
                                                 } else {
-                                                    if (getFproLabo().equals("0")) {
+                                                    if (getSolCLI_independFLaboraProv().equals("0")) {
                                                         setError("Por favor seleccionar una Provincia");
                                                     } else {
-                                                        if (getFdepLabo().equals("0")) {
+                                                        if (getSolCLI_independFLaboraDepa().equals("0")) {
                                                             setError("Por favor seleccionar un Departamento");
                                                         } else {
-                                                            if (getFtelef().equals("")) {
+                                                            if (getSolCLI_independFTelefono().equals("")) {
                                                                 setError("Por favor llenar el campo Teléfono");
                                                             } else {
-                                                                if (getFanexo().equals("")) {
+                                                                if (getSolCLI_independFAnexo().equals("")) {
                                                                     setError("Por favor llenar el campo Anexo");
                                                                 } else {
-                                                                    if (getFcorreo().equals("")) {
+                                                                    if (getSolCLI_independFCorreo().equals("")) {
                                                                         setError("Por favor llenar el campo Correo Electrónico");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
                                                                         if (request.getParameter("siguienteIndep") != null) {
-                                                                            return frmSolFinan_InfoFinan();
+                                                                            return frmSOLInfoFinanciera();
                                                                         }
                                                                     }
                                                                 }
@@ -864,7 +893,7 @@ public class MenuAction extends BaseAction {
                             } else {
                                 HttpServletRequest request = ServletActionContext.getRequest();
                                 if (request.getParameter("siguienteIndep") != null) {
-                                    return frmSolFinan_InfoFinan();
+                                    return frmSOLInfoFinanciera();
                                 }
                             }
                         }
@@ -877,7 +906,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_Jubilado() {
+    public String frmSOLJubilado() {
         if (!validaSession()) {
             return "login";
         }
@@ -890,24 +919,24 @@ public class MenuAction extends BaseAction {
         zona.setCodigo("2");
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
-        setResult("frmSolFinan_Jubilado");
+        setResult("frmSOLJubilado");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getJnombEmpJ().equals("")) {
+                if (getSolCLI_jubilEmpresaNombJubi().equals("")) {
                     setError("Por favor llenar el Primer campo");
                 } else {
-                    if (getJnombEmpA().equals("")) {
+                    if (getSolCLI_jubilEmpresaNombApor().equals("")) {
                         setError("Por favor llenar el Segundo campo");
                     } else {
-                        if (getJhacecuaJ().equals("")) {
+                        if (getSolCLI_jubilEmpresaTiempo().equals("")) {
                             setError("Por favor llenar el Tercer campo");
                         } else {
                             HttpServletRequest request = ServletActionContext.getRequest();
                             if (request.getParameter("siguienteJub") != null) {
-                                return frmSolFinan_InfoFinan();
+                                return frmSOLInfoFinanciera();
                             }
                         }
                     }
@@ -921,62 +950,62 @@ public class MenuAction extends BaseAction {
 
     }
 
-    public String frmSolFinan_InfoFinan() {
+    public String frmSOLInfoFinanciera() {
         if (!validaSession()) {
             return "login";
         }
-        setResult("frmSolFinan_InfoFinan");
+        setResult("frmSOLInfoFinanciera");
 
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getIsueldBas() < 0) {
+                if (getSolCLI_infofinanIngSueldoBasic() < 0) {
                     setError("Por favor llenar el campo Sueldo Básico");
                 } else {
-                    if (getIcomisiones() < 0) {
+                    if (getSolCLI_infofinanIngComisiones() < 0) {
                         setError("Por favor llenar el campo Comisiones");
                     } else {
-                        if (getIhonorarios() < 0) {
+                        if (getSolCLI_infofinanIngHonorarios() < 0) {
                             setError("Por favor llenar el campo Honorarios");
                         } else {
-                            if (getIalquileres() < 0) {
+                            if (getSolCLI_infofinanIngAlquileres() < 0) {
                                 setError("Por favor llenar el campo Alquileres");
                             } else {
-                                if (getIotrosIngres() < 0) {
+                                if (getSolCLI_infofinanIngOtros() < 0) {
                                     setError("Por favor llenar el campo Otros Ingresos");
                                 } else {
-                                    if (getItotalIng() < 0) {
+                                    if (getSolCLI_infofinanIngTotal() < 0) {
                                         setError("Por favor llenar el campo Total de Ingresos");
                                     } else {
-                                        if (getItotalAct() < 0) {
+                                        if (getSolCLI_infofinanIngTotalAct() < 0) {
                                             setError("Por favor llenar el campo Total de Activos");
                                         } else {
-                                            if (getGalquiler() < 0) {
+                                            if (getSolCLI_infofinanGasAlquiler() < 0) {
                                                 setError("Por favor llenar el campo Alquiler");
                                             } else {
-                                                if (getGcreditoViv() < 0) {
+                                                if (getSolCLI_infofinanGasCreditoViv() < 0) {
                                                     setError("Por favor llenar el campo Crédito de Vivienda ");
                                                 } else {
-                                                    if (getGgastosFamil() < 0) {
+                                                    if (getSolCLI_infofinanGasFamiliar() < 0) {
                                                         setError("Por favor llenar el campo Gastos Familiares");
                                                     } else {
-                                                        if (getGtarjetasCred() < 0) {
+                                                        if (getSolCLI_infofinanGasTarjetasCred() < 0) {
                                                             setError("Por favor llenar el campo Tarjetas de Crédito");
                                                         } else {
-                                                            if (getGotrosGas() < 0) {
+                                                            if (getSolCLI_infofinanGasOtros() < 0) {
                                                                 setError("Por favor llenar el campo Otros Gastos");
                                                             } else {
-                                                                if (getGtotalGas() < 0) {
+                                                                if (getSolCLI_infofinanGasTotal() < 0) {
                                                                     setError("Por favor llenar el campo Total de Gastos");
                                                                 } else {
-                                                                    if (getGtotalPat() < 0) {
+                                                                    if (getSolCLI_infofinanGasTotalPat() < 0) {
                                                                         setError("Por favor llenar el campo Total de Patrimonio");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
                                                                         if (request.getParameter("siguienteInfo") != null) {
-                                                                            return frmSolFinan_RefPerso();
+                                                                            return frmSOLReferenciaPersonales();
                                                                         }
                                                                     }
                                                                 }
@@ -998,7 +1027,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_RefFamil() {
+    public String frmSOLReferenciaFamiliar() {
         if (!validaSession()) {
             return "login";
         }
@@ -1013,49 +1042,49 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
-        setResult("frmSolFinan_RefFamil");
+        setResult("frmSOLReferenciaFamiliar");
 
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getRfprimerNomb().equals("")) {
+                if (getSolCLI_refepersonPrimerNomb().equals("")) {
                     setError("Por favor llenar el campo Primer Nombre");
                 } else {
-                    if (getRfsegundoNomb().equals("")) {
+                    if (getSolCLI_refepersonSegundoNomb().equals("")) {
                         setError("Por favor llenar el campo Segundo Nombre");
                     } else {
-                        if (getRfprimerApell().equals("")) {
+                        if (getSolCLI_refepersonPrimerApel().equals("")) {
                             setError("Por favor llenar el campo Primer Apellido");
                         } else {
-                            if (getRfsegundoApell().equals("")) {
+                            if (getSolCLI_refepersonSegundoApel().equals("")) {
                                 setError("Por favor llenar el campo Segundo Apellido");
                             } else {
-                                if (getRfdirec().equals("")) {
+                                if (getSolCLI_refepersonDireccion().equals("")) {
                                     setError("Por favor llenar una Dirección");
                                 } else {
-                                    if (getRfdistr().equals("0")) {
+                                    if (getSolCLI_refepersonDistrito().equals("0")) {
                                         setError("Por favor Seleccionar un Distrito ");
                                     } else {
-                                        if (getRfprovi().equals("0")) {
+                                        if (getSolCLI_refepersonProvincia().equals("0")) {
                                             setError("Por favor Seleccionar un Provincia  ");
                                         } else {
-                                            if (getRfestad().equals("")) {
+                                            if (getSolCLI_refepersonEstado().equals("")) {
                                                 setError("Por favor llenar el campo Estado");
                                             } else {
-                                                if (getRftelef().equals("")) {
+                                                if (getSolCLI_refepersonTelefono().equals("")) {
                                                     setError("Por favor llenar el campo Teléfono");
                                                 } else {
-                                                    if (getRfcelul().equals("")) {
+                                                    if (getSolCLI_refepersonCelular().equals("")) {
                                                         setError("Por favor llenar el campo Celular");
                                                     } else {
-                                                        if (getRfparen().equals("")) {
+                                                        if (getSolCLI_refepersonParentesco().equals("")) {
                                                             setError("Por favor llenar el campo Parentesco");
                                                         } else {
                                                             HttpServletRequest request = ServletActionContext.getRequest();
                                                             if (request.getParameter("siguienteFamil") != null) {
-                                                                return frmSolFinan_RefLabor();
+                                                                return frmSOLReferenciaLaborales();
                                                             }
                                                         }
                                                     }
@@ -1074,7 +1103,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_RefLabor() {
+    public String frmSOLReferenciaLaborales() {
         if (!validaSession()) {
             return "login";
         }
@@ -1088,67 +1117,67 @@ public class MenuAction extends BaseAction {
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
 
-        setResult("frmSolFinan_RefLabor");
+        setResult("frmSOLReferenciaLaborales");
 
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getRlcNombre().equals("")) {
+                if (getSolCLI_refelabocliNombre().equals("")) {
                     setError("Por favor llenar el campo Nombre del Cliente");
                 } else {
-                    if (getRlcActividad().equals("")) {
+                    if (getSolCLI_refelabocliActividad().equals("")) {
                         setError("Por favor llenar el campo Actividad del Cliente");
                     } else {
-                        if (getRlcTelef().equals("")) {
+                        if (getSolCLI_refelabocliTelefono().equals("")) {
                             setError("Por favor llenar el campo Teléfono del Cliente");
                         } else {
-                            if (getRlcDireClient().equals("")) {
+                            if (getSolCLI_refelabocliDireccion().equals("")) {
                                 setError("Por favor llenar el campo Dirección del Cliente");
                             } else {
-                                if (getRlcDistrito().equals("0")) {
+                                if (getSolCLI_refelabocliDistrito().equals("0")) {
                                     setError("Por favor Seleccionar un Distrito");
                                 } else {
-                                    if (getRlcProvincia().equals("0")) {
+                                    if (getSolCLI_refelabocliProvincia().equals("0")) {
                                         setError("Por favor Seleccionar una Provincia ");
                                     } else {
-                                        if (getRlcEstado().equals("")) {
+                                        if (getSolCLI_refelabocliEstado().equals("")) {
                                             setError("Por favor llenar el campo Estado del Cliente");
                                         } else {
-                                            if (getRlpNombre().equals("")) {
+                                            if (getSolCLI_refelaboproNombre().equals("")) {
                                                 setError("Por favor llenar el campo Nombre del Proveedor");
                                             } else {
-                                                if (getRlpActividad().equals("")) {
+                                                if (getSolCLI_refelaboproActividad().equals("")) {
                                                     setError("Por favor llenar el campo Actividad del Proveedor");
                                                 } else {
-                                                    if (getRlpTelef().equals("")) {
+                                                    if (getSolCLI_refelaboproTelefono().equals("")) {
                                                         setError("Por favor llenar el campo Teléfono del Proveedor");
                                                     } else {
-                                                        if (getRlpDire().equals("")) {
+                                                        if (getSolCLI_refelaboproDireccion().equals("")) {
                                                             setError("Por favor llenar el campo Dirección del Proveedor");
                                                         } else {
-                                                            if (getRlpDistrito().equals("0")) {
+                                                            if (getSolCLI_refelaboproDistrito().equals("0")) {
                                                                 setError("Por favor Seleccionar una Distrito ");
                                                             } else {
-                                                                if (getRlpProvincia().equals("0")) {
+                                                                if (getSolCLI_refelaboproProvincia().equals("0")) {
                                                                     setError("Por favor Seleccionar una Provincia ");
                                                                 } else {
-                                                                    if (getRlpEstado().equals("")) {
+                                                                    if (getSolCLI_refelaboproEstado().equals("")) {
                                                                         setError("Por favor llenar el campo Estado del Proveedor");
                                                                     } else {
                                                                         HttpServletRequest request = ServletActionContext.getRequest();
                                                                         if (request.getParameter("siguienteLabor") != null) {
                                                                             if (getCliente().getDesOcu().equals("E")) {
-                                                                                return frmSolFinan_DocEmple();
+                                                                                return frmSOLDocEmpleado();
                                                                             } else if (getCliente().getDesOcu().equals("I")) {
-                                                                                if (getTipoIndep().equals("Formal")) {
-                                                                                    return frmSolFinan_DocIndpF();
+                                                                                if (getSolCLI_independITipoaux().equals("Formal")) {
+                                                                                    return frmSOLDocIndependienteFormal();
                                                                                 } else {
-                                                                                    return frmSolFinan_DocIndpN();
+                                                                                    return frmSOLDocIndependienteInformal();
                                                                                 }
                                                                             } else if (getCliente().getDesOcu().equals("P")) {
-                                                                                return frmSolFinan_DocJubila();
+                                                                                return frmSOLDocJubilado();
                                                                             }
                                                                         }
                                                                     }
@@ -1171,7 +1200,7 @@ public class MenuAction extends BaseAction {
         return getResult();
     }
 
-    public String frmSolFinan_RefPerso() {
+    public String frmSOLReferenciaPersonales() {
         if (!validaSession()) {
             return "login";
         }
@@ -1184,48 +1213,48 @@ public class MenuAction extends BaseAction {
         zona.setCodigo("2");
         zona.setDescripcion("Lima");
         getLstTipZon().add(zona);
-        setResult("frmSolFinan_RefPerso");
+        setResult("frmSOLReferenciaPersonales");
         if (!LibFunc.fxEmpty(getError())) {
             setResult("error");
         } else {
             //VALIDACIONES DE CAMPOS
             try {
-                if (getRpprimerNomb().equals("")) {
+                if (getSolCLI_refepersonPrimerNomb().equals("")) {
                     setError("Por favor llenar el campo Primer Nombre");
                 } else {
-                    if (getRpsegundoNomb().equals("")) {
+                    if (getSolCLI_refepersonSegundoNomb().equals("")) {
                         setError("Por favor llenar el campo Segundo Nombre");
                     } else {
-                        if (getRpprimerApell().equals("")) {
+                        if (getSolCLI_refepersonPrimerApel().equals("")) {
                             setError("Por favor llenar el campo Primer Apellido");
                         } else {
-                            if (getRpsegundoApell().equals("")) {
+                            if (getSolCLI_refepersonSegundoApel().equals("")) {
                                 setError("Por favor llenar el campo Segundo Apellido");
                             } else {
-                                if (getRpdirec().equals("")) {
+                                if (getSolCLI_refepersonDireccion().equals("")) {
                                     setError("Por favor llenar una Dirección");
                                 } else {
-                                    if (getRpdistr().equals("0")) {
+                                    if (getSolCLI_refepersonDistrito().equals("0")) {
                                         setError("Por favor Seleccionar un Distrito ");
                                     } else {
-                                        if (getRpprovi().equals("0")) {
+                                        if (getSolCLI_refepersonProvincia().equals("0")) {
                                             setError("Por favor Seleccionar un Provincia  ");
                                         } else {
-                                            if (getRpestad().equals("")) {
+                                            if (getSolCLI_refepersonEstado().equals("")) {
                                                 setError("Por favor llenar el campo Estado");
                                             } else {
-                                                if (getRptelef().equals("")) {
+                                                if (getSolCLI_refepersonTelefono().equals("")) {
                                                     setError("Por favor llenar el campo Teléfono");
                                                 } else {
-                                                    if (getRpcelul().equals("")) {
+                                                    if (getSolCLI_refepersonCelular().equals("")) {
                                                         setError("Por favor llenar el campo Celular");
                                                     } else {
-                                                        if (getRpparen().equals("")) {
+                                                        if (getSolCLI_refepersonParentesco().equals("")) {
                                                             setError("Por favor llenar el campo Parentesco");
                                                         } else {
                                                             HttpServletRequest request = ServletActionContext.getRequest();
                                                             if (request.getParameter("siguientePerso") != null) {
-                                                                return frmSolFinan_RefFamil();
+                                                                return frmSOLReferenciaFamiliar();
                                                             }
                                                         }
                                                     }
@@ -1247,7 +1276,7 @@ public class MenuAction extends BaseAction {
 
     }
 
-    public String frmSolFinan_DocEmple() throws IOException {
+    public String frmSOLDocEmpleado() throws IOException {
         if (!validaSession()) {
             return "login";
         }
@@ -1260,91 +1289,91 @@ public class MenuAction extends BaseAction {
 
                 loRep.setCliente(getCliente());
                 //Solicitud de Financiamiento
-                loRep.setCodEvaluador(getCodEvaluador());
-                loRep.setPuntVenta(getPuntVenta());
-                loRep.setFecSolicitud(getFecSolicitud());
-                loRep.setCiudadExp(getCiudadExp());
-                loRep.setNacionalidad(getNacionalidad());
-                loRep.setCiudadNac(getCiudadNac());
-                loRep.setPaisNac(getPaisNac());
-                loRep.setNperDepend(getNperDepend());
+                loRep.setSolCLIcodEvaluador(getSolCLIcodEvaluador());
+                loRep.setSolCLIpuntVenta(getSolCLIpuntVenta());
+                loRep.setSolCLIfecSolicitud(getSolCLIfecSolicitud());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLInacionalidad(getSolCLInacionalidad());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLIpaisNac(getSolCLIpaisNac());
+                loRep.setSolCLInperDepend(getSolCLInperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCprimerNomb());
-                loRep.setCSegundNomb(getCsegundNomb());
-                loRep.setCPrimerApel(getCprimerApel());
-                loRep.setCSegundApel(getCsegundApel());
-                loRep.setCEmpdondTrab(getCempdondTrab());
-                loRep.setCEmpCargo(getCempCargo());
-                loRep.setCEmpTelef(getCempTelef());
+                loRep.setSolCLI_conyugPrimerNomb(getSolCLI_conyugPrimerNomb());
+                loRep.setSolCLI_conyugSegundoNomb(getSolCLI_conyugSegundoNomb());
+                loRep.setSolCLI_conyugPrimerApel(getSolCLI_conyugPrimerApel());
+                loRep.setSolCLI_conyugSegundoApel(getSolCLI_conyugSegundoApel());
+                loRep.setSolCLI_conyugEmpresaTrab(getSolCLI_conyugEmpresaTrab());
+                loRep.setSolCLI_conyugEmpresaCarg(getSolCLI_conyugEmpresaCarg());
+                loRep.setSolCLI_conyugEmpresaTele(getSolCLI_conyugEmpresaTele());
                 //Vivienda
-                loRep.setVSuministro(getVsuministro());
-                loRep.setVTitularSum(getVtitularSum());
-                loRep.setVRelacTitul(getVrelacTitul());
-                loRep.setVTipoVivien(getVtipoVivien());
-                loRep.setVHaceCVivea(getVhaceCVivea());
-                loRep.setVDireccResi(getVdireccResi());
-                loRep.setVDistVivien(getVdistVivien());
-                loRep.setVProvVivien(getVprovVivien());
-                loRep.setVDepaVivien(getVdepaVivien());
+                loRep.setSolCLI_vivienSuministro(getSolCLI_vivienSuministro());
+                loRep.setSolCLI_vivienTitularSuminis(getSolCLI_vivienTitularSuminis());
+                loRep.setSolCLI_vivienRelacionTitu(getSolCLI_vivienRelacionTitu());
+                loRep.setSolCLI_vivienTipo(getSolCLI_vivienTipo());
+                loRep.setSolCLI_vivienTiempo(getSolCLI_vivienTiempo());
+                loRep.setSolCLI_vivienDireccion(getSolCLI_vivienDireccion());
+                loRep.setSolCLI_vivienDistrito(getSolCLI_vivienDistrito());
+                loRep.setSolCLI_vivienProvincia(getSolCLI_vivienProvincia());
+                loRep.setSolCLI_vivienDepartamento(getSolCLI_vivienDepartamento());
                 //Empleado
-                loRep.setENombreEmpr(getEnombreEmpr());
-                loRep.setERUCEmpr(getErucEmpr());
-                loRep.setEActivdEmpr(getEactivdEmpr());
-                loRep.setEDirEmpr(getEdirEmpr());
-                loRep.setEDepEmpr(getEdepEmpr());
-                loRep.setEDisEmpr(getEdisEmpr());
-                loRep.setEProvEmpr(getEprovEmpr());
+                loRep.setSolCLI_empleadEmpresaNomb(getSolCLI_empleadEmpresaNomb());
+                loRep.setSolCLI_empleadEmpresaRuc(getSolCLI_empleadEmpresaRuc());
+                loRep.setSolCLI_empleadEmpresaActi(getSolCLI_empleadEmpresaActi());
+                loRep.setSolCLI_empleadEmpresaDire(getSolCLI_empleadEmpresaDire());
+                loRep.setSolCLI_empleadEmpresaDepa(getSolCLI_empleadEmpresaDepa());
+                loRep.setSolCLI_empleadEmpresaDist(getSolCLI_empleadEmpresaDist());
+                loRep.setSolCLI_empleadEmpresaProv(getSolCLI_empleadEmpresaProv());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getIsueldBas());
-                loRep.setIComisiones(getIcomisiones());
-                loRep.setIHonorarios(getIhonorarios());
-                loRep.setIAlquileres(getIalquileres());
-                loRep.setIOtrosIngres(getIotrosIngres());
-                loRep.setITotalIng(getItotalIng());
-                loRep.setITotalAct(getItotalAct());
+                loRep.setSolCLI_infofinanIngSueldoBasic(getSolCLI_infofinanIngSueldoBasic());
+                loRep.setSolCLI_infofinanIngComisiones(getSolCLI_infofinanIngComisiones());
+                loRep.setSolCLI_infofinanIngHonorarios(getSolCLI_infofinanIngHonorarios());
+                loRep.setSolCLI_infofinanIngAlquileres(getSolCLI_infofinanIngAlquileres());
+                loRep.setSolCLI_infofinanIngOtros(getSolCLI_infofinanIngOtros());
+                loRep.setSolCLI_infofinanIngTotal(getSolCLI_infofinanIngTotal());
+                loRep.setSolCLI_infofinanIngTotalAct(getSolCLI_infofinanIngTotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGalquiler());
-                loRep.setGCreditoViv(getGcreditoViv());
-                loRep.setGGastosFamil(getGgastosFamil());
-                loRep.setGTarjetasCred(getGtarjetasCred());
-                loRep.setGOtrosGas(getGotrosGas());
-                loRep.setGTotalGas(getGtotalGas());
-                loRep.setGTotalPat(getGtotalPat());
+                loRep.setSolCLI_infofinanGasAlquiler(getSolCLI_infofinanGasAlquiler());
+                loRep.setSolCLI_infofinanGasCreditoViv(getSolCLI_infofinanGasCreditoViv());
+                loRep.setSolCLI_infofinanGasFamiliar(getSolCLI_infofinanGasFamiliar());
+                loRep.setSolCLI_infofinanGasTarjetasCred(getSolCLI_infofinanGasTarjetasCred());
+                loRep.setSolCLI_infofinanGasOtros(getSolCLI_infofinanGasOtros());
+                loRep.setSolCLI_infofinanGasTotal(getSolCLI_infofinanGasTotal());
+                loRep.setSolCLI_infofinanGasTotalPat(getSolCLI_infofinanGasTotalPat());
                 //Datos Referencias Personales
-                loRep.setRPPrimerNomb(getRpprimerNomb());
-                loRep.setRPSegundoNomb(getRpsegundoNomb());
-                loRep.setRPPrimerApell(getRpprimerApell());
-                loRep.setRPSegundoApell(getRpsegundoApell());
-                loRep.setRPDirec(getRpdirec());
-                loRep.setRPDistr(getRpdistr());
-                loRep.setRPProvi(getRpprovi());
-                loRep.setRPEstad(getRpestad());
-                loRep.setRPTelef(getRptelef());
-                loRep.setRPCelul(getRpcelul());
-                loRep.setRPParen(getRpparen());
+                loRep.setSolCLI_refepersonPrimerNomb(getSolCLI_refepersonPrimerNomb());
+                loRep.setSolCLI_refepersonSegundoNomb(getSolCLI_refepersonSegundoNomb());
+                loRep.setSolCLI_refepersonPrimerApel(getSolCLI_refepersonPrimerApel());
+                loRep.setSolCLI_refepersonSegundoApel(getSolCLI_refepersonSegundoApel());
+                loRep.setSolCLI_refepersonDireccion(getSolCLI_refepersonDireccion());
+                loRep.setSolCLI_refepersonDistrito(getSolCLI_refepersonDistrito());
+                loRep.setSolCLI_refepersonProvincia(getSolCLI_refepersonProvincia());
+                loRep.setSolCLI_refepersonEstado(getSolCLI_refepersonEstado());
+                loRep.setSolCLI_refepersonTelefono(getSolCLI_refepersonTelefono());
+                loRep.setSolCLI_refepersonCelular(getSolCLI_refepersonCelular());
+                loRep.setSolCLI_refepersonParentesco(getSolCLI_refepersonParentesco());
 
-                File filerecibo = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoReciboFileName() + "_" + getCliente().getNombre());
-                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoRecibo()));
+                File filerecibo = new File("/ftia/files/cartas/Empleados/" + getArchivoSolFinan_EmpleadoReciboFileName() + "_" + getCliente().getNombre());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_EmpleadoRecibo()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoCopiaDNIFileName() + "_" + getCliente().getNombre());
-                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoCopiaDNI()));
+                File filecopiadni = new File("/ftia/files/cartas/Empleados/" + getArchivoSolFinan_EmpleadoCopiaDniFileName() + "_" + getCliente().getNombre());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_EmpleadoCopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol1FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol1()));
+                File filebol1 = new File("/ftia/files/cartas/Empleados/" + getArchivoSolFinan_EmpleadoBoleta1FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_EmpleadoBoleta1()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol2FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol2()));
+                File filebol2 = new File("/ftia/files/cartas/Empleados/" + getArchivoSolFinan_EmpleadoBoleta2FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_EmpleadoBoleta2()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
-                File filebol3 = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadobol3FileName());
-                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadobol3()));
+                File filebol3 = new File("/ftia/files/cartas/Empleados/" + getArchivoSolFinan_EmpleadoBoleta3FileName());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_EmpleadoBoleta3()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/Empleados/" + getArchivoEmpleadoingadicFileName());
-                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoEmpleadoingadic()));
+                File fileingadic = new File("/ftia/files/cartas/Empleados/" + getArchivoSolFinan_EmpleadoCopiaArrendamientoFileName());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_EmpleadoCopiaArrendamiento()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
                 boolean llOk = loRep.mxSolicitudCliente();
@@ -1368,13 +1397,12 @@ public class MenuAction extends BaseAction {
             } catch (IOException | SQLException loErr) {
                 setError(loErr.getMessage());
             }
-        }
-
-        setResult("frmSolFinan_DocEmple");
+        } 
+        setResult("frmSOLDocEmpleado");
         return getResult();
     }
 
-    public String frmSolFinan_DocIndpF() {
+    public String frmSOLDocIndependienteFormal() {
         if (!validaSession()) {
             return "login";
         }
@@ -1386,104 +1414,104 @@ public class MenuAction extends BaseAction {
             try {
                 loRep.setCliente(getCliente());
                 //Solicitud de Financiamiento
-                loRep.setCodEvaluador(getCodEvaluador());
-                loRep.setPuntVenta(getPuntVenta());
-                loRep.setFecSolicitud(getFecSolicitud());
-                loRep.setCiudadExp(getCiudadExp());
-                loRep.setNacionalidad(getNacionalidad());
-                loRep.setCiudadNac(getCiudadNac());
-                loRep.setPaisNac(getPaisNac());
-                loRep.setNperDepend(getNperDepend());
+                loRep.setSolCLIcodEvaluador(getSolCLIcodEvaluador());
+                loRep.setSolCLIpuntVenta(getSolCLIpuntVenta());
+                loRep.setSolCLIfecSolicitud(getSolCLIfecSolicitud());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLInacionalidad(getSolCLInacionalidad());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLIpaisNac(getSolCLIpaisNac());
+                loRep.setSolCLInperDepend(getSolCLInperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCprimerNomb());
-                loRep.setCSegundNomb(getCsegundNomb());
-                loRep.setCPrimerApel(getCprimerApel());
-                loRep.setCSegundApel(getCsegundApel());
-                loRep.setCEmpdondTrab(getCempdondTrab());
-                loRep.setCEmpCargo(getCempCargo());
-                loRep.setCEmpTelef(getCempTelef());
+                loRep.setSolCLI_conyugPrimerNomb(getSolCLI_conyugPrimerNomb());
+                loRep.setSolCLI_conyugSegundoNomb(getSolCLI_conyugSegundoNomb());
+                loRep.setSolCLI_conyugPrimerApel(getSolCLI_conyugPrimerApel());
+                loRep.setSolCLI_conyugSegundoApel(getSolCLI_conyugSegundoApel());
+                loRep.setSolCLI_conyugEmpresaTrab(getSolCLI_conyugEmpresaTrab());
+                loRep.setSolCLI_conyugEmpresaCarg(getSolCLI_conyugEmpresaCarg());
+                loRep.setSolCLI_conyugEmpresaTele(getSolCLI_conyugEmpresaTele());
                 //Vivienda
-                loRep.setVSuministro(getVsuministro());
-                loRep.setVTitularSum(getVtitularSum());
-                loRep.setVRelacTitul(getVrelacTitul());
-                loRep.setVTipoVivien(getVtipoVivien());
-                loRep.setVHaceCVivea(getVhaceCVivea());
-                loRep.setVDireccResi(getVdireccResi());
-                loRep.setVDistVivien(getVdistVivien());
-                loRep.setVProvVivien(getVprovVivien());
-                loRep.setVDepaVivien(getVdepaVivien());
+                loRep.setSolCLI_vivienSuministro(getSolCLI_vivienSuministro());
+                loRep.setSolCLI_vivienTitularSuminis(getSolCLI_vivienTitularSuminis());
+                loRep.setSolCLI_vivienRelacionTitu(getSolCLI_vivienRelacionTitu());
+                loRep.setSolCLI_vivienTipo(getSolCLI_vivienTipo());
+                loRep.setSolCLI_vivienTiempo(getSolCLI_vivienTiempo());
+                loRep.setSolCLI_vivienDireccion(getSolCLI_vivienDireccion());
+                loRep.setSolCLI_vivienDistrito(getSolCLI_vivienDistrito());
+                loRep.setSolCLI_vivienProvincia(getSolCLI_vivienProvincia());
+                loRep.setSolCLI_vivienDepartamento(getSolCLI_vivienDepartamento());
                 //FORMAL INDEPENDIENTE
-                loRep.setILabor(getIlabor());
-                loRep.setIHacecuantInd(getIhacecuantInd());
-                loRep.setITipodeInd(getItipodeInd());
+                loRep.setSolCLI_independILabor(getSolCLI_independILabor());
+                loRep.setSolCLI_independITiempoViv(getSolCLI_independITiempoViv());
+                loRep.setSolCLI_independITipo(getSolCLI_independITipo());
 
-                loRep.setFNombEmpr(getFnombEmpr());
-                loRep.setFRUCEmpr(getFrucEmpr());
-                loRep.setFCargo(getFcargo());
-                loRep.setFDirLabo(getFdirLabo());
-                loRep.setFDisLabo(getFdisLabo());
-                loRep.setFProLabo(getFproLabo());
-                loRep.setFDepLabo(getFdepLabo());
-                loRep.setFTelef(getFtelef());
-                loRep.setFAnexo(getFanexo());
+                loRep.setSolCLI_independFEmpresaNomb(getSolCLI_independFEmpresaNomb());
+                loRep.setSolCLI_independFEmpresaRuc(getSolCLI_independFEmpresaRuc());
+                loRep.setSolCLI_independFCargo(getSolCLI_independFCargo());
+                loRep.setSolCLI_independFLaboraDire(getSolCLI_independFLaboraDire());
+                loRep.setSolCLI_independFLaboraDist(getSolCLI_independFLaboraDist());
+                loRep.setSolCLI_independFLaboraProv(getSolCLI_independFLaboraProv());
+                loRep.setSolCLI_independFLaboraDepa(getSolCLI_independFLaboraDepa());
+                loRep.setSolCLI_independFTelefono(getSolCLI_independFTelefono());
+                loRep.setSolCLI_independFAnexo(getSolCLI_independFAnexo());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getIsueldBas());
-                loRep.setIComisiones(getIcomisiones());
-                loRep.setIHonorarios(getIhonorarios());
-                loRep.setIAlquileres(getIalquileres());
-                loRep.setIOtrosIngres(getIotrosIngres());
-                loRep.setITotalIng(getItotalIng());
-                loRep.setITotalAct(getItotalAct());
+                loRep.setSolCLI_infofinanIngSueldoBasic(getSolCLI_infofinanIngSueldoBasic());
+                loRep.setSolCLI_infofinanIngComisiones(getSolCLI_infofinanIngComisiones());
+                loRep.setSolCLI_infofinanIngHonorarios(getSolCLI_infofinanIngHonorarios());
+                loRep.setSolCLI_infofinanIngAlquileres(getSolCLI_infofinanIngAlquileres());
+                loRep.setSolCLI_infofinanIngOtros(getSolCLI_infofinanIngOtros());
+                loRep.setSolCLI_infofinanIngTotal(getSolCLI_infofinanIngTotal());
+                loRep.setSolCLI_infofinanIngTotalAct(getSolCLI_infofinanIngTotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGalquiler());
-                loRep.setGCreditoViv(getGcreditoViv());
-                loRep.setGGastosFamil(getGgastosFamil());
-                loRep.setGTarjetasCred(getGtarjetasCred());
-                loRep.setGOtrosGas(getGotrosGas());
-                loRep.setGTotalGas(getGtotalGas());
-                loRep.setGTotalPat(getGtotalPat());
+                loRep.setSolCLI_infofinanGasAlquiler(getSolCLI_infofinanGasAlquiler());
+                loRep.setSolCLI_infofinanGasCreditoViv(getSolCLI_infofinanGasCreditoViv());
+                loRep.setSolCLI_infofinanGasFamiliar(getSolCLI_infofinanGasFamiliar());
+                loRep.setSolCLI_infofinanGasTarjetasCred(getSolCLI_infofinanGasTarjetasCred());
+                loRep.setSolCLI_infofinanGasOtros(getSolCLI_infofinanGasOtros());
+                loRep.setSolCLI_infofinanGasTotal(getSolCLI_infofinanGasTotal());
+                loRep.setSolCLI_infofinanGasTotalPat(getSolCLI_infofinanGasTotalPat());
                 //Datos Referencias Personales
-                loRep.setRPPrimerNomb(getRpprimerNomb());
-                loRep.setRPSegundoNomb(getRpsegundoNomb());
-                loRep.setRPPrimerApell(getRpprimerApell());
-                loRep.setRPSegundoApell(getRpsegundoApell());
-                loRep.setRPDirec(getRpdirec());
-                loRep.setRPDistr(getRpdistr());
-                loRep.setRPProvi(getRpprovi());
-                loRep.setRPEstad(getRpestad());
-                loRep.setRPTelef(getRptelef());
-                loRep.setRPCelul(getRpcelul());
-                loRep.setRPParen(getRpparen());
+                loRep.setSolCLI_refepersonPrimerNomb(getSolCLI_refepersonPrimerNomb());
+                loRep.setSolCLI_refepersonSegundoNomb(getSolCLI_refepersonSegundoNomb());
+                loRep.setSolCLI_refepersonPrimerApel(getSolCLI_refepersonPrimerApel());
+                loRep.setSolCLI_refepersonSegundoApel(getSolCLI_refepersonSegundoApel());
+                loRep.setSolCLI_refepersonDireccion(getSolCLI_refepersonDireccion());
+                loRep.setSolCLI_refepersonDistrito(getSolCLI_refepersonDistrito());
+                loRep.setSolCLI_refepersonProvincia(getSolCLI_refepersonProvincia());
+                loRep.setSolCLI_refepersonEstado(getSolCLI_refepersonEstado());
+                loRep.setSolCLI_refepersonTelefono(getSolCLI_refepersonTelefono());
+                loRep.setSolCLI_refepersonCelular(getSolCLI_refepersonCelular());
+                loRep.setSolCLI_refepersonParentesco(getSolCLI_refepersonParentesco());
                 loRep.setCliente(getCliente());
 
-                File filerecibo = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFRecibLuzFileName() + "_" + getCliente().getNombre());
-                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFRecibLuz()));
+                File filerecibo = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFReciboLuzFileName() + "_" + getCliente().getNombre());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFReciboLuz()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaDniFileName() + "_" + getCliente().getNombre());
-                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaDni()));
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFCopiaDniFileName() + "_" + getCliente().getNombre());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFCopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFCopiaRucFileName() + "_" + getCliente().getNombre());
-                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFCopiaRuc()));
+                File filebol1 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFCopiaRucFileName() + "_" + getCliente().getNombre());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFCopiaRuc()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracb1FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb1()));
+                File filebol2 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFExtracBanc1FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFExtracBanc1()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
-                File filebol4 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracb2FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb2()));
+                File filebol4 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFExtracBanc2FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFExtracBanc2()));
                 FileUtils.writeByteArrayToFile(filebol4, archivofile4);
-                File filebol5 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracb3FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracb3()));
+                File filebol5 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFExtracBanc3FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFExtracBanc3()));
                 FileUtils.writeByteArrayToFile(filebol5, archivofile5);
-                
-                File filebol3 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFExtracafpFileName() + "_" + getCliente().getNombre());
-                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFExtracafp()));
+
+                File filebol3 = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFExtracAfpFileName() + "_" + getCliente().getNombre());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFExtracAfp()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoIFIngadicFileName() + "_" + getCliente().getNombre());
-                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFIngadic()));
+                File fileingadic = new File("/ftia/files/cartas/IndependienteFormal/" + getArchivoSolFinan_IndependienteFCopiaArrendamientoFileName() + "_" + getCliente().getNombre());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteFCopiaArrendamiento()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
                 boolean llOk = loRep.mxSolicitudCliente();
@@ -1505,16 +1533,16 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }
-         
-                 setResult("frmSolFinan_DocIndpF");
+
+        setResult("frmSOLDocIndependienteFormal");
         return getResult();
     }
 
-    public String frmSolFinan_DocIndpN() {
+    public String frmSOLDocIndependienteInformal() {
         if (!validaSession()) {
             return "login";
         }
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("reporte") != null) {
             CReportePDF loRep = new CReportePDF();
@@ -1522,106 +1550,104 @@ public class MenuAction extends BaseAction {
             try {
                 loRep.setCliente(getCliente());
                 //Solicitud de Financiamiento
-                loRep.setCodEvaluador(getCodEvaluador());
-                loRep.setPuntVenta(getPuntVenta());
-                loRep.setFecSolicitud(getFecSolicitud());
-                loRep.setCiudadExp(getCiudadExp());
-                loRep.setNacionalidad(getNacionalidad());
-                loRep.setCiudadNac(getCiudadNac());
-                loRep.setPaisNac(getPaisNac());
-                loRep.setNperDepend(getNperDepend());
+                loRep.setSolCLIcodEvaluador(getSolCLIcodEvaluador());
+                loRep.setSolCLIpuntVenta(getSolCLIpuntVenta());
+                loRep.setSolCLIfecSolicitud(getSolCLIfecSolicitud());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLInacionalidad(getSolCLInacionalidad());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLIpaisNac(getSolCLIpaisNac());
+                loRep.setSolCLInperDepend(getSolCLInperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCprimerNomb());
-                loRep.setCSegundNomb(getCsegundNomb());
-                loRep.setCPrimerApel(getCprimerApel());
-                loRep.setCSegundApel(getCsegundApel());
-                loRep.setCEmpdondTrab(getCempdondTrab());
-                loRep.setCEmpCargo(getCempCargo());
-                loRep.setCEmpTelef(getCempTelef());
+                loRep.setSolCLI_conyugPrimerNomb(getSolCLI_conyugPrimerNomb());
+                loRep.setSolCLI_conyugSegundoNomb(getSolCLI_conyugSegundoNomb());
+                loRep.setSolCLI_conyugPrimerApel(getSolCLI_conyugPrimerApel());
+                loRep.setSolCLI_conyugSegundoApel(getSolCLI_conyugSegundoApel());
+                loRep.setSolCLI_conyugEmpresaTrab(getSolCLI_conyugEmpresaTrab());
+                loRep.setSolCLI_conyugEmpresaCarg(getSolCLI_conyugEmpresaCarg());
+                loRep.setSolCLI_conyugEmpresaTele(getSolCLI_conyugEmpresaTele());
                 //Vivienda
-                loRep.setVSuministro(getVsuministro());
-                loRep.setVTitularSum(getVtitularSum());
-                loRep.setVRelacTitul(getVrelacTitul());
-                loRep.setVTipoVivien(getVtipoVivien());
-                loRep.setVHaceCVivea(getVhaceCVivea());
-                loRep.setVDireccResi(getVdireccResi());
-                loRep.setVDistVivien(getVdistVivien());
-                loRep.setVProvVivien(getVprovVivien());
-                loRep.setVDepaVivien(getVdepaVivien());
+                loRep.setSolCLI_vivienSuministro(getSolCLI_vivienSuministro());
+                loRep.setSolCLI_vivienTitularSuminis(getSolCLI_vivienTitularSuminis());
+                loRep.setSolCLI_vivienRelacionTitu(getSolCLI_vivienRelacionTitu());
+                loRep.setSolCLI_vivienTipo(getSolCLI_vivienTipo());
+                loRep.setSolCLI_vivienTiempo(getSolCLI_vivienTiempo());
+                loRep.setSolCLI_vivienDireccion(getSolCLI_vivienDireccion());
+                loRep.setSolCLI_vivienDistrito(getSolCLI_vivienDistrito());
+                loRep.setSolCLI_vivienProvincia(getSolCLI_vivienProvincia());
+                loRep.setSolCLI_vivienDepartamento(getSolCLI_vivienDepartamento());
                 //FORMAL INDEPENDIENTE
-                loRep.setILabor(getIlabor());
-                loRep.setIHacecuantInd(getIhacecuantInd());
-                loRep.setITipodeInd(getItipodeInd());
+                loRep.setSolCLI_independILabor(getSolCLI_independILabor());
+                loRep.setSolCLI_independITiempoViv(getSolCLI_independITiempoViv());
+                loRep.setSolCLI_independITipo(getSolCLI_independITipo());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getIsueldBas());
-                loRep.setIComisiones(getIcomisiones());
-                loRep.setIHonorarios(getIhonorarios());
-                loRep.setIAlquileres(getIalquileres());
-                loRep.setIOtrosIngres(getIotrosIngres());
-                loRep.setITotalIng(getItotalIng());
-                loRep.setITotalAct(getItotalAct());
+                loRep.setSolCLI_infofinanIngSueldoBasic(getSolCLI_infofinanIngSueldoBasic());
+                loRep.setSolCLI_infofinanIngComisiones(getSolCLI_infofinanIngComisiones());
+                loRep.setSolCLI_infofinanIngHonorarios(getSolCLI_infofinanIngHonorarios());
+                loRep.setSolCLI_infofinanIngAlquileres(getSolCLI_infofinanIngAlquileres());
+                loRep.setSolCLI_infofinanIngOtros(getSolCLI_infofinanIngOtros());
+                loRep.setSolCLI_infofinanIngTotal(getSolCLI_infofinanIngTotal());
+                loRep.setSolCLI_infofinanIngTotalAct(getSolCLI_infofinanIngTotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGalquiler());
-                loRep.setGCreditoViv(getGcreditoViv());
-                loRep.setGGastosFamil(getGgastosFamil());
-                loRep.setGTarjetasCred(getGtarjetasCred());
-                loRep.setGOtrosGas(getGotrosGas());
-                loRep.setGTotalGas(getGtotalGas());
-                loRep.setGTotalPat(getGtotalPat());
+                loRep.setSolCLI_infofinanGasAlquiler(getSolCLI_infofinanGasAlquiler());
+                loRep.setSolCLI_infofinanGasCreditoViv(getSolCLI_infofinanGasCreditoViv());
+                loRep.setSolCLI_infofinanGasFamiliar(getSolCLI_infofinanGasFamiliar());
+                loRep.setSolCLI_infofinanGasTarjetasCred(getSolCLI_infofinanGasTarjetasCred());
+                loRep.setSolCLI_infofinanGasOtros(getSolCLI_infofinanGasOtros());
+                loRep.setSolCLI_infofinanGasTotal(getSolCLI_infofinanGasTotal());
+                loRep.setSolCLI_infofinanGasTotalPat(getSolCLI_infofinanGasTotalPat());
                 //Datos Referencias Personales
-                loRep.setRPPrimerNomb(getRpprimerNomb());
-                loRep.setRPSegundoNomb(getRpsegundoNomb());
-                loRep.setRPPrimerApell(getRpprimerApell());
-                loRep.setRPSegundoApell(getRpsegundoApell());
-                loRep.setRPDirec(getRpdirec());
-                loRep.setRPDistr(getRpdistr());
-                loRep.setRPProvi(getRpprovi());
-                loRep.setRPEstad(getRpestad());
-                loRep.setRPTelef(getRptelef());
-                loRep.setRPCelul(getRpcelul());
-                loRep.setRPParen(getRpparen());
+                loRep.setSolCLI_refepersonPrimerNomb(getSolCLI_refepersonPrimerNomb());
+                loRep.setSolCLI_refepersonSegundoNomb(getSolCLI_refepersonSegundoNomb());
+                loRep.setSolCLI_refepersonPrimerApel(getSolCLI_refepersonPrimerApel());
+                loRep.setSolCLI_refepersonSegundoApel(getSolCLI_refepersonSegundoApel());
+                loRep.setSolCLI_refepersonDireccion(getSolCLI_refepersonDireccion());
+                loRep.setSolCLI_refepersonDistrito(getSolCLI_refepersonDistrito());
+                loRep.setSolCLI_refepersonProvincia(getSolCLI_refepersonProvincia());
+                loRep.setSolCLI_refepersonEstado(getSolCLI_refepersonEstado());
+                loRep.setSolCLI_refepersonTelefono(getSolCLI_refepersonTelefono());
+                loRep.setSolCLI_refepersonCelular(getSolCLI_refepersonCelular());
+                loRep.setSolCLI_refepersonParentesco(getSolCLI_refepersonParentesco());
                 loRep.setCliente(getCliente());
-                loRep.setCliente(getCliente());
-       
 
-                File filerecibo = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNRecibluzFileName() + "_" + getCliente().getNombre());
-                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoIFNRecibluz()));
+                File filerecibo = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteIReciboLuzFileName() + "_" + getCliente().getNombre());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteIReciboLuz()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCopiaDniFileName() + "_" + getCliente().getNombre());
-                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCopiaDni()));
+                File filecopiadni = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteICopiaDniFileName() + "_" + getCliente().getNombre());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteICopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf1FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf1()));
+                File filebol1 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteICertificadoProveedor1FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteICertificadoProveedor1()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNCertf2FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNCertf2()));
+                File filebol2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteICertificadoProveedor2FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteICertificadoProveedor2()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
-                File filebol3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac1FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac1()));
+                File filebol3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteIFactura1FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteIFactura1()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNFac2FileName() + "_" + getCliente().getNombre());
-                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoIFNFac2()));
+                File fileingadic = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteIFactura2FileName() + "_" + getCliente().getNombre());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteIFactura2()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
-                File filebol4 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC1FileName() + "_" + getCliente().getNombre());
-                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC1()));
+                File filebol4 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteICertificadoExp1FileName() + "_" + getCliente().getNombre());
+                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteICertificadoExp1()));
                 FileUtils.writeByteArrayToFile(filebol4, archivofile4);
 
-                File fileingadic2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNC2FileName() + "_" + getCliente().getNombre());
-                byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNC2()));
+                File fileingadic2 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteICertificadoExp2FileName() + "_" + getCliente().getNombre());
+                byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteICertificadoExp2()));
                 FileUtils.writeByteArrayToFile(fileingadic2, archivoingadic2);
 
-                File filebol5 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNExtracAfpFileName() + "_" + getCliente().getNombre());
-                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNExtracAfp()));
+                File filebol5 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteIExtracAfpFileName() + "_" + getCliente().getNombre());
+                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteIExtracAfp()));
                 FileUtils.writeByteArrayToFile(filebol5, archivofile5);
 
-                File fileingadic3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoIFNIngadicFileName() + "_" + getCliente().getNombre());
-                byte[] archivoingadic3 = IOUtils.toByteArray(new FileInputStream(getArchivoIFNIngadic()));
+                File fileingadic3 = new File("/ftia/files/cartas/IndependienteNFormal/" + getArchivoSolFinan_IndependienteICopiaArrendamientoFileName() + "_" + getCliente().getNombre());
+                byte[] archivoingadic3 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_IndependienteICopiaArrendamiento()));
                 FileUtils.writeByteArrayToFile(fileingadic3, archivoingadic3);
 
                 boolean llOk = loRep.mxSolicitudCliente();
@@ -1643,16 +1669,16 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }
-         
-        setResult("frmSolFinan_DocIndpN");
+
+        setResult("frmSOLDocIndependienteInformal");
         return getResult();
     }
 
-    public String frmSolFinan_DocJubila() {
+    public String frmSOLDocJubilado() {
         if (!validaSession()) {
             return "login";
         }
-        
+
         HttpServletRequest request = ServletActionContext.getRequest();
         if (request.getParameter("reporte") != null) {
             CReportePDF loRep = new CReportePDF();
@@ -1660,103 +1686,100 @@ public class MenuAction extends BaseAction {
             try {
                 loRep.setCliente(getCliente());
                 //Solicitud de Financiamiento
-                loRep.setCodEvaluador(getCodEvaluador());
-                loRep.setPuntVenta(getPuntVenta());
-                loRep.setFecSolicitud(getFecSolicitud());
-                loRep.setCiudadExp(getCiudadExp());
-                loRep.setNacionalidad(getNacionalidad());
-                loRep.setCiudadNac(getCiudadNac());
-                loRep.setPaisNac(getPaisNac());
-                loRep.setNperDepend(getNperDepend());
+                loRep.setSolCLIcodEvaluador(getSolCLIcodEvaluador());
+                loRep.setSolCLIpuntVenta(getSolCLIpuntVenta());
+                loRep.setSolCLIfecSolicitud(getSolCLIfecSolicitud());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLInacionalidad(getSolCLInacionalidad());
+                loRep.setSolCLIciudadExp(getSolCLIciudadExp());
+                loRep.setSolCLIpaisNac(getSolCLIpaisNac());
+                loRep.setSolCLInperDepend(getSolCLInperDepend());
                 //Cónyuge
-                loRep.setCPrimerNomb(getCprimerNomb());
-                loRep.setCSegundNomb(getCsegundNomb());
-                loRep.setCPrimerApel(getCprimerApel());
-                loRep.setCSegundApel(getCsegundApel());
-                loRep.setCEmpdondTrab(getCempdondTrab());
-                loRep.setCEmpCargo(getCempCargo());
-                loRep.setCEmpTelef(getCempTelef());
+                loRep.setSolCLI_conyugPrimerNomb(getSolCLI_conyugPrimerNomb());
+                loRep.setSolCLI_conyugSegundoNomb(getSolCLI_conyugSegundoNomb());
+                loRep.setSolCLI_conyugPrimerApel(getSolCLI_conyugPrimerApel());
+                loRep.setSolCLI_conyugSegundoApel(getSolCLI_conyugSegundoApel());
+                loRep.setSolCLI_conyugEmpresaTrab(getSolCLI_conyugEmpresaTrab());
+                loRep.setSolCLI_conyugEmpresaCarg(getSolCLI_conyugEmpresaCarg());
+                loRep.setSolCLI_conyugEmpresaTele(getSolCLI_conyugEmpresaTele());
                 //Vivienda
-                loRep.setVSuministro(getVsuministro());
-                loRep.setVTitularSum(getVtitularSum());
-                loRep.setVRelacTitul(getVrelacTitul());
-                loRep.setVTipoVivien(getVtipoVivien());
-                loRep.setVHaceCVivea(getVhaceCVivea());
-                loRep.setVDireccResi(getVdireccResi());
-                loRep.setVDistVivien(getVdistVivien());
-                loRep.setVProvVivien(getVprovVivien());
-                loRep.setVDepaVivien(getVdepaVivien());
+                loRep.setSolCLI_vivienSuministro(getSolCLI_vivienSuministro());
+                loRep.setSolCLI_vivienTitularSuminis(getSolCLI_vivienTitularSuminis());
+                loRep.setSolCLI_vivienRelacionTitu(getSolCLI_vivienRelacionTitu());
+                loRep.setSolCLI_vivienTipo(getSolCLI_vivienTipo());
+                loRep.setSolCLI_vivienTiempo(getSolCLI_vivienTiempo());
+                loRep.setSolCLI_vivienDireccion(getSolCLI_vivienDireccion());
+                loRep.setSolCLI_vivienDistrito(getSolCLI_vivienDistrito());
+                loRep.setSolCLI_vivienProvincia(getSolCLI_vivienProvincia());
+                loRep.setSolCLI_vivienDepartamento(getSolCLI_vivienDepartamento());
                 //JUBILADO
-                loRep.setJNombEmpJ(getJnombEmpJ());
-                loRep.setJNombEmpA(getJnombEmpA());
-                loRep.setJHacecuaJ(getJhacecuaJ());
+                loRep.setSolCLI_jubilEmpresaNombJubi(getSolCLI_jubilEmpresaNombJubi());
+                loRep.setSolCLI_jubilEmpresaNombApor(getSolCLI_jubilEmpresaNombApor());
+                loRep.setSolCLI_jubilEmpresaTiempo(getSolCLI_jubilEmpresaTiempo());
                 //Datos Información Financiera-Ingresos
-                loRep.setISueldBas(getIsueldBas());
-                loRep.setIComisiones(getIcomisiones());
-                loRep.setIHonorarios(getIhonorarios());
-                loRep.setIAlquileres(getIalquileres());
-                loRep.setIOtrosIngres(getIotrosIngres());
-                loRep.setITotalIng(getItotalIng());
-                loRep.setITotalAct(getItotalAct());
+                loRep.setSolCLI_infofinanIngSueldoBasic(getSolCLI_infofinanIngSueldoBasic());
+                loRep.setSolCLI_infofinanIngComisiones(getSolCLI_infofinanIngComisiones());
+                loRep.setSolCLI_infofinanIngHonorarios(getSolCLI_infofinanIngHonorarios());
+                loRep.setSolCLI_infofinanIngAlquileres(getSolCLI_infofinanIngAlquileres());
+                loRep.setSolCLI_infofinanIngOtros(getSolCLI_infofinanIngOtros());
+                loRep.setSolCLI_infofinanIngTotal(getSolCLI_infofinanIngTotal());
+                loRep.setSolCLI_infofinanIngTotalAct(getSolCLI_infofinanIngTotalAct());
                 //Datos Información Financiera-Gastos
-                loRep.setGAlquiler(getGalquiler());
-                loRep.setGCreditoViv(getGcreditoViv());
-                loRep.setGGastosFamil(getGgastosFamil());
-                loRep.setGTarjetasCred(getGtarjetasCred());
-                loRep.setGOtrosGas(getGotrosGas());
-                loRep.setGTotalGas(getGtotalGas());
-                loRep.setGTotalPat(getGtotalPat());
+                loRep.setSolCLI_infofinanGasAlquiler(getSolCLI_infofinanGasAlquiler());
+                loRep.setSolCLI_infofinanGasCreditoViv(getSolCLI_infofinanGasCreditoViv());
+                loRep.setSolCLI_infofinanGasCreditoViv(getSolCLI_infofinanGasFamiliar());
+                loRep.setSolCLI_infofinanGasTarjetasCred(getSolCLI_infofinanGasTarjetasCred());
+                loRep.setSolCLI_infofinanGasOtros(getSolCLI_infofinanGasOtros());
+                loRep.setSolCLI_infofinanGasTotal(getSolCLI_infofinanGasTotal());
+                loRep.setSolCLI_infofinanGasTotalPat(getSolCLI_infofinanGasTotalPat());
                 //Datos Referencias Personales
-                loRep.setRPPrimerNomb(getRpprimerNomb());
-                loRep.setRPSegundoNomb(getRpsegundoNomb());
-                loRep.setRPPrimerApell(getRpprimerApell());
-                loRep.setRPSegundoApell(getRpsegundoApell());
-                loRep.setRPDirec(getRpdirec());
-                loRep.setRPDistr(getRpdistr());
-                loRep.setRPProvi(getRpprovi());
-                loRep.setRPEstad(getRpestad());
-                loRep.setRPTelef(getRptelef());
-                loRep.setRPCelul(getRpcelul());
-                loRep.setRPParen(getRpparen());
+                loRep.setSolCLI_refepersonPrimerNomb(getSolCLI_refepersonPrimerNomb());
+                loRep.setSolCLI_refepersonSegundoNomb(getSolCLI_refepersonSegundoNomb());
+                loRep.setSolCLI_refepersonPrimerApel(getSolCLI_refepersonPrimerApel());
+                loRep.setSolCLI_refepersonSegundoApel(getSolCLI_refepersonSegundoApel());
+                loRep.setSolCLI_refepersonDireccion(getSolCLI_refepersonDireccion());
+                loRep.setSolCLI_refepersonDistrito(getSolCLI_refepersonDistrito());
+                loRep.setSolCLI_refepersonProvincia(getSolCLI_refepersonProvincia());
+                loRep.setSolCLI_refepersonEstado(getSolCLI_refepersonEstado());
+                loRep.setSolCLI_refepersonTelefono(getSolCLI_refepersonTelefono());
+                loRep.setSolCLI_refepersonCelular(getSolCLI_refepersonCelular());
+                loRep.setSolCLI_refepersonParentesco(getSolCLI_refepersonParentesco());
                 loRep.setCliente(getCliente());
-                loRep.setCliente(getCliente());
-                loRep.setCliente(getCliente());
-  
 
-                File filerecibo = new File("/ftia/files/cartas/Jubilado/" + getArchivoJRecibFileName());
-                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoJRecib()));
+                File filerecibo = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoReciboFileName());
+                byte[] archivorecibo = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoRecibo()));
                 FileUtils.writeByteArrayToFile(filerecibo, archivorecibo);
 
-                File filecopiadni = new File("/ftia/files/cartas/Jubilado/" + getArchivoJCopiaFileName());
-                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoJCopia()));
+                File filecopiadni = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoCopiaDniFileName());
+                byte[] archivocopiadni = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoCopiaDni()));
                 FileUtils.writeByteArrayToFile(filecopiadni, archivocopiadni);
 
-                File filebol1 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJBol1FileName());
-                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoJBol1()));
+                File filebol1 = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoBoleta1FileName());
+                byte[] archivofile1 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoBoleta1()));
                 FileUtils.writeByteArrayToFile(filebol1, archivofile1);
 
-                File filebol2 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJBol2FileName());
-                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoJBol2()));
+                File filebol2 = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoBoleta2FileName());
+                byte[] archivofile2 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoBoleta2()));
                 FileUtils.writeByteArrayToFile(filebol2, archivofile2);
 
-                File filebol3 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJBol3FileName());
-                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoJBol3()));
+                File filebol3 = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoBoleta3FileName());
+                byte[] archivofile3 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoBoleta3()));
                 FileUtils.writeByteArrayToFile(filebol3, archivofile3);
 
-                File fileingadic = new File("/ftia/files/cartas/Jubilado/" + getArchivoJExt1FileName());
-                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoJExt1()));
+                File fileingadic = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoExtracBanc1FileName());
+                byte[] archivoingadic = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoExtracBanc1()));
                 FileUtils.writeByteArrayToFile(fileingadic, archivoingadic);
 
-                File filebol4 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJExt2FileName());
-                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoJExt2()));
+                File filebol4 = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoExtracBanc2FileName());
+                byte[] archivofile4 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoExtracBanc2()));
                 FileUtils.writeByteArrayToFile(filebol4, archivofile4);
 
-                File fileingadic2 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJExt3FileName());
-                byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoJExt3()));
+                File fileingadic2 = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoExtracBanc3FileName());
+                byte[] archivoingadic2 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoExtracBanc3()));
                 FileUtils.writeByteArrayToFile(fileingadic2, archivoingadic2);
 
-                File filebol5 = new File("/ftia/files/cartas/Jubilado/" + getArchivoJIngadicFileName());
-                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoJIngadic()));
+                File filebol5 = new File("/ftia/files/cartas/Jubilado/" + getArchivoSolFinan_JubiladoCopiaArrendamientoFileName());
+                byte[] archivofile5 = IOUtils.toByteArray(new FileInputStream(getArchivoSolFinan_JubiladoCopiaArrendamiento()));
                 FileUtils.writeByteArrayToFile(filebol5, archivofile5);
 
                 boolean llOk = loRep.mxSolicitudCliente();
@@ -1778,8 +1801,8 @@ public class MenuAction extends BaseAction {
                 setError(loErr.getMessage());
             }
         }
-         
-        setResult("frmSolFinan_DocJubila");
+
+        setResult("frmSOLDocJubilado");
         return getResult();
     }
 
@@ -9553,70 +9576,6 @@ public class MenuAction extends BaseAction {
         this.product = product;
     }
 
-    public String getCodEvaluador() {
-        return codEvaluador;
-    }
-
-    public void setCodEvaluador(String codEvaluador) {
-        this.codEvaluador = codEvaluador;
-    }
-
-    public String getPuntVenta() {
-        return puntVenta;
-    }
-
-    public void setPuntVenta(String puntVenta) {
-        this.puntVenta = puntVenta;
-    }
-
-    public String getFecSolicitud() {
-        return fecSolicitud;
-    }
-
-    public void setFecSolicitud(String fecSolicitud) {
-        this.fecSolicitud = fecSolicitud;
-    }
-
-    public String getCiudadExp() {
-        return ciudadExp;
-    }
-
-    public void setCiudadExp(String ciudadExp) {
-        this.ciudadExp = ciudadExp;
-    }
-
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
-
-    public void setNacionalidad(String nacionalidad) {
-        this.nacionalidad = nacionalidad;
-    }
-
-    public String getCiudadNac() {
-        return ciudadNac;
-    }
-
-    public void setCiudadNac(String ciudadNac) {
-        this.ciudadNac = ciudadNac;
-    }
-
-    public String getPaisNac() {
-        return paisNac;
-    }
-
-    public void setPaisNac(String paisNac) {
-        this.paisNac = paisNac;
-    }
-
-    public String getNperDepend() {
-        return nperDepend;
-    }
-
-    public void setNperDepend(String nperDepend) {
-        this.nperDepend = nperDepend;
-    }
-
     public List<String> getLstOficina() {
         return lstOficina;
     }
@@ -9641,1252 +9600,1315 @@ public class MenuAction extends BaseAction {
         this.FecmoraFin = FecmoraFin;
     }
 
-    public String getCprimerNomb() {
-        return cprimerNomb;
+    public String getSolCLIcodEvaluador() {
+        return solCLIcodEvaluador;
     }
 
-    public void setCprimerNomb(String cprimerNomb) {
-        this.cprimerNomb = cprimerNomb;
+    public void setSolCLIcodEvaluador(String solCLIcodEvaluador) {
+        this.solCLIcodEvaluador = solCLIcodEvaluador;
     }
 
-    public String getCsegundNomb() {
-        return csegundNomb;
+    public String getSolCLIpuntVenta() {
+        return solCLIpuntVenta;
     }
 
-    public void setCsegundNomb(String csegundNomb) {
-        this.csegundNomb = csegundNomb;
+    public void setSolCLIpuntVenta(String solCLIpuntVenta) {
+        this.solCLIpuntVenta = solCLIpuntVenta;
     }
 
-    public String getCprimerApel() {
-        return cprimerApel;
+    public String getSolCLIfecSolicitud() {
+        return solCLIfecSolicitud;
     }
 
-    public void setCprimerApel(String cprimerApel) {
-        this.cprimerApel = cprimerApel;
+    public void setSolCLIfecSolicitud(String solCLIfecSolicitud) {
+        this.solCLIfecSolicitud = solCLIfecSolicitud;
     }
 
-    public String getCsegundApel() {
-        return csegundApel;
+    public String getSolCLIciudadExp() {
+        return solCLIciudadExp;
     }
 
-    public void setCsegundApel(String csegundApel) {
-        this.csegundApel = csegundApel;
+    public void setSolCLIciudadExp(String solCLIciudadExp) {
+        this.solCLIciudadExp = solCLIciudadExp;
     }
 
-    public String getCempdondTrab() {
-        return cempdondTrab;
+    public String getSolCLInacionalidad() {
+        return solCLInacionalidad;
     }
 
-    public void setCempdondTrab(String cempdondTrab) {
-        this.cempdondTrab = cempdondTrab;
+    public void setSolCLInacionalidad(String solCLInacionalidad) {
+        this.solCLInacionalidad = solCLInacionalidad;
     }
 
-    public String getCempCargo() {
-        return cempCargo;
+    public String getSolCLIciudadNac() {
+        return solCLIciudadNac;
     }
 
-    public void setCempCargo(String cempCargo) {
-        this.cempCargo = cempCargo;
+    public void setSolCLIciudadNac(String solCLIciudadNac) {
+        this.solCLIciudadNac = solCLIciudadNac;
     }
 
-    public String getCempTelef() {
-        return cempTelef;
+    public String getSolCLIpaisNac() {
+        return solCLIpaisNac;
     }
 
-    public void setCempTelef(String cempTelef) {
-        this.cempTelef = cempTelef;
+    public void setSolCLIpaisNac(String solCLIpaisNac) {
+        this.solCLIpaisNac = solCLIpaisNac;
     }
 
-    public String getVsuministro() {
-        return vsuministro;
+    public String getSolCLInperDepend() {
+        return solCLInperDepend;
     }
 
-    public void setVsuministro(String vsuministro) {
-        this.vsuministro = vsuministro;
+    public void setSolCLInperDepend(String solCLInperDepend) {
+        this.solCLInperDepend = solCLInperDepend;
     }
 
-    public String getVtitularSum() {
-        return vtitularSum;
+    public String getSolCLI_conyugPrimerNomb() {
+        return solCLI_conyugPrimerNomb;
     }
 
-    public void setVtitularSum(String vtitularSum) {
-        this.vtitularSum = vtitularSum;
+    public void setSolCLI_conyugPrimerNomb(String solCLI_conyugPrimerNomb) {
+        this.solCLI_conyugPrimerNomb = solCLI_conyugPrimerNomb;
     }
 
-    public String getVrelacTitul() {
-        return vrelacTitul;
+    public String getSolCLI_conyugSegundoNomb() {
+        return solCLI_conyugSegundoNomb;
     }
 
-    public void setVrelacTitul(String vrelacTitul) {
-        this.vrelacTitul = vrelacTitul;
+    public void setSolCLI_conyugSegundoNomb(String solCLI_conyugSegundoNomb) {
+        this.solCLI_conyugSegundoNomb = solCLI_conyugSegundoNomb;
     }
 
-    public String getVtipoVivien() {
-        return vtipoVivien;
+    public String getSolCLI_conyugPrimerApel() {
+        return solCLI_conyugPrimerApel;
     }
 
-    public void setVtipoVivien(String vtipoVivien) {
-        this.vtipoVivien = vtipoVivien;
+    public void setSolCLI_conyugPrimerApel(String solCLI_conyugPrimerApel) {
+        this.solCLI_conyugPrimerApel = solCLI_conyugPrimerApel;
     }
 
-    public String getVhaceCVivea() {
-        return vhaceCVivea;
+    public String getSolCLI_conyugSegundoApel() {
+        return solCLI_conyugSegundoApel;
     }
 
-    public void setVhaceCVivea(String vhaceCVivea) {
-        this.vhaceCVivea = vhaceCVivea;
+    public void setSolCLI_conyugSegundoApel(String solCLI_conyugSegundoApel) {
+        this.solCLI_conyugSegundoApel = solCLI_conyugSegundoApel;
     }
 
-    public String getVdireccResi() {
-        return vdireccResi;
+    public String getSolCLI_conyugEmpresaTrab() {
+        return solCLI_conyugEmpresaTrab;
     }
 
-    public void setVdireccResi(String vdireccResi) {
-        this.vdireccResi = vdireccResi;
+    public void setSolCLI_conyugEmpresaTrab(String solCLI_conyugEmpresaTrab) {
+        this.solCLI_conyugEmpresaTrab = solCLI_conyugEmpresaTrab;
     }
 
-    public String getVdistVivien() {
-        return vdistVivien;
+    public String getSolCLI_conyugEmpresaCarg() {
+        return solCLI_conyugEmpresaCarg;
     }
 
-    public void setVdistVivien(String vdistVivien) {
-        this.vdistVivien = vdistVivien;
+    public void setSolCLI_conyugEmpresaCarg(String solCLI_conyugEmpresaCarg) {
+        this.solCLI_conyugEmpresaCarg = solCLI_conyugEmpresaCarg;
     }
 
-    public String getVprovVivien() {
-        return vprovVivien;
+    public String getSolCLI_conyugEmpresaTele() {
+        return solCLI_conyugEmpresaTele;
     }
 
-    public void setVprovVivien(String vprovVivien) {
-        this.vprovVivien = vprovVivien;
+    public void setSolCLI_conyugEmpresaTele(String solCLI_conyugEmpresaTele) {
+        this.solCLI_conyugEmpresaTele = solCLI_conyugEmpresaTele;
     }
 
-    public String getVdepaVivien() {
-        return vdepaVivien;
+    public String getSolCLI_vivienSuministro() {
+        return solCLI_vivienSuministro;
     }
 
-    public void setVdepaVivien(String vdepaVivien) {
-        this.vdepaVivien = vdepaVivien;
+    public void setSolCLI_vivienSuministro(String solCLI_vivienSuministro) {
+        this.solCLI_vivienSuministro = solCLI_vivienSuministro;
     }
 
-    public String getEnombreEmpr() {
-        return enombreEmpr;
+    public String getSolCLI_vivienTitularSuminis() {
+        return solCLI_vivienTitularSuminis;
     }
 
-    public void setEnombreEmpr(String enombreEmpr) {
-        this.enombreEmpr = enombreEmpr;
+    public void setSolCLI_vivienTitularSuminis(String solCLI_vivienTitularSuminis) {
+        this.solCLI_vivienTitularSuminis = solCLI_vivienTitularSuminis;
     }
 
-    public String getEactivdEmpr() {
-        return eactivdEmpr;
+    public String getSolCLI_vivienRelacionTitu() {
+        return solCLI_vivienRelacionTitu;
     }
 
-    public void setEactivdEmpr(String eactivdEmpr) {
-        this.eactivdEmpr = eactivdEmpr;
+    public void setSolCLI_vivienRelacionTitu(String solCLI_vivienRelacionTitu) {
+        this.solCLI_vivienRelacionTitu = solCLI_vivienRelacionTitu;
     }
 
-    public String getEdirEmpr() {
-        return edirEmpr;
+    public String getSolCLI_vivienTipo() {
+        return solCLI_vivienTipo;
     }
 
-    public void setEdirEmpr(String edirEmpr) {
-        this.edirEmpr = edirEmpr;
+    public void setSolCLI_vivienTipo(String solCLI_vivienTipo) {
+        this.solCLI_vivienTipo = solCLI_vivienTipo;
     }
 
-    public String getEdepEmpr() {
-        return edepEmpr;
+    public String getSolCLI_vivienTiempo() {
+        return solCLI_vivienTiempo;
     }
 
-    public void setEdepEmpr(String edepEmpr) {
-        this.edepEmpr = edepEmpr;
+    public void setSolCLI_vivienTiempo(String solCLI_vivienTiempo) {
+        this.solCLI_vivienTiempo = solCLI_vivienTiempo;
     }
 
-    public String getEdisEmpr() {
-        return edisEmpr;
+    public String getSolCLI_vivienDireccion() {
+        return solCLI_vivienDireccion;
     }
 
-    public void setEdisEmpr(String edisEmpr) {
-        this.edisEmpr = edisEmpr;
+    public void setSolCLI_vivienDireccion(String solCLI_vivienDireccion) {
+        this.solCLI_vivienDireccion = solCLI_vivienDireccion;
     }
 
-    public String getEprovEmpr() {
-        return eprovEmpr;
+    public String getSolCLI_vivienDistrito() {
+        return solCLI_vivienDistrito;
     }
 
-    public void setEprovEmpr(String eprovEmpr) {
-        this.eprovEmpr = eprovEmpr;
+    public void setSolCLI_vivienDistrito(String solCLI_vivienDistrito) {
+        this.solCLI_vivienDistrito = solCLI_vivienDistrito;
     }
 
-    public String getIlabor() {
-        return ilabor;
+    public String getSolCLI_vivienProvincia() {
+        return solCLI_vivienProvincia;
     }
 
-    public void setIlabor(String ilabor) {
-        this.ilabor = ilabor;
+    public void setSolCLI_vivienProvincia(String solCLI_vivienProvincia) {
+        this.solCLI_vivienProvincia = solCLI_vivienProvincia;
     }
 
-    public String getIhacecuantInd() {
-        return ihacecuantInd;
+    public String getSolCLI_vivienDepartamento() {
+        return solCLI_vivienDepartamento;
     }
 
-    public void setIhacecuantInd(String ihacecuantInd) {
-        this.ihacecuantInd = ihacecuantInd;
+    public void setSolCLI_vivienDepartamento(String solCLI_vivienDepartamento) {
+        this.solCLI_vivienDepartamento = solCLI_vivienDepartamento;
     }
 
-    public String getItipodeInd() {
-        return itipodeInd;
+    public String getSolCLI_empleadEmpresaNomb() {
+        return solCLI_empleadEmpresaNomb;
     }
 
-    public void setItipodeInd(String itipodeInd) {
-        this.itipodeInd = itipodeInd;
+    public void setSolCLI_empleadEmpresaNomb(String solCLI_empleadEmpresaNomb) {
+        this.solCLI_empleadEmpresaNomb = solCLI_empleadEmpresaNomb;
     }
 
-    public String getFnombEmpr() {
-        return fnombEmpr;
+    public String getSolCLI_empleadEmpresaRuc() {
+        return solCLI_empleadEmpresaRuc;
     }
 
-    public void setFnombEmpr(String fnombEmpr) {
-        this.fnombEmpr = fnombEmpr;
+    public void setSolCLI_empleadEmpresaRuc(String solCLI_empleadEmpresaRuc) {
+        this.solCLI_empleadEmpresaRuc = solCLI_empleadEmpresaRuc;
     }
 
-    public String getFrucEmpr() {
-        return frucEmpr;
+    public String getSolCLI_empleadEmpresaActi() {
+        return solCLI_empleadEmpresaActi;
     }
 
-    public void setFrucEmpr(String frucEmpr) {
-        this.frucEmpr = frucEmpr;
+    public void setSolCLI_empleadEmpresaActi(String solCLI_empleadEmpresaActi) {
+        this.solCLI_empleadEmpresaActi = solCLI_empleadEmpresaActi;
     }
 
-    public String getFcargo() {
-        return fcargo;
+    public String getSolCLI_empleadEmpresaDire() {
+        return solCLI_empleadEmpresaDire;
     }
 
-    public void setFcargo(String fcargo) {
-        this.fcargo = fcargo;
+    public void setSolCLI_empleadEmpresaDire(String solCLI_empleadEmpresaDire) {
+        this.solCLI_empleadEmpresaDire = solCLI_empleadEmpresaDire;
     }
 
-    public String getFdirLabo() {
-        return fdirLabo;
+    public String getSolCLI_empleadEmpresaDepa() {
+        return solCLI_empleadEmpresaDepa;
     }
 
-    public void setFdirLabo(String fdirLabo) {
-        this.fdirLabo = fdirLabo;
+    public void setSolCLI_empleadEmpresaDepa(String solCLI_empleadEmpresaDepa) {
+        this.solCLI_empleadEmpresaDepa = solCLI_empleadEmpresaDepa;
     }
 
-    public String getFdisLabo() {
-        return fdisLabo;
+    public String getSolCLI_empleadEmpresaDist() {
+        return solCLI_empleadEmpresaDist;
     }
 
-    public void setFdisLabo(String fdisLabo) {
-        this.fdisLabo = fdisLabo;
+    public void setSolCLI_empleadEmpresaDist(String solCLI_empleadEmpresaDist) {
+        this.solCLI_empleadEmpresaDist = solCLI_empleadEmpresaDist;
     }
 
-    public String getFproLabo() {
-        return fproLabo;
+    public String getSolCLI_empleadEmpresaProv() {
+        return solCLI_empleadEmpresaProv;
     }
 
-    public void setFproLabo(String fproLabo) {
-        this.fproLabo = fproLabo;
+    public void setSolCLI_empleadEmpresaProv(String solCLI_empleadEmpresaProv) {
+        this.solCLI_empleadEmpresaProv = solCLI_empleadEmpresaProv;
     }
 
-    public String getFdepLabo() {
-        return fdepLabo;
+    public String getSolCLI_independILabor() {
+        return solCLI_independILabor;
     }
 
-    public void setFdepLabo(String fdepLabo) {
-        this.fdepLabo = fdepLabo;
+    public void setSolCLI_independILabor(String solCLI_independILabor) {
+        this.solCLI_independILabor = solCLI_independILabor;
     }
 
-    public String getFtelef() {
-        return ftelef;
+    public String getSolCLI_independITiempoViv() {
+        return solCLI_independITiempoViv;
     }
 
-    public void setFtelef(String ftelef) {
-        this.ftelef = ftelef;
+    public void setSolCLI_independITiempoViv(String solCLI_independITiempoViv) {
+        this.solCLI_independITiempoViv = solCLI_independITiempoViv;
     }
 
-    public String getFanexo() {
-        return fanexo;
+    public String getSolCLI_independITipo() {
+        return solCLI_independITipo;
     }
 
-    public void setFanexo(String fanexo) {
-        this.fanexo = fanexo;
+    public void setSolCLI_independITipo(String solCLI_independITipo) {
+        this.solCLI_independITipo = solCLI_independITipo;
     }
 
-    public String getFcorreo() {
-        return fcorreo;
+    public String getSolCLI_independITipoaux() {
+        return solCLI_independITipoaux;
     }
 
-    public void setFcorreo(String fcorreo) {
-        this.fcorreo = fcorreo;
+    public void setSolCLI_independITipoaux(String solCLI_independITipoaux) {
+        this.solCLI_independITipoaux = solCLI_independITipoaux;
     }
 
-    public String getJnombEmpJ() {
-        return jnombEmpJ;
+    public String getSolCLI_independFEmpresaNomb() {
+        return solCLI_independFEmpresaNomb;
     }
 
-    public void setJnombEmpJ(String jnombEmpJ) {
-        this.jnombEmpJ = jnombEmpJ;
+    public void setSolCLI_independFEmpresaNomb(String solCLI_independFEmpresaNomb) {
+        this.solCLI_independFEmpresaNomb = solCLI_independFEmpresaNomb;
     }
 
-    public String getJnombEmpA() {
-        return jnombEmpA;
+    public String getSolCLI_independFEmpresaRuc() {
+        return solCLI_independFEmpresaRuc;
     }
 
-    public void setJnombEmpA(String jnombEmpA) {
-        this.jnombEmpA = jnombEmpA;
+    public void setSolCLI_independFEmpresaRuc(String solCLI_independFEmpresaRuc) {
+        this.solCLI_independFEmpresaRuc = solCLI_independFEmpresaRuc;
     }
 
-    public String getJhacecuaJ() {
-        return jhacecuaJ;
+    public String getSolCLI_independFCargo() {
+        return solCLI_independFCargo;
     }
 
-    public void setJhacecuaJ(String jhacecuaJ) {
-        this.jhacecuaJ = jhacecuaJ;
+    public void setSolCLI_independFCargo(String solCLI_independFCargo) {
+        this.solCLI_independFCargo = solCLI_independFCargo;
     }
 
-    public double getIsueldBas() {
-        return isueldBas;
+    public String getSolCLI_independFLaboraDire() {
+        return solCLI_independFLaboraDire;
     }
 
-    public void setIsueldBas(double isueldBas) {
-        this.isueldBas = isueldBas;
+    public void setSolCLI_independFLaboraDire(String solCLI_independFLaboraDire) {
+        this.solCLI_independFLaboraDire = solCLI_independFLaboraDire;
     }
 
-    public double getIcomisiones() {
-        return icomisiones;
+    public String getSolCLI_independFLaboraDist() {
+        return solCLI_independFLaboraDist;
     }
 
-    public void setIcomisiones(double icomisiones) {
-        this.icomisiones = icomisiones;
+    public void setSolCLI_independFLaboraDist(String solCLI_independFLaboraDist) {
+        this.solCLI_independFLaboraDist = solCLI_independFLaboraDist;
     }
 
-    public double getIhonorarios() {
-        return ihonorarios;
+    public String getSolCLI_independFLaboraProv() {
+        return solCLI_independFLaboraProv;
     }
 
-    public void setIhonorarios(double ihonorarios) {
-        this.ihonorarios = ihonorarios;
+    public void setSolCLI_independFLaboraProv(String solCLI_independFLaboraProv) {
+        this.solCLI_independFLaboraProv = solCLI_independFLaboraProv;
     }
 
-    public double getIalquileres() {
-        return ialquileres;
+    public String getSolCLI_independFLaboraDepa() {
+        return solCLI_independFLaboraDepa;
     }
 
-    public void setIalquileres(double ialquileres) {
-        this.ialquileres = ialquileres;
+    public void setSolCLI_independFLaboraDepa(String solCLI_independFLaboraDepa) {
+        this.solCLI_independFLaboraDepa = solCLI_independFLaboraDepa;
     }
 
-    public double getIotrosIngres() {
-        return iotrosIngres;
+    public String getSolCLI_independFTelefono() {
+        return solCLI_independFTelefono;
     }
 
-    public void setIotrosIngres(double iotrosIngres) {
-        this.iotrosIngres = iotrosIngres;
+    public void setSolCLI_independFTelefono(String solCLI_independFTelefono) {
+        this.solCLI_independFTelefono = solCLI_independFTelefono;
     }
 
-    public double getItotalIng() {
-        return itotalIng;
+    public String getSolCLI_independFAnexo() {
+        return solCLI_independFAnexo;
     }
 
-    public void setItotalIng(double itotalIng) {
-        this.itotalIng = itotalIng;
+    public void setSolCLI_independFAnexo(String solCLI_independFAnexo) {
+        this.solCLI_independFAnexo = solCLI_independFAnexo;
     }
 
-    public double getItotalAct() {
-        return itotalAct;
+    public String getSolCLI_independFCorreo() {
+        return solCLI_independFCorreo;
     }
 
-    public void setItotalAct(double itotalAct) {
-        this.itotalAct = itotalAct;
+    public void setSolCLI_independFCorreo(String solCLI_independFCorreo) {
+        this.solCLI_independFCorreo = solCLI_independFCorreo;
     }
 
-    public double getGalquiler() {
-        return galquiler;
+    public String getSolCLI_jubilEmpresaNombJubi() {
+        return solCLI_jubilEmpresaNombJubi;
     }
 
-    public void setGalquiler(double galquiler) {
-        this.galquiler = galquiler;
+    public void setSolCLI_jubilEmpresaNombJubi(String solCLI_jubilEmpresaNombJubi) {
+        this.solCLI_jubilEmpresaNombJubi = solCLI_jubilEmpresaNombJubi;
     }
 
-    public double getGcreditoViv() {
-        return gcreditoViv;
+    public String getSolCLI_jubilEmpresaNombApor() {
+        return solCLI_jubilEmpresaNombApor;
     }
 
-    public void setGcreditoViv(double gcreditoViv) {
-        this.gcreditoViv = gcreditoViv;
+    public void setSolCLI_jubilEmpresaNombApor(String solCLI_jubilEmpresaNombApor) {
+        this.solCLI_jubilEmpresaNombApor = solCLI_jubilEmpresaNombApor;
     }
 
-    public double getGgastosFamil() {
-        return ggastosFamil;
+    public String getSolCLI_jubilEmpresaTiempo() {
+        return solCLI_jubilEmpresaTiempo;
     }
 
-    public void setGgastosFamil(double ggastosFamil) {
-        this.ggastosFamil = ggastosFamil;
+    public void setSolCLI_jubilEmpresaTiempo(String solCLI_jubilEmpresaTiempo) {
+        this.solCLI_jubilEmpresaTiempo = solCLI_jubilEmpresaTiempo;
     }
 
-    public double getGtarjetasCred() {
-        return gtarjetasCred;
+    public double getSolCLI_infofinanIngSueldoBasic() {
+        return solCLI_infofinanIngSueldoBasic;
     }
 
-    public void setGtarjetasCred(double gtarjetasCred) {
-        this.gtarjetasCred = gtarjetasCred;
+    public void setSolCLI_infofinanIngSueldoBasic(double solCLI_infofinanIngSueldoBasic) {
+        this.solCLI_infofinanIngSueldoBasic = solCLI_infofinanIngSueldoBasic;
     }
 
-    public double getGotrosGas() {
-        return gotrosGas;
+    public double getSolCLI_infofinanIngComisiones() {
+        return solCLI_infofinanIngComisiones;
     }
 
-    public void setGotrosGas(double gotrosGas) {
-        this.gotrosGas = gotrosGas;
+    public void setSolCLI_infofinanIngComisiones(double solCLI_infofinanIngComisiones) {
+        this.solCLI_infofinanIngComisiones = solCLI_infofinanIngComisiones;
     }
 
-    public double getGtotalGas() {
-        return gtotalGas;
+    public double getSolCLI_infofinanIngHonorarios() {
+        return solCLI_infofinanIngHonorarios;
     }
 
-    public void setGtotalGas(double gtotalGas) {
-        this.gtotalGas = gtotalGas;
+    public void setSolCLI_infofinanIngHonorarios(double solCLI_infofinanIngHonorarios) {
+        this.solCLI_infofinanIngHonorarios = solCLI_infofinanIngHonorarios;
     }
 
-    public double getGtotalPat() {
-        return gtotalPat;
+    public double getSolCLI_infofinanIngAlquileres() {
+        return solCLI_infofinanIngAlquileres;
     }
 
-    public void setGtotalPat(double gtotalPat) {
-        this.gtotalPat = gtotalPat;
+    public void setSolCLI_infofinanIngAlquileres(double solCLI_infofinanIngAlquileres) {
+        this.solCLI_infofinanIngAlquileres = solCLI_infofinanIngAlquileres;
     }
 
-    public String getRpprimerNomb() {
-        return rpprimerNomb;
+    public double getSolCLI_infofinanIngOtros() {
+        return solCLI_infofinanIngOtros;
     }
 
-    public void setRpprimerNomb(String rpprimerNomb) {
-        this.rpprimerNomb = rpprimerNomb;
+    public void setSolCLI_infofinanIngOtros(double solCLI_infofinanIngOtros) {
+        this.solCLI_infofinanIngOtros = solCLI_infofinanIngOtros;
     }
 
-    public String getRpsegundoNomb() {
-        return rpsegundoNomb;
+    public double getSolCLI_infofinanIngTotal() {
+        return solCLI_infofinanIngTotal;
     }
 
-    public void setRpsegundoNomb(String rpsegundoNomb) {
-        this.rpsegundoNomb = rpsegundoNomb;
+    public void setSolCLI_infofinanIngTotal(double solCLI_infofinanIngTotal) {
+        this.solCLI_infofinanIngTotal = solCLI_infofinanIngTotal;
     }
 
-    public String getRpprimerApell() {
-        return rpprimerApell;
+    public double getSolCLI_infofinanIngTotalAct() {
+        return solCLI_infofinanIngTotalAct;
     }
 
-    public void setRpprimerApell(String rpprimerApell) {
-        this.rpprimerApell = rpprimerApell;
+    public void setSolCLI_infofinanIngTotalAct(double solCLI_infofinanIngTotalAct) {
+        this.solCLI_infofinanIngTotalAct = solCLI_infofinanIngTotalAct;
     }
 
-    public String getRpsegundoApell() {
-        return rpsegundoApell;
+    public double getSolCLI_infofinanGasAlquiler() {
+        return solCLI_infofinanGasAlquiler;
     }
 
-    public void setRpsegundoApell(String rpsegundoApell) {
-        this.rpsegundoApell = rpsegundoApell;
+    public void setSolCLI_infofinanGasAlquiler(double solCLI_infofinanGasAlquiler) {
+        this.solCLI_infofinanGasAlquiler = solCLI_infofinanGasAlquiler;
     }
 
-    public String getRpdirec() {
-        return rpdirec;
+    public double getSolCLI_infofinanGasCreditoViv() {
+        return solCLI_infofinanGasCreditoViv;
     }
 
-    public String getErucEmpr() {
-        return erucEmpr;
+    public void setSolCLI_infofinanGasCreditoViv(double solCLI_infofinanGasCreditoViv) {
+        this.solCLI_infofinanGasCreditoViv = solCLI_infofinanGasCreditoViv;
     }
 
-    public void setErucEmpr(String erucEmpr) {
-        this.erucEmpr = erucEmpr;
+    public double getSolCLI_infofinanGasFamiliar() {
+        return solCLI_infofinanGasFamiliar;
     }
 
-    public void setRpdirec(String rpdirec) {
-        this.rpdirec = rpdirec;
+    public void setSolCLI_infofinanGasFamiliar(double solCLI_infofinanGasFamiliar) {
+        this.solCLI_infofinanGasFamiliar = solCLI_infofinanGasFamiliar;
     }
 
-    public String getRpdistr() {
-        return rpdistr;
+    public double getSolCLI_infofinanGasTarjetasCred() {
+        return solCLI_infofinanGasTarjetasCred;
     }
 
-    public void setRpdistr(String rpdistr) {
-        this.rpdistr = rpdistr;
+    public void setSolCLI_infofinanGasTarjetasCred(double solCLI_infofinanGasTarjetasCred) {
+        this.solCLI_infofinanGasTarjetasCred = solCLI_infofinanGasTarjetasCred;
     }
 
-    public String getRpprovi() {
-        return rpprovi;
+    public double getSolCLI_infofinanGasOtros() {
+        return solCLI_infofinanGasOtros;
     }
 
-    public void setRpprovi(String rpprovi) {
-        this.rpprovi = rpprovi;
+    public void setSolCLI_infofinanGasOtros(double solCLI_infofinanGasOtros) {
+        this.solCLI_infofinanGasOtros = solCLI_infofinanGasOtros;
     }
 
-    public String getRpestad() {
-        return rpestad;
+    public double getSolCLI_infofinanGasTotal() {
+        return solCLI_infofinanGasTotal;
     }
 
-    public void setRpestad(String rpestad) {
-        this.rpestad = rpestad;
+    public void setSolCLI_infofinanGasTotal(double solCLI_infofinanGasTotal) {
+        this.solCLI_infofinanGasTotal = solCLI_infofinanGasTotal;
     }
 
-    public String getRptelef() {
-        return rptelef;
+    public double getSolCLI_infofinanGasTotalPat() {
+        return solCLI_infofinanGasTotalPat;
     }
 
-    public void setRptelef(String rptelef) {
-        this.rptelef = rptelef;
+    public void setSolCLI_infofinanGasTotalPat(double solCLI_infofinanGasTotalPat) {
+        this.solCLI_infofinanGasTotalPat = solCLI_infofinanGasTotalPat;
     }
 
-    public String getRpcelul() {
-        return rpcelul;
+    public String getSolCLI_refepersonPrimerNomb() {
+        return solCLI_refepersonPrimerNomb;
     }
 
-    public void setRpcelul(String rpcelul) {
-        this.rpcelul = rpcelul;
+    public void setSolCLI_refepersonPrimerNomb(String solCLI_refepersonPrimerNomb) {
+        this.solCLI_refepersonPrimerNomb = solCLI_refepersonPrimerNomb;
     }
 
-    public String getRpparen() {
-        return rpparen;
+    public String getSolCLI_refepersonSegundoNomb() {
+        return solCLI_refepersonSegundoNomb;
     }
 
-    public void setRpparen(String rpparen) {
-        this.rpparen = rpparen;
+    public void setSolCLI_refepersonSegundoNomb(String solCLI_refepersonSegundoNomb) {
+        this.solCLI_refepersonSegundoNomb = solCLI_refepersonSegundoNomb;
     }
 
-    public String getRfprimerNomb() {
-        return rfprimerNomb;
+    public String getSolCLI_refepersonPrimerApel() {
+        return solCLI_refepersonPrimerApel;
     }
 
-    public void setRfprimerNomb(String rfprimerNomb) {
-        this.rfprimerNomb = rfprimerNomb;
+    public void setSolCLI_refepersonPrimerApel(String solCLI_refepersonPrimerApel) {
+        this.solCLI_refepersonPrimerApel = solCLI_refepersonPrimerApel;
     }
 
-    public String getRfsegundoNomb() {
-        return rfsegundoNomb;
+    public String getSolCLI_refepersonSegundoApel() {
+        return solCLI_refepersonSegundoApel;
     }
 
-    public void setRfsegundoNomb(String rfsegundoNomb) {
-        this.rfsegundoNomb = rfsegundoNomb;
+    public void setSolCLI_refepersonSegundoApel(String solCLI_refepersonSegundoApel) {
+        this.solCLI_refepersonSegundoApel = solCLI_refepersonSegundoApel;
     }
 
-    public String getRfprimerApell() {
-        return rfprimerApell;
+    public String getSolCLI_refepersonDireccion() {
+        return solCLI_refepersonDireccion;
     }
 
-    public void setRfprimerApell(String rfprimerApell) {
-        this.rfprimerApell = rfprimerApell;
+    public void setSolCLI_refepersonDireccion(String solCLI_refepersonDireccion) {
+        this.solCLI_refepersonDireccion = solCLI_refepersonDireccion;
     }
 
-    public String getRfsegundoApell() {
-        return rfsegundoApell;
+    public String getSolCLI_refepersonDistrito() {
+        return solCLI_refepersonDistrito;
     }
 
-    public void setRfsegundoApell(String rfsegundoApell) {
-        this.rfsegundoApell = rfsegundoApell;
+    public void setSolCLI_refepersonDistrito(String solCLI_refepersonDistrito) {
+        this.solCLI_refepersonDistrito = solCLI_refepersonDistrito;
     }
 
-    public String getRfdirec() {
-        return rfdirec;
+    public String getSolCLI_refepersonProvincia() {
+        return solCLI_refepersonProvincia;
     }
 
-    public void setRfdirec(String rfdirec) {
-        this.rfdirec = rfdirec;
+    public void setSolCLI_refepersonProvincia(String solCLI_refepersonProvincia) {
+        this.solCLI_refepersonProvincia = solCLI_refepersonProvincia;
     }
 
-    public String getRfdistr() {
-        return rfdistr;
+    public String getSolCLI_refepersonEstado() {
+        return solCLI_refepersonEstado;
     }
 
-    public void setRfdistr(String rfdistr) {
-        this.rfdistr = rfdistr;
+    public void setSolCLI_refepersonEstado(String solCLI_refepersonEstado) {
+        this.solCLI_refepersonEstado = solCLI_refepersonEstado;
     }
 
-    public String getRfprovi() {
-        return rfprovi;
+    public String getSolCLI_refepersonTelefono() {
+        return solCLI_refepersonTelefono;
     }
 
-    public void setRfprovi(String rfprovi) {
-        this.rfprovi = rfprovi;
+    public void setSolCLI_refepersonTelefono(String solCLI_refepersonTelefono) {
+        this.solCLI_refepersonTelefono = solCLI_refepersonTelefono;
     }
 
-    public String getRfestad() {
-        return rfestad;
+    public String getSolCLI_refepersonCelular() {
+        return solCLI_refepersonCelular;
     }
 
-    public void setRfestad(String rfestad) {
-        this.rfestad = rfestad;
+    public void setSolCLI_refepersonCelular(String solCLI_refepersonCelular) {
+        this.solCLI_refepersonCelular = solCLI_refepersonCelular;
     }
 
-    public String getRftelef() {
-        return rftelef;
+    public String getSolCLI_refepersonParentesco() {
+        return solCLI_refepersonParentesco;
     }
 
-    public void setRftelef(String rftelef) {
-        this.rftelef = rftelef;
+    public void setSolCLI_refepersonParentesco(String solCLI_refepersonParentesco) {
+        this.solCLI_refepersonParentesco = solCLI_refepersonParentesco;
     }
 
-    public String getRfcelul() {
-        return rfcelul;
+    public String getSolCLI_refefamiliPrimerNomb() {
+        return solCLI_refefamiliPrimerNomb;
     }
 
-    public void setRfcelul(String rfcelul) {
-        this.rfcelul = rfcelul;
+    public void setSolCLI_refefamiliPrimerNomb(String solCLI_refefamiliPrimerNomb) {
+        this.solCLI_refefamiliPrimerNomb = solCLI_refefamiliPrimerNomb;
     }
 
-    public String getRfparen() {
-        return rfparen;
+    public String getSolCLI_refefamiliSegundoNomb() {
+        return solCLI_refefamiliSegundoNomb;
     }
 
-    public void setRfparen(String rfparen) {
-        this.rfparen = rfparen;
+    public void setSolCLI_refefamiliSegundoNomb(String solCLI_refefamiliSegundoNomb) {
+        this.solCLI_refefamiliSegundoNomb = solCLI_refefamiliSegundoNomb;
     }
 
-    public String getRlcNombre() {
-        return rlcNombre;
+    public String getSolCLI_refefamiliPrimerApel() {
+        return solCLI_refefamiliPrimerApel;
     }
 
-    public void setRlcNombre(String rlcNombre) {
-        this.rlcNombre = rlcNombre;
+    public void setSolCLI_refefamiliPrimerApel(String solCLI_refefamiliPrimerApel) {
+        this.solCLI_refefamiliPrimerApel = solCLI_refefamiliPrimerApel;
     }
 
-    public String getRlcActividad() {
-        return rlcActividad;
+    public String getSolCLI_refefamiliSegundoApel() {
+        return solCLI_refefamiliSegundoApel;
     }
 
-    public void setRlcActividad(String rlcActividad) {
-        this.rlcActividad = rlcActividad;
+    public void setSolCLI_refefamiliSegundoApel(String solCLI_refefamiliSegundoApel) {
+        this.solCLI_refefamiliSegundoApel = solCLI_refefamiliSegundoApel;
     }
 
-    public String getRlcTelef() {
-        return rlcTelef;
+    public String getSolCLI_refefamiliDireccion() {
+        return solCLI_refefamiliDireccion;
     }
 
-    public void setRlcTelef(String rlcTelef) {
-        this.rlcTelef = rlcTelef;
+    public void setSolCLI_refefamiliDireccion(String solCLI_refefamiliDireccion) {
+        this.solCLI_refefamiliDireccion = solCLI_refefamiliDireccion;
     }
 
-    public String getRlcDireClient() {
-        return rlcDireClient;
+    public String getSolCLI_refefamiliDistrito() {
+        return solCLI_refefamiliDistrito;
     }
 
-    public void setRlcDireClient(String rlcDireClient) {
-        this.rlcDireClient = rlcDireClient;
+    public void setSolCLI_refefamiliDistrito(String solCLI_refefamiliDistrito) {
+        this.solCLI_refefamiliDistrito = solCLI_refefamiliDistrito;
     }
 
-    public String getRlcDistrito() {
-        return rlcDistrito;
+    public String getSolCLI_refefamiliProvincia() {
+        return solCLI_refefamiliProvincia;
     }
 
-    public void setRlcDistrito(String rlcDistrito) {
-        this.rlcDistrito = rlcDistrito;
+    public void setSolCLI_refefamiliProvincia(String solCLI_refefamiliProvincia) {
+        this.solCLI_refefamiliProvincia = solCLI_refefamiliProvincia;
     }
 
-    public String getRlcProvincia() {
-        return rlcProvincia;
+    public String getSolCLI_refefamiliEstado() {
+        return solCLI_refefamiliEstado;
     }
 
-    public void setRlcProvincia(String rlcProvincia) {
-        this.rlcProvincia = rlcProvincia;
+    public void setSolCLI_refefamiliEstado(String solCLI_refefamiliEstado) {
+        this.solCLI_refefamiliEstado = solCLI_refefamiliEstado;
     }
 
-    public String getRlcEstado() {
-        return rlcEstado;
+    public String getSolCLI_refefamiliTelefono() {
+        return solCLI_refefamiliTelefono;
     }
 
-    public void setRlcEstado(String rlcEstado) {
-        this.rlcEstado = rlcEstado;
+    public void setSolCLI_refefamiliTelefono(String solCLI_refefamiliTelefono) {
+        this.solCLI_refefamiliTelefono = solCLI_refefamiliTelefono;
     }
 
-    public String getRlpNombre() {
-        return rlpNombre;
+    public String getSolCLI_refefamiliCelular() {
+        return solCLI_refefamiliCelular;
     }
 
-    public void setRlpNombre(String rlpNombre) {
-        this.rlpNombre = rlpNombre;
+    public void setSolCLI_refefamiliCelular(String solCLI_refefamiliCelular) {
+        this.solCLI_refefamiliCelular = solCLI_refefamiliCelular;
     }
 
-    public String getRlpActividad() {
-        return rlpActividad;
+    public String getSolCLI_refefamiliParentesco() {
+        return solCLI_refefamiliParentesco;
     }
 
-    public void setRlpActividad(String rlpActividad) {
-        this.rlpActividad = rlpActividad;
+    public void setSolCLI_refefamiliParentesco(String solCLI_refefamiliParentesco) {
+        this.solCLI_refefamiliParentesco = solCLI_refefamiliParentesco;
     }
 
-    public String getRlpTelef() {
-        return rlpTelef;
+    public String getSolCLI_refelabocliNombre() {
+        return solCLI_refelabocliNombre;
     }
 
-    public void setRlpTelef(String rlpTelef) {
-        this.rlpTelef = rlpTelef;
+    public void setSolCLI_refelabocliNombre(String solCLI_refelabocliNombre) {
+        this.solCLI_refelabocliNombre = solCLI_refelabocliNombre;
     }
 
-    public String getRlpDire() {
-        return rlpDire;
+    public String getSolCLI_refelabocliActividad() {
+        return solCLI_refelabocliActividad;
     }
 
-    public void setRlpDire(String rlpDire) {
-        this.rlpDire = rlpDire;
+    public void setSolCLI_refelabocliActividad(String solCLI_refelabocliActividad) {
+        this.solCLI_refelabocliActividad = solCLI_refelabocliActividad;
     }
 
-    public String getRlpDistrito() {
-        return rlpDistrito;
+    public String getSolCLI_refelabocliTelefono() {
+        return solCLI_refelabocliTelefono;
     }
 
-    public void setRlpDistrito(String rlpDistrito) {
-        this.rlpDistrito = rlpDistrito;
+    public void setSolCLI_refelabocliTelefono(String solCLI_refelabocliTelefono) {
+        this.solCLI_refelabocliTelefono = solCLI_refelabocliTelefono;
     }
 
-    public String getRlpProvincia() {
-        return rlpProvincia;
+    public String getSolCLI_refelabocliDireccion() {
+        return solCLI_refelabocliDireccion;
     }
 
-    public void setRlpProvincia(String rlpProvincia) {
-        this.rlpProvincia = rlpProvincia;
+    public void setSolCLI_refelabocliDireccion(String solCLI_refelabocliDireccion) {
+        this.solCLI_refelabocliDireccion = solCLI_refelabocliDireccion;
     }
 
-    public String getRlpEstado() {
-        return rlpEstado;
+    public String getSolCLI_refelabocliDistrito() {
+        return solCLI_refelabocliDistrito;
     }
 
-    public void setRlpEstado(String rlpEstado) {
-        this.rlpEstado = rlpEstado;
+    public void setSolCLI_refelabocliDistrito(String solCLI_refelabocliDistrito) {
+        this.solCLI_refelabocliDistrito = solCLI_refelabocliDistrito;
     }
 
-    public String getTipoIndep() {
-        return tipoIndep;
+    public String getSolCLI_refelabocliProvincia() {
+        return solCLI_refelabocliProvincia;
     }
 
-    public void setTipoIndep(String tipoIndep) {
-        this.tipoIndep = tipoIndep;
+    public void setSolCLI_refelabocliProvincia(String solCLI_refelabocliProvincia) {
+        this.solCLI_refelabocliProvincia = solCLI_refelabocliProvincia;
     }
 
-    public File getArchivoEmpleadoRecibo() {
-        return archivoEmpleadoRecibo;
+    public String getSolCLI_refelabocliEstado() {
+        return solCLI_refelabocliEstado;
     }
 
-    public void setArchivoEmpleadoRecibo(File archivoEmpleadoRecibo) {
-        this.archivoEmpleadoRecibo = archivoEmpleadoRecibo;
+    public void setSolCLI_refelabocliEstado(String solCLI_refelabocliEstado) {
+        this.solCLI_refelabocliEstado = solCLI_refelabocliEstado;
     }
 
-    public String getArchivoEmpleadoReciboFileName() {
-        return archivoEmpleadoReciboFileName;
+    public String getSolCLI_refelaboproNombre() {
+        return solCLI_refelaboproNombre;
     }
 
-    public void setArchivoEmpleadoReciboFileName(String archivoEmpleadoReciboFileName) {
-        this.archivoEmpleadoReciboFileName = archivoEmpleadoReciboFileName;
+    public void setSolCLI_refelaboproNombre(String solCLI_refelaboproNombre) {
+        this.solCLI_refelaboproNombre = solCLI_refelaboproNombre;
     }
 
-    public File getArchivoEmpleadoCopiaDNI() {
-        return archivoEmpleadoCopiaDNI;
+    public String getSolCLI_refelaboproActividad() {
+        return solCLI_refelaboproActividad;
     }
 
-    public void setArchivoEmpleadoCopiaDNI(File archivoEmpleadoCopiaDNI) {
-        this.archivoEmpleadoCopiaDNI = archivoEmpleadoCopiaDNI;
+    public void setSolCLI_refelaboproActividad(String solCLI_refelaboproActividad) {
+        this.solCLI_refelaboproActividad = solCLI_refelaboproActividad;
     }
 
-    public String getArchivoEmpleadoCopiaDNIFileName() {
-        return archivoEmpleadoCopiaDNIFileName;
+    public String getSolCLI_refelaboproTelefono() {
+        return solCLI_refelaboproTelefono;
     }
 
-    public void setArchivoEmpleadoCopiaDNIFileName(String archivoEmpleadoCopiaDNIFileName) {
-        this.archivoEmpleadoCopiaDNIFileName = archivoEmpleadoCopiaDNIFileName;
+    public void setSolCLI_refelaboproTelefono(String solCLI_refelaboproTelefono) {
+        this.solCLI_refelaboproTelefono = solCLI_refelaboproTelefono;
     }
 
-    public File getArchivoEmpleadobol1() {
-        return archivoEmpleadobol1;
+    public String getSolCLI_refelaboproDireccion() {
+        return solCLI_refelaboproDireccion;
     }
 
-    public void setArchivoEmpleadobol1(File archivoEmpleadobol1) {
-        this.archivoEmpleadobol1 = archivoEmpleadobol1;
+    public void setSolCLI_refelaboproDireccion(String solCLI_refelaboproDireccion) {
+        this.solCLI_refelaboproDireccion = solCLI_refelaboproDireccion;
     }
 
-    public String getArchivoEmpleadobol1FileName() {
-        return archivoEmpleadobol1FileName;
+    public String getSolCLI_refelaboproDistrito() {
+        return solCLI_refelaboproDistrito;
     }
 
-    public void setArchivoEmpleadobol1FileName(String archivoEmpleadobol1FileName) {
-        this.archivoEmpleadobol1FileName = archivoEmpleadobol1FileName;
+    public void setSolCLI_refelaboproDistrito(String solCLI_refelaboproDistrito) {
+        this.solCLI_refelaboproDistrito = solCLI_refelaboproDistrito;
     }
 
-    public File getArchivoEmpleadobol2() {
-        return archivoEmpleadobol2;
+    public String getSolCLI_refelaboproProvincia() {
+        return solCLI_refelaboproProvincia;
     }
 
-    public void setArchivoEmpleadobol2(File archivoEmpleadobol2) {
-        this.archivoEmpleadobol2 = archivoEmpleadobol2;
+    public void setSolCLI_refelaboproProvincia(String solCLI_refelaboproProvincia) {
+        this.solCLI_refelaboproProvincia = solCLI_refelaboproProvincia;
     }
 
-    public String getArchivoEmpleadobol2FileName() {
-        return archivoEmpleadobol2FileName;
+    public String getSolCLI_refelaboproEstado() {
+        return solCLI_refelaboproEstado;
     }
 
-    public void setArchivoEmpleadobol2FileName(String archivoEmpleadobol2FileName) {
-        this.archivoEmpleadobol2FileName = archivoEmpleadobol2FileName;
+    public void setSolCLI_refelaboproEstado(String solCLI_refelaboproEstado) {
+        this.solCLI_refelaboproEstado = solCLI_refelaboproEstado;
     }
 
-    public File getArchivoEmpleadobol3() {
-        return archivoEmpleadobol3;
+    public File getArchivoSolFinan_EmpleadoRecibo() {
+        return archivoSolFinan_EmpleadoRecibo;
     }
 
-    public void setArchivoEmpleadobol3(File archivoEmpleadobol3) {
-        this.archivoEmpleadobol3 = archivoEmpleadobol3;
+    public void setArchivoSolFinan_EmpleadoRecibo(File archivoSolFinan_EmpleadoRecibo) {
+        this.archivoSolFinan_EmpleadoRecibo = archivoSolFinan_EmpleadoRecibo;
     }
 
-    public String getArchivoEmpleadobol3FileName() {
-        return archivoEmpleadobol3FileName;
+    public String getArchivoSolFinan_EmpleadoReciboFileName() {
+        return archivoSolFinan_EmpleadoReciboFileName;
     }
 
-    public void setArchivoEmpleadobol3FileName(String archivoEmpleadobol3FileName) {
-        this.archivoEmpleadobol3FileName = archivoEmpleadobol3FileName;
+    public void setArchivoSolFinan_EmpleadoReciboFileName(String archivoSolFinan_EmpleadoReciboFileName) {
+        this.archivoSolFinan_EmpleadoReciboFileName = archivoSolFinan_EmpleadoReciboFileName;
     }
 
-    public File getArchivoEmpleadoingadic() {
-        return archivoEmpleadoingadic;
+    public File getArchivoSolFinan_EmpleadoCopiaDni() {
+        return archivoSolFinan_EmpleadoCopiaDni;
     }
 
-    public void setArchivoEmpleadoingadic(File archivoEmpleadoingadic) {
-        this.archivoEmpleadoingadic = archivoEmpleadoingadic;
+    public void setArchivoSolFinan_EmpleadoCopiaDni(File archivoSolFinan_EmpleadoCopiaDni) {
+        this.archivoSolFinan_EmpleadoCopiaDni = archivoSolFinan_EmpleadoCopiaDni;
     }
 
-    public String getArchivoEmpleadoingadicFileName() {
-        return archivoEmpleadoingadicFileName;
+    public String getArchivoSolFinan_EmpleadoCopiaDniFileName() {
+        return archivoSolFinan_EmpleadoCopiaDniFileName;
     }
 
-    public void setArchivoEmpleadoingadicFileName(String archivoEmpleadoingadicFileName) {
-        this.archivoEmpleadoingadicFileName = archivoEmpleadoingadicFileName;
+    public void setArchivoSolFinan_EmpleadoCopiadniFileName(String archivoSolFinan_EmpleadoCopiadniFileName) {
+        this.archivoSolFinan_EmpleadoCopiaDniFileName = archivoSolFinan_EmpleadoCopiadniFileName;
     }
 
-    public File getArchivoIFRecibLuz() {
-        return archivoIFRecibLuz;
+    public File getArchivoSolFinan_EmpleadoBoleta1() {
+        return archivoSolFinan_EmpleadoBoleta1;
     }
 
-    public void setArchivoIFRecibLuz(File archivoIFRecibLuz) {
-        this.archivoIFRecibLuz = archivoIFRecibLuz;
+    public void setArchivoSolFinan_EmpleadoBoleta1(File archivoSolFinan_EmpleadoBoleta1) {
+        this.archivoSolFinan_EmpleadoBoleta1 = archivoSolFinan_EmpleadoBoleta1;
     }
 
-    public String getArchivoIFRecibLuzFileName() {
-        return archivoIFRecibLuzFileName;
+    public String getArchivoSolFinan_EmpleadoBoleta1FileName() {
+        return archivoSolFinan_EmpleadoBoleta1FileName;
     }
 
-    public void setArchivoIFRecibLuzFileName(String archivoIFRecibLuzFileName) {
-        this.archivoIFRecibLuzFileName = archivoIFRecibLuzFileName;
+    public void setArchivoSolFinan_EmpleadoBoleta1FileName(String archivoSolFinan_EmpleadoBoleta1FileName) {
+        this.archivoSolFinan_EmpleadoBoleta1FileName = archivoSolFinan_EmpleadoBoleta1FileName;
     }
 
-    public File getArchivoIFCopiaDni() {
-        return archivoIFCopiaDni;
+    public File getArchivoSolFinan_EmpleadoBoleta2() {
+        return archivoSolFinan_EmpleadoBoleta2;
     }
 
-    public void setArchivoIFCopiaDni(File archivoIFCopiaDni) {
-        this.archivoIFCopiaDni = archivoIFCopiaDni;
+    public void setArchivoSolFinan_EmpleadoBoleta2(File archivoSolFinan_EmpleadoBoleta2) {
+        this.archivoSolFinan_EmpleadoBoleta2 = archivoSolFinan_EmpleadoBoleta2;
     }
 
-    public String getArchivoIFCopiaDniFileName() {
-        return archivoIFCopiaDniFileName;
+    public String getArchivoSolFinan_EmpleadoBoleta2FileName() {
+        return archivoSolFinan_EmpleadoBoleta2FileName;
     }
 
-    public void setArchivoIFCopiaDniFileName(String archivoIFCopiaDniFileName) {
-        this.archivoIFCopiaDniFileName = archivoIFCopiaDniFileName;
+    public void setArchivoSolFinan_EmpleadoBoleta2FileName(String archivoSolFinan_EmpleadoBoleta2FileName) {
+        this.archivoSolFinan_EmpleadoBoleta2FileName = archivoSolFinan_EmpleadoBoleta2FileName;
     }
 
-    public File getArchivoIFCopiaRuc() {
-        return archivoIFCopiaRuc;
+    public File getArchivoSolFinan_EmpleadoBoleta3() {
+        return archivoSolFinan_EmpleadoBoleta3;
     }
 
-    public void setArchivoIFCopiaRuc(File archivoIFCopiaRuc) {
-        this.archivoIFCopiaRuc = archivoIFCopiaRuc;
+    public void setArchivoSolFinan_EmpleadoBoleta3(File archivoSolFinan_EmpleadoBoleta3) {
+        this.archivoSolFinan_EmpleadoBoleta3 = archivoSolFinan_EmpleadoBoleta3;
     }
 
-    public String getArchivoIFCopiaRucFileName() {
-        return archivoIFCopiaRucFileName;
+    public String getArchivoSolFinan_EmpleadoBoleta3FileName() {
+        return archivoSolFinan_EmpleadoBoleta3FileName;
     }
 
-    public void setArchivoIFCopiaRucFileName(String archivoIFCopiaRucFileName) {
-        this.archivoIFCopiaRucFileName = archivoIFCopiaRucFileName;
+    public void setArchivoSolFinan_EmpleadoBoleta3FileName(String archivoSolFinan_EmpleadoBoleta3FileName) {
+        this.archivoSolFinan_EmpleadoBoleta3FileName = archivoSolFinan_EmpleadoBoleta3FileName;
     }
 
-    public File getArchivoIFExtracb1() {
-        return archivoIFExtracb1;
+    public File getArchivoSolFinan_EmpleadoCopiaArrendamiento() {
+        return archivoSolFinan_EmpleadoCopiaArrendamiento;
     }
 
-    public void setArchivoIFExtracb1(File archivoIFExtracb1) {
-        this.archivoIFExtracb1 = archivoIFExtracb1;
+    public void setArchivoSolFinan_EmpleadoCopiaArrendamiento(File archivoSolFinan_EmpleadoCopiaArrendamiento) {
+        this.archivoSolFinan_EmpleadoCopiaArrendamiento = archivoSolFinan_EmpleadoCopiaArrendamiento;
     }
 
-    public String getArchivoIFExtracb1FileName() {
-        return archivoIFExtracb1FileName;
+    public String getArchivoSolFinan_EmpleadoCopiaArrendamientoFileName() {
+        return archivoSolFinan_EmpleadoCopiaArrendamientoFileName;
     }
 
-    public void setArchivoIFExtracb1FileName(String archivoIFExtracb1FileName) {
-        this.archivoIFExtracb1FileName = archivoIFExtracb1FileName;
+    public void setArchivoSolFinan_EmpleadoCopiaArrendamientoFileName(String archivoSolFinan_EmpleadoCopiaArrendamientoFileName) {
+        this.archivoSolFinan_EmpleadoCopiaArrendamientoFileName = archivoSolFinan_EmpleadoCopiaArrendamientoFileName;
     }
 
-    public File getArchivoIFExtracb2() {
-        return archivoIFExtracb2;
+    public File getArchivoSolFinan_IndependienteFReciboLuz() {
+        return archivoSolFinan_IndependienteFReciboLuz;
     }
 
-    public void setArchivoIFExtracb2(File archivoIFExtracb2) {
-        this.archivoIFExtracb2 = archivoIFExtracb2;
+    public void setArchivoSolFinan_IndependienteFReciboLuz(File archivoSolFinan_IndependienteFReciboLuz) {
+        this.archivoSolFinan_IndependienteFReciboLuz = archivoSolFinan_IndependienteFReciboLuz;
     }
 
-    public String getArchivoIFExtracb2FileName() {
-        return archivoIFExtracb2FileName;
+    public String getArchivoSolFinan_IndependienteFReciboLuzFileName() {
+        return archivoSolFinan_IndependienteFReciboLuzFileName;
     }
 
-    public void setArchivoIFExtracb2FileName(String archivoIFExtracb2FileName) {
-        this.archivoIFExtracb2FileName = archivoIFExtracb2FileName;
+    public void setArchivoSolFinan_IndependienteFReciboLuzFileName(String archivoSolFinan_IndependienteFReciboLuzFileName) {
+        this.archivoSolFinan_IndependienteFReciboLuzFileName = archivoSolFinan_IndependienteFReciboLuzFileName;
     }
 
-    public File getArchivoIFExtracb3() {
-        return archivoIFExtracb3;
+    public File getArchivoSolFinan_IndependienteFCopiaDni() {
+        return archivoSolFinan_IndependienteFCopiaDni;
     }
 
-    public void setArchivoIFExtracb3(File archivoIFExtracb3) {
-        this.archivoIFExtracb3 = archivoIFExtracb3;
+    public void setArchivoSolFinan_IndependienteFCopiaDni(File archivoSolFinan_IndependienteFCopiaDni) {
+        this.archivoSolFinan_IndependienteFCopiaDni = archivoSolFinan_IndependienteFCopiaDni;
     }
 
-    public String getArchivoIFExtracb3FileName() {
-        return archivoIFExtracb3FileName;
+    public String getArchivoSolFinan_IndependienteFCopiaDniFileName() {
+        return archivoSolFinan_IndependienteFCopiaDniFileName;
     }
 
-    public void setArchivoIFExtracb3FileName(String archivoIFExtracb3FileName) {
-        this.archivoIFExtracb3FileName = archivoIFExtracb3FileName;
+    public void setArchivoSolFinan_IndependienteFCopiaDniFileName(String archivoSolFinan_IndependienteFCopiaDniFileName) {
+        this.archivoSolFinan_IndependienteFCopiaDniFileName = archivoSolFinan_IndependienteFCopiaDniFileName;
     }
 
-    public File getArchivoIFExtracafp() {
-        return archivoIFExtracafp;
+    public File getArchivoSolFinan_IndependienteFCopiaRuc() {
+        return archivoSolFinan_IndependienteFCopiaRuc;
     }
 
-    public void setArchivoIFExtracafp(File archivoIFExtracafp) {
-        this.archivoIFExtracafp = archivoIFExtracafp;
+    public void setArchivoSolFinan_IndependienteFCopiaRuc(File archivoSolFinan_IndependienteFCopiaRuc) {
+        this.archivoSolFinan_IndependienteFCopiaRuc = archivoSolFinan_IndependienteFCopiaRuc;
     }
 
-    public String getArchivoIFExtracafpFileName() {
-        return archivoIFExtracafpFileName;
+    public String getArchivoSolFinan_IndependienteFCopiaRucFileName() {
+        return archivoSolFinan_IndependienteFCopiaRucFileName;
     }
 
-    public void setArchivoIFExtracafpFileName(String archivoIFExtracafpFileName) {
-        this.archivoIFExtracafpFileName = archivoIFExtracafpFileName;
+    public void setArchivoSolFinan_IndependienteFCopiaRucFileName(String archivoSolFinan_IndependienteFCopiaRucFileName) {
+        this.archivoSolFinan_IndependienteFCopiaRucFileName = archivoSolFinan_IndependienteFCopiaRucFileName;
     }
 
-    public File getArchivoIFIngadic() {
-        return archivoIFIngadic;
+    public File getArchivoSolFinan_IndependienteFExtracBanc1() {
+        return archivoSolFinan_IndependienteFExtracBanc1;
     }
 
-    public void setArchivoIFIngadic(File archivoIFIngadic) {
-        this.archivoIFIngadic = archivoIFIngadic;
+    public void setArchivoSolFinan_IndependienteFExtracBanc1(File archivoSolFinan_IndependienteFExtracBanc1) {
+        this.archivoSolFinan_IndependienteFExtracBanc1 = archivoSolFinan_IndependienteFExtracBanc1;
     }
 
-    public String getArchivoIFIngadicFileName() {
-        return archivoIFIngadicFileName;
+    public String getArchivoSolFinan_IndependienteFExtracBanc1FileName() {
+        return archivoSolFinan_IndependienteFExtracBanc1FileName;
     }
 
-    public void setArchivoIFIngadicFileName(String archivoIFIngadicFileName) {
-        this.archivoIFIngadicFileName = archivoIFIngadicFileName;
+    public void setArchivoSolFinan_IndependienteFExtracBanc1FileName(String archivoSolFinan_IndependienteFExtracBanc1FileName) {
+        this.archivoSolFinan_IndependienteFExtracBanc1FileName = archivoSolFinan_IndependienteFExtracBanc1FileName;
     }
 
-    public File getArchivoIFNRecibluz() {
-        return archivoIFNRecibluz;
+    public File getArchivoSolFinan_IndependienteFExtracBanc2() {
+        return archivoSolFinan_IndependienteFExtracBanc2;
     }
 
-    public void setArchivoIFNRecibluz(File archivoIFNRecibluz) {
-        this.archivoIFNRecibluz = archivoIFNRecibluz;
+    public void setArchivoSolFinan_IndependienteFExtracBanc2(File archivoSolFinan_IndependienteFExtracBanc2) {
+        this.archivoSolFinan_IndependienteFExtracBanc2 = archivoSolFinan_IndependienteFExtracBanc2;
     }
 
-    public String getArchivoIFNRecibluzFileName() {
-        return archivoIFNRecibluzFileName;
+    public String getArchivoSolFinan_IndependienteFExtracBanc2FileName() {
+        return archivoSolFinan_IndependienteFExtracBanc2FileName;
     }
 
-    public void setArchivoIFNRecibluzFileName(String archivoIFNRecibluzFileName) {
-        this.archivoIFNRecibluzFileName = archivoIFNRecibluzFileName;
+    public void setArchivoSolFinan_IndependienteFExtracBanc2FileName(String archivoSolFinan_IndependienteFExtracBanc2FileName) {
+        this.archivoSolFinan_IndependienteFExtracBanc2FileName = archivoSolFinan_IndependienteFExtracBanc2FileName;
     }
 
-    public File getArchivoIFNCopiaDni() {
-        return archivoIFNCopiaDni;
+    public File getArchivoSolFinan_IndependienteFExtracBanc3() {
+        return archivoSolFinan_IndependienteFExtracBanc3;
     }
 
-    public void setArchivoIFNCopiaDni(File archivoIFNCopiaDni) {
-        this.archivoIFNCopiaDni = archivoIFNCopiaDni;
+    public void setArchivoSolFinan_IndependienteFExtracBanc3(File archivoSolFinan_IndependienteFExtracBanc3) {
+        this.archivoSolFinan_IndependienteFExtracBanc3 = archivoSolFinan_IndependienteFExtracBanc3;
     }
 
-    public String getArchivoIFNCopiaDniFileName() {
-        return archivoIFNCopiaDniFileName;
+    public String getArchivoSolFinan_IndependienteFExtracBanc3FileName() {
+        return archivoSolFinan_IndependienteFExtracBanc3FileName;
     }
 
-    public void setArchivoIFNCopiaDniFileName(String archivoIFNCopiaDniFileName) {
-        this.archivoIFNCopiaDniFileName = archivoIFNCopiaDniFileName;
+    public void setArchivoSolFinan_IndependienteFExtracBanc3FileName(String archivoSolFinan_IndependienteFExtracBanc3FileName) {
+        this.archivoSolFinan_IndependienteFExtracBanc3FileName = archivoSolFinan_IndependienteFExtracBanc3FileName;
     }
 
-    public File getArchivoIFNCertf1() {
-        return archivoIFNCertf1;
+    public File getArchivoSolFinan_IndependienteFCopiaArrendamiento() {
+        return archivoSolFinan_IndependienteFCopiaArrendamiento;
     }
 
-    public void setArchivoIFNCertf1(File archivoIFNCertf1) {
-        this.archivoIFNCertf1 = archivoIFNCertf1;
+    public void setArchivoSolFinan_IndependienteFCopiaArrendamiento(File archivoSolFinan_IndependienteFCopiaArrendamiento) {
+        this.archivoSolFinan_IndependienteFCopiaArrendamiento = archivoSolFinan_IndependienteFCopiaArrendamiento;
     }
 
-    public String getArchivoIFNCertf1FileName() {
-        return archivoIFNCertf1FileName;
+    public String getArchivoSolFinan_IndependienteFCopiaArrendamientoFileName() {
+        return archivoSolFinan_IndependienteFCopiaArrendamientoFileName;
     }
 
-    public void setArchivoIFNCertf1FileName(String archivoIFNCertf1FileName) {
-        this.archivoIFNCertf1FileName = archivoIFNCertf1FileName;
+    public void setArchivoSolFinan_IndependienteFCopiaArrendamientoFileName(String archivoSolFinan_IndependienteFCopiaArrendamientoFileName) {
+        this.archivoSolFinan_IndependienteFCopiaArrendamientoFileName = archivoSolFinan_IndependienteFCopiaArrendamientoFileName;
     }
 
-    public File getArchivoIFNCertf2() {
-        return archivoIFNCertf2;
+    public File getArchivoSolFinan_IndependienteFExtracAfp() {
+        return archivoSolFinan_IndependienteFExtracAfp;
     }
 
-    public void setArchivoIFNCertf2(File archivoIFNCertf2) {
-        this.archivoIFNCertf2 = archivoIFNCertf2;
+    public void setArchivoSolFinan_IndependienteFExtracAfp(File archivoSolFinan_IndependienteFExtracAfp) {
+        this.archivoSolFinan_IndependienteFExtracAfp = archivoSolFinan_IndependienteFExtracAfp;
     }
 
-    public String getArchivoIFNCertf2FileName() {
-        return archivoIFNCertf2FileName;
+    public String getArchivoSolFinan_IndependienteFExtracAfpFileName() {
+        return archivoSolFinan_IndependienteFExtracAfpFileName;
     }
 
-    public void setArchivoIFNCertf2FileName(String archivoIFNCertf2FileName) {
-        this.archivoIFNCertf2FileName = archivoIFNCertf2FileName;
+    public void setArchivoSolFinan_IndependienteFExtracAfpFileName(String archivoSolFinan_IndependienteFExtracAfpFileName) {
+        this.archivoSolFinan_IndependienteFExtracAfpFileName = archivoSolFinan_IndependienteFExtracAfpFileName;
     }
 
-    public File getArchivoIFNFac1() {
-        return archivoIFNFac1;
+    public File getArchivoSolFinan_IndependienteIReciboLuz() {
+        return archivoSolFinan_IndependienteIReciboLuz;
     }
 
-    public void setArchivoIFNFac1(File archivoIFNFac1) {
-        this.archivoIFNFac1 = archivoIFNFac1;
+    public void setArchivoSolFinan_IndependienteIReciboLuz(File archivoSolFinan_IndependienteIReciboLuz) {
+        this.archivoSolFinan_IndependienteIReciboLuz = archivoSolFinan_IndependienteIReciboLuz;
     }
 
-    public String getArchivoIFNFac1FileName() {
-        return archivoIFNFac1FileName;
+    public String getArchivoSolFinan_IndependienteIReciboLuzFileName() {
+        return archivoSolFinan_IndependienteIReciboLuzFileName;
     }
 
-    public void setArchivoIFNFac1FileName(String archivoIFNFac1FileName) {
-        this.archivoIFNFac1FileName = archivoIFNFac1FileName;
+    public void setArchivoSolFinan_IndependienteIReciboLuzFileName(String archivoSolFinan_IndependienteIReciboLuzFileName) {
+        this.archivoSolFinan_IndependienteIReciboLuzFileName = archivoSolFinan_IndependienteIReciboLuzFileName;
     }
 
-    public File getArchivoIFNFac2() {
-        return archivoIFNFac2;
+    public File getArchivoSolFinan_IndependienteICertificadoProveedor1() {
+        return archivoSolFinan_IndependienteICertificadoProveedor1;
     }
 
-    public void setArchivoIFNFac2(File archivoIFNFac2) {
-        this.archivoIFNFac2 = archivoIFNFac2;
+    public File getArchivoSolFinan_IndependienteICopiaDni() {
+        return archivoSolFinan_IndependienteICopiaDni;
     }
 
-    public String getArchivoIFNFac2FileName() {
-        return archivoIFNFac2FileName;
+    public void setArchivoSolFinan_IndependienteICopiaDni(File archivoSolFinan_IndependienteICopiaDni) {
+        this.archivoSolFinan_IndependienteICopiaDni = archivoSolFinan_IndependienteICopiaDni;
     }
 
-    public void setArchivoIFNFac2FileName(String archivoIFNFac2FileName) {
-        this.archivoIFNFac2FileName = archivoIFNFac2FileName;
+    public String getArchivoSolFinan_IndependienteICopiaDniFileName() {
+        return archivoSolFinan_IndependienteICopiaDniFileName;
     }
 
-    public File getArchivoIFNC1() {
-        return archivoIFNC1;
+    public void setArchivoSolFinan_IndependienteICopiaDniFileName(String archivoSolFinan_IndependienteICopiaDniFileName) {
+        this.archivoSolFinan_IndependienteICopiaDniFileName = archivoSolFinan_IndependienteICopiaDniFileName;
     }
 
-    public void setArchivoIFNC1(File archivoIFNC1) {
-        this.archivoIFNC1 = archivoIFNC1;
+    public void setArchivoSolFinan_IndependienteICertificadoProveedor1(File archivoSolFinan_IndependienteICertificadoProveedor1) {
+        this.archivoSolFinan_IndependienteICertificadoProveedor1 = archivoSolFinan_IndependienteICertificadoProveedor1;
     }
 
-    public String getArchivoIFNC1FileName() {
-        return archivoIFNC1FileName;
+    public String getArchivoSolFinan_IndependienteICertificadoProveedor1FileName() {
+        return archivoSolFinan_IndependienteICertificadoProveedor1FileName;
     }
 
-    public void setArchivoIFNC1FileName(String archivoIFNC1FileName) {
-        this.archivoIFNC1FileName = archivoIFNC1FileName;
+    public void setArchivoSolFinan_IndependienteICertificadoProveedor1FileName(String archivoSolFinan_IndependienteICertificadoProveedor1FileName) {
+        this.archivoSolFinan_IndependienteICertificadoProveedor1FileName = archivoSolFinan_IndependienteICertificadoProveedor1FileName;
     }
 
-    public File getArchivoIFNC2() {
-        return archivoIFNC2;
+    public File getArchivoSolFinan_IndependienteICertificadoProveedor2() {
+        return archivoSolFinan_IndependienteICertificadoProveedor2;
     }
 
-    public void setArchivoIFNC2(File archivoIFNC2) {
-        this.archivoIFNC2 = archivoIFNC2;
+    public void setArchivoSolFinan_IndependienteICertificadoProveedor2(File archivoSolFinan_IndependienteICertificadoProveedor2) {
+        this.archivoSolFinan_IndependienteICertificadoProveedor2 = archivoSolFinan_IndependienteICertificadoProveedor2;
     }
 
-    public String getArchivoIFNC2FileName() {
-        return archivoIFNC2FileName;
+    public String getArchivoSolFinan_IndependienteICertificadoProveedor2FileName() {
+        return archivoSolFinan_IndependienteICertificadoProveedor2FileName;
     }
 
-    public void setArchivoIFNC2FileName(String archivoIFNC2FileName) {
-        this.archivoIFNC2FileName = archivoIFNC2FileName;
+    public void setArchivoSolFinan_IndependienteICertificadoProveedor2FileName(String archivoSolFinan_IndependienteICertificadoProveedor2FileName) {
+        this.archivoSolFinan_IndependienteICertificadoProveedor2FileName = archivoSolFinan_IndependienteICertificadoProveedor2FileName;
     }
 
-    public File getArchivoIFNExtracAfp() {
-        return archivoIFNExtracAfp;
+    public File getArchivoSolFinan_IndependienteIFactura1() {
+        return archivoSolFinan_IndependienteIFactura1;
     }
 
-    public void setArchivoIFNExtracAfp(File archivoIFNExtracAfp) {
-        this.archivoIFNExtracAfp = archivoIFNExtracAfp;
+    public void setArchivoSolFinan_IndependienteIFactura1(File archivoSolFinan_IndependienteIFactura1) {
+        this.archivoSolFinan_IndependienteIFactura1 = archivoSolFinan_IndependienteIFactura1;
     }
 
-    public String getArchivoIFNExtracAfpFileName() {
-        return archivoIFNExtracAfpFileName;
+    public String getArchivoSolFinan_IndependienteIFactura1FileName() {
+        return archivoSolFinan_IndependienteIFactura1FileName;
     }
 
-    public void setArchivoIFNExtracAfpFileName(String archivoIFNExtracAfpFileName) {
-        this.archivoIFNExtracAfpFileName = archivoIFNExtracAfpFileName;
+    public void setArchivoSolFinan_IndependienteIFactura1FileName(String archivoSolFinan_IndependienteIFactura1FileName) {
+        this.archivoSolFinan_IndependienteIFactura1FileName = archivoSolFinan_IndependienteIFactura1FileName;
     }
 
-    public File getArchivoIFNIngadic() {
-        return archivoIFNIngadic;
+    public File getArchivoSolFinan_IndependienteIFactura2() {
+        return archivoSolFinan_IndependienteIFactura2;
     }
 
-    public void setArchivoIFNIngadic(File archivoIFNIngadic) {
-        this.archivoIFNIngadic = archivoIFNIngadic;
+    public void setArchivoSolFinan_IndependienteIFactura2(File archivoSolFinan_IndependienteIFactura2) {
+        this.archivoSolFinan_IndependienteIFactura2 = archivoSolFinan_IndependienteIFactura2;
     }
 
-    public String getArchivoIFNIngadicFileName() {
-        return archivoIFNIngadicFileName;
+    public String getArchivoSolFinan_IndependienteIFactura2FileName() {
+        return archivoSolFinan_IndependienteIFactura2FileName;
     }
 
-    public void setArchivoIFNIngadicFileName(String archivoIFNIngadicFileName) {
-        this.archivoIFNIngadicFileName = archivoIFNIngadicFileName;
+    public void setArchivoSolFinan_IndependienteIFactura2FileName(String archivoSolFinan_IndependienteIFactura2FileName) {
+        this.archivoSolFinan_IndependienteIFactura2FileName = archivoSolFinan_IndependienteIFactura2FileName;
     }
 
-    public File getArchivoJRecib() {
-        return archivoJRecib;
+    public File getArchivoSolFinan_IndependienteICertificadoExp1() {
+        return archivoSolFinan_IndependienteICertificadoExp1;
     }
 
-    public void setArchivoJRecib(File archivoJRecib) {
-        this.archivoJRecib = archivoJRecib;
+    public void setArchivoSolFinan_IndependienteICertificadoExp1(File archivoSolFinan_IndependienteICertificadoExp1) {
+        this.archivoSolFinan_IndependienteICertificadoExp1 = archivoSolFinan_IndependienteICertificadoExp1;
     }
 
-    public String getArchivoJRecibFileName() {
-        return archivoJRecibFileName;
+    public String getArchivoSolFinan_IndependienteICertificadoExp1FileName() {
+        return archivoSolFinan_IndependienteICertificadoExp1FileName;
     }
 
-    public void setArchivoJRecibFileName(String archivoJRecibFileName) {
-        this.archivoJRecibFileName = archivoJRecibFileName;
+    public void setArchivoSolFinan_IndependienteICertificadoExp1FileName(String archivoSolFinan_IndependienteICertificadoExp1FileName) {
+        this.archivoSolFinan_IndependienteICertificadoExp1FileName = archivoSolFinan_IndependienteICertificadoExp1FileName;
     }
 
-    public File getArchivoJCopia() {
-        return archivoJCopia;
+    public File getArchivoSolFinan_IndependienteICertificadoExp2() {
+        return archivoSolFinan_IndependienteICertificadoExp2;
     }
 
-    public void setArchivoJCopia(File archivoJCopia) {
-        this.archivoJCopia = archivoJCopia;
+    public void setArchivoSolFinan_IndependienteICertificadoExp2(File archivoSolFinan_IndependienteICertificadoExp2) {
+        this.archivoSolFinan_IndependienteICertificadoExp2 = archivoSolFinan_IndependienteICertificadoExp2;
     }
 
-    public String getArchivoJCopiaFileName() {
-        return archivoJCopiaFileName;
+    public String getArchivoSolFinan_IndependienteICertificadoExp2FileName() {
+        return archivoSolFinan_IndependienteICertificadoExp2FileName;
     }
 
-    public void setArchivoJCopiaFileName(String archivoJCopiaFileName) {
-        this.archivoJCopiaFileName = archivoJCopiaFileName;
+    public void setArchivoSolFinan_IndependienteICertificadoExp2FileName(String archivoSolFinan_IndependienteICertificadoExp2FileName) {
+        this.archivoSolFinan_IndependienteICertificadoExp2FileName = archivoSolFinan_IndependienteICertificadoExp2FileName;
     }
 
-    public File getArchivoJBol1() {
-        return archivoJBol1;
+    public File getArchivoSolFinan_IndependienteIExtracAfp() {
+        return archivoSolFinan_IndependienteIExtracAfp;
     }
 
-    public void setArchivoJBol1(File archivoJBol1) {
-        this.archivoJBol1 = archivoJBol1;
+    public void setArchivoSolFinan_IndependienteIExtracAfp(File archivoSolFinan_IndependienteIExtracAfp) {
+        this.archivoSolFinan_IndependienteIExtracAfp = archivoSolFinan_IndependienteIExtracAfp;
     }
 
-    public String getArchivoJBol1FileName() {
-        return archivoJBol1FileName;
+    public String getArchivoSolFinan_IndependienteIExtracAfpFileName() {
+        return archivoSolFinan_IndependienteIExtracAfpFileName;
     }
 
-    public void setArchivoJBol1FileName(String archivoJBol1FileName) {
-        this.archivoJBol1FileName = archivoJBol1FileName;
+    public void setArchivoSolFinan_IndependienteIExtracAfpFileName(String archivoSolFinan_IndependienteIExtracAfpFileName) {
+        this.archivoSolFinan_IndependienteIExtracAfpFileName = archivoSolFinan_IndependienteIExtracAfpFileName;
     }
 
-    public File getArchivoJBol2() {
-        return archivoJBol2;
+    public File getArchivoSolFinan_IndependienteICopiaArrendamiento() {
+        return archivoSolFinan_IndependienteICopiaArrendamiento;
     }
 
-    public void setArchivoJBol2(File archivoJBol2) {
-        this.archivoJBol2 = archivoJBol2;
+    public void setArchivoSolFinan_IndependienteICopiaArrendamiento(File archivoSolFinan_IndependienteICopiaArrendamiento) {
+        this.archivoSolFinan_IndependienteICopiaArrendamiento = archivoSolFinan_IndependienteICopiaArrendamiento;
     }
 
-    public String getArchivoJBol2FileName() {
-        return archivoJBol2FileName;
+    public String getArchivoSolFinan_IndependienteICopiaArrendamientoFileName() {
+        return archivoSolFinan_IndependienteICopiaArrendamientoFileName;
     }
 
-    public void setArchivoJBol2FileName(String archivoJBol2FileName) {
-        this.archivoJBol2FileName = archivoJBol2FileName;
+    public void setArchivoSolFinan_IndependienteICopiaArrendamientoFileName(String archivoSolFinan_IndependienteICopiaArrendamientoFileName) {
+        this.archivoSolFinan_IndependienteICopiaArrendamientoFileName = archivoSolFinan_IndependienteICopiaArrendamientoFileName;
     }
 
-    public File getArchivoJBol3() {
-        return archivoJBol3;
+    public File getArchivoSolFinan_JubiladoRecibo() {
+        return archivoSolFinan_JubiladoRecibo;
     }
 
-    public void setArchivoJBol3(File archivoJBol3) {
-        this.archivoJBol3 = archivoJBol3;
+    public void setArchivoSolFinan_JubiladoRecibo(File archivoSolFinan_JubiladoRecibo) {
+        this.archivoSolFinan_JubiladoRecibo = archivoSolFinan_JubiladoRecibo;
     }
 
-    public String getArchivoJBol3FileName() {
-        return archivoJBol3FileName;
+    public String getArchivoSolFinan_JubiladoReciboFileName() {
+        return archivoSolFinan_JubiladoReciboFileName;
     }
 
-    public void setArchivoJBol3FileName(String archivoJBol3FileName) {
-        this.archivoJBol3FileName = archivoJBol3FileName;
+    public void setArchivoSolFinan_JubiladoReciboFileName(String archivoSolFinan_JubiladoReciboFileName) {
+        this.archivoSolFinan_JubiladoReciboFileName = archivoSolFinan_JubiladoReciboFileName;
     }
 
-    public File getArchivoJExt1() {
-        return archivoJExt1;
+    public File getArchivoSolFinan_JubiladoCopiaDni() {
+        return archivoSolFinan_JubiladoCopiaDni;
     }
 
-    public void setArchivoJExt1(File archivoJExt1) {
-        this.archivoJExt1 = archivoJExt1;
+    public void setArchivoSolFinan_JubiladoCopiaDni(File archivoSolFinan_JubiladoCopiaDni) {
+        this.archivoSolFinan_JubiladoCopiaDni = archivoSolFinan_JubiladoCopiaDni;
     }
 
-    public String getArchivoJExt1FileName() {
-        return archivoJExt1FileName;
+    public String getArchivoSolFinan_JubiladoCopiaDniFileName() {
+        return archivoSolFinan_JubiladoCopiaDniFileName;
     }
 
-    public void setArchivoJExt1FileName(String archivoJExt1FileName) {
-        this.archivoJExt1FileName = archivoJExt1FileName;
+    public void setArchivoSolFinan_JubiladoCopiaDniFileName(String archivoSolFinan_JubiladoCopiaDniFileName) {
+        this.archivoSolFinan_JubiladoCopiaDniFileName = archivoSolFinan_JubiladoCopiaDniFileName;
     }
 
-    public File getArchivoJExt2() {
-        return archivoJExt2;
+    public File getArchivoSolFinan_JubiladoBoleta1() {
+        return archivoSolFinan_JubiladoBoleta1;
     }
 
-    public void setArchivoJExt2(File archivoJExt2) {
-        this.archivoJExt2 = archivoJExt2;
+    public void setArchivoSolFinan_JubiladoBoleta1(File archivoSolFinan_JubiladoBoleta1) {
+        this.archivoSolFinan_JubiladoBoleta1 = archivoSolFinan_JubiladoBoleta1;
     }
 
-    public String getArchivoJExt2FileName() {
-        return archivoJExt2FileName;
+    public String getArchivoSolFinan_JubiladoBoleta1FileName() {
+        return archivoSolFinan_JubiladoBoleta1FileName;
     }
 
-    public void setArchivoJExt2FileName(String archivoJExt2FileName) {
-        this.archivoJExt2FileName = archivoJExt2FileName;
+    public void setArchivoSolFinan_JubiladoBoleta1FileName(String archivoSolFinan_JubiladoBoleta1FileName) {
+        this.archivoSolFinan_JubiladoBoleta1FileName = archivoSolFinan_JubiladoBoleta1FileName;
     }
 
-    public File getArchivoJExt3() {
-        return archivoJExt3;
+    public File getArchivoSolFinan_JubiladoBoleta2() {
+        return archivoSolFinan_JubiladoBoleta2;
     }
 
-    public void setArchivoJExt3(File archivoJExt3) {
-        this.archivoJExt3 = archivoJExt3;
+    public void setArchivoSolFinan_JubiladoBoleta2(File archivoSolFinan_JubiladoBoleta2) {
+        this.archivoSolFinan_JubiladoBoleta2 = archivoSolFinan_JubiladoBoleta2;
     }
 
-    public String getArchivoJExt3FileName() {
-        return archivoJExt3FileName;
+    public String getArchivoSolFinan_JubiladoBoleta2FileName() {
+        return archivoSolFinan_JubiladoBoleta2FileName;
     }
 
-    public void setArchivoJExt3FileName(String archivoJExt3FileName) {
-        this.archivoJExt3FileName = archivoJExt3FileName;
+    public void setArchivoSolFinan_JubiladoBoleta2FileName(String archivoSolFinan_JubiladoBoleta2FileName) {
+        this.archivoSolFinan_JubiladoBoleta2FileName = archivoSolFinan_JubiladoBoleta2FileName;
     }
 
-    public File getArchivoJIngadic() {
-        return archivoJIngadic;
+    public File getArchivoSolFinan_JubiladoBoleta3() {
+        return archivoSolFinan_JubiladoBoleta3;
     }
 
-    public void setArchivoJIngadic(File archivoJIngadic) {
-        this.archivoJIngadic = archivoJIngadic;
+    public void setArchivoSolFinan_JubiladoBoleta3(File archivoSolFinan_JubiladoBoleta3) {
+        this.archivoSolFinan_JubiladoBoleta3 = archivoSolFinan_JubiladoBoleta3;
     }
 
-    public String getArchivoJIngadicFileName() {
-        return archivoJIngadicFileName;
+    public String getArchivoSolFinan_JubiladoBoleta3FileName() {
+        return archivoSolFinan_JubiladoBoleta3FileName;
     }
 
-    public void setArchivoJIngadicFileName(String archivoJIngadicFileName) {
-        this.archivoJIngadicFileName = archivoJIngadicFileName;
+    public void setArchivoSolFinan_JubiladoBoleta3FileName(String archivoSolFinan_JubiladoBoleta3FileName) {
+        this.archivoSolFinan_JubiladoBoleta3FileName = archivoSolFinan_JubiladoBoleta3FileName;
     }
 
+    public File getArchivoSolFinan_JubiladoExtracBanc1() {
+        return archivoSolFinan_JubiladoExtracBanc1;
+    }
+
+    public void setArchivoSolFinan_JubiladoExtracBanc1(File archivoSolFinan_JubiladoExtracBanc1) {
+        this.archivoSolFinan_JubiladoExtracBanc1 = archivoSolFinan_JubiladoExtracBanc1;
+    }
+
+    public String getArchivoSolFinan_JubiladoExtracBanc1FileName() {
+        return archivoSolFinan_JubiladoExtracBanc1FileName;
+    }
+
+    public void setArchivoSolFinan_JubiladoExtracBanc1FileName(String archivoSolFinan_JubiladoExtracBanc1FileName) {
+        this.archivoSolFinan_JubiladoExtracBanc1FileName = archivoSolFinan_JubiladoExtracBanc1FileName;
+    }
+
+    public File getArchivoSolFinan_JubiladoExtracBanc2() {
+        return archivoSolFinan_JubiladoExtracBanc2;
+    }
+
+    public void setArchivoSolFinan_JubiladoExtracBanc2(File archivoSolFinan_JubiladoExtracBanc2) {
+        this.archivoSolFinan_JubiladoExtracBanc2 = archivoSolFinan_JubiladoExtracBanc2;
+    }
+
+    public String getArchivoSolFinan_JubiladoExtracBanc2FileName() {
+        return archivoSolFinan_JubiladoExtracBanc2FileName;
+    }
+
+    public void setArchivoSolFinan_JubiladoExtracBanc2FileName(String archivoSolFinan_JubiladoExtracBanc2FileName) {
+        this.archivoSolFinan_JubiladoExtracBanc2FileName = archivoSolFinan_JubiladoExtracBanc2FileName;
+    }
+
+    public File getArchivoSolFinan_JubiladoExtracBanc3() {
+        return archivoSolFinan_JubiladoExtracBanc3;
+    }
+
+    public void setArchivoSolFinan_JubiladoExtracBanc3(File archivoSolFinan_JubiladoExtracBanc3) {
+        this.archivoSolFinan_JubiladoExtracBanc3 = archivoSolFinan_JubiladoExtracBanc3;
+    }
+
+    public String getArchivoSolFinan_JubiladoExtracBanc3FileName() {
+        return archivoSolFinan_JubiladoExtracBanc3FileName;
+    }
+
+    public void setArchivoSolFinan_JubiladoExtracBanc3FileName(String archivoSolFinan_JubiladoExtracBanc3FileName) {
+        this.archivoSolFinan_JubiladoExtracBanc3FileName = archivoSolFinan_JubiladoExtracBanc3FileName;
+    }
+
+    public File getArchivoSolFinan_JubiladoCopiaArrendamiento() {
+        return archivoSolFinan_JubiladoCopiaArrendamiento;
+    }
+
+    public void setArchivoSolFinan_JubiladoCopiaArrendamiento(File archivoSolFinan_JubiladoCopiaArrendamiento) {
+        this.archivoSolFinan_JubiladoCopiaArrendamiento = archivoSolFinan_JubiladoCopiaArrendamiento;
+    }
+
+    public String getArchivoSolFinan_JubiladoCopiaArrendamientoFileName() {
+        return archivoSolFinan_JubiladoCopiaArrendamientoFileName;
+    }
+
+    public void setArchivoSolFinan_JubiladoCopiaArrendamientoFileName(String archivoSolFinan_JubiladoCopiaArrendamientoFileName) {
+        this.archivoSolFinan_JubiladoCopiaArrendamientoFileName = archivoSolFinan_JubiladoCopiaArrendamientoFileName;
+    }
 }
